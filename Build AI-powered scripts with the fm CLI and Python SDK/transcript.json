@@ -1,0 +1,778 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Eric Goulawen"
+  },
+  {
+    "timestamp": "0:07",
+    "content": "Hi, I'm Eric Goulawen, an engineer on the Foundation Models Framework team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Today, I'd like to introduce new ways you can leverage the Apple Foundation Models on macOS."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "At WWDC25, we introduced the Foundation Models Framework in Swift."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "You can use it to prompt the on-device Apple Foundation Model in your apps."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "It was introduced along with features like guided generation to generate structured outputs,"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "and tool calling to let the model interact with the context of your app."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "With macOS 27 and iOS 27 come a number of new features to the framework,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "like support for passing images in your prompt, and access to server models,"
+  },
+  {
+    "timestamp": "0:48",
+    "content": "so that your app can leverage any large language model with the same Swift API."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "Using the Foundation Models Framework lets you easily tap into the power of Apple Foundation Models."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "You can use those models on problems from just text extraction and analysis,"
+  },
+  {
+    "timestamp": "1:03",
+    "content": "up to building advanced agentic workflows."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "And it's easy to set up with no API key needed and no cloud API costs."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "But until now, those models were only available from Swift code."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "This year, we're introducing new ways you can access Apple Foundation Models on macOS."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "We're introducing a new command line tool called FM,"
+  },
+  {
+    "timestamp": "1:25",
+    "content": "and a new Foundation Models SDK for Python."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "The FM command line tool comes pre-installed with macOS 27."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "It's a fantastic tool to quickly test prompts right from a terminal,"
+  },
+  {
+    "timestamp": "1:36",
+    "content": "or to incorporate it to an automation."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "It makes it really easy to test the model with some prompts"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "without rebuilding your project in Xcode."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "Using this command line tool is as easy as opening a terminal window,"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "typing fmrespond,"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "typing my prompt,"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "and pressing enter."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "And after a bit, I'll see the response from the model."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "The Foundation Models SDK for Python is our other new way to access the on-device model."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "It supports the Foundation Model Framework's core features,"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "like tool calling and guided generation."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "If you're a Swift developer and you've used the Foundation Models Framework,"
+  },
+  {
+    "timestamp": "2:21",
+    "content": "you'll find the API very familiar to you."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "And if you're a machine learning engineer,"
+  },
+  {
+    "timestamp": "2:26",
+    "content": "you might use more Python than Swift."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "In that case, using this SDK makes it easy to use the on-device model in your Python code."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "Python has a rich ecosystem of open-source packages for machine learning and data science."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "With a Python SDK, you can write evaluation pipelines in Python"
+  },
+  {
+    "timestamp": "2:44",
+    "content": "and leverage those packages to quantify the quality of your feature."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "And because Python is a scripting language,"
+  },
+  {
+    "timestamp": "2:50",
+    "content": "it makes it easy to quickly test prompts, see results, and iterate."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "Let's dive into what's possible with those new options."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "I'll start by going over the new fm command line tool."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "We'll go over the basics of using it,"
+  },
+  {
+    "timestamp": "3:03",
+    "content": "and then I'll show you how you can use it to create an automation script."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "Next, I'll introduce the Python SDK."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "I'll show you how to interact with the model,"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "and then how to leverage advanced SDK options."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "I'll then show you through a case study how you can use Python tools"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "to analyze your prompt outputs and improve the quality of your app."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "Let's start by discussing the command line tool fm."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "Starting from macOS 27, this command line tool comes pre-installed on your Mac."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "It's available right from your terminal app."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "To get started with fm, just open a terminal and type fm."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "You can see a list of commands that are available."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "For example, you can use response to just ask the model to prompt the model and return a response,"
+  },
+  {
+    "timestamp": "3:50",
+    "content": "chat to start an interactive interface, schema to create a schema, and more."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "To show you what fm is capable of, let's try using fm chat."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "With this new terminal interface, I can start a conversation with the on-device model right from my terminal."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "I can start with the first question."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "Then ask a follow-up question."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "fm chat comes with a number of commands."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "For example, with slash model, I can switch the conversation to use a private cloud compute model."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "Or, with slash save, I can save the current conversation to resume later."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "Interactive sessions with fm chat are great for getting the first pulse of the model."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "So if you're exploring a new idea, you can pry the model and see how it performs with your prompts."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "When you'd rather have inline responses, like in scripts, use the command fm respond instead."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "Run fm respond with a prompt in a terminal, and you'll receive the response from the model as output."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "fm respond has a number of options, like the model option that lets you prompt the private cloud compute model."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "Or the image option to include an image in your prompt."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "Just like with the Swift framework, I can use the model to produce structured outputs."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Using the command fm schema object, I can create a schema, and I can then use it with fm respond with the schema option."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "There's more options that could be useful to you."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "To check out all the options, use the help option."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "As you've seen so far, the fm command line tool lets you use either the on-device model or the apple foundation model on private cloud compute."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "By default, it uses the on-device model that comes with macOS, and that's always available."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "You can also use the apple foundation model on private cloud compute, which has usage limits."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "It's a much bigger model than the on-device model, so it will perform better on complex problems."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Let's put together what we learned to solve a practical problem."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "I just completed a presentation project on my Mac."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "The folder where I was storing my assets is full of drafts, and I'd like to free up space on disk."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "I'd like to clean up this folder to only keep the final versions of my assets."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "I'll use foundation models to sort out my files, keep only the essentials, back them up, and move the old ones to my archive disk."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "I'd like to automate this in a script so that whenever this happens again, I can just rerun this script."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "Using fm here lets me call into a language model that can sort draft files versus final files in my scripts,"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "so that the script works even if the names are messy and difficult to sort predictably."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "I've prepared a script that uses fm to distinguish draft files from final files, and moves the files accordingly."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "It's going to sort the working folder."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "Right now, this folder has both draft and final files."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "I'll go ahead and execute this script."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "Now that it's complete, I can see that the old files were correctly moved out of the folder."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "I'll now open the archive folder."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "I can see that the draft files were moved there."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "And I'll open the backup directory."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "I can see that the final files were copied there too as backup."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Let's go over the scripts together to understand how I used fm to sort those files."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "We start by loading a list of the files in the working directory."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "Next, we prompt the model to sort this list and provide me with a list of draft files, as well as a list of the final files."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "I can do this with the fmRespond command passing my instructions in my prompt."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "To get a structured result from the model, I define a schema using the fmSchemaObject command further up."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "The structured output will have two fields."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "A list of final files and a list of draft files."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "I then use fmRespond schema option to use the schema to generate the output."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "The output of fmRespond contains a result in a JSON that's generated by the model."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "I can then use this result to first copy the final files to my backup and move the draft files to the archive."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "There's more to discover with fm, so check out the tool on macOS 27 today and try using the tool in automation."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "Let's talk now about the Python SDK."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "The Python SDK gives you access to Apple Foundation models right from Python code."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "You can install it on a Python environment on your Mac, provided that the Python version is at least Python 3.10,"
+  },
+  {
+    "timestamp": "9:06",
+    "content": "that you have Xcode installed, and that you're using an Apple Silicon Mac."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "It's installed through pip, or any other package manager of your choice."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "The Python SDK includes the core features of the framework."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "If you've already used it in Swift, the APIs and abstractions will quickly feel familiar."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "You can use it to prompt the model with text inputs and image inputs, and you can use it to stream responses."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Just like in Swift, you can use guided generation to have the model generate structured outputs."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "And you can use tool calling to enable the model to interact with code."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "Let's go over a practical example."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "I'm building an app to order groceries, and I'd like to let the user prompt the app using the on-device model."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "As I'm starting to add features, I'd like to evaluate the accuracy of my prompts."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "So I'll prototype them in Python before implementing them in Swift."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "Prompting the model is done just like in Swift."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "I start by creating a language model session, to which I can pass instructions if I'd like."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Then I call session.respond, passing my prompt as an argument."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "The result of the method contains the output of the model."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "Just like in the Swift framework, I can expose tools to the model to interact with the user's context."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "For example, I can define a tool that the model can call to fetch the last few orders,"
+  },
+  {
+    "timestamp": "10:26",
+    "content": "so that I can provide more personalized information."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "Just like in the Swift framework and in the command line tool,"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "I can also constrain the model to produce structured outputs."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "For example, in this code, I'm using guided generation to ensure the output of the model is used."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "The output of the model is captured in an item's suggestion object."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "Here, using the fm.generable decorator, I define the desired output structure,"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "and I pass it to fm.respond as the generating argument."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "One of the main benefits of our Python SDK is easy integration with Python's ecosystem."
+  },
+  {
+    "timestamp": "10:59",
+    "content": "Let me illustrate this with a use case while we'll use some open source Python packages"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "to set up an evaluation pipeline."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "As I'm designing an app to order groceries, one feature I'm working on is the ability to prepare the user's next order."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Using a language model, I'd like to predict what users would like to add to their cart based on their previous orders."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "As I'm designing this feature, I'd like to make sure the output reliably works off of the previous orders,"
+  },
+  {
+    "timestamp": "11:25",
+    "content": "and also that the prediction accounts for any items already in their cart."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "I've prepared a few different implementations for this feature, each with different prompts."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "And I'd like to quantify their accuracy so I can select the best one and make sure it performs well."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "To evaluate their prompt and iterate, Swift developers can leverage the evaluations framework."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "It's available with Xcode 27, and it makes it easy to create evaluations and track the accuracy of your feature across multiple iterations."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "But many data scientists might be more familiar with Python than with Swift."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "If you fall under this scenario, let me show you how I can perform this analysis in Python by using the Python SDK from a Jupyter notebook."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "First, I used a large server model to generate evaluation data."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "I now have some inputs, and for each of those, data on what I expect in the output."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "I'll write a number of implementations that use different prompts."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Then, for each of my evaluation inputs, I'll generate outputs using each of those different implementations."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "I'll then save this data as rows in a Pandas data frame."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Next, I've designed some judge functions that rely on a server model."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "They will score each output on the criteria of my choice."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "I'll then save those metrics in the Pandas data frame."
+  },
+  {
+    "timestamp": "12:45",
+    "content": "I can now generate some charts to see them visually."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "Let's see it in action."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "My notebook contains evaluation data, with inputs and expected outputs."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "I've prepared three different implementations of how to complete the user's cards."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "Each of those leverage the on-device model by prompting it differently."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "The first method uses a very minimal prompt."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "The second one uses a more descriptive prompt, and describes the task more in detail."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "And the third one has the most comprehensive prompts, and describes the list of rules to the model."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "For each row in my evaluation data set, I went ahead and generated the outputs for each of those implementations."
+  },
+  {
+    "timestamp": "13:35",
+    "content": "I then stored those inputs and outputs in a Pandas data frame."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "I passed this data to a third-party model that I'm using as a judge model, which will score each result on a set of criteria."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "With the grading is generated, I can use matplotlib to generate charts, so that I can quickly see how each set of prompts performs."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "Here, since the data has already been generated and graded, I can run the cell in the below to generate the charts."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "Let's look at the charts."
+  },
+  {
+    "timestamp": "14:09",
+    "content": "First, by looking at the errors generated by setup, I can see that the detail prompt leads to a high percentage of generation errors."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "This can happen, for example, when we reach the model's max context window size."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "Next, we can see that the two less detailed prompts tend to lead to excess items added to the cart, while the more detailed one has less excess items."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "However, with the more detailed prompts, we tend to miss more items than were expected."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "The first prompt also tends to lead to more hallucinated items added to the cart."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "I can use those insights to iterate on those prompts."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "With Python, I can make those iterations quickly right from my notebook without having to rebuild the whole project."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "It makes it so convenient to test and make changes."
+  },
+  {
+    "timestamp": "14:58",
+    "content": "With this example, we saw how you could generate outputs, grade them, and create charts with a Python SDK."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "Python has a strong open source ecosystem of machine learning and data science packages."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "And we use some of those today on automation."
+  },
+  {
+    "timestamp": "15:13",
+    "content": "If you develop automation in Python, I encourage you to explore the ecosystem and see if you can reuse existing packages."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "Let's wrap this up."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "We just went over the new ways you can interact with Apple's foundation models."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "I encourage you to try them out today on macOS 27."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "You can use those tools alongside your Xcode project as a way to prototype and evaluate prompts."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "Or you can use them on their own to use the model in novel ways."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "To get more familiar with those tools, here are a few next steps that I recommend."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "First, start by exploring the command line tool from the terminal app."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "Explore the different options and features and try them out."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "Next, to learn more about how to use a Python SDK, head to the GitHub repository."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "You'll find some example snippets and some documentation that you can use as a reference on how to build advanced workflows."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "Once you've gotten the hang of the Python SDK, put this new knowledge and practice to create an evaluation pipeline."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "Think of a way you can use the model."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "And after you've found some work in prompts, quantify the results of the model against an evaluation dataset to measure the effectiveness of your prompts."
+  },
+  {
+    "timestamp": "16:21",
+    "content": "I hope using those new tools will inspire you to use language models in new and exciting ways."
+  }
+]

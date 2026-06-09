@@ -1,0 +1,1234 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Antonio Cancio,"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "a software engineer on the App Intents team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Let's explore advanced App Intents features"
+  },
+  {
+    "timestamp": "0:15",
+    "content": "for Siri and Apple Intelligence."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "Today, you'll learn techniques to take"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "the experience of your app and"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "Siri and Apple Intelligence beyond the basics,"
+  },
+  {
+    "timestamp": "0:24",
+    "content": "so it feels polished,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "personal, and unmistakably yours."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "This talk assumes a basic understanding"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "of App Intents and App Schemas."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "If they're new to you, I recommend starting with"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "these sessions which cover the fundamentals."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "Let's go through today's plan."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "First, we'll explore how you can make"
+  },
+  {
+    "timestamp": "0:42",
+    "content": "people's conversations with your app through"
+  },
+  {
+    "timestamp": "0:44",
+    "content": "Siri more intuitive and familiar."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "You'll learn how to build custom responses"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "that match your apps look and feel,"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "and how to set up interaction donations that"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "help Apple Intelligence feel more personal."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "Then, we'll discuss how you can make your content"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "more widely available."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "From semantic index integration to structured search,"
+  },
+  {
+    "timestamp": "1:05",
+    "content": "in-app search, and on-screen awareness,"
+  },
+  {
+    "timestamp": "1:08",
+    "content": "you'll come away knowing how to help"
+  },
+  {
+    "timestamp": "1:09",
+    "content": "Siri find your content and connect what's"
+  },
+  {
+    "timestamp": "1:11",
+    "content": "visible on screen to actions it can understand."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Finally, people can use Siri from anywhere in the system."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "We'll cover how to add entity annotations to existing integrations"
+  },
+  {
+    "timestamp": "1:23",
+    "content": "with notifications, now playing, and alarms,"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "so people can act on your content wherever they encounter it."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "To show this in practice, I want to share a few apps that my colleagues"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "and I have been building."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "CosmoTunes, which lets me play music and create alarms and timers with my favorite songs."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "Unicorn Chat, a messaging app to stay in touch with friends."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "And ComicCal, to manage my calendar."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "Hmm."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "Hey, there's something about App Intents that encourages celestial symbolism."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "You can download these samples from the links below and follow along."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "Let's start with shaping the Siri conversation using custom responses."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "Siri does the heavy lifting."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "It understands natural language, picks the right action, and crafts a helpful response."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "The App Intents framework gives you the tools to shape what Siri does and refine how it responds."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "By tailoring how it responds, you can let your app's unique personality shine through."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "Let me illustrate this with some code."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "In CosmoTunes, Add to Playlist Intent lets people add songs to a playlist."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "To start, I want Siri to handle the response."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "In the perform method of the intent, I'll add the song to the playlist and return an empty intent result."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "This tells Siri to take care of the response when the intent runs."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "After trying that out, I want the response to better match the app's personality."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "I call songs tracks and playlists mixtapes."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "To customize this, I mark the perform method as providing a dialogue response by adding the providesDialog protocol."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "I'll also change the intent result by passing an intent dialogue containing both full and supporting strings."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "Siri can show the supporting string with UI and read the full dialogue on voice-only devices like AirPods."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "Because of this, the full string should describe what happened on its own."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "That covers responses when your intent has finished."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "But what if you want to ask people a question while your intent is running?"
+  },
+  {
+    "timestamp": "3:25",
+    "content": "A well-placed clarifying question lets people finish the action they meant to take."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "To ask a question before your intent result, use the dialogue request within your perform method."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "People can create timers in CosmoTunes that start or stop audio playback after a set amount of time."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "This intent adopts a schema with required and optional parameters."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "If there's a timer already running, I want to ask the person to name this new timer to avoid confusion."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "I'll request a value for the optional label parameter when one hasn't been provided."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "If you want to ask people to choose from a list of items or ask for a confirmation,"
+  },
+  {
+    "timestamp": "4:02",
+    "content": "check out the sample app and documentation to learn about other kinds of dialogue requests."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "Next, I want Siri's visuals to match the app's look and feel."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "Entity display representation and custom views and intent responses are a great opportunity"
+  },
+  {
+    "timestamp": "4:17",
+    "content": "to visually present information and surface your app's identity alongside the dialogue."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Defining an entity's display representation can tell Siri how your entity should look and read"
+  },
+  {
+    "timestamp": "4:28",
+    "content": "when showing your content."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Entity display representation can be used in responses, like when an entity has been created or updated."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "They are also used when asking someone to choose between similar entities"
+  },
+  {
+    "timestamp": "4:40",
+    "content": "or when answering questions about content in your app."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "Spotlight and shortcuts can use them too."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "To define a basic display representation, provide a title."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "You can make these even richer by providing a subtitle and an image."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "I'll provide an image associated with my songs that Siri can show when people ask about their songs in the app."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "Entity display representation lets you refine the visual identity of your entities across the system."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "To define the visual responses of some specific actions, you can use custom view snippets."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "Back and add to playlist intent, Siri already responds automatically using the entity display representation."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "To use a custom view, I add the shows snippet view return type to my perform method."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "This lets me return an intent result with the SwiftUI view, like my playlist snippet view,"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "which displays the playlist details in familiar colors."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "When approaching customization, test your intents and decide where customization actually makes sense for your app."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Make sure your responses are accurate and sound natural across all platforms, including voice only devices like AirPods."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "Remember to ask clarifying questions sparingly to avoid friction."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "Finally, use custom visuals to bring your apps identity to Siri, keeping in mind how they'll scale across the ecosystem."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "Your intent responses typically come at the end of a Siri interaction."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "But Siri can ask additional questions before even calling your intent."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "For example, if I asked to message someone, Siri may ask me to choose from a list of similarly named contacts,"
+  },
+  {
+    "timestamp": "6:20",
+    "content": "because the system isn't sure which one I mean."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "That brings us to interaction donations, an API you can adopt to help Apple Intelligence be even smarter in handling those kinds of requests."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "Here's the good news."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "When people interact with your app through Siri or shortcuts, the system already knows about it."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "But, Apple Intelligence can't learn from actions people take through your apps UI without your help."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "That's where donations come in."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "Each donation is a hint that a person took a specific action in your apps UI."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "The system stores these as schema conforming app intents in a temporary transcript,"
+  },
+  {
+    "timestamp": "6:57",
+    "content": "giving Siri the context it needs to make smarter decisions."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "The transcript contains UI interaction donations over time."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "Say someone opens Unicorn Chat and sends a message from the Compose view."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "Right then, the app donates a send message action to the system using the send message intent schema."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "After messaging them frequently in the app, eventually, when someone says send a message to a contact from the home screen,"
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Siri might infer the right app to use for that contact."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "To adopt interaction donations for message sending, I started by looking at the conversation view in Unicorn Chat."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "The conversation view and the send message intent both call the same helper to send the message."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "That looks like a good place to start donating the send message intent."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "I'll add a donate intent parameter so I know whether the helper was called from the intent or from the UI."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "Apple intelligence already learns from Siri interactions, so I only need to donate UI interactions."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "Then, I'll create the intent, populate its parameters and the intent result, and donate it via the intent donation manager API."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Now, when a person opens the app and sends a message, the system can learn when they prefer to use Unicorn Chat."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "Beyond learning preferences, interaction donations also keep Siri aware of ongoing activities in your app."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "This is especially useful for activities people might start or stop with Siri."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "In an app in the Maps domain, a person could start a navigation session with the app's UI, which donates that interaction."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "Then, the person gets in the car and asks Siri to add a stop on their way."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "Thanks to the interaction donation, Siri can know what navigation session is active in the app and help the person with their request."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "This pattern applies to intents that start or stop navigation sessions in the Maps domain and stop, start, pause, or lap stop watches in the clock domain."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Your interaction donations should accurately represent real user behavior in your app."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "If your app donates excessively, the system may ignore those donations."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Once Siri has gathered all the parameter values and is ready to call your app intent, there's one final step, confirmation."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "Asking people to confirm that the action looks right keeps them informed and protects them from unintended side effects,"
+  },
+  {
+    "timestamp": "9:19",
+    "content": "which are a known risk with large language models."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "This matters most for intents that could have meaningful side effects on your data or the outside world."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "That's why Siri can automatically confirm these kinds of intents."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "For example, it can confirm when I say, cancel my expedition next week in Comic-Cal."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "This matters even more for intents that update app content, which a person has made public or shared with others."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "For example, Siri may not confirm when I update a personal event, but it may confirm when I ask it to update crew lunch,"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "since I'm updating an event with attendees."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "By default, Siri assumes your entities are private to the person and may skip confirmations for them."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "To tell Siri the owner has made an entity public or shared it with others, conform the relevant entities to the new ownership providing entity protocol."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "Only add the protocol to entities that people can share or make public in your app."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Then provide the ownership state."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "Keep the ownership state up to date whenever the system requests an entity from your app."
+  },
+  {
+    "timestamp": "10:24",
+    "content": "This ensures Siri has the necessary information when deciding to confirm."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "Remember those entity display representations we customized earlier?"
+  },
+  {
+    "timestamp": "10:34",
+    "content": "Siri can use them as visuals in these intent confirmations too."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Giving people a chance to confirm actions when appropriate builds trust in your app's experience with Siri."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "To learn more about other ways to establish trust and mitigate risks, check out Secure Your App, Mitigate Risks to Agentec Features."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "So far, I've defined how the actions in these apps work with Siri, given Apple Intelligence context about how people use my apps, and help Siri protect people from unintended side effects."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "Next, let's talk about how Siri finds content in the first place."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "There are three paths I want to cover."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "The semantic index, structured search, and in-app search."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "Playlists and CosmoTunes are all available locally on device."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "To help Apple Intelligence find them, I'll adopt index entity and index those entities in Spotlight."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "I'll use the index app entities method on CS searchable index, which populates the Spotlight semantic index."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "Now I can ask Siri, play my WWDC playlist in CosmoTunes."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "I can also search for my playlist in the Spotlight search UI."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "And depending on the app intents domain, indexing entities in Spotlight provides semantic search capabilities."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "This means Apple Intelligence and Siri can understand your entities based on meaning, not just exact keywords."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "Adding to the index is the first step."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "Keeping it up to date is key to helping Siri find your content."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "Index new entities as people add content to your app."
+  },
+  {
+    "timestamp": "12:12",
+    "content": "Update existing entries when key properties change, especially those used in your display representation."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "When people remove content, delete those index entries too."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "Spotlight may need your app to re-index its entities."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "Your app can support re-indexing by adopting the new index entity query."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "Check out index entity query in the sample project."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "If your project already supports re-indexing with core Spotlight level APIs, you do not need to define an index entity query."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "However, you might not index your entities if your content dataset is large, lives on a server, or changes too frequently to index ahead of time."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "For example, I decided to index all the apps playlists, but not songs."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "To still give people the flexibility in playing songs with Siri, I reached for an intent value query."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "Intent value query is suitable if you don't index all your entities ahead of time."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "This is very similar to entity query."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "The key differences are that your app receives a structured search input from the system, and you can return more than one entity type."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "Siri needs an entity for the audio entity parameter on the play audio intent in CosmoTunes."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "To find the entity, Siri calls the intent value query with an audio search."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "The query maps the structure properties of that search input to audio entities in the app."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "In the intent value query, I implemented the values for method to handle the audio search input, and return an audio entity."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "Audio entity is a union value type that includes both songs and playlists."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "The audio search value has a criteria property that describes the person's query."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "The search query case contains the relevant part of what the person said, and I use that to find matching entities."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "The app also supports an unspecified search."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "For example, play CosmoTunes, which isn't specific about what I want to play."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "In that case, the app jumps straight into playing songs I've previously liked."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "There's also a URL case for when someone references a link from your app, like, play that playlist Glow sent me."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Check out the documentation for the full set of audio search criteria."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "Sometimes, people aren't asking Siri to take action."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "They just want to find something."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "When I ask, show me running playlists in CosmoTunes, Siri can display a list of entity search results."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "That's a nice default, but I spent a lot of time crafting the app's own search experience,"
+  },
+  {
+    "timestamp": "14:43",
+    "content": "and I'd love to show these results there."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "To do this, I'll adopt the system search in app schema."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "The system search schema introduced in iOS 17 is now named system search in app."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "It is part of the system app schema domain, and it lets people search in your app with Siri,"
+  },
+  {
+    "timestamp": "15:01",
+    "content": "no matter which other domains you adopt, and even if you don't index your entities."
+  },
+  {
+    "timestamp": "15:07",
+    "content": "Siri calls this intent with the same string it searched for,"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "and the IntentsPerform method finds and shows those results in the app."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "Spotlight and structured search let Siri reason about your content."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "That's great if people ask Siri to play content in the app by name,"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "but just like in everyday conversations, people often refer to what they see."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "That's why I want to allow people to interact with the audio content they're looking at on their screen."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "On-screen awareness is how your app connects what's visible on screen to structured information and actions the system understands."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "Siri can then resolve references like play the third one or that conversation without the person naming them explicitly."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "When people start a Siri request, Siri has an understanding of text on screen, but it's limited to exactly what's in the pixels."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "For example, Siri can't act on the tracks shown, and it may not be able to tell you about the artist because the artist isn't currently shown on screen."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "Adopting on-screen awareness APIs provides Siri with additional context of what entities are on screen and where they are on screen."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "This on-screen context means Siri can answer detailed questions about those entities and take action on them."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "When adopting on-screen awareness, the NSUserActivity and ViewAnnotation APIs are where you should start."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "With NSUserActivity, attach user activity to the view representing your primary on-screen content."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "Use the ViewEntity annotation when the entity is one item among many on-screen."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "Attach AppEntityIdentifier to each view that represents an entity."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "In CosmoTunes, AlbumView uses a ViewEntity annotation because both the album and the containing tracks are visible."
+  },
+  {
+    "timestamp": "16:56",
+    "content": "Now, PlayingView uses NSUserActivity because the screen is dedicated to the currently playing item."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "NSUserActivity and ViewEntity annotations are enough when a screen has a handful of elements"
+  },
+  {
+    "timestamp": "17:07",
+    "content": "but there are two more on-screen awareness APIs."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "The first is for lists and collections where you display many entities at once."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "Tracks and CosmoTunes are displayed in lists in a few views of the app."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "Collection annotations help me avoid the overhead of attaching an annotation to every single row."
+  },
+  {
+    "timestamp": "17:27",
+    "content": "Instead, the system fetches identifiers lazily as it needs them."
+  },
+  {
+    "timestamp": "17:33",
+    "content": "Collection annotations also let Siri discover entities that have been selected and scrolled off-screen."
+  },
+  {
+    "timestamp": "17:39",
+    "content": "Per-row annotations disappear as soon as the view leaves the view hierarchy."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "In SwiftUI, use the AppEntityIdentifier for selection type modifier on a list."
+  },
+  {
+    "timestamp": "17:50",
+    "content": "Returning the EntityIdentifier for each item's selection ID."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "The second API is the Custom Canvas View annotation."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "I built this Custom Canvas View that looks like a piano roll."
+  },
+  {
+    "timestamp": "18:02",
+    "content": "It illustrates the notes in the current track and brings the unique retro look CosmoTunes is known for."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "I want people to be able to act on the associated song using Siri whenever this canvas is visible."
+  },
+  {
+    "timestamp": "18:14",
+    "content": "To help the system understand this non-standard subview, I used the Custom Canvas View annotation."
+  },
+  {
+    "timestamp": "18:20",
+    "content": "If you're using SwiftUI, check out how I adopted this in the Piano Roll view in the CosmoTunes sample code."
+  },
+  {
+    "timestamp": "18:26",
+    "content": "UIKit and AppKit also support all the on-screen awareness APIs."
+  },
+  {
+    "timestamp": "18:32",
+    "content": "Check out the documentation for AppEntityAnnotatable, UICollectionViewAppIntentsDataSource, and AppEntityUIElementProvider."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "And to learn more about how these entity annotations help power contextual menu items in UIKit apps,"
+  },
+  {
+    "timestamp": "18:48",
+    "content": "check out Modernize Your UIKit App."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "After adopting on-screen awareness, some of the app's views show many entities at once."
+  },
+  {
+    "timestamp": "18:57",
+    "content": "Siri needs to quickly understand if the on-screen entities relate to a request."
+  },
+  {
+    "timestamp": "19:03",
+    "content": "For example, someone asked Siri to play the third one."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "If Siri can't understand my on-screen entities quickly enough,"
+  },
+  {
+    "timestamp": "19:11",
+    "content": "it may ask to clarify or play something else entirely."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "People can abandon the request when that happens."
+  },
+  {
+    "timestamp": "19:18",
+    "content": "The entity display representations you customized earlier can help."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "In CosmoTunes, I enabled display representation querying on the playlist entity query"
+  },
+  {
+    "timestamp": "19:28",
+    "content": "by implementing the display representations method."
+  },
+  {
+    "timestamp": "19:31",
+    "content": "Now, when Siri is trying to understand the content on-screen,"
+  },
+  {
+    "timestamp": "19:36",
+    "content": "it can query just the text representation of the entity"
+  },
+  {
+    "timestamp": "19:39",
+    "content": "and skip the overhead of fetching the full content from the database."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "On-screen awareness provides Siri with additional context when people are looking at your app."
+  },
+  {
+    "timestamp": "19:48",
+    "content": "Beyond the UI, your app already integrates closely with other parts of the system."
+  },
+  {
+    "timestamp": "19:54",
+    "content": "To give Siri even more context, you can connect entities to integrations that you already adopt,"
+  },
+  {
+    "timestamp": "20:00",
+    "content": "like user notifications."
+  },
+  {
+    "timestamp": "20:02",
+    "content": "With this added context, your app entities act as a universal language."
+  },
+  {
+    "timestamp": "20:07",
+    "content": "They let Siri understand not just what's on-screen,"
+  },
+  {
+    "timestamp": "20:10",
+    "content": "but how other system integrations and time-sensitive events relate to your content."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "I'll add entities to three integrations the apps already use."
+  },
+  {
+    "timestamp": "20:20",
+    "content": "User notifications, now playing, and alarm kit."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "When I'm done, I'll be able to say,"
+  },
+  {
+    "timestamp": "20:27",
+    "content": "play the live version, letting me easily switch to a different version of the currently playing song."
+  },
+  {
+    "timestamp": "20:33",
+    "content": "When a unicorn chat notification is announced on AirPods,"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "Glow sent a message, sparkling dust, moonlight candles, and cozy cloaks."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "I can say, reply, okay, I'll swing by the unicorn supply store and pick those up."
+  },
+  {
+    "timestamp": "20:49",
+    "content": "And snooze it, to snooze an alarm from CosmoTunes."
+  },
+  {
+    "timestamp": "20:54",
+    "content": "All three use the same pattern, and we call these entity annotations."
+  },
+  {
+    "timestamp": "21:03",
+    "content": "Annotating notifications with entities gives Siri concrete entity context"
+  },
+  {
+    "timestamp": "21:07",
+    "content": "when announcing a notification on AirPods."
+  },
+  {
+    "timestamp": "21:10",
+    "content": "When listening to the announced notification,"
+  },
+  {
+    "timestamp": "21:12",
+    "content": "the person might want to act on the entity behind it,"
+  },
+  {
+    "timestamp": "21:15",
+    "content": "like replying to a message or checking off a reminder."
+  },
+  {
+    "timestamp": "21:18",
+    "content": "To give the additional context to Siri about what entity is associated with the unicorn chat notification,"
+  },
+  {
+    "timestamp": "21:25",
+    "content": "I'll update the posting flow."
+  },
+  {
+    "timestamp": "21:27",
+    "content": "After importing app intents,"
+  },
+  {
+    "timestamp": "21:29",
+    "content": "I assign the persistent message entity identifier"
+  },
+  {
+    "timestamp": "21:32",
+    "content": "to the app entity identifier's property on you unmutable notification content."
+  },
+  {
+    "timestamp": "21:37",
+    "content": "Note, that with the three entity annotation APIs I'm describing,"
+  },
+  {
+    "timestamp": "21:41",
+    "content": "you can't use transient app entity."
+  },
+  {
+    "timestamp": "21:44",
+    "content": "Transient entities are temporary model objects,"
+  },
+  {
+    "timestamp": "21:47",
+    "content": "so they don't have persistent identifiers."
+  },
+  {
+    "timestamp": "21:49",
+    "content": "To add entity annotations to now playing in CosmoTunes,"
+  },
+  {
+    "timestamp": "21:52",
+    "content": "I follow the same pattern."
+  },
+  {
+    "timestamp": "21:54",
+    "content": "I'm already providing song attributes using music content"
+  },
+  {
+    "timestamp": "21:57",
+    "content": "in the app's media session representable conformance."
+  },
+  {
+    "timestamp": "22:00",
+    "content": "To enhance the state,"
+  },
+  {
+    "timestamp": "22:02",
+    "content": "I'll take the existing song, artist, and playlist entities,"
+  },
+  {
+    "timestamp": "22:06",
+    "content": "and add them to the app entity identifier's property"
+  },
+  {
+    "timestamp": "22:09",
+    "content": "in order of most specific to least specific."
+  },
+  {
+    "timestamp": "22:13",
+    "content": "This enables contextual requests like play the live version."
+  },
+  {
+    "timestamp": "22:18",
+    "content": "With AlarmKit, I add a single entity identifier"
+  },
+  {
+    "timestamp": "22:21",
+    "content": "to the app entity identifier parameter on alarm configuration"
+  },
+  {
+    "timestamp": "22:25",
+    "content": "when creating an alarm or a timer."
+  },
+  {
+    "timestamp": "22:28",
+    "content": "With this, people can act on firing alarms and timers."
+  },
+  {
+    "timestamp": "22:32",
+    "content": "That's all it takes to connect your entities to notifications,"
+  },
+  {
+    "timestamp": "22:36",
+    "content": "now playing and alarms."
+  },
+  {
+    "timestamp": "22:39",
+    "content": "We've covered several advanced ways to make your app work even better with Siri."
+  },
+  {
+    "timestamp": "22:43",
+    "content": "As you think about next steps,"
+  },
+  {
+    "timestamp": "22:45",
+    "content": "a great place to start is by customizing your entity display representations."
+  },
+  {
+    "timestamp": "22:49",
+    "content": "They're used to display your entities across the system."
+  },
+  {
+    "timestamp": "22:52",
+    "content": "From there, add your entities to the semantic index"
+  },
+  {
+    "timestamp": "22:56",
+    "content": "and keep the index up to date,"
+  },
+  {
+    "timestamp": "22:58",
+    "content": "so Siri can always find your freshest content."
+  },
+  {
+    "timestamp": "23:01",
+    "content": "You might also consider making your entities accessible through Siri"
+  },
+  {
+    "timestamp": "23:04",
+    "content": "with an intent value query and in-app search."
+  },
+  {
+    "timestamp": "23:07",
+    "content": "And annotating your views, activities,"
+  },
+  {
+    "timestamp": "23:10",
+    "content": "and your existing system integrations with entities"
+  },
+  {
+    "timestamp": "23:12",
+    "content": "can give Apple Intelligence even more context to work with."
+  },
+  {
+    "timestamp": "23:15",
+    "content": "When you're ready, look into donating UI interactions"
+  },
+  {
+    "timestamp": "23:19",
+    "content": "to help Apple Intelligence understand how people use your app,"
+  },
+  {
+    "timestamp": "23:22",
+    "content": "making for a more personalized experience."
+  },
+  {
+    "timestamp": "23:26",
+    "content": "To see any of these concepts applied,"
+  },
+  {
+    "timestamp": "23:29",
+    "content": "take a look at the sample projects."
+  },
+  {
+    "timestamp": "23:31",
+    "content": "For a hands-on look at adopting app schemas,"
+  },
+  {
+    "timestamp": "23:34",
+    "content": "check out the Code Along."
+  },
+  {
+    "timestamp": "23:36",
+    "content": "Make your app available to Siri."
+  },
+  {
+    "timestamp": "23:38",
+    "content": "With the 27 releases,"
+  },
+  {
+    "timestamp": "23:40",
+    "content": "Apple Intelligence is transforming what Siri can do."
+  },
+  {
+    "timestamp": "23:43",
+    "content": "And App Intense puts that transformative power directly in your hands."
+  },
+  {
+    "timestamp": "23:48",
+    "content": "You now have everything you need to build delightful,"
+  },
+  {
+    "timestamp": "23:52",
+    "content": "elevated experiences that feel like a natural extension of the system."
+  },
+  {
+    "timestamp": "23:56",
+    "content": "I can't wait to see what you create."
+  },
+  {
+    "timestamp": "23:58",
+    "content": "Until next time."
+  }
+]

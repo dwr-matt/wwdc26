@@ -1,0 +1,1486 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, I'm Devin."
+  },
+  {
+    "timestamp": "0:08",
+    "content": "And I'm Maxwell."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "We are both members of the Xcode Intelligence team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "And we're excited to show you how using agents in Xcode can enhance your development."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "In Xcode 26.3, we introduced coding agents along with tools to help you tackle complex,"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "multi-step tasks."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "In Xcode 27, you can be even more productive."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "We've expanded the tools Xcode provides and redesigned how you interact with agents,"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "all with the goal of keeping you focused on the work that you enjoy."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "You drive the vision for your code, and Xcode helps you get there faster and with confidence."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Xcode adapts to you, whether you are just getting started with agents or consider them an essential"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "part of your workflow."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Together with Devin, I'll walk you through using agents in Xcode throughout your development."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "I'll start by exploring a project to gain an understanding of its structure."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "I'll use that understanding to plan and build out a new feature."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "Then, Devin will refine what I've built."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "And finally, he'll orchestrate multiple conversations to accomplish specific tasks."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "Let's get started."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "When Maxwell and I are not at the office working on apps, we're spending time at the gym."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "We've wanted something that helps us track our exercises and our workouts."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "We want something that is personalized and adaptive to how we train."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "So together, we're building an app that has exactly the features we want."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "I just got this app off the ground using an agent in Xcode, and it already has the basic functionality"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "we need."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "It has a workout page to track exercises and a history section to show previous sessions."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "This app is really great."
+  },
+  {
+    "timestamp": "1:47",
+    "content": "One thing I would like is if I could see how I'm progressing over time now that I'm tracking"
+  },
+  {
+    "timestamp": "1:50",
+    "content": "all these workouts."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "I was thinking the same thing."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "We need an insights view."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "That sounds like a great idea."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "I'll start by creating a prototype to show analytics using previous session data."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "Perfect."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "I can refine it from there once everything's in place."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "Devin has the project in a great starting place, and I want to familiarize myself with"
+  },
+  {
+    "timestamp": "2:10",
+    "content": "everything he's done already."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "So I'll start by using Xcode as a guide to both explore the project and learn what options"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "I have for adding insights data."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "When you use agents in Xcode to explore, they can see your whole project from your source"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "code, build settings, and even open files and active selections."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "Agents are tuned into exactly what you're working on in the moment."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "To start exploring, I'll hold Option and Shift while clicking on a button in the toolbar to"
+  },
+  {
+    "timestamp": "2:39",
+    "content": "create a new conversation."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "This opens the conversation as a separate editor pane so I can also see individual files and"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "look into specific ones as I explore."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "I'll ask the agent to summarize the project's data models and current view hierarchy and"
+  },
+  {
+    "timestamp": "2:54",
+    "content": "provide a walkthrough."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "I'll send this prompt and the agent uses Xcode's tools to gather context and piece together"
+  },
+  {
+    "timestamp": "3:01",
+    "content": "the project structure."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "When jumping into a new project, it can be challenging to determine where you should start."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "When reading complex architecture and a collection of source files, piecing together how everything"
+  },
+  {
+    "timestamp": "3:14",
+    "content": "connects to build an understanding can take considerable time."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "Xcode can help you here."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "You can ask for a walkthrough to distill down the architecture into something easier to understand."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Complete with rich details like outlines of data flow, tables of key areas, and source code"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "references."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "When you want to investigate at a deeper level, you can navigate directly to key files."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "The walkthrough is complete and I can read through it to build an understanding at a high level."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "And if I want to look deeper into our workout views, I can click on the links and jump directly"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "into the individual files."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "This walkthrough is a great reference, but I don't want to lose all this detail in one conversation."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "I'd like to preserve it."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "That way I or anyone else on my team can reference it later and get up to speed faster."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "I've read all the source files that I need to for now."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "So I'll close the other editor pane and focus in on just the conversation."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "I'll ask Xcode to draft up two architecture documents with the information gathered and"
+  },
+  {
+    "timestamp": "4:19",
+    "content": "place them directly in the project with the source code."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "In this conversation, the agent started from scratch."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "It needed to search, read, and investigate all the code in the project to reach an understanding."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "This discovery loop takes time away from getting started on the work that you enjoy."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "But instead of losing that effort, it can be captured into a documented knowledge base in"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "your project."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "This knowledge base can be dynamic and evolve right alongside the code base."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Now when you or your team started a new feature, you have a map to quickly find the relevant"
+  },
+  {
+    "timestamp": "4:55",
+    "content": "files and get started."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "All the information from the walkthrough has been collected into two documents that I can"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "see as new artifacts alongside the transcript."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "When working with agents in Xcode, there are two distinct areas of information that you'll"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "see."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "On the left, there is the transcript."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "This is where you see your conversation, including commentary on progress, tool calls, running"
+  },
+  {
+    "timestamp": "5:20",
+    "content": "sub-agents, and more."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "On the right, we have artifacts."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "These are things that are created."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Files, edits, and previews."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "You can focus on everything produced in the latest message or look at the entire conversation"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "as a whole."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "After this exploration, I have a good understanding of the project in its current state."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "So now I can start working to add insights with some tables to visualize them."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "I'm not completely familiar with how to implement tables in SwiftUI and the nuanced details of"
+  },
+  {
+    "timestamp": "5:51",
+    "content": "Swift data models that will need to be adjusted."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "So I'll use Xcode to research these APIs and gain an understanding."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "I'll create a new conversation for this."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "So I'll open the coding assistant in the sidebar, click new conversation, and choose an agent."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "I'll ask about the areas I'm unfamiliar with, like what relationships I'll need for the"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "Swift data models and what options I have for creating tables in SwiftUI."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "I'll also reference the two documents I created earlier."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "I'll send this prompt and the two documents are read right away to gain context on the project."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "Since I asked about options for adding tables, Apple Document Search is invoked automatically"
+  },
+  {
+    "timestamp": "6:29",
+    "content": "to gain more understanding of SwiftUI table support."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "When adopting APIs or entirely new frameworks, having the most current information is important"
+  },
+  {
+    "timestamp": "6:38",
+    "content": "to get the best result."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "However, depending on the agent you're using, its base knowledge might not include the latest"
+  },
+  {
+    "timestamp": "6:44",
+    "content": "framework information."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "With Apple Document Search, your agent can access high-quality documentation to help you ensure"
+  },
+  {
+    "timestamp": "6:51",
+    "content": "that the project is adopting the right solution for the feature you're building."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "I now have a nice walkthrough of the APIs I'll want to use, complete with key details to consider"
+  },
+  {
+    "timestamp": "7:00",
+    "content": "that I might not have realized otherwise."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "Details like ensuring my Swift data model relationships are right, and the best presentation of data on"
+  },
+  {
+    "timestamp": "7:08",
+    "content": "smaller screen sizes."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "With this, I have a good understanding of both the project and the APIs that I'll need to"
+  },
+  {
+    "timestamp": "7:15",
+    "content": "build out my feature."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "Exploring with agents in Xcode is a fast way to familiarize yourself with a new project or"
+  },
+  {
+    "timestamp": "7:23",
+    "content": "an unfamiliar feature of an existing one."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "Analyst can see your entire project context, can supplement that context with high-quality"
+  },
+  {
+    "timestamp": "7:31",
+    "content": "documentation from Apple, and can provide guided explanations for new areas so you can"
+  },
+  {
+    "timestamp": "7:36",
+    "content": "get started faster than ever."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "Now that I have a good understanding of the project, I can start building towards my goal"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "of adding insights."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "In the same conversation, I'll put Xcode in plan mode by using the slash command."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "Plan mode allows you to be the architect, outlining your approach before any code gets written."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "I'll specify that I want to add a new tab for workout insights."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "I'll provide a high-level overview of the features I want, outlining any requirements"
+  },
+  {
+    "timestamp": "8:03",
+    "content": "to make sure that this stays focused."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "I'll specify the device-specific details learned from these four-phase for presentation."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "And finally, I'll ask for a preview to ensure that the new tab looks like I expect."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "I'll send the prompt and enter plan mode."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "Xcode works with the agent to start planning how to implement the insights tab."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "When you build with agents in Xcode, you can turn ideas into features so quickly."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "Because of this, your workflow naturally shifts."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "Ensuring you have the right plan that captures your ideas and the architecture you want to"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "build becomes a more important step."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "When you focus on planning, you ensure that later on, refinement is spent polishing up"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "the feature that you want, rather than fixing a poorly built foundation."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "Xcode gives you the tools to make this happen."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "It turns planning into a discussion, aligning on strategy before moving to implementation."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "Speaking of discussion, I have a general idea for metrics I want to show, but I want to"
+  },
+  {
+    "timestamp": "9:03",
+    "content": "make sure I agree with what's included in the plan."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "I'll send the follow-up, asking for some ideas."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "This queues up the message so that once the agent has finished with its current work, it"
+  },
+  {
+    "timestamp": "9:13",
+    "content": "can address my question."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "Queuing messages like this allows me to express my ideas in the moment rather than waiting for"
+  },
+  {
+    "timestamp": "9:20",
+    "content": "the agent to finish what it's currently doing."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "Xcode has submitted my message to the agent, and it's come back with some options to choose"
+  },
+  {
+    "timestamp": "9:27",
+    "content": "from."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Looking at what it provides, I think that a per-exercise view and a top-level summary will"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "be good presentations to start out with, so I'll choose those options and send my response."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "When you use queued messages to provide additional requirements, and the agent is able to ask"
+  },
+  {
+    "timestamp": "9:45",
+    "content": "questions for clarity, you create a tight communication loop between you and the agent."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "And because you're involved in the discussion throughout the process, you end up with a much"
+  },
+  {
+    "timestamp": "9:54",
+    "content": "stronger, well-thought-out plan."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "Looks like the plan is finished, and we can see the full plan in Markdown, which allows me"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "to review it and make any edits that I need directly."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "This looks pretty thorough to me, though, and captures everything discussed earlier, so"
+  },
+  {
+    "timestamp": "10:09",
+    "content": "I'll approve."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "And Xcode starts working with the agent to implement the plan."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "The first change has already been made, and we can see the exact diff of the modification"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "as an artifact."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Source code modifications and new files appear as artifacts as they're made and are added to"
+  },
+  {
+    "timestamp": "10:27",
+    "content": "your project, allowing you to stay in sync and review the code changes to make sure they're"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "what you expect."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "Looks like all the source changes have been made, and the agent has moved on to validation."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "Xcode's build tool is being used to ensure that the changes are correct, and it looks like"
+  },
+  {
+    "timestamp": "10:44",
+    "content": "there are initially some issues, but since build errors are communicated directly to the"
+  },
+  {
+    "timestamp": "10:48",
+    "content": "agent, it knows exactly what failed, can quickly iterate, and build again to make sure it's right."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "The agent is also updating architecture documents with the new code, making sure this knowledge"
+  },
+  {
+    "timestamp": "11:00",
+    "content": "base stays up to date."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "Now it's moved on to previews."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "After resolving some issues with the Swift data changes, it renders a preview on the current"
+  },
+  {
+    "timestamp": "11:12",
+    "content": "run destination."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "Previews are also artifacts, so we can click on the rendered preview and take a look."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "It looks great and is exactly what I was looking for on iPhone, a concise view with a top-level"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "summary."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "Xcode provides agents with the same tools that you have to ensure that the new code does"
+  },
+  {
+    "timestamp": "11:30",
+    "content": "exactly what it's supposed to."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "From building the project to rendering a preview of new UI, you can have confidence that the"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "code is correct."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "Let's take a look on iPad so we can see the new tables as well."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "I'll run this on an iPad simulator so I can see it on DeviceHub."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "We have the new insights view with a collection of data about a recent training and most recent"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "exercises, and we can see even more detail with the exercise breakdown table."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "Now that I'm happy with the UI that we see in the simulator, I want to make sure all the"
+  },
+  {
+    "timestamp": "12:00",
+    "content": "changes are built on a solid foundation."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "I'll ask Xcode to write some unit tests for the changes made to the Swift data models."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "I can see my existing test suite is picked up for the project, so these tests will be grounded"
+  },
+  {
+    "timestamp": "12:13",
+    "content": "alongside the other testing that we already have."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "In addition to build and preview, agents can use Xcode's test tools to ensure that the"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "new code is correct by writing new tests or running existing ones."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "When agents are provided these opportunities to validate work as they go, you can focus on"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "the high-level goals for a feature."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "The agent wrote a whole suite of tests to validate the new changes, and it was able to run and"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "verify all 12 new test cases passed."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "Now we can know with confidence that the insights view is reliable."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Building an Xcode lets you focus on the vision for a feature."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "You can align on ideas with plan mode, steer discussion in real-time, view artifacts as they're"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "produced, and use Xcode's validation tools to ensure new code is correct."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "Throughout every part of the development process, Xcode is with you to build it right."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "This is a great start."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "With Xcode, I've been able to get the new insights view prototyped in no time."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "Now that we have this analytics data, I think the app needs a fresh perspective from someone"
+  },
+  {
+    "timestamp": "13:18",
+    "content": "with an eye for detail."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "Hey Devin, the insights view is off to a great start and already has some great analytics"
+  },
+  {
+    "timestamp": "13:25",
+    "content": "for previous workouts."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "I do think though that this app could really use some visualizations to show progress over"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "time."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "Do you want to take over from here?"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "Absolutely."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "I think Swift Charts would be perfect for that."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "Maxwell has left this project in a great state."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "We have a good starting place for adding some visualizations, so let's jump right in."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "So far, we've shown you how you can use agents to explore a new code base, plan out features,"
+  },
+  {
+    "timestamp": "13:50",
+    "content": "and build them with ease."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Now we need to take the next step, getting things to look and feel exactly how we want."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "I really like what Maxwell has done on our analytics screen."
+  },
+  {
+    "timestamp": "14:00",
+    "content": "To bring it to life, we're going to add some charts using Swift Charts."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Now how a chart looks, how animations feel, and what colors work with your app style."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "These are subjective preferences that often change as you work."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "You can iterate on visual design incredibly fast, which is why staying in the loop for"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "every change matters, making sure the end result reflects your vision."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "You can communicate your intent with more than just text, using images, sketches, and"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "documents to show exactly what you have in mind."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "And when you know exactly where an adjustment belongs, you can point directly to that spot"
+  },
+  {
+    "timestamp": "14:35",
+    "content": "in your code with inline annotations, resulting in focused, targeted changes."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Let me show you what this looks like."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "I'm rather new to Swift Charts."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "So I'll start by exploring what chart styles would work for our data."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "Here's the prompt."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "I'm asking what options would work best for the Insights view."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "These are all great options, but I want to see them in context."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "Let's generate previews for each chart type using artificial workout data."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "With Xcode, we go from text descriptions to working prototypes in seconds."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "So instead of just imagining what a chart might look like, we just look at it."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "Now I can see what these charts actually look like with realistic data."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "The volume over time option is the clear winner."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "It shows our progress in the weight room at a glance, which is exactly what we want."
+  },
+  {
+    "timestamp": "15:37",
+    "content": "The previews look great, but there are still a few things I'd like to personalize."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "Let me grab my iPad to sketch out a museum-worthy chart design."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "I have Freeform open on my iPad."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "Let me sketch out what I'm picturing."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "Wow."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "That really is museum-worthy."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "Yeah, it's really coming together."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "Okay."
+  },
+  {
+    "timestamp": "16:00",
+    "content": "Maybe I shouldn't quit my day job, but thankfully I think this gets the idea across."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "Now I'll send my sketch and ask for a line chart to be added directly to the Insights view,"
+  },
+  {
+    "timestamp": "16:12",
+    "content": "matching the style I've drawn."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "While that's being implemented, let me explain what's happening behind the scenes."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "With access to previews in Xcode, agents don't just generate code and stop."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "Previews can be rendered incrementally to visually verify results, confirming that what was generated"
+  },
+  {
+    "timestamp": "16:29",
+    "content": "matches what you asked for."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "If something doesn't look right, adjustments are made before you even need to step in."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "And here's what that looks like in practice."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "My sketch was interpreted and translated into a chart that matches exactly what I was looking"
+  },
+  {
+    "timestamp": "16:43",
+    "content": "for."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "You can see that a preview was rendered along the way."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "That self-verification loop in action."
+  },
+  {
+    "timestamp": "16:50",
+    "content": "This is looking great."
+  },
+  {
+    "timestamp": "16:53",
+    "content": "There are still a couple of things I'd like to tweak though."
+  },
+  {
+    "timestamp": "16:56",
+    "content": "I want to add a subtle animation to the chart and change the color scheme to match our app's"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "theme."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "I know exactly where these changes should go."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "And with inline annotations, I can point to that exact spot in my code."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "I'll leave two annotations right in the chart view."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "And here, asking to add a fade in animation."
+  },
+  {
+    "timestamp": "17:17",
+    "content": "And another here, asking to adjust the trendline color to match our theme."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "Inline annotations carry something that a typical conversation prompt doesn't."
+  },
+  {
+    "timestamp": "17:26",
+    "content": "The exact location in your code where you want to make a change."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "When you annotate a specific line, the surrounding code becomes part of the context."
+  },
+  {
+    "timestamp": "17:35",
+    "content": "The annotation doesn't just say what to change."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "It shows where."
+  },
+  {
+    "timestamp": "17:39",
+    "content": "So the result is precise and scoped to exactly what you intended."
+  },
+  {
+    "timestamp": "17:47",
+    "content": "This looks incredible."
+  },
+  {
+    "timestamp": "17:50",
+    "content": "Every step of that process kept us in the driver's seat."
+  },
+  {
+    "timestamp": "17:53",
+    "content": "We chose the chart type."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "We sketched the design."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "We pointed to exactly where the final adjustments belonged."
+  },
+  {
+    "timestamp": "18:00",
+    "content": "The creative direction was ours the entire time."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "In Xcode, you have the tools to make refinement even better."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "Rich previews to see changes with realistic data."
+  },
+  {
+    "timestamp": "18:11",
+    "content": "Inline annotations to direct your changes right from your source code."
+  },
+  {
+    "timestamp": "18:14",
+    "content": "And image attachments to show exactly what you have in mind."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "For more on design-focused techniques for working with agents, check out Create UI Prototypes"
+  },
+  {
+    "timestamp": "18:23",
+    "content": "Using Agents in Xcode Session."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "Next, I'll show you how to orchestrate comprehensive feature development by translating our app into"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "new languages and making it accessible."
+  },
+  {
+    "timestamp": "18:34",
+    "content": "For Maxwell and me, it's really important that the apps we develop are accessible."
+  },
+  {
+    "timestamp": "18:37",
+    "content": "A friend of ours at the gym primarily speaks Filipino, and we'd love for him to be able to"
+  },
+  {
+    "timestamp": "18:41",
+    "content": "use this app just as easily as we can."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "Accessibility and localization are how you make sure your app works for everyone."
+  },
+  {
+    "timestamp": "18:49",
+    "content": "And with agents, incorporating these features into your app is easier than ever."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "Xcode provides a rich set of tools that can extend what you can accomplish."
+  },
+  {
+    "timestamp": "18:59",
+    "content": "Maxwell and I have already shown you tools like document search, preview rendering, and"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "run all tests in action."
+  },
+  {
+    "timestamp": "19:05",
+    "content": "But there are many more."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "Some are built into Xcode."
+  },
+  {
+    "timestamp": "19:09",
+    "content": "Some are provided by Apple Framework teams."
+  },
+  {
+    "timestamp": "19:11",
+    "content": "And you can even add your own."
+  },
+  {
+    "timestamp": "19:13",
+    "content": "The right tools are discovered and used automatically, based on the task at hand."
+  },
+  {
+    "timestamp": "19:18",
+    "content": "I'll start a new conversation for localization, asking to translate every user-facing string"
+  },
+  {
+    "timestamp": "19:23",
+    "content": "into Filipino and configure the strings catalog."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "I'll send this off."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "You can see the machine translation tools being discovered."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "These provide the context needed to translate our app."
+  },
+  {
+    "timestamp": "19:35",
+    "content": "And the work can now begin."
+  },
+  {
+    "timestamp": "19:38",
+    "content": "This is orchestration in action."
+  },
+  {
+    "timestamp": "19:40",
+    "content": "I described a high-level goal, localize the app into Filipino."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "And the right tools were discovered automatically."
+  },
+  {
+    "timestamp": "19:47",
+    "content": "From here, the work gets broken into parallel pieces."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "And smaller sub-agents are deployed to locate and translate strings across the app."
+  },
+  {
+    "timestamp": "19:56",
+    "content": "While localization runs, I'll start a second conversation for accessibility, asking to add"
+  },
+  {
+    "timestamp": "20:01",
+    "content": "voiceover labels and accessibility identifiers to all interactive elements."
+  },
+  {
+    "timestamp": "20:09",
+    "content": "There are now multiple workflows running at once."
+  },
+  {
+    "timestamp": "20:13",
+    "content": "Accessibility is implementing changes across our views."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "And localization is coordinating translation through sub-agents."
+  },
+  {
+    "timestamp": "20:19",
+    "content": "What's interesting about localization is that the translation tools aren't being called"
+  },
+  {
+    "timestamp": "20:23",
+    "content": "by us directly."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "They're invoked by the sub-agents under the hood."
+  },
+  {
+    "timestamp": "20:28",
+    "content": "The main conversation read those tools for context, broke the work into pieces, and each"
+  },
+  {
+    "timestamp": "20:33",
+    "content": "sub-agent is now calling on specific translation capabilities as it works through its portion"
+  },
+  {
+    "timestamp": "20:38",
+    "content": "of the app."
+  },
+  {
+    "timestamp": "20:40",
+    "content": "This is the power of orchestration."
+  },
+  {
+    "timestamp": "20:42",
+    "content": "You describe the goal, and the right tools are used at the right level."
+  },
+  {
+    "timestamp": "20:46",
+    "content": "Some by the main workflow for planning, others by sub-agents for execution."
+  },
+  {
+    "timestamp": "20:51",
+    "content": "And through all of this, you can check in on progress at any time."
+  },
+  {
+    "timestamp": "20:56",
+    "content": "Now it's time for the most important part."
+  },
+  {
+    "timestamp": "20:58",
+    "content": "Reviewing the results."
+  },
+  {
+    "timestamp": "21:00",
+    "content": "The app is localized in Filipino."
+  },
+  {
+    "timestamp": "21:03",
+    "content": "The app is also called the start workout button, the history tab, the insight section, all translated."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "And the strings catalog has entries for every user facing string in the app."
+  },
+  {
+    "timestamp": "21:13",
+    "content": "Let's enable voiceover."
+  },
+  {
+    "timestamp": "21:15",
+    "content": "VoiceOver on."
+  },
+  {
+    "timestamp": "21:18",
+    "content": "Start new workout."
+  },
+  {
+    "timestamp": "21:20",
+    "content": "Button."
+  },
+  {
+    "timestamp": "21:21",
+    "content": "Landscape."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "Charge port to the right."
+  },
+  {
+    "timestamp": "21:24",
+    "content": "Start new workout."
+  },
+  {
+    "timestamp": "21:25",
+    "content": "Workouts."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "Back button."
+  },
+  {
+    "timestamp": "21:27",
+    "content": "Workouts."
+  },
+  {
+    "timestamp": "21:28",
+    "content": "Heading."
+  },
+  {
+    "timestamp": "21:29",
+    "content": "VoiceOver off."
+  },
+  {
+    "timestamp": "21:34",
+    "content": "Every primary element is labeled and navigable."
+  },
+  {
+    "timestamp": "21:37",
+    "content": "What would have previously been hours of repetitive work was accomplished across two parallel conversations."
+  },
+  {
+    "timestamp": "21:43",
+    "content": "And we stayed in control the entire time."
+  },
+  {
+    "timestamp": "21:47",
+    "content": "Working with agents in Xcode puts you in the driver's seat."
+  },
+  {
+    "timestamp": "21:51",
+    "content": "Orchestration is where you get to describe high-level goals."
+  },
+  {
+    "timestamp": "21:54",
+    "content": "And Xcode determines how to accomplish them."
+  },
+  {
+    "timestamp": "21:56",
+    "content": "Discovering the right tools, coordinating sub-agents, and completing tasks in parallel."
+  },
+  {
+    "timestamp": "22:02",
+    "content": "And through powerful Xcode tools, you can direct impactful work, like localization and accessibility, with a single prompt."
+  },
+  {
+    "timestamp": "22:09",
+    "content": "This app is really starting to come together."
+  },
+  {
+    "timestamp": "22:12",
+    "content": "For sure."
+  },
+  {
+    "timestamp": "22:13",
+    "content": "The analytics look great."
+  },
+  {
+    "timestamp": "22:15",
+    "content": "And the charts really help us see our progress at a glance."
+  },
+  {
+    "timestamp": "22:18",
+    "content": "Using Xcode made it easy to get off the ground quickly."
+  },
+  {
+    "timestamp": "22:21",
+    "content": "And there's still so much that we could add."
+  },
+  {
+    "timestamp": "22:23",
+    "content": "Throughout this session, Xcode supported how each of us needed to work and kept us in the loop at each step."
+  },
+  {
+    "timestamp": "22:30",
+    "content": "With Xcode, you can work the way you want to with agents."
+  },
+  {
+    "timestamp": "22:34",
+    "content": "Whether that's exploring, building, refining, or orchestrating."
+  },
+  {
+    "timestamp": "22:39",
+    "content": "Let's reflect on everything that we used to build out this new feature."
+  },
+  {
+    "timestamp": "22:43",
+    "content": "It started with exploration, using Xcode tools and Apple Document Search to map out the code base and learn about the APIs that we wanted to use."
+  },
+  {
+    "timestamp": "22:52",
+    "content": "When it was time to build, we used plan mode to design an architecture before writing any code, and relied on queued messages and agent questions to align with the agent on the ideas."
+  },
+  {
+    "timestamp": "23:03",
+    "content": "Once we had a prototype feature, we used Xcode's build, preview, and test tools to verify our work."
+  },
+  {
+    "timestamp": "23:09",
+    "content": "When we refined the UI, we attached images to express ideas, inline annotations to guide changes grounded in source code, and previews to verify the experience."
+  },
+  {
+    "timestamp": "23:20",
+    "content": "And finally, we orchestrated larger goals, leveraging tools for localization and accessibility, with sub-agents working in parallel."
+  },
+  {
+    "timestamp": "23:27",
+    "content": "Here's what you can do next."
+  },
+  {
+    "timestamp": "23:30",
+    "content": "Download Xcode 27 and start using agents on your own project."
+  },
+  {
+    "timestamp": "23:34",
+    "content": "Explore the agentic tools available in Xcode, add your own, and check out the Create UI Prototypes Using Agents in Xcode, and Translate Your App Using Agents in Xcode sessions for a deeper dive into the concepts we discussed today."
+  },
+  {
+    "timestamp": "23:48",
+    "content": "Now, we both have time to head to the gym and test out the new features."
+  },
+  {
+    "timestamp": "23:52",
+    "content": "Meet you there."
+  },
+  {
+    "timestamp": "23:53",
+    "content": "Thank you for watching."
+  },
+  {
+    "timestamp": "23:54",
+    "content": "Thank you for watching."
+  }
+]

@@ -1,0 +1,1498 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello and welcome. My name is Cyrus DeBoo and I am an engineer on the Device Management team."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "I'm here to show you what's new in managing Apple devices."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "Here's what I have for you. I'll discuss what's new in Apple services."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "I'll then cover a number of additions to declarative management,"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "followed by updates to app management,"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "and details of new identity management features."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "I'll finish off with a quick update to some education-related technologies."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "First, some updates to Apple services for business and education."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Apple Business is a new all-in-one platform that combines tools for businesses of all sizes"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "to effectively run and grow their organization."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "This includes a big expansion, with Apple Business now available in over 200 countries and regions."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "This gives your organization features like zero-touch deployment,"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "managed Apple accounts for users,"
+  },
+  {
+    "timestamp": "1:08",
+    "content": "and the new built-in device management features."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "This makes it easier for businesses to quickly get started with managing Apple devices."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "To support automation of these new features, there are new APIs for Apple Business,"
+  },
+  {
+    "timestamp": "1:22",
+    "content": "including creating blueprints and configurations,"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "modifying users and groups,"
+  },
+  {
+    "timestamp": "1:28",
+    "content": "app license information,"
+  },
+  {
+    "timestamp": "1:30",
+    "content": "and getting audit events."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "These join the existing APIs to list servers, devices, and inventory,"
+  },
+  {
+    "timestamp": "1:38",
+    "content": "manage the assignment of inventory to device management servers,"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "and get AppleCare warranty details for devices."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "Be sure to check out the documentation on the new APIs"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "to start building them into your products."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "There's also a new volume licensing mechanism for subscriptions in App Store apps."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "This allows IT administrators to purchase and manage app subscriptions."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "It'll be available later in Apple Business and Apple School Manager."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "You can use a device management service to assign app subscriptions"
+  },
+  {
+    "timestamp": "2:10",
+    "content": "using the same workflows that already exist for distributing apps at scale."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "Take a look at the"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "Offer Subscriptions to Groups and Organizations video for all the details."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "These are exciting new features,"
+  },
+  {
+    "timestamp": "2:25",
+    "content": "and Apple Business and Apple School Manager"
+  },
+  {
+    "timestamp": "2:27",
+    "content": "will continue to evolve to meet the needs of IT teams everywhere."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "Now I'll cover changes to device management support on Apple devices."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "I want to start by revisiting a core pillar of Apple's device management story."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "The future of device management is declarative management,"
+  },
+  {
+    "timestamp": "2:47",
+    "content": "which describes the move to declarative management."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "But the future is now."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "Declarative management isn't something on the roadmap anymore."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "It's here."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "It's shipping."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "It's in production across fleets around the world."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "If you're managing devices today without using it,"
+  },
+  {
+    "timestamp": "3:05",
+    "content": "you're working harder than you need to."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "So now,"
+  },
+  {
+    "timestamp": "3:09",
+    "content": "the standard for device management is declarative management."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "The declarative management enhancements I'll cover here weren't built in isolation."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "They were built alongside the great new hardware that was recently released."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "There is incredible momentum in business and education,"
+  },
+  {
+    "timestamp": "3:28",
+    "content": "thanks in part to all new Mac computers."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "MacBook Neo is great for many first-time Mac users,"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "particularly in K-12 and higher education."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "And the performance improvements in the latest MacBook Air and MacBook Pros"
+  },
+  {
+    "timestamp": "3:43",
+    "content": "are ideal for demanding AI workflows popular in enterprise."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "Together, this tells one clear story."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "The Mac and the full Apple device lineup"
+  },
+  {
+    "timestamp": "3:54",
+    "content": "isn't just a choice for business and education,"
+  },
+  {
+    "timestamp": "3:58",
+    "content": "it's the choice."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "To make it easier to switch to a new Mac,"
+  },
+  {
+    "timestamp": "4:03",
+    "content": "a new managed migration feature is available to help migrate data"
+  },
+  {
+    "timestamp": "4:06",
+    "content": "while preserving device management enrollment and settings."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "To activate this,"
+  },
+  {
+    "timestamp": "4:12",
+    "content": "a new declarative configuration is deployed to the device"
+  },
+  {
+    "timestamp": "4:15",
+    "content": "right after device management enrollment."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "This gives IT administrators control over which accounts,"
+  },
+  {
+    "timestamp": "4:23",
+    "content": "files, and security and privacy settings are migrated."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Migration Assistant reports declarative management status,"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "so IT administrators can monitor the progress of migration."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "These settings are shown to the user, but they're locked."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "All the user needs to do is click Continue to begin the migration process."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "This is a great way to get your users up and running with a new Mac."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "The 26.4 releases also included new declarative configurations for Apple Intelligence,"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "Siri, and keyboard settings."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "And in the latest releases, these configurations have been updated to provide IT administrators"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "granular controls for the individual Apple Intelligence and Siri features that are now available to users."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "Now I'll go over how you can leverage the power of the declarative management data model,"
+  },
+  {
+    "timestamp": "5:16",
+    "content": "starting with..."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "Credential Management"
+  },
+  {
+    "timestamp": "5:18",
+    "content": "Configuration profiles have limits on how they can reference credentials,"
+  },
+  {
+    "timestamp": "5:24",
+    "content": "often forcing large profiles to be used,"
+  },
+  {
+    "timestamp": "5:26",
+    "content": "and making the update process inefficient."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "Since the declarative model supports a many-to-many relationship,"
+  },
+  {
+    "timestamp": "5:33",
+    "content": "multiple configurations can reference a single credential."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "Configuration profiles that use credentials are being transitioned to declarative configurations,"
+  },
+  {
+    "timestamp": "5:43",
+    "content": "so managing the lifecycle of credentials is much more efficient."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "When you need to refresh a credential,"
+  },
+  {
+    "timestamp": "5:50",
+    "content": "your server only needs to change the asset,"
+  },
+  {
+    "timestamp": "5:52",
+    "content": "and the device takes care of updating all the configurations that use it."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "Here are the new configurations."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Whenever these configurations need a credential,"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "be it a certificate, identity, or password,"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "a declarative asset is used for the credential data."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "The status channel is another powerful element of declarative management."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "It removes the need for servers to continually poll devices for state changes."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "The new release adds a number of declarative status items,"
+  },
+  {
+    "timestamp": "6:24",
+    "content": "such as the enrollment type,"
+  },
+  {
+    "timestamp": "6:26",
+    "content": "awaiting device configuration,"
+  },
+  {
+    "timestamp": "6:28",
+    "content": "return to service state,"
+  },
+  {
+    "timestamp": "6:30",
+    "content": "shared iPad,"
+  },
+  {
+    "timestamp": "6:32",
+    "content": "the device's current push token,"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "and several more."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "Plus, there's a new status item"
+  },
+  {
+    "timestamp": "6:37",
+    "content": "to indicate if lockdown mode has been turned on by the user."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "A new feature that status channel exposes is device system health monitoring."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "iOS and iPadOS devices can report issues with hardware components to users through the settings app."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "Now, iOS and iPadOS 27 can provide this same information in a new declarative management status item"
+  },
+  {
+    "timestamp": "7:02",
+    "content": "for device system health."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "This includes hardware components such as the baseband,"
+  },
+  {
+    "timestamp": "7:09",
+    "content": "camera,"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "face ID,"
+  },
+  {
+    "timestamp": "7:11",
+    "content": "touch ID,"
+  },
+  {
+    "timestamp": "7:12",
+    "content": "and more."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "This gives IT administrators a comprehensive view of device health across their entire fleet,"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "so they can take proactive action and keep users productive."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Another new feature for device management is one that streamlines the process of collecting and submitting logs to AppleCare for analysis."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "Today, AppleCare support staff have a way of providing customers with a link that triggers an enhanced log collection process on the device."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "In iOS, iPadOS, tvOS, and macOS 27 releases,"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "IT administrators can now start enhanced log collection on organization-owned devices."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "This is done by using the new Trigger Enhanced Log Collection command."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Thus, IT teams can facilitate AppleCare collecting these vital logs when needed."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "And declarative status is available to help IT teams monitor this process."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "Another area with expanded status is content caching."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "Content caching reduces bandwidth usage and speeds up installation of software updates, applications,"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "Apple intelligence, and other content on Apple devices,"
+  },
+  {
+    "timestamp": "8:26",
+    "content": "by storing those items on Mac computers hosted on the local network."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "Content caching servers can be scaled to support large organizations with widespread networks."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "In macOS 27, there's now a declarative configuration to control the content caching service on a Mac."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "Add new declarative status items to report on the state of the service."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "This gives IT administrators a direct way to monitor the health of their content caching server fleet."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Also, content caching servers have a new feature that allows them to directly send their own reports to an arbitrary HTTPS endpoint."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "This allows for more sophisticated monitoring consoles to be built to help IT administrators."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "All these new status items provide device management services with even more ways to report useful and critical information to IT administrators and support staff."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Remember, adding support for declarative status items is a simple matter of subscribing to the items,"
+  },
+  {
+    "timestamp": "9:26",
+    "content": "and the device then sends any changes to the status values to your server as they occur."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Another important area of device management is managing and configuring apps."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "This is one of the most important aspects of device management."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "So now I'll describe the changes in this release for app management."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "First, the declarative app configuration feature, available in iOS, iPadOS, and VisionOS, is now coming to macOS 27."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "This allows for secure provisioning of managed apps with credentials and configuration,"
+  },
+  {
+    "timestamp": "10:03",
+    "content": "including the ability to use hardware-bound keys,"
+  },
+  {
+    "timestamp": "10:06",
+    "content": "and to enable managed device attestation support for authenticating apps and extensions with enterprise services."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "This opens the door to more secure enterprise app deployment and configuration on macOS."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "Please encourage your enterprise app developers to adopt the managed app framework in their products"
+  },
+  {
+    "timestamp": "10:26",
+    "content": "to help keep your organization operating smoothly and securely."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "Next, packages."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "MacOS 27 now gives IT administrators the option to remove all the files and directories"
+  },
+  {
+    "timestamp": "10:41",
+    "content": "that are installed by a declarative management package"
+  },
+  {
+    "timestamp": "10:44",
+    "content": "when the package configuration itself is removed."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "This ensures unwanted data and files are not left behind on devices when no longer needed."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "Now I want to cover privacy settings."
+  },
+  {
+    "timestamp": "10:59",
+    "content": "Disclosure and consent is a key element of Apple's approach to privacy."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "This means users are presented with prompts when apps or websites in Safari"
+  },
+  {
+    "timestamp": "11:09",
+    "content": "try to access features like the camera, microphone, or location."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "For some workers, this means having to tap through multiple prompts for the apps they use every day."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "These prompts may be quickly dismissed by users resulting in improperly configured apps."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "To streamline this process in iOS, iPadOS, and macOS 27, there is a new consolidated privacy consent prompt,"
+  },
+  {
+    "timestamp": "11:35",
+    "content": "which is shown when an app is first launched or a website first appears in Safari."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "Let's examine how this works for apps."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "The prompt shows the name of the organization and app,"
+  },
+  {
+    "timestamp": "11:47",
+    "content": "a justification string provided by the IT administrator,"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "and details of each component whose privacy default is being recommended,"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "along with the app's own justification for each one."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "This gives the user a clear picture of what is being asked for, and why, and by whom."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "There are two buttons in the prompt."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "If the user chooses Allow, then the defaults are applied to the privacy settings,"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "and no additional prompts appear as they use the app."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "If the user chooses Not Now, then consent prompts appear when they use the app,"
+  },
+  {
+    "timestamp": "12:21",
+    "content": "and it accesses the components, just like the unmanaged state."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Importantly, the Allow button is the default button,"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "and is clearly highlighted to steer the user towards making the right choice."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "The same prompt for apps also applies to websites asking for privacy permissions in Safari."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "The same elements are present, and again, the default button is clearly shown."
+  },
+  {
+    "timestamp": "12:45",
+    "content": "Here are the privacy components that can be managed for both apps and websites."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "In the past, IT administrators determine which of these a user needs access to in their apps or on websites,"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "and then they create a declarative configuration that lists the app or website together with the selected components."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "These new controls preserve user privacy while eliminating multiple prompts."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "It also gives IT administrators the comfort in knowing that users are now more likely to make the right choice."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "Now let's turn our attention to a critical part of managing apps on macOS,"
+  },
+  {
+    "timestamp": "13:23",
+    "content": "the ability to control which apps and other binaries are running."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "Mac computers contain a collection of apps from the App Store,"
+  },
+  {
+    "timestamp": "13:32",
+    "content": "and other binaries and executables likely installed from outside the App Store."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "Many of these are managed,"
+  },
+  {
+    "timestamp": "13:39",
+    "content": "but there are many more that are installed intentionally or unintentionally by the user."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "But those don't always comply with the organization's requirements."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "Organizations need control over allowed binaries to meet compliance regulations."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "So in macOS 27,"
+  },
+  {
+    "timestamp": "13:57",
+    "content": "new declarative management settings are available to control binary execution."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "This uses the endpoint security framework to allow or deny binary execution,"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "and to shut down any processes associated with a binary that has been denied."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "There are flexible rules to match binaries,"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "which utilize code signing properties,"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "to ensure the matched binaries are indeed the ones the IT administrator wants to control."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "There is also an option to automatically allow any managed app"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "without having to add specific rules for each one."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "The new app privacy controls and binary blocking restrictions"
+  },
+  {
+    "timestamp": "14:37",
+    "content": "are part of the new declarative app.settings configuration,"
+  },
+  {
+    "timestamp": "14:41",
+    "content": "and the Safari website permissions are part of the existing declarative safari.settings configuration."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "These are great new capabilities for controlling apps, binaries, privacy prompts, and more."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "Now I'll cover another important enterprise feature for mac computers."
+  },
+  {
+    "timestamp": "15:01",
+    "content": "The use of platform single sign-on to integrate with identity providers."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "The last few releases have significantly improved and enhanced platform SSO on macOS,"
+  },
+  {
+    "timestamp": "15:12",
+    "content": "to simplify setup and better support shared workflows."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "All of it grounded with the goals of making login more intuitive,"
+  },
+  {
+    "timestamp": "15:20",
+    "content": "highly secure,"
+  },
+  {
+    "timestamp": "15:22",
+    "content": "and providing more phishing-resistant ways for organizations"
+  },
+  {
+    "timestamp": "15:25",
+    "content": "to keep their users and their data on mac computers safe."
+  },
+  {
+    "timestamp": "15:30",
+    "content": "And we are taking platform SSO even further with macOS 27,"
+  },
+  {
+    "timestamp": "15:35",
+    "content": "starting with a new login and unlock experience."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "Right from the start, it's clear to the user"
+  },
+  {
+    "timestamp": "15:41",
+    "content": "they are using their organization's credentials."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "Users can enter their password or use Touch ID as they do today."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "Touch ID is the most secure and convenient way for users to unlock their Mac,"
+  },
+  {
+    "timestamp": "15:54",
+    "content": "but until now it's been optional."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "New in macOS 27 is the ability for IT administrators"
+  },
+  {
+    "timestamp": "16:00",
+    "content": "to require users to use Touch ID,"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "in addition to entering their password on organization devices,"
+  },
+  {
+    "timestamp": "16:07",
+    "content": "offering a built-in second factor."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "This is enforced when logging in,"
+  },
+  {
+    "timestamp": "16:12",
+    "content": "at Screen Unlock,"
+  },
+  {
+    "timestamp": "16:14",
+    "content": "and even for the FileVault Unlock process."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "Modern authentication standards allow for many different ways to authenticate users,"
+  },
+  {
+    "timestamp": "16:23",
+    "content": "offering security features to prevent phishing attacks,"
+  },
+  {
+    "timestamp": "16:26",
+    "content": "as well as adapt the authentication interface to match organization branding,"
+  },
+  {
+    "timestamp": "16:31",
+    "content": "security policies, and user demographics."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "This includes one-time codes for multi-factor authentication,"
+  },
+  {
+    "timestamp": "16:37",
+    "content": "push notifications for conditional access workflows,"
+  },
+  {
+    "timestamp": "16:42",
+    "content": "and QR codes for a password-free sign-in designed for young learners"
+  },
+  {
+    "timestamp": "16:46",
+    "content": "and shared device environments like healthcare, retail, and logistics."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "And there are lots more."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "To support these,"
+  },
+  {
+    "timestamp": "16:55",
+    "content": "macOS 27 introduces a new,"
+  },
+  {
+    "timestamp": "16:57",
+    "content": "web-based authentication option for Platform SSO."
+  },
+  {
+    "timestamp": "17:01",
+    "content": "Identity providers and organizations"
+  },
+  {
+    "timestamp": "17:03",
+    "content": "now have the ability to use a secure web view"
+  },
+  {
+    "timestamp": "17:06",
+    "content": "that renders in the login window and Screen Unlock."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "This can run any modern authentication flow,"
+  },
+  {
+    "timestamp": "17:13",
+    "content": "including custom challenge response sequences."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "The web view operates within a tightly controlled execution context"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "managed by the operating system"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "to ensure organizations and users are protected."
+  },
+  {
+    "timestamp": "17:26",
+    "content": "Also, the web view can scan a QR code."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "When a scan is initiated,"
+  },
+  {
+    "timestamp": "17:31",
+    "content": "the camera operates entirely within a secure system process,"
+  },
+  {
+    "timestamp": "17:35",
+    "content": "completely isolated from the web view itself."
+  },
+  {
+    "timestamp": "17:38",
+    "content": "The web page only receives the decoded data from the QR code,"
+  },
+  {
+    "timestamp": "17:42",
+    "content": "never the raw camera feed or any image data."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "This ensures that websites can't capture images"
+  },
+  {
+    "timestamp": "17:48",
+    "content": "of the user or their surroundings, even inadvertently."
+  },
+  {
+    "timestamp": "17:52",
+    "content": "Web authentication works across the login window,"
+  },
+  {
+    "timestamp": "17:55",
+    "content": "Screen Unlock, and the FileVault Unlock process,"
+  },
+  {
+    "timestamp": "17:58",
+    "content": "and provides secure and enforceable authentication."
+  },
+  {
+    "timestamp": "18:02",
+    "content": "Offline authentication is also supported"
+  },
+  {
+    "timestamp": "18:04",
+    "content": "to ensure continuity of access"
+  },
+  {
+    "timestamp": "18:06",
+    "content": "without weakening the security posture of unconnected devices."
+  },
+  {
+    "timestamp": "18:10",
+    "content": "For enterprises, this opens up deep customization,"
+  },
+  {
+    "timestamp": "18:13",
+    "content": "such as localized sign-in pages,"
+  },
+  {
+    "timestamp": "18:16",
+    "content": "accessibility-optimized flows,"
+  },
+  {
+    "timestamp": "18:19",
+    "content": "conditional prompting based on device state,"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "and seamless integration"
+  },
+  {
+    "timestamp": "18:22",
+    "content": "with existing identity infrastructure."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "Developers like Authentic, Classlink,"
+  },
+  {
+    "timestamp": "18:28",
+    "content": "and Identity Automation"
+  },
+  {
+    "timestamp": "18:29",
+    "content": "are working to enable the new web login"
+  },
+  {
+    "timestamp": "18:31",
+    "content": "and QR code support for Platform SSO"
+  },
+  {
+    "timestamp": "18:34",
+    "content": "in their products."
+  },
+  {
+    "timestamp": "18:35",
+    "content": "Now, let's cover Authenticated Guest Mode"
+  },
+  {
+    "timestamp": "18:41",
+    "content": "with Platform SSO."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "It allows users,"
+  },
+  {
+    "timestamp": "18:45",
+    "content": "such as a nurse or doctor going from room to room,"
+  },
+  {
+    "timestamp": "18:48",
+    "content": "to quickly and securely log in to a shared Mac"
+  },
+  {
+    "timestamp": "18:51",
+    "content": "in a temporary session."
+  },
+  {
+    "timestamp": "18:53",
+    "content": "Black OS 27 now extends this capability"
+  },
+  {
+    "timestamp": "18:55",
+    "content": "to allow an Authenticated Guest user"
+  },
+  {
+    "timestamp": "18:58",
+    "content": "to also sign in on FileVault-protected Mac computers"
+  },
+  {
+    "timestamp": "19:01",
+    "content": "to unlock FileVault itself."
+  },
+  {
+    "timestamp": "19:04",
+    "content": "So full disk encryption is now available"
+  },
+  {
+    "timestamp": "19:06",
+    "content": "to protect the data on the device,"
+  },
+  {
+    "timestamp": "19:08",
+    "content": "as the Authenticated Guest user uses the device,"
+  },
+  {
+    "timestamp": "19:12",
+    "content": "ensuring compliance with data protection regulations."
+  },
+  {
+    "timestamp": "19:15",
+    "content": "This functionality is automatically available"
+  },
+  {
+    "timestamp": "19:17",
+    "content": "on devices configured for Authenticated Guest Mode"
+  },
+  {
+    "timestamp": "19:21",
+    "content": "and doesn't require additional configuration."
+  },
+  {
+    "timestamp": "19:24",
+    "content": "Authentication shouldn't be a barrier."
+  },
+  {
+    "timestamp": "19:26",
+    "content": "It should be a bridge."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "And the best sign-in is the one users"
+  },
+  {
+    "timestamp": "19:30",
+    "content": "don't even have to think about."
+  },
+  {
+    "timestamp": "19:33",
+    "content": "These new identity and login capabilities"
+  },
+  {
+    "timestamp": "19:35",
+    "content": "give organizations the flexibility"
+  },
+  {
+    "timestamp": "19:38",
+    "content": "to design experiences that feel effortless for users"
+  },
+  {
+    "timestamp": "19:41",
+    "content": "and the confidence that security is assured."
+  },
+  {
+    "timestamp": "19:46",
+    "content": "Finally, a quick look at some updates"
+  },
+  {
+    "timestamp": "19:48",
+    "content": "to our education offerings."
+  },
+  {
+    "timestamp": "19:51",
+    "content": "I just covered Authenticated Guest Mode for macOS,"
+  },
+  {
+    "timestamp": "19:53",
+    "content": "and now I can share that it is also coming"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "to Shared iPad later in this release."
+  },
+  {
+    "timestamp": "20:00",
+    "content": "When enabled, iPad boots into a temporary session"
+  },
+  {
+    "timestamp": "20:02",
+    "content": "and presents a login screen,"
+  },
+  {
+    "timestamp": "20:05",
+    "content": "where users sign in with their managed Apple account."
+  },
+  {
+    "timestamp": "20:08",
+    "content": "The sign-in can use native authentication"
+  },
+  {
+    "timestamp": "20:10",
+    "content": "or federated authentication with an identity provider,"
+  },
+  {
+    "timestamp": "20:14",
+    "content": "with full support for single sign-on."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "In the temporary session,"
+  },
+  {
+    "timestamp": "20:18",
+    "content": "users see their username"
+  },
+  {
+    "timestamp": "20:19",
+    "content": "in the top left corner of the screen."
+  },
+  {
+    "timestamp": "20:21",
+    "content": "Also, the temporary session shares device capacity"
+  },
+  {
+    "timestamp": "20:24",
+    "content": "with the system,"
+  },
+  {
+    "timestamp": "20:26",
+    "content": "with no hard quotas,"
+  },
+  {
+    "timestamp": "20:27",
+    "content": "making use of storage much more flexible."
+  },
+  {
+    "timestamp": "20:30",
+    "content": "When they sign out from the lock screen,"
+  },
+  {
+    "timestamp": "20:32",
+    "content": "all local data and the managed Apple account"
+  },
+  {
+    "timestamp": "20:35",
+    "content": "are automatically removed from the device."
+  },
+  {
+    "timestamp": "20:38",
+    "content": "This is a great addition to Shared iPad"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "that gives you even more ways to deploy it."
+  },
+  {
+    "timestamp": "20:44",
+    "content": "Devices such as iPads and Mac computers"
+  },
+  {
+    "timestamp": "20:46",
+    "content": "have become the norm for classroom learning,"
+  },
+  {
+    "timestamp": "20:49",
+    "content": "but it's often hard for teachers"
+  },
+  {
+    "timestamp": "20:51",
+    "content": "to keep students focused on the task at hand during class."
+  },
+  {
+    "timestamp": "20:55",
+    "content": "I am pleased to announce a new guided browsing feature"
+  },
+  {
+    "timestamp": "20:57",
+    "content": "in the Classroom app."
+  },
+  {
+    "timestamp": "21:00",
+    "content": "Teachers can lock the websites"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "that students can interact with"
+  },
+  {
+    "timestamp": "21:03",
+    "content": "to one or more tabs using Classroom app,"
+  },
+  {
+    "timestamp": "21:06",
+    "content": "and they can lock students to a single tab"
+  },
+  {
+    "timestamp": "21:08",
+    "content": "for an immediate focal point."
+  },
+  {
+    "timestamp": "21:10",
+    "content": "Teachers could configure what websites to use in this mode"
+  },
+  {
+    "timestamp": "21:13",
+    "content": "by directly entering them"
+  },
+  {
+    "timestamp": "21:15",
+    "content": "or by using bookmarks they've prepared"
+  },
+  {
+    "timestamp": "21:17",
+    "content": "while planning the classwork."
+  },
+  {
+    "timestamp": "21:19",
+    "content": "They can limit students' ability"
+  },
+  {
+    "timestamp": "21:20",
+    "content": "to navigate inside or outside of websites,"
+  },
+  {
+    "timestamp": "21:24",
+    "content": "and they can grant access to camera and microphone,"
+  },
+  {
+    "timestamp": "21:27",
+    "content": "and students have agency"
+  },
+  {
+    "timestamp": "21:28",
+    "content": "over whether they remain enabled."
+  },
+  {
+    "timestamp": "21:30",
+    "content": "They can navigate one student or many"
+  },
+  {
+    "timestamp": "21:33",
+    "content": "to the set of chosen websites."
+  },
+  {
+    "timestamp": "21:35",
+    "content": "The student devices open the guided browser"
+  },
+  {
+    "timestamp": "21:37",
+    "content": "and show the appropriate websites."
+  },
+  {
+    "timestamp": "21:39",
+    "content": "Taken together,"
+  },
+  {
+    "timestamp": "21:41",
+    "content": "these capabilities help address"
+  },
+  {
+    "timestamp": "21:43",
+    "content": "a key problem in classrooms today."
+  },
+  {
+    "timestamp": "21:46",
+    "content": "So that's a quick overview"
+  },
+  {
+    "timestamp": "21:48",
+    "content": "of some of the exciting new features"
+  },
+  {
+    "timestamp": "21:50",
+    "content": "available in Apple devices and platforms"
+  },
+  {
+    "timestamp": "21:52",
+    "content": "in this release."
+  },
+  {
+    "timestamp": "21:54",
+    "content": "All the device management object schema"
+  },
+  {
+    "timestamp": "21:56",
+    "content": "and documentation"
+  },
+  {
+    "timestamp": "21:57",
+    "content": "are available for you right now"
+  },
+  {
+    "timestamp": "22:00",
+    "content": "on the open-source GitHub site"
+  },
+  {
+    "timestamp": "22:01",
+    "content": "and developer.apple.com."
+  },
+  {
+    "timestamp": "22:04",
+    "content": "Also, check out the App-A-Test video,"
+  },
+  {
+    "timestamp": "22:07",
+    "content": "which provides details on new ways"
+  },
+  {
+    "timestamp": "22:09",
+    "content": "to securely identify enterprise apps."
+  },
+  {
+    "timestamp": "22:12",
+    "content": "And finally, there's the assessment mode video"
+  },
+  {
+    "timestamp": "22:15",
+    "content": "for all the new features available"
+  },
+  {
+    "timestamp": "22:17",
+    "content": "to assessment mode app vendors."
+  },
+  {
+    "timestamp": "22:20",
+    "content": "The standard for device management"
+  },
+  {
+    "timestamp": "22:22",
+    "content": "is declarative management,"
+  },
+  {
+    "timestamp": "22:24",
+    "content": "and with great new Mac hardware"
+  },
+  {
+    "timestamp": "22:25",
+    "content": "and powerful mobile devices,"
+  },
+  {
+    "timestamp": "22:28",
+    "content": "combined with the great new device management features"
+  },
+  {
+    "timestamp": "22:30",
+    "content": "in this release,"
+  },
+  {
+    "timestamp": "22:31",
+    "content": "you can make it your standard."
+  },
+  {
+    "timestamp": "22:34",
+    "content": "You can provide your users"
+  },
+  {
+    "timestamp": "22:35",
+    "content": "with the best-in-class experience"
+  },
+  {
+    "timestamp": "22:37",
+    "content": "everyone expects from Apple devices."
+  },
+  {
+    "timestamp": "22:40",
+    "content": "Now's the time for device management vendors"
+  },
+  {
+    "timestamp": "22:42",
+    "content": "and identity providers"
+  },
+  {
+    "timestamp": "22:44",
+    "content": "to build support for these features,"
+  },
+  {
+    "timestamp": "22:46",
+    "content": "so IT administrators"
+  },
+  {
+    "timestamp": "22:47",
+    "content": "can deliver them to users without delay."
+  },
+  {
+    "timestamp": "22:50",
+    "content": "Thank you,"
+  },
+  {
+    "timestamp": "22:51",
+    "content": "and enjoy the rest of your WWDC."
+  }
+]

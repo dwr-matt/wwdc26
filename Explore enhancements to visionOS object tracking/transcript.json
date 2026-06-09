@@ -1,0 +1,566 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, welcome to Explore Enhancements to VisionOS Object Tracking."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "I'm Nathan Kong, a Strategic Partnerships Manager on the VisionOS team."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "In this session, we will share the new object tracking and spatial accessor capabilities that build upon features described in previous sessions."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "As a reminder, in VisionOS 2.0, we introduce object tracking, which allows you to turn real-world objects into virtual anchors."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "With only a USDZ model of the item you'd like to track, you can create a reference object through machine learning training in CreateML on your Mac."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "By passing reference objects to our APIs, your app can get the position and orientation of the physical objects to create immersive spatial experiences."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "In VisionOS 27, we are expanding object tracking, giving you the ability to track objects in motion, including handheld items alongside other enhancements."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "For example, you can now accurately track and measure physical spaces using handheld items such as this medical probe."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "Here, we can precisely measure the distance between the vertebra on this physical spine model."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "This can enable exciting use cases, such as surgical training, home remodeling, or guided assembly."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "Switching to spatial accessories."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "In VisionOS 26, we introduced the first set of spatial accessories, including the Logitech Muse and the PSVR 2 Sense controllers."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "Spatial accessories are electronic devices that communicate with Apple Vision Pro, which tracks the real-time position and orientation in the real world."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "These devices also enhance interactivity and immersion in your apps through buttons and haptics."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "Now, in VisionOS 27, we are expanding support to enable anyone to build your own accessory."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "For example, we can mount an accessory, like the spatial anchor, inside of a physical steering wheel in order to seamlessly align a full-scale digital vehicle to it."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "When I reach out and grab the steering wheel, I truly feel like I'm inside this car."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "This capability unlocks incredible experiences, such as immersive racing and flight simulations, or vehicle interior design."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "In the remainder of this session, we will cover improvements to object tracking, show you how to create a spatial accessory,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "and conclude with considerations you should keep in mind when deciding which approach is best for your VisionOS app."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "Now, let's dive into object tracking."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "Object tracking now supports high frame rate tracking."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "This enables your app to have a better understanding of the position of objects as they move in space."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "Along with this, we're adding a new extended training mode and create ML for increased tracking accuracy and robustness, especially when holding objects in hand."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "To enable even more accurate tracking use cases, we're introducing an API to obtain the objects posed in metric space, unaffected by any display corrections."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "This is essential to enable measuring applications like the medical probe example from before."
+  },
+  {
+    "timestamp": "2:52",
+    "content": "Lastly, we're bringing object tracking to iOS this year."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Let's take a look at some of these updates in action using this flashlight."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "If I have access to a photorealistic 3D model of the flashlight, I can use it as a reference object for object tracking."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "Since my app understands the position of the flashlight, I can take advantage of the new physical surroundings light in RealityKit to relight this room in real time."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "I can also swap the digital pattern being projected onto the surfaces around me."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "Even though my hand is including part of the flashlight, my app is still able to track the position of the object robustly."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "Alternatively, I can 3D print a marker like this as a reference object and mount it to the flashlight."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "This is an easy way to track any handheld object, even if you're unable to obtain a photorealistic 3D model of the device."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "Now, let's discuss specific updates to show you how to upgrade an existing object tracking experience or start a new one from scratch."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "First, I'm going to explain how to enable the new high frame rate tracking."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "We're adding a new reference object configuration API in ARKit on Vision OS."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "It lets you enable high frame rate tracking for an individual reference object before creating your object tracking session."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "Once configured, you can pass this configuration object as an additional parameter when loading the reference object as before."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "Since this is not a training setting, it can be applied to any reference object depending on the application's needs."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "Next, let's discuss the new extended training mode we added to CreateML."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "When training a reference object in CreateML, you can now choose between the standard and the extended training mode."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "The new extended training setting increases the accuracy and robustness of tracking and is recommended to be used in combination with high frame rate tracking."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "Please note that the extended training takes significantly longer compared to standard mode."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "You will find the training mode setting in the object tracking template in the CreateML app, right below the viewing angle settings."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "Everything else stays exactly the same when it comes to training a reference object."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "If you prefer to train reference objects through the command line interface,"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "you can configure the training mode there as well."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "This gives you the flexibility to run the training on a remote machine."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Now, we'll review the new benefits of obtaining object poses in metric space."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "By default, object anchor transforms are optimized for placing virtual content aligned with the tracked object in the mixed immersion style."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "To achieve this, the object poses are slightly altered to match the displayed camera images, impacting the accuracy and absolute world coordinates."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "This can be a limitation when trying to use object tracking for spatial measuring tasks."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "In VisionOS 27, we're adding the ARKit coordinate space correction API that lets you obtain the anchor transform with or without these corrections."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "When querying a tracked object pose, it provides two options."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "Rendered returns the pose with display corrections applied to keep virtual content visually aligned with the real world object."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "And None returns the object's pose in metric space without any corrections."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "This is useful for measuring the distance between tracked objects or determining where an object sits in physical space as shown in the medical probe demo earlier."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "Last but not least, this year we're bringing object tracking to iOS."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "But first, let's bring back the globe from WWDC24."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "In iOS 27, we're adding support for reference objects in our ARKit APIs."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "Machine learning training is not platform specific, so once trained, all reference objects will be supported in both iOS and VisionOS apps."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "Here's all it takes to get object tracking running on iOS."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "You load your reference objects and create a world tracking configuration."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "These are the same reference object files you use on VisionOS."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "You assign objects to either detection objects for objects that are mostly stationary,"
+  },
+  {
+    "timestamp": "6:38",
+    "content": "or tracking objects for high frame rate tracking of moving objects."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "Then, you run the session and handle the anchors in your delegate."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "When ARKit recognizes an object, didAdd is called and you get an AR object anchor that you can attach content to."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "While the object gets tracked, didUpdate provides the latest poses, which you can use for your custom app behavior."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "And if the object is removed from the scene, didRemove lets you clean up and remove the anchor entity created in didAdd."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "Those are all the updates to object tracking in VisionOS 27."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "To learn more about how to develop an app with the object tracking API, you can watch the Explore object tracking for VisionOS WWDC session or Explore documentation."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "Next, we'll explore how you can turn your object of interest into a spatial accessory."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "I'll start by defining a spatial accessory and highlight some of their benefits."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "Then, I'll cover design considerations you should keep in mind when creating your accessory."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "I'll explain the process to validate your design and prepare it for VisionOS."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Share some easy plug and play accessories."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "And finally, show you how to prepare your VisionOS app to take advantage of these devices."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Now, let's get started with the basics."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "A spatial accessory is an electronic device which must contain a board with the following components."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "A constellation of LEDs visible to Apple Vision Pro for tracking."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "An IMU to capture the orientation and acceleration of the accessory."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "And a Bluetooth chip to send the signals to Vision Pro."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Spatial accessories can also host any variety of inputs, including buttons or a touchpad, and outputs like haptics."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "Any accessory that has these key components is compatible with VisionOS."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Let's take a look at spatial accessories in action."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "By installing the aforementioned components into the flashlight from before, we can make the device itself a spatial accessory."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "Even when I quickly wave this flashlight, the digital beam of light follows smoothly due to the low-latency tracking enabled by the embedded IMU."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "And using this physical button I added to the accessory, I can turn the digital light off and on, making my experience even more interactive."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "Vision Pro is able to track the spatial accessory by seeing the LEDs installed inside this flashlight."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "Now, we'll cover some of the benefits spatial accessories offer."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "These devices can be tracked at high frequency, up to the full display rate with low latency, and support use cases that demand fast motion."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "Spatial accessories will continue to track robustly, even when temporarily occluded."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "You can track the accessory under low-light conditions."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "Lastly, the physical buttons and haptics allow you to make your experiences even more interactive and immersive."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "Before you get started with creating your own accessory, there are important design considerations you should keep in mind."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "It's important to spread the LEDs around the device in such a way that it creates a distinct and unique pattern when viewed from various angles."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "Both the LEDs and IMU should be rigidly fixed to the board for accurate tracking."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Last but not least, you should consider the primary way users will interact with your accessory."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "For example, a handheld accessory should position most of the LEDs in areas where users will not hold the device."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "You should consider the size and position of the battery to ensure the accessory is ergonomic."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "For larger accessories used out of arm's reach, you should consider the number of LEDs, LED size, and distance between them to ensure the accessory can be tracked accurately even when far away."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "For more information on specific requirements and reference designs, please check out the Spatial Accessories chapter of the Accessory Design Guidelines for Apple Devices."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "Now that you've designed a spatial accessory, let's explore how to validate that it works as expected and prepare it for your Vision OS app."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "The first step is to connect your accessory via Bluetooth to your Vision Pro and validate the signals sent from the device with the ARKit accessory tracking debug view."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "This tool lets you examine how your Vision Pro sees the accessory and can be found in settings when your device is in developer mode."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "It helps with three things."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "One, verify your LEDs through the headset's IR camera so you can confirm they're bright, distinct, and properly synchronized."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "Two, validate your IMU with live metrics on frequency, latency, and paraxis values in order to check scale, alignment, and motion response."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Three, debug timing between your accessory and the headset using the device's IR illuminators as a sync reference."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "Next, in order for your Vision OS app to track a spatial accessory, you will need to train it with a CreateML Bundle."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "This workflow uses information about the physical appearance of the device and the location of the LEDs to create a reference accessory file."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "To get started, create a USDZ of your design that contains a photorealistic 3D model of the device annotated with the positions of the IMU and LEDs."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "Using this annotated USDZ, you can use a command line interface to generate the reference accessory file and add it to your app."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "As a manufacturer of your accessory, you bundle this file in your app and declare it as an exported UTT type in your Info PList."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "This registers your accessory system-wide, so any app on Apple Vision Pro can use it."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "If you're a developer using a third-party accessory, you can also bundle the file yourself and declare it as an imported type so your app works independently."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Before building a spatial accessory from scratch, you can also start testing and develop apps with plug-and-play accessories."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "Manufacturers like DF-robot and MicroE will release off-the-shelf reference hardware and development kits later this year."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "These accessories can be immediately used for testing or implemented in your Vision OS app."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "Let's see one of these plug-and-play accessories in action."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "As you can see here, I can simply mount a spatial accessory, like the CMOTE cap, to the flashlight and use the Spatial Accessories API to enable the same digital relighting experience as before."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "Now that you have a spatial accessory, let's explore how to connect it to your app."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "You discover accessories using the new GC Spatial Accessory class."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "This works with any device that has a reference accessory bundle."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "When you call Accessory Device, ARKit resolves it automatically."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "From there, you can run an accessory tracking provider just like before."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "We're also adding a new update accessories method to switch between accessories while your session is running to avoiding interruptions to tracking."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "And with that, you can create your own spatial accessory and connect it to your Vision OS app."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "To learn more about how to enable tracking with inputs and haptics in your app, you can watch the Explore Spatial Accessory input on Vision OS Session."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Let's wrap things up."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "Today, you've seen four different approaches for tracking an object in your app."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "Let's review some considerations you should keep in mind when selecting which approach to use."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "Object tracking excels in scenarios where accurate and precise tracking is required, such as measurement applications."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "In case you do not have access to a photorealistic 3D model, you can train your reference object on a marker you mount on the object of interest."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "Spatial accessories offer even higher refresh rates and lower latency, which is optimal for experiences that demand fast-moving objects."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "If you want to create an even more interactive and immersive experience with physical objects, you can design your own accessory with custom buttons and haptics."
+  },
+  {
+    "timestamp": "13:45",
+    "content": "The possibilities enabled by these new object tracking capabilities are endless."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "We're excited to see the transformational experiences for work and play you create."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "Have a fantastic WWDC26."
+  }
+]

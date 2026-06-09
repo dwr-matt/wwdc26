@@ -1,0 +1,1134 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm George from the Swift server team."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "In this video, I'll show you how you can build real-time experiences in your apps and services with gRPC Swift."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "Dynamic app experiences usually depend on fetching data from a server, but working with services can be challenging."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Handcrafting networking code to interact with a service can be time-consuming."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "You start with some documentation, spend time crafting great APIs, and end up with something that seems to work."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "But the documentation isn't always up to date, and maybe you made some mistakes along the way,"
+  },
+  {
+    "timestamp": "0:41",
+    "content": "and the result can be something that doesn't always work as you expect."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Fortunately, there's a better way."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "Many service APIs are defined separately in a specification which acts as the source of truth for the service."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "This allows you to generate the code required to interact with it, saving you time and eliminating errors."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "These benefits scale across all of the APIs that you need to interact with."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам"
+  },
+  {
+    "timestamp": "1:36",
+    "content": "service and deploy it to the cloud."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "First though, let's talk about what gRPC is."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "gRPC is a framework for making remote procedure calls."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "It's a CNCF project and widely adopted industry standard."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Like with OpenAPI, you work with code that's generated from a specification,"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "allowing you to start working with services quickly."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "But in gRPC, your APIs are defined in terms of functions,"
+  },
+  {
+    "timestamp": "2:04",
+    "content": "with inputs and outputs, rather than in terms of HTTP."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "Let's see how this works in practice."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "There's a new go-karting league starting nearby."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "They've got a system which tracks everything from the schedule"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "to all of the live race data,"
+  },
+  {
+    "timestamp": "2:20",
+    "content": "but they need a way to make that information available."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "I've been working on integrating an iOS app with their backend via a gRPC service."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "I've prepared a few views in the app and populated them with some example data."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "I can list the upcoming races and then tap into each to get more information."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "But it would be great to use gRPC to get this content from the server instead."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "A function to return the race schedule might be called listRaces."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "It could be called with the number of races to request,"
+  },
+  {
+    "timestamp": "2:54",
+    "content": "and it would return the list of races."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "As a remote procedure call,"
+  },
+  {
+    "timestamp": "2:59",
+    "content": "the request message is sent by the client to the server,"
+  },
+  {
+    "timestamp": "3:02",
+    "content": "which executes the function and sends back the list of races as the response."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "Let's put this theory into practice and see how to use gRPC Swift in my app."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "I'll start by defining the service API."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Then I'll add the required dependencies to my Xcode project,"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "configure the gRPC build plugin to generate the code I need to call my service,"
+  },
+  {
+    "timestamp": "3:25",
+    "content": "and then update my app to make a call to the server."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "The most common format for specifying gRPC services is called protocol buffers,"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "or protobuf for short."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "In app.protofile, I'll define the service with one RPC called listRaces."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "It has a listRacesRequest as the input,"
+  },
+  {
+    "timestamp": "3:46",
+    "content": "and a listRacesResponse as the output."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "The request message has one field called limit,"
+  },
+  {
+    "timestamp": "3:53",
+    "content": "which is an integer representing the maximum number of races to include in the response."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "I've given it a default value of 100."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "Every field in a message is also assigned a unique field number."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "The response message contains a repeated race field."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "Race is defined as a separate message and contains information,"
+  },
+  {
+    "timestamp": "4:13",
+    "content": "such as its name, location, and championship as strings,"
+  },
+  {
+    "timestamp": "4:16",
+    "content": "the number of laps as an integer, and the start time as a timestamp."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "The timestamp type is one of protobuf's well-known types,"
+  },
+  {
+    "timestamp": "4:25",
+    "content": "and defined elsewhere, so I need to import its definition."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "Now that I've defined the service, I can switch to Xcode to add the gRPC dependencies"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "and configure the code generator."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "To get started, I need to add some dependencies to my project."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "I'll navigate to the project editor,"
+  },
+  {
+    "timestamp": "4:43",
+    "content": "then I'll select the package dependencies tab,"
+  },
+  {
+    "timestamp": "4:47",
+    "content": "and then click plus."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "First, I'll add a dependency on gRPC Swift Neo Transport,"
+  },
+  {
+    "timestamp": "4:54",
+    "content": "which provides the high-performance networking code"
+  },
+  {
+    "timestamp": "4:56",
+    "content": "built on top of the open-source Swift Neo library."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Then I'll add a dependency on gRPC Swift Protobuf,"
+  },
+  {
+    "timestamp": "5:05",
+    "content": "which provides a build plugin for generating gRPC code from my proto file."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "Now that I've set up the dependencies, I can configure the target to use the build plugin."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "I'll select the app target, then I'll select the build phases tab,"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "and expand the section named run build tool plugins."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "Then I'll click the plus icon, select gRPC Protobuf generator, and click add."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "The plugin scans the target directory for proto files,"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "and can be configured using a JSON config file."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "I'll add those to my target now."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "The JSON file configures what code is generated."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "Since this is an app, I only need messages and clients."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "I don't need the server code."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "Now I can recompile the app to generate the code."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "As a security measure, you'll be asked to trust the plugin the first time you use it."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "That's everything set up."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "I'm now ready to call my service."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "I'll open up the race schedule view."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "And import the modules I need."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "The core module provides common gRPC runtime components."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "The HTTP module provides the networking code."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "And Swift Protobuf lets us interact with our protobuf messages."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Next, I'll add a task modifier to the view in which I'll make the request."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "Inside the task, I'm going to use the with gRPC client function to create a client."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "I'll do this inside a do catch block and just print the errors for now."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "gRPC Swift lets you configure the implementation used for networking."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "I'll use a Swift Neo based one to connect to a server running locally on my Mac."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "The client passed to the closure only knows about the server."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "It doesn't know anything about the service."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "This is where the generated code comes in."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "I'll create a Swift Cart client and initialize it with the gRPC client."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "Then I'll create the request, call the listRacesRPC and await the response."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "Finally, I'll update the view with the new data by mapping the response from the server to the data model used by the view."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "And just like that, we've fetched the race schedule from our local server."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "FiniteLoop sounds fun and it's starting soon."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "Before I go any further, I need to make one important change."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "At the moment, my app creates a new gRPC client every time the view appears."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "This means each view needs to establish its own connection to the server, adding unnecessary latency."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Instead, my app should create a client and share it between views so that connections can be reused."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "I can propagate the client via the app's environment."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "Clients should also be disconnected when the app enters the background to free up resources."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "In Xcode, I'll add some code for a client manager I wrote earlier."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "Then I'll open the app entry point and create an instance of the manager."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "I'll make it available to child views via the environment modifier."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "I should also disconnect the client when the scene enters the background phase."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "To do that, I'll create a scene phase property and then watch it for changes."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "My manager class connects lazily when asked for a client, so I don't need to do anything when the scene enters the active state."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "Now, I'll use the manager in the race schedule view."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "I'll add it to the view and make it available in the preview."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "Finally, I'll replace the with gRPC client call with a call to the manager."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "That's my app setup and talking to my service using code generated from a service API defined in Protobuf."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "In addition to the service API, Protobuf provides a message interchange format."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "Swift Protobuf has a code generator so that you can work directly with Swift types that represent your messages."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "For example, I can create a race message and populate the fields with the relevant information."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "When gRPC sends messages between the client and server, it serializes them to a binary representation."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "It uses the unique field number rather than name to identify each field."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "As a result, the Protobuf message is roughly half the size of the equivalent JSON message."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "Reducing message size is great for mobile apps, where minimizing data transfer helps improve the performance of your network calls."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "This is especially important when network conditions are poor."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "This efficiency is great for other environments too, like service-to-service communication and inter-process communication,"
+  },
+  {
+    "timestamp": "10:33",
+    "content": "like in Apple's open-source containerization framework."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "It uses gRPC Swift to communicate over virtual sockets between the host operating system and a Linux virtual machine."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "gRPC Swift is also a key component in cloud services like private cloud compute, iCloud Keychain and Photos, and SharePlay file sharing."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "But our use doesn't just power external facing services."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "gRPC runs deep into our internal infrastructure, such as in our OS build and release systems."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "One of gRPC's standout features is its first-class support for streaming."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "Many RPCs, like list races, simply send a single request message to the server, which replies with a single response message."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "This is called a unary RPC."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "But RPCs can stream request and response messages, meaning there are three other types of RPC to explore."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "A client streaming RPC is when the client sends any number of messages to the server, which replies with a single response message."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Imagine each go-cart streaming its telemetry data to the server."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "In server streaming RPCs, the client sends a single request message to the server, which replies with any number of response messages."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "Think about real-time updates, like a live text commentary feed."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "The final type is bi-directional streaming, where the client and server can send each other any number of messages."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "I've got a great idea for how I can use this in my app to provide live race updates."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "The request messages will tell the server what type of events the client has subscribed to."
+  },
+  {
+    "timestamp": "12:12",
+    "content": "And the response messages will contain the relevant events."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "The client can send more messages to the server when they change what events they're interested in receiving."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "My app has been making requests to a server running on my Mac, which is also written in Swift."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "Let's take a look."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "Setting up the server is straightforward."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "I create a server object, initialized with a transport, and the services it should offer."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "To start the server, I just call serve."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "The service is just a type that implements a protocol generated by the build plugin."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "You can see the listRacesRPC I implemented earlier."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "It's an async function which takes a request and returns a response."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Implementing it is just a matter of querying the database for races, populating the message, and then returning it."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "To incorporate the streaming RPC, I'll update the service definition."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "Then I'll switch to the server and regenerate the code so I can implement the new RPC."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "And once that's done, I'll update the app to call it."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "I'll start by adding a follow race RPC to the service definition."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "Because the RPC streams requests and response messages, I need to add the stream keyword before the input and output."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "Then I need to define the messages."
+  },
+  {
+    "timestamp": "13:35",
+    "content": "The request message includes the name of the race to follow and a list of event types to subscribe to, which is represented as an enum."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "The response type has a one of field, which is just like a Swift enum with associated values."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "The message can either hold the locations of each cart or the current race standings, which are defined as separate messages."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "Now that the service definition has been updated, I'll switch to the server in Xcode so I can work on implementing the new RPC."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "I'll build the project to regenerate the code."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "I have a build error now because the protocol has a new requirement that I haven't implemented yet, so I'll fill out a stub."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "This looks a bit different to the list races RPC because of the streaming."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "The request parameter is an async sequence of request messages, and the response parameter is an object for writing response messages to the client."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "I know that I need to handle two streams of data simultaneously, so I'll need a task group."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "I need to wait for the first request message so that I know the name of the race to track and which events the caller is interested in."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "I'll create an async iterator and await the first message."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "I'll store the event types in a set protected by a mutex because two different tasks will need to access it concurrently."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "Then I'll add a task to the task group, which calls the LiveRaceTracker with the name of the race to follow."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "This gives me an async sequence of events, which I can then filter to only include the ones the client is currently interested in."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "I'll iterate the filtered events and create an empty response message."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "Then I'll switch over the event and populate the message."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "First, I'll map the array of cart locations from the tracker to the data type used by the RPC."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "Then I'll do the same for the standings."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "Now I'll write the message to the client."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "There are a few things left to do."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "The first is to continue consuming the request messages as the caller might change what events they're interested in."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "We'll use the end of the request stream as a signal that the client no longer wants any more events, so we can cancel the tasks running in the task group to stop sending back messages."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "Finally, I'll restart my server so that the client can call the new RPC."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "That's the RPC implemented in the service."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "Now I can update the app."
+  },
+  {
+    "timestamp": "16:21",
+    "content": "I'll open the Xcode project for the app and update the protofile to include the new RPC and messages."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "I'll build the project to regenerate the GRPC code."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "Then I'll navigate to the race info view."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "And add a navigation link to a live stream view that I created earlier."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "Then I'll open up the live stream view."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "It displays a map that will draw annotations representing the positions of each cart in the race."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "There's also a toolbar button which opens a sheet to display a live leaderboard."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "The show leaderboard property tracks whether this is displayed or not."
+  },
+  {
+    "timestamp": "17:19",
+    "content": "The view already has properties to store the various bits of state I'm interested in."
+  },
+  {
+    "timestamp": "17:24",
+    "content": "I just need to call the RPC and wire up the data received from the server."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "First, I'll add the imports I used earlier."
+  },
+  {
+    "timestamp": "17:32",
+    "content": "Then I'll inject the client via the environment."
+  },
+  {
+    "timestamp": "17:36",
+    "content": "Like before, I'll create a task and call manager.withClient."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "Then I'll create a cartClient and call the followRaceRPC."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "Its structure is different to the UnaryListRacesRPC."
+  },
+  {
+    "timestamp": "18:06",
+    "content": "It has two closures."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "One for writing request messages and another for handling response messages."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "I need to send a request message every time the value of show leaderboard changes."
+  },
+  {
+    "timestamp": "18:19",
+    "content": "I'll use an async stream to track it over time and store its continuation as a property."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "When show leaderboard changes, I'll yield the new value to the continuation."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "I'll create the async stream and its continuation in the task."
+  },
+  {
+    "timestamp": "18:36",
+    "content": "I need to yield the current value of show leaderboard to the stream as the initial value."
+  },
+  {
+    "timestamp": "18:44",
+    "content": "In the first closure of the RPC, I can iterate the stream and send a message to the server for each value."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "If the leaderboard is being shown, I'll add the standings event."
+  },
+  {
+    "timestamp": "19:01",
+    "content": "And then I'll write the message to the server."
+  },
+  {
+    "timestamp": "19:05",
+    "content": "In the response closure, I'll iterate the messages and update the view state for each event."
+  },
+  {
+    "timestamp": "19:11",
+    "content": "I'll use a helper method for handling the events."
+  },
+  {
+    "timestamp": "19:15",
+    "content": "I'll switch over the event and map each to the data type used by the view."
+  },
+  {
+    "timestamp": "19:21",
+    "content": "I'll start with the cart locations."
+  },
+  {
+    "timestamp": "19:24",
+    "content": "And then I'll do the same for the standings."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "Finally, I'll iterate the response messages and call the helper for each event."
+  },
+  {
+    "timestamp": "19:34",
+    "content": "Let's check it out."
+  },
+  {
+    "timestamp": "19:48",
+    "content": "It looks like a race is about to start at Apple Park."
+  },
+  {
+    "timestamp": "19:52",
+    "content": "They're heading down towards the rainbow arches,"
+  },
+  {
+    "timestamp": "19:56",
+    "content": "and now it looks like they're turning right towards the duck pond."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "Monty's in the lead, followed closely by Pepper and Bo."
+  },
+  {
+    "timestamp": "20:03",
+    "content": "That's great, but I still haven't achieved my goal of"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "making the information available to spectators,"
+  },
+  {
+    "timestamp": "20:08",
+    "content": "because the service is running locally."
+  },
+  {
+    "timestamp": "20:11",
+    "content": "Let's deploy it to the Cloud so that it's available to everyone using the app."
+  },
+  {
+    "timestamp": "20:15",
+    "content": "I'm using Google Cloud Platform to host my service,"
+  },
+  {
+    "timestamp": "20:19",
+    "content": "but you could use another platform like AWS or fly.io."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "The approach will be similar, but the exact steps will be different."
+  },
+  {
+    "timestamp": "20:27",
+    "content": "Most servers run Linux, and that's what I'll deploy to today."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "I don't need to make any code changes,"
+  },
+  {
+    "timestamp": "20:34",
+    "content": "but I do need to package up the server executable into"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "a container image with its runtime dependencies."
+  },
+  {
+    "timestamp": "20:40",
+    "content": "Then I'll publish the image to my Cloud provider's image registry."
+  },
+  {
+    "timestamp": "20:45",
+    "content": "After that, I'll create a deployment."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "And finally, I'll update the app to target the deployed service."
+  },
+  {
+    "timestamp": "20:53",
+    "content": "I'll start by creating a container file,"
+  },
+  {
+    "timestamp": "20:55",
+    "content": "which describes the steps required to build the container image."
+  },
+  {
+    "timestamp": "20:59",
+    "content": "I'll use Swift Latest as the base image."
+  },
+  {
+    "timestamp": "21:02",
+    "content": "Next, I'll set the working directory and copy over the package manifest and source files."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "Then I'll build the server in release mode and copy it into a known location."
+  },
+  {
+    "timestamp": "21:14",
+    "content": "At this point, I have the server executable in my image,"
+  },
+  {
+    "timestamp": "21:18",
+    "content": "but it also contains the whole Swift tool chain."
+  },
+  {
+    "timestamp": "21:21",
+    "content": "I don't need all of that to run my server,"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "and it makes the image much larger than it needs to be."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "I'll use a multi-stage build and copy the binary into a Swift Slim runtime image."
+  },
+  {
+    "timestamp": "21:33",
+    "content": "Finally, I expose a port and set the entry point to be the server."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "That's the container file written."
+  },
+  {
+    "timestamp": "21:40",
+    "content": "At this point, I would build and publish the image to a container registry,"
+  },
+  {
+    "timestamp": "21:44",
+    "content": "but that'll take a few minutes."
+  },
+  {
+    "timestamp": "21:46",
+    "content": "So I'll use one I published earlier."
+  },
+  {
+    "timestamp": "21:49",
+    "content": "In the terminal, I can use the gcloud run deploy command."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "I'll provide the name of the deployment, the image name, and the region."
+  },
+  {
+    "timestamp": "22:00",
+    "content": "Then, I need to specify that my service uses HTTP2 and allows unauthenticated requests."
+  },
+  {
+    "timestamp": "22:08",
+    "content": "When the deployment finishes, it prints out the URL for the service,"
+  },
+  {
+    "timestamp": "22:11",
+    "content": "which I'll need when I update the client, so I'll copy it now."
+  },
+  {
+    "timestamp": "22:17",
+    "content": "I'll switch back to the app and open the client manager."
+  },
+  {
+    "timestamp": "22:21",
+    "content": "I'll update the connect target to the DNS name of the service from the deploy command."
+  },
+  {
+    "timestamp": "22:26",
+    "content": "Then, I'll enable TLS by changing the transport security option from plain text to TLS."
+  },
+  {
+    "timestamp": "22:37",
+    "content": "Let's test it out."
+  },
+  {
+    "timestamp": "22:39",
+    "content": "It looks like we just made the start of the finite loops race."
+  },
+  {
+    "timestamp": "22:51",
+    "content": "Oh, what a disastrous start for Pepper as Monty takes first position, followed closely by Mycroft and Kiko."
+  },
+  {
+    "timestamp": "23:00",
+    "content": "The drivers are turning into the infinite loop campus."
+  },
+  {
+    "timestamp": "23:04",
+    "content": "Pepper's gained back a few positions."
+  },
+  {
+    "timestamp": "23:07",
+    "content": "It looks like we're in for a great race here."
+  },
+  {
+    "timestamp": "23:11",
+    "content": "I've shown you how to use gRPC Swift"
+  },
+  {
+    "timestamp": "23:13",
+    "content": "to build great live experiences in your apps"
+  },
+  {
+    "timestamp": "23:16",
+    "content": "and how it can simplify app-to-server communication,"
+  },
+  {
+    "timestamp": "23:19",
+    "content": "from defining a service, generating code,"
+  },
+  {
+    "timestamp": "23:22",
+    "content": "all the way through to implementing and deploying"
+  },
+  {
+    "timestamp": "23:24",
+    "content": "a service to the cloud."
+  },
+  {
+    "timestamp": "23:26",
+    "content": "And that's just the start."
+  },
+  {
+    "timestamp": "23:28",
+    "content": "gRPC Swift has plenty of built-in features"
+  },
+  {
+    "timestamp": "23:31",
+    "content": "to help take your application from prototype to production."
+  },
+  {
+    "timestamp": "23:35",
+    "content": "Whether that's integration with other Swift packages,"
+  },
+  {
+    "timestamp": "23:38",
+    "content": "like Swift Hotel or Swift Service Lifecycle,"
+  },
+  {
+    "timestamp": "23:41",
+    "content": "or advanced connection management features,"
+  },
+  {
+    "timestamp": "23:43",
+    "content": "like custom transports and name resolvers,"
+  },
+  {
+    "timestamp": "23:46",
+    "content": "and client-side load balancing."
+  },
+  {
+    "timestamp": "23:49",
+    "content": "You're now ready to use gRPC in your app."
+  },
+  {
+    "timestamp": "23:52",
+    "content": "Why not prototype part of the app-to-server interactions"
+  },
+  {
+    "timestamp": "23:55",
+    "content": "and see how simple gRPC Swift makes the workflow?"
+  },
+  {
+    "timestamp": "24:00",
+    "content": "Or you could try out one of the tutorials and examples"
+  },
+  {
+    "timestamp": "24:02",
+    "content": "in the project's repository available on GitHub."
+  },
+  {
+    "timestamp": "24:06",
+    "content": "Because the project is open source, you can also contribute,"
+  },
+  {
+    "timestamp": "24:09",
+    "content": "whether that's asking questions, improving documentation,"
+  },
+  {
+    "timestamp": "24:12",
+    "content": "or proposing and implementing new features."
+  },
+  {
+    "timestamp": "24:15",
+    "content": "Thank you for watching and see you on track."
+  }
+]

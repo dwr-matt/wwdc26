@@ -1,0 +1,706 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Jack, an engineer on the UI Frameworks team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "In this video, I'd like to share with you"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "some of the new drag and drop APIs available in the 2027 releases."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "Since iOS 16, SwiftUI has provided drag and drop"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "through the draggable and drop destination modifiers."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "The draggable modifier allows people to move content, like photos and text,"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "throughout the system by using a drag gesture."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "You can conform your data to the transferable protocol,"
+  },
+  {
+    "timestamp": "0:38",
+    "content": "giving it a transfer representation that allows it to be dragged through the system"
+  },
+  {
+    "timestamp": "0:42",
+    "content": "and accepted by other apps."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "For example, I can conform my card type to transferable,"
+  },
+  {
+    "timestamp": "0:48",
+    "content": "and then pass an instance of it to the draggable modifier."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "The drop destination modifier allows your app and views to accept"
+  },
+  {
+    "timestamp": "0:56",
+    "content": "all kinds of content."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "You decide what data your view can handle by specifying"
+  },
+  {
+    "timestamp": "1:01",
+    "content": "a transferable type to accept."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "If I want my view to accept card instances, for example,"
+  },
+  {
+    "timestamp": "1:07",
+    "content": "I can provide the card type to the drop destination modifier."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "For more information about how to make your content transferable,"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "I'd recommend watching the video,"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "Meet Transferable from WWDC 2022."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "SwiftUI has expanded the capabilities of drag and drop in three major ways."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "There's a new reordering API that allows people to rearrange content using drag and drop."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "You can enable people to drag multiple items at a time using the drag container APIs."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "And you can now configure how data is transferred in drags and at drop destinations."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "I'll be implementing the drag and drop interactions for a game of Solitaire."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "The game will look similar to how I've arranged these playing cards."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "I can move cards between the piles,"
+  },
+  {
+    "timestamp": "1:52",
+    "content": "and I can pull a card from the deck of the remaining cards."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "You don't need to be familiar with Solitaire to understand the API I'll be using."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "And if you'd like to follow along, you can download the sample project."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "It contains the views and game logic needed to get started."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "I'll start by adopting the new reorderable API in my app."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "Just like the cards in my Solitaire game, your app's content likely exists in some order."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "But people might want to change that order to organize their content in the way that works best for them."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "When I make the cards in the Solitaire game reorderable, I'll be able to drag them individually."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "When I drag a view, it'll be lifted from its position in the view hierarchy,"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "and an empty placeholder will take its spot."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "From there, I can drag this card throughout my app."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "As I move the card over other cards, they make space for me to drop the one that I'm dragging."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "The placeholder updates to reflect where the dragged card will go once I drop it."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "And when I drop the card, it will be moved to its new position."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "I'll add this capability to my Solitaire game."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "I'll first implement reordering without the game rules in place."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "Then, once everything's working, I'll refine the implementation to include the rules."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "I've opened the Xcode project for this app."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "Its contents are split into two main folders, game and views."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "The game folder contains the Swift data models and code for updating them."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "I'm going to be spending most of my time in the views folder, where the SwiftUI is."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "I'll open the game view, which contains the layout and views of the playing area."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "But before I add reordering to my app, I'm going to test it out in a preview."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "At the bottom of this file, I have one that shows four cards on a green background."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "To enable reordering, I add the reorderable modifier to the for each that creates the cards."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "Then, I put a reorder container modifier on the age stack."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "I specify that the item type of the container is card value, which matches the type used in my for each view."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "In the closure, I'm provided a difference at the end of an operation, and I handle it by updating my cards array."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Now, I can interact with the preview and reorder cards."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "I can drag the ace of clubs from the left and drop it at the end."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "In Solitaire, my goal is to organize cards by moving them between the piles."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "So in my app, I want all of the piles to be in the same reorder container."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "I can accomplish this by adding the reorder container modifier to the age stack that contains the piles."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "I provide the same card value type for the container's item type."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Because there are multiple piles, I need a way to uniquely refer to each of them."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "I use the card group type to identify each pile, and in the closure, I handle a difference across multiple piles."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "Lastly, I need to go to pile view and add the reorderable modifier."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "Because I have multiple reorderable modifiers in the same container, I need to provide a unique identifier for each one."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "Now, I can drag the four of diamonds and drop it onto the pile with the five of spades."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "This is great, but there's one more refinement I'd like to make right now."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "In Solitaire, you can't reorder the face down cards."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "But right now, I'm able to lift one from a pile."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "This is because I made the entire array of cards in pile view reorderable."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "While I could use some advanced drag and drop API to control this, there's an even easier way to solve this."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "I can add a second for each view without the reorderable modifier and slice the cards array between the two."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "The first for each view will contain all of the face down cards."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "The second, with the reorderable modifier, contains all of the face up cards."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "And with this change, I can still reorder the face up cards."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "But when I drag on a face down card, nothing happens."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "Now I have the basic interactions of Solitaire in play."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "Because of the reorderable modifier, I can now drag individual cards around to reorder them."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "The reorder container modifier allowed me to scope reordering to include all of the piles."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "And by moving the face down cards into a separate for each, I was able to keep them from being reordered."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "These APIs are newly available on all Apple platforms that support drag and drop."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "But my Solitaire game is still missing a critical part of the gameplay, being able to move multiple cards at once."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "In Solitaire, when I drag a card in the middle of a pile, it brings the card stacked on it."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "But in your app, the interaction model might not be as straightforward."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "One way to handle this is to add selection to your draggable items."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "In this example, I'll use a simple tap-to-select interaction model."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "As I tap each card, it's added to the selection."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "Once I perform a drag gesture on one of the selected cards, all three cards lift together."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "I'll add the ability to drag multiple cards at once to my Solitaire game."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "I'll open back up to Game View, where I added the reorder container modifier."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "Reorder containers implicitly provide their own drag container and drop destination capabilities."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "But I can add my own to customize this behavior."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "I declare the drag container modifier below the reorder container modifier."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "For them to work together, I need to make sure that they use the same type, card value."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "In the closure, I'm given an item identifier, and I need to provide transferable data for the items that I want to move."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "I call out to my game logic to find the card stacked above the one I'm trying to drag."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "I drag this four of clubs, which is below a three of diamonds, I now get both cards in the same drag."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "I drag the stack of cards together."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "When I drag the stack of cards together, they collapsed into a pile, with the first card on top."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "This is the default preview, but I can configure it to several options, including pile, list, and stack."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "I can configure this with the drag previews formation modifier."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "I choose stack because it's compact and has the feel of stacked cards."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "When I drag the four of clubs now, the cards form into a neat stack."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "But when I drag over the piles, they revert back to the default appearance."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "Because they are above my reorder container's drop destination, they're using its drop formation."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "To configure that, I can use the drop previews formation modifier."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "Because I want this to be consistent across all drop destinations in my app,"
+  },
+  {
+    "timestamp": "9:15",
+    "content": "I declare this modifier on the root layout of my game view."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Now, the cards I drag maintain the same appearance throughout the playing area."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "I made it possible to drag multiple cards at a time in my solitaire game."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "I used the drag container API to make it possible to lift more than one at a time."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "I added drag previews formation to customize the appearance of the lifted cards."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "And I ensured a consistent appearance by setting the same value for drop previews formation."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "The drag container modifier is newly available on iOS, iPadOS, and VisionOS 27."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "All three modifiers are available on macOS 26 and newer."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "And I'll use the new drag configuration API."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "When adding a drag capability to my card view, I should think about how I want that card's value to move."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "In my solitaire game, I'll be dragging new cards into the piles."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "And by default, SwiftUI will suggest that the data moves by copy."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "This works well when you're moving data between apps or inserting something new."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "And I'll add a new drag."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "But in my card game, dragging a card should not create a copy at the destination."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "Instead, I'd like the card to be moved from the deck into the piles."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Unlike my reorder container, which is designed to handle moves,"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "these views are a separate drag source and drop destination."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "I'll need to use the new drag configuration API to achieve this."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "I'll add the ability for cards to be moved into the piles without duplication by using the drag configuration API."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "In the app, I have the deck of remaining cards on the top left of the playing area."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "I want to be able to drag this six of diamonds onto the pile with the seven of spades."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "To get started, I open Xcode to Remainder View,"
+  },
+  {
+    "timestamp": "11:16",
+    "content": "which contains the views for this part of the game."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "The current face-up card already has its own drag modifiers."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "By default, this view will transfer the value by copy."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "I add the drag configuration modifier to this view and specify that my intent is for this card to be transferred by move."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "But it's the drop destination that decides how the data is transferred."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "In this case, my drop destination is the reorder container in game view."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "By default, the reorder container only accepts moves within the container."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "If I want to accept new items, I have to provide my own drop destination modifier."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "I add one below the drag container."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "And I specify that I want to accept the same card type."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "I read the reorder container's destination value for the inserted items."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "And if it exists, I call into GameLogic to insert the new cards at the destination."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "Moves between piles are still handled by the closure on the reorder container modifier."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "And with the drop destination in place, I can now configure how it receives items."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "I add the drop configuration modifier, which has the final say about how the data is transferred."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "I'm provided session information in the closure."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "I do three things in this closure."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "First, I determine which pile should receive the cards by checking where the drag is."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "I create a destination value with that pile's identifier to tell SwiftUI where the cards should go."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "Second, I express my intent to only support move-based transfers."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "I'm going to use the default destination value."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "Normally, you'd want to support copying as a fallback when move isn't available."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "But in a card game, copying doesn't make sense."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "And third, I validate that this destination value is allowed within the rules of the game."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "If I return a forbidden operation, SwiftUI will prevent the drop destination from receiving the cards."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "With all of those changes, now I'm ready to drag a card into play."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "I can drag this six of diamonds from the remainder deck onto the pile with the seven of spades,"
+  },
+  {
+    "timestamp": "13:46",
+    "content": "but only because the rules allow me to."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "And when I do, the six of diamonds is moved from the remainder's deck into the pile."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "If I try to drop this queen of diamonds on the pile that has the seven of diamonds,"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "the queen will return to the remainder deck because the move is not valid."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "I was able to drag cards into piles using the new configuration modifiers."
+  },
+  {
+    "timestamp": "14:09",
+    "content": "I started by adding a drag configuration on my source card,"
+  },
+  {
+    "timestamp": "14:12",
+    "content": "where I specified my intent to transfer the card by move."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Then, I used drop destination to enable the reorder container to accept new cards."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "And I applied drop configuration to that destination, so that it would take cards by move when the play was allowed."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "I started building this app with only a reorderable and reorder container modifier."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "But I was able to fully customize reordering by composing drag and drop modifiers on top of them."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Now, I have a fully complete game of Solitaire."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "Even if you're not building Solitaire, you can use these APIs to make your apps better."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "Consider giving people the ability to reorder the content in your app."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Remember that you can also give them the ability to drag multiple items at a time with a drag container API."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "And fine tuning your app with drag and drop configurations will make it a delight to use."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "Now, if you'll excuse me, I have to get back to work."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "Thanks for watching."
+  }
+]

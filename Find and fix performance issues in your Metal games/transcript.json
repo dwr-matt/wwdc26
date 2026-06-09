@@ -1,0 +1,1742 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello and welcome. I am Ruiwei, an engineer with the Metal Tools team. A smooth, consistent"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "frame rate is one of the most important things you can deliver to your players. It is what makes"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "your game feels responsive and polished, and maintaining that smoothness across entire PlayStation"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "is key. I will demonstrate new tools and workflows that give you everything you need to quickly"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "collect and identify issues in long game sessions. Achieving a great, smooth game experience is a"
+  },
+  {
+    "timestamp": "0:39",
+    "content": "cycle. You need to playtest your game on many different devices and form factors. Collect"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "performance data, analyze the results, identify performance issues, and fix them. Then you"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "playtest again and repeat the cycle until you hit your performance targets. As players"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "play your game for hours, many conditions could change. The device may heat up and thermal state"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "shifts. The player adjusts graphic settings. They move between different levels and fights."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "To truly achieve a smooth experience, you need to measure across many different scenarios over"
+  },
+  {
+    "timestamp": "1:19",
+    "content": "long periods of time. To show you how, I will start off with a brief introduction to the Metal"
+  },
+  {
+    "timestamp": "1:25",
+    "content": "Performance Matrix that are available to you. Then, I will show you new tools and workflows that collect"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "and analyze choices over long periods of time. Next, I will demonstrate how to contextualize the choices,"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "so you understand the state of your game at any point in time. And finally, how to collect data in the"
+  },
+  {
+    "timestamp": "1:48",
+    "content": "field after your game shifts. I will start with the Metal Performance Matrix."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "Metal tools provide a wide range of different metrics. These metrics give you a baseline to compare"
+  },
+  {
+    "timestamp": "2:01",
+    "content": "between different sessions and identify potential issues. For example, timing-related metrics such as"
+  },
+  {
+    "timestamp": "2:08",
+    "content": "frames per second, GPU time, and frame interval tell you the pacing of your frames and how utilized the GPU is."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "On the other hand, metrics such as layer sizes, composition mode, and Metal FX-related metrics help you make sure"
+  },
+  {
+    "timestamp": "2:26",
+    "content": "display-related settings are set up correctly. There is one place where you can take a quick glance at"
+  },
+  {
+    "timestamp": "2:32",
+    "content": "all of these metrics. The Metal Performance HUD displays performance metrics such as FPS, memory usage, and frame"
+  },
+  {
+    "timestamp": "2:41",
+    "content": "interval in an overlay on top of the game's content. It gives you a broad sense of how your game is"
+  },
+  {
+    "timestamp": "2:47",
+    "content": "performing as you play. And it has a number of customization features. For example, the configuration panel allows you to"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "customize the list of metrics to display. You can enable or disable each individual metric, or choose from a preset."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "You can learn more about each metric and the HUD in the Metal Tools documentation, monitoring your app's"
+  },
+  {
+    "timestamp": "3:11",
+    "content": "graphics performance, and understanding the Metal Performance HUD metrics. While the HUD is great for"
+  },
+  {
+    "timestamp": "3:17",
+    "content": "getting a quick read during development, it doesn't give you the ability to save metrics for long durations."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "It is easy to forget exactly where you encounter frame drops, especially when playing for minutes or hours."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "To get that level of detail, you need to collect performance choices over long periods of time."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "For testing your game at desk, you can use the Game Performance Overview template in Instruments."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "To start, choose the Game Performance Overview template in the Instruments Template Selector."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "It captures aggregated Metal Performance metrics as well as Time Profiler CPU samples."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "You can either start your game using Instruments, or attach to an already running game session on collected devices."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "You can also start your game using the Game Performance."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "Once ready, simply click the Record button."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "This is ideal for data collection while testing your game at your desk."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "Sessions that last minutes or longer."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "But here is something really powerful."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "While your game runs, the system is always recording and saving Metal Performance and Resource Usage metrics."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "Aggregated and optional per-frame metrics such as CPU, GPU, FPS, and memory are efficiently stored and saved for days."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "This means for a long game session that lasts hours and includes multiple state changes,"
+  },
+  {
+    "timestamp": "4:47",
+    "content": "you can look back in time and collect data after the game session wraps up,"
+  },
+  {
+    "timestamp": "4:52",
+    "content": "locally on both macOS and iOS devices."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "I will demonstrate how this works."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "On macOS, you can collect the data through MetalPerfChoice, a new command line tool in macOS 27."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "No extra configuration needed."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "Simply run MetalPerfChoiceCollect and pass ...last for the time duration you want, from hours to days."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "For example, this command collects the trace containing performance metrics for the last 5 hours."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "Alternatively, you can pass an explicit start and end date to collect the trace for a specific time range."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "That's how you can look back and collect traces on macOS."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "On iOS, look back collection requires a one-time device setup."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "With developer mode enabled, go to Developer Settings and enable Performance Trace."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "Select Look Back Collection and choose for how far back the trace will cover."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "As the last step, go to Control Center and add the Performance Trace button."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "Now the device is ready for trace collection."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "You can start playtests again as usual."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "After it wraps up, bring up the Control Center."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "At the tab of the Performance Trace button, the device will start collecting and processing the trace for the configured time duration."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "This might take some time, and you will receive a notification once processing is done."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "The collected traces will appear in the available trace files list."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "And from there, you can easily transfer the trace to your mac for further analysis."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Now that I have demonstrated how to collect traces, both with instruments and on iOS and macOS devices,"
+  },
+  {
+    "timestamp": "6:46",
+    "content": "it is time for the next step, analyzing them."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "On macOS, you can either print or export an overview of the matrix through Metal PerfTrace."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "Or open the traces in Instruments and explore the data visually."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "Let's check both in action."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "To take a look at the overall performance of a recorded trace,"
+  },
+  {
+    "timestamp": "7:06",
+    "content": "simply run Metal PerfTrace overview with the trace file."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "Metal PerfTrace will aggregate and print the overall performance data of the game sessions contained in the trace."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "The report is divided into two sections for each process."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "The first section contains the resource usage statistics, such as memory usage, CPU time, and disk activity."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "The second section contains Metal Performance metrics for each layer."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "For example, during this session, the average memory usage is about 2.1 GB."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "The average FPS is about 60."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "And the report also includes statistical values for metrics such as frame time and on-GPU time."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "The average memory usage is about 90.1 GB."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "This gives me a quick idea of the overall performance of the session."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "If there were multiple game sessions or metal graphics steps in the trace,"
+  },
+  {
+    "timestamp": "8:03",
+    "content": "an optional predicate can be used to print data for the exact process you want."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "Additionally, you can also pass dash dash JSON to make Metal PerfTrace output in JSON format."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "Now you get structured output that can be easily fed into scripts for regression testing,"
+  },
+  {
+    "timestamp": "8:23",
+    "content": "or AI agents to automatically charge potential performance issues."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "The data is plotted on a timeline, and the instrument automatically evaluates the values"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "so that stats that devious too much are highlighted in a different color."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "For example, in this choice, the FPS dropped for a period of time and is marked in yellow."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "The detail view shows statistical values"
+  },
+  {
+    "timestamp": "8:57",
+    "content": "min, max, average, and standard deviation for each metric."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "These stats are aggregated for the whole choice or the selected time range."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "You can select a time range, and instruments will automatically aggregate and update the stats"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "for the selected duration."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "Here, the average FPS dropped to 26 for the duration, and GPU usage is really low."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "This is where I need to dive deeper and try to reproduce the issue."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "But there is a big challenge."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "I know the frame rate drop happened at around the 12mm mark,"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "but I do not know what my game was doing at that point."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "When looking at a choice like this, there is not enough actionable context"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "to investigate further with just an average FPS."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Was the drop due to a specific area of the level?"
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Or did the graphics setting change?"
+  },
+  {
+    "timestamp": "9:54",
+    "content": "This is why context matters when trying to identify potential performance issues"
+  },
+  {
+    "timestamp": "9:59",
+    "content": "and analyze choices."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "To investigate individual problems, you need granular data"
+  },
+  {
+    "timestamp": "10:05",
+    "content": "that tells you what the game was doing at each moment."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "So next, I will introduce a new API that helps you to add context to the choices."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "State reporting is a new API that lets you describe your game's behavior and state over time."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "The domain is based on four core concepts."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "It all starts with a domain."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "Domains are finite state machines that represent specific areas of functionality."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "For example, you can define a level domain that tracks the player progress."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Each domain can be in one state at a time."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "Each state starts with a label, such as label1."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "It can also include optional stable metadata."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "This is the immutable dictionary that includes any kind of serializable info"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "about the current state, in addition to the label."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "Each state can also include voluntary metadata."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "As the LAN suggests, you use it for values that can change within a state."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "Like the health of the player."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "As the player progresses through the game,"
+  },
+  {
+    "timestamp": "11:14",
+    "content": "you can transition between states with different labels and metadata."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "For example, transition from level 1 to level 2 when the player advances to the next level."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "Putting this on a timeline, you can define multiple domains to describe the state of specific areas of the game."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "For example, a level domain that tracks level changes."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "A graphics domain that tracks current graphics settings."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "And a network domain for the network status."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "A graphics domain for the network status."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "If we go back to the previous FPS graph, now we can contextualize the choice."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "And I can immediately notice areas that need improvement."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "And focus my optimization efforts."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "The state reporting API is available for both Swift and Objective-C."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "And it is easy to adopt."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "I will show you some sample code that reports the current level of the game."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "I will show you some"
+  },
+  {
+    "timestamp": "12:17",
+    "content": "reverse DNS screen and ask a reporter for the domain."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "Reporters are instances of the state machine"
+  },
+  {
+    "timestamp": "12:24",
+    "content": "that can be used to report state transitions."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "To report a state, use report transition with a label"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "to describe the current state."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Optionally, to include additional structured info"
+  },
+  {
+    "timestamp": "12:37",
+    "content": "about the state, simply pass a dictionary"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "in the stable metadata argument."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "For Voluntile metadata, you can update values"
+  },
+  {
+    "timestamp": "12:45",
+    "content": "without transitioning to another state"
+  },
+  {
+    "timestamp": "12:47",
+    "content": "by calling Report Volatile Meladata Update"
+  },
+  {
+    "timestamp": "12:50",
+    "content": "with a dictionary representing the info."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "State reporting is also tightly integrated"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "with all of the tools I've discussed."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Melo Performance HUD, Melo Peripheries, and Instruments."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "In the Melo Performance HUD,"
+  },
+  {
+    "timestamp": "13:07",
+    "content": "the list of state domains appears"
+  },
+  {
+    "timestamp": "13:09",
+    "content": "in the Matrix Configuration tab."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "Enable them, and the overlay will display the label,"
+  },
+  {
+    "timestamp": "13:14",
+    "content": "stable, and Voluntile Meladata."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "This is the most direct way"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "of checking your state reporting adoption."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "For example, here I'm reporting the label state"
+  },
+  {
+    "timestamp": "13:26",
+    "content": "with a biome and ID as the stable Meladata,"
+  },
+  {
+    "timestamp": "13:30",
+    "content": "and player position as the Voluntile Meladata."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "The Voluntile player position is reported once per second,"
+  },
+  {
+    "timestamp": "13:37",
+    "content": "and the overlay allows me to check the position"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "as the player moves around."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "In Melo Peripheries,"
+  },
+  {
+    "timestamp": "13:44",
+    "content": "when printing the overview for traces containing state transitions,"
+  },
+  {
+    "timestamp": "13:48",
+    "content": "the report will contain a list of domains,"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "the number of transitions,"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "and the last long state."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "To know the full state transition details,"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "simply pass"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "dash dash include state transitions."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "These will print the full list of states"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "with start and end timestamps."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "Melo Peripheries can also automatically aggregate"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "and report matrix as a function of these states."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "You can ask Melo Peripheries to aggregate"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "for all domains and state transitions,"
+  },
+  {
+    "timestamp": "14:20",
+    "content": "or aggregate for all state transitions"
+  },
+  {
+    "timestamp": "14:23",
+    "content": "for a specific domain,"
+  },
+  {
+    "timestamp": "14:24",
+    "content": "or aggregate for a specific state label"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "within a domain."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "to see the average FPS"
+  },
+  {
+    "timestamp": "14:33",
+    "content": "when the graphics is set to high,"
+  },
+  {
+    "timestamp": "14:35",
+    "content": "I can simply ask Melo Peripheries"
+  },
+  {
+    "timestamp": "14:37",
+    "content": "to aggregate the high state label"
+  },
+  {
+    "timestamp": "14:39",
+    "content": "for the graphics domain."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "The report will show detailed state info,"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "how long it was active,"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "and a list of overlapping states"
+  },
+  {
+    "timestamp": "14:48",
+    "content": "in other domains."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "14:52",
+    "content": "here the average FPS"
+  },
+  {
+    "timestamp": "14:53",
+    "content": "is only about 24"
+  },
+  {
+    "timestamp": "14:55",
+    "content": "when the graphics is set to high."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "To get a more visual look"
+  },
+  {
+    "timestamp": "15:00",
+    "content": "at the state transitions over time,"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "you can open the choice in instruments."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "When opening a choice with state transitions,"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "instruments will create a track"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "for each domain"
+  },
+  {
+    "timestamp": "15:11",
+    "content": "as part of the points of interest instrument."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "Each track graphs state transitions"
+  },
+  {
+    "timestamp": "15:17",
+    "content": "and volumptile updates,"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "making it easy to understand the context."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "You can select individual states"
+  },
+  {
+    "timestamp": "15:25",
+    "content": "and inspect the details of the state"
+  },
+  {
+    "timestamp": "15:27",
+    "content": "in the sidebar,"
+  },
+  {
+    "timestamp": "15:29",
+    "content": "such as the stable"
+  },
+  {
+    "timestamp": "15:30",
+    "content": "and volumptile metadata."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "Combined with the"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "meta performance matrix,"
+  },
+  {
+    "timestamp": "15:35",
+    "content": "I confirmed that the frame rate"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "started dropping"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "as graphic setting changed to high."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "That's where I'm going to focus"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "my investigation next."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "Once there's enough context"
+  },
+  {
+    "timestamp": "15:45",
+    "content": "to reproduce the issue,"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "the next step is taking a deeper look"
+  },
+  {
+    "timestamp": "15:49",
+    "content": "at specific points of the game."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "You can capture detailed CPU"
+  },
+  {
+    "timestamp": "15:54",
+    "content": "and GPU scheduling data"
+  },
+  {
+    "timestamp": "15:55",
+    "content": "by using the"
+  },
+  {
+    "timestamp": "15:57",
+    "content": "Mellow System Choice template"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "in Instruments."
+  },
+  {
+    "timestamp": "16:00",
+    "content": "You can also capture"
+  },
+  {
+    "timestamp": "16:01",
+    "content": "and profile frames"
+  },
+  {
+    "timestamp": "16:02",
+    "content": "by using the Mellow debugger"
+  },
+  {
+    "timestamp": "16:04",
+    "content": "in Xcode."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "To learn more about those tools,"
+  },
+  {
+    "timestamp": "16:09",
+    "content": "check Mellow Developer Tools"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "! Documentation"
+  },
+  {
+    "timestamp": "16:11",
+    "content": "and discover new Mellow profiling tools"
+  },
+  {
+    "timestamp": "16:14",
+    "content": "for M3 and A17 Pro."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "There are a few best practices"
+  },
+  {
+    "timestamp": "16:19",
+    "content": "to keep in mind"
+  },
+  {
+    "timestamp": "16:20",
+    "content": "when you adopt"
+  },
+  {
+    "timestamp": "16:21",
+    "content": "state reporting in your game."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "First,"
+  },
+  {
+    "timestamp": "16:24",
+    "content": "carefully design your domains"
+  },
+  {
+    "timestamp": "16:26",
+    "content": "and states"
+  },
+  {
+    "timestamp": "16:26",
+    "content": "before instrumenting."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "Each domain"
+  },
+  {
+    "timestamp": "16:29",
+    "content": "should be conceptually orthogonal"
+  },
+  {
+    "timestamp": "16:30",
+    "content": "to the others."
+  },
+  {
+    "timestamp": "16:32",
+    "content": "Do not try to represent"
+  },
+  {
+    "timestamp": "16:33",
+    "content": "too many dimensions"
+  },
+  {
+    "timestamp": "16:34",
+    "content": "in a single domain."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "That makes it hard"
+  },
+  {
+    "timestamp": "16:37",
+    "content": "to keep track of."
+  },
+  {
+    "timestamp": "16:39",
+    "content": "Second,"
+  },
+  {
+    "timestamp": "16:39",
+    "content": "don't have too many"
+  },
+  {
+    "timestamp": "16:40",
+    "content": "state transitions."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "State reporting"
+  },
+  {
+    "timestamp": "16:43",
+    "content": "is designed to provide"
+  },
+  {
+    "timestamp": "16:44",
+    "content": "extra context"
+  },
+  {
+    "timestamp": "16:45",
+    "content": "for analyzing performance"
+  },
+  {
+    "timestamp": "16:46",
+    "content": "over long periods of time."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "It is now designed"
+  },
+  {
+    "timestamp": "16:50",
+    "content": "for high-frequency state changes."
+  },
+  {
+    "timestamp": "16:53",
+    "content": "Try to limit transitions"
+  },
+  {
+    "timestamp": "16:54",
+    "content": "to the cadence"
+  },
+  {
+    "timestamp": "16:55",
+    "content": "of user actions"
+  },
+  {
+    "timestamp": "16:56",
+    "content": "or slower."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "The system will throttle"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "if the transition rate"
+  },
+  {
+    "timestamp": "17:00",
+    "content": "is too high"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "and you will lose"
+  },
+  {
+    "timestamp": "17:02",
+    "content": "important information"
+  },
+  {
+    "timestamp": "17:03",
+    "content": "until your rate"
+  },
+  {
+    "timestamp": "17:04",
+    "content": "is back under control."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "And lastly,"
+  },
+  {
+    "timestamp": "17:07",
+    "content": "confirm the correctness"
+  },
+  {
+    "timestamp": "17:09",
+    "content": "of your states"
+  },
+  {
+    "timestamp": "17:09",
+    "content": "using tools"
+  },
+  {
+    "timestamp": "17:10",
+    "content": "such as the Mellow performance HUD"
+  },
+  {
+    "timestamp": "17:12",
+    "content": "and instruments."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "Check that transitions"
+  },
+  {
+    "timestamp": "17:15",
+    "content": "make sense"
+  },
+  {
+    "timestamp": "17:16",
+    "content": "and occur"
+  },
+  {
+    "timestamp": "17:17",
+    "content": "when you expect."
+  },
+  {
+    "timestamp": "17:18",
+    "content": "It is easy"
+  },
+  {
+    "timestamp": "17:19",
+    "content": "to miss edge cases"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "that makes the data run"
+  },
+  {
+    "timestamp": "17:21",
+    "content": "and hard to understand."
+  },
+  {
+    "timestamp": "17:24",
+    "content": "Looking back,"
+  },
+  {
+    "timestamp": "17:25",
+    "content": "you now have"
+  },
+  {
+    "timestamp": "17:26",
+    "content": "the full picture"
+  },
+  {
+    "timestamp": "17:27",
+    "content": "of collecting,"
+  },
+  {
+    "timestamp": "17:28",
+    "content": "analyzing,"
+  },
+  {
+    "timestamp": "17:29",
+    "content": "and contextualizing"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "performance data"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "for long game sessions"
+  },
+  {
+    "timestamp": "17:32",
+    "content": "before shipping the game."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "But these tools"
+  },
+  {
+    "timestamp": "17:35",
+    "content": "don't stop at launch."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "Once the game lands"
+  },
+  {
+    "timestamp": "17:38",
+    "content": "on player devices,"
+  },
+  {
+    "timestamp": "17:40",
+    "content": "it is important"
+  },
+  {
+    "timestamp": "17:41",
+    "content": "to keep monitoring"
+  },
+  {
+    "timestamp": "17:42",
+    "content": "the performance"
+  },
+  {
+    "timestamp": "17:42",
+    "content": "and catch unexpected"
+  },
+  {
+    "timestamp": "17:44",
+    "content": "performance jobs"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "that impacts player experience."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "17:48",
+    "content": "I will cover"
+  },
+  {
+    "timestamp": "17:49",
+    "content": "how you can collect"
+  },
+  {
+    "timestamp": "17:50",
+    "content": "key Mellow performance metrics"
+  },
+  {
+    "timestamp": "17:52",
+    "content": "after the game is released."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "Matrikit is a framework"
+  },
+  {
+    "timestamp": "17:56",
+    "content": "that provides"
+  },
+  {
+    "timestamp": "17:57",
+    "content": "two types of data,"
+  },
+  {
+    "timestamp": "17:58",
+    "content": "matrix and diagnostics."
+  },
+  {
+    "timestamp": "18:00",
+    "content": "It gives your game"
+  },
+  {
+    "timestamp": "18:01",
+    "content": "direct in-process access"
+  },
+  {
+    "timestamp": "18:03",
+    "content": "to the power"
+  },
+  {
+    "timestamp": "18:04",
+    "content": "and performance data"
+  },
+  {
+    "timestamp": "18:05",
+    "content": "in the form of reports."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "As players play your game,"
+  },
+  {
+    "timestamp": "18:10",
+    "content": "Matrikit continuously"
+  },
+  {
+    "timestamp": "18:11",
+    "content": "collects data"
+  },
+  {
+    "timestamp": "18:12",
+    "content": "in the background"
+  },
+  {
+    "timestamp": "18:13",
+    "content": "and delivers a daily report"
+  },
+  {
+    "timestamp": "18:15",
+    "content": "to your game."
+  },
+  {
+    "timestamp": "18:17",
+    "content": "The report includes metrics"
+  },
+  {
+    "timestamp": "18:19",
+    "content": "that measures"
+  },
+  {
+    "timestamp": "18:19",
+    "content": "the smoothness of your game"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "and how hard"
+  },
+  {
+    "timestamp": "18:23",
+    "content": "it's using the device resources."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "In macOS and iOS 27,"
+  },
+  {
+    "timestamp": "18:28",
+    "content": "Matrikit exposes"
+  },
+  {
+    "timestamp": "18:29",
+    "content": "metal frame rate information"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "along with a ton"
+  },
+  {
+    "timestamp": "18:32",
+    "content": "of other interesting"
+  },
+  {
+    "timestamp": "18:33",
+    "content": "performance and power metrics."
+  },
+  {
+    "timestamp": "18:36",
+    "content": "It also provides"
+  },
+  {
+    "timestamp": "18:37",
+    "content": "metal frame rate"
+  },
+  {
+    "timestamp": "18:38",
+    "content": "as a function"
+  },
+  {
+    "timestamp": "18:39",
+    "content": "of your state reporting states."
+  },
+  {
+    "timestamp": "18:41",
+    "content": "The frame rate"
+  },
+  {
+    "timestamp": "18:42",
+    "content": "will be aggregated"
+  },
+  {
+    "timestamp": "18:43",
+    "content": "and grouped by state"
+  },
+  {
+    "timestamp": "18:44",
+    "content": "in your metric reports."
+  },
+  {
+    "timestamp": "18:47",
+    "content": "In this sample report,"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "Matrikit reports"
+  },
+  {
+    "timestamp": "18:50",
+    "content": "the overall average frame rate"
+  },
+  {
+    "timestamp": "18:52",
+    "content": "along with time"
+  },
+  {
+    "timestamp": "18:53",
+    "content": "and number of frames."
+  },
+  {
+    "timestamp": "18:55",
+    "content": "It also breaks down"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "the frame rate information"
+  },
+  {
+    "timestamp": "18:58",
+    "content": "by the states"
+  },
+  {
+    "timestamp": "18:59",
+    "content": "in the level domain."
+  },
+  {
+    "timestamp": "19:01",
+    "content": "These metrics"
+  },
+  {
+    "timestamp": "19:01",
+    "content": "and many more"
+  },
+  {
+    "timestamp": "19:02",
+    "content": "will be delivered"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "to your game process"
+  },
+  {
+    "timestamp": "19:04",
+    "content": "where you can do"
+  },
+  {
+    "timestamp": "19:05",
+    "content": "local analysis"
+  },
+  {
+    "timestamp": "19:06",
+    "content": "and also package up"
+  },
+  {
+    "timestamp": "19:08",
+    "content": "the data"
+  },
+  {
+    "timestamp": "19:09",
+    "content": "for off-device processing"
+  },
+  {
+    "timestamp": "19:10",
+    "content": "and aggregation."
+  },
+  {
+    "timestamp": "19:13",
+    "content": "This allows you"
+  },
+  {
+    "timestamp": "19:14",
+    "content": "to monitor performance"
+  },
+  {
+    "timestamp": "19:15",
+    "content": "of your game"
+  },
+  {
+    "timestamp": "19:16",
+    "content": "in the field"
+  },
+  {
+    "timestamp": "19:16",
+    "content": "and identify potential issues"
+  },
+  {
+    "timestamp": "19:18",
+    "content": "that you can investigate"
+  },
+  {
+    "timestamp": "19:20",
+    "content": "and fix."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "In addition to metrics,"
+  },
+  {
+    "timestamp": "19:24",
+    "content": "Matrikit also provides"
+  },
+  {
+    "timestamp": "19:25",
+    "content": "diagnostics"
+  },
+  {
+    "timestamp": "19:26",
+    "content": "that help you identify"
+  },
+  {
+    "timestamp": "19:27",
+    "content": "which code paths"
+  },
+  {
+    "timestamp": "19:28",
+    "content": "cause the performance problem,"
+  },
+  {
+    "timestamp": "19:30",
+    "content": "such as memory exceptions."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "when your game"
+  },
+  {
+    "timestamp": "19:34",
+    "content": "is terminated"
+  },
+  {
+    "timestamp": "19:34",
+    "content": "for exceeding"
+  },
+  {
+    "timestamp": "19:35",
+    "content": "its memory limit,"
+  },
+  {
+    "timestamp": "19:37",
+    "content": "you get more insight"
+  },
+  {
+    "timestamp": "19:38",
+    "content": "on what happened."
+  },
+  {
+    "timestamp": "19:40",
+    "content": "To recap,"
+  },
+  {
+    "timestamp": "19:41",
+    "content": "in iOS and macOS 27,"
+  },
+  {
+    "timestamp": "19:44",
+    "content": "mental performance metrics"
+  },
+  {
+    "timestamp": "19:45",
+    "content": "are always being recorded"
+  },
+  {
+    "timestamp": "19:47",
+    "content": "by the system."
+  },
+  {
+    "timestamp": "19:49",
+    "content": "I demonstrated"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "how to look back"
+  },
+  {
+    "timestamp": "19:50",
+    "content": "and collect performance metrics"
+  },
+  {
+    "timestamp": "19:52",
+    "content": "spanning hours"
+  },
+  {
+    "timestamp": "19:53",
+    "content": "and days"
+  },
+  {
+    "timestamp": "19:54",
+    "content": "and how to use"
+  },
+  {
+    "timestamp": "19:55",
+    "content": "mental proof choice"
+  },
+  {
+    "timestamp": "19:56",
+    "content": "and instruments"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "to analyze those choices."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "I also showed"
+  },
+  {
+    "timestamp": "20:01",
+    "content": "a new state reporting API"
+  },
+  {
+    "timestamp": "20:02",
+    "content": "that can help you"
+  },
+  {
+    "timestamp": "20:03",
+    "content": "add context"
+  },
+  {
+    "timestamp": "20:04",
+    "content": "to the choices."
+  },
+  {
+    "timestamp": "20:06",
+    "content": "Post-shipping,"
+  },
+  {
+    "timestamp": "20:08",
+    "content": "Matrikit delivers metrics"
+  },
+  {
+    "timestamp": "20:09",
+    "content": "and diagnostics"
+  },
+  {
+    "timestamp": "20:10",
+    "content": "from player devices."
+  },
+  {
+    "timestamp": "20:12",
+    "content": "To get started,"
+  },
+  {
+    "timestamp": "20:14",
+    "content": "kick out state reporting."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "Design the domains"
+  },
+  {
+    "timestamp": "20:17",
+    "content": "that matter most"
+  },
+  {
+    "timestamp": "20:18",
+    "content": "in your game,"
+  },
+  {
+    "timestamp": "20:19",
+    "content": "levels,"
+  },
+  {
+    "timestamp": "20:20",
+    "content": "graphics,"
+  },
+  {
+    "timestamp": "20:21",
+    "content": "network states,"
+  },
+  {
+    "timestamp": "20:22",
+    "content": "and start reporting them."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "Play test the game,"
+  },
+  {
+    "timestamp": "20:25",
+    "content": "collect long game session choices,"
+  },
+  {
+    "timestamp": "20:27",
+    "content": "and make sure"
+  },
+  {
+    "timestamp": "20:28",
+    "content": "there's a smooth"
+  },
+  {
+    "timestamp": "20:29",
+    "content": "player experience"
+  },
+  {
+    "timestamp": "20:30",
+    "content": "on supported devices."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "Also, remember"
+  },
+  {
+    "timestamp": "20:33",
+    "content": "to check out Matrikit"
+  },
+  {
+    "timestamp": "20:35",
+    "content": "and collect daily metric reports"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "from player devices."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "To learn more"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "about the variable data"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "and how to integrate Matrikit,"
+  },
+  {
+    "timestamp": "20:43",
+    "content": "please check out"
+  },
+  {
+    "timestamp": "20:44",
+    "content": "Meet the new Matrikit."
+  },
+  {
+    "timestamp": "20:46",
+    "content": "Try the new tools"
+  },
+  {
+    "timestamp": "20:47",
+    "content": "and workflows,"
+  },
+  {
+    "timestamp": "20:49",
+    "content": "and I cannot wait"
+  },
+  {
+    "timestamp": "20:50",
+    "content": "to play your game"
+  },
+  {
+    "timestamp": "20:50",
+    "content": "on Apple platforms."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "Thank you for watching."
+  },
+  {
+    "timestamp": "20:54",
+    "content": "Thank you,"
+  }
+]

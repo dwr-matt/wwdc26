@@ -1,0 +1,638 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Connor from the Computational Music team, and I'm excited to introduce you to"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "a framework called Music Understanding."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "It gives you access to on-device musical intelligence across all Apple platforms."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "It handles all the signal processing and model inference for you, so you don't need any"
+  },
+  {
+    "timestamp": "0:29",
+    "content": "expertise in signal processing or machine learning to use it."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "And because it runs entirely on-device, the audio you analyze stays private and works offline."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "At Apple, the Final Cut Pro team used the Music Understanding framework to power two features"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "of their app."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "In the Beat Detection feature, Final Cut Pro analyzes a song for its rhythm and structure"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "to reveal its beat grid."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "This helps editors visualize and align their edits to song parts, bars, and beats."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "And in Final Cut Pro for iPad, the Montage feature analyzes for rhythm, pace, and structure to"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "automatically synchronize clips to the music."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "I'll start by going over what the framework can do."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "Then, I'll follow that up by explaining how you can use the framework."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "Finally, I'll go through the API and show how it was used to build a sample app for understanding"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "music."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "The framework provides analysis around six main areas."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "Key, rhythm, structure, pace, instrument activity, and loudness."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "Rhythm is the pulse of a song driven by individual beats."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "These beats build into bars."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "The number of beats in one minute is called beats per minute, or BPM."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "Bars form phrases, which you can think of as musical sentences."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "Phrases combine into segments, creating a more complete musical statement."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "And those segments ultimately build the sections."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "You can think of a section as a chorus, verse, intro, or bridge."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "During a song, instruments such as a drum, bass, or vocals may be playing at different times"
+  },
+  {
+    "timestamp": "2:41",
+    "content": "and at different intensities."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "These instruments play around a common set of notes called the key."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "While the song may have a consistent pulse, or BPM, different parts of the song may feel"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "slower or faster."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "This is called pace."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "Over time, the song may sound louder at some points than others."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "These are the building blocks of the music understanding framework."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "And by integrating it in your app, you unlock a whole new level of possibilities."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Next, I'll talk about how to use the framework."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "At a high level, apps interact with a music understanding session, initializing with either an AV asset or a custom audio provider."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "To start analysis, clients call analyze and await results."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "By default, the framework analyzes for all analysis types."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "For the highest performance, you can specify which analysis types you are interested in to avoid unnecessary computations."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "To explore the framework more deeply, I'll review a sample app called Music Understanding Lab, available on developer.apple.com."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Let me show you how Music Understanding Lab works."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "First, I'll select a song on the device."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "The app uses the music understanding framework to analyze the audio, turning it into a visual experience with a dedicated tile for each result."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "When I hit play, notice the rhythm and structure tiles update as the song plays."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "The playhead ties the experience together, letting you follow along with the music."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "I'll start by talking about how the Select Song button is implemented."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Using the SwiftUI file importer, I'll select a file to get its URL."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "Then, I'll use that URL to create an AVURL asset."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Be sure to set Prefer Precise Duration and Timing key to True to ensure the most accurate results."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "Next, I'll create the session from the asset and call analyze and await the return of the session results."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "Inside the session result struct, every feature Music Understanding analyzes gets its own results field."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "These are all optionals."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "When you use the general analyze API, all results will be available."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "However, if you use the targeted analyze for API, the framework will only return the results you asked for, and the rest will be nil."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "Throughout the Music Understanding framework, there are two standard types used to associate time with a value."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "A timed value associates a value with a CM time."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "Similar to time value, a ranged value associates a CM time range with a value."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "With these time-based types in mind, I'll discuss the features Music Understanding analyzes by showing how they are used in the Music Understanding Lab UI."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "First, I'm going to start with the key tile."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "In this song, the musical key is D-flat major."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "For key analysis, the Music Understanding framework returns a key result struct."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "The result contains an array of ranges mapping a key signature to a specific time range using a ranged value."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "A key signature contains a tonic and a mode."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "A tonic can be any of the standard chromatic pitches."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "It represents the root note, like C or G, around which the song is built."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "And the mode, which is either major or minor."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "Next to key is the rhythm tile."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "The tile displays BPM on the left and indicators on the right that light up as each beat plays."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "When you analyze for rhythm, you get back a rhythm result."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "In this struct, Music Understanding gives you the timestamps for every beat and bar as a raise of CM time."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "The framework also provides the overall global tempo with beats per minute."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "Notice, BPM is optional."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "That's because if the framework hasn't processed enough audio to find at least two beats, the BPM will be set to nil."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Now, I'm going to talk about the structure tile."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "In the tile, there are three rows of rectangles that indicate a song's structural hierarchy."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "Each rectangle is a time range in the song."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Music Understanding supports three levels of structure."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "Sections, segments, and phrases."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "The top row represents sections of a song."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "Each block shows the time range of a section."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "Each section is made up of one or more segments, which appear below the section rectangles."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "And each segment is made up of phrases."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "During playback, the current section, segment, and phrase appear highlighted."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "When you request structure analysis, the framework returns structure result."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "It has three properties for sections, segments, and phrases."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "For each of these, you get an array of CM time ranges."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "The next tile is pace."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "It tells you how fast the music feels to the listener."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Parts of a song that feel faster or more energetic will have a higher value compared to slower or less energetic parts."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "In this UI, taller bars represent higher energy while shorter bars represent lower energy."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "When you request pace analysis, you get back a pace result."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "The struct has a single property containing an array of ranged values."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "Next, I'll talk about the instrument activity tiles."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "Music Understanding Lab displays several tiles that visualize instrument activity,"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "either as time ranges where color-coded bars indicate the active instruments present,"
+  },
+  {
+    "timestamp": "9:55",
+    "content": "or as a detailed activity graph."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "The graph plots values between 0 and 1, representing the strength of each instrument."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "The closer the value is to 1, the louder the instrument is in the mix."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "When you request instrument activity, the framework returns an instrument activity result."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "It has two properties, one for ranges and one for activity."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "The ranges API provides a dictionary mapping each instrument to an array of CM time ranges."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "This is great for situations where you just want to know if an instrument is present or not."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "But sometimes you need more detail, and activity provides that."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Activity maps an instrument to a time value of floats."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "The activity results express how intensely an instrument is playing over time,"
+  },
+  {
+    "timestamp": "10:57",
+    "content": "and is a great source to drive audio-reactive animations."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "The loudness tile appears below instrument activity."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "The framework provides measurements in loudness units full scale, or LOOSE,"
+  },
+  {
+    "timestamp": "11:13",
+    "content": "which is the industry standard for modeling how the human ear perceives volume."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "At the top of the tile is a single integrated loudness value,"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "which gives the average loudness for the whole song."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Below that is a graph of momentary loudness, showing how loudness varies over time."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "The framework also provides a peak value, which describes the absolute highest audio volume in decibels."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "When you request loudness analysis, the framework returns a loudness result struct."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "Music understanding supports integrated, momentary, and short-term loudness."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "Integrated provides a single value that represents the overall loudness of the audio."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "Momentary and short-term value that provides time-stamped values every 100 milliseconds."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "Momentary values are calculated over a window of 400 milliseconds."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "They are useful to detect short, sudden spikes in loudness."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "Short-term values are calculated over a window of 3 seconds,"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "which provides a smoother view of the loudness trend over time."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "The peak value tells you exactly where the track hits its maximum level, and is measured in decibels."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "Music understanding session also provides a streaming API for loudness."
+  },
+  {
+    "timestamp": "12:45",
+    "content": "Values are delivered via an ASIC sequence for every 100 milliseconds of audio analyzed by the framework."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "Here's an example of how it can be used."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "I'll initialize the session as I did previously, but this time I'll set up two tasks."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "One, to consume loudness results as they are delivered, and another, to begin the analysis."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "Now, I'll talk about the audio provider in this example."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "An audio provider conforms to ASIC sequence and yields AV read-only audio PCM buffer objects."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "When the audio provider has sent all audio buffers, it must send a final nil to signal completion."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "I'd like to focus now on the two icons at the top of Music Understanding Lab."
+  },
+  {
+    "timestamp": "13:43",
+    "content": "At the far right, there is a share button."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "When you tap it, a JSON file is exported with all analysis data."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "All Music Understanding results are codable."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "To encode to JSON, just create a JSON encoder and encode the session results."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "A button with a filmstrip icon appears next to the export button."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "When tapped, it opens the video tile."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "The video tile uses structure and pace to create a video sync to the music."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "I'll talk about how it works."
+  },
+  {
+    "timestamp": "14:25",
+    "content": "The video tile displays a series of video clips that match the feeling of the music."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "The algorithm starts by identifying the song's section time ranges."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "Then, it uses the pace of each section to determine how many clips to display in that time range."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "Since pace is an event per minute rate, it can be divided by 60 seconds to determine the time per clip."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "This produces clips that always begin at the start of each section, and the clips within a section match the energy of the song."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "I then use this timing information to construct a video sync to the music."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "The video clips are re-timed to match the target clip duration, with longer, slower clips during the less energetic parts, and shorter, faster clips during the more energetic parts."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "This overview gives you a sense of how these APIs work together in practice."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "With these basics covered, you are ready to dive in."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "With Music Understanding, you can sync visuals to the beat, loudness, or pace of a song to build powerful video editing features."
+  },
+  {
+    "timestamp": "15:48",
+    "content": "Organize music catalogs by tempo or key to drive a DJ app."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "Or, pre-compute and bundle analysis data to animate your game to music."
+  },
+  {
+    "timestamp": "15:59",
+    "content": "Check out the Music Understanding Framework documentation on developer.apple.com and download Music Understanding Lab to help kickstart development of your own applications."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "This technology was built to solve real challenges here at Apple."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "The ideas were there, but the tools to build them were not."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "These tools are now in your hands."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "Make something awesome."
+  },
+  {
+    "timestamp": "16:30",
+    "content": "Make something awesome."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "Thanks for watching."
+  }
+]

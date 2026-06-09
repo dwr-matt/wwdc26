@@ -1,0 +1,342 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Tim, a Safari engineer. Today, I'm going to take you through a new way to use a select"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "element that makes it completely customizable, while still reusing the power of semantic HTML."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "As a web developer, you've probably wrestled with dropdowns. Going beyond the default select element"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "meant using heavy JavaScript libraries or lots of div elements. Accessibility can also get tricky to"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "handle. Now, there's an easier way, all using just HTML and CSS. Customizable select. Starting in"
+  },
+  {
+    "timestamp": "0:39",
+    "content": "Safari 27 and Chrome 135, you can use a pre-existing select element to seamlessly integrate your"
+  },
+  {
+    "timestamp": "0:46",
+    "content": "dropdowns into your website. To see how it works, I'm going to implement customizable selects on a"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "website I'm building for a client. I've been working with a photographer to build their portfolio so"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "they can showcase and sell their photos. My client wants some sorting and filtering options, for which"
+  },
+  {
+    "timestamp": "1:05",
+    "content": "I'll use the select element. And yes, my client is also named Tim. As a reminder, this is the HTML"
+  },
+  {
+    "timestamp": "1:13",
+    "content": "markup for the select element with its label. The select element is a powerful tool giving us basic"
+  },
+  {
+    "timestamp": "1:20",
+    "content": "accessibility right out of the box. I'm able to use the keyboard to navigate option elements,"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "and it works well with screen readers, all without needing any external libraries. I'll use that to"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "build the sort by button on my page. This is a native select, which by the way are called pulldown"
+  },
+  {
+    "timestamp": "1:38",
+    "content": "buttons on Apple platforms. What's great about the native select is it matches every other control on the"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "platform, giving users a familiar way to navigate them. But when I place my form control on my photo"
+  },
+  {
+    "timestamp": "1:52",
+    "content": "site, it feels a little out of place. It doesn't quite blend into the style of my site the way I want."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "This is where customizable select comes in. I'll take you through the different steps of customization"
+  },
+  {
+    "timestamp": "2:05",
+    "content": "so that I get a select that better matches my design. I'll start by styling the select buttons on my site."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "The button is a part of the select element that I can click to show the select menu. Then I'll use"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "customizable select to style that menu, which displays my options. Finally, I'll show you how you can break"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "away from the classic select element layouts with content that goes beyond just text. Let's go back"
+  },
+  {
+    "timestamp": "2:31",
+    "content": "to our first item. I'm going to style the most basic part of the control, the button. Starting from scratch,"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "I get the native control. But now I can use a new customizable select appearance to get a smaller set"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "of styles to change to match my site's design. The first step is to apply appearance-based select."
+  },
+  {
+    "timestamp": "2:52",
+    "content": "Since I previously set up font family gill sands on the body element, the body font is now inherited by"
+  },
+  {
+    "timestamp": "2:57",
+    "content": "the select button, matching the label beside it. That's already bringing me one step closer to matching the"
+  },
+  {
+    "timestamp": "3:04",
+    "content": "design of my site. As a next step, I'll adjust the background, border, and padding. I like how well it"
+  },
+  {
+    "timestamp": "3:11",
+    "content": "matches my site. One last detail I want to change is the arrow. With customizable select, I can use a new"
+  },
+  {
+    "timestamp": "3:19",
+    "content": "selector called picker icon to change it. I'll use the picker icon selector to set the content property to a"
+  },
+  {
+    "timestamp": "3:25",
+    "content": "new glyph and to size it correctly with a width. Using the open pseudo class, I can also set different colors on the"
+  },
+  {
+    "timestamp": "3:32",
+    "content": "button when the drop down menu is open. I've also updated the arrow to match the text color for the open state."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "Here's my select matching the rest of my site. And that only took me a few lines of CSS to write."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "Now I want to style the drop down itself and customizable select lets me do this. I'll show you how."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Like picker icon, the drop down menu also comes with styleable parts."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "The menu itself can be styled with picker select on the select element and the check with check mark on"
+  },
+  {
+    "timestamp": "4:03",
+    "content": "the option element. Now let's add some CSS. To start with a clean slate, I need to first opt out of the"
+  },
+  {
+    "timestamp": "4:11",
+    "content": "native menu. I can do that by using the new picker select selector and by setting appearance base selects."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Now I'm ready to go. First, I'm going to arrange my spacing with some padding and margin."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "Then let's handle the borders and box shadow on my drop down. Perfect. Now I want to put some emphasis"
+  },
+  {
+    "timestamp": "4:31",
+    "content": "on the selected option so it's clear to my customer what they've picked. I can set a bold font on the"
+  },
+  {
+    "timestamp": "4:37",
+    "content": "checked option and gray out the other ones. As a final step, I'll change the default check mark by"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "setting the content CSS property and the width on the check mark selector, similarly to what I did with"
+  },
+  {
+    "timestamp": "4:50",
+    "content": "picker icon. It's amazing how far I was able to go styling my sort by menu with so little code."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "How much further can I go? With customizable select, I can now go beyond the simple list of options"
+  },
+  {
+    "timestamp": "5:05",
+    "content": "displayed as text. I'll go through an example with my next feature. My client is best known for"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "photography in a handful of categories and I want to spotlight those photos. So I'll add a way to browse"
+  },
+  {
+    "timestamp": "5:18",
+    "content": "photographs by their most popular categories. I decided to create another select element using the"
+  },
+  {
+    "timestamp": "5:23",
+    "content": "previous styling. However, I want the select to have symbols to make it more visually interesting."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "With customizable select, I can put any kind of content. Images, videos, emojis, whatever I like."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "In this case, I've chosen to use an SVG and a label inside each option element so the customer can explore"
+  },
+  {
+    "timestamp": "5:44",
+    "content": "the categories more easily. I left the image out text empty because I don't want the flowers label to be"
+  },
+  {
+    "timestamp": "5:51",
+    "content": "called out twice on screen readers. Since I removed the check mark, I want to highlight the selected"
+  },
+  {
+    "timestamp": "5:57",
+    "content": "option more prominently. I'll use the checked selector to change the colors. This works, but my layout"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "doesn't really fit my window. The symbols make the drop down very long. I need to try something else."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "With customizable select, it's simpler than ever to bring different layouts to the select drop down"
+  },
+  {
+    "timestamp": "6:16",
+    "content": "while reusing the power of other CSS features in my drop down. Here I've gone with a grid layout."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "Grid template defines the number of rows and columns, while gap defines the spacing between the grid cells."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "That puts my drop down in a nice grid. I think this looks much more organized."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "I've finished my drop down, but I realize I now want to have the SVG of the selected option inside the button itself."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "My symbols were already in the HTML markup, so why aren't they in the button?"
+  },
+  {
+    "timestamp": "6:48",
+    "content": "I need to do one more thing for this to happen. Select comes with a button. That's what people click to open"
+  },
+  {
+    "timestamp": "6:54",
+    "content": "the drop down. But that button only displays text. My image is rich content. I'm going to use another tool"
+  },
+  {
+    "timestamp": "7:02",
+    "content": "that I get from customizable select to solve that problem. The selected content element. Customizable"
+  },
+  {
+    "timestamp": "7:09",
+    "content": "select now lets me replace the built-in button by placing a button element as the first child of the"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "select element. Since my button is currently empty, I only see the arrow. Putting a button in a select"
+  },
+  {
+    "timestamp": "7:21",
+    "content": "element was previously not allowed in HTML. Now it lets me put custom content inside the button,"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "like labels or like the new selected content element. What's special about selected content is that it"
+  },
+  {
+    "timestamp": "7:34",
+    "content": "shows the rich content that's part of my selected option, like my SVG that's next to the everything"
+  },
+  {
+    "timestamp": "7:39",
+    "content": "label. I think Tim is really going to like how this menu looks and works. But I'm not quite done yet."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "I need to check how this looks in browsers that don't support customizable select. Here's where"
+  },
+  {
+    "timestamp": "7:53",
+    "content": "progressive enhancement kicks in. It's still usable in browsers that don't support the feature."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "Customers get the native pop-up. This is one of the things that are great about reusing the select"
+  },
+  {
+    "timestamp": "8:05",
+    "content": "element. And because it is a semantic element, I still get those built-in accessibility features."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "This was exciting. My select elements blended nicely with the look and feel of the site. I even added a"
+  },
+  {
+    "timestamp": "8:18",
+    "content": "fun radial color picker, also built entirely with customizable select. Now my client has a beautiful"
+  },
+  {
+    "timestamp": "8:26",
+    "content": "storeable home for their photographs. I also got to take advantage of Safari's support for grid"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "lanes to lay out my images. To learn more, check out Learn CSS Grid Lanes where Brandon shows you how this"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "new layout method works. These features are coming to Safari 27. If you want to try them now, you can"
+  },
+  {
+    "timestamp": "8:45",
+    "content": "download Safari Technology Preview or Safari Beta. Be sure to check out the demo on WebKit.org and try"
+  },
+  {
+    "timestamp": "8:52",
+    "content": "styling something simple with customizable select on your own website. Make sure to test your select with"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "browsers that don't support the technology and with assistive tools. WebKit.org has a blog post to learn"
+  },
+  {
+    "timestamp": "9:04",
+    "content": "more about the best practices to help make your interface work for everyone. Finally, get creative"
+  },
+  {
+    "timestamp": "9:11",
+    "content": "and try experimenting with different ways to implement it. Most importantly, I hope you have fun."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "I can't wait to see how you use this feature on your website. Thanks for watching!"
+  }
+]

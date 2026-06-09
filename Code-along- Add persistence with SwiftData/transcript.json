@@ -1,0 +1,958 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, I'm Matthew Turk, an engineer on the Swift data team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Today, I'd like to show you how to take an existing Swift UI app's dynamic data and connect it to a"
+  },
+  {
+    "timestamp": "0:17",
+    "content": "modern persistence layer that works across all of Apple's platforms using the power of Swift data."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "We'll start with the source code of a list-based app called Wishlist. Wishlist helps me organize"
+  },
+  {
+    "timestamp": "0:29",
+    "content": "travel plans on my phone by recording my ideas and grouping trips into seasonal collections. Feel"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "free to download the sample app from developer.apple.com to follow along. In this video,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "we'll step through the project files to identify data types and variables to use for our Swift data"
+  },
+  {
+    "timestamp": "0:48",
+    "content": "models and schemas, how those models should relate to one another in a database, and how to update our"
+  },
+  {
+    "timestamp": "0:54",
+    "content": "Swift UI views to present the new models with an eye toward performance, interoperability,"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "and extensibility for more involved use cases. Let's preview what that data flows like in action."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "Here's the Wishlist tab, with recent trips at the top and several themed lists of more trips scrolling down."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "In the Goals tab, I can see badges for various goals that I'd like to complete on those trips."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "And in the Search tab, I can filter through my trips and activities. Let's search for Coastal Trails."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "Top Result."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "This trip has five remaining activities. I already drove to Point Reyes once before and saw 11 elk there,"
+  },
+  {
+    "timestamp": "1:39",
+    "content": "so I'll check this one off."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "And back in the Wishlist tab, I'll tap the plus button to add a new trip."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "I'd like to see another Aurora sometime. I'll call the trip Northern Lights and choose a photo to go with it."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "Press Done, and that's my new trip."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "The data flow you just saw is possible because views and wishlists pull in a data source variable"
+  },
+  {
+    "timestamp": "2:10",
+    "content": "through the SwiftUI environment. The data source class manages and provides all of the pre-installed"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "trip data. All trips, goals, and search results are filtered and sorted in memory, on demand."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "For a small example, this works fine. But in practice, optimizations will be necessary to keep the"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "front-facing parts of the app lean. Additionally, Wishlist is relying on RAM while processing this data"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "and for storing it, which is not a stable place where you can save new trips or activities for later."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "If I close the app and rerun it, everything about my new trip is gone. Reset to the pre-installed content."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "But it doesn't have to be this way. This is exactly the kind of problem that SwiftData solves."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "So far, we've identified the relevant state, namely trip collections, goal statuses, and search results."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "And SwiftData can connect that state to a persistent storage medium through a model context, and that's where we'll be by the end of this video."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Our next move is to find where these data structures live in the code, and then refactor them as models with SwiftData schemas."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "That will set us up to replace the in-memory data source with a persistent model context, which will enable us to write efficient database queries to drive the views."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "Let's take a closer look at one such model, the activity type."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "To persist activities, the first step is to import SwiftData and replace this observable macro with a model macro."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "SwiftData automatically generates observable conformance for us."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Nice! On a side note, these didSetObservers on name and isComplete set the activity's date-edited value whenever either property changes."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "Suppose I have an activity for going paragliding."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "I've yet to complete it and last edited it on April 1st at 9.41 in the morning."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "Here's a timeline of events."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "Suppose that I then decide to change the activity from paragliding to swimming."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "The property observer for name fires and updates the date edited."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Later, I take a trip to the beach and check off the activity."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "The property observer for isComplete fires and updates the date edited."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Having an automatically updating date edited property is a great way to sort or filter in a list."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "However, property observers and computed properties are not always compatible,"
+  },
+  {
+    "timestamp": "4:49",
+    "content": "so I'll use a different technique to keep date edited up to date."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "But before I do that, I'll get the current project building again."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "I'll come back to this diagram."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "For now, just remove these didSet blocks"
+  },
+  {
+    "timestamp": "5:10",
+    "content": "and leave date edited as is."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "Okay, the trip class is next."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "Same deal."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "Import SwiftData"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "and swap the macros."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "Now let's inspect these build failures to get an idea of what's missing."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "This one says that creationDate has to be mutable."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "So we'll adjust the declaration to use var instead of let."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Now SwiftData can populate this property at runtime with a value loaded from the database."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "The next error says the tripCollection property and all model properties must be codable."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "This requirement exists so that SwiftData can serialize properties into database columns."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "The tripCollection stores the seasonal theme of the trip."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "It should be included in the schema and persisted."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "I'll command click to jump to its declaration."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "And I'll add that codable conformance explicitly."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "Several build failures remain."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "We'll fix these as we continue to build out the schema."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "Next, let's look at how goal tracking works in Wishlist."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "With this goal type, the change is not as straightforward as converting an observable to a model."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "Goal is declared as an enumeration."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Each goal has properties like its name, its kind, like whether it tracks activities completed or trips"
+  },
+  {
+    "timestamp": "6:37",
+    "content": "completed, and the target number of trips or activities to achieve the goal."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "The goal is to be able to build a goal."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "There are exactly 18 goals, all defined ahead of time, because an enumeration defines a closed set of values."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "That's fine for the original interface demo, but what we need for a persistent model is a class."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "A class can store properties and can be instantiated any number of times."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "To get the interface right, we'll need to rethink the design of goal,"
+  },
+  {
+    "timestamp": "7:06",
+    "content": "so that it harmonizes with the logic of how goals are processed and presented."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "At a high level, each of these goals corresponds to a badge that will be displayed in Wishlist,"
+  },
+  {
+    "timestamp": "7:18",
+    "content": "depending on whether certain criteria are met."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "To faithfully persist the statuses of these goals,"
+  },
+  {
+    "timestamp": "7:24",
+    "content": "we need some way to capture and store a minimal representation of whether a particular goal's criteria have been met."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "In SwiftData, a class is the substrate we choose to express that minimal representation."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "I'll convert goal into a class, starting with the same three properties, name, kind, and target count."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "In the original Wishlist app, the number of items completed was stored separately,"
+  },
+  {
+    "timestamp": "7:51",
+    "content": "since enumerations don't have stored properties."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "Now that we have a persistent class, let's also store the progress value in the goal itself, called completedCount."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "And a Boolean property, called isComplete."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "We'll store value of true when completedCount is greater than or equal to target."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "Because it's a stored property, it'll come in handy for separating completed goals from upcoming goals"
+  },
+  {
+    "timestamp": "8:17",
+    "content": "when we start querying in the view layer."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "Next, we have to deal with the kind property."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "Wishlist uses it to display different details based on whether the goal has to do with completing trips or completing activities."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "We can break off these finer differences into new subclasses, using SwiftData's support for model inheritance."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "Inheritance is a software design pattern that tends to pay off when you have a well-defined hierarchy of classes,"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "where each subclass represents the same idea as the superclass,"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "but with more specific manifestations of a common set of properties."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "For example, a spiral galaxy and a lenticular galaxy are subclasses of galaxy,"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "as they inherit several features that you'll find in any kind of galaxy, like stars and dust,"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "while also having categorical differences in visible shape."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "Similarly, you could have a trip goal and an activity goal, which inherits some common properties from a superclass of goal."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "I'll model the different kinds of goals with inheritance by removing the kind property from goal,"
+  },
+  {
+    "timestamp": "9:23",
+    "content": "and introducing subclasses for trip goals and activity goals."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "To learn more about when it makes sense to use model inheritance,"
+  },
+  {
+    "timestamp": "9:32",
+    "content": "check out the SwiftData Dive into Inheritance and Schema Migration session from WWDC 2025."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "We now have everything we need to start defining the relationships between all of these models."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "And wishlist, each trip is associated with a set of activities."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "This is a too many relationship."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "Each persistent trip model has potentially many persistent activity models."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "Several parts of wishlist have been approximating too many relationships"
+  },
+  {
+    "timestamp": "10:03",
+    "content": "by using dictionaries and functions that loop over arrays."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "For example, there's one that maps from trips to activities based on activity IDs."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "In a moment, I'll convert these dictionaries to proper too many relationships between types,"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "where each trip can have zero or more activities."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Declaring an array is the idiomatic way to tell SwiftData that one kind of model"
+  },
+  {
+    "timestamp": "10:28",
+    "content": "may reference another kind of model from the model context as needed."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "In trip, I'll declare an array of activities."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "Here, I'm also adding the relationship macro to explicitly mark the activities array of trip"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "as a relationship so that deleting a trip from the database also clears out the activity models"
+  },
+  {
+    "timestamp": "10:48",
+    "content": "that were in its itinerary."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "Lastly, this photo URL property needs to be adjusted."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "It's just a file path right now, which will lose all meaning if the file is renamed or moved to another"
+  },
+  {
+    "timestamp": "11:00",
+    "content": "directory. And the full resolution image should only be loaded when a view needs to show it in full,"
+  },
+  {
+    "timestamp": "11:07",
+    "content": "like in trip detail view."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "When scrolling through a carousel of trips, we'll just show the thumbnail."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "So add a new property here called thumbnail data."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "This will cache a low resolution version of a selected photo and inline its raw bytes in the database."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "Then separately, instead of the URL, we'll store the full resolution image using a persistent external file reference."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "In SwiftData, this is done by creating a new model just for the image."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "I already added that as the trip image type."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "We won't cover those implementation details here, but I encourage you to read more in the sample code later."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "I'm using multi-cursor editing so multiple files will be updated at once."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "And while I'm at it, I can click this comment to update it with the new variable name."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "Hit return."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "Hit return."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "Then refactor the labels of the initializer."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "And adjust the body to set activities directly."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "By setting up this relationship, we've replicated the ability from before for an activity-driven view"
+  },
+  {
+    "timestamp": "12:36",
+    "content": "to reference and display the name, season, and other details of its parent trip."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "And now that we've really started integrating these SwiftData features, the project has a few surplus files."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "There's no need for trip edit model anymore, since SwiftUI views can bind directly to SwiftData models"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "and propagate edits in real time."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "All the responsibilities of data source are handled automatically by model context, queries, and relationships."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "Delete."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "It's worth reflecting on that last part."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "We just removed hundreds of lines of code from the project."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "A good chunk of state management, storage logic, filtering, sorting, relationship traversal, and search"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "will just work."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "One last touch on the window group, and the model layer can be done."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "This model container scene modifier here tells SwiftUI to use our new schema with the query macro."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "Next, we'll update the view layer."
+  },
+  {
+    "timestamp": "13:35",
+    "content": "With the schemas and model container in place, automatic saving is enabled by default."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "Before seeing that in action, we're going to integrate these persistent models,"
+  },
+  {
+    "timestamp": "13:46",
+    "content": "starting with efficient, targeted queries for each subview that presents models."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "We'll use SwiftUI view modifiers to capture and surface possible errors that could occur at runtime,"
+  },
+  {
+    "timestamp": "13:57",
+    "content": "like low disk capacity or unsupported predicates."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "Lastly, we'll add back any missing property observers so that UI events are propagating all of the"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "right data and side effects that we expect."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "We'll add a few more details about the model."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "There are two key points to keep in mind when adding filtering to your SwiftData app."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Inside your queries, the fetch descriptor is how you plan which models you want to load and show"
+  },
+  {
+    "timestamp": "14:22",
+    "content": "through your model context or query."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "And secondly, your models will be saved to a storage medium that exists outside of the address space of"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "your app, such as a database in your local file system or a remote server."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "While this kind of storage is the bedrock of a persistence layer, it can be orders of magnitude"
+  },
+  {
+    "timestamp": "14:40",
+    "content": "slower than reading from memory. So when designing a persistence layer in your app, it's critical to"
+  },
+  {
+    "timestamp": "14:46",
+    "content": "think about which data need to be where and when for the best experience."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "I'll explain. Before, data about trips, activities, and goals would be in global variables, like all goals."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "They were loaded as part of the compiled binary for the app."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "Accessing data this way is fast, but if I hard code lots of elements into all goals, for example,"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "the app will have a noticeably elevated memory footprint for its entire lifetime."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "And if I add a new goal, everything about it disappears when I close the app and relaunch it, as you've seen."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "With SwiftData, we can insert goals or update existing goals and save them with our model context."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Once they're saved, there are a few ways we can pull them back into the app."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "Here's one way. This code fetches all of the goals and then discards the relevant ones."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "So it uses less ongoing memory, but it incurs more I.O."
+  },
+  {
+    "timestamp": "15:46",
+    "content": "This approach is a little like asking a librarian to go grab every book from every shelf at a library,"
+  },
+  {
+    "timestamp": "15:52",
+    "content": "so that you can personally identify the ones by your favorite author."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "You could have asked that librarian for just the books by that author on their trip through the shelves."
+  },
+  {
+    "timestamp": "16:02",
+    "content": "When you fetch using a predicate, it's like asking that librarian up front for what you want."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "Here, I get only the goals that I asked for."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "In goals view, we're going to use the query macro with a predicate."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "This is equivalent to calling fetch on a model context."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "The advantage is that the SwiftUI view will update automatically when the query result changes."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "Let's do that now."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "Import SwiftData"
+  },
+  {
+    "timestamp": "16:31",
+    "content": "and replace this data source environment property with a query for fetching achieved goals,"
+  },
+  {
+    "timestamp": "16:36",
+    "content": "sorted by when they were achieved."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "In the second query, we'll fetch the remaining relevant goals."
+  },
+  {
+    "timestamp": "16:43",
+    "content": "Same idea in recent trips page view."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "Import SwiftData"
+  },
+  {
+    "timestamp": "16:53",
+    "content": "and replace data source with a query."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "We'll ask for trips in reverse chronological order and set a fetch limit of five."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "That gets us the five most recent trips, which will go right into this for each."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "In trip collection view, we want to get all the trips and segment them by season."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "Each season is a trip collection, and there's going to be one instance of this view for each trip"
+  },
+  {
+    "timestamp": "17:19",
+    "content": "collection. An individual trip collection view doesn't know which season it's going to display"
+  },
+  {
+    "timestamp": "17:25",
+    "content": "until it's initialized. So we'll declare the query"
+  },
+  {
+    "timestamp": "17:28",
+    "content": "and then dynamically construct it in the initializer."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "Here's the explicit query for all trips matching the desired collection."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "Notice that the query receives a predicate, and inside of the predicate, the trip collection parameter"
+  },
+  {
+    "timestamp": "17:46",
+    "content": "is captured directly from the initializer before heading to the database."
+  },
+  {
+    "timestamp": "17:51",
+    "content": "And the results of the query will go into this for each."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "Next we have search results list view in the third tab in the app."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "It's super view, which is shown in the preview on the right, owns the search field and text,"
+  },
+  {
+    "timestamp": "18:09",
+    "content": "and passes the value to this view's initializer. So once again, replace data source with the query"
+  },
+  {
+    "timestamp": "18:15",
+    "content": "declarations, and then the parameters from the initializer will guide how the predicates are"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "constructed for these queries. If the search text is empty, fall back to fetching the three most recent trips."
+  },
+  {
+    "timestamp": "18:29",
+    "content": "Otherwise, fetch all trips whose name matches the search text, sorted lexicographically. And then we'll do"
+  },
+  {
+    "timestamp": "18:35",
+    "content": "the same for activity search. Check if the text matches the name of any activities belonging to a trip,"
+  },
+  {
+    "timestamp": "18:42",
+    "content": "and again set the property wrapper like so."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "Lastly, use the queried values in list."
+  },
+  {
+    "timestamp": "18:56",
+    "content": "This list also has an overlay view modifier, which displays a content unavailable view on the top if no"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "search results are found. Let's replace the original data source condition with direct checks on trips.isempty"
+  },
+  {
+    "timestamp": "19:11",
+    "content": "and activities.isempty. That's enough to get the app running again. I'll add a trip and wishlist and rerun it."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "This time, my trip is still there. Northern Lights."
+  },
+  {
+    "timestamp": "19:33",
+    "content": "The transition to Swift data is almost complete. We have just a few loose ends to tie up. Consider this"
+  },
+  {
+    "timestamp": "19:43",
+    "content": "update goal achievements method in activity item view. It directly updates progress values as people"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "complete activities. It can throw errors. I'll capture those errors in a state variable. I'll also pass the error"
+  },
+  {
+    "timestamp": "19:58",
+    "content": "to my telemetry system so that I can improve the app in the future. And when reasonable, I'll present an"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "alert letting people know how to recover from the error. That's an error case handled. There are also a"
+  },
+  {
+    "timestamp": "20:12",
+    "content": "couple of places in the UI where state can go stale. Earlier, we removed the did set observers that set"
+  },
+  {
+    "timestamp": "20:19",
+    "content": "date edited. And we'll want to add back that behavior now. Here's the bug. Let's say I want to sort my"
+  },
+  {
+    "timestamp": "20:26",
+    "content": "activities for another trip by date edited. In the sort drop down, I'll select date edited. Then if I"
+  },
+  {
+    "timestamp": "20:33",
+    "content": "check off this activity called meditate under a tree, it should move to the top of the list because I just"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "updated one of its properties. But it just sits there. No errors are thrown here in terms of the"
+  },
+  {
+    "timestamp": "20:46",
+    "content": "persistence layer. But still, something isn't right. Now that we've implemented persistence, we'll re-enable"
+  },
+  {
+    "timestamp": "20:54",
+    "content": "real-time updates to the date edited property using the continuous observation feature added to the"
+  },
+  {
+    "timestamp": "21:00",
+    "content": "observation framework in the 2027 releases. In the initializer of activity item view, set up an observer using the"
+  },
+  {
+    "timestamp": "21:10",
+    "content": "new with continuous observation function. This view is where people can edit activities, so it's a good"
+  },
+  {
+    "timestamp": "21:16",
+    "content": "place for the observation. Whenever someone changes either is complete or the name of an activity, the"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "observation framework will run this code to set date edited to the current time, triggering our query to"
+  },
+  {
+    "timestamp": "21:29",
+    "content": "automatically update the list of activities. This is also a natural place to add a side effect on trip."
+  },
+  {
+    "timestamp": "21:36",
+    "content": "Whenever an activity's status is toggled or an activity is added or removed, we update the"
+  },
+  {
+    "timestamp": "21:43",
+    "content": "isComplete property for the trip as a whole. Now you know what it takes to integrate Apple's declarative"
+  },
+  {
+    "timestamp": "21:49",
+    "content": "persistence framework into your own apps. Start by considering the appropriate representation of your"
+  },
+  {
+    "timestamp": "21:56",
+    "content": "app's state and declare the model types that make up your schema. From there, write targeted queries using"
+  },
+  {
+    "timestamp": "22:03",
+    "content": "predicates to balance between memory use and on-disk storage. And stay up to date on how you can"
+  },
+  {
+    "timestamp": "22:09",
+    "content": "continue to adjust your SwiftGi views for optimal interoperability with SwiftData. And with that,"
+  },
+  {
+    "timestamp": "22:15",
+    "content": "I can check off today's last activity and earn my batch. Thanks for listening and safe travels."
+  },
+  {
+    "timestamp": "22:33",
+    "content": "jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumps"
+  }
+]

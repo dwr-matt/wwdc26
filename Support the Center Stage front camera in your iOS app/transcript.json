@@ -1,0 +1,614 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Tracy."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "I'm an engineer on the camera software team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "I'm excited to show you how to support the center stage front camera in your iOS app."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "I love taking selfies, whether I'm traveling solo or with a group of friends."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Getting the right framing isn't always easy."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "If you're anything like me, you've probably reached for a selfie stick or"
+  },
+  {
+    "timestamp": "0:35",
+    "content": "pass your phone to a friend with the longest arms."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "The center stage front camera on iPhone 17, iPhone Air, and"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "iPhone 17 Pro takes care of this."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "It gives you greater flexibility in framing your shots."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "I'll start with an overview of the center stage front camera."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "Then, I'll cover APIs to support center stage for photos."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "I'll wrap up with how to support center stage for video recordings and video calls."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Traditionally, smartphone front camera sensors have a 4 by 3 aspect ratio, which limits your"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "framing based on the phone orientation."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "However, the center stage front camera has a square image sensor."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "This square shape lets you choose any aspect ratio."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "You can take a portrait selfie or a landscape one without having to rotate your iPhone."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "This gives you a more secure, one-handed grip."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "And since the camera is centered, your eye contact feels more natural."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "This square sensor is also paired with a lens that has a 95-degree field of view,"
+  },
+  {
+    "timestamp": "1:53",
+    "content": "the widest on any iPhone front camera."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "This wide field of view helps you better frame group selfies, stabilize videos, and keep you centered during video calls."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "Now that you know what the center stage front camera can do, I'll show you how to bring perfect photo framing experience into your app."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "The key feature here is auto-zoom and auto-rotate."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "By combining the square sensor, wide field of view, and automatic face and gaze detection, the center stage front camera smartly adapts its orientation and adjusts between narrow and wide views."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "Let me show you how that works."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "Here, I'm taking a selfie outside."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "As my friend Karen joins me, the frame zooms out."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "As more friends get into the shot, the frame rotates to include everyone."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "To build this experience in your app, I'll first review the Capture Session setup and then dive into two APIs, Dynamic Aspect Ratio and Smart Framing Monitor."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "Lastly, I'll cover sensor orientation compensation, starting with the typical photo capture setup."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "First, create an AV Capture Session."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Find the center stage front camera, represented in the API as AV Capture Device with a built-in ultrawide camera device type."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "Create an AV Capture Device input for that camera."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "To get a camera preview, add an AV Capture Video Preview layer to the Capture Session."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "Also, add an AV Capture Photo output to receive photos."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "As you add inputs and outputs, the Capture Session implicitly forms AV Capture connections between those with compatible media types."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "With that setup in place, I'll move to Dynamic Aspect Ratio, the building block for both manual and automatic framing."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Starting in iOS 26, AV Capture Device includes a Dynamic Aspect Ratio property."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "When you set this property, the Capture Device crops your chosen aspect ratio out of the square image sensor as shown earlier."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Without rebuilding the Capture Capture Capture, or interrupting preview, the switch is seamless and quick."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Here's a table that lists example formats that support Dynamic Aspect Ratio."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "It requires the front-facing built-in ultrawide camera as mentioned before."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "It's only supported on the square format with resolutions ranging from 1280 up to 4032."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "There are five aspect ratios available."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "3x4, 4x3, 9x16, 16x9, and 1x1."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "Be aware that the 4032 photo format only supports 3x4 and 4x3 because these two aspect ratios give you the highest resolution for photos."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "With those format requirements in mind, let me show you how to implement a tap-to-rotate button using Dynamic Aspect Ratio to switch between orientations."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "First, select the center-stage front camera by creating an AV Capture Device Discovery Session."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "Specify built-in ultrawide camera as the only device type you're interested in and front as a position."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "Since you've only asked for a single device, you can just get the first element in the Discovery Session's device array."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "Find a format that supports your desired aspect ratio."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "Here, I'll use 4x3 as an example."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "Check each format's supported dynamic aspect ratios property."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "This returns an array of aspect ratios the format supports."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "For simplicity, I'm picking the first match."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "After locking the device for configuration, set your chosen format as an active format."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "Next, set the dynamic aspect ratio to 4x3."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "This call returns the timestamp of the first buffer when the change takes effect."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "With that code in place, your app now supports tab-to-rotate, letting you change orientation with a single tab."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "Next up is the Smart Framing Monitor API."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "It works alongside dynamic aspect ratio to automatically adjust framing as people move in and out of the scene."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "Starting in iOS 26, AVCapture device includes an AVCapture Smart Framing Monitor object."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "This monitor gives periodic framing recommendations based on automatic face and gaze detection."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "Each recommendation contains an aspect ratio and a zoom factor that your app can apply or ignore."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "Since this monitor is designed for photo capture, it only provides recommendations when you use the 4032 photo format."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "Now, I'll walk through how to set up the monitor in code."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "With the ultra-wide front camera already selected from the dynamic aspect ratio setup, you can go ahead and find a format that supports both your desired aspect ratios and Smart Framing."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "Once you've found that format, lock the device for configuration and set the active format."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Next, get the Smart Framing Monitor from the camera."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "By default, the monitor provides no recommendations."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "Here, I'm setting Enable Framings to all of the supported framings."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "But you can limit this to a subset of supported framings, such as just the 4x3 aspect ratio with narrow and wide zoom factors."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "After you configure your monitor, key value observe the monitor's recommended framing property."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "As a monitor recommends a new framing, apply the recommendation by setting the camera's dynamic aspect ratio and video zoom factor."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "For a smooth preview transition, set the aspect ratio first, then the zoom factor."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Now you can start the monitor at any time, including while your AV capture session is running."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "If your UI allows people to turn off automatic framing, unregister your key value observation, and stop monitoring."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "Your app now supports auto-zoom and auto-rotate, giving people the best framing recommendations for taking group selfies."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "One last topic for photo capture, sensor orientation compensation."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Since the earliest iPhone front cameras, the sensor has been mounted in landscape left orientation."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "If you take a selfie while holding the phone in portrait orientation, the image buffer is delivered to the photo output in the native sensor orientation."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "The buffer carries an EXIF orientation, indicating it should be rotated 270 degrees on playback."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "However, on iPhone 17, iPhone Air, and iPhone 17 Pro, the center stage front camera sensor is mounted in portrait orientation."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "If your app relies on rotation values that worked before, photos may appear sideways or upside down."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "To handle this, AV capture photo output automatically applies sensor orientation compensation by default."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "It physically rotates photos and updates EXIF metadata before delivering them to your app."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "The resulting photos are in landscape left orientation, just like on previous iPhone front cameras."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "You can keep using the same rotation values you used before."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "Keep in mind that this compensation is only applied to HIC, JPEG, and uncompressed processed photos."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "It is never applied to Bayer RAW or Apple Pro RAW captures."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Starting in iOS 26, you can control this behavior with the camera sensor orientation compensation enabled property."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "If you use AV capture photo output, test with compensation off for best performance."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "And make sure photo orientation remains correct."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "To learn more about image rotation handling with AV capture rotation coordinator, check out Support External Cameras in Your iPadOS App from WWDC 2023."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "Now, onto center stage for videos."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "I will cover video recordings and video calls."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "The Dynamic Aspect Ratio API also works great for recordings."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "You can tap to rotate for a wider view."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "However, QuickTime movie tracks require all samples to have the same dimensions."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "Video recording will need to stop if you change the Dynamic Aspect Ratio during capture."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Here's the photo capture setup I walked through before."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "To modify it for video recording, you can use AV capture movie file output instead of AV capture photo output."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "In such a setup, recording will stop automatically when the aspect ratio is changed."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "You can also use AV capture video data output with AV acid writer to record videos."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "The set Dynamic Aspect Ratio completion timestamp allows you to end the current recording and start a new one with the updated aspect ratio."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "Video recordings also benefit from Cinematic Stabilization modes, Cinematic Extended and Cinematic Extended Enhanced."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "Both are face aware on the center stage front camera."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "They prioritize keeping the subject stable over the background."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "Next, I'll talk about center stage for video calls."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "Here, I'm on a FaceTime call."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "When a friend joins me on the trail, the camera automatically widens to include both of us."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "Center stage is already supported if your video conferencing app uses the Voice over IP background mode to keep calls connected when the phone is locked."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "People can directly turn on center stage from Control Center's Video Effects menu."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "If your app is not using Voice over IP background mode, you can still adopt the center stage API."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "This is available on the iPhone front camera starting with iPhone 17, iPhone Air, and iPhone 17 Pro."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "Like all system-wide video effects, such as portrait, studio light, and gestures, center stage is enabled per process."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "Once active, it applies to any supported camera in your app."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Here's the photo capture setup again."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "For video calls, the output is different."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "Video conferencing apps typically use a video data output to receive video buffers as a stream."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "Display, encoding, and transmission are all handled at the app layer."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "With this setup in mind, here's how to enable center stage."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "First, find a supported format."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "Set it as the active one after locking the device."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "By default, people toggle center stage through Control Center, not your app."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "Before turning it on, set a Control mode, Cooperative or App."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "Cooperative mode lets people also control it from a button in your app."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "Then, set its center stage enabled to true."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "With that, center stage is active."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "Framing now automatically adjusts to keep all people centered."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "To learn more about the center stage API when it was first added for iPad, check out What's New in Camera Capture from WWDC 2021."
+  },
+  {
+    "timestamp": "15:37",
+    "content": "Beyond center stage, there's one more way to improve your video call experience."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "The center stage front camera supports a real-time low latency stabilization mode starting in iOS 26."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "It's off by default."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "To turn it on, set the preferred video stabilization mode on the AV Capture connection to low latency."
+  },
+  {
+    "timestamp": "16:02",
+    "content": "Here's a side-by-side comparison of the same video call with low latency stabilization on and off."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "In the left video, stabilization is off."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "There's noticeable shake as I walk."
+  },
+  {
+    "timestamp": "16:17",
+    "content": "In the right video, stabilization is on."
+  },
+  {
+    "timestamp": "16:21",
+    "content": "The footage is much more stable."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "With that, you have everything you need to support the center stage front camera in your iOS app."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "Here are some next steps to further improve your app's framing experience."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "First, incorporate framing controls into your app to support orientation switching, toggles for auto-zoom and auto-rotate, and center stage activation."
+  },
+  {
+    "timestamp": "16:50",
+    "content": "Second, optimize front camera performance."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "Test with sensor orientation compensation turned off."
+  },
+  {
+    "timestamp": "16:59",
+    "content": "Make sure your app handles photo rotation correctly."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "Also, consider supporting 18-megapixel photo capture for exceptional resolution and details."
+  },
+  {
+    "timestamp": "17:12",
+    "content": "For best practices, check out Implement High Resolution Photo Capture from WWDC 2026."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "The center stage front camera has completely changed the way I take selfies and make video calls on my phone."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "I look forward to seeing how it transforms your app."
+  },
+  {
+    "timestamp": "17:33",
+    "content": "Thank you for watching."
+  }
+]

@@ -1,0 +1,1190 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Welcome to Collaborate on Structured 3D Models in Vision OS. I'm Bill."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Today I'm going to talk about building spatial experiences on Apple Vision Pro."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "Specifically, how to work with complex assemblies and multi-dimensional data in ways that simply aren't possible on a flat screen."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "Let's start with a look at what that can feel like."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Here we see a team in a SharePlay call. A design review of the AirPods Pro."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "Everyone in the call sees the same asset, at the same fidelity, in the same space."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "The case pulls closer. It unlocks. The way it would on a workbench."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "Except the workbench is wherever you happen to be."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "The bottom assembly lifts out. One person examines the interior then rotates it so a colleague can see exactly the same thing."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "A point. Not an annotation, not a screenshot. Just a gesture towards the part that matters and the group understands."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "The model collapses back. Clipping engages."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "A cross-section opens and the main logic board is right there. Exposed in context in a way that isn't feasible on a 2D screen."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "Clipping disengages. The full assembly expands. Someone reaches in, pulls the motherboard free, and holds it up for the rest of the team."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "Three people, one model, and the tools they need to understand it."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "What makes all of this possible comes down to three things Apple Vision Pro does really well."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "Real-time collaboration. Multiple people in a shared space at the same moment."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "Manipulation of rich representations. Because any data with enough dimensions deserves more than a flat screen."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "Environment lighting. Your physical world grounding every virtual decision."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "And those three capabilities aren't just useful for CAD. Anywhere you have complex, multi-dimensional information to reason about."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "Urban planning, logistics, real estate, production design. The same principles apply."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "For a technical deep dive on making SharePlay work in your apps, please see ShareVision OS experiences with nearby people from WWDC25."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "There are four major considerations in building out the sample code."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "I'll start with sharing some important aspects of preparing your 3D assets so that people can easily manipulate and work with them."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "Complex spatial assets are structured collections of components, organized as assemblies."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "I'll show you how to enable manipulating these assemblies."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Then I'll go over clipping. That allows the insides of an assembly to become as accessible as the outside."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "And finally, auto-expansion. Where the asset expands itself and every sub-assembly separates and moves into position."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "Revealing the full structure. On to asset preparation."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "Assets without structure are hard to reason about and hard to use in code."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "Without structure, the code can't make decisions on what to hide or show what to make manipulable."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "When preparing an asset, there are a lot of things to consider."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "What I'll focus on here is how to think about the structure of your asset."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "What assemblies contain what sub-assemblies, in other words, the hierarchy of the model."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "Some of the other considerations of a more technical aspect are covered elsewhere."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "For details, check out Optimize Your 3D Assets for Spatial Computing from WWDC24."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "A 3D model is a part-whole relationship. Flatten everything to the root and even simple operations become surprisingly painful."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "You've still got all the geometry, it's just not organized."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "This engine block was exported without preserving its structure."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "Everything flattened up to the root. Interior part 01, interior part 03, part 25, all the way down."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "No sub-assemblies, no grouping."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "And here's the thing. This asset looks completely fine in the viewport."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "The geometry is all there and it renders correctly."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "But the structure that would make it interactive? Gone."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "If I want to isolate one piston, it's in here somewhere."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Was it interior part 47? Or interior part 18? I don't know and neither does my code."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Consider this updated asset. It's got a deep, nested hierarchy."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "It's complex and that's intentional."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "Here we have hidden the outside of the engine and all of the pistons but one."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "We can see a piston and the crankshaft alone. Each one its own node, named, organized, and grouped."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "If I want to animate just the piston, isolate it, highlight it, let a person reach out and pull it free, I can."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "It's organized. I can write code that can find it."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "That's hierarchy doing exactly what it's supposed to do."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Now that we have a good hierarchy, I'll show you how to enable people to pull this hierarchy apart."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "A good hierarchical structure will give people the ability to select an individual part"
+  },
+  {
+    "timestamp": "5:10",
+    "content": "or move it using the natural input system on Apple Vision Pro."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "This can be achieved using Reality Kit's manipulation component API correctly."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "I'll show you how this is done. Here's a demo of it in action."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "This is the sample app that I showed you at the beginning of this presentation."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "It showcases this AirPods Pro asset that I plan to use in a design review session later."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "Watch what happens when we hit open."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "A moment ago this was one object. Now every part of it is individually interactive."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "Grab one piece, leave the rest."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "Let me show you how I got this working."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "To enable people to move this assembly around, all we have to do is attach a manipulation component to it."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "That's our starting point. Get the object manipulable so people can orient it, move it, and scale it with natural hand movements."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "To learn more about manipulation component, see what's new in Reality Kit from WWDC25."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "To enable people to move this assembly around, all we have to do is attach a manipulation component to it."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "To do that, we move the manipulation component down to the children."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "Suddenly, the top enclosure can be pulled away while the bottom enclosure stays put."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "A collaborator can rotate one of the earbuds while someone else is examining the other at the same time."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "That shift from thing to look at to thing to explore happens entirely because of where that component lives in the tree."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "Nothing else changed."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Once you've pulled things apart, you can move manipulation component back up to the root."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "Now the whole spread moves as a single object again."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "Reposition it together, rotate it, bring one section closer."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "The internal relationships stay exactly as you left them."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "The hierarchy hasn't changed."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "The geometry hasn't changed."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "Just where that component lives in the tree."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "And that's the whole idea here."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "Component placement drives behavior."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "Let's look at the code to make this work."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "Remove the manipulation component and input target component from the entity."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "That makes this entity not manipulable."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "Then the code iterates the subentities."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "Add the input target component and the manipulation component to each subentity."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "In the sample code, I make sure to set the manipulation component's release behavior to stay."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "That makes it so the entity stays where the person puts it when they release it."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "One more important note here, I am specifically not showing the addition of the collision component."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "But it is critical for event processing that your entities have collision components."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "Don't forget to add them."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Of course, if you're going to open an assembly, you probably want to close it too."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "Closing an assembly follows the same process but in reverse."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "Remove the manipulation and input target components from the subentities."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Add the manipulation and input target components back to the entity."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "That's it."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "The tree is now able to be manipulated as one element as if it's closed or as independent entities if it's open."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Next up is clipping."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "Any sufficiently complex asset has layers you can't see from the surface."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "The internal structure of the building."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "The routing behind a panel."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "The infrastructure beneath a city block."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "Clipping lets people see through the asset literally."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "And it's a new reality kit capability in VisionOS 27."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "Let me first show you a demo of it in action."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "Then take you through how to edit the clipping planes."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "Here you will notice the assembly unclipped sitting in space."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "The clipping state is off."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "Then I turn clipping on and enable the clip state of the assembly."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "The clipping plane is inside the assembly perpendicular to one of the primary axis."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "The plus z vector in this case."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "It shows the internal structure."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "The clipping state is on."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "Next, the clipping plane moves around."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "This is the really cool thing I'll show you how to do."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "Before we do though, let's look at clipping component."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "Clipping component has four properties."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "I'll go through the ones used in the sample code so you know what's there."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "Bounds is the property you'll be working with most."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "An axis aligned bounding box in entity local space."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "Anything outside it gets discarded by the renderer each frame."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "Should clip children defaults to false."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "If you add this to a parent assembly and your children aren't clipping, that's why."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "The sample code sets it to true."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "Should clip self defaults to true, which is almost always what you want."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "Our goal is to make the bounds editable."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "I'll show you how that's done after a quick look at the axis aligned bounding box."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "The six faces of the bounding box become six interactive plane entities."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "One per axis positive and negative."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "Each face here represented by a different color."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "Someone grabs the plus x face and pulls it to reveal more of the interior."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "Or pushes it back out to restore it."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "Each plane controls exactly one scalar value in the bounds."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "That's the entire interaction model."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "Six planes, six numbers."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "Keep that in mind as we work through the implementation."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "To manage clipping, we have a three-state machine."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "Clipping can be off."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "The assembly is not clipped."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "When clipping is on, the model is clipped according to the bounding box."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "In the editing state, clipping planes are visible and interactive."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "People can change the clipping bounds by moving them."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "Let's look at it in action."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "In the off state, there's no clipping of the assembly."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Only the outside of the assembly is visible."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "In the on state, clipping is active and shows the inner workings and layout of the sub-assemblies."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "In editing state, clipping planes are on and people are able to move the planes."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "As the planes move, the clipping bounds are changed and more or less of the internal layout of the model becomes visible."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "Let's look at the technical details that make this all work."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "There are three components involved."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "In the off state, we have the clipping bounds cache, a custom component in the sample code."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "It keeps track of the clipping bounds that were last edited and provides that value to the clipping component when the state switches to on."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "In the on state, the clipping component is created and added to the entity."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "This is the RealityKit component we discussed earlier."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "Geometry that's outside its bounds is discarded."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "In editing, we add another custom component called Clipping Transform Sync."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "The sample uses that to keep track of the assembly's transform and update the clipping control when the transform changes."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "The clipping control is the entity we use to manage the clipping planes and make them interactive."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "They're the visual affordants that allow people to see where the clipping planes are and edit them."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "There are four coordinate frames involved."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "The first is the world coordinate system. It's where everything else sits."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "Model is where the model lives and is the coordinate frame the clipping component operates in."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Changes to the bounds need to be made in this frame."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "The clipping control frame is where we put the editing planes that allow people to change the clipping component's bounding box."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "The clipping plane coordinate frame is where the editing planes live and where the drag gesture events are expressed."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "Changes to the position of the planes need to be in this frame and constrained to move in a direction expressed in the model frame."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "World has two children. The clipping control and model clipping control contains the editing planes."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "And clipping plane is the coordinate frame where the drag gestures are expressed."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "The task is to get the change in drag gesture expressed in the model frame, constrained, then converted back to the clipping plane."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "To this point, we've been talking about the clipping as a monolithic thing."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "But there are two distinct parts that are worth separating."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "The clipping component is in the model's coordinate space."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "So to edit these bounds, we need to have the change expressed and constrained in that coordinate frame."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "The visual planes provide a visual understanding of what the movements do."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "The planes need to move with the events as well, but they are expressed in the clipping plane coordinate system."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "So updates to their positions need to be expressed in their coordinate frame."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "In both frames, the change needs to be constrained to the direction normal to the bounding box plane."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "Let me show you how all this fits together."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "There are four distinct steps from the drag gesture to updates for the bounds and plane position."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "I add a drag gesture to the clipping planes, one for each plane."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "Again, this is the coordinate frame the events arrive in."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "I transform that into the world coordinate frame."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "From there, I transform to the model frame."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "Then I constrain the delta to the appropriate direction,"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "plus x, minus y, etc., depending on which plane the person is moving."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "Now I have the value I need in the coordinate frame I need, constrained to the correct direction,"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "and can update the clipping bounds."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "To update the plane's location, I'll have to convert this vector to the plane's coordinate frame."
+  },
+  {
+    "timestamp": "14:25",
+    "content": "We'll look at that in just a second."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "For more information about the gesture component, check out Better Together SwiftUI and Reality Kit from WWDC25."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "With the big picture in mind, let's look at each step in detail."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "The gesture is expressed in the clipping plane coordinate frame."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "It will look something like this."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "The drag delta has values 0.5, minus 0.75, and 0.1."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "These values are the expression of the drag delta in the clipping plane coordinate frame."
+  },
+  {
+    "timestamp": "14:57",
+    "content": "The task is to change the expression of this vector to the model coordinate frame."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "The drag delta vector is transformed from the clipping plane coordinate frame into the world coordinate frame."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "Keep in mind, the vector hasn't changed."
+  },
+  {
+    "timestamp": "15:13",
+    "content": "Only the coordinate frame the vector is represented in."
+  },
+  {
+    "timestamp": "15:16",
+    "content": "Since clipping plane and world are not the same coordinate frame, the numbers change."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "It's the same vector, just a different representation."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "Before we can update the clipping bounds, the drag delta vector must be in the model coordinate frame."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "So, we do one more transform from the world coordinate frame into the model coordinate frame."
+  },
+  {
+    "timestamp": "15:36",
+    "content": "Again, the vector hasn't changed, just the coordinate frame it's represented in."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "Now comes the mathematical magic."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "We project the drag delta onto the proper direction, which is just a fancy math way to say how long the drag delta is in the direction we care about."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "Let's remove the AirPods Pro case so we can see the process better."
+  },
+  {
+    "timestamp": "15:59",
+    "content": "Projection sounds complex, but it really is just how long is the drag delta along the direction we care about."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "It's like measuring the shadow of the drag delta vector casts on the direction vector."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "Here is the math equation. Don't let it scare you. I'll break it down piece by piece."
+  },
+  {
+    "timestamp": "16:17",
+    "content": "First, it's finding a vector in the direction we care about."
+  },
+  {
+    "timestamp": "16:22",
+    "content": "You might have done this before. It's the vector divided by its length squared."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "In our case, this is simple. The direction we care about is the normal to the plane, plus x here, or 1, 0, 0."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "Then we do a dot product, which is a type of vector multiplication with the drag delta and the direction vector."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "That gives us the amount we want the bounding box to change. But it's just a number. We also need the direction."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "So we multiply the direction we care about, the normal to the plane, by the amount we found in the last step."
+  },
+  {
+    "timestamp": "16:56",
+    "content": "Now I have the constrained delta in the model coordinate frame. That is exactly what I need to update the bounding box of the clipping component."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "Here's the assembly clipped. The inside is as visible as the outside. That's pretty cool."
+  },
+  {
+    "timestamp": "17:12",
+    "content": "Now I go through the same constraint process, but this time to the clipping plane coordinate frame."
+  },
+  {
+    "timestamp": "17:18",
+    "content": "We have to transform the constrained drag delta from the model coordinate frame into the clipping plane coordinate frame."
+  },
+  {
+    "timestamp": "17:26",
+    "content": "Then we project that down onto the plane's normal, the same way we did last time."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "This gives us the value we need to move the plane. But since it's been projected onto the normal, the change is constrained to move only in that direction,"
+  },
+  {
+    "timestamp": "17:40",
+    "content": "instead of wherever the person moved their hand. That makes sure the changes from the gesture feel natural."
+  },
+  {
+    "timestamp": "17:46",
+    "content": "Here we see the planes turned on and waiting for people to interact. We keep them on in the editing state so that people know they can reach out and move one of these six planes."
+  },
+  {
+    "timestamp": "17:57",
+    "content": "Six planes, four coordinate frames. Simple transformations between each makes the individual calculations easier to reason about."
+  },
+  {
+    "timestamp": "18:06",
+    "content": "Once you have the hierarchy of the coordinate system in mind, and the really cool math trick of projection, you can make this interaction feel natural in your apps."
+  },
+  {
+    "timestamp": "18:15",
+    "content": "Now let's talk about automatic expansion of the sub-assemblies that make up a 3D model."
+  },
+  {
+    "timestamp": "18:21",
+    "content": "People use this to reveal the model's inner structure. This feature can be great for a mechanical assembly, a building, really any asset where understanding how the parts relate to the whole would be helpful."
+  },
+  {
+    "timestamp": "18:33",
+    "content": "I want the model to expand in an intuitive way, but I don't want to force the person to choose that direction."
+  },
+  {
+    "timestamp": "18:40",
+    "content": "We're going to use a bit of math so the code can make the decision."
+  },
+  {
+    "timestamp": "18:44",
+    "content": "I'll walk you through that and show you exactly how it works."
+  },
+  {
+    "timestamp": "18:48",
+    "content": "When an assembly loads, its children sit exactly where they are defined in the file."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "For a well-constructed asset, that means they're probably overlapping, nested inside each other the way they exist in the real object."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "That's correct, but it's not useful for exploration."
+  },
+  {
+    "timestamp": "19:05",
+    "content": "Expansion fans the children apart along a single axis, giving each one space to be seen and grabbed independently."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "One tap, the assembly opens itself. The process of doing that is not complicated. Let's look at it a piece at a time."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "We could display the assembly spread out along the x-axis like this."
+  },
+  {
+    "timestamp": "19:26",
+    "content": "It does capture the idea of the pieces pulling apart in space to expose the interior layout."
+  },
+  {
+    "timestamp": "19:31",
+    "content": "But we'd like the expansion to feel more natural, more like what a person would expect in a design review."
+  },
+  {
+    "timestamp": "19:38",
+    "content": "And have it expand along the y-axis like this."
+  },
+  {
+    "timestamp": "19:42",
+    "content": "The question is, how does the code choose which axis to expand along?"
+  },
+  {
+    "timestamp": "19:46",
+    "content": "For that, I'll take a brief diversion into two concepts, variance and weighting."
+  },
+  {
+    "timestamp": "19:51",
+    "content": "A low variance is just a way to say all the values we have are basically in the same spot."
+  },
+  {
+    "timestamp": "19:58",
+    "content": "For example, in this dartboard diagram, the values are anything, like ice cream sales to incidents of sunburn."
+  },
+  {
+    "timestamp": "20:05",
+    "content": "It's just a way to get across the idea that values, whatever values, are close together."
+  },
+  {
+    "timestamp": "20:12",
+    "content": "A high variance will have the values spread out."
+  },
+  {
+    "timestamp": "20:15",
+    "content": "Now that we have a feel for variance, let's look at it a little closer."
+  },
+  {
+    "timestamp": "20:19",
+    "content": "I'll move to one dimension to make things a little clearer."
+  },
+  {
+    "timestamp": "20:23",
+    "content": "Again, these values are just numbers."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "They could represent anything, the frequency of six guitar strings or anything else that has a single value per sample."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "Each of our points is placed on a number line, along with an indicator of how far the value is from the average."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "The distance from average is called deviation."
+  },
+  {
+    "timestamp": "20:42",
+    "content": "This is the first step in finding the variance."
+  },
+  {
+    "timestamp": "20:45",
+    "content": "Next is to square each of the deviation values, then add them together and divide by the count to find the average."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "That's the variance. It's simple enough math."
+  },
+  {
+    "timestamp": "20:55",
+    "content": "The technical terms variance and deviation is usually what gets people."
+  },
+  {
+    "timestamp": "21:01",
+    "content": "Conceptually, it's just a way to numerically specify how much our set of values is spread out from the average."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "Now consider some of these values might be more important than others."
+  },
+  {
+    "timestamp": "21:12",
+    "content": "That's where weighting comes in."
+  },
+  {
+    "timestamp": "21:14",
+    "content": "We use it to distinguish the importance of individual values."
+  },
+  {
+    "timestamp": "21:18",
+    "content": "Each of the points now has a radius to represent a weight factor."
+  },
+  {
+    "timestamp": "21:23",
+    "content": "The larger the circle, the more important the value."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "The weighting factor could be anything, saturation of a gradient or any other value that expresses importance."
+  },
+  {
+    "timestamp": "21:33",
+    "content": "We are staying abstract to illustrate the process."
+  },
+  {
+    "timestamp": "21:36",
+    "content": "We use the weight, or importance, to calculate a weighted variance."
+  },
+  {
+    "timestamp": "21:41",
+    "content": "In addition to squaring the deviation values, we multiply each by its weight."
+  },
+  {
+    "timestamp": "21:46",
+    "content": "And boom! Now we have a weighted variance."
+  },
+  {
+    "timestamp": "21:50",
+    "content": "With the weight, each value can have a different importance."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "And that's exactly what we'll do to figure out what axis to expand our assembly along."
+  },
+  {
+    "timestamp": "21:59",
+    "content": "We'll calculate the volume-weighted position variance along each axis and expand along the axis with the largest variance."
+  },
+  {
+    "timestamp": "22:08",
+    "content": "Here, notice the table. One row for each of the sub-assemblies. It shows their volumes and their positions."
+  },
+  {
+    "timestamp": "22:17",
+    "content": "These are the values I'll use to find the natural axis to expand along."
+  },
+  {
+    "timestamp": "22:21",
+    "content": "I'll use the X, Y, and Z values to calculate the variance in each direction."
+  },
+  {
+    "timestamp": "22:26",
+    "content": "The dots are sized to reflect the volume of each element. I'll use the volume as the weighting factor."
+  },
+  {
+    "timestamp": "22:33",
+    "content": "Here is the volume-weighted variance for the X-axis."
+  },
+  {
+    "timestamp": "22:38",
+    "content": "Most of the sub-assemblies lie at or very near the same position along the X-axis."
+  },
+  {
+    "timestamp": "22:44",
+    "content": "That leaves us with a small variance along X."
+  },
+  {
+    "timestamp": "22:47",
+    "content": "Since most of the sub-assemblies are at or near each other, the volume-weighting factor doesn't make a difference along the X-axis."
+  },
+  {
+    "timestamp": "22:54",
+    "content": "The two earbuds are spread out on the X-axis and do their best to contribute, but their volume is not enough to make up for all the other elements at the same place."
+  },
+  {
+    "timestamp": "23:05",
+    "content": "The result along the Z-axis is even smaller. The bottom insert does have some volume to weight its contribution, but it is too close to the average position to make much of a dent."
+  },
+  {
+    "timestamp": "23:17",
+    "content": "The hinge and lid retention magnet have too small of a volume to pull the variance very far."
+  },
+  {
+    "timestamp": "23:23",
+    "content": "This takes us to the Y-axis, the clear winner here. The large parts are further away along the Y-axis, and the larger volume provides weight to their distance."
+  },
+  {
+    "timestamp": "23:33",
+    "content": "With Y being the clear winner, we assemble a set of from-to-by animations to move the sub-assemblies into position along the Y-axis."
+  },
+  {
+    "timestamp": "23:42",
+    "content": "And there we have it, the interior of the model exposed for people to interact with."
+  },
+  {
+    "timestamp": "23:48",
+    "content": "There's a lot I've covered today, from showing you how to prepare an asset hierarchy, manipulate its parts, use a clipping plane to look through a complex assembly,"
+  },
+  {
+    "timestamp": "23:58",
+    "content": "and even expand the parts out along an axis to give you a detailed view of the tiniest part of your assembly."
+  },
+  {
+    "timestamp": "24:05",
+    "content": "This workflow can help you build design review apps that can greatly enhance people's productivity."
+  },
+  {
+    "timestamp": "24:11",
+    "content": "Download and explore the sample project from developer.apple.com."
+  },
+  {
+    "timestamp": "24:15",
+    "content": "I'd highly encourage you to familiarize yourself with concepts in statistics, vector math, and linear algebra."
+  },
+  {
+    "timestamp": "24:22",
+    "content": "Those are the parts of math we leaned heavily on today."
+  },
+  {
+    "timestamp": "24:25",
+    "content": "Hopefully you find them a little less scary now than you did before."
+  },
+  {
+    "timestamp": "24:29",
+    "content": "If you'd like to control models in real-time from your Mac app, the Spatial Preview Framework might be a great choice for you."
+  },
+  {
+    "timestamp": "24:36",
+    "content": "Do check out the session, Discover the Spatial Preview Framework, to learn more."
+  },
+  {
+    "timestamp": "24:40",
+    "content": "Additionally, you could even augment physical objects, like a race car simulator cockpit, and overlay your virtual content on top of the simulator and explore its internal structure with what you learned in this session."
+  },
+  {
+    "timestamp": "24:53",
+    "content": "To learn more about augmenting physical objects, please check out the Explore Enhancements to VisionOS Object Tracking session."
+  },
+  {
+    "timestamp": "25:01",
+    "content": "Thanks again for your attention today, and I look forward to seeing the cool stuff you do with these ideas in your apps."
+  },
+  {
+    "timestamp": "25:07",
+    "content": "."
+  }
+]

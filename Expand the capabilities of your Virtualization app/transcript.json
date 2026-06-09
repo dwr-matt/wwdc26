@@ -1,0 +1,946 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, I'm Ronnie Mishra from the Virtualization team."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "In this session, I'll explore how you can add"
+  },
+  {
+    "timestamp": "0:12",
+    "content": "advanced capabilities to your virtualization app."
+  },
+  {
+    "timestamp": "0:15",
+    "content": "You can use the virtualization framework to create"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "apps that power full desktop experiences,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "or enable sophisticated developer workflows like"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "testing collaborative Mac apps and networking between devices."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "You can also build command line tools and automation to"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "enable consistent testing in controlled environments."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "Today, I'll take you through some new and existing APIs to"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "make your virtualization apps even more powerful."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "I'll cover automating the setup of virtual Macs,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "and attaching USB devices to"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "virtual machines with the accessory access framework."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "I'll explore configuring advanced network topologies,"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "and how to create high-performance efficient"
+  },
+  {
+    "timestamp": "0:55",
+    "content": "disk images with the Disk Image Kit framework."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "Finally, I'll cover creating custom high-performance virtual devices with Vird.io."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "First, I'll show you how virtualization enables you to automate macOS guest provisioning."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "After you install macOS into a virtual Mac,"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "you can set it up exactly the same way as you would set up a physical Mac."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "You use the same setup assistant you are already familiar with."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "This gives you an easy way to create a user account and configure common settings."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "For automation use cases, however, it would be convenient to be able to programmatically set up a virtual Mac."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "The virtualization framework now lets your app specify provisioning options when a virtual Mac is started."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "You provide a full name, username and password, and optionally enable auto login or remote login via SSH."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "When the guest boots for the first time, these parameters are automatically passed to setup assistant."
+  },
+  {
+    "timestamp": "1:47",
+    "content": "A user is created with the specified credentials, and auto login and remote login are enabled if requested."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "To use the macOS guest provisioning API, you first create a vzmacguestprovisioningoptions object with your desired settings."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "Here, I have created provisioning options that will create a user account, enable auto login, and also enable SSH."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "You then construct a vzmacOS virtual machine start options object and set its guest provisioning to the provisioning options you just constructed."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "Finally, you start your virtual Mac using these start options."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "When the guest boots, these provisioning options will be used to automate provisioning of the virtual Mac."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "Now, I'll show you this in action."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "I've modified the macOS virtual machine sample app to make use of the macOS guest provisioning API."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "I have already installed macOS into a new virtual Mac, but I have not booted it yet."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "I'll double click the app to boot the virtual Mac for the first time."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "I'll show you the app to make sure that you can use the app to make sure that you can use the app."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "The app prompts me for provisioning options."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Because I have previously run this app, it remembers my preferred provisioning options to create a user for Jane Appleseed and enable automatic login and remote login."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "I'll now click OK to accept those settings."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "My app has now started the virtual Mac with those provisioning options."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "The virtualization framework will pass those options into the guest so I don't have to navigate through Setup Assistant manually."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Setup Assistant automatically creates a new user."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "Setup Assistant has now created the new account."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Because my provisioning options indicated that automatic login should be enabled, the guest has logged into the account."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "I'll now open a finder window in my virtual Mac."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "The sidebar shows the username Jay Appleseed, which matches the username I provided."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "Now, I'll open up System Settings and browse to the Remote Login Sharing setting."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "System Settings confirms that Remote Login has been enabled."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "My virtual Mac is now ready to go."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "All I had to do was boot it."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "Note that these settings are only honored if the guest has not already been set up."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "If a user has already been created in the guest, provisioning options passed on subsequent boots will be ignored."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "When using these APIs, be thoughtful about how you handle passwords and consider the security implications for your app."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "For example, instead of hard coding a password in your code, you might want to read it from the keychain,"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "or a configuration file, or an environment variable."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "Next, I'll talk about attaching USB accessories using accessory access."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "Some virtual machine use cases require the ability to grant the guest access to a USB accessory connected to the host."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "For example, someone may want to make use of a USB drive from inside of a virtual machine."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "At the same time, people should remain in control of their devices."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "Accessory access is a new framework designed to support making USB devices available to macOS and Linux virtual machines."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "A key principle of accessory access is that people should have explicit control of which devices are attached to which apps."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "People have visibility into what apps are using their devices and can attach and detach devices at any time."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "Accessory access supports device hot-plugging."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "When someone grants an app access to a device, it can be attached to the virtual machine at runtime without changing the VM static configuration."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "Before I dive into the details, here is accessory access in action."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "I'm running the macOS virtual machine sample app I showed you before."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "I'll now connect a USB drive to my Mac."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "The icon for my drive has appeared on the desktop."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "Also, because the virtual machine app is running and has indicated interest in storage devices, an accessory icon is now present in the menu bar."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "I'll now select my disk in the accessory menu and attach it to my app."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "Since I attached this drive to my virtual Mac, my host has unmounted the drive and the guest has mounted it."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "Now, I'll safely eject the drive from inside the virtual Mac."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "Then, I'll use the accessory menu to release the drive back to my host."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "Now that I have released the drive to my host, the host has remounted the drive."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "This demonstrates how accessory access makes it easy to use your USB accessories from a virtual machine."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "To use accessory access, your app registers a listener with matching criteria describing the types of devices it is interested in."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "You can filter by device class and subclass, vendor ID and product ID, or other criteria."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "When a matching device is connected to the Mac, the accessory access menu extra appears."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "From here, someone can decide to attach the device to your app."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "If the device is attached to your app, your app's listener object will be notified of the newly attached device."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "To use accessory access, you start by creating an array of AAUSB accessory matching criteria objects"
+  },
+  {
+    "timestamp": "7:17",
+    "content": "describing the types of devices you are interested in."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "You can use an empty array to express interest in all USB devices."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "Then, use AAUSB accessory manager to register a listener."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "This listener should implement the AAUSB accessory listener protocol."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "Register listener will return any accessories that were previously attached to your application."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "When someone attaches a device to your app, your listener's USB accessory did connect function will be called."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "In this function, you can attach the device to your virtual machine."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "VZ Virtual Machine requires modifications to happen on its own queue."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "On that queue, you can use the VZUSB pass-through device configuration class to create a VZUSB pass-through device,"
+  },
+  {
+    "timestamp": "7:59",
+    "content": "and then attach this device to one of the virtual machine's USB controllers."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "In order for your app to use accessory access, add the Claim USB accessory capability to your Xcode target's capabilities."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "Remember that people can choose to attach or detach devices from your app at any time."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "Your app should handle these events gracefully."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "Consult the accessory access documentation for details on supported device types."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "In macOS 26 and later, your app can use the VMNet framework to configure virtual network interfaces."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "The virtualization framework makes it easy to configure isolated virtual machines with basic NAT or bridge networking."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "For more advanced use cases, however, you may want to have more control of how VMs interact with each other or with the external network."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "For example, you may want to test connections to your server virtual machine from clients on either the same or a different network."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "The VMNet framework allows you to create custom network topologies to support these advanced use cases."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "Using the VMNet framework, you can create custom network topologies for your macOS and Linux VMs."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "VMNet allows you to control how your VMs can communicate with each other."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "VMNet also allows you to configure various parameters of those custom networks."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "For example, you can configure the DHCP settings for the network, or add rules to forward TCP or UDP host ports to specific virtual machines."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "To use VMNet with the virtualization framework, you first create a VMNet network configuration object."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "You use that configuration to construct a VMNet network object."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "You can then use that network object to construct a network device attachment."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "This network device attachment is then attached to a network device configuration, which is in turn added to a virtual machine configuration."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Finally, you use that virtual machine configuration to construct a virtual machine."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "If you want a second virtual machine to use the same VMNet network, you follow the same steps to configure that second virtual machine,"
+  },
+  {
+    "timestamp": "10:00",
+    "content": "making sure to use the same VMNet network object."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "Now, I'll show you these steps in code."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "You first create a VMNet configuration object using VMNet network configuration create."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "VMNet provides several functions to customize that network."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "For example, you can configure the network's DHCP settings, enable port forwarding, etc."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "Once you have a network configuration object, you can use VMNet network create to construct a VMNet network object."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "You then construct a VMNet network device attachment to allow virtualization to use the VMNet network you just created."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Next, set the attachment on a VZVirtIO network device configuration object."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "This network device configuration is added to the array of network devices on your VZVirtual Machine configuration object."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "And finally, this configuration will be used to construct your VZVirtual Machine."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "A VMNet network object is a reference counted Objective-C object."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "The network goes away when the last reference is released."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "This also implies that a VMNet network is not persisted when your app quits."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "If you want to create a consistent network configuration, your app must persist your VMNet settings itself."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "VMNet provides the VMNet network copy serialization and VMNet network create with serialization APIs to allow you to transfer a VMNet network across an XPC connection from one process to another."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "This is useful if you would like to run multiple VMs in separate processes, but connect them to the same network."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "Next, I'll show you how to use Disk Image Kit to efficiently work with disk images."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "The virtualization framework supports using standard raw disk image files to back virtual machine disks."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "This simple format maps disk blocks to file blocks one-to-one."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "This simplicity means that the format is widely supported by existing software."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "However, this simplicity comes with a cost."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "Raw disk images cannot inherently represent sparsity."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "For example, a 100GB disk is represented by a 100GB file."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "This also makes snapshots expensive."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "Snapshotting a VM's disk requires making a copy of the entire disk."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Disk Image Kit is a new framework in macOS 27 that is designed to make disk image management more efficient."
+  },
+  {
+    "timestamp": "12:20",
+    "content": "It supports the Apple Sparse Image Format, or ASIF, that was introduced in macOS 26."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "Disk Image Kit allows you to construct a stack of images, allowing writes to go into an overlay layer while leaving the base layer unmodified."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Disk Image Kit also supports raw disk images."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "When constructing a stacked image, Disk Image Kit supports a few different types of layers."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "The bottom layer of a stacked image is called the base layer."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "This layer can be of any format that is supported by Disk Image Kit."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "Upper layers are always ASIF images."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "These layers can be either cache or overlay layers."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "A cache layer can be used to improve performance when underlying layers exist on slow storage, like a remote network file system."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "When processing a read request, if the cache layer cannot satisfy the read, Disk Image Kit will satisfy the read from lower layers, but store a copy of the data in the cache layer."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "Subsequent reads of the same data will then be read from the cache."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Overlay layers can be used to implement copy-on-write semantics for snapshots."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "When writing to a layered image, if Disk Image Kit encounters a writable overlay while traversing the stack, it will store the writes in that layer."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "Disk Image Kit allows read-only layers to be shared by multiple concurrent stacks."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "This allows efficient reuse of shared content between multiple virtual machines while keeping their independent writes separate."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "ASIF images are sparse."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "This means that an ASIF image may logically represent more blocks than are actually stored in the image."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "When reading from an ASIF file, blocks that are not stored in the image are treated as if they were zero-filled."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "I'll walk through how Disk Image Kit would process read and write requests for an example stack."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "In this example, the base layer has content for blocks 0, 1, and 4."
+  },
+  {
+    "timestamp": "14:09",
+    "content": "The cache layer does not have content for any blocks."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "The overlay layer has updated content for block 4 and also has content for block 5."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "Note that a layer can have a different logical size than the layers above or below it."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "To satisfy a read of block 0, Disk Image Kit will traverse the layers of the stacked image"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "until it finds a layer that contains the content for this block."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "This read will be satisfied by the base layer."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "Because there was a cache layer, Disk Image Kit will cache the contents of this block"
+  },
+  {
+    "timestamp": "14:39",
+    "content": "and then return the contents to the caller."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "Subsequent reads of this same block will be satisfied by the cache layer."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "When writing block 2, Disk Image Kit will discover that the top layer is an overlay and store the content there."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "To use Disk Image Kit images with virtualization,"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "you first start by creating a Disk Image object."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "If you'd like to use a layered image,"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "you create multiple Disk Image objects and then append them in order."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "You can then construct a VZ Disk Image Storage Device attachment from your stacked image."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "This can then be attached to a storage device configuration,"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "for example, a VZ-VirtIO block device configuration."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Add this storage device configuration to your Virtual Machine configuration's storage devices."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "Finally, create your VZ Virtual Machine using this configuration."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "When using stacked images, it is worth noting that shallow stacks perform better."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "There is a performance cost to increasing the depth of a Disk Image stack."
+  },
+  {
+    "timestamp": "15:37",
+    "content": "Keep in mind that a virtual machine is comprised of more than just disk images."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "For example, a virtual Mac has an auxiliary storage file,"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "and a VM using the EFI bootloader has an EFI variable store file."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "If you want to clone a VM and use a shared base layer,"
+  },
+  {
+    "timestamp": "15:53",
+    "content": "remember that you must duplicate those other files."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "Finally, I'll show you how the custom VIRTIO APIs allow you to build custom communication channels"
+  },
+  {
+    "timestamp": "16:02",
+    "content": "between your app and your Linux virtual machines."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "Although the virtualization framework already supports a wide range of standard device classes,"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "some use cases may require something more specialized."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "Perhaps you want to implement a custom protocol for performance-critical communication between host and guest."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "Maybe you want to implement a coprocessor, such as a VIRTIO crypto device."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "You might want to provide efficient guest access to machine learning accelerators."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "That's where the custom VIRTIO device API comes in."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "VIRTIO is an industry standard for para-virtualized devices."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "It's the protocol used to implement many of the built-in virtualization devices."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "In macOS 27, the virtualization framework allows you to implement your own VIRTIO devices,"
+  },
+  {
+    "timestamp": "16:46",
+    "content": "allowing custom communication between your host app and your Linux virtual machines."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "This is especially useful for performance-critical scenarios"
+  },
+  {
+    "timestamp": "16:54",
+    "content": "where you need low-latency, high-throughput communication."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "The VIRTIO protocol makes use of memory buffers shared between the guest and the host."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "These buffers are organized into VIRTIO queues."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "VIRTIO is designed to minimize the number of contact switches between the guest and the host."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "The device driver in the guest notifies the device running on the host when data has been enqueued."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "Similarly, the host can use an interrupt to inform the guest driver about enqueued data."
+  },
+  {
+    "timestamp": "17:22",
+    "content": "In macOS 27, the VZCustomVirtIO device class can be used to implement your custom device."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "Your app sets a delegate on the device."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "This delegate will be notified when the guest enqueued data on its queue."
+  },
+  {
+    "timestamp": "17:35",
+    "content": "You can also initiate activity in the guest by triggering an interrupt on the device."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "To use the custom VIRTIO device API, you start by creating a VZCustomVirtIO device configuration object."
+  },
+  {
+    "timestamp": "17:47",
+    "content": "You configure this object with your device's VIRTIO device identity, its PCI class and subclass,"
+  },
+  {
+    "timestamp": "17:53",
+    "content": "and the number of VIRTIO queues your device uses."
+  },
+  {
+    "timestamp": "17:57",
+    "content": "You also set a provider on the configuration."
+  },
+  {
+    "timestamp": "18:00",
+    "content": "VZCustomVirtIO device delegate provider is used to configure a delegate that implements the VZCustomVirtIO device configuration delegate protocol."
+  },
+  {
+    "timestamp": "18:09",
+    "content": "You then add this device configuration to your virtual machine configuration's customVirtIO device array,"
+  },
+  {
+    "timestamp": "18:15",
+    "content": "and create a VZVirtual machine using that configuration."
+  },
+  {
+    "timestamp": "18:19",
+    "content": "When the virtual machine is started, a VZCustomVirtIO device object is created,"
+  },
+  {
+    "timestamp": "18:24",
+    "content": "and your configuration delegate's didCreateDevice function is called."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "In this function, you should set the device as delegate."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "This delegate should implement the VZCustomVirtIO device delegate protocol."
+  },
+  {
+    "timestamp": "18:36",
+    "content": "You can also hang onto the device itself so that your device can trigger guest interrupts."
+  },
+  {
+    "timestamp": "18:41",
+    "content": "There are several functions in the VZCustomVirtIO device delegate protocol that can be used to monitor the device's lifecycle and interact with the device."
+  },
+  {
+    "timestamp": "18:50",
+    "content": "The didReceiveNotificationFor function is where you implement logic to dequeue elements from your device's queue,"
+  },
+  {
+    "timestamp": "18:56",
+    "content": "process those elements, and then return them to the queue."
+  },
+  {
+    "timestamp": "19:00",
+    "content": "Remember that custom devices require custom drivers to allow the guest to use your device."
+  },
+  {
+    "timestamp": "19:06",
+    "content": "VIRTIO queues are designed to provide efficient communication between the guest and the host."
+  },
+  {
+    "timestamp": "19:11",
+    "content": "Make sure to follow best practices when designing your guest driver to make optimal use of VIRTIO queues."
+  },
+  {
+    "timestamp": "19:17",
+    "content": "Before I wrap up, I want to briefly mention some other advancements to virtualization that can really make your app shine."
+  },
+  {
+    "timestamp": "19:25",
+    "content": "iCloud support is particularly valuable for desktop experiences, allowing people to access their iCloud data and services in the VM."
+  },
+  {
+    "timestamp": "19:33",
+    "content": "EFI Secure Boot hardens Linux VMs with modern security features."
+  },
+  {
+    "timestamp": "19:37",
+    "content": "macOS guests can take advantage of metal features like argument buffers and indirect command buffers."
+  },
+  {
+    "timestamp": "19:45",
+    "content": "You're now ready to add even more capabilities to your virtualization app."
+  },
+  {
+    "timestamp": "19:49",
+    "content": "Automate the setup of macOS user accounts by configuring them with provisioning options."
+  },
+  {
+    "timestamp": "19:54",
+    "content": "Use the accessory access framework to attach USB devices to a VM."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "Customize networking for your VMs by building your own network topology and configuring port forwarding."
+  },
+  {
+    "timestamp": "20:05",
+    "content": "Use the Disk Image Kit framework to create efficient, sparse disk images."
+  },
+  {
+    "timestamp": "20:10",
+    "content": "And, for custom high-performance device needs and Linux guests, consider creating custom devices with VIRTIO."
+  },
+  {
+    "timestamp": "20:17",
+    "content": "Thanks for watching! Have a great WWDC!"
+  }
+]

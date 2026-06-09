@@ -1,0 +1,730 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Eric, an AI Tools Engineer."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "In this session, I'll show you how to use instruments to debug and develop features built with the Foundation Models framework."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "The Foundation Models APIs give your app direct access to on-device and server-based generative AI."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "With them, you can build features that understand natural language, generate content, and respond to what the person is doing."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "The features that create the best experiences aren't static. They adapt based on context."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "That's what the Foundation Models APIs are designed for."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "Dynamic Instructions lets you specify exactly which instructions and tools the model can access."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "It reevaluates before every request, so the model always has the right context for the task at hand."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "That flexibility is what makes these features so responsive, and also what makes them harder to debug."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "Building with Large Language Models, or LLMs, is different from traditional development."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "Traditional code is predictable. LLMs are non-deterministic. The same input can produce different outputs."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "When a feature loses context or responds too slowly, tracking down the cause isn't straightforward."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Good tooling makes the difference."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "By the end of this session, you'll know how to use instruments to identify and fix those issues,"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "and shift fast, reliable experiences with confidence."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "First, we'll start by comparing and contrasting traditional versus LLM app development concepts,"
+  },
+  {
+    "timestamp": "1:36",
+    "content": "to get us into the right mindset."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "Then, we'll use instruments to inspect and debug an agentic experience I'm developing in my Craft app."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "Before getting started, we recommend you check out"
+  },
+  {
+    "timestamp": "1:47",
+    "content": "What's New in the Foundation Models Framework,"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "and Build Agentic App Experiences with the Foundation Models Framework,"
+  },
+  {
+    "timestamp": "1:54",
+    "content": "to gain a better understanding of the latest additions."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "Building apps with LLMs introduces three challenges you won't find in traditional software development."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "The first is probabilistic output."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "Give a traditional function the same input twice, and you'll get the same output."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "LLMs don't work that way."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "The same prompt can produce two completely different responses,"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "which means standard unit testing breaks down."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "You can't assert that an output matches a hard-coded string."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "You have to evaluate the quality and intent of the response instead."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "The second is model-to-model communication."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "Powerful features often rely on multiple models working together."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "For example, in a recipe app, one model might identify ingredients in a photo,"
+  },
+  {
+    "timestamp": "2:40",
+    "content": "while a second generates a recipe from that result."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "Getting data to flow reliably between those models,"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "and recovering gracefully when something goes wrong, is where real complexity lives."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "And the third is observability."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "When something breaks in a multi-model pipeline, it can be very hard to know where it went wrong."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "You need visibility into each step."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "What the model received, what it decided, and why."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "That's exactly what this session is about."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "At its core, an LLM application does three things."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "A person sends a prompt, the model reasons about it, and the person gets a response."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Simple, fast, and for many features, a summarization tool, a writing assistant, a Q&A interface, exactly what you need."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "Many useful features need more than text generation."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Sometimes, the model needs information it doesn't have."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "The current time, a database record, or a search result."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "That's where tool calls come in."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "The loop works like this."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "The person sends a prompt, the model reasons about it and calls a tool."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "That tool performs an action."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "The model takes the result and generates a final response, which can kick off the loop again."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "Each extra step adds latency."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "Each step is a new place for failure."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Understanding this loop is the basis for everything the Foundation Models instrument shows you."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Now that I have covered the mindset required for LLM app development, I'll use instruments to debug and inspect the brainstorming feature I'm developing for my craft app."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "I'm working on a crafting companion app where you can keep a journal of your craft projects."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "The app lets you record craft progress, ask questions about specific crafts, and generate tutorials."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Recently, I had an idea for an interactive brainstorming feature that gives people suggestions on what to craft."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "The crafter can speak with the model to refine its ideas, and when they're ready to commit, the app generates a detailed tutorial for that craft."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "This feature uses two sets of instructions, one for brainstorming ideas, and a second for tutorial generation."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "The brainstorming instructions include two tools, a generate craft idea tool, and a switch to tutorial mode tool."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "Both sets of instructions use the server model on private cloud compute."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "One for quick idea generation, and the other to generate more detailed tutorials."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "Let's see this in action with instruments."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "The project is already open in Xcode."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "To begin profiling, I'll open the product menu and select Profile."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "Xcode will build the app locally."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "From the template chooser, I'll select the foundation models template and click Record."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "This instrument captures prompt and response data from your device, which can include sensitive information."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "Logging is off in production, but it's on for the duration of your trace."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "So keep your trace files somewhere safe."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Select Record anyway to get started."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "Now that the app is launched, let's give it a try."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "As soon as we land here, the model suggests a few project ideas."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "Yarn pom-pom, fabric pouch, and a paper butterfly."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "Paper butterfly sounds fun."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Let's go with that."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Hmm."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "That's not right."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "The model was supposed to kick off a tutorial, but instead it just offered more ideas."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "Something's off."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Let's end the recording and dig into the trace to find out what happened."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "Instruments shows a lot at once, so let's walk through it together."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "The top section holds the tracks."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "Tracks show activity on the timeline, and each track can contain multiple lanes, with charts that show levels or regions."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "Below the timeline is the detail view."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "It shows summary information about the range you're currently inspecting."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "If you click a bar in the timeline or a row in the detail view, the inspector opens up on the right, giving you a closer look at what you've selected."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "The foundation models instrument has six lanes in the timeline."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "These give you a quick overview of session structure and latencies."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "Alongside the timeline, there's a tree detail view."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "That's where you can really dig into the model's chain of thought."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "The instructions lane shows how long a given set of instructions and tools was active."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "One set can cover multiple requests."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "Looking at this lane, it's clear only one set of instructions was active for the entire session."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "But the feature was supposed to use two, so something went wrong during the handoff."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "The model inference lane has two types of bars, yellow and orange."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "Yellow bars represent how long the system spent processing the input prompt."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "Orange bars represent how long it took to generate the response."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "The timeline gives you a quick overview, but the real power is in the tree view."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "It takes everything logged during this recording and organizes it into a hierarchy."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Sessions, requests, model inferences, instructions, prompts, and responses."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "Let's use it to track down why the instruction set never changed."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "Session one had two requests."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "The first one was kicked off by the prompt starting with,"
+  },
+  {
+    "timestamp": "7:53",
+    "content": "Please generate three craft ideas."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "That request was made up of two model inferences and a few tool calls."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Every model inference should have instructions, a prompt, and either a response or an error."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "Click any node in the tree to pull it up in the inspector."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "The model inference detail shows a summary of the instructions, prompt, and response that made up this call."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "Scroll down and you'll find duration visualizations and token usage metrics."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "We'll come back to those later when we talk about optimizing for reliability and performance."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "Getting back to the failure, the timeline already told us the instruction set never changed."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "And here in the inspector for this model inference node, I can see the prompt tied to those instructions."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "Let's select the instructions node to see how they're set up."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "The inspector shows that this instruction only had one tool associated with it."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "The prompt references the switch to tutorial mode tool."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "But that tool isn't actually configured with this instruction."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "Without it, the app has no way to switch from brainstorm mode to tutorial mode."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "So the crafter gets stuck in a loop."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "Looking at the subsequent nodes in the tree, this was a silent failure."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "The model kept accepting input and making tool calls, but never threw an error."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "There was no clear signal that anything had gone wrong."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "That makes it a hard bug to catch."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Now that the root cause is clear, I'll jump into Xcode to fix it."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "Based on what I found in instruments, I'll look at the brainstorm dynamic instructions definition."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "In the instructions block, the switch to tutorial mode tool is mentioned in the prompt, but only the generate craft idea tool is listed in the tool set."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "So let's add it."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "Now, I'll recompile and rerun with instruments to make sure the fix actually worked."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "Back in the app, I'll head to the ideas tab."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "And just like before, the model suggests some new crafts."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "I'll go with necklace."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "And there it is."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "The UI has switched to tutorial mode."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "The model made the transition and generated a full tutorial for this craft."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "Now, let's jump back into instruments and take a look at this new recording to make sure everything ran officially."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "The instructions lane now shows two distinct instructions active during this experience."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "The first is a brainstorming instruction."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "The second is a tutorial generation instruction."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "That lines up exactly with the brainstorm experience design we covered earlier."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Let's dig into the tree view to see how that transition actually happened."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "The first set of instructions now includes both the generate craft idea and switch to tutorial mode tools."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "That confirms the model had everything it needed to make the switch."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "The fix worked."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "The instruction change happened after the second model inference of request 2."
+  },
+  {
+    "timestamp": "11:21",
+    "content": "That inference resulted in a tool call to switch to tutorial mode, passing the selected craft as an argument."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "And in the following request, the instructions correctly switched over to the tutorial generator,"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "with the selected craft passed along as context."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "The info column is a great way to quickly flag nodes worth a closer look."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "Things like errors, long durations, and large token counts."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Request 1's first model inference took a bit longer than I was expecting."
+  },
+  {
+    "timestamp": "11:53",
+    "content": "So let's take a look."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "The metrics and duration sections break down token usage for this inference."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "These numbers are your starting point for understanding and improving the efficiency of an experience."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "You can measure performance using three key metrics."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "Time to first token measures how long it takes for the model to begin generating a response after receiving a prompt."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "A high time to first token means people are staring at a blank screen."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "To reduce it, shorten your prompt."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Tokens per second measures overall generation speed of the response."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "Use it to benchmark performance across different prompt configurations and catch regressions after changes."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Total latency is the complete time from sending the request to receiving the final response."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "This is the number people feel most directly."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "To reduce perceived total latency, utilize streaming to surface partial results sooner."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Running a trace is where optimization starts."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "These metrics tell you exactly where time and resources are going."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "And point you toward the right fix."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "Use the model inference node to get a clear picture of your token usage."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "In this session, I showed you how to use instruments to debug an agentic experience developed with the Foundation Models framework."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "Once you've ironed out the bugs, the next thing to explore is evaluation."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "Watch Meet the Evaluations framework to see how you can measure and improve the quality of your prompts by using structured evaluation."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "To get started with the improved Foundation Models instrument, install Xcode 27."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "Then, on the device you'd like to run and profile your app on, update to the latest OS releases."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "It's important to note that this instrument supports using any model you use with the Foundation Models framework."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "The Foundation Models APIs are your starting point."
+  },
+  {
+    "timestamp": "13:43",
+    "content": "Experiment, build, and see what's possible."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "When something isn't working as expected, the Foundation Models instrument is there to help you debug."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Giving you direct visibility into framework behavior right in context."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "Go further with related sessions on agentic app experiences and the Evaluations framework."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "And explore the full documentation to unlock everything the framework can do."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "Thank you for joining us."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "We're excited to see you develop and debug your intelligent experiences using the improved Foundation Models instrument."
+  }
+]

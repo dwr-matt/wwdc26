@@ -1,0 +1,526 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Thomas, an engineer on the Swift Data team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "In this session, I'm going to show you some of the new Swift Data features in Apple's 2027 releases."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "If you're just starting on your Swift Data journey, make sure to watch the code along,"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "add persistence with Swift Data, and learn how to adopt Swift Data in a new app."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Apple's 2027 releases bring exciting new features to Swift Data."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "First, I'm going to show you how to use query to fetch your data in sections in Swift UI views."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "Next, I'm going to cover enhancements and how you can store custom types in your model."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "And finally, I'll cover some great new APIs for observing model and history changes in your Swift Data store."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "Let's have a look at sectioning."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "Over the last years, we've been working on an app, SampleTrips, to let me track all the adventures I have planned."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "SampleTrips uses Swift Data for persistence and Swift UI for the user interface."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "Swift UI and Swift Data work great together."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "Reading from Swift Data in Swift UI is as easy as adding a query to the view."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Here, a query fetches all trips from Swift Data, sorted by the start date."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "The results of this query can then be used in the view body to create a list of trips."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "In SampleTrips, I want to add the option to group trips by destination."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "So when I have several trips planned to the same place, I can see them next to each other."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "In Apple's 2027 releases, query adds support for sectioning."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "To create a section query, I can pass a key path that starts from the root of the trip model and leads to a string to the new section by parameter of query."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Here, I'm using a key path to the trip's destination property to create a section for each destination."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "The wrapped value of query is still an array of trip, so right now, the list looks like before."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "To section the list, I wrap the current for each in a section and add a second for each."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "To get to the sections, I access the query from the property wrapper using the underscore prefix name, underscore trips."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "The query has a sections property that returns a list of sections."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "Then I can use Swift UI's for each to iterate through all sections."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "Each section has an ID property."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "The ID is the value for my model from the key path I pass to the section by parameter of query."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "So here, in my trip list view, the ID will be the destination of all trips in the section."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "I use ID as the section's header label."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "The section itself is a collection of trips."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "So I change the inner for each to iterate through them and create a trip list item for each trip in the section."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Now that I can see all my trips grouped by the destination, let's move to the next section."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "And have a closer look at some enhancements on storing custom types in your model."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "At the center of the SampleTrips app is the trip model."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "It stores information like name, destination, and the start and end dates."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Right now, the destination is stored as a string in the trip model."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "I want to add the ability to find locations from MapKit."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "I've already built a picker in the app that lets me search for destinations using MapKit's search API."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "For each location, the MapKit API provides a lot of metadata, such as the name, geographic coordinates, and an mkmap item identifier."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "This mkmapItem identifier uniquely identifies the location in MapKit and can be used to look up more metadata about the location and open the location in the Maps app."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "I want to store the coordinates and the mkmapItem identifier in the trip model."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "So I'm adding them to the trip class."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "But now, when I launch the app, Swift data raises a fatal error."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "Class property within persisted struct or enum is not supported, pointing at mkmapItem identifier as the cause."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "When Swift data loads, it automatically generates a schema for the models."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "The schema defines a mapping between the model classes and the entities and properties a data store can persist."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "For most types, this works automatically."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "But classes that are not annotated with the model macro can't be automatically inspected and Swift data fails to generate a schema."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "Since mkmapItem identifier comes from MapKit, I don't have access to its implementation."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "I can't modify it and mark it as model, and Swift data can't inspect it because it's a class."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "But it does conform to codable."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Codable types know how to serialize themselves into data and instantiate themselves back from it."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "In Apple's 2027 releases, you can mark a model attribute as codable to tell Swift data to delegate serialization to the type and store the serialized representation."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "Let's mark the mkmapItem identifier attribute as codable."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "Now, SampleTrips launches without any error."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "Great!"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "The codable attribute tells Swift data to persist the encoded representation instead of inferring a schema for the type."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "Like transformable attributes, codable comes with a few things to keep in mind."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "The contents of codable attributes are opaque to Swift data."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "This means they can't be used in predicates to filter results or for sorting using sort descriptors."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "Also, if the shape of the codable type changes, like adding or removing properties, they will not trigger a migration."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "The codable implementation of the type must be able to encode and decode in a forward and backward compatible way."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "Using codable attributes can be thought of as an escape hatch to persist types that Swift data does not support natively."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "You should avoid using codable for types that you define."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "Modeling them as Swift data models or supported value types allows you to harness the full power of Swift data, like sorting, filtering, and indexing."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "But for types that you don't own, codable lets you store them alongside your other attributes."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "Now, I can pick locations from map kit in SampleTrips and persist the destination's mkMapItem identifier alongside the other properties in the trip model."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "Now, let's look at how you can monitor your store and be notified when data changes."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Earlier, we used the query macro in the trip list view to make trips from the Swift data store available to SwiftUI."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Query is a powerful tool."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "When the view appears, it fetches models from the Swift data store so they can be used in the view body."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "Then, it continuously monitors the store for changes that would affect its results."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "For example, when a trip is removed from the store, query will notice the change and the view re-renders to reflect the new results"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "of the query."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "Query is great and should be your first choice in a Swift UI view."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "But what about parts of your app that are not Swift UI?"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "Maybe you have a state object that derives values from your Swift data store and needs to recompute when the data changes."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "Or your app doesn't use Swift UI at all, like a game written in SceneKit."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "In Apple's 2027 releases, we are introducing Results Observer."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "Like query in Swift UI views, Results Observer fetches data from your Swift data store"
+  },
+  {
+    "timestamp": "7:31",
+    "content": "and then observes your store for changes."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "But it works anywhere in your app, independent of Swift UI views, using Swift Observation."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "It supports the same query primitives that you already know, filtering, sorting, and the sectioning we covered earlier."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Here is the data flow diagram I shared earlier, but with the query replaced with Results Observer and the view replaced with any code you like."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "The Results Observer fetches data and observes your store for changes."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Your code can use Swift Observation to react to these changes."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Earlier, I've added location information in the SampleTrips app."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "I want to add a map to see all the places I have trips planned to."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "I am using Swift UI's MapKit integration, but I want to customize what area of the map is shown."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "To do this, I've added a new MapCameraController, which calculates a fitting map camera bounds for the map."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "It uses Results Observer to know when to recalculate the map camera bounds."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "To do this, I create a Results Observer for trips."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "For the map, I always want to show all trips, so I'm not going to pass in a predicate to filter or a sectioning key path."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "Then, I'm using WithContinuousObservation with the DidSet option to get a callback every time a trip changes."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "And when the results are changing, I'm recalculating the bounds of the map."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "WithContinuousObservation returns an ObservationTrackingToken."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "This token defines the lifetime of the observation."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "I'll store this token on my class to receive updates for the entire lifetime of my MapCameraController."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "Here it is in action. When I launch sample trips, MapCameraController pick the MapCameraBounds that fit all my trips into the view."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "Unfortunately, I won't be able to visit Toronto later this month, so I'm going to delete this trip."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "The Results Observer will notice the change and the MapCameraController will recalculate the camera bounds of the map."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "Results Observer is a powerful tool if your code needs to react to changes in your datastore, anywhere in your app."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "But we didn't stop there. In Apple's 2027 releases, we're also supporting ObservingHistory."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "First, a quick history lesson. When data in your store changes, SwiftData keeps a record of everything that changed."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "You can use this history to build features like syncing with external servers or reacting to changes made outside of your app, like in an app extension."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "Every time your datastore is saved, SwiftData records a history transaction."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "The history transaction contains information about what changed and where the change was coming from, and a token that uniquely identifies the transaction in the history."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "This token can be used with the model contacts FetchHistory API to fetch new transactions."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "To learn more about persistent history, watch TrackModel changes with SwiftData history from WBDC 2024."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "New in Apple's 2027 releases is History Observer."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "History Observer makes it easy to react to any changes in your store."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Similar to Results Observer observing fetch results, History Observer can observe the persistent history and let your code react when new transactions are added."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "And if you only need to know about certain kinds of changes, History Observer lets you filter by model type and transaction author."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "Observing history is useful when your app needs to keep parts of the datastore in sync with other systems, like an external server."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "History Observer has a single observable property, event counter."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "When new transactions are available in the persistent history, the event counter increments."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "Your code can observe the event counter and when it increments, use model context FetchHistory API to fetch the latest changes."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "Here's an example of how you could use History Observer to synchronize changes made in the app with an external server."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "First, I set up a History Observer for my model container."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "In this case, I'm only interested in changes made by the app, so I'm passing app as authors."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "So that I'm not replaying changes that came from the server back to the server."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Next, I'm using withContinuousObservation."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "Like the map camera controller, I store the ObservationTracking token on the class so that tracking remains active for the lifetime of my class."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "Within the Observation closure, I need to access event counter so that Swift Observation knows what to track."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "And finally, I call my ProcessChanges function."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "In ProcessChanges, I can use the model context FetchHistory API to fetch history and upload changes to my server."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "I hope you're as excited as I am about the new features in SwiftData in our 2027 releases."
+  },
+  {
+    "timestamp": "12:25",
+    "content": "Tailor SwiftData fetches with sections, use codable attributes when storing types from other frameworks."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "Use ResultsObserver to react to changes of query results outside of SwiftUI views."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "And finally, use HistoryObserver to react to changes in SwiftData's persistent history."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "Thanks for watching."
+  }
+]

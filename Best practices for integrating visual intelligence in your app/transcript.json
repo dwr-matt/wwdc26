@@ -1,0 +1,1238 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "."
+  },
+  {
+    "timestamp": "0:06",
+    "content": "Hi, I'm David,"
+  },
+  {
+    "timestamp": "0:08",
+    "content": "an ML Engineer on System Experience."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Let's build something with Visual Intelligence."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "In this session, I'll take you step-by-step through"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "integrating your app with"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "Visual Intelligence and share"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "some best practices along the way."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Since Visual Intelligence was introduced,"
+  },
+  {
+    "timestamp": "0:28",
+    "content": "people have been using it to quickly learn"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "more about what's around them,"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "whether in their physical surroundings"
+  },
+  {
+    "timestamp": "0:35",
+    "content": "or on their iPhone screen."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "This year, we're adding new capabilities,"
+  },
+  {
+    "timestamp": "0:41",
+    "content": "like adding to contacts,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "saving multiple calendar events,"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "and medical device logging,"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "as well as bringing Visual Intelligence"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "to iPad and Mac OS."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "So how do you bring your app into this experience?"
+  },
+  {
+    "timestamp": "0:57",
+    "content": "I'll show you by building one."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "I love listening to and discovering new music."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "So I want to create an app that helps me discover"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "albums and find upcoming concerts."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "Here's what we'll build today."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "This is my music app."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "I can browse albums,"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "check out upcoming concerts,"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "and start listening to anything with a tap."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "If I take a picture or screenshot of"
+  },
+  {
+    "timestamp": "1:23",
+    "content": "some album artwork and highlight to search,"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "I can see what's happening."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "My app shows matching albums and concerts"
+  },
+  {
+    "timestamp": "1:30",
+    "content": "right in Visual Intelligence."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "I can even capture a post about an upcoming concert,"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "use Visual Intelligence to add the event to my calendar,"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "and the concert shows up automatically in my app."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "By the end of this session,"
+  },
+  {
+    "timestamp": "1:48",
+    "content": "you'll know how to build all of this."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "There are a few steps to making the most of your integration"
+  },
+  {
+    "timestamp": "1:53",
+    "content": "with Visual Intelligence, which I'll go over today."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "We'll define the content we want to return from our app"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "using app entities."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "Next, we'll implement a query so Visual Intelligence can find"
+  },
+  {
+    "timestamp": "2:07",
+    "content": "and return our app's content."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "Then, we'll take our integration beyond iOS,"
+  },
+  {
+    "timestamp": "2:14",
+    "content": "bringing it to Mac and iPad, covering some considerations"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "for each platform along the way."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "And to wrap things up, we'll explore system store integrations."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "We'll explore system store integrations, and we'll explore system store integrations."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "We'll explore individual individual individual"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "If you're new to App Intents,"
+  },
+  {
+    "timestamp": "2:47",
+    "content": "I'd recommend checking out these sessions from WWDC25."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "The first step to integrating image search"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "is defining the content we want to return."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "We'll use App Entities from the App Intents framework for this."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "App Entities are the nouns within your app."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "In our app, I want our image search to first return visually similar albums."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "So I'll define an album entity."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "Let's see how this looks in code."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "We'll start by defining an album entity"
+  },
+  {
+    "timestamp": "3:22",
+    "content": "that Visual Intelligence can display in its search results."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "First, I'll add a default entity query"
+  },
+  {
+    "timestamp": "3:30",
+    "content": "and a type display representation,"
+  },
+  {
+    "timestamp": "3:32",
+    "content": "which are standard for any app entity."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "Then, I'll define the content of the entity."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "Each album entity has an image,"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "an identifier,"
+  },
+  {
+    "timestamp": "3:43",
+    "content": "name,"
+  },
+  {
+    "timestamp": "3:44",
+    "content": "artist name,"
+  },
+  {
+    "timestamp": "3:45",
+    "content": "and thumbnail data for the album artwork."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "And I'll add a display representation,"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "which tells Visual Intelligence how to present each result."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Let's talk about the display representation we just defined."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "This is the first thing people will see in the image search results."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "And there's not a lot of room."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "You get about three lines of text for a title and subtitle,"
+  },
+  {
+    "timestamp": "4:11",
+    "content": "as well as a thumbnail,"
+  },
+  {
+    "timestamp": "4:12",
+    "content": "and a thumbnail image."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "It's good practice to put the most important identifying information here."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "In my case, the album name and the artist."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "And if you initialize a display representation with an image URL,"
+  },
+  {
+    "timestamp": "4:28",
+    "content": "I'd recommend serving a thumbnail-sized image when appropriate,"
+  },
+  {
+    "timestamp": "4:32",
+    "content": "rather than pointing to your full resolution asset."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "For example, if you always expect to return multiple results,"
+  },
+  {
+    "timestamp": "4:42",
+    "content": "you can use the image name and title to create a new result."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "Using smaller images can help your results load faster"
+  },
+  {
+    "timestamp": "4:49",
+    "content": "and still look good in a two-column layout."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "However, if you only return one result,"
+  },
+  {
+    "timestamp": "4:55",
+    "content": "keep in mind that this image will take up the full width of the results sheet."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "Now that I have my entity defined,"
+  },
+  {
+    "timestamp": "5:03",
+    "content": "how does Visual Intelligence actually query my app for results?"
+  },
+  {
+    "timestamp": "5:08",
+    "content": "That's where the intent value query comes in."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "An intent value query is a lightweight query that's used to query the results."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "It's a lightweight query protocol that provides entity values to the system."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "You might already have one if you've adopted App Intents to make your app work with Siri."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "For Visual Intelligence, the key difference is the input."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "The system passes a semantic content descriptor containing information about the captured image."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "Let's jump back to the code to build this."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "I'll adopt the intent value query protocol,"
+  },
+  {
+    "timestamp": "5:41",
+    "content": "and implement its values for requirement with a semantic content descriptor as input."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "In the body, I'll grab the pixel buffer from the input"
+  },
+  {
+    "timestamp": "5:52",
+    "content": "and pass it to my catalog search method, which returns matching albums."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "But how does that search actually work?"
+  },
+  {
+    "timestamp": "6:01",
+    "content": "Let's look at that next."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "For this app, I'll search on device using a local catalog of saved albums."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "I'll use the local catalog of saved albums."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "I'll use the vision framework for this,"
+  },
+  {
+    "timestamp": "6:13",
+    "content": "which provides pre-trained machine learning models for computer vision tasks."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "Each entry in our catalog will have a feature print,"
+  },
+  {
+    "timestamp": "6:23",
+    "content": "a compact numerical representation of the image,"
+  },
+  {
+    "timestamp": "6:26",
+    "content": "which we can use to compare image similarity."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "I'll define a function to compute feature prints using generateImageFeaturePrintRequest."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "I'll make sure to pre-compute these for albums in my catalog,"
+  },
+  {
+    "timestamp": "6:40",
+    "content": "so we don't need to do this computation at query time."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "For our query, I'll first convert the pixel buffer to a CG image using VideoToolbox."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "Then, I'll generate a new feature print for this image."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "I'll compare that against the pre-computed feature prints in my catalog,"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "applying a maximum distance threshold to filter out dissimilar results."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "Finally, I sort by similarity,"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "and return the top results."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "A few things to note."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "I pre-compute feature prints for my album catalog to keep the query fast."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "And I sort results by similarity so the best match appears first."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "Whether you're searching on device or hitting a server,"
+  },
+  {
+    "timestamp": "7:29",
+    "content": "the same principles apply."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "Return results fast and ranked."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "I'd also recommend limiting the number of results returned"
+  },
+  {
+    "timestamp": "7:38",
+    "content": "to ensure they're relevant."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "If you don't find any good matches,"
+  },
+  {
+    "timestamp": "7:43",
+    "content": "you can return an empty array."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "The system will handle displaying an empty response."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "And I encourage you to check out the Vision Framework APIs"
+  },
+  {
+    "timestamp": "7:53",
+    "content": "to learn more about image processing techniques you can use in your app."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "We just scratched the surface with feature prints."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "But you can do so much more, like extract text,"
+  },
+  {
+    "timestamp": "8:04",
+    "content": "scan barcodes, detect faces, and classify images."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "Just to name a few."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "These can be incredibly useful techniques"
+  },
+  {
+    "timestamp": "8:13",
+    "content": "for extending the capabilities of your app's visual search."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "Now, how can we land people on the right screen of the app"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "when they tap on a result?"
+  },
+  {
+    "timestamp": "8:23",
+    "content": "For that, we need an open intent."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "When someone taps an album in the image search results,"
+  },
+  {
+    "timestamp": "8:29",
+    "content": "the system calls this intent with the selected entity."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "My perform method navigates to the album detail page."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "Your open intent should take people straight to the content they selected."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "If you already have an open intent for your entity"
+  },
+  {
+    "timestamp": "8:47",
+    "content": "from adopting App Intents to power other features,"
+  },
+  {
+    "timestamp": "8:50",
+    "content": "you can reuse it here too."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "You don't need a separate one just for visual intelligence."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "And it's recommended to keep this lightweight."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "This method runs as the app comes to the foreground."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "So do your navigation and save any heavy loading"
+  },
+  {
+    "timestamp": "9:06",
+    "content": "for after the view appears."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "And that's everything you need"
+  },
+  {
+    "timestamp": "9:11",
+    "content": "for a basic image search integration."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "Let's take a look at what we've built so far."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "My friend sent me this recommendation."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "Let's use visual intelligence to start listening to it in our app."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "I'll take a screenshot, highlight to search,"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "and choose our app from the available providers."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "Our query worked, and we were able to find the album"
+  },
+  {
+    "timestamp": "9:36",
+    "content": "and return it to the app."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "And we can see that the result is the same as the top result."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "It's worth mentioning that your app appears here"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "alongside other adopting apps."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "The system decides the ordering based on which image search providers"
+  },
+  {
+    "timestamp": "9:50",
+    "content": "are available on the device."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "If I tap on this result, it takes me right to the album page in my app."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "That's our entity, our query, and our open intent all working together."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "Now, let's bring this to more platforms."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Let's take a look at the results."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "This year, visual intelligence is also available on iPadOS and macOS."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "The same APIs are available on these new platforms as well,"
+  },
+  {
+    "timestamp": "10:18",
+    "content": "with minimal changes needed to your app."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "Your intent value query, your entities, and your open intent"
+  },
+  {
+    "timestamp": "10:26",
+    "content": "all work across iOS, iPadOS, and macOS."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "That's the same code we just wrote."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "That said, there are a few platform differences worth keeping in mind."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "On iOS, people often use visual intelligence through the camera,"
+  },
+  {
+    "timestamp": "10:43",
+    "content": "capturing physical objects like vinyl records or concert posters."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "On macOS and iPad, the primary entry point is screenshots,"
+  },
+  {
+    "timestamp": "10:53",
+    "content": "capturing digital media."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "Make sure your search handles both kinds of content well."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "Also keep in mind that on Mac, the input pixel buffer"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "can be much larger than what you'd encounter on iPhone."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "Consider if resizing is necessary for your use case."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Let's build our app for macOS and see how it looks."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "I'll take a screenshot of that same image,"
+  },
+  {
+    "timestamp": "11:21",
+    "content": "and with no changes to our query or entity code,"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "our app's image search works on macOS."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "The result looks great."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "Now that we've covered the basics,"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "I want to add even more features to our app."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "What if we could search not only for visually similar albums,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "but also for upcoming concerts by artists of those albums?"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "For that, we can use union value."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "Since our app can only have one intent value query"
+  },
+  {
+    "timestamp": "11:48",
+    "content": "that accepts a semantic content descriptor,"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "I'll define a union value enum with a case for each entity type,"
+  },
+  {
+    "timestamp": "11:55",
+    "content": "album and concert."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "And since I have two entity types now,"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "I can use the same method to define the same value enum"
+  },
+  {
+    "timestamp": "12:04",
+    "content": "for each entity type."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "I'll need an open intent for each one."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "Then I'll update my query to return this union type."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "I'll search for the top matching albums first,"
+  },
+  {
+    "timestamp": "12:19",
+    "content": "then use the artists from those albums to find nearby concerts,"
+  },
+  {
+    "timestamp": "12:23",
+    "content": "and combine them into a single results list."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "Consider if it makes sense for your app to return multiple types of results."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "And it's worth thinking about the different types of content"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "your app can return, beyond simply matching pixels."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "I found albums through image similarity,"
+  },
+  {
+    "timestamp": "12:42",
+    "content": "then used those artists' names to surface nearby concerts,"
+  },
+  {
+    "timestamp": "12:45",
+    "content": "a completely different kind of result."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Feel free to be creative about the type of content you return,"
+  },
+  {
+    "timestamp": "12:52",
+    "content": "based on the context."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "As a final touch,"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "if people don't find the result they're looking for immediately,"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "I want to provide an easy way for them to continue the search inside the app."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "We can use the semantic content search schema to do that."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "I'll create an intent conforming to the semantic content search schema."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "The system provides the semantic content property automatically."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "That's the same semantic content descriptor we saw before,"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "with the pixel buffer."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "In perform, I'll navigate to an in-app search view,"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "with some pre-populated search results."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "Now, when someone taps more results,"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "they'll land in my app's full search experience."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "It's good practice to use semantic content search"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "to give people a way to continue into your full search experience."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "And you can pre-populate your search view"
+  },
+  {
+    "timestamp": "13:47",
+    "content": "based on the input context,"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "rather than starting from scratch."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Your app can show much more than the visual intelligence results view."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "Filters, categories, the full depth of your content."
+  },
+  {
+    "timestamp": "14:00",
+    "content": "Take advantage of that."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "Let's see how this works."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Let's see everything we've built in action."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "I'll take another screenshot of this album."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "And my app returns matching albums and concerts"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "right in visual intelligence."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "And if I want to browse more,"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "tapping the more results button takes me into my app's full search."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "We've talked about your app providing results to visual intelligence."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "But there's another side to the story."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "Your app can also receive data from visual intelligence"
+  },
+  {
+    "timestamp": "14:32",
+    "content": "through system store integrations."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "Providing results to visual intelligence"
+  },
+  {
+    "timestamp": "14:36",
+    "content": "is done through the image search integration,"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "which is everything we've built so far."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "Other visual intelligence actions write data to system stores,"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "which provide developers with a bridge to shared system data."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "Events can be read with EventKit,"
+  },
+  {
+    "timestamp": "14:52",
+    "content": "contact information with Contacts,"
+  },
+  {
+    "timestamp": "14:55",
+    "content": "and medical device readings with HealthKit."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "If your app already reads from the data stores in these frameworks,"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "visual intelligence becomes a new source of input automatically."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "For our app, I want to know upcoming concerts people are interested in,"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "so we can suggest songs for them to listen to beforehand."
+  },
+  {
+    "timestamp": "15:17",
+    "content": "So let's add an EventKit integration to access these events."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "This is my upcoming concert manager,"
+  },
+  {
+    "timestamp": "15:24",
+    "content": "which uses EK Events Store."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "I'll request read access to Calendar,"
+  },
+  {
+    "timestamp": "15:31",
+    "content": "then query for upcoming events."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "For our app, I'll simply filter for events in the near future"
+  },
+  {
+    "timestamp": "15:39",
+    "content": "that match artists in my catalog."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "I'll also add a notification observer,"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "so new events, including ones created by visual intelligence,"
+  },
+  {
+    "timestamp": "15:50",
+    "content": "appear automatically."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "Now, let's see the final piece."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "When I capture the social media post about an upcoming concert,"
+  },
+  {
+    "timestamp": "16:00",
+    "content": "visual intelligence detects the event"
+  },
+  {
+    "timestamp": "16:02",
+    "content": "so I can add it to my calendar."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "When I open my app,"
+  },
+  {
+    "timestamp": "16:07",
+    "content": "it's already there in upcoming concerts"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "with a suggestion to start listening."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "The same pattern applies to other system stores."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "Contacts added through visual intelligence,"
+  },
+  {
+    "timestamp": "16:19",
+    "content": "for example from a business card,"
+  },
+  {
+    "timestamp": "16:21",
+    "content": "can be accessed through CN Contacts Store."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "In medical device readings captured by visual intelligence,"
+  },
+  {
+    "timestamp": "16:29",
+    "content": "from displays on blood pressure monitors,"
+  },
+  {
+    "timestamp": "16:32",
+    "content": "glucose meters, or weight scales,"
+  },
+  {
+    "timestamp": "16:35",
+    "content": "can be queried using HK Health Store."
+  },
+  {
+    "timestamp": "16:39",
+    "content": "If your health or fitness app reads from HealthKit,"
+  },
+  {
+    "timestamp": "16:43",
+    "content": "visual intelligence becomes another way"
+  },
+  {
+    "timestamp": "16:45",
+    "content": "for people to log data without manual entry."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "We've covered a lot today."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "To recap,"
+  },
+  {
+    "timestamp": "16:52",
+    "content": "visual intelligence offers two powerful integration points"
+  },
+  {
+    "timestamp": "16:55",
+    "content": "for your app."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "You can provide results to visual intelligence"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "through image search,"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "and you can receive data from visual intelligence"
+  },
+  {
+    "timestamp": "17:03",
+    "content": "through system store integrations."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "With visual intelligence now available on iOS,"
+  },
+  {
+    "timestamp": "17:09",
+    "content": "iPadOS, and macOS,"
+  },
+  {
+    "timestamp": "17:12",
+    "content": "your integration can reach people across their devices."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "If you want to learn more,"
+  },
+  {
+    "timestamp": "17:18",
+    "content": "check out the documentation available"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "on the developer website."
+  },
+  {
+    "timestamp": "17:23",
+    "content": "You can also view these related sessions"
+  },
+  {
+    "timestamp": "17:25",
+    "content": "to explore further capabilities"
+  },
+  {
+    "timestamp": "17:27",
+    "content": "in App Intents and the Vision Framework."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "Thanks for watching."
+  },
+  {
+    "timestamp": "17:33",
+    "content": "I can't wait to see what you build"
+  },
+  {
+    "timestamp": "17:34",
+    "content": "with visual intelligence."
+  }
+]

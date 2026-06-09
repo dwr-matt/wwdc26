@@ -1,0 +1,310 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Louis. In this video, I'll show you how you can access a powerful new server LLM in your"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "apps using private cloud compute. Last year, we give you access to a powerful on-device LLM with"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "the new Foundation Models Framework. And this year, we've made the on-device LLM even better."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "It now has support for image input. It's better at instruction following and calling your custom"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "tools. But we know there are more complex use cases that require an even more powerful model."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "So this year, we're also giving you access to a new server model running on private cloud compute."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "With this model, you can build complex AI features in your apps, like assistants that reason over"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "large user input. Or features that rely on making lots of tool calls with large outputs."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "And you can even call private cloud compute from watchOS."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "In this video, we'll go over what private cloud compute is. I'll show you how you can access it"
+  },
+  {
+    "timestamp": "1:16",
+    "content": "from your apps with the Foundation Models Framework and how to handle usage limits."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "Private cloud compute powers our system features to send complex tasks to Apple servers."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "And you now get access to this in your apps as well. That means you can access a powerful server LLM"
+  },
+  {
+    "timestamp": "1:36",
+    "content": "without compromising on privacy. Private cloud compute is designed with end-to-end privacy in mind,"
+  },
+  {
+    "timestamp": "1:44",
+    "content": "ensuring that user data is never stored. The data is only used for requests. And all of this has been"
+  },
+  {
+    "timestamp": "1:52",
+    "content": "independently verified by researchers. But it gets even better. Private cloud compute is integrated in the OS"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "process, together with iCloud. So you don't have to worry about authentication or API keys like you"
+  },
+  {
+    "timestamp": "2:06",
+    "content": "typically do with server models. Your users just need a device that supports Apple intelligence. With no"
+  },
+  {
+    "timestamp": "2:14",
+    "content": "account setup, no authentication and no API keys. This is really the easiest server LLM you'll ever use."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "And even better, there are no token costs to you, the developer. Each user gets a daily limit. And users"
+  },
+  {
+    "timestamp": "2:31",
+    "content": "can upgrade to iCloud Plus to get higher limits. This model is available for apps with less than 2 million"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "downloads. And you can apply on the developer website today. So let's take a look at how you can integrate"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "this in your apps with the foundation models framework. If you already have an app using foundation models,"
+  },
+  {
+    "timestamp": "2:52",
+    "content": "you know that it takes just three lines of code to prompt the on-device LLM. You create a session and"
+  },
+  {
+    "timestamp": "2:59",
+    "content": "then ask it to respond to your prompt. And now by changing just one line of code, you can switch to the"
+  },
+  {
+    "timestamp": "3:06",
+    "content": "new server model on PCC. With just that line, you're now talking to a much larger model with larger context"
+  },
+  {
+    "timestamp": "3:14",
+    "content": "and more complex reasoning capabilities. The foundation models framework offers a unified Swift API,"
+  },
+  {
+    "timestamp": "3:21",
+    "content": "regardless of which model you're talking to. Getting structured output with generable or calling tools"
+  },
+  {
+    "timestamp": "3:29",
+    "content": "works just the same with the PCC model as it does with the on-device model. This easily lets you switch"
+  },
+  {
+    "timestamp": "3:38",
+    "content": "between models without having to rewrite your code. Keep in mind, just like with the on-device model,"
+  },
+  {
+    "timestamp": "3:45",
+    "content": "PCC is only available on Apple intelligence devices. It's important to check the availability API and"
+  },
+  {
+    "timestamp": "3:54",
+    "content": "gracefully handle when Apple intelligence is not available on a user's device. When writing a feature"
+  },
+  {
+    "timestamp": "4:01",
+    "content": "using foundation models, deciding which model to use is an important decision. So let's take a look"
+  },
+  {
+    "timestamp": "4:07",
+    "content": "at the differences between the on-device system model and the PCC model. They both offer privacy,"
+  },
+  {
+    "timestamp": "4:14",
+    "content": "but the on-device model works offline, while PCC requires an internet connection. The on-device model"
+  },
+  {
+    "timestamp": "4:23",
+    "content": "has no request limits, while PCC offers a daily limit per user. Context size is another important factor"
+  },
+  {
+    "timestamp": "4:31",
+    "content": "for some features. The on-device model offers 4K, and with PCC you get 32K. And the PCC model supports"
+  },
+  {
+    "timestamp": "4:41",
+    "content": "reasoning. But what is reasoning? When an LLM responds to your prompt, it typically just reads the prompt and"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "generates a response. With reasoning, the model thinks before it generates the response. This literally"
+  },
+  {
+    "timestamp": "4:59",
+    "content": "happens by letting the model generate extra text in a separate segment of the transcript. The PCC model"
+  },
+  {
+    "timestamp": "5:07",
+    "content": "offers 3 levels of reasoning. Light lets the model gather some extra context. Moderate lets the model"
+  },
+  {
+    "timestamp": "5:15",
+    "content": "reason a little deeper. And with deep, the text for the reasoning segment may be even longer than the"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "actual response. You can set the reasoning level when calling respond on your session. The transcript of"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "your session includes the reasoning segment. You can observe the transcript to show progress, which is"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "especially useful with the deep reasoning level, which may take some time. But keep in mind, reasoning is"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "extra text that the model generates. So it uses tokens. This counts towards your context size limit."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "Speaking of context size, we also added a convenient API to let you programmatically get the context size for a model."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "Just access the context size property on either system language model or private cloud compute language model."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "When deciding between the on-device and PCC model or deciding the reasoning level to use, it's good to make that"
+  },
+  {
+    "timestamp": "6:21",
+    "content": "decision based on data, not just vibes. Evaluating lets you understand the quality of your specific feature. You may be"
+  },
+  {
+    "timestamp": "6:30",
+    "content": "surprised how well the on-device model performs at certain tasks, especially with the updated model this year. The only way to"
+  },
+  {
+    "timestamp": "6:37",
+    "content": "know is by evaluating. That's why we created the brand new evaluations framework. It's a new Swift framework that helps you"
+  },
+  {
+    "timestamp": "6:47",
+    "content": "evaluate your foundation model's features. It's integrated right in Xcode and it's easy to get started. You can check out"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "Meet the Evaluations Framework to learn more. And you can even use the on-device and server model together. Check out Build Agentec App"
+  },
+  {
+    "timestamp": "7:05",
+    "content": "Experiences with Foundation Models to learn more about that."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "When using the PCC model in your app, it's important to handle usage limits well. Requests are counted with your"
+  },
+  {
+    "timestamp": "7:16",
+    "content": "user's iCloud account. And you can optimize your app for the case where a user hits a limit. So let's take a look at how to do that."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "Here I have an app that summarizes an article using the PCC model. I can select a markdown file and we take the text and"
+  },
+  {
+    "timestamp": "7:34",
+    "content": "images feed that into a language model session and generate a summary. This works great with the large context size that PCC offers."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "But when a user hits a limit, the request throws an error. If that error is just shown in the UI, that's not a great user experience because it's not very actionable."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "To handle this better, you can check for its limit reached on the quota usage of the model and handle that with custom UI in your app. Here I'm using a label to go under my button."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "And when the user's limit is exceeded, you can show a button to let the user manage their limit. For example, a user could upgrade their account to get a higher limit, which would let them make more requests."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "You should integrate this with your existing UI. Avoid showing an alert for the usage limit, because this UI should persist and not be dismissed."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "Instead, you can update the state of your UI, like disabling the button that makes the request. And under that button, I'm showing a subtle label, with the button for letting the user get a higher limit if they want."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "You can also detect the case where a user is approaching their limit. This can be good to indicate to your users that they are close to their daily limit, so they can make an informed decision for which requests they want to make."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "In Xcode, we have a convenient debug option to simulate the usage limit status. In your scheme, select Debug, and then Options. Here we have the Simulate Apple Foundation Models Availability option."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "We can select Quota Usage Limit Reached to simulate the case we just handled in our UI. We can also select Nearing Usage Limit to simulate the case for the user."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "We can also select the user is close to reaching their daily limit. We already handled the Is Limit Reached case in the code before."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "We can now also test the Below Limit case. Just like with Is Limit Reached, we can show a simple label. In the app, this now shows a label under the button to make a request."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "Again, this contains the Actionable button. Now the user can control their limits even when they're not yet at the maximum. And all this to just a few lines of code."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "So that was a quick overview of integrating Private Cloud Compute in your apps."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "If you would like to use this new server model in your app, you can apply on the developer website today."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "We have a ton of other content to tell you all about what's new with Foundation Models and related frameworks."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "You can start with what's new in the Foundation Models framework for a great overview."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "And to better understand what happens with the models at runtime, you can check out Debug and Profile Agentic App Experiences with Instruments."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "Thanks for watching. Where's that book? I need to bring it back to the library."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "No, really, where's that book?"
+  }
+]

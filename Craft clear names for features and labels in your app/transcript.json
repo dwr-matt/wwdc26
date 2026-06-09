@@ -1,0 +1,894 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Hige,"
+  },
+  {
+    "timestamp": "0:08",
+    "content": "a UX writer on the human interface design team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Think about the last time you opened an app and just knew where to go."
+  },
+  {
+    "timestamp": "0:15",
+    "content": "That feeling is designed."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "One of the most powerful tools you have for creating it can also be easy to"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "overlook, the name you give things."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "For over 50 years,"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Apple has created names that have become part of everyday life for many."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "Names like Mac, iPhone, and iCloud."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "But naming happens at every level, from menus to tab bars to settings."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "And all of those choices, big and small, add up to how someone feels about your app."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "Today, we're going to look at how to make those choices well."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "So we'll start with the qualities that make a name work."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "And what's at stake when a name falls short."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "Then we'll walk through an exercise, a way to get to the right name,"
+  },
+  {
+    "timestamp": "1:02",
+    "content": "by understanding who you're building for and testing how a name actually works in practice."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "And we'll close with how to evaluate any name you come up with,"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "so you can walk away with something concrete to apply to whatever you're building."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "Let's start with the criteria."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "Belongs."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "This first one is about fit."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "A name that truly belongs doesn't just sound like your app."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "It works at every level."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "What users expect to find there."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "How it lives among everything else you've named."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "Expectations."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "The second is about clarity and trust."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "When someone reads a name, they're already predicting what they'll find."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "The right name delivers on that."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "And when it does, trust builds."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "And finally, works everywhere."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "A name that travels, holding up across languages, markets, and the platforms and context where your app lives."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "Keep in mind that names won't always check every box."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "You may have criteria of your own, like trademark considerations or specific regulations in your industry."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "So think of these criteria as a guide, not a rule book."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "The trade-offs are yours to make."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "Now let's see them at work with an example from Apple Cash."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "When I want to send money with Apple Cash, there's one thing I need to know right away."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "How much I have."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "That amount is right next to the button I used to send it."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "And we need to label what it is."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "What if we called it spending power?"
+  },
+  {
+    "timestamp": "2:39",
+    "content": "It sounds compelling, but it's not concrete."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "And it raises more questions."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "Is it a credit limit?"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "A score?"
+  },
+  {
+    "timestamp": "2:47",
+    "content": "In a financial context, ambiguity is the last thing you want."
+  },
+  {
+    "timestamp": "2:52",
+    "content": "It also doesn't quite feel like something that belongs in an Apple service."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "And consider the tone."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "If my spending power is low or at zero, that stops being a label and starts feeling like a judgment."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "Payment services carry a lot of trust."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "A name that passes judgment, even unintentionally, breaks that trust."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "What about something more descriptive like current funds?"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "It describes what's here, the funds currently in my account."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "But current funds sounds like something out of a spreadsheet."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "Try saying it out loud."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "Let me check my current funds."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "People don't really talk like that in natural conversation."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "That gut check alone tells you it doesn't belong in a service that people use to send and receive money."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "So the best name here for this value is balance."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "It's the industry standard term for it because it's well understood, clear, and neutral."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "Clarity and trust come first here, not brand expression."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "Balance belongs in this app, sets exactly the right expectation, and travels without friction."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "Sometimes the most obvious word is the right one because it's already doing the job."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "There are times when the pull towards something more clever or branded is real."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Consider a subscription screen in a gym app."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "Two plans, basic access and all access."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "They're pretty clear and easy to choose between."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "But what if we got a little creative with the plan names?"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "What if we called them lightweight and heavyweight plans instead?"
+  },
+  {
+    "timestamp": "4:38",
+    "content": "That's fun and seems on brand, but there's a learning curve."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "What do those names actually mean?"
+  },
+  {
+    "timestamp": "4:45",
+    "content": "That friction makes choosing harder."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "So how do you decide?"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Here's the thing about the criteria I mentioned at the beginning."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "About a name belonging, setting expectations, and working everywhere."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "You don't have to check every box."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "Maybe lightweight and heavyweight really do fit the gym brand better."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "That's totally fine."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "There's just more work to do to make sure those names are understood."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "Sometimes you lean into clarity."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "Other times you lean into brand."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "Ask yourself what matters most given where a feature or setting lives and let that guide"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "which criteria you prioritize."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "Now let's look at how to come up with a great name."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "When you're building something, it's natural to name it by what it does, the technology behind"
+  },
+  {
+    "timestamp": "5:33",
+    "content": "it or the function."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "But the people using your app don't see it that way."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "They want to know what it does for them."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "Who's your app for?"
+  },
+  {
+    "timestamp": "5:43",
+    "content": "New parents?"
+  },
+  {
+    "timestamp": "5:44",
+    "content": "People training for a marathon?"
+  },
+  {
+    "timestamp": "5:46",
+    "content": "Start by getting clear on your audience first and try this exercise."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "With the audience in mind, ask yourself, when they encounter this feature, what should they"
+  },
+  {
+    "timestamp": "5:57",
+    "content": "think, feel, and do?"
+  },
+  {
+    "timestamp": "6:01",
+    "content": "So let's walk through this exercise together."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "Imagine you're part of the Apple Maps team and you're naming a feature that remembers the"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "places you've been."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "That new cafe you discovered last week or the park or the accessible trails."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "We'll apply our criteria as we go because without the perspective of who you're naming for, the"
+  },
+  {
+    "timestamp": "6:23",
+    "content": "area can seem abstract."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "With it, they become specific and actionable."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "On your own or with your team, write down a few thoughts in each of these sections, one idea per sticky note."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "Think."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "What does the team want people to think when using this type of feature?"
+  },
+  {
+    "timestamp": "6:45",
+    "content": "Maybe that it's easy or helpful or even clever."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "If you do this, write down as many ideas as you can and don't filter yet."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "You're not looking for the perfect word."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "You're looking for the themes that keep coming up."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "Then move on to feel."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "What should people feel?"
+  },
+  {
+    "timestamp": "7:06",
+    "content": "Like when you find a place you couldn't remember the name of for the longest time."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "That can feel like a fun moment and secure, knowing your places are private and encrypted."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "Both matter here."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "And finally, do."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "The team wants people to find this feature, use it, and share places with whomever they want."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Now keep in mind that I'm only showing a few examples here."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "You might be surprised by how many you or your team actually come up with."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "More ideas are better here."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "Once all the ideas are down, step back."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "You'll start to notice things repeating, different words pointing to the same feeling."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "That's when you start to group them by theme."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "For visited places, a few themes came up."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "Ease, finding what you're looking for without effort."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Excitement, the fun surprise of rediscovering a place you loved."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "And security, because this feature was built with privacy in mind, that has to come through."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "What name could capture ease?"
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Excitement?"
+  },
+  {
+    "timestamp": "8:15",
+    "content": "A sense of security?"
+  },
+  {
+    "timestamp": "8:16",
+    "content": "We can probably cross out a few right away, because they don't meet the criteria we've been talking about."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "Some of these just don't fit Apple."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "Some feel a little vague, while others might not translate well."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "You can narrow down the options even further with a simple test."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "Take the names and drop them into the sentences you might read or say to a friend."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "Something like, hey, check out private memories."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "Or, just search for private memories."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "A name that reads and sounds natural, that's a name worth exploring further."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "The Apple Maps team ultimately landed on visited places."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "Descriptive, clear, and already at home in an interface that uses the word places throughout."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "It also sets the right expectation about ownership."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "These are your places that can't be read by Apple."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "And it works in different languages."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "When you're evaluating your own options, look for the name that honors the themes you identified and test well against the criteria."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "Remember, it doesn't have to pass all three criteria, but it's great when it does."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "The examples we've looked at lean straightforward and descriptive, but that's not the only approach."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "The right name for your app might be something a bit more evocative or expressive."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "The Photos app has a feature that looks at your library and automatically surfaces moments that matter."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "A birthday, a trip, a regular Tuesday that turned out to be worth remembering."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "It's an algorithmic photo grouping."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "What would you call it?"
+  },
+  {
+    "timestamp": "9:57",
+    "content": "Think about who's on the other end of this feature."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "Someone who just opened up photos and found something from five years ago they'd forgotten about."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "Or a video of a laugh they hadn't heard in years."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "That person isn't thinking about algorithms."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "They're looking for a memory."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "Memories works because it meets them there in a way that a technical label never could."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "It fits the tone of the app and the relationship people have with their photos."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "And while it is still straightforward, the clarity comes from emotion, not explanation."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "Every example we've looked at so far works, but for different reasons."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "The question is how you know when yours does, too."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "Let's walk through an example in Apple Podcasts."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Audio quality in podcasts can vary wildly."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "Some shows are polished, while others are recorded in kitchens or cars."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "So here's where that feature lives in a menu that also controls the playback speed."
+  },
+  {
+    "timestamp": "10:59",
+    "content": "It isolates voices, reducing background noise without altering the original audio."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "There are a few ideas that pop up."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "Right away, vocal isolation comes to mind."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "But wait."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "For a feature like this, a verb works well because we're putting the person using it in control."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "The feature is something you do, not something you have."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "So let's try isolate vocals instead."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "But that's an audio engineering term."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "It describes what the technology does, not what you experience."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "How about clarify speech?"
+  },
+  {
+    "timestamp": "11:38",
+    "content": "Closer, but it only tells half the story."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "There's more to this feature than clarity alone."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "Another obvious choice might be something like enhanced playback,"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "but it puts the feature before the person."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "What's being enhanced?"
+  },
+  {
+    "timestamp": "11:54",
+    "content": "For whom?"
+  },
+  {
+    "timestamp": "11:55",
+    "content": "How about enhanced dialogue?"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "It answers both questions, what's being enhanced and for whom, before you even tap."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "And that's exactly what they went with."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "It fits the context, it sets the right expectation, and when you turn the feature on,"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "it delivers exactly what it promised."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "All three criteria working seamlessly."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "And the good news?"
+  },
+  {
+    "timestamp": "12:23",
+    "content": "The same name already appears on Apple TV for a similar feature."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "Even more evidence that it belongs."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "There's more than one way to be clear."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Let's look at a name that takes a slightly different approach."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "Auto mix is a setting in Apple Music that does what a good DJ does, keeps the music moving."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "It handles the transitions between songs automatically, so playback never stops."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "Auto, it happens without you doing anything."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "Mix, it blends songs together."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "Together they form a word that doesn't exist, yet you can understand it immediately."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Naming deliberately isn't just for hero features."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "And when you name with intention, you don't have to default to words that already exist."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "Auto mix earns its clarity from its parts so that the invented word doesn't have to explain itself."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "Descriptive like enhanced dialogue, emotional like memories, branded like auto mix."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "The criteria don't change."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "How you weigh them is your call."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "So what does this all add up to?"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "Three things worth taking with you."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "Naming is as fundamental to the experience of your app as the layout, interactions, and visual scheme."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "It shapes how someone experiences your app."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "The next time you're naming something, come back to the criteria."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Does it belong in your app?"
+  },
+  {
+    "timestamp": "13:53",
+    "content": "Set the right expectation."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "Will it hold up everywhere your app lives?"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "The best names don't just describe what something does."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "They speak to the person using it."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "When those two things align, what the product is and what the person needs, that's when the name feels like it truly belongs."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "Every good name you choose makes the next one easier."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "Names build on each other."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "And over time, they become the language of your app."
+  },
+  {
+    "timestamp": "14:25",
+    "content": "Naming is one of those decisions that can feel small in the moment."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "But the clarity it brings, the trust it builds, and the way it makes someone feel at home in your app, that accumulates."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "The next time you're wondering what to call something, you have a way to work through it."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "And your app or game will be better for it."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "If you want to dig deeper, check out some of our other UX writing sessions from previous years."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "We can't wait to see what you build and what you name it."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "Thanks for watching."
+  }
+]

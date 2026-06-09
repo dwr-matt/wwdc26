@@ -1,0 +1,710 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, my name is Manthan and I'm an engineer on the Trust and Safety team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Today, I will talk about how Appetest can help protect your apps and your users."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "You built and distributed your app to function in a secure environment on Apple's platforms."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "Fraudsters are always looking for ways to exploit your apps beyond their intended feature"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "functionalities. These may include attack scenarios where compromised copies of your app serve"
+  },
+  {
+    "timestamp": "0:33",
+    "content": "valid-looking requests to your server, gaining access to sensitive data. Imagine you've built"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "a quiz proctoring app for students to take quizzes and submit answers. A fraudster may reverse-engineer"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "your app to create a modified copy that submits falsified quiz responses to your server. Appetest"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "can help your server reject these types of requests from modified clients."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "Or, modify your app to include content that you didn't ship. By directly modifying compromised copies"
+  },
+  {
+    "timestamp": "1:05",
+    "content": "of your source code or related resource bundles, re-signing your app, and running a modified copy"
+  },
+  {
+    "timestamp": "1:11",
+    "content": "on the device. Imagine, you have a Dragon Slayer game and a fraudster has injected a cheat menu"
+  },
+  {
+    "timestamp": "1:18",
+    "content": "that boosts their abilities in your game. This allows them to submit fraudulent scores to your server and"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "rise up the leaderboard with a compromised copy of your game app. Appetest is designed to address these"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "types of threat scenarios. I will start with what Appetest protects against, then walk through integration"
+  },
+  {
+    "timestamp": "1:38",
+    "content": "steps and best practices. I'll flag some common pitfalls and I'll wrap up with the fraud metric, a powerful tool"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "for detecting suspicious attestation activity. Starting with how Appetest can help protect your app."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "Appetest can help ensure that your app is running on genuine Apple hardware. It does this by issuing an"
+  },
+  {
+    "timestamp": "2:00",
+    "content": "attestation, which provides cryptographic proof about the validity of your app running on the user's device."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "This can then be verified by your server and it gives you the assurance that your app is running on a secure"
+  },
+  {
+    "timestamp": "2:14",
+    "content": "Apple device. Next, it helps make you aware of modifications to your app on the user's device."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "Appetest surfaces information about the relying party, launch category, and bundle version associated with"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "your app, all of which can help you determine if your app has been modified. Your app is uniquely"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "identified through a relying party identifier. This is a concatenation of your team identifier from your"
+  },
+  {
+    "timestamp": "2:42",
+    "content": "Apple developer provisioning profile and your app's bundle identifier. Imagine a fraudster modifies your"
+  },
+  {
+    "timestamp": "2:49",
+    "content": "app and re-signs it with a provisioning profile that does not match your team identifier. Appetest surfaces"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "your app identity on the user's device, allowing you to discover unauthorized modifications."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "New in iOS 27, it highlights the launch validation category of your app on the user's device. You may"
+  },
+  {
+    "timestamp": "3:10",
+    "content": "have distributed your app through the app store, but observe Appetest indicating a test flight launch"
+  },
+  {
+    "timestamp": "3:16",
+    "content": "validation category. It also identifies the bundle version for the version of the app that you ship."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "If a fraudster re-signs your app with an updated bundle version that you are not aware of, this will be"
+  },
+  {
+    "timestamp": "3:29",
+    "content": "transparent through Appetest. Lastly, you can secure payloads from your app to your server using Appetest."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "Appetest can generate assertions using cryptographic properties from a previously issued attestation."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Your server can then verify the assertions on payloads from your app, ensuring that the payload was not"
+  },
+  {
+    "timestamp": "3:51",
+    "content": "tampered in transit. With this guidance in mind, here's how Appetest works and how to adopt it."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "I will go over each of the core parts of Appetest, starting with determining where Appetest is available."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "Appetest is supported on all Apple platforms, including macOS 27 and higher, which was previously not"
+  },
+  {
+    "timestamp": "4:15",
+    "content": "supported. While Appetest is available on all major Apple operating systems, it may not be available for"
+  },
+  {
+    "timestamp": "4:22",
+    "content": "use through all app types on these platforms. Get your usage of Appetest through the Is Supported API"
+  },
+  {
+    "timestamp": "4:29",
+    "content": "from the Appetest framework. For example, Appetest is available on Action and SSO app extensions,"
+  },
+  {
+    "timestamp": "4:36",
+    "content": "but not other types of app extensions. You can also use the Is Supported response as a fraud signal,"
+  },
+  {
+    "timestamp": "4:42",
+    "content": "incorporating it into your risk assessment. If you've distributed your app on a supported platform,"
+  },
+  {
+    "timestamp": "4:48",
+    "content": "but observe a spike in unsupported responses from a particular user, that may indicate tampering."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "You should decide if the user should be allowed to proceed to use your app functions when Appetest is"
+  },
+  {
+    "timestamp": "5:00",
+    "content": "not supported. Moving on to the first step in the Appetest workflow, which is generating a key ID."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "Appetest creates a secure enclave bound key pair on behalf of the app, where the private key resides in"
+  },
+  {
+    "timestamp": "5:19",
+    "content": "the secure enclave. Appetest returns a hash of the public key to your app. Your app then stores the key"
+  },
+  {
+    "timestamp": "5:28",
+    "content": "ID in the keychain. You should keep some best practices in mind when dealing with Appetest keys."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "Generate one key per user for account-based apps or one key for your entire app on the user's device."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "Do not share keys across your user population. Use keychain to store the key IDs generated by your app."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "Key IDs last as long as the app is installed. They survive app updates, but if the user reinstalls"
+  },
+  {
+    "timestamp": "5:55",
+    "content": "the app or restores their device, including from iCloud backup, the key is invalidated. And keys are per"
+  },
+  {
+    "timestamp": "6:01",
+    "content": "device. They don't sync across user devices. That wraps up Appetest key generation. These form the basis for"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "attestations and assertions. Now that your app has generated a key ID, it can request Appetest to attest the key."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "Your app fetches the key ID from keychain. Your app requests your server to perform an attestation for the key ID."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "Your server responds by vending a challenge to your app to include in the attestation. Your app calls the"
+  },
+  {
+    "timestamp": "6:34",
+    "content": "attestation API from the Appetest framework, providing the key ID and server challenge. Appetest fetches the key"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "pair for the key ID along with some attestation data from the device. This attestation data is derived from the"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "secure enclave, which contains a snapshot of the hardware properties of the device from boot. It"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "cannot be modified. It initiates a server request to an Apple service, which validates the device data and"
+  },
+  {
+    "timestamp": "7:03",
+    "content": "returns an attestation. Appetest returns the attestation object to your app. Your app sends the attestation to"
+  },
+  {
+    "timestamp": "7:11",
+    "content": "your server. Your server should validate the attestation, which we will get to next, save it,"
+  },
+  {
+    "timestamp": "7:17",
+    "content": "and associate it with the user of your app. There are a few best practices to keep in mind when"
+  },
+  {
+    "timestamp": "7:23",
+    "content": "collecting and handling attestations. It's important that your server control the initiation of an"
+  },
+  {
+    "timestamp": "7:29",
+    "content": "attestation. This will help you ensure that your app stays within a safe request per second upper bound."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "Attestation failures can occur and your app should try again at some later time. Implement an exponential"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "backoff scheme to avoid hitting global rate limits. You should not hard code retry logic in your app to"
+  },
+  {
+    "timestamp": "7:48",
+    "content": "minimize uncontrollable spikes against the Apple attestation server. Your app should collect the"
+  },
+  {
+    "timestamp": "7:54",
+    "content": "attestation outside of user flows. Try to perform the attestation operation on a background task."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Finally, the attestation should always be validated by your server and not the app. If your app becomes"
+  },
+  {
+    "timestamp": "8:07",
+    "content": "compromised, it cannot be trusted for validating an attestation. I will now go over the attestation"
+  },
+  {
+    "timestamp": "8:14",
+    "content": "itself, which is the object that is returned from the app attest attestation API. The attestation"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "structure has three sections, format, attestation statement, and authenticator data. The format is a"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "fixed string that identifies the Apple anonymized attestation. Next, the attestation statement embeds a"
+  },
+  {
+    "timestamp": "8:35",
+    "content": "cryptographic certificate chain and receipt. The certificate chain proves that the attested key"
+  },
+  {
+    "timestamp": "8:41",
+    "content": "was generated on genuine Apple hardware. Follow the developer documentation to validate the"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "certificate chain, which contains the nonce, key ID, and your relying party identifier embedded in the"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "leaf certificate. On macOS 27 and later, a key access control property known as the ACL blob OID is also"
+  },
+  {
+    "timestamp": "9:01",
+    "content": "included in the leaf certificate. This represents the security conditions associated with the app attest"
+  },
+  {
+    "timestamp": "9:07",
+    "content": "key that were enforced by the secure enclave when the attestation was collected on the device. The key"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "access control property is available on all platforms, but is especially important on macOS. On macOS,"
+  },
+  {
+    "timestamp": "9:21",
+    "content": "AppaTest configures each generated key with a policy that requires full security mode and system integrity"
+  },
+  {
+    "timestamp": "9:27",
+    "content": "protection. Full security mode ensures the highest level of security and verifies the integrity of"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "the operating system on the user's device. System integrity protection prevents the execution of"
+  },
+  {
+    "timestamp": "9:40",
+    "content": "unauthorized code and protect system paths. These are both enabled by default on mac devices. By validating"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "the key access control property, you can be sure of the security conditions that were enforced on the"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "user's device. The attestation statement also contains a receipt. This is formatted similar to the App Store"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "receipt, and you should follow the developer documentation for parsing this. You should validate the relying"
+  },
+  {
+    "timestamp": "10:06",
+    "content": "party ID, a tested key, and your server challenge that is contained in the receipt. Your server should"
+  },
+  {
+    "timestamp": "10:13",
+    "content": "store this receipt for interfacing with the fraud metric. Finally, the authenticator data identifies"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "information about your app and the attestation. Follow the developer documentation to unpack the"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "authenticator data and validate its contents. On iOS 27 and later, a new structure is appended to the"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "end of the authenticator data known as extensions. It is formatted as per the web authentication standard"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "for the authenticator model. I will take a moment to talk about extensions and how your server should"
+  },
+  {
+    "timestamp": "10:44",
+    "content": "handle this section of the authenticator data. Extensions describe additional security properties about your app"
+  },
+  {
+    "timestamp": "10:51",
+    "content": "that are collected on the device during the attestation process. Two extension identifiers have been added,"
+  },
+  {
+    "timestamp": "10:57",
+    "content": "the launch validation category and bundle version. The launch validation category helps you understand if your app is"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "being executed in an unexpected environment. The bundle version helps you confirm that a version of your app that you"
+  },
+  {
+    "timestamp": "11:11",
+    "content": "distributed is running on the user's device. You should monitor these properties, check for unexpected values,"
+  },
+  {
+    "timestamp": "11:18",
+    "content": "and factor them into your overall risk assessment for a user. That's the attestation. It is especially"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "useful for detecting signs of tampering. For example, you have a macOS app that is integrated with Appetest."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "Consider a scenario where a fraudster disables system integrity protection. They then modify your app,"
+  },
+  {
+    "timestamp": "11:40",
+    "content": "re-sign it with a different provisioning profile, and modify the Appetest framework in the system path."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "The attestation received at your server will highlight the disabled system integrity protection state"
+  },
+  {
+    "timestamp": "11:52",
+    "content": "via the key access control property. It may also include a modified team identifier, launch validation"
+  },
+  {
+    "timestamp": "11:58",
+    "content": "category, or bundle version. Your server can reject communication with the modified copy of your app,"
+  },
+  {
+    "timestamp": "12:06",
+    "content": "and you can factor this into your risk assessment for the user. Now that your server has validated the"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "attestation and stored the public key, your app can use that attested key to secure ongoing communication"
+  },
+  {
+    "timestamp": "12:19",
+    "content": "via assertions. Your app prepares itself to communicate some data with your server. Your server"
+  },
+  {
+    "timestamp": "12:27",
+    "content": "vends a challenge to include in the payload from your app. Your app fetches the key ID and calls the"
+  },
+  {
+    "timestamp": "12:33",
+    "content": "assertion API from the app attest framework, providing the key ID and server challenge. Appattest returns an"
+  },
+  {
+    "timestamp": "12:41",
+    "content": "encoded assertion object to your app. Your app then embeds the assertion object into its payload and"
+  },
+  {
+    "timestamp": "12:48",
+    "content": "transmits the payload to your server. Your server validates the assertion and accepts or rejects the"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "payload contents. As your app generates assertions, you should keep some important considerations in mind."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "Generate them on demand as required. Assertions are generated locally on the device and do not roundtrip"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "Apple servers. They can be generated at the point in your app's life cycle where you need them to embed"
+  },
+  {
+    "timestamp": "13:14",
+    "content": "into your server payload. Assertions have CPU impact. Generating assertions involves performing cryptographic"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "operations. Be mindful of rapidly generating assertions or generating too many within your app lifecycle."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "Your server should validate the counter property embedded within the assertion and ensure it is strictly increasing."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "Your server should track the counter from the assertions associated with the user."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "This provides anti-replay attack protections. Each time your app embeds an assertion,"
+  },
+  {
+    "timestamp": "13:47",
+    "content": "the counter value in the assertion object should increase."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "If you observe a steady or decreasing counter value, it may indicate a compromised copy of your app that"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "is unaware of the recorded counter value at your server. Now, I will briefly talk about unpacking the"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "assertion object. The assertion is a structure that contains two sections, signature and authenticator data."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "Follow the developer documentation to validate the signature using the authenticator data, server challenge"
+  },
+  {
+    "timestamp": "14:20",
+    "content": "and public key from the attestation object. Similar to the attestation, the authenticator data in the"
+  },
+  {
+    "timestamp": "14:27",
+    "content": "assertion object identifies information about your app at the time of assertion. On iOS 27 and later,"
+  },
+  {
+    "timestamp": "14:34",
+    "content": "a new structure is appended to the end of the authenticator data known as extensions. It should be"
+  },
+  {
+    "timestamp": "14:41",
+    "content": "handled in the same way as the extensions in the attestation object's authenticator data."
+  },
+  {
+    "timestamp": "14:47",
+    "content": "That's the assertion and that wraps up the core parts of Appetest. The assertion is especially useful"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "for ensuring server requests from valid copies of your app. Next up, some common pitfalls worth calling out."
+  },
+  {
+    "timestamp": "15:01",
+    "content": "Your server should cautiously handle suspicious activity scenarios from your app. Consider the"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "case of handling new attestations for an existing user. Don't reject new keys outright as legitimate"
+  },
+  {
+    "timestamp": "15:14",
+    "content": "scenarios such as app reinstall or device restore can cause key rotation. This also means do not"
+  },
+  {
+    "timestamp": "15:20",
+    "content": "invalidate keys from previous attestations for a user immediately. Coupled with the fraud metric,"
+  },
+  {
+    "timestamp": "15:27",
+    "content": "your server's map of attestations for a user can be used as a fraud or abuse signal. If your server"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "rejects an attestation or assertion, your app should gracefully handle this. Degrade functionality"
+  },
+  {
+    "timestamp": "15:39",
+    "content": "TIE TAP a test for the user. Allow limited access for the user with heightened monitoring. Avoid blocking the"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "user directly without a comprehensive risk assessment. I will take a minute to highlight what I mean by a risk"
+  },
+  {
+    "timestamp": "15:53",
+    "content": "assessment for your users. This will vary based on your business, the type of app you distribute,"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "and the implications of potential fraud in your app. If you suspect fraudulent activity for a user based"
+  },
+  {
+    "timestamp": "16:04",
+    "content": "on Appetest, follow your business's guidelines for user deactivation or suspension. Remember,"
+  },
+  {
+    "timestamp": "16:11",
+    "content": "blocking users without proper evaluation can erode trust and may impact legitimate users. Always follow a"
+  },
+  {
+    "timestamp": "16:18",
+    "content": "well-defined risk assessment process. You now have a broad and deep understanding of the core flows of"
+  },
+  {
+    "timestamp": "16:24",
+    "content": "Appetest and how to best interact with them. The last part of Appetest to cover is the fraud metric,"
+  },
+  {
+    "timestamp": "16:30",
+    "content": "a tool for detecting suspicious attestation activity. A compromised device could still pass attestations"
+  },
+  {
+    "timestamp": "16:38",
+    "content": "and act as a broker by generating valid attestations on behalf of modified app instances running on other"
+  },
+  {
+    "timestamp": "16:46",
+    "content": "devices. These modified apps can send compromised requests to your server. The fraud metric provides"
+  },
+  {
+    "timestamp": "16:53",
+    "content": "an approximate count of unique attested keys associated with your app on a particular device over the past"
+  },
+  {
+    "timestamp": "17:00",
+    "content": "30 days. You can use this as part of your risk assessment profile for a user by determining if they"
+  },
+  {
+    "timestamp": "17:07",
+    "content": "are associated with attestations from a potentially compromised device. The fraud metric is access between"
+  },
+  {
+    "timestamp": "17:14",
+    "content": "your server and the Appetest data server. Your server retrieves the receipt from an attestation associated"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "with the user. It then sends a post request to the Appetest data server using the retrieved receipt."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "The data server then returns a receipt to your server containing the fraud metric, which you should use"
+  },
+  {
+    "timestamp": "17:34",
+    "content": "for subsequent receipt fetches. The receipt is structured similar to an App Store receipt. It has three"
+  },
+  {
+    "timestamp": "17:42",
+    "content": "sections, a signature, certificate chain, and receipt payload. The signature signs the receipt payload."
+  },
+  {
+    "timestamp": "17:50",
+    "content": "The certificate chain routes to the Apple certifying authority. The receipt payload contains information"
+  },
+  {
+    "timestamp": "17:56",
+    "content": "about the attested key associated with the metric and the fraud metric itself. Follow the developer"
+  },
+  {
+    "timestamp": "18:02",
+    "content": "documentation to verify the different parts of this receipt payload. The risk metric field defines the"
+  },
+  {
+    "timestamp": "18:08",
+    "content": "fraud metric count. The receipt must also be refreshed. The not before field outlines the earliest point at"
+  },
+  {
+    "timestamp": "18:16",
+    "content": "which you can refresh it. The expiration time field describes when the receipt expires and it can no longer"
+  },
+  {
+    "timestamp": "18:22",
+    "content": "be refreshed. Consider the following when working with the fraud metric. Any user steps that involve Appetest"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "key rotation will contribute to the fraud metric. For example, reinstalling the app or restoring the device may"
+  },
+  {
+    "timestamp": "18:37",
+    "content": "force key generation and reattestation within your app. These can contribute to the fraud metric."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "Avoid using the fraud metric to block users from your app outright. Treat the fraud metric as a fraudulent"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "activity investigation signal. You should monitor its value, analyze it for a baseline, and identify spikes"
+  },
+  {
+    "timestamp": "18:56",
+    "content": "as indicators of suspicious activity. Now you have everything you need to protect your app's workflows with"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "Appetest, keeping your users safe and your app secure. To continue your journey, start off by rebuilding your app"
+  },
+  {
+    "timestamp": "19:10",
+    "content": "against the latest SDKs so you're accessing the latest features from the Appetest API. Identify areas of your app"
+  },
+  {
+    "timestamp": "19:18",
+    "content": "that may benefit from the security of an attestation, such as authentication flows or sensitive payloads for"
+  },
+  {
+    "timestamp": "19:24",
+    "content": "premium content that can be strengthened with assertions. Set up your server to validate attestations, store receipts,"
+  },
+  {
+    "timestamp": "19:31",
+    "content": "and track assertion counters. Incorporate the fraud metric into your risk assessment pipeline."
+  },
+  {
+    "timestamp": "19:38",
+    "content": "Appetest gives you the tools to verify your app's integrity, secure the communication between your app"
+  },
+  {
+    "timestamp": "19:44",
+    "content": "and your server, and detect signs of fraud. All backed by the security of Apple hardware. Now go put these"
+  },
+  {
+    "timestamp": "19:51",
+    "content": "protections to work for your users."
+  },
+  {
+    "timestamp": "19:53",
+    "content": "Thanks for watching."
+  }
+]

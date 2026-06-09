@@ -1,0 +1,986 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Mo, an engineer on the App Intense team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "I'm excited to share with you the new App Intense capabilities we're introducing with our 2027 releases."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "App Intense is a framework that lets you express your apps actions and content to other parts of the system in ways that feel natural and deeply integrated."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "From Siri and the Shortcuts app to Spotlight and Widgets, App Intense has been the engine behind some of the most delightful experiences on Apple platforms"
+  },
+  {
+    "timestamp": "0:39",
+    "content": "and is now a key pillar of Apple intelligence."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "In our 2027 releases, driven by your feature requests, we're bringing more control, more flexibility, and a significantly smoother developer experience."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Today, we'll explore three areas. We'll start with entities."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "I'll show you new ways to share them across apps, tell the system when they're relevant, and process them at scale."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "Then, I'll walk you through new support for native types and union values with full shortcut integration."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "And finally, I'll show you how your intents can run longer, handle cancellation gracefully, and target the right process for execution."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "I'm going to focus on new features today. But if you're new to App Intents or need a refresher on the basics, I'd recommend checking out Get to Know App Intents from .w.dc25."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "That video introduces the landmark travel tracking app. I'll be building on it with the APIs we covered today."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "We can download the sample code and follow along."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "Let's dive into what's new. Your entities, your app's content, like a landmark or playlist, live inside your app. But the people using your app don't. They move between apps all the time."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Let's go through a pair of examples using mail and maps with my travel tracking app."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "I built a shortcut to share trip ideas with friends. It finds a nearby landmark and sends it along with a message."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "My entity conforms to transferable from the core transferable framework. So the shortcut can share it in a format mail can use. And that works great."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "But what if instead of sending it to a friend, I want to get directions to a landmark? Well, that won't work. Maps needs some structured information, a coordinate, an address, or something you can navigate to."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "But that kind of data doesn't have an associated data format that can be put in a file or data."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "The existing file and data representations work great for known formats like PDFs or images, but not for structure types that don't have any."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "This is where value representation comes in. It's a new representation type that lets you share structure type that the system already understands."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "Here's my landmark entity. It represents a place in the travel tracking app."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "It already conforms to transferable. So I just need to add a value representation alongside any existing representations."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "Inside my value representations, I export my landmarks, coordinate, and name as a place descriptor from the geo toolbox framework."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "Place descriptor carries coordinates and other metadata that maps needs to navigate."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "If my entity already has a place descriptor property, I can skip the closure entirely and use a key path."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "Same result, much less code."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "So going back to my shortcut, I tap run."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "My landmark flows to maps as a place descriptor and maps opens the direction to the landmark."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "Your entities now have more ways to travel across apps."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "Now let's talk about helping the system suggest them when they're relevant."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Suppose you're building a music app like CosmoTunes, the sample app from the video,"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "explore advanced app-internet features for Siri and Apple intelligence."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Your app has a brand new high tempo playlist that's perfect for running."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "When someone sets up a running workout in the fitness app, they get a list of suggested playlists."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "How do you get your playlists into those suggestions?"
+  },
+  {
+    "timestamp": "4:10",
+    "content": "Today, you have two ways to make your content available to the system."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "The first is to index your content with Spotlight."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "This makes it available to people searching for content in the Spotlight UI, including semantic search."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "This is also the primary way Siri is able to retrieve your content."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "The second approach is interaction donation."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "When people take actions in your app, you donate those interactions with the system through the intent donation manager API."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Over time, the system learns patterns and can suggest similar actions in the future."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "Siri also uses these interactions to deliver a more personalized experience."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "But what about that new playlist?"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Nobody searched for it in Spotlight since they don't know it exists."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "And since nobody's played it, there is no interaction to donate either."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "You need a way to tell the system this playlist is relevant, so you can surface it at the right moment."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "Introducing relevant entities."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "With relevant entities, we can suggest entities to the system"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "and provide context about when and why they're relevant."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "Here's how this works."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "You start by identifying the relevant entities."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "In this case, your running playlist."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "Next, you create the context to tell the system these playlists are relevant when someone starts to run."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Then, you call update entities to register them."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "The system surfaces these playlists as suggestions in the right context, even if they were never played before."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "Entities state register until you remove them."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "You can remove all entities for a specific context, remove specific entities from a context, or clear all your entities across all contexts."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "Now you have more options for helping people discover your content."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "How do you choose between them?"
+  },
+  {
+    "timestamp": "5:59",
+    "content": "Use Spotlight when you want your content to be searchable and retrievable by Siri."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "Use interaction donation to teach Siri and the system how people use your app, so you can identify patterns and suggest actions people may want to repeat."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "And use relevant entities to hint to the system which content is relevant in specific situations, so the system can suggest that at the right moment."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "For more on these topics, check out our new documentation on Spotlight and interaction donation."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "Your entities are shared and the system knows when they're relevant."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "Now, let's make them more efficient."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "Back in the travel tracking app, the app has landmark photos, but they also wanted to let people save their own travel photos."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "So I added a photo album view, and to make the photos available to the system, I define a photo entity in an app schema for photos."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "This gives the system the context it needs to work with my photos across Siri, shortcuts, and Spotlight."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "I also created an intent to tag my photos by keyword, so people could organize and find them easily."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "As the photo library grew, I noticed something."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "Tagging a lot of photos at once was slower than expected."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "Let's walk through the code to understand why."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "The intent is very simple."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "It just adds a keyword to my photos."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "It takes a list of photo entities and a tag as parameter."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "And the perform method just applies a tag to each photo item."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "So why was that actually a problem?"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "Well, it has to do with how app intents resolve parameters."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Before an intent runs, the system resolves every entity."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "That means calling the entity query to pop it to all of its properties, so the intent has everything it may need."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "For most intents, that's exactly what you want."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "But in my case, this meant resolving hundreds or thousands of photo entities."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "Even though my code only needs the entity ID to update my data model."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "So how do I fix this?"
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Entity collection fixes this."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "It's a new type that stores an array of entity identifiers instead of fully resolved entities."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "When you use entity collections as your parameter type, the system passes just the identifiers to the intents perform method without resolving the full entities."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "Here's the updated code."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "I changed my parameter type to entity collection and passed the identifiers directly to my tagging method."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "And that's all it took."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "To confirm the fix worked, I built a shortcut to find and tag a thousand photos."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "First, with a regular array of photo entities."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "Then, with entity collection, which was almost instant."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "The code change is small, but the performance difference is significant."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Now, what happens when the same entity needs to work on multiple devices?"
+  },
+  {
+    "timestamp": "8:55",
+    "content": "With our 2027 releases, Siri can continue conversation across devices."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "And your entities can be part of those conversations."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "If your app runs on multiple devices, people might start a conversation with Siri on one device and continue on another."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "But there's a challenge."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "If I ask Siri on my phone to add a photo to an album, then switch to my other device and ask Siri to tag that photo,"
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Siri might not be able to find that photo."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "To understand why, let's think about how entities are identified."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "Every entity needs an ID."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "That's how the system finds it."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "Your entity's ID might be generated locally on each device."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Local IDs work great on the device they were created on."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "But each device generates its own local IDs."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "So the same entity can end up with a different ID on each device."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "For Siri to reference your entities across devices, you need a stable ID that's the same everywhere."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "That could come from your server or from CloudCat record IDs."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "Then, you need a way to tell the system your entity's ID is stable."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "That's what Syncable Entity does."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "It declares to the system that your entity's ID is stable and can be used across devices."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Here's how to adopt it."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "I start by adding the Syncable Entity Protocol to my entity."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Then, I need to provide the stable ID."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "If your entity already uses an ID that's the same across all devices, like a server-assigned UUID or a CloudCat record ID, no more changes needed."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "But if you use local identifiers like CoreDataOIDs, you need both, a local ID and stable one."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "Syncable Entity Identifier pairs them into a single ID."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "On device, your code uses the local ID."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "And across devices, the system uses the stable one."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "So far, we focus on entities."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Now, let's talk about the intents that use them."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "Your intents take parameters."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "The inputs people provide, like a date, a name, or an address."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "When you declare a parameter, the system gives you a native picker, Siri understanding, and localization for free."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "We're extending that same support to more native types."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "We're adding native support for duration."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "So no more building custom time pickers."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "And person name components for structured name input instead of a plain string."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "And more."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "Each one gets a native picker and works everywhere your intent does."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "Siri, shortcuts, and widgets."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "Those are individual types."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "One type per parameter."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "But sometimes, a parameter needs to accept more than one type."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "A union value is a Swift enum where each case wraps a different type,"
+  },
+  {
+    "timestamp": "11:38",
+    "content": "letting a single parameter represent one of several options."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "Now that I have both landmark and travel photos in the app,"
+  },
+  {
+    "timestamp": "11:46",
+    "content": "I wanted a widget that shows photos from either a photo album or a landmark collection."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "With union values supporting input parameters, I can use one widget for both."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "Here's the code."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "I define my union value as an enum with union value macro."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "And each case wraps a different entity type."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "One for landmark collections and one for photo albums."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "The macro generates everything the system needs."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "Type information, case metadata, and picker support."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "I also configure how each option appears in the picker."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "Type display representation is labeled for the overall type."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "And case display representations maps each case to the name,"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "shown in the picker."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "And this isn't limited to widgets."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "Union value parameters work everywhere Uinten does,"
+  },
+  {
+    "timestamp": "12:34",
+    "content": "including the shortcuts app."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "To learn more, check out the travel tracking sample code project"
+  },
+  {
+    "timestamp": "12:40",
+    "content": "and its corresponding article."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "Everything we've covered so far makes your entities and parameters"
+  },
+  {
+    "timestamp": "12:46",
+    "content": "more expressive and efficient."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Now let's talk about execution."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "When your intent runs from Siri, shortcuts, or any system surface,"
+  },
+  {
+    "timestamp": "12:56",
+    "content": "it only has 30 seconds to finish."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "That works for most everyday actions, but not every intent is that quick."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Now that my app supports tagging and organizing photos,"
+  },
+  {
+    "timestamp": "13:06",
+    "content": "I wanted to let people share their travel photos,"
+  },
+  {
+    "timestamp": "13:09",
+    "content": "uploading them to a shared album without opening the app."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "So I created an upload intent and added a button to my widget to trigger it."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "But with large photos, the upload takes time."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "And the intent kept failing because it couldn't finish within the 30-second limit."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "Long-running intent fixes this,"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "lets your intent run beyond the 30-second limit"
+  },
+  {
+    "timestamp": "13:30",
+    "content": "and manages the background task lifecycle of your app."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "And as your intent runs, progress updates appear automatically as a live activity."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "Now let's check out the code."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "Here's the intent I wrote to upload my photos."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "I'm conforming to long-running intent."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "I take a photo file as input."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "Then I wrap my work in perform background task for extended execution."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "Long-running intent requires the intent to report progress."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "So the system knows it's still working and has installed."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "Because it builds on progress reporting intent,"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "I get a built-in progress object to track my work."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "I calculate the number of chunks for the file"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "and set the total count."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "Then upload the chunk"
+  },
+  {
+    "timestamp": "14:14",
+    "content": "and update the progress as I go."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "Here's what happens when my intent runs."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "It can run longer and there is a stop button right on the live activity,"
+  },
+  {
+    "timestamp": "14:25",
+    "content": "so the person can cancel it at any time."
+  },
+  {
+    "timestamp": "14:28",
+    "content": "Though it'd be great if my intent got a heads up before being stopped."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "Cancelable intent lets your intent clean up gracefully when canceled."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "Whether the person tapped canceled, the system timed out, or needed to reclaim resources."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "Here's how I can add cancellation support."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "I add cancelable intent and implement the uncancel handler."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "When cancellation reason happens,"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "handler gives me the reason."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "And I can use it to clean up partial uploads or cancel in-flight requests."
+  },
+  {
+    "timestamp": "15:01",
+    "content": "Long-running intent also supports background GPU access on supported devices"
+  },
+  {
+    "timestamp": "15:06",
+    "content": "for tasks like photo processing or on-device inference."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "Just make sure to add GPU access to your app's entitlement."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "To learn more about the mechanics of running tasks in the background,"
+  },
+  {
+    "timestamp": "15:17",
+    "content": "check out this video from WWDC25."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "So far, we've covered how long your intent runs and what happens when it stops."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "Let's talk about which process runs it."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "As your app grows, you may move some intents into a widget extension,"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "or an app in an extension."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "Lightweight separate processes that can handle requests without launching your app."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "You may also create a shared Swift package or framework where your intent and entity live,"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "and import it into your app and extensions."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "In fact, that's exactly what I did with the travel tracking app."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "All my intents live in a shared package,"
+  },
+  {
+    "timestamp": "15:56",
+    "content": "imported by both the main app and the widget extension."
+  },
+  {
+    "timestamp": "15:59",
+    "content": "When your intent's entities and queries live in a shared package like this,"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "linked by your app and extensions,"
+  },
+  {
+    "timestamp": "16:05",
+    "content": "the system has to decide which process runs each intent when the request comes in."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "It picks a target based on heuristics like if the app is already running,"
+  },
+  {
+    "timestamp": "16:14",
+    "content": "it prefers the app, and if not, it launches the extension."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "But sometimes, that's not the right choice."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "For example, I wanted to add a favorite button to my widget."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "So people can mark a photo as favorite right from the home screen."
+  },
+  {
+    "timestamp": "16:29",
+    "content": "My widget shares the data model with the app,"
+  },
+  {
+    "timestamp": "16:32",
+    "content": "but having two processes write to the same data store can cause conflicts."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "So I gave the widget read-only access, and the main app handles all the writes."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "When someone taps the button, the intent needs to run in the main app."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "Execution targets lets you tell the system exactly which process should run your intent."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "Here's how."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "You can target the main app,"
+  },
+  {
+    "timestamp": "16:56",
+    "content": "an app intent extension,"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "a widget kit extension,"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "or any combination."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "With execution targets, you overwrite the system heuristics"
+  },
+  {
+    "timestamp": "17:06",
+    "content": "and control exactly which process handles your intent."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "That wraps up the new features I wanted to share."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "As next steps, add value representation to your entities,"
+  },
+  {
+    "timestamp": "17:17",
+    "content": "so they can carry a structured data across apps."
+  },
+  {
+    "timestamp": "17:20",
+    "content": "Register relevant content with the system,"
+  },
+  {
+    "timestamp": "17:23",
+    "content": "so it gets surfaced at the right moment."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "Adopt entity collection to make your intents faster"
+  },
+  {
+    "timestamp": "17:28",
+    "content": "when working with a large number of entities."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "And add long-running intent to any intent that needs more than 30 seconds to finish."
+  },
+  {
+    "timestamp": "17:35",
+    "content": "To build your app's Siri experience step by step,"
+  },
+  {
+    "timestamp": "17:39",
+    "content": "check out Codealong, make your app available to Siri."
+  },
+  {
+    "timestamp": "17:43",
+    "content": "And to test your intents with a new app intent testing framework,"
+  },
+  {
+    "timestamp": "17:46",
+    "content": "check out validate your app intent adoption with app intent testing."
+  },
+  {
+    "timestamp": "17:51",
+    "content": "I can't wait to see what you built, and thanks for watching."
+  }
+]

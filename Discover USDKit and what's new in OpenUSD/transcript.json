@@ -1,0 +1,602 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Welcome to Discover USD Kit and what's new in OpenUSD."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "I'm Lee, an engineer on Apple's Spatial Standards team."
+  },
+  {
+    "timestamp": "0:15",
+    "content": "USD is the backbone of the spatial experiences Apple creates and how we represent spatial scenes."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "From the apps you create to the content you see across our platforms,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "all these spatial experiences are built on top of USD."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "USD was created by Pixar and Apple was early to recognize its potential."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "We've been collaborating with them ever since."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "Today, we're taking that even further."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "I'll be covering the latest advancements in USD on our platforms."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "And a powerful new framework called USD Kit and how it can bridge between Mac and Vision Pro for seamless 3D experiences."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Let's start off by looking at the foundational updates we've made to USD on our platforms."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "USD has become the common 3D language across many industries."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "Award-winning films, AAA games, factory floors, surgical suites, autonomous vehicles, AI-driven simulations."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "And the reach continues to expand."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "Apple is leading the charge in making USD the foundation for the next generation of spatial experiences."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "The open source project behind USD is called OpenUSD."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "The industry standard library for describing 3D scenes originally pioneered by Pixar."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "But USD doesn't work alone."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "It integrates with MaterialX, originally from Lucasfilm for rich material descriptions."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "And new this year, OpenVDB, originally from DreamWorks, bringing volumetric data into the mix."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "Each of these technologies was built by world-class visual effects and animation studios."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "And together, they form a powerful, composable foundation for 3D."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Across all our platforms this year, we've updated all three."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "So you can take advantage of the latest improvements in each."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "Apple is a member of the Academy Software Foundation, the home of open source projects like MaterialX and OpenVDB."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "Through the foundation, we actively contribute to these projects, ensuring they evolve in ways that benefit developers and creators across not just our platforms, but the 3D ecosystem as a whole."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "Beyond the code, Apple is a founding member of the Alliance for OpenUSD, working to make USD a true industry standard, not just in practice, but on paper."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "This year, we helped release the first formal specification for the core of USD, with domain specifications for geometry, materials, and physics already underway."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "This is an open effort, and these working groups are where the future of USD gets decided."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "If you want a voice in shaping how the industry builds and exchanges 3D content, we encourage you to get involved."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "Gaussian splats are one of the most exciting recent breakthroughs in 3D representation."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Rather than using traditional geometry, splats capture a scene as millions of fuzzy overlapping particles, each encoding position, color, and opacity to faithfully reconstruct complex real-world environments."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "As you can see in this visualization, splats are able to capture incredibly subtle lighting responses and are capable of bringing real-world scenes to life."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Working with our Alliance for OpenUSD partners, including NVIDIA, Adobe, and Pixar, we are introducing a new USD primitive type, Particle Fields, which is capable of describing Gaussian splats as well as other representations from this rapidly evolving area of research."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "This brings Gaussian splats into the same scene as your meshes, materials, and other traditional 3D data for the very first time."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Let's take a look at powerful new experiences across our platforms, and the new USD kit framework built to power them."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "USD kit takes care of the heavy lifting, so you can stay focused on your content and applications."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "All of this is made possible by the standardization work we have been building towards."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Preview has long been the go-to place on Mac for viewing images, PDFs, and 3D content."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "And for images and PDFs, it has always offered a powerful set of editing tools right out of the box, no extra software needed."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "This year, we're bringing the same philosophy to 3D."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Preview now brings essential 3D editing to your Mac, covering the operations you reach for most."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "You can manipulate objects directly in the scene, edit properties and lighting, work with full scene hierarchies, and convert and compress assets,"
+  },
+  {
+    "timestamp": "4:39",
+    "content": "all without needing to learn a dedicated 3D application."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "While it's simple on the surface, it's all backed by a production quality rendering and processing pipeline."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Preview and Quick Look on Mac now give you a choice of renderer."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "Reality Kit brings consistency across Mac, iPhone, iPad, and Vision Pro."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "And Storm remains available for those with existing production pipeline needs."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "For your most complex scenes, Preview adds a brand new ray tracer for stunning high fidelity results."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "All three support OpenPBR, a significant upgrade over USD Preview surface that brings richer, more physically accurate materials to your workflow."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "The new ray tracer in Preview is built for scenes that demand more."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Whether you are visualizing architectural spaces or preparing product imagery, it delivers accurate reflections, precise shadows, and physically correct lighting."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "A production quality, ground truth renderer on every Mac."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Preview integrates with the new Spatial Preview framework on MacOS 27, creating a direct connection between your Mac and Quick Look on Vision Pro."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "As you work on your USD scene in Preview, changes are visible live in Quick Look on the Vision Pro right in your own space."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "And through SharePlay, you can bring in an entire team at once."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "Creative directors and artists can walk around the same scene together, reviewing lighting, composition, and spatial scale in real time."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "And now, with the Spatial Preview framework, this kind of collaborative, spatial workflow is easier than ever to bring to your own Mac apps."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "Check out the Spatial Preview session to learn how."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "USD is now part of the web, too."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "Safari introduces the model tag, bringing 3D content to web pages as naturally as images or video."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "Embed a USD model in your page, and on macOS and iOS, your users get a fully interactive 3D experience right in the browser."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "And on VisionOS, it goes even further."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "That same model breaks out of the page and is presented, spatially, right in the user's space."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "Everything we have shown you today is powered by a brand new system framework, USDKit."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "Let's take a look."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "USDKit brings first-class USD support to your Swift apps, with deep integration for RealityKit and Spatial Preview built right in."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "We designed USDKit to work for everyone."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "Developers who already know USD will find the concepts immediately feel familiar."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "And for Swift developers coming to USD for the first time, USDKit meets you where you are, with patterns and paradigms you already know."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "Before I dive into an example, let's cover a few key USD concepts."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "In USD, a layer is a single data file."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "Layers can be combined together through a powerful feature called composition."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "And a stage is the composed result of one or more of those layers."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "This is your window into the full scene."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "Everything in a scene is represented as a USD prim."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "Each prim has a schema which defines its type."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "Prim's also carry attributes which hold the actual data and metadata which describes information about the prim itself."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Now I've covered some key concepts, let's walk through an example of how to use USDKit in practice."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "I will load a stage, make some modifications and export the result."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "Getting started with USDKit begins with a stage."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "I can create a fresh one in memory with a simple USD stage initializer."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "For this demo though, I have an existing scene I want to work with."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "I can open it by passing in a file URL to USD stage open."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "Since this involves file access, it can throw, so I use try."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "And there it is."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "My scene loads up and it's already looking great."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "I thought there was supposed to be an oscilloscope on the bench."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "Let's see if it's in the scene somewhere and if not I can add it."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "First, let me traverse the stage hierarchy to see if the oscilloscope is already in there."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "No luck."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "So I define a new transform prim at the path I wanted to live at."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "Now here is where things get really useful."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "Rather than copying all the data for the asset directly into my stage, I can add a lightweight reference to it."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "The asset lives in its own file or layer authored by someone else entirely and I am simply pulling it in."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "This is the power of composition."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "Everyone works on their own piece of the scene and USD brings it all together."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "And the best part?"
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Any updates they make automatically show up in my stage too because I'm just referencing in their file."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "Great."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "The asset is in the scene."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "But as you can see, it's not quite where we want it to be."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "Let me show you how I can move it into the right place."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "To move the prim, I first call add transform operation, which takes care of adding the correct attributes on the prim and updating the transform order automatically."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "After that, all I need to do is set the translation value and the asset moves up onto the workbench right where I want it to be."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "Perfect."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "This is looking much better already."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "But before I share this with the world, I want to make sure it's ready for as wide an audience as possible."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "Great 3D experiences should be accessible to everyone."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "At Apple, accessibility is a core value and that includes spatial content too."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "That is why we have driven the standardization of accessibility metadata directly in USD, establishing how assistive labels and descriptions are defined on 3D objects across the industry."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "We have designed it with flexibility built in so it can evolve in the future."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "Since it is native to USD, you can author it through any USD API."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "And to make it as easy as possible to adopt, we have added direct support right in Blender and Maya."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "To add the accessibility data to my new asset, I first apply the accessibility API schema to the prim."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "This adds the necessary metadata to signal that the schema is present."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Since USD kit does not provide all the schema specific APIs, I create the label and description attributes directly, making sure to use the correct attribute names as defined in the specification."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "With those in place, I can set their values, concise label and a rich description that gives assistive technologies everything they need to understand the object in context."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "The asset is now ready, but high quality production USD scenes can grow to many gigabytes in size."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "The A-Lab scene we have been working with today is a great example of that."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Sharing something this large is not always practical, so let me show you how I can shrink it down."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "In collaboration with the Alliance for Open Media, we have added support for a state-of-the-art mesh compression codec, capable of reducing mesh sizes by up to 90%."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "Combined with our existing texture compression using AVIF, the numbers speak for themselves."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "The average asset is now seven times smaller without compromising visual quality."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "Smaller assets mean faster delivery, lower storage cost and a better experience for users across every platform."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "USD kit support for compression is built right into the export package API."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "I pass in the output URL to the export package method on my stage, and then I enable the texture and mesh compression through the export options."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "A couple of lines and I'm done."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "And if you're not writing code, you can get the same results directly in preview or through the USD crush command line tool."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "We are working with Pixar to bring this compression support to the open USD project so the whole ecosystem can benefit."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "Because integrating USD can be complex, there are a number of different ways to access the technology."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "For app developers on our platforms, USD kit is the way to go."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "It is system provided, deeply integrated, and everything we have shown today is built on top of it."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "For those with more advanced needs or cross-platform workflows that go beyond what USD covers, we have you taken care of too."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "SWIFT USD brings open source SWIFT bindings available right through the SWIFT package manager."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "And for cross-platform C++ code bases, we have made it easier than ever to embed OpenUSD directly as a framework."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "Whatever path fits your workflow, they are all built on top of the same foundation."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "And that means your USD files move freely between all of them."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "Let's recap what we've covered."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "USD on Apple platforms has taken a big step forward this year."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "Preview now brings essential 3D editing and powerful rendering options to your Mac."
+  },
+  {
+    "timestamp": "13:35",
+    "content": "Spatial preview allows you to easily immerse yourself in your content and share it with others."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "And the new model tag in Safari brings USD natively to the web."
+  },
+  {
+    "timestamp": "13:45",
+    "content": "At the center of it all is USD kit, a new system framework that makes working with USD and SWIFT a first-class experience."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "If you're looking to author and work with 3D content in your app, USD kit is the best place to start."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "There's a lot more to explore this year."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "We have sessions diving deeper into spatial preview, bringing USD to the web, and building rich spatial experiences with Reality Kit and Reality Composer Pro."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "Whatever your workflow, there is something here for you. Check out the linked resources for more information."
+  },
+  {
+    "timestamp": "14:17",
+    "content": "USD has never been more powerful, and we cannot wait to see what you create with it."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Thank you for watching."
+  }
+]

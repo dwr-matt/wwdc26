@@ -1,0 +1,990 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Linda."
+  },
+  {
+    "timestamp": "0:08",
+    "content": "And I'm Doug."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "We're design evangelists at Apple."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Let's start with a question."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "What is design?"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "Take a second with it, because I think a lot of us, if we're being honest, would jump to"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "design as how something looks, or maybe even design as how something behaves."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "And these definitions aren't necessarily incorrect."
+  },
+  {
+    "timestamp": "0:30",
+    "content": "They just paint an incomplete picture."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "For us at Apple, design is making something with intention."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "It's focusing on what's most important to people so you can build something they will"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "truly value."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "Every feature you add to your product asks something of the person using it."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "It asks for their time, their attention, and their trust."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "These are valuable things you can't afford to waste."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "So choosing what to build is often a matter of deciding what not to include."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "Before you draw a single sketch or write a line of code, think about whether what you're"
+  },
+  {
+    "timestamp": "1:05",
+    "content": "making has purpose."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Purpose is one of the foundational principles that you can use to design great experiences"
+  },
+  {
+    "timestamp": "1:13",
+    "content": "on Apple platforms."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Experiences that serve people, that respect and adapt to their lives, that are clear and"
+  },
+  {
+    "timestamp": "1:21",
+    "content": "considered, and at their best, a genuine joy to use."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "Now, one thing we want to say up front."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "There's no formula or right way to combine these principles that guarantees you'll arrive"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "at the perfect solution."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "You might even find that leaning into one principle feels like you're compromising on another."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "But that's what makes design so interesting."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "Ultimately, it's up to you to use your knowledge and intuition to find the best path forward."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "Okay, let's get into it."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "After purpose, there's agency."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Agency is about putting people in control."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "People feel in control when you let them do things their way."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "For example, do you want to take this next part?"
+  },
+  {
+    "timestamp": "2:03",
+    "content": "Oh, I'm okay."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "You can keep going."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "Okay."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "Offering choices is the best way to bring agency into your experience."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "An interface should never stand in the way of what someone is trying to do."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "Instead of guiding someone down a predetermined path, let them dive right into your experience"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "and give them the autonomy to decide what to explore at their own pace."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "People are far more engaged when they have agency to control their own experience."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Of course, that does mean people will make mistakes or go down paths they didn't mean to."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "When that happens, offer forgiveness."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "People accidentally send, change, and delete things all the time."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "You can provide forgiveness by making it easy for them to undo any of their actions."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "And when someone's about to do something destructive, double-check it's what they actually mean to do."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "In some cases, interruptions can be helpful."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "But use interruptions carefully, and only when someone is about to make a big mistake."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "Oops, I don't want to do that."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "Just one sec here."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "Let's keep going."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "People really appreciate it when you help them avoid disaster."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Forgiveness supports agency because it gives people confidence that they can always recover from anything they try"
+  },
+  {
+    "timestamp": "3:28",
+    "content": "and helps them feel capable, secure, and free to explore."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "Exactly."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "But when you give people freedom, you also have to protect their well-being."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "Which leads us to responsibility."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "On Apple platforms, responsibility means acting in people's best interest."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "And it starts with privacy."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Privacy is a human right."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "And even though there's tons of information you can request from someone,"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "it's not the best way to build a relationship."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "Imagine someone comes up to you like this."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Hey."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "Hi."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "Give me your phone number."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "For what?"
+  },
+  {
+    "timestamp": "4:02",
+    "content": "I just need it."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Uh, why?"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "I'll tell you once you give me your phone number."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "You wouldn't trust a person like that in real life."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "And yet interfaces do this all the time."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "They throw permission prompts the second you launch them."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Long before you've figured out what the app actually does."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Or ask you for information without providing context for what it's for."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "A responsible design treats people and their private information with respect,"
+  },
+  {
+    "timestamp": "4:32",
+    "content": "just like you would in the real world."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Responsible interfaces wait for the right moment to ask for personal data."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "They only ask for what's necessary and are transparent about what the data is for."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "It's your responsibility to protect anyone using your product and anyone who could be affected by it."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "That's why, in addition to privacy, you should keep people safe."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "For interfaces, this means looking closely at what functionality you offer and asking yourself some hard questions."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "How could this feature be misused?"
+  },
+  {
+    "timestamp": "5:05",
+    "content": "Who would be harmed by this?"
+  },
+  {
+    "timestamp": "5:07",
+    "content": "And how do I prevent it?"
+  },
+  {
+    "timestamp": "5:10",
+    "content": "Think about what it means to responsibly add AI capabilities to your product."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "When you build intelligent features, you have to anticipate that a model might generate something unexpected or inaccurate."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "Take something as innocent as a recipe app."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "If someone logs an allergy, you have to anticipate that the model may suggest an ingredient that could cause a severe reaction."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "That could do real-world harm, and it's just something you can't leave to chance."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "Think realistically about what could go wrong and add safeguards."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Previews, confirmations, disclaimers can help, but consider removing features entirely if the risks to people's safety outweigh the value."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "Ultimately, your work has real impact on people's lives."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "So when you take that responsibility seriously, it leads to a product people can trust."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "The next design principle, familiarity, is all about how people bring their existing knowledge to your design."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "Familiarity is about building on what people know."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "Your audience comes to you with a lifetime of experience."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "They understand how the real world works, and they've learned conventions from other interfaces."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "You can lean on that existing knowledge to make your design intuitive."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "A great way to do this is by using metaphor."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "Metaphors have been used since the earliest interfaces to help people get familiar with software."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "What does this thing do? Same as the real world."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "Stuff I don't want goes in the trash."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "And actually, if I make a mistake, I can retrieve it from the trash."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "Just like the real world."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "Okay."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "The trick to metaphors is making sure they aren't too literal or too abstract."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "In an interface, an inspector shows details of whatever is selected."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "If your inspector metaphor is too literal, people might not be familiar with what you're trying to show."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "If it's too abstract, you risk your idea not getting across."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "A good metaphor draws on something people know and helps people predict what it will do."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "When used correctly, metaphors instantly click."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "When used incorrectly, metaphors can be surprising in a bad way."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Let's go back to the trash can."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "If you use a trash can icon to mean something other than delete, it goes against people's familiarity with what this symbol represents in other software."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "The same is true if you take creative liberty with the delete icon."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "People don't get that immediate recognition."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "For common actions, there's no need to reinvent the wheel."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "Just use the metaphors people are already familiar with and make sure they do what people expect."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Familiarity is also a product of being consistent."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "Consistency helps people predict what will happen next."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Simply put, things that look the same should behave the same."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "If one of these buttons moves to a different screen, another toggles an action, and another pops up a modal,"
+  },
+  {
+    "timestamp": "8:11",
+    "content": "there's no pattern to understanding how this interface works."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "Consistent behavior helps people navigate your interface because they can anticipate what will happen and where they're going."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "And so does consistent placement."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "On Mac, you can always close a window by going to the top left corner."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "It's always in the exact same spot."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "When someone can find an action in the same location across screens and devices, it speeds them up."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "They don't have to think about it."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "Creating something familiar is all about knowing which metaphors and patterns to use and when to use them."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "But familiarity doesn't mean recycling the same solution everywhere."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "That brings us to flexibility."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "A flexible design recognizes a simple truth."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "That people use your design in ways as unique as they are."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "So support all the different contexts people find themselves in."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "Adding flexibility into your interface allows it to adapt to people's actual lives."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "So take listening to music."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "The way someone interacts with their music changes completely depending on their context."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "They might be at home controlling their music through the speakers."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "Or on a run with their AirPods and watch."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "Or driving using a completely hands-free experience."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "An interface that accommodates different situations feels more comfortable and works for a wider audience."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "Right."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "And when you design for specific contexts, it shows you're paying attention to what a person wants to do."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "When someone pulls out their iPhone, they want quick, touch-based interactions."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "On Mac, they expect deep workflows and precise pointer controls."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "Every device deserves a solution that takes advantage of what makes it unique."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "Of course, hardware is only half the story."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "The other half is the person using it."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Another way to make your design flexible is to cater to the wide range of abilities people have."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Get curious about who your audience is."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "How old are they?"
+  },
+  {
+    "timestamp": "10:18",
+    "content": "What languages do they speak?"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "Are they a pro or a novice?"
+  },
+  {
+    "timestamp": "10:22",
+    "content": "Do they rely on accessibility features?"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "You might not solve for every type of person on day one, but you can start examining how your experience can be more inclusive."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "Often, adding flexibility means you're not going to land on a single design solution that makes everyone happy."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "Sometimes, the best option is to let people personalize your experience to suit their own preferences."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "Take something like controls."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "Flexibility is an investment, but it's worth it because it proves to people that you designed with them in mind."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "Flexibility is an investment, but it's worth it because it's worth it because it's worth it."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "Next, simplicity."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "Simplicity is about stripping away the unnecessary so the core purpose of your design can shine."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "When we say simple, we don't mean minimal."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "If you bury all your functionality inside a single place, that might make your interface look more minimal, but it doesn't make it simple."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "Simple designs are frictionless and intuitive."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "People can find what they need without effort."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "And they get there by being concise and clear."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "Concise interfaces use plain language."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "They strip away jargon and speak naturally."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "They avoid redundancy and get straight to the point."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "Concise interfaces also respect people's time."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "They reduce the number of steps it takes to get things done."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "You can also achieve simplicity through being clear."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "A clear design perfectly communicates what it does."
+  },
+  {
+    "timestamp": "12:12",
+    "content": "Clarity is built with hierarchy, using order, spacing, and contrast to guide people to what's most important."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "When your hierarchy is strong, the most important item on the screen is always the most obvious one."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "Clear interfaces answer people's questions."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "What do I pay attention to?"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "What can I interact with?"
+  },
+  {
+    "timestamp": "12:34",
+    "content": "And how do I interact?"
+  },
+  {
+    "timestamp": "12:36",
+    "content": "In a simple interface, every element earns its place."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "So take a look at your design and identify where there's information you can distill down to its essence."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "Is there complex data that might be better understood as a graphic?"
+  },
+  {
+    "timestamp": "12:50",
+    "content": "Are there opportunities to summarize information so people can focus on what they care about?"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "Make sure every element helps clarify your point."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "And in some cases, making an interface simpler can mean adding more to it."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "Take this video play pause control."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "It's simple and familiar."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "I can pause what I'm watching, and when I come back to it later, I need more context."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "This control clarifies where I am and how much time is left."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "Sometimes simple means adding context and information so people can make informed decisions."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "Simple interfaces support the reason people are there."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "And you'll know you've arrived at simplicity when you have exactly enough."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "Our next principle is about executing what you have flawlessly."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "Craft is the attention to detail that tells people you really care about the experience you're giving them."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "We all know what a cheap product feels like."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "A rickety door that doesn't close properly."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "A shirt that unravels when you wash it."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "You can just tell when someone took shortcuts."
+  },
+  {
+    "timestamp": "14:00",
+    "content": "And it's the same with software."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "You know exactly what it feels like to use an interface that was rushed out the door."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "You tap a button, and you just have to wait for it to do something."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "Scrolling is jittery."
+  },
+  {
+    "timestamp": "14:14",
+    "content": "Icons are misaligned."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "You rotate your phone, and the layout gets all messed up."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "It feels fragile."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "When software feels thrown together, you question the quality of the results you'll get from using that product."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "But a meticulously crafted design does the exact opposite."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "It inspires confidence."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "So what are the actual ingredients to a well-crafted design?"
+  },
+  {
+    "timestamp": "14:36",
+    "content": "Just like in the real world, it starts with high-quality materials."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "Beautiful fonts that look great across devices."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "Thoughtful colors that adapt seamlessly across light and dark environments."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "Clear graphics and iconography."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "Responsive animations that feel fluid and provide immediate, natural feedback."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "All built on a solid foundation of reliable and secure SDKs."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "These are the details that matter."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "Getting to that level of quality requires time."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "Craft comes from iteration and making sure every last piece of your interface functions beautifully."
+  },
+  {
+    "timestamp": "15:17",
+    "content": "And this is a continual process."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "A large part of craft is how you maintain your design over time."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "Great design has longevity."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "So keep evolving it."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "When new features or hardware are introduced, explore whether they make sense for your experience."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "When your product evolves with these changes, people feel supported and rewarded."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "Craft is an uncompromising commitment to the details."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "When you get those details right, people will know you care."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "Finally, delight."
+  },
+  {
+    "timestamp": "15:48",
+    "content": "Delight is one of those things that's hard to define, but you instantly recognize it when you experience it."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "Delightful interfaces are satisfying, enriching, and create a real emotional connection."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "That connection starts when an experience feels human."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "Delightful interfaces are satisfying, and you can't find it when you're using it when you're using it."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "The way to make a design delightful isn't by adding confetti or tacking on extra flourishes at the end of your process."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "You create a delightful interface by identifying the emotion you want your audience to feel."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "Relaxed, confident, excited, and finding opportunities to reinforce that through your design."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "Delight is the sum of the consideration you put into your product."
+  },
+  {
+    "timestamp": "16:29",
+    "content": "It's the natural result of getting all the design principles right."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "Because when you design with intention and care."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "When you give people the agency to act, the safety to explore, the comfort of familiar patterns, and the ability to make it their own."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "You create an experience that's a true joy to use."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "And now it's your turn."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "The Human Interface Guidelines are the best resource to get started with designing for Apple platforms."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "And we've added a new design principles page so you can learn more."
+  },
+  {
+    "timestamp": "17:01",
+    "content": "Use these principles to guide your design and go make something that people really love."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "You"
+  }
+]

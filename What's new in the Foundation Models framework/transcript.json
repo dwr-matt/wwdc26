@@ -1,0 +1,1258 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello everyone and welcome. My name is Eric."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "And my name is Zheng."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Last year, we introduced the Foundation Models Framework with features like guided generation, snapshot streaming, and the powerful tool protocol."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "We were blown away by your excitement for the Foundation Models Framework in year one. And we think you're going to love what we lined up for you this year even more."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "We're going to walk through everything that's new in the framework this year. And let me tell you, this release is packed."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "Our 2027 release is all about integrations into and beyond the OS, a wider variety of models, and new primitives for building agentic experiences."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Let's kick it off with one of our most exciting updates. The Foundation Models Framework, including many of the brand new APIs that we're announcing today, is going open source and doing it in style."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "In addition to the core framework, we're also releasing a new package, Foundation Models Framework Utilities, that will be updated between OS releases to give you access to emerging and experimental building blocks."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "And during the course of this session, you'll be hearing about multiple other packages, all joining the Foundation Models Framework ecosystem."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "So, are you ready to jump in with us?"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "I'm going to cover everything related to new models, new modalities, and new tools that we're adding to the framework."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "And I'm going to show you the brand new APIs we made to help you get the most out of them."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "We've got a full schedule. First up, we've got a whole pile of model updates for you, including updates to the on-device model and access to server models."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "We've also added new system tools that supercharge your session with help from Spotlight and the Vision Framework."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "Afterwards, Jen will rejoin us to tell you about a powerful new API called Dynamic Profiles, our new primitive for creating agentic experiences."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "Jen will also dig into the brand new Evaluations Framework and its tight integration with Foundation Models."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "And to wrap up, we have some exciting news to share about Mac-specific productivity tools."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "So make sure to stick around."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "Let's jump right in with our new model."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "This release comes with a new on-device model rebuilt from the ground up and better across the board."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "It's more intelligent, better at logic and tool calling."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "In iOS 26.4, we released new APIs for inspecting the model's context size and counting the tokens in instructions, prompts, and transcripts."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "You'll want to use these going forward to adapt your app to the hardware it's running on."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "We've also been hard at work refining our guardrails."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "You may have noticed adjustments in iOS 26.4 to reduce the number of false positives."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "And we're continuing to make even more improvements in iOS 27."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "In addition, the on-device model is also gaining vision capabilities, which unlocks entire new categories of applications."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "The API is simple, a natural extension of the existing prompt builders."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "Here, we've created a session, and we want to ask about the photo of origami on the right."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "Simply insert an image attachment into your prompt together with text."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "Now the model can answer questions about the image."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "Image attachments can be created from a variety of types, including UI image, NS image, CG image, core image types, core video pixel buffers, and file URLs."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "The model supports images in any size and aspect ratio, so you don't need to crop or pad to any particular shape."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Arbitrary image sizes are allowed, but bear in mind that larger images will consume more tokens and incur more latency."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "Thanks to all these upgrades, the on-device system language model is more capable than ever."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "But if you need even more horsepower, we're giving you access to a brand new private cloud compute language model."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "The private cloud compute model is the very same one that powers many of the Apple intelligence features you know and love."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "It is a much bigger model than the on-device models and has a 32,000 token context window."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "It comes with a powerful new capability, reasoning."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Reasoning models are trained to spend time carefully thinking through the answers before providing a response,"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "which results in significantly better outcomes."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "Using private cloud compute couldn't be easier."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "Just create an instance of the model and use it to initialize your language model session."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "When prompting the session, I can now specify a reasoning level on the new context options argument."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "Reasoning level controls how much the model is allowed to think before responding."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "Deep reasoning produces better responses in exchange for additional compute."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "One of the best things about private cloud compute is that you don't have to worry about account setup."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "You don't have to deal with authentication."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "And you don't have to store API keys."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "It's all completely seamless."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "And of course, private cloud compute is above all else, private."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "No prompts are ever stored and we make it possible for independent researchers to verify these claims."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "And to top it all off, private cloud compute makes it possible for us to bring the foundation models framework to watchOS."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "Starting in watchOS 27, you can wear your most powerful intelligence features right on your wrist."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "PCC is available with no cloud API costs to developers who have less than 2 million first time downloads."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "Your users will have access to PCC every day."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "And if they're subscribed to iCloud Plus, their limit will be even higher."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "To learn more about the ins and outs of private cloud compute language model, including the entitlement you'll need to use it,"
+  },
+  {
+    "timestamp": "6:43",
+    "content": "make sure to tune in to our video about building with private cloud compute."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "In addition to an overhauled on-device model and the new private cloud compute model,"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "we're opening up our model abstraction layer to make it possible for nearly any language model to be used with the foundation models framework."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "The abstraction layer is built around a new language model protocol that allows both local and server models to back a language model session."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "Existing models like system language model and private cloud compute language model already conform to this protocol."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "And we're open sourcing two additional implementations, Core AI language model and MLX language model,"
+  },
+  {
+    "timestamp": "7:29",
+    "content": "for running a myriad of local models on the Apple neural engine and your Mac's GPU."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "We're also excited to share that we've been hard at work behind the scenes to ensure that you have access to a variety of Frontier server models."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Anthropic and Google are both publishing Swift packages to provide you with access to their latest and greatest models."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "The model abstraction layer makes using third-party models simple."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "I'll just import a language model package using Swift package manager,"
+  },
+  {
+    "timestamp": "8:00",
+    "content": "initialize the model that I want to use,"
+  },
+  {
+    "timestamp": "8:04",
+    "content": "and pass it when creating my session."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "Everything downstream stays the same."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "And the other things that I want to keep in mind,"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "I want to keep in mind that if you use third-party server models,"
+  },
+  {
+    "timestamp": "8:24",
+    "content": "you'll probably have to deal with both authentication and billing."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Remember, never store private keys in your app binary."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "Always fetch access tokens with a secure mechanism like OAuth,"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "and store them securely using keychain."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "As a developer, you'll typically be billed per token when using third-party models."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "So we've made it easy to keep track of your usage."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "Sessions and responses now have a usage property that tells you precisely how many tokens were used."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "You can also check how many of the input tokens were read from cache,"
+  },
+  {
+    "timestamp": "9:03",
+    "content": "and how many of the response tokens were used for reasoning."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "If you'd like to learn more about using language models,"
+  },
+  {
+    "timestamp": "9:11",
+    "content": "or how you can author your own language model package,"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "check out Bring an LLM Provider to the Foundation Models Framework."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "We have finally made it through all our model updates."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "Next up is System Tools."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "In this release, we're introducing several built-in tools that supercharge your language model sessions"
+  },
+  {
+    "timestamp": "9:31",
+    "content": "with system-provided functionality."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Foundation Models now contains two native tools,"
+  },
+  {
+    "timestamp": "9:37",
+    "content": "backed by the Vision Framework's powerful capabilities."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "The Barcode Reader tool allows the model to read information from barcodes,"
+  },
+  {
+    "timestamp": "9:45",
+    "content": "and the OCR tool allows the model to extract structured text from images."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "Both enhance a model's ability to reason about visual information in ways it can't natively."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "The What's New in Image Understanding video has more detail about how to leverage these tools,"
+  },
+  {
+    "timestamp": "10:00",
+    "content": "so cue that one up for more info."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "Similarly, we're also introducing a search tool powered by Spotlight"
+  },
+  {
+    "timestamp": "10:08",
+    "content": "for implementing fully local retrieval augmented generation."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "This has been one of your most requested features."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Retrieval augmented generation, or RAG,"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "is a technique that gives the model access to up-to-date personal or domain"
+  },
+  {
+    "timestamp": "10:24",
+    "content": "knowledge by leveraging a Spotlight index and specially processed queries."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "If this sounds like just what you've been waiting for,"
+  },
+  {
+    "timestamp": "10:34",
+    "content": "LLM search using Core Spotlight should be at the top of your watchlist."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Now that we've looked at all the new models in this release,"
+  },
+  {
+    "timestamp": "10:41",
+    "content": "and the new system tools we're adding to the SDK,"
+  },
+  {
+    "timestamp": "10:44",
+    "content": "I'm going to hand off to Jen to tell you more about our new APIs"
+  },
+  {
+    "timestamp": "10:48",
+    "content": "for building agentic app experiences."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "Get excited."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "Take it away, Jen."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Thanks, Eric."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "I'm going to introduce you to Dynamic Profiles,"
+  },
+  {
+    "timestamp": "10:59",
+    "content": "our new primitive for building agentic experiences."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "Let's begin by walking through the Craft app"
+  },
+  {
+    "timestamp": "11:07",
+    "content": "and looking at the kinds of experiences Dynamic Profiles make possible."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Inside the app, I can create a journal entry with some origami photos."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "The app creates a session that starts in craft analysis mode."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "The instructions tell the model to analyze the images and record what it finds."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "It identifies the craft type, colors, and materials, then saves them back to the journal through a tool call."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "Next, the app switches to brainstorming mode using Private Cloud Compute's reasoning capability."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "It takes everything it just learned and suggests a list of creative origami projects."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Pretty cool, right?"
+  },
+  {
+    "timestamp": "11:50",
+    "content": "To implement this feature, I start by creating a language model session."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "Then I'll add more sessions, each with its own models, instructions, and tools."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "But what if I want the model to autonomously switch modes?"
+  },
+  {
+    "timestamp": "12:10",
+    "content": "Things start to get hairy."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "All the jumps мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам"
+  },
+  {
+    "timestamp": "12:44",
+    "content": "and conform it to the dynamic profile protocol"
+  },
+  {
+    "timestamp": "12:48",
+    "content": "with the body property that contains a profile."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "Language model sessions now can be initialized with a dynamic profile."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "I can specify the instructions and tools"
+  },
+  {
+    "timestamp": "13:02",
+    "content": "that should be present in the context at that very moment."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "This is the simplest form of a dynamic profile,"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "a data structure made up of instructions and tools."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "I want to implement two different modes,"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "one for craft analysis and one for brainstorm."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "My app has an observable object that stores a mode variable,"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "so I can switch on it."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "In different branches, the language model session"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "should have different instructions and tools."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "I can even give the model a tool"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "to intelligently switch to the context for brainstorm mode."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "Sometimes, it's not enough to just manage the context."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "You may also want different models and configurations for different tasks"
+  },
+  {
+    "timestamp": "13:56",
+    "content": "while still maintaining the conversation history."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "In my craft app, there are two scenarios,"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "craft analysis and brainstorm."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "Each of them already has a different set of instructions and tools."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "For quick tasks like analyzing a craft,"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "system language model is probably enough."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Now, if I want to switch to brainstorming,"
+  },
+  {
+    "timestamp": "14:25",
+    "content": "I can also specify private cloud compute,"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "configured with deep reasoning."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "To describe those configurations,"
+  },
+  {
+    "timestamp": "14:34",
+    "content": "I can use modifiers."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "A model modifier to specify PCC"
+  },
+  {
+    "timestamp": "14:40",
+    "content": "and a reasoning level modifier"
+  },
+  {
+    "timestamp": "14:43",
+    "content": "to ask the model to think thoroughly."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "Now, we have a language model session"
+  },
+  {
+    "timestamp": "14:48",
+    "content": "with dynamically configured model, tools, and instructions."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "When the app needs to handle different context"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "with different model capabilities,"
+  },
+  {
+    "timestamp": "14:58",
+    "content": "dynamic profiles are a great fit."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "The important thing to understand"
+  },
+  {
+    "timestamp": "15:04",
+    "content": "is that a dynamic profile"
+  },
+  {
+    "timestamp": "15:06",
+    "content": "resolves to a single active profile at any given time."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "You use conditionals to pick which profile is active"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "and the framework handles the transition for you."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Now, let's try it out in the craft app."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "As I select the idea,"
+  },
+  {
+    "timestamp": "15:24",
+    "content": "the model switches to private cloud compute."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "It still has the full context from the analysis,"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "but generating creative project ideas"
+  },
+  {
+    "timestamp": "15:34",
+    "content": "benefits from the larger model's capabilities"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "like better tool calling and broader world knowledge."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "Profiles make it so much easier to manage context"
+  },
+  {
+    "timestamp": "15:45",
+    "content": "and dynamically configure sessions."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "When using this API,"
+  },
+  {
+    "timestamp": "15:50",
+    "content": "consider privacy boundaries,"
+  },
+  {
+    "timestamp": "15:52",
+    "content": "model capabilities,"
+  },
+  {
+    "timestamp": "15:53",
+    "content": "and cost."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "To explore more,"
+  },
+  {
+    "timestamp": "15:56",
+    "content": "check out the deep dive session,"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "build agentic app experiences"
+  },
+  {
+    "timestamp": "16:00",
+    "content": "with foundation models."
+  },
+  {
+    "timestamp": "16:03",
+    "content": "As powerful as these capabilities are,"
+  },
+  {
+    "timestamp": "16:06",
+    "content": "language models are inherently non-deterministic,"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "which makes their behaviors hard to predict."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "The evaluations framework is a new Swift framework"
+  },
+  {
+    "timestamp": "16:17",
+    "content": "that measures the quality of your intelligence features."
+  },
+  {
+    "timestamp": "16:21",
+    "content": "With the evaluations framework,"
+  },
+  {
+    "timestamp": "16:24",
+    "content": "you can quantify accuracy as you tweak your prompts."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "Evaluations is built to help app developers like you"
+  },
+  {
+    "timestamp": "16:32",
+    "content": "understand the statistical impact of changes"
+  },
+  {
+    "timestamp": "16:35",
+    "content": "and deliver your app with confidence."
+  },
+  {
+    "timestamp": "16:39",
+    "content": "To learn more about evaluations,"
+  },
+  {
+    "timestamp": "16:42",
+    "content": "check out these sessions."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "Now, I want to shift gears"
+  },
+  {
+    "timestamp": "16:47",
+    "content": "and talk about our tooling and open source efforts."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "In Mac OS 27,"
+  },
+  {
+    "timestamp": "16:54",
+    "content": "the models are coming to the command line."
+  },
+  {
+    "timestamp": "16:56",
+    "content": "The FM CLI is a brand new way"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "to use Apple Foundation models"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "for everyday productivity."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "You can access the on-device model"
+  },
+  {
+    "timestamp": "17:07",
+    "content": "and PCC from the terminal"
+  },
+  {
+    "timestamp": "17:09",
+    "content": "just by using the FM command."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "FM has a nice helper"
+  },
+  {
+    "timestamp": "17:16",
+    "content": "and it lists all the features it supports."
+  },
+  {
+    "timestamp": "17:20",
+    "content": "I've been using FM Chat"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "to experiment with models"
+  },
+  {
+    "timestamp": "17:24",
+    "content": "for my app features."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "Let me show you."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "I want to know"
+  },
+  {
+    "timestamp": "17:28",
+    "content": "what does value fold mean"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "in the context of origami?"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "Easy, just like that."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "I can even plug FM into shell scripts"
+  },
+  {
+    "timestamp": "17:43",
+    "content": "to summarize documents,"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "extract information,"
+  },
+  {
+    "timestamp": "17:47",
+    "content": "or generate content."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "17:50",
+    "content": "I have some pictures with random names"
+  },
+  {
+    "timestamp": "17:53",
+    "content": "like this one,"
+  },
+  {
+    "timestamp": "17:54",
+    "content": "image underscore 1234."
+  },
+  {
+    "timestamp": "17:58",
+    "content": "Let me just ask FM"
+  },
+  {
+    "timestamp": "18:00",
+    "content": "to generate a file name"
+  },
+  {
+    "timestamp": "18:01",
+    "content": "based on the content"
+  },
+  {
+    "timestamp": "18:02",
+    "content": "inside the image."
+  },
+  {
+    "timestamp": "18:07",
+    "content": "Look at that."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "It just came up"
+  },
+  {
+    "timestamp": "18:09",
+    "content": "with a nice descriptive name."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "And if you are a data scientist"
+  },
+  {
+    "timestamp": "18:15",
+    "content": "or researcher"
+  },
+  {
+    "timestamp": "18:16",
+    "content": "working in a Python ecosystem,"
+  },
+  {
+    "timestamp": "18:18",
+    "content": "the foundation models SDK for Python"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "has you covered too."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "The Python SDK gives you direct access"
+  },
+  {
+    "timestamp": "18:28",
+    "content": "to the very same on-device model"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "that powers the Swift foundation models framework."
+  },
+  {
+    "timestamp": "18:34",
+    "content": "You can check model availability"
+  },
+  {
+    "timestamp": "18:37",
+    "content": "or generate a response"
+  },
+  {
+    "timestamp": "18:39",
+    "content": "with just a few lines of Python."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "The SDK has the core feature"
+  },
+  {
+    "timestamp": "18:44",
+    "content": "of the Swift framework,"
+  },
+  {
+    "timestamp": "18:46",
+    "content": "so you can go from a prompt"
+  },
+  {
+    "timestamp": "18:48",
+    "content": "to a structured response"
+  },
+  {
+    "timestamp": "18:50",
+    "content": "in seconds."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "To learn more,"
+  },
+  {
+    "timestamp": "18:52",
+    "content": "check out the session"
+  },
+  {
+    "timestamp": "18:53",
+    "content": "Build AI-Powered Scripts"
+  },
+  {
+    "timestamp": "18:56",
+    "content": "with the FMCLI"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "and Python SDK."
+  },
+  {
+    "timestamp": "18:59",
+    "content": "Now that we have looked at productivity on Mac,"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "let's talk about open source."
+  },
+  {
+    "timestamp": "19:05",
+    "content": "Starting with foundation models framework,"
+  },
+  {
+    "timestamp": "19:09",
+    "content": "Utilities."
+  },
+  {
+    "timestamp": "19:11",
+    "content": "Utilities contains a collection"
+  },
+  {
+    "timestamp": "19:13",
+    "content": "of building blocks"
+  },
+  {
+    "timestamp": "19:15",
+    "content": "to help you explore emerging practices"
+  },
+  {
+    "timestamp": "19:17",
+    "content": "in working with LLMs."
+  },
+  {
+    "timestamp": "19:20",
+    "content": "It provides profile modifiers"
+  },
+  {
+    "timestamp": "19:23",
+    "content": "for transcript management,"
+  },
+  {
+    "timestamp": "19:25",
+    "content": "a scale API"
+  },
+  {
+    "timestamp": "19:26",
+    "content": "for procedural knowledge loading,"
+  },
+  {
+    "timestamp": "19:29",
+    "content": "and a language model"
+  },
+  {
+    "timestamp": "19:30",
+    "content": "that can interface"
+  },
+  {
+    "timestamp": "19:31",
+    "content": "with servers"
+  },
+  {
+    "timestamp": "19:32",
+    "content": "using the chat completion standards."
+  },
+  {
+    "timestamp": "19:36",
+    "content": "These are just the starting points."
+  },
+  {
+    "timestamp": "19:39",
+    "content": "Tools and trends evolve,"
+  },
+  {
+    "timestamp": "19:40",
+    "content": "and the foundation model's framework,"
+  },
+  {
+    "timestamp": "19:42",
+    "content": "Utilities,"
+  },
+  {
+    "timestamp": "19:43",
+    "content": "is there to grow with you."
+  },
+  {
+    "timestamp": "19:45",
+    "content": "In addition to the Utilities package,"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "the core of the foundation model's framework"
+  },
+  {
+    "timestamp": "19:52",
+    "content": "will also be open source."
+  },
+  {
+    "timestamp": "19:55",
+    "content": "Open sourcing"
+  },
+  {
+    "timestamp": "19:56",
+    "content": "the foundation model's framework"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "makes it a great solution"
+  },
+  {
+    "timestamp": "19:59",
+    "content": "for interacting with LLMs"
+  },
+  {
+    "timestamp": "20:01",
+    "content": "everywhere Swift runs,"
+  },
+  {
+    "timestamp": "20:04",
+    "content": "including Linux servers,"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "together with other model providers"
+  },
+  {
+    "timestamp": "20:08",
+    "content": "like Anthropic and Google,"
+  },
+  {
+    "timestamp": "20:11",
+    "content": "alongside Core AI"
+  },
+  {
+    "timestamp": "20:13",
+    "content": "and MLX integrations,"
+  },
+  {
+    "timestamp": "20:15",
+    "content": "you'll be able to run any model anywhere."
+  },
+  {
+    "timestamp": "20:19",
+    "content": "Welcome back, Eric."
+  },
+  {
+    "timestamp": "20:20",
+    "content": "Are you ready to wrap up?"
+  },
+  {
+    "timestamp": "20:21",
+    "content": "Yeah, way to bring it home, Jen."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "We hope that you are as jazzed as we are"
+  },
+  {
+    "timestamp": "20:26",
+    "content": "about all these new capabilities,"
+  },
+  {
+    "timestamp": "20:28",
+    "content": "models, and APIs."
+  },
+  {
+    "timestamp": "20:30",
+    "content": "We've only just scratched the surface."
+  },
+  {
+    "timestamp": "20:33",
+    "content": "Yeah, to get the full scoop,"
+  },
+  {
+    "timestamp": "20:35",
+    "content": "make sure to check out other videos"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "for deep dives on all the topics"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "we've introduced here,"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "from the Evaluations Framework"
+  },
+  {
+    "timestamp": "20:42",
+    "content": "to Private Cloud Compute,"
+  },
+  {
+    "timestamp": "20:44",
+    "content": "the Enhanced Xcode Instrument,"
+  },
+  {
+    "timestamp": "20:46",
+    "content": "and the Nitty-Gritty on Dynamic Profiles."
+  },
+  {
+    "timestamp": "20:50",
+    "content": "Some great next steps"
+  },
+  {
+    "timestamp": "20:51",
+    "content": "would be to explore our sample app"
+  },
+  {
+    "timestamp": "20:53",
+    "content": "to learn more about Dynamic Profiles"
+  },
+  {
+    "timestamp": "20:55",
+    "content": "and to start getting familiar"
+  },
+  {
+    "timestamp": "20:57",
+    "content": "with the Evaluations Framework."
+  },
+  {
+    "timestamp": "20:58",
+    "content": "On behalf of the whole team,"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "thanks for joining us."
+  },
+  {
+    "timestamp": "21:03",
+    "content": "Thank you."
+  },
+  {
+    "timestamp": "21:03",
+    "content": "Thank you."
+  },
+  {
+    "timestamp": "21:05",
+    "content": "Thank you."
+  }
+]

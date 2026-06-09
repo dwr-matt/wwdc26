@@ -1,0 +1,918 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm David Kosky and I work on MLX Swift."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "Numerical computing, also called numerical analysis or scientific computing, is a set"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "of techniques and algorithms used to solve mathematical problems."
+  },
+  {
+    "timestamp": "0:20",
+    "content": "These are often problems that are impractical to solve symbolically or by hand."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "They need massive amounts of computation."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Some applications include simulations in chemistry, biology, physics, and financial"
+  },
+  {
+    "timestamp": "0:33",
+    "content": "systems."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "Other domains include audio and signal processing."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "Visual applications include rendering, ray tracing, and fractals."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "Large scale gradient descent can do arbitrary curve fitting."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "This is the basis of training machine learning models."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "Today, we're going to discuss numerical computing using MLX Swift."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "Apple platforms have a rich numerical computing ecosystem."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "Each existing framework is great at what it's designed for."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "Accelerate gives you hand-tuned vector primitives on the CPU."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "BNNS is the building block layer for neural networks."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Metal performance shaders gives you direct access to GPU kernels."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "Swift numerics adds a complex type and generic numeric protocols."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "So when do you use MLX Swift?"
+  },
+  {
+    "timestamp": "1:20",
+    "content": "If your primary goal is writing mathematical code with an eye for performance, MLX Swift is a great"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "solution."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "The code you write looks like the math you're implementing without the programming overhead"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "of some of the lower-level libraries or the detailed bookkeeping required when manipulating"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "arrays in plain Swift."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "How does it look like math?"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "The core idea is simple."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "Mathematicians and numerical analysts work with vectors and matrices."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "Rather than performing operations on single values, you're doing it for the entire matrix"
+  },
+  {
+    "timestamp": "1:52",
+    "content": "at once."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "MLX Swift uses n-dimensional arrays as the central abstraction, like NumPy and many others before"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "it."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "In fact, if you've used NumPy, the API will look very familiar."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "Most NumPy code can be translated to MLX Swift with minimal changes."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "This is incredibly expressive without being complicated."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "You can understand the code when you write it and read it later."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "Array computation and lazy evaluation are what make two things possible."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "Automatic GPU execution and automatic differentiation."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "Best of all, MLX Swift and the entire MLX ecosystem are all open source with an MIT license."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "We welcome issues and PRs and have a very active community."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "Ask questions, fix bugs, and make it better."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "Here's the plan."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "I will first introduce MLX Swift with some basic matrix vector operations."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "Then I will dive into three examples showing how MLX Swift makes it easy to translate math"
+  },
+  {
+    "timestamp": "2:52",
+    "content": "into code."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "Computation of the Mandelbrot set."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Finding the steady state for heat distribution."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "And finally, curve fitting."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "First up, let's talk about MLX Swift."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "Here we show some MLX Swift operations, using the power iteration as an example."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "Let's walk through it."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "We import MLX and set the matrix size and iteration count, then sample a random matrix and vector"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "from a normal distribution."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Next we build a symmetric matrix by adding B and its transpose."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "Notice how close this is to the math."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "Dot T gives the transpose and plus does matrix addition."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "Inside the loop, mapmul does matrix vector multiplication and norm gives the L2 norm."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "Again, the code reads like the math."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "Here we see a key MLX feature, lazy evaluation."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "Operations on MLX array objects build a compute graph and nothing runs until you call eval or read"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "a value."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "In a loop like this, we call eval each step so the graph stays small."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Lazy evaluation is also what powers MLX's function transformations, like grad for automatic"
+  },
+  {
+    "timestamp": "4:04",
+    "content": "differentiation."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Finally, we recover the eigenvalue and reading the value forces the computation."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "Like other array frameworks, MLX Swift code reads almost like math."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "And if you actually need all the eigenvalues and eigenvectors of a matrix, the MLX Swift"
+  },
+  {
+    "timestamp": "4:22",
+    "content": "linear algebra package has functions for that too."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Let's move on to the next example."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "Next, the Mandelbrot set."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "It's a classic fractal and it's also a perfect showcase for array computing where we apply"
+  },
+  {
+    "timestamp": "4:35",
+    "content": "a function over a large grid of points."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "The definition is surprisingly simple."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "For every point C in the complex plane, you iterate Z equals Z squared plus C."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "If the magnitude never exceeds 2, the point is in the set and it's colored black."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "If it diverges, it's colored by how quickly it escapes."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "The beauty of a fractal is that it's self-similar and infinitely detailed."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "You can pan and zoom forever and the patterns never repeat."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "Let's start with a plain Swift implementation using scalers."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "You loop over every pixel and run the Mandelbrot's iterations and check for divergence."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "It works."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "It's idiomatic Swift, but you're managing a lot of bookkeeping that has nothing to do with"
+  },
+  {
+    "timestamp": "5:20",
+    "content": "the problem."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "And it runs on the CPU, one point at a time."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "Let's look at MLX Swift."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Here it is in MLX Swift."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "Set up a grid of complex numbers, that's C. Then the loop is just two lines, Z equals"
+  },
+  {
+    "timestamp": "5:36",
+    "content": "Z times Z plus C, applied to every point at once."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "Count how many iterations each point stays bounded."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "That's it."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "The code is a direct translation of the math."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "The computation is performed over an entire grid of points as easily as it is for a single"
+  },
+  {
+    "timestamp": "5:52",
+    "content": "point."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "By default, the GPU is used, giving us fast performance."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "MLX Swift is expressive."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "You can write numerical computing code naturally."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "But you're working scalar at a time, so you have to iterate over every point yourself."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "The bookkeeping can obscure the math."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "MLX Swift is built for numerical computing."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "You operate on arrays rather than scalers."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "It looks like the math you're trying to express."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "It runs faster on the GPU, processing all points in parallel."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "How much faster depends on the exact algorithm, but 10 times faster is certainly possible."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "All this with smaller and simpler code."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Mandelbrot was embarrassingly parallel, every point independent."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "The next example is different."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Each cell talks to its neighbors."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "That pattern shows up all over physics, image processing, and neural networks."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "MLX handles it with a single operation, convolution."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "Imagine a room with walls and heat sources."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "We want to know the steady state temperature everywhere inside."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "The simplest method to solve this is known as the Jacobi iteration."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "Model the temperature as a 2D grid."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "Each new iteration averages the neighboring values, with a stencil like this."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "You repeat this over and over, and the heat spreads out until it reaches a steady state."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "Notice the update only looks at a small neighborhood, and it's the same recipe at every point."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "That's exactly what a convolution is."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "Let's see it in code."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "Here's the core of the solver in MLX Swift."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "Let me walk through it."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "The kernel is the stencil from the previous slide, written out literally."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "The four quarters on the neighbors, zeros on the center and corners."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "The temperature grid starts as the heat sources, a reasonable initial value."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "Inside the loop, two lines."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "The first is the physics."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Conv2D applies the stencil across the entire grid in one call."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "The second line handles the boundary conditions, which is an element-wise ternary."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "Wherever the math says, this is a heat source or a wall, keep the fixed value."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Everywhere else, take the new value from the convolution."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "That's it."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "The math said average the four neighbors, and we implemented that as a single call to conv2D."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "Jacoby iteration is fast to compute, but slow to converge."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "Heat can move one cell at a time, and typically steady state requires n-squared iterations, where"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "n is the side of the grid."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "Much like Quicksort does less work than bubble sort, there are algorithms that reach steady"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "state with less work."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "One of these is called successive over-relaxation, or SOR."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "The equation looks similar to Jacoby iterations."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "In fact, it uses the same convolution kernel."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "It uses a parameter omega, which pushes each update further in the direction of change, overshooting"
+  },
+  {
+    "timestamp": "8:47",
+    "content": "slightly to get there faster."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "The overshoot will recover as it iterates."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "The omega parameter can be computed based on the size of the array, and if the optimal value"
+  },
+  {
+    "timestamp": "8:57",
+    "content": "is used, this will converge in n iterations."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "The other key to the technique is in-place updates."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "MLX typically produces new arrays rather than updating in place, but a red-black checkerboard"
+  },
+  {
+    "timestamp": "9:09",
+    "content": "pattern where alternating cells or process can be used to compute new values, giving the"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "same effect."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "On to the code."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "First, we compute the optimal omega based on the size of the grid."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "You can see how we use omega here."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "It exactly matches the equation."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "We use the checkerboard masks to update alternating cells in the array."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "Now the black cells run the same update, but this time their red neighbors already have fresh"
+  },
+  {
+    "timestamp": "9:37",
+    "content": "values, which is exactly the in-place effect we needed."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "Repeat this in a loop as before."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "Let's see the difference."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "The Jacoby and SOR code are nearly identical, and they closely match the math."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Let's see how these run."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "You can see Jacoby on the top slowly spread while SOR on the bottom quickly fills the area."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "SOR has a striking ripple pattern as it runs."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "That's the overshooting and correcting in real time."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "By the end, both converge to the same configuration."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "One more thing."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "I had to slow SOR down by a factor of 100 just to make it visible."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "Power of choosing the right algorithm."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "The first two examples were forward computation."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "Start with inputs, compute outputs."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "The last one flips that around."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "You have outputs, data points, and you want to find the parameters that produce them."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "This is where we will apply a key function transformation provided by MLX Swift, GRAD for automatic differentiation."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "Let's say that you have some points and you want to find a function that approximates them."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "You decide the structure of the function you want."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "It could be a polynomial, a sum of sines, or whatever you like."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "For this example, we'll use a polynomial, a quadratic that will give us a parabola."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "You want to minimize the loss."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "The mean of the square difference is between the output of your function and the actual data."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "This is the same core idea behind training every ML model, just on a smaller scale."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "To minimize the loss, we need the gradient with respect to the parameters and an optimization"
+  },
+  {
+    "timestamp": "11:12",
+    "content": "loop to update the parameters."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "We define the function f and the loss, which is the mean squared error."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "Next we make theta, the coefficients we're going to fit, and transform the loss function"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "into a function that produces the exact gradient with respect to the parameters."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "We didn't write any derivatives by hand."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "They were derived by MLX."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "In the optimization loop, we evaluate the gradient at the current parameters, take a small step,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "and call eval to flush the computation graph, each iteration so it doesn't grow without bound."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "That's gradient descent."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Here's what that looks like."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "The parabola quickly gets close and overshoots the data, but settles in to closer and closer"
+  },
+  {
+    "timestamp": "11:55",
+    "content": "approximations."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "Now this example was a simple polynomial, and we could have used QR from the linear algebra"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "package to fit the curve directly."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "Gradients work with arbitrarily complex functions."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "If you need more than just gradients, MLX has a suite of optimization algorithms like SGD,"
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Atom, RMSprop, and more."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "I've shown array computing, convolution, and grad today, but MLX includes the full numerical"
+  },
+  {
+    "timestamp": "12:23",
+    "content": "computing toolkit."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Here's a sample."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "Linear algebra, FFTs, n-dimensional convolutions, reductions, scans, indexing, random number generation,"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "and many more."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "There's already a healthy ecosystem of packages built on MLX Swift."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "The core MLX Swift repo is the framework you've been seeing all session."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "MLX Swift LM is where the Swift language model implementations live."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "MLX Swift Examples has example programs that you can look at to get started."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "Examples based on this session will be posted there."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "All of these are open source and are installable with a few lines with Swift Package Manager."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "MLX isn't only Swift."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "It's one framework with four frontends."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "Swift, Python, C++, and C."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "Third parties have built even more frontends if you have needs beyond that."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "They share the same concepts, the same operations, and the same lazy evaluation model."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "The concepts and patterns transfer across them with minimal changes."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "So you can prototype in Python and ship in Swift."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "Python also has a broader research ecosystem around it."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "Projects like MLX LM and MLX VLM are worth a look if you want to see what's been built on the Python side."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "I encourage everybody to take a look at MLX Swift and MLX Swift Examples."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "MLX Swift has documentation and tests you can explore to see how it works."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "MLX Swift Examples has a variety of example applications that demonstrate LLM integration,"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "stable diffusion, model training, and fine-tuning, and of course the examples shown in this talk."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Do you have numerical computing needs, or just want to play around with interesting simulations and visualizations?"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "Give it a try."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "And if something sparks an idea, I encourage everyone to participate and contribute."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "There are open issues that you can try fixing or make a new example program."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "Thanks for watching."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "!"
+  },
+  {
+    "timestamp": "14:23",
+    "content": "!"
+  },
+  {
+    "timestamp": "14:24",
+    "content": "I'll see you next time!"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "I'll see you next time!"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "I'll see you next time!"
+  }
+]

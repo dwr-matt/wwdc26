@@ -1,0 +1,858 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Welcome, I'm Ichun,"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "engineer who works on drawing features."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "In this session, I'll show you some exciting new APIs in PencilKit that"
+  },
+  {
+    "timestamp": "0:17",
+    "content": "bring handwriting recognition to your apps,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "along with improved access to the drawing model that open up interesting use cases."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Writing on iPad with Apple Pencil feels as natural as pen on paper."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "But unlike paper, your handwriting becomes searchable, recognizable, and interactive."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "PencilKit is the core framework for freehand drawing support on Apple's platforms."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "It gives you a low latency canvas with expressive inks,"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "full Apple Pencil support, and access to the underlying data model."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "iOS 26 introduced PaperKit, which builds on top of PencilKit to power Apple's"
+  },
+  {
+    "timestamp": "1:02",
+    "content": "drawing experience system-wide."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "All of the new PencilKit APIs covered in this session are also available when working with PaperKit."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "To learn more about it, check out the Meet PaperKit video from WWDC25,"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "Apple's platforms have world-class handwriting recognition."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "You've seen it power features like searching handwriting in freeform and notes."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "One of the most requested capabilities for PencilKit is handwriting recognition."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "Now, it's available to you in iOS, iPadOS, MacOS, and VisionOS 27."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "I'll start with PencilKit's handwriting recognition APIs and show you how to turn handwriting into recognized words."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "Next, I'll go over new conversion APIs that let you translate between PencilKit stroke paths and standard Bezier paths."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "Then, I'll cover improvements to the drawing model, including stroke identity and selection axis."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "And finally, I'll show new stroke slicing APIs that let you split or extract segments from strokes."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "I've been working with PencilKit in iOS 27 to build my son an app for learning to write in both Chinese and English."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "In my app, he can practice writing words in both languages and get feedback on his work."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "Here, the app has a flashcard showing a word in English."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "To practice, I will write the Chinese translation."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "Right now, it's showing heart in English."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "So I need to write Xin in Chinese."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "Now, the app can use handwriting recognition to check my current work before I finish the whole word."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "The check button shakes to tell me the answer wasn't right."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "This time, the app recognized my handwriting as the Chinese word Xin, which matched the prompt."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "And the app confirmed it's correct."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Great."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "That's what handwriting recognition APIs can do in PencilKit."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "I'll get started with the core of handwriting recognition."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "You probably won't be working."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "the result for what was written."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "By default, PKStroke Recognizer uses"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "the device languages to determine"
+  },
+  {
+    "timestamp": "4:07",
+    "content": "how to interpret the handwriting."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "You can also configure"
+  },
+  {
+    "timestamp": "4:12",
+    "content": "peripheral languages"
+  },
+  {
+    "timestamp": "4:13",
+    "content": "to match your app's language context."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "You can recognize an entire drawing at"
+  },
+  {
+    "timestamp": "4:20",
+    "content": "once or passing a specific subset of stroke IDs."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "I will swipe over to the open-ended"
+  },
+  {
+    "timestamp": "4:27",
+    "content": "practice view to show recognized text in action."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "I can write anything I want here,"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "and PencilKit will recognize it."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "Awesome. Hello, WWDC."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "As of iOS 27,"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "PKStroke Recognizer supports 29 languages."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "The list of languages supported can be accessed using"
+  },
+  {
+    "timestamp": "4:52",
+    "content": "the supported languages property on PKStroke Recognizer."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "Note that handwriting recognition in simulator only supports"
+  },
+  {
+    "timestamp": "5:00",
+    "content": "languages that use Latin characters."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "Handwriting recognition in PencilKit runs entirely on device."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "The recognition model is offline and included with the operating system."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "Handwriting recognition is fast and works on all devices supported by iOS 27."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "The next API is indexable content."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "It provides a single string representing the contents of the entire drawing."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "This is particularly useful for features like spotlight search."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "but multiple languages are active."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "Indexable content may contain results in"
+  },
+  {
+    "timestamp": "5:44",
+    "content": "more than one of those languages."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "When handwriting is ambiguous,"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "you want all possible interpretations in your index,"
+  },
+  {
+    "timestamp": "5:53",
+    "content": "so users can find their contents"
+  },
+  {
+    "timestamp": "5:55",
+    "content": "regardless of what they search for."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "Is that a one or lowercase l?"
+  },
+  {
+    "timestamp": "6:01",
+    "content": "Is that one one or I will"
+  },
+  {
+    "timestamp": "6:05",
+    "content": "use the indexes to the indexes to the indexes?"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "The indexes to the indexes to the indexes to the indexes,"
+  },
+  {
+    "timestamp": "6:12",
+    "content": "where the recognized tags gives you one best answer."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "Indexable content gives you all the candidates concatenated together."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "If you are persisting indexable content to disk,"
+  },
+  {
+    "timestamp": "6:24",
+    "content": "keep in mind that recognition results can improve over time,"
+  },
+  {
+    "timestamp": "6:29",
+    "content": "as the underlying models are updated."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "The next one is the indexes to the indexes."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "The indexes to the indexes to the indexes."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "The indexes to the indexes alongside your indexes content."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "And when loaded back, compare against the current version"
+  },
+  {
+    "timestamp": "6:45",
+    "content": "to decide whether to re-index."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "Additionally, consider surrounding your calls"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "to PKStroR recognizer."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "Updating the results on every stroke may use more power"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "by the URL indexing feature."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "The third API is for searching text."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "Given a target string, it returns an array of search results"
+  },
+  {
+    "timestamp": "7:07",
+    "content": "indicating where that word likely appears in the drawing,"
+  },
+  {
+    "timestamp": "7:12",
+    "content": "considering all the candidates."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "This is what powers interactive search,"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "where a highlight appears around matching strokes."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Search also pairs naturally with UI find interaction."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "The system find under replace experience."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "By implementing UI find interaction delegate"
+  },
+  {
+    "timestamp": "7:35",
+    "content": "and driving it with search under the hood,"
+  },
+  {
+    "timestamp": "7:38",
+    "content": "you get the system search UI complete with result navigation"
+  },
+  {
+    "timestamp": "7:43",
+    "content": "and highlighting directly in your drawing canvas."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Back in the flashcards, I've made a change to show how the search"
+  },
+  {
+    "timestamp": "7:52",
+    "content": "function powers flashcard matching."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "I've added a visualization of the bands returned in search results."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Now, there's a box showing where the search match."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "These capabilities also make handwriting content more accessible."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "You can connect voice over to speak handwriting aloud,"
+  },
+  {
+    "timestamp": "8:18",
+    "content": "making handwriting accessible to people who rely on screen readers."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "And a search lets assistive features locate and navigate"
+  },
+  {
+    "timestamp": "8:27",
+    "content": "to specific words within your drawing."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "Together, they help bridge the gap in accessibility"
+  },
+  {
+    "timestamp": "8:35",
+    "content": "between handwritten and typed text."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "Next, path conversion."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "Path conversion is a powerful set of APIs"
+  },
+  {
+    "timestamp": "8:44",
+    "content": "that help you to bring PencilKit to your app."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "PencilKit represents stroke paths as cubic uniform B-splines."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "For more information on how PencilKit store paths,"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "check out the Inspect, Modify, and Construct PencilKit drawing video"
+  },
+  {
+    "timestamp": "9:04",
+    "content": "from WWDC20."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "Beast splines are a great representation for drawing,"
+  },
+  {
+    "timestamp": "9:11",
+    "content": "but are less common than Bezier paths."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "In our 27, PK stroke paths support conversion between the two."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "When converting a path, PencilKit handles the geometry."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "Bezier paths don't carry PencilKit properties,"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "like size, opacity, or force."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "So you need to provide those for each control point."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "When starting from PK stroke paths, converting to and back from a Bezier path"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "will result in the same control point locations,"
+  },
+  {
+    "timestamp": "9:47",
+    "content": "allowing for storing PencilKit strokes in a Bezier-based format,"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "and reconstructing without any loss of fidelity."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "If your app has its own canvas with strokes stored as Bezier paths,"
+  },
+  {
+    "timestamp": "10:03",
+    "content": "you can now convert those to PK stroke paths,"
+  },
+  {
+    "timestamp": "10:07",
+    "content": "build a PK drawing, and feed it into PK Stroke Recognizer."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "This makes handwriting recognition compatible with any canvas,"
+  },
+  {
+    "timestamp": "10:17",
+    "content": "not just PK canvas view."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "Beyond expanding where PencilKit can be used,"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "iOS 27 introduced key additions that enable deeper access to the model."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "This flexibility supports more custom use cases in your apps."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "PK stroke and PK stroke paths both gain performance"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "to the identifiable protocol."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "It is a stable UID, so you can track a stroke cross transforms,"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "edits, and undo operations."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "With a stable identity in place,"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "you can now control the selection state on PK canvas view."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "There's also a new dedicated method,"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "Canvas View Selection Did Change,"
+  },
+  {
+    "timestamp": "11:06",
+    "content": "that fires whenever the user selection changes."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "When certain inks are drawn together quickly,"
+  },
+  {
+    "timestamp": "11:12",
+    "content": "PencilKit composites those strokes together as if the inks are still wet."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "By using an equal render group ID,"
+  },
+  {
+    "timestamp": "11:20",
+    "content": "in iOS 27, it is now controllable."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "The last set of new APIs gives you the ability to slice through strokes"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "in two different ways,"
+  },
+  {
+    "timestamp": "11:31",
+    "content": "programmatic erasing and a sub-stroke extraction."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "If you have worked with PencilKit's data model,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "you may already be familiar with the stroke mask."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "PencilKit represents partial erasure using a mask."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "When the pixel eraser removes part of a stroke,"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "the remaining visible portions are defined by a mask."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Starting in iOS 27,"
+  },
+  {
+    "timestamp": "11:57",
+    "content": "you can apply the same operation programmatically."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "You provide a PK stroke path as the eraser."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "It cuts through the drawing,"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "slicing a single stroke into multiple independent strokes,"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "with their own mask."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "Just as if the user had used the eraser tool on the canvas."
+  },
+  {
+    "timestamp": "12:20",
+    "content": "One thing to keep in mind,"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "slicing can be expensive on complex drawings."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "If your drawing has a large number of strokes,"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "be mindful of performance and consider erasing on a background thread,"
+  },
+  {
+    "timestamp": "12:36",
+    "content": "rather than blocking your UI."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "We are erasing visually cut strokes."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "Sub-stroke extraction let you efficiently obtain a section"
+  },
+  {
+    "timestamp": "12:49",
+    "content": "as a new stroke or path."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "Starting in iOS 27,"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "both PK stroke and PK stroke paths"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "support subscript access"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "with parametric ranges anywhere along the path."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "This gives you process control"
+  },
+  {
+    "timestamp": "13:07",
+    "content": "over exactly where a slice begins and ends."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "PistolKit inks have features like pixel texture particles"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "that are positioned relative to the fourth stroke."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "When taking substrokes,"
+  },
+  {
+    "timestamp": "13:20",
+    "content": "PistolKit maintains the color of the stroke."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "PistolKit maintains the consistency of those particles."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "For Chinese characters,"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "the order that you write the strokes is important."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "To check that order is correct,"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "I built a feature using substrokes"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "to replay how I wrote the word."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "PistolKit implements rendering in metal"
+  },
+  {
+    "timestamp": "13:42",
+    "content": "with automations that make my animation smooth."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "PistolKit is a very powerful tool."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "To take full advantage of these powerful APIs,"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "adopt PK stroke recognizer and bring handwriting recognition"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "to your app."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "Try PencilKit in new places to convert your existing"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "Bezier paths into PK stroke paths"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "and take advantage of handwriting recognition"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "even without PK canvas view."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "Dive deep into PencilKit's model"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "to track strokes with stable identity,"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "respond to selection changes,"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "and build a new level of custom experiences."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Finally, take advantage of stroke slicing,"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "cut through drawings with programmatic erasing,"
+  },
+  {
+    "timestamp": "14:29",
+    "content": "and build smooth animations with substrokes."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "Each of these APIs are simple to integrate."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "Together, they unlock features in your apps"
+  },
+  {
+    "timestamp": "14:41",
+    "content": "that were not possible before."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "The sample code for demo is available in the resources"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "for this video."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "Handwriting becomes recognized, searchable, and interactive"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "everywhere in your app."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "That's PistolKit in iOS 27."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "Thanks for watching!"
+  }
+]

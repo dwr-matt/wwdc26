@@ -1,0 +1,482 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, my name is Seth and I'm an engineer on the HealthKit team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "There are many health and fitness apps in the App Store that help people plan, track, and visualize their fitness goals."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "When people grant Your App permission, Your App can leverage HealthKit's centralized, secure database and powerful APIs to create workouts and access the underlying health data."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Workout zones can leverage health data to help people train smarter by tracking time spent at specific intensity levels."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "Heart rate zones are a training resource that's personalized to an individual."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "They are calculated by considering one's age and resting heart rate."
+  },
+  {
+    "timestamp": "0:46",
+    "content": "Typically, people use five heart rate zones to track their effort level in a workout."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Each heart rate sample, like 135 beats per minute, falls into the boundaries of a particular zone, like zone 3, which indicates the intensity level."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "These ranges can be a guide to plan or track exertion levels in activities like running, cycling, high-intensity interval training, and rowing."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Similarly, cycling power zones help cycling enthusiasts measure their power output in watts based on a personalized, functional threshold power."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "In iOS 27 and watchOS 27, heart rate and cycling power zone support has been integrated into HealthKit."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "I have a sample app that can create, track, and provide a summary for workout sessions."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "Throughout this session, I'll show you how you can incorporate workout zones into your app using this sample app as a guide."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "In this session, I will demonstrate adding heart rate zone support to the sample app."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "When adopting cycling power zones in your app, you will find they follow a similar structure."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "In this session, I'll go over accessing zone data from completed workouts, registering for live zone change updates during a workout session,"
+  },
+  {
+    "timestamp": "2:09",
+    "content": "accessing people's preferred zone configurations, and how to provide custom zone configurations for workouts in your app."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "Workout zones turn raw data, like heart rate samples, into actionable training guidance."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "Many workout plans have intensity goals for each workout."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "For endurance training, a person might want to stay below a certain threshold."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "However, an interval training exercise might require a person to stay at or above a specific level for a period of time."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "Zones also help with recovery and load balance."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "For instance, a workout that is largely spent in higher zones, like zone 4 or zone 5, suggests a hard effort."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "You can use this information to offer guidance or classify the intensity of a workout."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "With workout zones now integrated into HealthKit, people can share heart rate and cycling power zone information directly with your app."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "The time in each zone is automatically calculated by HealthKit based on incoming samples during the workout."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "Workout zones follow a similar authorization flow as other HealthKit data types."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Before accessing workout zone data, request HealthKit authorization for the relevant quantity types."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "In this case, workouts, heart rate, and cycling power."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "Let's look at how you can retrieve heart rate zones from a completed workout in HealthKit."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "My app currently tracks live workouts and displays a summary once the workout completes."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "To help people visualize their intensity and effort, I now want to display the total time spent in each heart rate zone for the completed workout."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "I can use the health kit APIs to help graph out the time in each heart rate zone in my app summary view."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "To retrieve zone data after a workout, access the zone groups by type dictionary on either the HK workout or an individual HK workout activity, passing the appropriate HK quantity type."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Here, I want heart rate zones, so I will supply the heart rate quantity type."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "In iOS 27 and watchOS 27, HealthKit supports workout zones for heart rate and cycling power, and they share a similar structure."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "To receive cycling power zones, just update the associated quantity type."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "If heart rate zones are available, this will return an HK workout zone group structure."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "Let's take a look at what all this contains."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "HK workout zone group contains two properties, a configuration and an array of zone durations."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "The HK workout zone configuration describes the set of zones and how they were created."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "It contains the HK quantity type for the zones."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "In this case, its heart rate."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "The source is an enum that tells us how the workout zone thresholds were configured."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "Whether they were created automatically by the system."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "If they were set manually by the user in settings."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "Or if they were custom supplied by an app at the time of the workout."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "I will go over the source in more detail later in the session."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "The configuration also contains an array of zones ordered by the zone's boundaries."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "Each zone contains an index and a minimum and maximum HK quantity."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "The first zone has no lower bound and the last has no upper bound."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Ensuring the full range of values is always covered."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "Zones are guaranteed to be contiguous and non-overlapping."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "HK workout zone group also contains an array of zone durations."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "This is an array where each element contains the zone and the time spent in each zone."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "I can use these zone durations to populate a graph in my app."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "When the person ends the workout in my app, I can chart the time spent in each heart rate zone."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "Workout zones are available on HK workout and HK workout activity."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "This means your app can display zones for the entire duration of a workout all at once."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "Or, in the case of multi-sport workouts, break them up by individual activities."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "Some workout plans require a person to stay in or below specific zones."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "In these cases, it would be great if my app could display the current heart rate zone and notify the person if it changes."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Allowing them to adjust their intensity level in order to stay in their target zone."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "I can use the live workout zone updates to handle zone changes in my app."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "During a live workout, HealthKit receives incoming heart rate samples."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "HealthKit processes each heart rate sample to identify the heart rate zone."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "When there's a change, like from zone 2 to zone 3, HealthKit sends a notification to your app as the samples are processed."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "HK live workout builder delegate is the protocol apps use to receive updates about a live workout."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "The workout is tracked by HealthKit."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "When something important happens, like a new activity begins or a data type that I'm tracking updates, HealthKit passes that update to my delegate."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "And I can make changes in my app, like update the UI."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "To process changes in heart rate zone, I'll use the did update workout zone method."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "Each update will include the current zone and the previous zone."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Updates are only sent when the current zone changes, like from zone 2 to zone 3."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "As well as the zone group, containing the entire zone configuration and the current total time in each zone."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "Finally, it includes a timestamp for the last sample processed."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "This is helpful to display a running timer of the time in the current zone."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "Once my delegate processes the zone update, I make changes in my app to highlight the new current zone."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "I'll adopt this in my app so I can handle zone changes within a workout."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "In my app, I can now highlight the person's current zone and notify them if their current zone changes."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "By default, HealthKit uses the preferred workout zone thresholds configured in health settings."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "With preferred zones, people receive a consistent experience across apps and devices, since these zones sync across devices via HealthKit."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "Preferred zones include those calculated by the system."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "These zones are periodically calculated based on user metrics, if available."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "For instance, heart rate zones are automatically calculated based on factors such as the person's age and resting heart rate."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "Preferred zones can also be manually configured in health settings."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "Before starting a zone workout, make sure the person has a preferred zone configuration set."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "You can query for the preferred zone configurations on either the HK HealthStore or the HK Workout Builder."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "Custom zones are the right choice when your app has specific zone definitions that differ from zone preferences in health settings, such as a training platform with proprietary zone model."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "I can use these two concepts in my app to provide a custom set of heart rate zones if they have not been configured directly."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "First, I can check if a preferred heart rate zone configuration has been set."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "If not, I can use an array of zone thresholds and the associated HK unit to create an array of HK Quantity Zone Boundaries."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "I can use the boundaries and the heart rate quantity type to create the default HK Workout Zone configuration."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "The zone boundary units must match and be compatible with the zone configuration's quantity type."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "HealthKit creates zones based on the provided boundaries."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "The first zone starts at zero and the last is unbounded."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "Between three and nine zones are required."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "Next, I'll provide the custom configuration to the HK Workout Builder."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "Custom zones must be added to the builder before calling Big N Collection in your app."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "There are a few important things to keep in mind when using custom zone configurations."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "Custom zone configurations are only saved within the context of the workout."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Your app is responsible for saving and syncing custom zone configurations if needed."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "Workout zone configurations can contain varying thresholds and numbers of zones."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "This is common for cycling power zones."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "For instance, the system defaults to six zones, but some training apps use five and others use seven or eight."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "This is important to keep in mind if your app compares efforts with different numbers of zones."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "If your app compares time and zone across multiple workouts with different amounts of zones, this zone information can't immediately be compared."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "For instance, zone three and a five zone workout may reflect different values than zone three and a seven zone workout."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "Each zone represents a different range of values."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "Instead, make sure to normalize zones based on each workout's number of zones and their boundaries."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Do this by taking the original samples on the workout, then sorting them into the appropriate number of buckets for your app."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "In this case, seven."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "Workout zones enable richer, more actionable fitness apps."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "Whether you're building a post-workout summary screen, a live coaching experience, or a long-term training dashboard, HealthKit offers a simplified interface for your app to access this data."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "To get started, adopt the workout zones API in your app."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "You can use the provided sample app as a guide."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "Chart or graph zone data in your app so people can visualize their workout effort and handle live zone changes to keep people informed as their intensity levels adjust throughout a workout."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "I love using your apps to help me pursue my fitness goals."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "Thank you for being a part of the developer community and empowering people to take charge of their health."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "Thank you for watching."
+  }
+]

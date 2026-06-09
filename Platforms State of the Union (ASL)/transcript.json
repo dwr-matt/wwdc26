@@ -1,0 +1,2858 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Welcome to the 2026 Platform State of the Union."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "This is one of our favorite moments of the year,"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "where we get to share what's new with the technologies, the frameworks, and the tools"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "that you use every day to build incredible apps and games."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "Apps that inspire us, that raise the bar of what's possible,"
+  },
+  {
+    "timestamp": "0:39",
+    "content": "and that push us to build even better technologies."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "We love connecting with so many of you, hearing about your passions, your challenges,"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "and how we can better support your work."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Your feedback shapes some of the most important technologies that we build."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "And this past year, nowhere was that more true than with the new design with Liquid Glass"
+  },
+  {
+    "timestamp": "1:03",
+    "content": "and with Apple Intelligence."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "These were both huge themes in the 26 releases, and they're key again this year,"
+  },
+  {
+    "timestamp": "1:10",
+    "content": "with many of our efforts influenced by your feedback."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "Design and intelligence are both so important because they enhance what's special about your apps."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "The care and the craft that you put into them, with unique interfaces and rich experiences shaped by your deep domain expertise."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "Combined with enhanced intelligence capabilities, you can now build features that weren't previously possible."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "To highlight what's new, we'll dive into three key areas."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "First, Apple Intelligence, with new ways to bring generative intelligence directly into your apps,"
+  },
+  {
+    "timestamp": "1:50",
+    "content": "and new integrations with system intelligence to bring users back to your apps."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "Second, platform improvements, with design refinements and more flexible UI layout,"
+  },
+  {
+    "timestamp": "2:00",
+    "content": "updates to Swift and SwiftUI, and enhancements that make your apps faster, more adaptive, and easier to build."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "And finally, developer productivity, taking agentic coding even further,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "alongside improvements that make Xcode faster and more personal."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "We have a lot to cover, so let's get started with Apple Intelligence."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "At the heart of Apple Intelligence are Apple Foundation models."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "Working together with Google and leveraging the technologies behind their Gemini family of models,"
+  },
+  {
+    "timestamp": "2:32",
+    "content": "we created the latest Apple Foundation models to power our Apple Intelligence experiences"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "and to provide even better support for the ways you're using intelligence in your apps."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "We adapted these models to run on-device and on private cloud compute."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "Apple Foundation models power Apple Intelligence, and your apps can use them too,"
+  },
+  {
+    "timestamp": "2:53",
+    "content": "through the Foundation Models framework."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "This year, the framework's capabilities are expanding to include image input and support for server models."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "So if you have a more complex task requiring the most advanced frontier models,"
+  },
+  {
+    "timestamp": "3:07",
+    "content": "the API can now integrate with the cloud model provider of your choice."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "To ensure getting started with a large cloud model is as accessible as possible,"
+  },
+  {
+    "timestamp": "3:17",
+    "content": "even if you're writing your first app, developers with fewer than 2 million first-time App Store downloads"
+  },
+  {
+    "timestamp": "3:23",
+    "content": "will be able to use Apple Foundation models running in private cloud compute with no cloud API cost."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "It's access to frontier-level intelligence with unparalleled privacy protections."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "Because getting started exploring ideas shouldn't be held back by infrastructure costs."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "With these enhancements, the Foundation Models framework now offers a single API that supports any model you need."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "In addition to the features you build within your apps,"
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Apple Intelligence can also surface your app in more places across the system,"
+  },
+  {
+    "timestamp": "3:57",
+    "content": "giving users more ways to discover and return to it."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "The App Intents framework connects your app to Apple Intelligence,"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "drawing on core operating system technologies like the Spotlight Symantec Index."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "It organizes and surfaces personal context from any supported app."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "The App Toolbox, which identifies features available across apps to serve a user request."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "And the System Orchestrator, which coordinates it all while protecting user privacy."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Together, in-app and system-wide intelligence unlock experiences that neither could deliver alone."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "Your apps, made more powerful by intelligence."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "And intelligence, made more meaningful by your apps."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "Let's dive into these frameworks and see how they'll transform what your apps can do."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Here's Richard and Mary Beth."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "The Foundation Models framework is a native Swift API that gives you direct access to the same on-device model that powers Apple Intelligence."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "And many of you have already adopted it, creating experiences for shopping apps like Wayfair,"
+  },
+  {
+    "timestamp": "5:05",
+    "content": "educational apps like Cellwalk, local sports apps like Crickeros, and more."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "All running on-device with no infrastructure costs or privacy trade-offs."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "It's amazing to see how you've pushed the limits of what an on-device model can do."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "We've got exciting updates for you."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "Let's start with a preview of the intelligence-powered features you will be able to build today."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "Mary Beth, over to you."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "This year, we're building a sample app all about the Japanese paper craft of origami."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "It's a place to unwind and get creative with paper."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "I'll give you a quick tour."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "Our app starts with a beautiful gallery of my origami projects."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "And what's special about these is that I've used foundation models to tailor origami projects to match a person's interests and materials,"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "with step-by-step feedback."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "Of course, it's more fun to craft with friends."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "So our app has a built-in chat."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "It's a fun, focused place to plan meetups and talk about crafting."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Now I'm working on a cool feature to combine people's interests into an origami project."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "Here, I'll take this paper Rachel's bringing and mix in a photo of my dog to generate a fun project for us all to fold together."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "With foundation models framework, my app analyzes the inspiration pictures to get a sense of the materials I have and the dog theme I have in mind."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "It even translates the Japanese text and uses all of this context to brainstorm a few options."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "I'll choose this one."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "The intelligence keeps going in a fully interactive tutorial."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "That's a quick preview."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Let's talk about the framework."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "This year, we're taking the foundation models framework to the next level."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "First, you get new capabilities like multimodal prompts with text and images."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "This opens up new categories of experiences you can build with image understanding."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "It's as simple as attaching an image to your prompt."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "In addition to this, the vision framework is now integrated, giving you purpose-built tools the model can use, such as OCR for precise text extraction and barcode readers for quick co-scanning all on-device."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "Next, let's talk about server models."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "On-device models are incredibly useful for many tasks, yet sometimes you might want a larger model for a more complex workflow."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "That's why we're extending the framework so you can easily call server models like Claude, Gemini, and more to use features like tool calling and guided generation."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "And any model provider can create a Swift package that conforms to the language model protocol, so you can pick the one you want for your app."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "In addition to this, we're opening up access for those of you getting started with AI to use the Apple Foundation model running on private cloud compute with no cloud API cost, giving you access to frontier-level intelligence while ensuring your users' data is not stored or accessible to Apple or anyone else."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Your users will have access to features leveraging the cloud model every day, and iCloud Plus subscribers will have expanded access."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "No matter the model you want to use, you can easily swap it in."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "This makes the Foundation Models Framework the best way to run any large language model in your app."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "With more modalities and more models at your fingertips, the next thing you'll need is more ways to put them to work."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "That's why we're introducing a new open-source Swift package, loaded with pre-built tools to help you get started with concepts like skills and utilities for context management."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "For example, a task management app like Teemo can use the package to pull in a skill that adapts its tone and recommendations to the user's data, delivering a personalized brief to help them stay on top of their day."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "This space evolves so quickly. Tomorrow's abstractions may be very different from today's."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "So these utilities from the open-source package are created with new fundamental building blocks called dynamic profiles."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "These are new declarative APIs in the Foundation Models Framework for building truly adaptive AI experiences with less code."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "So you can orchestrate skills and sub-agents, swap tools in and out, and update instructions on the fly."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "I'll walk you through how Dynamic Profiles powers intelligence in your Arigami app."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "First, let's open Xcode."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "I'll start with a language model session, which many of you already use."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "Now, instead of creating a session with a fixed model, tools, and instructions, with Dynamic Profiles, you have the freedom to continuously update your session."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "So I'll choose a profile for the language model session and start with a familiar Swift result builder syntax."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Here in the body, I'll define my first profile as a brainstorming helper that's going to generate project ideas based on the photos I give it."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "I'll add modifiers to use Private Cloud Compute Language model with temperature cranked up for creativity."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Now, the beauty of a Dynamic Profile is that this body will always resolve to just one profile driving my session at a time."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "But I can switch between as many profiles as my feature needs in the same session."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "So I'll change profile based on my app's state."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "Then, I can add in a second profile to handle tutorial generation."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "Using Private Cloud Compute again, with Reasoning Level set to Deep, since this is my most challenging task."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "Last, I'll add in a profile that can explain any origami jargon, like Valley Fold, that the user doesn't understand."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "This is a nice smaller task."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "I can send the on-device system language model to save on server calls."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "Let's see it in action."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "Here in my tutorial, I can now tap this term I don't understand, and the on-device model generates a nice explanation."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "In Dynamic Profiles, I'm swapping out models, but everything shares the same continuous transcript."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "This means more contextual intelligence with less prompting."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Now let's use that in my tutorial profile."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "Instructions and tools can be swapped in and out as well."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "So, I'll use my app's view model to check if the tutorial's been generated."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "And if so, I'll add in instructions and tools to help the model give high-quality feedback tailored to the user."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "This body recomputes on every model turn, so my session will stay up to date."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Finally, do you see how my three origami profiles look a bit like three AI agents?"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "That's because Dynamic Profiles are designed to be adaptable building blocks."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "So, if you want to build AI agents or skills or any other high-level abstraction, you can."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "With a focus on flexibility and composability, these new APIs from the Foundation Models Framework are here to grow with you."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "To help you bring all of this to your apps, you'll have access to a complete set of tools, from building to testing to shipping with confidence."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "That includes the new Evaluations Framework, which gives you the ability to test your prompts and validate that your intelligence-powered features work reliably."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "The upgraded Foundation Models instrument will help you visualize and debug model behavior in your apps."
+  },
+  {
+    "timestamp": "12:17",
+    "content": "And the new FM command line tool lets you prompt the model right from the terminal."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "And there's so much more, like a Python SDK, tool calling with images, and a new Rack tool powered by Core Spotlight that's private to your app."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "That's the Foundation Models Framework, providing you seamless access to multiple models with all new capabilities in a native Swift API."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "Plus, we're doing something big."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "Later this summer, the framework will be open source."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "So the same Swift APIs you use in your app can now run on your server too, giving you a complete end-to-end AI workflow anywhere you deploy Swift."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "You've seen how the Foundation Models Framework connects to third-party models, private cloud compute, and the on-device model."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "You have the flexibility you need to get the right model for the job."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "And when you want to bring a specific model into your app and run it on-device, there's Core AI."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "Core AI is a brand-new framework built right into the platform, along with supporting tools and technologies."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "It's designed to be the best way to bring and run models on-device in your apps."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "It delivers uncompromising performance through a modern, memory-safe Swift API."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "With extensive tuning capabilities, from fine-grained inference management and model specialization to custom GPU kernels."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "And there are Python-based tools alongside the framework, so you can convert and optimize your PyTorch models for the Core AI runtime."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "The framework is backed by deep integration into a new developer toolchain, with ahead-of-time compilation, dedicated Core AI instruments, and a powerful visual debugger to trace tensor values directly back to your original Python source code."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "And it's engineered to scale with your available compute."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "So you can run a compact vision model in your iPhone app for real-time camera queries."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "Or deploy a multi-billion parameter LLM in a Mac app right at your desk to power an agentic assistant for complex multi-step workflows."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Whatever the device, whatever the model, it all runs on-device, with zero server dependencies and zero token costs."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "Core AI is optimized for performance on Apple Silicon, and powers Apple Intelligence experiences across the system, including Siri."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "And this year, Apple Intelligence offers even more opportunities for developers."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "Over to Lori."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "Over to Lori."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "Apple Intelligence draws on personal context from across apps, understands what's on screen, and can take actions to get things done."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "And now you can integrate with its capabilities through the App Intents framework."
+  },
+  {
+    "timestamp": "14:57",
+    "content": "It's how our platforms understand what your apps can do."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "With it, you can make your app's content easier to find and its capabilities easier to use through the action button, shortcuts, widgets, and in Siri AI."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "App Intents Schemas make integration with Siri's capabilities easy."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "Schemas are recognizable structures that Siri understands deeply, built on years of language model training."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "We provide Entity Schemas for describing the content and concepts your app works with,"
+  },
+  {
+    "timestamp": "15:26",
+    "content": "and Intents Schemas for describing the actions it can perform."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Entity Schemas enable personal context understanding."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "By contributing your app's content to the Spotlight Semantic Index,"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "you can help your users find information from your app quickly and easily with attribution back to your app."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "The indexing keys for important content properties are built right in,"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "which means more understanding from less code."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "Siri's understanding of Intents Schemas means people can make requests naturally."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "They don't need to learn specific phrases, and you don't have to define them in your code."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "Schemas cover common app categories like task management, photo editing, and communication,"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "and include a whole set of system-supported actions."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "Just adopt the relevant Intents Schemas for the actions your app can perform to make them available to your users."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "And because these schemas are system-defined, they'll benefit from future updates."
+  },
+  {
+    "timestamp": "16:17",
+    "content": "That means as Siri's language understanding evolves, or as we add new support for languages or regional dialects,"
+  },
+  {
+    "timestamp": "16:22",
+    "content": "your Intents will work there too, without any changes to your code."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "Combining these capabilities with the new View Annotations API will let your users reference and take action on the content in your app when it's on screen."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "So your users can interact with your app conversationally, saying what feels natural to them, not commands they have to memorize."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "Now, I'm going to show you how we've made our origami app work with Siri."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "I already have some entities and intents that describe my app's content and actions,"
+  },
+  {
+    "timestamp": "16:50",
+    "content": "and the entities conform to the indexed entity protocol so they can be indexed into Spotlight."
+  },
+  {
+    "timestamp": "16:55",
+    "content": "By also conforming to an entity schema,"
+  },
+  {
+    "timestamp": "16:58",
+    "content": "Siri will be able to discover and reason over my app's content."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "I'll make sure my message, contact, and conversation entities all conform to the relevant entity schemas by using the app entity macro."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "I'm indexing these entities into Spotlight when my app finishes launching to make sure everything's in sync."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "I've rebuilt to get the latest changes, and now let's see what I can do, even when I'm not in the app."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "Hey Siri, who's coming to Origami Night?"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "Based on your messages in Origami, it looks like Kevin, Mary Beth, Rachel, and Richard are discussing Origami Night."
+  },
+  {
+    "timestamp": "17:38",
+    "content": "What's Richard bringing?"
+  },
+  {
+    "timestamp": "17:40",
+    "content": "Richard mentioned he is thinking of bringing pizza."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "Awesome."
+  },
+  {
+    "timestamp": "17:45",
+    "content": "But now I want a follow-up, which means I need to act on this information."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "I can make the content Siri found actionable by conforming an intent to the send message schema."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "This time I'm using the app intent macro, since this is an action rather than content."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "I'll build and run again, and now I can say,"
+  },
+  {
+    "timestamp": "18:02",
+    "content": "Siri, text Richard, can you make one of the pizzas vegetarian?"
+  },
+  {
+    "timestamp": "18:07",
+    "content": "From Origami. Ready to send it?"
+  },
+  {
+    "timestamp": "18:12",
+    "content": "Yes."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "It's sent."
+  },
+  {
+    "timestamp": "18:15",
+    "content": "Great. Message sent."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "I'd also like to let people reference what's on screen in my app just by saying the second message, or this photo."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "The new View Annotations API lets me associate my views with entities, which can then be passed to my apps intents, making them actionable."
+  },
+  {
+    "timestamp": "18:32",
+    "content": "My Message List view contains all the individual messages in a conversation."
+  },
+  {
+    "timestamp": "18:36",
+    "content": "I can use a new View modifier to map each message row to its respective message entity."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "Let's try it out."
+  },
+  {
+    "timestamp": "18:44",
+    "content": "Hey Siri, send this photo to Kevin and say,"
+  },
+  {
+    "timestamp": "18:47",
+    "content": "Rachel got us some paper to practice our folds."
+  },
+  {
+    "timestamp": "18:49",
+    "content": "What color would you like?"
+  },
+  {
+    "timestamp": "18:51",
+    "content": "From Origami. Ready to send it?"
+  },
+  {
+    "timestamp": "19:00",
+    "content": "Yes."
+  },
+  {
+    "timestamp": "19:01",
+    "content": "It's sent."
+  },
+  {
+    "timestamp": "19:03",
+    "content": "And Siri sends the photo with my message."
+  },
+  {
+    "timestamp": "19:06",
+    "content": "By combining personal context, common app actions, and on-screen awareness, your app can become part of the intelligent fabric of the system."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "Through Siri, users can access it through natural language, discover it through semantic search, and integrate it into their daily workflows."
+  },
+  {
+    "timestamp": "19:21",
+    "content": "Now, back to Josh."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "This is our vision for an intelligent platform."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "Rich native experiences and intelligent natural language interfaces working together."
+  },
+  {
+    "timestamp": "19:34",
+    "content": "As app developers, this represents an incredible opportunity."
+  },
+  {
+    "timestamp": "19:38",
+    "content": "You can enhance your app's experiences through natural language with Siri."
+  },
+  {
+    "timestamp": "19:42",
+    "content": "Build powerful AI features with the Foundation Models Framework."
+  },
+  {
+    "timestamp": "19:47",
+    "content": "And even run your own models on-device with Core AI."
+  },
+  {
+    "timestamp": "19:52",
+    "content": "If you're using a custom model to power a feature within your app, Core AI is the right technology to use."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "Your models will perform efficiently across all devices."
+  },
+  {
+    "timestamp": "20:03",
+    "content": "And it's built into the platform, so your apps always benefit from the latest fixes and enhancements."
+  },
+  {
+    "timestamp": "20:10",
+    "content": "And if you're an enthusiast who is experimenting with, training, researching, or fine-tuning generative models,"
+  },
+  {
+    "timestamp": "20:16",
+    "content": "or if you're running a local inference server, our array framework, MLX, makes it easy to explore cutting-edge innovations and technologies."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "It now supports Metal 4, GPU neural accelerators, and it can even scale training across multiple Macs with RDMA over Thunderbolt."
+  },
+  {
+    "timestamp": "20:35",
+    "content": "It's all open source, and it's faster than ever."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "The breadth of capabilities offered by Apple Intelligence and powered by Apple Silicon makes Apple's platforms the best place to build and deliver the next generation of intelligence-enhanced apps and games."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "Now, let's take a look a level deeper at what makes all of this possible."
+  },
+  {
+    "timestamp": "20:57",
+    "content": "The systems your apps depend on, from the frameworks you call to the processes that schedule your work, manage your memory, and render your UI."
+  },
+  {
+    "timestamp": "21:06",
+    "content": "We took an especially close look at the performance and quality of these foundations."
+  },
+  {
+    "timestamp": "21:11",
+    "content": "And you'll see a multitude of platform improvements in this year's releases."
+  },
+  {
+    "timestamp": "21:16",
+    "content": "When you rebuild with the new SDK, your apps will launch faster and feel more responsive."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "You'll see refinements and platform improvements across frameworks, media, search, and accessibility, enhancements to Swift and SwiftUI, and a lot more, especially around design."
+  },
+  {
+    "timestamp": "21:35",
+    "content": "Last year, the new design with Liquid Glass brought a unified design language built for a world where your experience moves across devices."
+  },
+  {
+    "timestamp": "21:44",
+    "content": "The new design is making apps more expressive and delightful, while staying instantly familiar to users."
+  },
+  {
+    "timestamp": "21:51",
+    "content": "It looks great in apps like TideGuide, where subtle, interactive highlights respond as users scroll through Tide data and charts."
+  },
+  {
+    "timestamp": "21:59",
+    "content": "And SketchPro, where translucent brush panels and controls let artwork show through, even while you switch between tools."
+  },
+  {
+    "timestamp": "22:07",
+    "content": "Throughout the last year, we've been refining the design."
+  },
+  {
+    "timestamp": "22:11",
+    "content": "And that journey continues with a new set of design updates in the 27 releases."
+  },
+  {
+    "timestamp": "22:16",
+    "content": "Apps that have already adopted Liquid Glass benefit from many of these improvements automatically."
+  },
+  {
+    "timestamp": "22:22",
+    "content": "To tell you more, here's Cindy."
+  },
+  {
+    "timestamp": "22:24",
+    "content": "In this year's releases, you'll see updates to the foundations of how Liquid Glass is built, refinements to the new design that improve consistency, and new ways for iOS apps to adapt across devices and screen sizes."
+  },
+  {
+    "timestamp": "22:40",
+    "content": "Let's review the changes you'll see in your apps."
+  },
+  {
+    "timestamp": "22:43",
+    "content": "To maintain exceptional readability, we tuned Liquid Glass so it more effectively diffuses complex content behind it."
+  },
+  {
+    "timestamp": "22:50",
+    "content": "And to establish more depth and separation, we also introduced a darkened edge along with brighter specular highlights."
+  },
+  {
+    "timestamp": "22:57",
+    "content": "We also made it more personalizable with a new slider in settings to adjust Liquid Glass anywhere from ultra clear to fully tinted, allowing users to choose the look that works best for them."
+  },
+  {
+    "timestamp": "23:08",
+    "content": "Apps already using Liquid Glass get these improvements automatically when they run on this year's releases without even needing to recompile."
+  },
+  {
+    "timestamp": "23:15",
+    "content": "Liquid Glass seamlessly adapts to a variety of accessibility settings users may choose, such as reducing transparency or increasing contrast."
+  },
+  {
+    "timestamp": "23:24",
+    "content": "And now, macOS 27 also supports the Show Borders Environment value, just like iOS."
+  },
+  {
+    "timestamp": "23:31",
+    "content": "So you can adapt your macOS app's custom controls for this setting as well."
+  },
+  {
+    "timestamp": "23:36",
+    "content": "Sidebars expand to the edges on Mac and iPad, providing clearer structure while still refracting content from your app and the wallpaper."
+  },
+  {
+    "timestamp": "23:44",
+    "content": "And icons in the sidebar regain their color using your app's accent color, giving your app more personality and making it more clear which window is key."
+  },
+  {
+    "timestamp": "23:54",
+    "content": "List and label APIs provide these updates automatically and support customizing the tint per item."
+  },
+  {
+    "timestamp": "24:00",
+    "content": "And every window on macOS now also has the same, tighter corner radius, ensuring greater consistency across all apps."
+  },
+  {
+    "timestamp": "24:09",
+    "content": "When content scrolls under floating bars, a uniform toolbar appears across the top and keeps the text legible while improving contrast."
+  },
+  {
+    "timestamp": "24:18",
+    "content": "This effect is applied automatically for standard toolbars and can be customized using the existing ScrollEdgeEffect APIs."
+  },
+  {
+    "timestamp": "24:26",
+    "content": "We also thought about how icons and menus can be used intentionally to call attention to the most important actions, both on macOS and iPadOS."
+  },
+  {
+    "timestamp": "24:36",
+    "content": "While icons are hidden by default, there's an API to show icons for key app actions."
+  },
+  {
+    "timestamp": "24:42",
+    "content": "We're also updating how liquid glass shows up in icons, making them sharper and more defined."
+  },
+  {
+    "timestamp": "24:48",
+    "content": "This updated rendering applies to all app icons, and we've introduced new features such as refraction that can be selectively used for added character."
+  },
+  {
+    "timestamp": "24:58",
+    "content": "And with Icon Composer, you can now design your icons out of multiple layers of liquid glass."
+  },
+  {
+    "timestamp": "25:04",
+    "content": "It's been updated with new annotation features to add refraction or dial in liquid glass content effects."
+  },
+  {
+    "timestamp": "25:11",
+    "content": "And it provides an interactive preview of how your icon will look on earlier releases."
+  },
+  {
+    "timestamp": "25:16",
+    "content": "Together, these updates culminate in a more focused and approachable experience across your apps and across platforms."
+  },
+  {
+    "timestamp": "25:24",
+    "content": "Next, let's talk about app adaptability."
+  },
+  {
+    "timestamp": "25:28",
+    "content": "iOS apps show up in more places than ever."
+  },
+  {
+    "timestamp": "25:31",
+    "content": "On iPad as an iPhone app, or on Mac through iPhone mirroring."
+  },
+  {
+    "timestamp": "25:35",
+    "content": "When your iOS app shows up in these other contexts with larger displays, users want to be able to take advantage of the extra space to see more information."
+  },
+  {
+    "timestamp": "25:45",
+    "content": "So this year, we're introducing support to resize iOS apps in iPhone mirroring and on iPad."
+  },
+  {
+    "timestamp": "25:52",
+    "content": "Let's see how this works with the Origami app."
+  },
+  {
+    "timestamp": "25:55",
+    "content": "Once you rebuild with the latest SDK, your app has automatically opted into resizability."
+  },
+  {
+    "timestamp": "26:00",
+    "content": "Since Origami is a SwiftUI app, it's already taking advantage of scene lifecycle and standard framework support for basic resizability."
+  },
+  {
+    "timestamp": "26:07",
+    "content": "If you're already using SwiftUI, auto layout, or responding to size class changes, you are well on your way to supporting full resizability."
+  },
+  {
+    "timestamp": "26:16",
+    "content": "If you have custom views, you'll want to update them to using auto layout and trait collections for layout decisions."
+  },
+  {
+    "timestamp": "26:22",
+    "content": "Using the new resizable iOS simulator and previews, you can test across a variety of screen sizes right in Xcode."
+  },
+  {
+    "timestamp": "26:30",
+    "content": "So you'll see exactly how your layout performs."
+  },
+  {
+    "timestamp": "26:33",
+    "content": "And we're providing a skill for coding agents that will help you find and fix common resizability issues."
+  },
+  {
+    "timestamp": "26:39",
+    "content": "Now, instead of designing for specific devices and orientations, you're designing for a dynamic range of sizes and aspect ratios."
+  },
+  {
+    "timestamp": "26:49",
+    "content": "To provide the best experience when using iPhone mirroring, update your app to be able to adapt and support any size."
+  },
+  {
+    "timestamp": "26:56",
+    "content": "Resizable simulator, previews, and iPhone mirroring all make it easy to ensure your app is as dynamic and flexible as possible."
+  },
+  {
+    "timestamp": "27:05",
+    "content": "Next, let's talk about SwiftUI. Here's Frank."
+  },
+  {
+    "timestamp": "27:09",
+    "content": "SwiftUI is the best way to build apps for any Apple device."
+  },
+  {
+    "timestamp": "27:13",
+    "content": "We designed SwiftUI to capture everything we know about building great apps on our platforms."
+  },
+  {
+    "timestamp": "27:20",
+    "content": "It gracefully handles the complexities of layout, animation, and platform integration so you can focus on what makes your app yours."
+  },
+  {
+    "timestamp": "27:30",
+    "content": "And as new capabilities like Liquid Glass are added, apps keep these features easily because they're designed with SwiftUI in mind."
+  },
+  {
+    "timestamp": "27:40",
+    "content": "New apps like Zogote are built with SwiftUI because they want to feel truly at home on Apple platforms."
+  },
+  {
+    "timestamp": "27:47",
+    "content": "Zogote is a game development environment that brings the open source Godot engine to Apple devices."
+  },
+  {
+    "timestamp": "27:53",
+    "content": "It started on iPad, expanded to iPhone, and when the time came to bring it to Mac, it felt completely natural."
+  },
+  {
+    "timestamp": "28:00",
+    "content": "And apps that previously used cross-platform or web technologies like Notion are migrating their user interface to SwiftUI because they want a level of performance and UI consistency that other technologies can't deliver."
+  },
+  {
+    "timestamp": "28:17",
+    "content": "With powerful agentic coding tools, porting code to Swift has never been easier."
+  },
+  {
+    "timestamp": "28:23",
+    "content": "Of course, we reach for SwiftUI ourselves whenever we build apps."
+  },
+  {
+    "timestamp": "28:28",
+    "content": "For example, SwiftUI made it easy to build the new Siri app by enabling us to share code across all our platforms."
+  },
+  {
+    "timestamp": "28:37",
+    "content": "And Creative Studio apps like Logic Pro build new features with SwiftUI for high performance and cross-platform support."
+  },
+  {
+    "timestamp": "28:45",
+    "content": "Since we rely on SwiftUI ourselves, every improvement we make for our own apps becomes an improvement for your apps too."
+  },
+  {
+    "timestamp": "28:54",
+    "content": "And this is a big year for SwiftUI."
+  },
+  {
+    "timestamp": "28:57",
+    "content": "With richer interactions that help you write less custom code, with speed making your apps much faster."
+  },
+  {
+    "timestamp": "29:05",
+    "content": "And finally, with new capabilities for your apps."
+  },
+  {
+    "timestamp": "29:09",
+    "content": "Let's start with interactions."
+  },
+  {
+    "timestamp": "29:11",
+    "content": "This year, SwiftUI brings more dynamic interactions to your app like reorderable containers, which makes it super easy to add drag to reorder to any container."
+  },
+  {
+    "timestamp": "29:23",
+    "content": "Building a great reordering experience outside of lists, like with this grid in the Origami app, used to require a lot of code."
+  },
+  {
+    "timestamp": "29:32",
+    "content": "Now, it is just as simple as adding reorderable to your foreach and reorder container to the parent."
+  },
+  {
+    "timestamp": "29:41",
+    "content": "And just like that, I can customize the order of my Origami models."
+  },
+  {
+    "timestamp": "29:46",
+    "content": "SwiftUI handles the lift and the drop animations, and it works with any container like grids and stacks."
+  },
+  {
+    "timestamp": "29:54",
+    "content": "Now, for Origami models I feel a little less proud of, SwiftUI now supports swipe actions inside any container as well."
+  },
+  {
+    "timestamp": "30:03",
+    "content": "I can delete a custom row with a swipe by adding the existing swipe actions modifier to my row, and swipe actions container to the scrollable container."
+  },
+  {
+    "timestamp": "30:13",
+    "content": "This provides great flexibility for quick actions on my custom row."
+  },
+  {
+    "timestamp": "30:17",
+    "content": "Finally, text selection got more flexible too."
+  },
+  {
+    "timestamp": "30:22",
+    "content": "On iOS, it gains the same full fidelity selection already found in text field and text editor."
+  },
+  {
+    "timestamp": "30:30",
+    "content": "And on macOS, it now supports custom text renderers, text vibrancy, and vertical text."
+  },
+  {
+    "timestamp": "30:37",
+    "content": "Next, let's take a look at speed."
+  },
+  {
+    "timestamp": "30:40",
+    "content": "This is always a priority for us, but even more so this year."
+  },
+  {
+    "timestamp": "30:45",
+    "content": "And you will see many improvements without any changes on your end."
+  },
+  {
+    "timestamp": "30:50",
+    "content": "To start, we've been gradually unifying the architectures of SwiftUI, AppKit, and UIKit."
+  },
+  {
+    "timestamp": "30:57",
+    "content": "And this year, they share a common foundation across many controls."
+  },
+  {
+    "timestamp": "31:02",
+    "content": "So wherever your app is running, they can benefit from the same underlying improvements."
+  },
+  {
+    "timestamp": "31:07",
+    "content": "For example, menu pickers on macOS are now better equipped to smoothly handle large list of items."
+  },
+  {
+    "timestamp": "31:15",
+    "content": "And in nested stack layouts, where SwiftUI used to measure each child multiple times to resolve their flexibility,"
+  },
+  {
+    "timestamp": "31:23",
+    "content": "it now short circuits computations where they're not needed."
+  },
+  {
+    "timestamp": "31:27",
+    "content": "Meaning, layouts now resize up to twice as fast."
+  },
+  {
+    "timestamp": "31:31",
+    "content": "And nothing saves performance like avoiding unnecessary work."
+  },
+  {
+    "timestamp": "31:35",
+    "content": "SwiftUI now only initializes state objects when they're first loaded."
+  },
+  {
+    "timestamp": "31:41",
+    "content": "Previously, a new temporary instance of the state object would get created every time the view is reinitialized."
+  },
+  {
+    "timestamp": "31:49",
+    "content": "You get this improvement for free because state is now lazy under the hood and was converted from a dynamic property to a macro."
+  },
+  {
+    "timestamp": "31:58",
+    "content": "And when it comes to loading images, async image avoids redundancies as well."
+  },
+  {
+    "timestamp": "32:04",
+    "content": "It now caches its contents automatically using standard HTTP caching."
+  },
+  {
+    "timestamp": "32:09",
+    "content": "So images are downloaded once and only refetched when needed."
+  },
+  {
+    "timestamp": "32:14",
+    "content": "Finally, let's talk about new capabilities starting with toolbars."
+  },
+  {
+    "timestamp": "32:19",
+    "content": "With the new resizability features, optimizing your app for a dynamic range of sizes and aspect ratios is more important than ever."
+  },
+  {
+    "timestamp": "32:29",
+    "content": "And toolbars are central to that experience."
+  },
+  {
+    "timestamp": "32:33",
+    "content": "This year, SwiftUI gives you final control over how toolbar items adapt to space."
+  },
+  {
+    "timestamp": "32:39",
+    "content": "Use the new visibility priority modifier to mark your most important items high."
+  },
+  {
+    "timestamp": "32:46",
+    "content": "And SwiftUI keeps them visible longer as space shrinks."
+  },
+  {
+    "timestamp": "32:50",
+    "content": "Less prominent actions like archive or delete can be added to the new toolbar overflow menu container, which groups them in an overflow menu."
+  },
+  {
+    "timestamp": "33:00",
+    "content": "And share is always pinned to the new tab."
+  },
+  {
+    "timestamp": "33:01",
+    "content": "And finally, the new toolbar pinned trailing placement anchors items to the trailing edge, no matter how the toolbar reflows."
+  },
+  {
+    "timestamp": "33:10",
+    "content": "Now, when I resize the window, the toolbar stays organized exactly how I want."
+  },
+  {
+    "timestamp": "33:14",
+    "content": "Important buttons stay visible."
+  },
+  {
+    "timestamp": "33:17",
+    "content": "The prioritized ones are in the overflow menu."
+  },
+  {
+    "timestamp": "33:20",
+    "content": "And share is always pinned to the trailing edge."
+  },
+  {
+    "timestamp": "33:24",
+    "content": "And also, the new tab tab address can also be distinguished with the new prominent tab row pinning the tab to the trailing edge of the screen."
+  },
+  {
+    "timestamp": "33:32",
+    "content": "SwiftUI also opens up new ground for document based apps with a new document infrastructure that provides a ton of functionality out of the box."
+  },
+  {
+    "timestamp": "33:43",
+    "content": "Like first class URL access for fully customizable reading and writing to disc."
+  },
+  {
+    "timestamp": "33:47",
+    "content": "reading and writing to disk, the kind that powers apps like Xcode or Pages."
+  },
+  {
+    "timestamp": "33:52",
+    "content": "For example, with direct access to the file URL, you now have the flexibility to read"
+  },
+  {
+    "timestamp": "33:59",
+    "content": "just the parts of a file you need and write only the pieces that changed, not the entire file."
+  },
+  {
+    "timestamp": "34:05",
+    "content": "You can also observe and update document attributes using the provided observable configuration."
+  },
+  {
+    "timestamp": "34:11",
+    "content": "The new Document API integrates deeply with modern Swift, with support for observation,"
+  },
+  {
+    "timestamp": "34:18",
+    "content": "Swift concurrency, and so much more. Lastly, here's something pretty awesome."
+  },
+  {
+    "timestamp": "34:25",
+    "content": "The Spatial Preview Framework gives Mac apps new ways to extend in space around users wearing"
+  },
+  {
+    "timestamp": "34:31",
+    "content": "Apple Vision Pro. When you adopt this new API in your app, a 3D model can become spatial when"
+  },
+  {
+    "timestamp": "34:38",
+    "content": "you stream to Apple Vision Pro, allowing your users to preview, edit, and share objects and models in real time."
+  },
+  {
+    "timestamp": "34:47",
+    "content": "Beyond those we've mentioned already, there are many other new improvements, including better type"
+  },
+  {
+    "timestamp": "34:53",
+    "content": "check-in performance with Content Builders, a new alert binding API, and supports for cross-fade transitions."
+  },
+  {
+    "timestamp": "35:02",
+    "content": "Together, these platform improvements bring more speed, richer interactions,"
+  },
+  {
+    "timestamp": "35:07",
+    "content": "and powerful new capabilities to SwiftUI that you can take advantage of. Now, let's take a look at Swift itself."
+  },
+  {
+    "timestamp": "35:16",
+    "content": "Here's Holly."
+  },
+  {
+    "timestamp": "35:17",
+    "content": "Holly Levy- Swift is designed to be the language you reach for at every layer of the stack."
+  },
+  {
+    "timestamp": "35:22",
+    "content": "Whether you're building full-featured mobile apps, internet-scale services, or embedded firmware,"
+  },
+  {
+    "timestamp": "35:28",
+    "content": "Swift helps you write code that's fast, expressive, and safe."
+  },
+  {
+    "timestamp": "35:32",
+    "content": "Holly Levy- Swift's performance, depth, and unmatched interoperability make it the natural successor to C and C++ for low-level systems and server programming."
+  },
+  {
+    "timestamp": "35:43",
+    "content": "And its approachability and expressiveness make it ideal for higher-level development, like apps and frameworks."
+  },
+  {
+    "timestamp": "35:50",
+    "content": "We think Swift is the only language with this breadth. That's what makes Swift a language you can keep reaching for as your stack grows,"
+  },
+  {
+    "timestamp": "35:58",
+    "content": "including outside Apple platforms, where the tools for development on Linux, Windows, Android, and the web are available on Swift.org."
+  },
+  {
+    "timestamp": "36:08",
+    "content": "Many of you are extending your use of Swift to additional platforms and the server, so you can reuse code and benefit from Swift's high performance across your entire stack."
+  },
+  {
+    "timestamp": "36:19",
+    "content": "Like Flighty, which uses Swift and their services to share the code that tracks airport visits between the app and backend."
+  },
+  {
+    "timestamp": "36:26",
+    "content": "Or GoodNotes, which uses Swift for WebAssembly to bring the app to the web, Chrome OS, Android, and Windows, reusing over 100,000 lines of code."
+  },
+  {
+    "timestamp": "36:37",
+    "content": "Or Frame.io, which uses Swift Java interoperability to share Swift libraries between the iOS app and the PhotoFrame software written in Java."
+  },
+  {
+    "timestamp": "36:45",
+    "content": "Interoperability means you can bring Swift into C, C++, and Java systems you already have, so you can get Swift's benefits at every layer without a rewrite."
+  },
+  {
+    "timestamp": "36:56",
+    "content": "At Apple, we've been building with Swift at every layer of our own stack."
+  },
+  {
+    "timestamp": "37:02",
+    "content": "Foundation paved the way for Objective-C frameworks to move to native Swift under the hood."
+  },
+  {
+    "timestamp": "37:06",
+    "content": "AppKit and UIKit have followed suit by using Swift and SwiftUI extensively in their implementation."
+  },
+  {
+    "timestamp": "37:13",
+    "content": "WebKit, the open-source web engine that powers Safari, is a large and security-critical C++ codebase."
+  },
+  {
+    "timestamp": "37:21",
+    "content": "Using Swift's safe C++ interoperability, WebKit is replacing core components with Swift versions incrementally."
+  },
+  {
+    "timestamp": "37:29",
+    "content": "In the networking stack, the quick transport layer was rewritten in Swift."
+  },
+  {
+    "timestamp": "37:33",
+    "content": "Later this month, the project will be open-sourced and available for cross-platform use through Swift Neo integration."
+  },
+  {
+    "timestamp": "37:40",
+    "content": "You can follow along or get involved through the vibrant open-source community on Swift.org."
+  },
+  {
+    "timestamp": "37:46",
+    "content": "Further down the stack, more security and performance-critical systems moved to Swift this year."
+  },
+  {
+    "timestamp": "37:52",
+    "content": "The TrueType font rendering engine replaced decades of hand-optimized C with Swift code that's not only memory-safe, but also faster."
+  },
+  {
+    "timestamp": "38:01",
+    "content": "At the lowest level, we've written hundreds of thousands of lines of Swift code across bare-metal firmware, coprocessors, and drivers."
+  },
+  {
+    "timestamp": "38:10",
+    "content": "For the 27 releases, we've started writing parts of the core operating system kernel in Swift."
+  },
+  {
+    "timestamp": "38:17",
+    "content": "As Swift becomes more capable in these domains, we're staying true to one of Swift's most important design goals."
+  },
+  {
+    "timestamp": "38:23",
+    "content": "It's fun. It's natural to write and iterate on your ideas in Swift, and the compiler is there to catch mistakes along the way."
+  },
+  {
+    "timestamp": "38:32",
+    "content": "The latest updates are focused on improving your workflow, so you can focus on the fun part, writing great code with confidence."
+  },
+  {
+    "timestamp": "38:41",
+    "content": "So 6.4 is here, built to make everyday tasks feel effortless."
+  },
+  {
+    "timestamp": "38:45",
+    "content": "So, in this case, I'll show you just a few examples."
+  },
+  {
+    "timestamp": "38:48",
+    "content": "When your codebase is undergoing a migration or incremental adoption of new features,"
+  },
+  {
+    "timestamp": "38:53",
+    "content": "sometimes it's not realistic to address all compiler warnings across your project at once."
+  },
+  {
+    "timestamp": "38:59",
+    "content": "You can now suppress warnings in specific parts of your code, and you can promote warnings to errors"
+  },
+  {
+    "timestamp": "39:05",
+    "content": "in places where you want strict enforcement."
+  },
+  {
+    "timestamp": "39:08",
+    "content": "Availability attributes can get long and repetitive when you're writing code for multiple Apple platforms."
+  },
+  {
+    "timestamp": "39:13",
+    "content": "Now, instead of listing out every Apple platform with the same version number, you can simply write any Apple OS."
+  },
+  {
+    "timestamp": "39:21",
+    "content": "The limitation on async calls in a defer block is gone, and awaiting inside a defer just works."
+  },
+  {
+    "timestamp": "39:28",
+    "content": "No matter what you're building, Swift's compiler diagnostics are a daily companion,"
+  },
+  {
+    "timestamp": "39:33",
+    "content": "helping you catch mistakes early and guiding you toward correct code."
+  },
+  {
+    "timestamp": "39:38",
+    "content": "If you've spent time writing Swift code, you've probably encountered this error message."
+  },
+  {
+    "timestamp": "39:43",
+    "content": "The compiler is unable to type check this expression in reasonable time."
+  },
+  {
+    "timestamp": "39:47",
+    "content": "This can happen in complex operator expressions, closures, or in deeply nested SwiftUI view bodies."
+  },
+  {
+    "timestamp": "39:54",
+    "content": "This is frustrating, and we've made it a lot better."
+  },
+  {
+    "timestamp": "39:58",
+    "content": "In many common cases, code that hit this fallback error will now either compile successfully,"
+  },
+  {
+    "timestamp": "40:04",
+    "content": "or give you a more actionable error to work with."
+  },
+  {
+    "timestamp": "40:07",
+    "content": "We know this area is important for a smooth workflow, and we're continuing to invest in it."
+  },
+  {
+    "timestamp": "40:12",
+    "content": "Swift 6.4 makes you more productive in day-to-day code, and it brings that same care to the more"
+  },
+  {
+    "timestamp": "40:18",
+    "content": "specialized corners of your project."
+  },
+  {
+    "timestamp": "40:21",
+    "content": "There's never been a better time to go full stack with Swift."
+  },
+  {
+    "timestamp": "40:24",
+    "content": "Now, back to Josh."
+  },
+  {
+    "timestamp": "40:26",
+    "content": "TJ"
+  },
+  {
+    "timestamp": "40:56",
+    "content": "on the Mac App Store, reducing your app's download size and letting you focus your testing"
+  },
+  {
+    "timestamp": "41:01",
+    "content": "on a single architecture."
+  },
+  {
+    "timestamp": "41:03",
+    "content": "And with all the refinements to the new design with Liquid Glass, it's time to complete"
+  },
+  {
+    "timestamp": "41:07",
+    "content": "your migration there too."
+  },
+  {
+    "timestamp": "41:09",
+    "content": "We'll be removing support for opting to use the old design, so once your app is recompiled"
+  },
+  {
+    "timestamp": "41:15",
+    "content": "with Xcode 27, it will automatically begin to use the new design with Liquid Glass."
+  },
+  {
+    "timestamp": "41:21",
+    "content": "With so many improvements across the system, your apps and games will look and feel better"
+  },
+  {
+    "timestamp": "41:27",
+    "content": "than ever on this year's releases."
+  },
+  {
+    "timestamp": "41:29",
+    "content": "Now let's turn to your productivity and the tools you use to build with and for our platforms."
+  },
+  {
+    "timestamp": "41:36",
+    "content": "Intelligence is deeply transforming how you write code, add new features, and build apps."
+  },
+  {
+    "timestamp": "41:42",
+    "content": "Last year, we brought AI coding assistants to Xcode, and so many of you embraced it immediately."
+  },
+  {
+    "timestamp": "41:49",
+    "content": "It's helping you write code faster and adopt new APIs more easily."
+  },
+  {
+    "timestamp": "41:54",
+    "content": "This space moves really fast, so we've picked up the pace of our releases, delivering new"
+  },
+  {
+    "timestamp": "41:59",
+    "content": "Xcode capabilities to you faster than ever before."
+  },
+  {
+    "timestamp": "42:03",
+    "content": "Earlier this year, we brought coding agents to Xcode, along with tools allowing agents to"
+  },
+  {
+    "timestamp": "42:09",
+    "content": "grab a preview, search documentation, and more, powered by the Model Context Protocol."
+  },
+  {
+    "timestamp": "42:15",
+    "content": "With MCP, Xcode also connects to the tools you already use, from design apps like Figma to"
+  },
+  {
+    "timestamp": "42:21",
+    "content": "services like GitHub."
+  },
+  {
+    "timestamp": "42:24",
+    "content": "And Xcode includes a built-in integration for agents from Anthropic, OpenAI, and now Google."
+  },
+  {
+    "timestamp": "42:31",
+    "content": "Today, Xcode adds support for agent client protocol, so you can bring any compatible agent into Xcode."
+  },
+  {
+    "timestamp": "42:38",
+    "content": "ACP support and Gemini integration are shipping and an update to Xcode 26 available today."
+  },
+  {
+    "timestamp": "42:44",
+    "content": "And there's more coming in Xcode 27."
+  },
+  {
+    "timestamp": "42:47",
+    "content": "Here's Ken."
+  },
+  {
+    "timestamp": "42:49",
+    "content": "From the first line of code to the App Store, Xcode is where you build the best apps for Apple"
+  },
+  {
+    "timestamp": "42:53",
+    "content": "platforms."
+  },
+  {
+    "timestamp": "42:54",
+    "content": "Millions of you live in it for writing and debugging your code with coding agents right alongside."
+  },
+  {
+    "timestamp": "43:00",
+    "content": "Planning interfaces in SwiftUI and previewing them in real time."
+  },
+  {
+    "timestamp": "43:04",
+    "content": "Testing across devices and simulators to catch issues before your users do."
+  },
+  {
+    "timestamp": "43:09",
+    "content": "And profiling performance with instruments, keeping your apps fast, responsive, and efficient."
+  },
+  {
+    "timestamp": "43:16",
+    "content": "This year, Xcode has two big stories."
+  },
+  {
+    "timestamp": "43:18",
+    "content": "The first is intelligence."
+  },
+  {
+    "timestamp": "43:20",
+    "content": "And we have a lot to talk about in a minute."
+  },
+  {
+    "timestamp": "43:23",
+    "content": "The second is the daily experience."
+  },
+  {
+    "timestamp": "43:26",
+    "content": "How Xcode feels to use."
+  },
+  {
+    "timestamp": "43:29",
+    "content": "Just like you, we spend hours in Xcode every day."
+  },
+  {
+    "timestamp": "43:33",
+    "content": "We build all our operating systems and apps with it."
+  },
+  {
+    "timestamp": "43:36",
+    "content": "In fact, we build Xcode with Xcode."
+  },
+  {
+    "timestamp": "43:40",
+    "content": "So it needs to feel like home while being fast, fun, and personal."
+  },
+  {
+    "timestamp": "43:44",
+    "content": "And we've heard your feedback and improved Xcode across the board."
+  },
+  {
+    "timestamp": "43:49",
+    "content": "It's faster at loading projects."
+  },
+  {
+    "timestamp": "43:51",
+    "content": "We fix top crashes and spins."
+  },
+  {
+    "timestamp": "43:55",
+    "content": "Debug sessions are more reliable, with faster expression evaluation, and a console that can"
+  },
+  {
+    "timestamp": "44:00",
+    "content": "handle more intensive logging without hitching."
+  },
+  {
+    "timestamp": "44:04",
+    "content": "Xcode 27 is 30% smaller."
+  },
+  {
+    "timestamp": "44:07",
+    "content": "Now Apple Silicon only."
+  },
+  {
+    "timestamp": "44:09",
+    "content": "With agents, documentation, and other components downloading in the background so you're always"
+  },
+  {
+    "timestamp": "44:14",
+    "content": "up to date."
+  },
+  {
+    "timestamp": "44:15",
+    "content": "Now, let's take a look at the experience."
+  },
+  {
+    "timestamp": "44:18",
+    "content": "First, your Xcode settings are now automatically saved to iCloud."
+  },
+  {
+    "timestamp": "44:22",
+    "content": "When I'm setting up a new Mac like this, Xcode offers to import them."
+  },
+  {
+    "timestamp": "44:27",
+    "content": "I'll pull in the settings from my iMac."
+  },
+  {
+    "timestamp": "44:29",
+    "content": "I can sign in with my Apple ID."
+  },
+  {
+    "timestamp": "44:31",
+    "content": "Xcode fills in my Git config too."
+  },
+  {
+    "timestamp": "44:33",
+    "content": "And just like that, I'm ready to code with my new Mac."
+  },
+  {
+    "timestamp": "44:38",
+    "content": "Now, let's create a new project."
+  },
+  {
+    "timestamp": "44:40",
+    "content": "Watch this."
+  },
+  {
+    "timestamp": "44:41",
+    "content": "I'll select New Project, then App, and boom!"
+  },
+  {
+    "timestamp": "44:44",
+    "content": "I'm in the editor."
+  },
+  {
+    "timestamp": "44:46",
+    "content": "No file name, no bundle ID, no setup."
+  },
+  {
+    "timestamp": "44:50",
+    "content": "Of course, I can specify all those things later when I'm ready."
+  },
+  {
+    "timestamp": "44:54",
+    "content": "This is great for exploring an idea, a new API, or prototyping a view."
+  },
+  {
+    "timestamp": "45:00",
+    "content": "All right."
+  },
+  {
+    "timestamp": "45:01",
+    "content": "Now, I'll open the origami project."
+  },
+  {
+    "timestamp": "45:03",
+    "content": "Xcode 27 looks beautiful with the design refinements of Mac OS 27."
+  },
+  {
+    "timestamp": "45:09",
+    "content": "Crisp and clean."
+  },
+  {
+    "timestamp": "45:12",
+    "content": "Let's customize it."
+  },
+  {
+    "timestamp": "45:13",
+    "content": "In Xcode 27, you can make the toolbar your own."
+  },
+  {
+    "timestamp": "45:17",
+    "content": "It's easy to rearrange things, so I can add what I need and remove what I don't."
+  },
+  {
+    "timestamp": "45:22",
+    "content": "The activity view is now tucked neatly into the document title over here, so"
+  },
+  {
+    "timestamp": "45:26",
+    "content": "there's even more room for the things I want."
+  },
+  {
+    "timestamp": "45:29",
+    "content": "The navigation buttons, canvas toggle, editor splits,"
+  },
+  {
+    "timestamp": "45:32",
+    "content": "they're all right up here on the toolbar."
+  },
+  {
+    "timestamp": "45:35",
+    "content": "Now, I'll add a shortcut to quickly create a new coding assistant conversation,"
+  },
+  {
+    "timestamp": "45:39",
+    "content": "and that'll be useful a little bit later."
+  },
+  {
+    "timestamp": "45:42",
+    "content": "Next, and super fun, themes."
+  },
+  {
+    "timestamp": "45:45",
+    "content": "Color now flows throughout the entire app, not just the editor."
+  },
+  {
+    "timestamp": "45:50",
+    "content": "You can personalize everything, from the background to syntax colors,"
+  },
+  {
+    "timestamp": "45:54",
+    "content": "and dial in that perfect shade of purple for your keywords."
+  },
+  {
+    "timestamp": "45:57",
+    "content": "And Xcode 27 comes with gorgeous new choices."
+  },
+  {
+    "timestamp": "46:00",
+    "content": "Let me show you a few of my favorites."
+  },
+  {
+    "timestamp": "46:02",
+    "content": "Emerald."
+  },
+  {
+    "timestamp": "46:04",
+    "content": "That feels fresh."
+  },
+  {
+    "timestamp": "46:05",
+    "content": "You can almost smell it."
+  },
+  {
+    "timestamp": "46:07",
+    "content": "How about something with a little bit more energy?"
+  },
+  {
+    "timestamp": "46:10",
+    "content": "Neon Noir."
+  },
+  {
+    "timestamp": "46:12",
+    "content": "Electric."
+  },
+  {
+    "timestamp": "46:13",
+    "content": "Love it."
+  },
+  {
+    "timestamp": "46:15",
+    "content": "Light or dark?"
+  },
+  {
+    "timestamp": "46:16",
+    "content": "Every theme supports both."
+  },
+  {
+    "timestamp": "46:18",
+    "content": "Here's Coral Reef."
+  },
+  {
+    "timestamp": "46:19",
+    "content": "I feel relaxed already."
+  },
+  {
+    "timestamp": "46:21",
+    "content": "And when I'm working on multiple projects, at the same time,"
+  },
+  {
+    "timestamp": "46:24",
+    "content": "I can set a different theme for each."
+  },
+  {
+    "timestamp": "46:26",
+    "content": "It makes it super easy to tell them apart at a glance."
+  },
+  {
+    "timestamp": "46:29",
+    "content": "All right, let's get back to work."
+  },
+  {
+    "timestamp": "46:31",
+    "content": "Next, Xcode Cloud, which gives you continuous integration and delivery,"
+  },
+  {
+    "timestamp": "46:36",
+    "content": "built right into Xcode."
+  },
+  {
+    "timestamp": "46:38",
+    "content": "I'll set up my origami project to use it."
+  },
+  {
+    "timestamp": "46:41",
+    "content": "I'll click Get Started, grant access to my repository, and that's it."
+  },
+  {
+    "timestamp": "46:46",
+    "content": "I can kick off my first cloud build."
+  },
+  {
+    "timestamp": "46:48",
+    "content": "No App Store Connect setup needed."
+  },
+  {
+    "timestamp": "46:51",
+    "content": "And, Xcode Cloud builds are up to twice as fast, now supporting Apple Vision Pro and apps using Metal on Apple Silicon."
+  },
+  {
+    "timestamp": "47:00",
+    "content": "Next, Previews."
+  },
+  {
+    "timestamp": "47:02",
+    "content": "They are the best way to iterate on UI, and the easiest way to see how your views look across variants, like accessibility sizes, orientations, and localizations."
+  },
+  {
+    "timestamp": "47:12",
+    "content": "And now you can see variations for any property."
+  },
+  {
+    "timestamp": "47:15",
+    "content": "I'll open this view here that shows a craft node."
+  },
+  {
+    "timestamp": "47:18",
+    "content": "It renders differently based on the craft state enum, which has four different values."
+  },
+  {
+    "timestamp": "47:23",
+    "content": "Now, I can pass that enum to the preview, and just like that, I get a grid showing all the states of my UI."
+  },
+  {
+    "timestamp": "47:30",
+    "content": "All four in one glance."
+  },
+  {
+    "timestamp": "47:32",
+    "content": "Next, another one I'm excited about."
+  },
+  {
+    "timestamp": "47:35",
+    "content": "When testing your app, you use real hardware to evaluate performance."
+  },
+  {
+    "timestamp": "47:39",
+    "content": "You use sensors and test real-world conditions."
+  },
+  {
+    "timestamp": "47:42",
+    "content": "And you use simulators to cover older OSs and devices that you don't have."
+  },
+  {
+    "timestamp": "47:47",
+    "content": "Xcode 27 brings both together in the new Device Hub."
+  },
+  {
+    "timestamp": "47:52",
+    "content": "It replaces simulator, and it does a whole lot more, too."
+  },
+  {
+    "timestamp": "47:56",
+    "content": "Let me show you."
+  },
+  {
+    "timestamp": "47:58",
+    "content": "When I first run my app, the window looks like the simulator I know."
+  },
+  {
+    "timestamp": "48:02",
+    "content": "I can easily rotate, grab a screenshot, and jump back to the home screen, just like I'm used to."
+  },
+  {
+    "timestamp": "48:08",
+    "content": "When I extend the view, I can now change device properties and test how my app responds to different system settings."
+  },
+  {
+    "timestamp": "48:16",
+    "content": "Like switching to dark mode, increasing the font size, and more."
+  },
+  {
+    "timestamp": "48:21",
+    "content": "We rebuilt the experience from the ground up for the highest fidelity possible."
+  },
+  {
+    "timestamp": "48:26",
+    "content": "So I can pinch to zoom, use two-finger scrolling, and like in previews, I can dynamically resize the simulator to see how my iOS app handles different sizes."
+  },
+  {
+    "timestamp": "48:36",
+    "content": "I can also manage and interact with physical devices from the same place, like this iPhone here on my desk."
+  },
+  {
+    "timestamp": "48:42",
+    "content": "I'll launch the Origami app right here from my Mac."
+  },
+  {
+    "timestamp": "48:46",
+    "content": "And I can interact with it."
+  },
+  {
+    "timestamp": "48:48",
+    "content": "All the convenience of the simulator with the fidelity of real hardware in a single place."
+  },
+  {
+    "timestamp": "48:54",
+    "content": "That is a quick look at the experience in Xcode 27."
+  },
+  {
+    "timestamp": "48:59",
+    "content": "And beyond the experience, the biggest changes this year, the ones that will truly accelerate you, are in intelligence."
+  },
+  {
+    "timestamp": "49:07",
+    "content": "Kevin, over to you."
+  },
+  {
+    "timestamp": "49:09",
+    "content": "What a great time to be a developer."
+  },
+  {
+    "timestamp": "49:11",
+    "content": "Intelligence is transforming how you build apps."
+  },
+  {
+    "timestamp": "49:14",
+    "content": "Agenda coding, together with Apple platforms, frameworks, and tools, helps you bring ideas to life."
+  },
+  {
+    "timestamp": "49:22",
+    "content": "Xcode 27 takes the next big step in Agenda coding, leveraging the full power of the best models and agents directly into Xcode."
+  },
+  {
+    "timestamp": "49:31",
+    "content": "Agents are woven into every layer of the Xcode experience, from the way you interact with them, to a set of tools that help you get the best results."
+  },
+  {
+    "timestamp": "49:39",
+    "content": "Tools like understanding your project, searching documentation, building, and testing."
+  },
+  {
+    "timestamp": "49:45",
+    "content": "And Xcode 27 helps you even more, with new tools like rendering previews with variants, interacting with the simulator, localizing your app, debugging, and more."
+  },
+  {
+    "timestamp": "49:56",
+    "content": "And this goes beyond tools."
+  },
+  {
+    "timestamp": "49:58",
+    "content": "When using Agents in Xcode, every answer is grounded in Swift, Swift UI, and Apple frameworks."
+  },
+  {
+    "timestamp": "50:05",
+    "content": "That's why, when building for Apple platforms, Xcode is the best place to code with Agents."
+  },
+  {
+    "timestamp": "50:11",
+    "content": "Let me show you what this looks like across every stage of app development."
+  },
+  {
+    "timestamp": "50:15",
+    "content": "From starting with an idea, to implementing and validating it, to improving it, like adding new languages or fixing issues."
+  },
+  {
+    "timestamp": "50:22",
+    "content": "First, I'm going to add something fun to the Origami app."
+  },
+  {
+    "timestamp": "50:25",
+    "content": "My daughter, she loves making Origami with me."
+  },
+  {
+    "timestamp": "50:28",
+    "content": "I want to surprise her with a feature that makes up a little choose-your-own-adventure story about the characters that we make together."
+  },
+  {
+    "timestamp": "50:35",
+    "content": "I'll start with a new conversation with the agent."
+  },
+  {
+    "timestamp": "50:37",
+    "content": "I'll create one here from the toolbar."
+  },
+  {
+    "timestamp": "50:39",
+    "content": "It opens right in the editor, just like any other file."
+  },
+  {
+    "timestamp": "50:43",
+    "content": "Here's what I want to build."
+  },
+  {
+    "timestamp": "50:45",
+    "content": "In my Origami project, I want a button that generates a choose-your-own-adventure story for my daughter."
+  },
+  {
+    "timestamp": "50:50",
+    "content": "That alone would get me good results, but I had something a little more specific in mind, so I'll add some more details."
+  },
+  {
+    "timestamp": "50:58",
+    "content": "She'll start by picking some options, like the setting, and an item to use in the story."
+  },
+  {
+    "timestamp": "51:03",
+    "content": "The app will generate the first page, and then let her pick what comes next."
+  },
+  {
+    "timestamp": "51:08",
+    "content": "I want to use the latest Foundation Model APIs, and present it with beautiful typography."
+  },
+  {
+    "timestamp": "51:13",
+    "content": "When using a coding agent, the best results come from collaborating on the implementation and design first, before any code is written."
+  },
+  {
+    "timestamp": "51:21",
+    "content": "So I'll add slash plan to the prompt."
+  },
+  {
+    "timestamp": "51:23",
+    "content": "And I'm going to ask for a diagram while I'm at it."
+  },
+  {
+    "timestamp": "51:26",
+    "content": "I find it easier to review the plan that way."
+  },
+  {
+    "timestamp": "51:29",
+    "content": "Let's get this started."
+  },
+  {
+    "timestamp": "51:30",
+    "content": "The agent is exploring my project, using Xcode tools to help it efficiently understand my code base, its architecture and patterns,"
+  },
+  {
+    "timestamp": "51:38",
+    "content": "to find the best way to build the feature."
+  },
+  {
+    "timestamp": "51:40",
+    "content": "And it's asking some clarifying questions."
+  },
+  {
+    "timestamp": "51:43",
+    "content": "Do I want to persist it?"
+  },
+  {
+    "timestamp": "51:45",
+    "content": "Yes."
+  },
+  {
+    "timestamp": "51:46",
+    "content": "And how many options for the next part of the story?"
+  },
+  {
+    "timestamp": "51:49",
+    "content": "Two to three is good."
+  },
+  {
+    "timestamp": "51:50",
+    "content": "And the agent continues to create the plan."
+  },
+  {
+    "timestamp": "51:53",
+    "content": "Let's skip forward in time."
+  },
+  {
+    "timestamp": "51:55",
+    "content": "My plan is now ready, and it shows right next to the conversation, in beautifully rendered markdown."
+  },
+  {
+    "timestamp": "52:01",
+    "content": "It's very easy to review."
+  },
+  {
+    "timestamp": "52:02",
+    "content": "And I can also refine it."
+  },
+  {
+    "timestamp": "52:04",
+    "content": "Here, the current implementation has a fixed set of settings and items to choose."
+  },
+  {
+    "timestamp": "52:09",
+    "content": "I'd love if she could add her own."
+  },
+  {
+    "timestamp": "52:11",
+    "content": "I'll add that as a comment."
+  },
+  {
+    "timestamp": "52:13",
+    "content": "And now the plan looks good."
+  },
+  {
+    "timestamp": "52:16",
+    "content": "Let's kick it off."
+  },
+  {
+    "timestamp": "52:17",
+    "content": "Now Xcode and the agent work together to implement the plan."
+  },
+  {
+    "timestamp": "52:20",
+    "content": "Xcode shows everything that's changing, like code and previews."
+  },
+  {
+    "timestamp": "52:24",
+    "content": "As it runs, I can refine the implementation."
+  },
+  {
+    "timestamp": "52:27",
+    "content": "Like here, I'm going to add a fun image filter to the story's hero image."
+  },
+  {
+    "timestamp": "52:32",
+    "content": "It looks like Xcode is done building my feature."
+  },
+  {
+    "timestamp": "52:35",
+    "content": "There's a lot of code and the previews look great."
+  },
+  {
+    "timestamp": "52:38",
+    "content": "Let's just run it."
+  },
+  {
+    "timestamp": "52:40",
+    "content": "I'll open an origami project."
+  },
+  {
+    "timestamp": "52:42",
+    "content": "Tap the new toolbar icon."
+  },
+  {
+    "timestamp": "52:44",
+    "content": "And just like we asked, page one offers an item in a setting."
+  },
+  {
+    "timestamp": "52:48",
+    "content": "I'll pick a forest and a wand and, oh, look, there's the button if I wanted to add my own."
+  },
+  {
+    "timestamp": "52:54",
+    "content": "And here's the first page of the story with that gorgeous hero image."
+  },
+  {
+    "timestamp": "52:59",
+    "content": "My daughter's going to love this."
+  },
+  {
+    "timestamp": "53:01",
+    "content": "What was just an idea a couple minutes ago is now something I can run in my app."
+  },
+  {
+    "timestamp": "53:05",
+    "content": "This is amazing."
+  },
+  {
+    "timestamp": "53:06",
+    "content": "Now, building a feature is more than writing code."
+  },
+  {
+    "timestamp": "53:09",
+    "content": "It's also making sure it does what it's supposed to do."
+  },
+  {
+    "timestamp": "53:12",
+    "content": "Xcode 27 can help you with that too, with new tools for agents to check their work."
+  },
+  {
+    "timestamp": "53:17",
+    "content": "For example, agents can validate the logic of your app by running tests."
+  },
+  {
+    "timestamp": "53:21",
+    "content": "Try ideas in isolation using playgrounds, like experimenting with APIs."
+  },
+  {
+    "timestamp": "53:27",
+    "content": "And check visual changes with previews in light and dark mode, different orientations, text sizes, or localizations."
+  },
+  {
+    "timestamp": "53:36",
+    "content": "And now, agents can interact with your app in the simulator."
+  },
+  {
+    "timestamp": "53:40",
+    "content": "Let me show you."
+  },
+  {
+    "timestamp": "53:41",
+    "content": "I want to test different combinations of settings, items, even customized ones."
+  },
+  {
+    "timestamp": "53:47",
+    "content": "Xcode launches Origami and DeviceHub and starts testing those for me."
+  },
+  {
+    "timestamp": "53:51",
+    "content": "The agent can tap, swipe, and type."
+  },
+  {
+    "timestamp": "53:55",
+    "content": "When it's done, I get a summary of the tests."
+  },
+  {
+    "timestamp": "53:58",
+    "content": "And I can see all the screenshots it created along the way."
+  },
+  {
+    "timestamp": "54:02",
+    "content": "And just like that, the Origami app has a new story feature, designed, built, and tested end-to-end."
+  },
+  {
+    "timestamp": "54:10",
+    "content": "Next, let's see how we can use agentic coding to improve our app."
+  },
+  {
+    "timestamp": "54:15",
+    "content": "Agents in Xcode can help with all kinds of engineering tasks, like adopting new APIs, making your app more accessible, and more."
+  },
+  {
+    "timestamp": "54:23",
+    "content": "Let's localize our Origami app."
+  },
+  {
+    "timestamp": "54:25",
+    "content": "I'll start with French."
+  },
+  {
+    "timestamp": "54:28",
+    "content": "Xcode automatically adds a new language to the strings catalog, then works with the agents to translate strings across the entire project."
+  },
+  {
+    "timestamp": "54:36",
+    "content": "This is more than a word-for-word translation."
+  },
+  {
+    "timestamp": "54:39",
+    "content": "Xcode looks at each string in its context, the surrounding code, UI, the action, to find the best translation."
+  },
+  {
+    "timestamp": "54:46",
+    "content": "And when it's done, I can see all the translations here in the string catalog."
+  },
+  {
+    "timestamp": "54:51",
+    "content": "Let's build and run."
+  },
+  {
+    "timestamp": "54:53",
+    "content": "My app is now localized."
+  },
+  {
+    "timestamp": "54:55",
+    "content": "Fantastique."
+  },
+  {
+    "timestamp": "54:56",
+    "content": "Building a great app also means responding to the feedback and data from your users."
+  },
+  {
+    "timestamp": "55:02",
+    "content": "The organizer already gives you insights into how your app is doing in the real world."
+  },
+  {
+    "timestamp": "55:07",
+    "content": "Crashes, hangs, performance metrics, anonymized, and aggregated."
+  },
+  {
+    "timestamp": "55:12",
+    "content": "Now, you can use agents to help you find issues that matter most and fix them."
+  },
+  {
+    "timestamp": "55:17",
+    "content": "I'll ask Xcode to pull up the top crashes from the latest release."
+  },
+  {
+    "timestamp": "55:22",
+    "content": "I get a list of crashes ranked by how often they happen."
+  },
+  {
+    "timestamp": "55:25",
+    "content": "Oh, that first one is from an update I pushed last week."
+  },
+  {
+    "timestamp": "55:28",
+    "content": "Let's fix it."
+  },
+  {
+    "timestamp": "55:32",
+    "content": "Xcode looks at the symbolicated crash log, figures out where in my project this happens,"
+  },
+  {
+    "timestamp": "55:38",
+    "content": "identifies the issue, reproduces the crash, makes the fix, and then validates it."
+  },
+  {
+    "timestamp": "55:46",
+    "content": "And just like that, our issue is fixed."
+  },
+  {
+    "timestamp": "55:49",
+    "content": "That's agents at work with Xcode across every stage of your development, planning, building, and improving."
+  },
+  {
+    "timestamp": "55:56",
+    "content": "You'll be amazed when you see Xcode and agents bring your ideas to life."
+  },
+  {
+    "timestamp": "56:01",
+    "content": "Finally, let's talk about what makes all of this possible."
+  },
+  {
+    "timestamp": "56:04",
+    "content": "Xcode 27 ships with the expertise of Apple's engineers and designers built right in as a corpus of skills, documentation, and MCP tools."
+  },
+  {
+    "timestamp": "56:13",
+    "content": "Think of them as specialists."
+  },
+  {
+    "timestamp": "56:16",
+    "content": "A Swift UI specialist that knows how to structure your view and data flow."
+  },
+  {
+    "timestamp": "56:20",
+    "content": "An accessibility specialist that knows what makes an interface work for everyone."
+  },
+  {
+    "timestamp": "56:24",
+    "content": "Specialists for universal sizing, testing, and performance."
+  },
+  {
+    "timestamp": "56:29",
+    "content": "In fact, so much of what we've seen to this point is powered by one of these specialists."
+  },
+  {
+    "timestamp": "56:34",
+    "content": "And you can bring your own."
+  },
+  {
+    "timestamp": "56:36",
+    "content": "Xcode integrates all of them in the same way."
+  },
+  {
+    "timestamp": "56:39",
+    "content": "Plugins."
+  },
+  {
+    "timestamp": "56:40",
+    "content": "It's a format used by many agents and widely adopted by the community."
+  },
+  {
+    "timestamp": "56:44",
+    "content": "It's amazing to see how many of these you have already been building and sharing."
+  },
+  {
+    "timestamp": "56:49",
+    "content": "A plugin can contain skills."
+  },
+  {
+    "timestamp": "56:51",
+    "content": "Just markdown files that teach the agent new tasks."
+  },
+  {
+    "timestamp": "56:55",
+    "content": "It can contain tools using the model context protocol."
+  },
+  {
+    "timestamp": "56:59",
+    "content": "And we've added one new capability to plugins."
+  },
+  {
+    "timestamp": "57:02",
+    "content": "With the agent client protocol, a plugin can bring an agent of your choice."
+  },
+  {
+    "timestamp": "57:07",
+    "content": "Installing one is easy."
+  },
+  {
+    "timestamp": "57:08",
+    "content": "You can use the command line or paste a Git URL right into Xcode."
+  },
+  {
+    "timestamp": "57:12",
+    "content": "And partners like Figma and GitHub make it even easier to set up with just one click."
+  },
+  {
+    "timestamp": "57:18",
+    "content": "And then I can put it all together."
+  },
+  {
+    "timestamp": "57:21",
+    "content": "I can tell Xcode to implement a Figma design in Swift UI."
+  },
+  {
+    "timestamp": "57:24",
+    "content": "Refine it for different variants."
+  },
+  {
+    "timestamp": "57:26",
+    "content": "Make it resizable using a skill."
+  },
+  {
+    "timestamp": "57:28",
+    "content": "And post a PR to GitHub."
+  },
+  {
+    "timestamp": "57:30",
+    "content": "How cool is that?"
+  },
+  {
+    "timestamp": "57:32",
+    "content": "That's agentic coding in Xcode 27."
+  },
+  {
+    "timestamp": "57:35",
+    "content": "From an idea to an app at every step."
+  },
+  {
+    "timestamp": "57:39",
+    "content": "Built for how you create, refine, and ship."
+  },
+  {
+    "timestamp": "57:42",
+    "content": "And reach your users wherever they are."
+  },
+  {
+    "timestamp": "57:44",
+    "content": "We can't wait to see what great things you make next."
+  },
+  {
+    "timestamp": "57:48",
+    "content": "Back to you, Josh."
+  },
+  {
+    "timestamp": "57:52",
+    "content": "It's a huge year for Xcode."
+  },
+  {
+    "timestamp": "57:54",
+    "content": "And for many of our other developer tools as well."
+  },
+  {
+    "timestamp": "57:57",
+    "content": "Like the all new Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "58:00",
+    "content": "Which has been completely rebuilt for crafting production ready 3D experiences using Reality Kit."
+  },
+  {
+    "timestamp": "58:07",
+    "content": "It brings support for character animations."
+  },
+  {
+    "timestamp": "58:10",
+    "content": "More realistic lighting."
+  },
+  {
+    "timestamp": "58:11",
+    "content": "And live previews that let you see the results of your edits as you make them using Mac Virtual Display."
+  },
+  {
+    "timestamp": "58:18",
+    "content": "And there's even more for game developers in this year's releases."
+  },
+  {
+    "timestamp": "58:21",
+    "content": "Including a major update to Game Porting Toolkit."
+  },
+  {
+    "timestamp": "58:24",
+    "content": "Which dramatically cuts the time it takes to bring games to Apple platforms."
+  },
+  {
+    "timestamp": "58:29",
+    "content": "By adding AI skills for coding agents."
+  },
+  {
+    "timestamp": "58:32",
+    "content": "And new Metal Command Line tools give agents direct control during development and debugging."
+  },
+  {
+    "timestamp": "58:38",
+    "content": "Bringing best practices for game development on Apple platforms to every step of your porting journey."
+  },
+  {
+    "timestamp": "58:45",
+    "content": "So that's developer productivity."
+  },
+  {
+    "timestamp": "58:47",
+    "content": "Across the 2027 releases, there are so many new capabilities to build on."
+  },
+  {
+    "timestamp": "58:53",
+    "content": "Like the App Intents Framework."
+  },
+  {
+    "timestamp": "58:55",
+    "content": "Which lets you connect your app to Apple Intelligence."
+  },
+  {
+    "timestamp": "58:58",
+    "content": "And the Foundation Models Framework."
+  },
+  {
+    "timestamp": "59:00",
+    "content": "And Core AI."
+  },
+  {
+    "timestamp": "59:01",
+    "content": "Which enable you to bring powerful generative intelligence features directly into your apps."
+  },
+  {
+    "timestamp": "59:07",
+    "content": "There are platform improvements across Design, Swift, and SwiftUI."
+  },
+  {
+    "timestamp": "59:12",
+    "content": "That make your apps faster, more flexible, and easier to build."
+  },
+  {
+    "timestamp": "59:17",
+    "content": "And Xcode has even more expansive support for agentic coding."
+  },
+  {
+    "timestamp": "59:22",
+    "content": "And we've only just scratched the surface."
+  },
+  {
+    "timestamp": "59:25",
+    "content": "There are over a hundred sessions to dive deep into everything we've covered today."
+  },
+  {
+    "timestamp": "59:30",
+    "content": "Including Apple Intelligence, Xcode 27, Design, and more."
+  },
+  {
+    "timestamp": "59:36",
+    "content": "All these sessions are available on the Apple Developer App, the website, YouTube, and new this year on Bilibili."
+  },
+  {
+    "timestamp": "59:44",
+    "content": "And there's so much more happening online throughout the week."
+  },
+  {
+    "timestamp": "59:48",
+    "content": "Sign up for group labs, online panels, and Q&A sessions with Apple engineers and designers."
+  },
+  {
+    "timestamp": "59:55",
+    "content": "And connect with us on the Apple Developer Forums to ask questions and follow the conversation about the latest tools and technologies."
+  },
+  {
+    "timestamp": "1:00:03",
+    "content": "And the opportunities to connect extend well beyond this week."
+  },
+  {
+    "timestamp": "1:00:07",
+    "content": "You can meet with Apple around the world and online in hands-on workshops, labs, and events."
+  },
+  {
+    "timestamp": "1:00:14",
+    "content": "To learn and connect as a community throughout the year."
+  },
+  {
+    "timestamp": "1:00:18",
+    "content": "We love when we can meet you in person."
+  },
+  {
+    "timestamp": "1:00:22",
+    "content": "And there are many opportunities to do that in our developer centers."
+  },
+  {
+    "timestamp": "1:00:26",
+    "content": "Located in Cupertino, Shanghai, Singapore, and Bengaluru."
+  },
+  {
+    "timestamp": "1:00:31",
+    "content": "And we're excited to announce the opening of our fifth this fall in Berlin."
+  },
+  {
+    "timestamp": "1:00:37",
+    "content": "Home to one of Europe's most vibrant developer and designer communities."
+  },
+  {
+    "timestamp": "1:00:42",
+    "content": "We can't wait to see you there."
+  },
+  {
+    "timestamp": "1:00:44",
+    "content": "Or in one of our events online."
+  },
+  {
+    "timestamp": "1:00:46",
+    "content": "Whether this is your first WWDC or your 25th."
+  },
+  {
+    "timestamp": "1:00:50",
+    "content": "Thank you."
+  },
+  {
+    "timestamp": "1:00:52",
+    "content": "Your work inspires and drives us."
+  },
+  {
+    "timestamp": "1:00:55",
+    "content": "We use the apps and play the games that you all build."
+  },
+  {
+    "timestamp": "1:01:00",
+    "content": "So our greatest hope is that everything we talked about today will enable your next great idea to come to life."
+  },
+  {
+    "timestamp": "1:01:08",
+    "content": "We can't wait to see what you do next."
+  },
+  {
+    "timestamp": "1:01:11",
+    "content": "Enjoy WWDC."
+  },
+  {
+    "timestamp": "1:01:22",
+    "content": "You probably won the future of the world."
+  },
+  {
+    "timestamp": "1:01:25",
+    "content": "Thank you."
+  }
+]

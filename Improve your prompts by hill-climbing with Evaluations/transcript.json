@@ -1,0 +1,1234 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Marcus,"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "a manager on the evaluations framework team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "I'm excited to show you how to use"
+  },
+  {
+    "timestamp": "0:14",
+    "content": "evaluations to improve your intelligence-powered feature."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "As you probably know by now,"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "using AI in your app is a powerful way to"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "provide new levels of personalization to your users."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "This technology can add a level of depth to"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "your app that was not previously possible with"
+  },
+  {
+    "timestamp": "0:29",
+    "content": "traditional software. However,"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "it's also a challenge to know whether or not"
+  },
+  {
+    "timestamp": "0:33",
+    "content": "your intelligence-powered feature"
+  },
+  {
+    "timestamp": "0:35",
+    "content": "behaviors you'd expect in all cases."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "To help with this, we're releasing the evaluations framework"
+  },
+  {
+    "timestamp": "0:42",
+    "content": "to provide you with the tools you need to ship with confidence."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Shipping with confidence takes more than just a framework."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "The evaluations framework also allows you to hill climb,"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "which is a process of iteratively improving"
+  },
+  {
+    "timestamp": "0:56",
+    "content": "the quality of your feature using"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "the scores of your evaluation as a guide."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "Hill climbing starts with development."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "That is making some change you want to measure against your existing feature."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Once all your changes are made,"
+  },
+  {
+    "timestamp": "1:10",
+    "content": "you then need to run the evaluation and see if the results have passed your expectations."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "From there, you analyze the results to understand how your feature could be further improved."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "Leveraging the hill climbing process is a great way to systematically improve your feature."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "But effective hill climbing takes a little bit more than just following the loop."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "It also takes a little bit of science."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "So, in this video, I'll walk you through how to improve prompts by following the hill climbing loop,"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "while incorporating some scientific thinking along the way."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "Next, I'll walk you through how to conduct comparative evaluations to make the process of hill climbing easier."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "And finally, we'll go beyond changing prompts by improving other aspects of an intelligence-powered feature."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "But, before we go any further, this video is about the process of hill climbing an existing evaluation."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "That means you've already written the foundations of an evaluation pipeline,"
+  },
+  {
+    "timestamp": "2:09",
+    "content": "which provides a holistic understanding of the strengths and weaknesses of your intelligence-powered feature."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "If you're unfamiliar with how to do that, go check out our other video, Meet the Evaluations Framework."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "It covers everything you need to know in order to build a great evaluation pipeline."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "With that covered, let's get started."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "In the Meet the Evaluations Framework video, we introduce you to BookTracker."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "In case you forgot, BookTracker allows readers to catalog and review books."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "Recently, I've been reading a lot of classics, so I've been adding the books to my books."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "In fact, I just finished reading Treasure Island."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "It's such a thought-provoking read that covers the tension between loyalty and betrayal."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "One of BookTracker's new features is a tagging service,"
+  },
+  {
+    "timestamp": "2:57",
+    "content": "which uses a model to generate tags based on the reader's review."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "While the tags for this review cover the general themes of the book, I feel like something is missing."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "I would have expected to see tags like tense or morally gray,"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "which speak to the general themes of the story."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "The tags generated for little women had a similar problem."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "Tags like poignant had more to do with how the reader felt than the contents of the book."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "Emotion in book reviews is great, but it should not make it into the list of tags."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "Also, a tag like quiet steadiness, which is pulled directly from the review,"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "isn't going to be a very useful tag when I want to search my library later."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "It seems like BookTracker's tag generator isn't quite as good as I think it could be."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Fortunately, when my colleagues wrote this feature, they wrote an evaluation,"
+  },
+  {
+    "timestamp": "3:49",
+    "content": "which measures the tags against a set of criteria."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "And here is my evaluation for BookTracker's book tags."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "I am particularly interested in how we are judging the quality of my tags,"
+  },
+  {
+    "timestamp": "4:02",
+    "content": "so I'll scroll down and take a look."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "The qualitative aspects of my app are captured by the score dimensions type."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "Relevance tracks how well the tags represent the information about the book's plot,"
+  },
+  {
+    "timestamp": "4:14",
+    "content": "theme, or other relevant information."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Usefulness measures how good the tags are as search terms."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "The Model Judge Evaluator uses the score dimensions and a prompt to generate a score for each set of tags."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "My plan is to add these two books to my evaluation and review the tags I get back."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "It will also be a good opportunity to see how my ratings stack up against the ratings of my Model Judge."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "Wanting to improve some part of an intelligence-powered feature is how the hill climbing process starts."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "So, to start the loop, you begin in the development phase."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "Here, you make any changes you need to your feature as well as your evaluation."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "In this case, I'll add my review of Treasure Island to my evaluation dataset."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "And I've done the same thing for Little Women."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "With those two entries now in my dataset, I now want to run my evaluation and see what tags the model produces and how the judge scores them."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "But, to get there, we need to first ask if the evaluation we ran met our expectations."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "As a reminder, your expectations can be defined using Swift Testing's expect macro."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "That way, you can tell if your expectations are met by whether or not your tests pass."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "In this case, my evaluation met all of my expectations."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "However, because I know the tags aren't as good as I'd like them to be, I need to investigate further."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "And that brings us to the Analyze phase."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "Xcode's new evaluations report gives me in-depth information about my last evaluation run."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "To see more details, I can click on my book tagging evaluation run."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "This brings up the evaluation detail view."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "On the top are our aggregate metric charts."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "And below is our table of results."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "What I'd like to do now is compare the response of the model to the list of expected tags I generated before."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "I can do that by opening up the Assistant Editor."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "And now, I can see detailed information about the tags generated for each item in my dataset."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "I want to focus on the difference between what the model generated and what I expected."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "I can review that in detail in this table."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "The collections of terms isn't bad, but it leaves out a number of key details from the story which the user might want to search for."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "Because of that, I would have scored these tags a 4 for relevance and a 2 for usefulness."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "My model judge also gave the tags a relevance score of 4, which is great."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "But it also gave usefulness a score of 4, which isn't right."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "I should see if I feel the same way about the tags for my review of Little Women."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "The tags don't really contain all the useful information that I'd expect."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "And it turns out I disagree with the judge's scores here as well."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "Once again, I think relevance should be a 4 and usefulness should be a 2."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "Doing this analysis has made it clear to me there is a discrepancy between how my model judge and I rate tags."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "This discrepancy between model and human is known as drift."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "And it is a problem faced by all developers trying to evaluate intelligent features."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "Here's why."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "Say I have an evaluation with 10 samples."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "I then ask a model judge and a person to rate each sample."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "The model and person then give their ratings on a scale from 1 to 4."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "And at the end we average those scores to build an aggregate."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "If the model and the human tend to disagree in their ratings, then their average scores will diverge from one another."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "Hence the name drift."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "As your dataset continues to grow and grow, the drift will get wider and wider."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "At which point it'll be hard for you to know whether or not your feature is being properly evaluated."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "To help with this, you can align your judge to a person's expert opinion."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "Now that we know drift is a problem, we need a way to know how much our model judge has drifted from our expert ratings."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "One way to accomplish this would be to line up the ratings of the expert and mark where the two match."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "You can then use this to generate a percentage."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "This percentage is called accuracy."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "And it's a great way to measure alignment if every value in your scoring scale is equally likely to appear."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "However, it's more likely that your dataset will contain values that have an uneven distribution of scores."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Think about it."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "Data sets often contain examples of high quality output."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "Therefore, it is often the case that a human rater is likely to rate items in the dataset with higher scores."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "If a model then happens to judge your smaller dataset with high scores, it may seem like the two are aligned."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "But then, when unleashed on a larger dataset with more variations in scores, its tendency to score high will still result in drift."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "So, we need an alternative to accuracy, one that accounts for the weighted nature of our dataset, and the chance that the model might guess the right answer."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "Fortunately, there is a solution."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "Cohen's kappa coefficient is a mathematical formula made popular by statistician and psychologist Jacob Cohen in 1960."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "Cohen's kappa measures alignment."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "That is, how often do two raters agree?"
+  },
+  {
+    "timestamp": "10:00",
+    "content": "To do that, we need to know what percentage of the time the raters agreed, better known as accuracy."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "And this is exactly what the accuracy metric from before was calculating."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "But now, we need to calculate a new value."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "Coincidence, which represents the chance that one rater might get lucky and happen to align."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "This luck is then weighted based on the chances certain answers are more likely to appear."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "So, now the question is, how do you calculate it?"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "To calculate alignment, we start with our accuracy score."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "From the accuracy score, we subtract the possibility of two raters randomly agreeing."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "Finally, we divide the difference by the inverse of random agreement, namely the chance that the two raters intentionally agreed."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "The result of that gives us alignment."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Cohen's kappa is a powerful way to measure the alignment between a model judge and your expert opinion."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "I can use this to hill climb the alignment scores between me and my model judge."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "So now, we start back at the beginning of the hill climbing loop in the develop phase."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "To do this, I'm going to set up an evaluation to compare my ratings against my judge and produce an alignment score."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "To do that, I need to write an evaluation, which is made up of four components."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "First is my dataset, then the subject of my evaluation, then I need to define my evaluators, and finally, I need to aggregate my results."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "So let's start with the dataset."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "For this evaluation to work properly, both my model judge and I need to evaluate the exact same dataset."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "In this case, the model judge reviews tags, so I need to produce a common set of tags for the judge and I to review, and I have just the perfect dataset."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "My evaluation from before contains a collection of reviews and tags."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "Because I ran this evaluation in a test, Xcode generated an attachment containing all of the evaluation data that was generated."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "I can retrieve that attachment and extract the summary and tag pairs."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Now, with the summary and tag pairs extracted, I need to add my ratings."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "After that, I can pass the contents of this file as the input to my evaluation."
+  },
+  {
+    "timestamp": "12:25",
+    "content": "Next, I need to capture the subject of my evaluation."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "Normally, the subject method is for calling API related to your feature."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "But since the generated model responses are part of our dataset, we can simply return the already generated tags."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "Now, I need to define my evaluators."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "As you might have guessed, my evaluator is the exact same model judge evaluator as in our book tags evaluation."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "This is where the judge provides its rating."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "Finally, I need to aggregate my results."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Here is where we compare my ratings against the judges."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "To do that, we need to calculate Cohen's kappa, which I can do with a custom aggregation method."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "In addition to just Cohen's kappa, I'll also calculate the mean and standard deviation of each score dimension."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "This will be helpful to know if the scores of the judge are going up or down."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "Now, I can set up my test with my evaluation."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "For this test, I've set up an expectation that my ratings and the judges' ratings should produce an alignment score of 0.6."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "We've chosen this number because according to statisticians, an alignment score of 0.6 represents a meaningful level of agreement."
+  },
+  {
+    "timestamp": "13:43",
+    "content": "Now, it's time to evaluate and get a baseline for our alignment."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "And then determine if my evaluation has passed my expectations."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "It appears that the tests failed, which means my expectations weren't met."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "So once again, it's time to analyze the results in detail."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "I now know that my alignment scores didn't match my expectations."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "And I can now go to the evaluation report to get more information."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "As I expected, the scores for both usefulness and relevance are quite low, meaning my model judge and I aren't aligned."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "Now, I want to get more information about how each sample in my dataset performed."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "To do that, I need to open the assistant and view the results in detail."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "As I scan through the results, this review of Frankenstein caught my eye."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "I can see a pretty large discrepancy between my ratings of the tags and the judges'."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "It seems like our judge thinks tags like self-help and self-improvement are relevant to the story."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "Also, psychological is an okay search term, but probably not a term a user is likely to search for."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "I then started looking through other items in my dataset that had a similar problem and came across this review of the Ramekin."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "The judge and I agree that these collections of terms are helpful and relevant to the contents of the book."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "Where we disagree is on usefulness."
+  },
+  {
+    "timestamp": "15:13",
+    "content": "Terms like visual dimension and quaint dignity are way too specific."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "So, what's the problem here?"
+  },
+  {
+    "timestamp": "15:21",
+    "content": "I believe that the model doesn't have enough knowledge on its own to distinguish between a good tag and a bad one."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "That's likely because the prompt of my judge doesn't provide enough context."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "To do that, I need to develop a new prompt."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "That way I can compare the alignment scores of my current prompt against the scores of my new prompt."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "Fortunately, in Xcode 27, we've made it so you can compare the results of two evaluations against each other."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "When doing comparisons, some scientific thinking can go a long way."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "In a science experiment, you have two groups."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "The control group, which represents the baseline."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "And the experimental group, which represents the change we are trying to compare against."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "We can think of the two versions of our instructions in the same way."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "Where the control group is represented by our base prompt."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "And our experimental group is represented by our newly changed prompt."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "I now need to create a second version of our evaluation with an experimental prompt."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "For our baseline, we'll use the same evaluation with the same model judge prompt as before."
+  },
+  {
+    "timestamp": "16:30",
+    "content": "For our experimental prompt, I've written a more thorough description about how to judge the set of tags."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "It starts by providing the judge context about the app and what it's about to be judging."
+  },
+  {
+    "timestamp": "16:43",
+    "content": "Then it gives examples of good tags."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "As well as ways to identify bad tags."
+  },
+  {
+    "timestamp": "16:50",
+    "content": "With both prompts written, I can add both evaluations to a test suite, which will run both evaluations."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "So, I'll run that suite now and compare the results."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "With the evaluation now finished, I can return to the evaluation report."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "Looks like my alignment scores for relevance improved."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "While my alignment scores for usefulness dropped considerably."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "Balancing trade-offs like this are tricky."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "So I need to think carefully about how to proceed."
+  },
+  {
+    "timestamp": "17:19",
+    "content": "But before in-depth analysis comes checking if we passed."
+  },
+  {
+    "timestamp": "17:23",
+    "content": "And my test confirms the obvious."
+  },
+  {
+    "timestamp": "17:26",
+    "content": "We haven't."
+  },
+  {
+    "timestamp": "17:27",
+    "content": "After thinking about it further, I'm going to keep this prompt change and focus the next round of iteration on improving my usefulness score."
+  },
+  {
+    "timestamp": "17:36",
+    "content": "Therefore, the most effective way to review my results is to compare the usefulness scores of both judges against one another."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "To do that, I can use the new comparison view in the evaluation report."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "From the evaluation report, I can open the comparison button and open my baseline evaluation."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "Here, I can review the scores of the two prompts side by side."
+  },
+  {
+    "timestamp": "18:01",
+    "content": "One thing that jumped out to me immediately is the discrepancy between usefulness scores of this review of Picture of Dorian Gray."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "It seems to me that the model may be judging too harshly on usefulness."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "The usefulness column of the experimental evaluation seems to corroborate my guess."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "I noticed that all the scores are either a 3 or a 2, which is way too harsh."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "I think what could help here is being more specific about how to grade each scoring dimension."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "To do that, I'll need to make some changes to my experimental evaluation."
+  },
+  {
+    "timestamp": "18:37",
+    "content": "But before I can make changes to the experimental evaluation, I apply the new prompt for my experimental evaluation into the baseline."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "This ensures that there's only one different variable, namely the changes to my scoring dimensions."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "For relevance, I provided a slightly longer description, which emphasizes the need for a genre tag."
+  },
+  {
+    "timestamp": "18:58",
+    "content": "And here's the one for usefulness, which emphasizes being more critical of overly specific tags."
+  },
+  {
+    "timestamp": "19:05",
+    "content": "And once again, I'll wait for my evaluation to run."
+  },
+  {
+    "timestamp": "19:09",
+    "content": "And these scores both improved greatly over the baseline."
+  },
+  {
+    "timestamp": "19:13",
+    "content": "It looks like these specific scoring dimensions are going to be a lot more helpful."
+  },
+  {
+    "timestamp": "19:18",
+    "content": "But we've still not quite hit our alignment goals."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "So now I need to do another comparison to see where we might be able to make improvements."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "To analyze further, I've gone back to the experimental evaluation."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "I want to review the results in detail, so I'll bring up the Assistant view."
+  },
+  {
+    "timestamp": "19:37",
+    "content": "Thumbing through the results brought me to this review of Moby Dick."
+  },
+  {
+    "timestamp": "19:41",
+    "content": "My relevance score is starting to align."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "But my usefulness score could still use some work."
+  },
+  {
+    "timestamp": "19:48",
+    "content": "While some results are looking promising, others are still way off."
+  },
+  {
+    "timestamp": "19:52",
+    "content": "This review of Frankenstein continues to give our judge trouble."
+  },
+  {
+    "timestamp": "19:57",
+    "content": "What I think our judge needs now is some examples of the way I judge things,"
+  },
+  {
+    "timestamp": "20:02",
+    "content": "which would give it a pattern for how to judge according to my scale."
+  },
+  {
+    "timestamp": "20:07",
+    "content": "That means we need another round of hill climbing."
+  },
+  {
+    "timestamp": "20:10",
+    "content": "I've already added the new score dimensions to my baseline evaluation."
+  },
+  {
+    "timestamp": "20:15",
+    "content": "Now I've reworked my main judge prompt to give it more detail about the goal of the tag generation feature"
+  },
+  {
+    "timestamp": "20:22",
+    "content": "to help ground the model in the problem space."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "From there, I've written out a number of examples for the model to use as a guideline for reviewing."
+  },
+  {
+    "timestamp": "20:31",
+    "content": "I've made sure to only give the model a few examples."
+  },
+  {
+    "timestamp": "20:35",
+    "content": "By giving it a longer list, I'm prone to overfit the alignment score,"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "which would make it hard to tell if my judge is actually aligned with me."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "Now that it's a fair comparison, I need to run my evaluation and view the results."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "And now finally, my scores are over my expected value,"
+  },
+  {
+    "timestamp": "20:52",
+    "content": "which means I've finally passed and I can exit out of the loop."
+  },
+  {
+    "timestamp": "20:56",
+    "content": "This now means I can be more confident that when my model judge provides ratings,"
+  },
+  {
+    "timestamp": "21:02",
+    "content": "I can confidently say that the tags are good or bad according to my standards."
+  },
+  {
+    "timestamp": "21:07",
+    "content": "That means I can now put my judge to work on evaluating BookTracker's book tagging service."
+  },
+  {
+    "timestamp": "21:13",
+    "content": "So far, we've seen how to hill climb on prompts, making them incrementally better and better."
+  },
+  {
+    "timestamp": "21:19",
+    "content": "Now, I'd like to show you how to improve your feature through something other than your prompts."
+  },
+  {
+    "timestamp": "21:24",
+    "content": "To generate its tags, BookTracker uses the on-device model."
+  },
+  {
+    "timestamp": "21:29",
+    "content": "We use it because readers tend to be in all kinds of places when cataloging books."
+  },
+  {
+    "timestamp": "21:34",
+    "content": "So using the on-device model ensures that they can generate tags no matter where they are."
+  },
+  {
+    "timestamp": "21:39",
+    "content": "What I want to do is give the model some more context about the book it's generating tags for."
+  },
+  {
+    "timestamp": "21:46",
+    "content": "I think the additional context will help the model generate more relevant and useful tags."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "Better still, BookTracker already has the data needed for this because we store the author's name and book title when they write their review."
+  },
+  {
+    "timestamp": "22:01",
+    "content": "So, to help the tag generator, I've created a tool to get additional information on the book,"
+  },
+  {
+    "timestamp": "22:07",
+    "content": "which provides the book title and author if they are available."
+  },
+  {
+    "timestamp": "22:11",
+    "content": "Adding this tool is a form of hill climbing because we're attempting to improve the quality of our feature through an incremental change."
+  },
+  {
+    "timestamp": "22:19",
+    "content": "For this evaluation, we will use the BookTagging evaluation, now with an improved model judge."
+  },
+  {
+    "timestamp": "22:27",
+    "content": "But I need a way to compare the quality of my feature without the tool to the quality of my feature with it."
+  },
+  {
+    "timestamp": "22:33",
+    "content": "So to do that, I'll need to make a change to BookTaggingService."
+  },
+  {
+    "timestamp": "22:37",
+    "content": "BookTaggingService now takes a list of tools as input."
+  },
+  {
+    "timestamp": "22:41",
+    "content": "I also set the default to an empty array, so my existing evaluation won't need any changes."
+  },
+  {
+    "timestamp": "22:48",
+    "content": "But now I need to write a new evaluation to compare the service with the tool to the service without the tool."
+  },
+  {
+    "timestamp": "22:54",
+    "content": "And here is the new evaluation I wrote."
+  },
+  {
+    "timestamp": "22:57",
+    "content": "It's exactly the same as the other evaluation."
+  },
+  {
+    "timestamp": "23:00",
+    "content": "The only difference is I now pass my new lookup tool into the tools array."
+  },
+  {
+    "timestamp": "23:05",
+    "content": "So all I have to do is define two instances of my evaluation, one without the tool and one with it."
+  },
+  {
+    "timestamp": "23:14",
+    "content": "And now let's evaluate it and determine if I'm ready to ship."
+  },
+  {
+    "timestamp": "23:19",
+    "content": "Well, my service which uses the tools met all of my expectations."
+  },
+  {
+    "timestamp": "23:25",
+    "content": "So things are looking good."
+  },
+  {
+    "timestamp": "23:27",
+    "content": "But my dataset for BookTracker contains only 13 book and review pairs."
+  },
+  {
+    "timestamp": "23:33",
+    "content": "That doesn't cover the wide variety of books and reviews a user might submit for tagging."
+  },
+  {
+    "timestamp": "23:39",
+    "content": "In addition, I was looking at the results of the evaluation of my service with the tool."
+  },
+  {
+    "timestamp": "23:44",
+    "content": "I can see that the service with the tool is performing better."
+  },
+  {
+    "timestamp": "23:48",
+    "content": "However, it does seem like my tool isn't being called in all the places I think it needs to."
+  },
+  {
+    "timestamp": "23:53",
+    "content": "What I really need is a way to tell whether or not my tool has been called in the right situations."
+  },
+  {
+    "timestamp": "23:59",
+    "content": "Fortunately, the evaluations framework can help with both of those problems."
+  },
+  {
+    "timestamp": "24:04",
+    "content": "To learn more about our APIs for evaluating tool usage and generating comprehensive datasets,"
+  },
+  {
+    "timestamp": "24:10",
+    "content": "take a look at the Create Robust Evaluations for a Gentic Apps video."
+  },
+  {
+    "timestamp": "24:14",
+    "content": "There, you'll learn about tool call evaluators and how to use the Sample Generator API to test a wide variety of use cases your app might see."
+  },
+  {
+    "timestamp": "24:23",
+    "content": "Before we wrap up, I'd like to recap what we covered today."
+  },
+  {
+    "timestamp": "24:27",
+    "content": "Hill climbing works best when you focus on making one change at a time."
+  },
+  {
+    "timestamp": "24:32",
+    "content": "To do this, treat every iteration of the loop like a science experiment."
+  },
+  {
+    "timestamp": "24:36",
+    "content": "Being able to isolate your changes will help you to understand how each part of your feature contributes to the overall quality."
+  },
+  {
+    "timestamp": "24:45",
+    "content": "Knowing how each part works individually will also help you to know where you might need to make changes to resolve a bug or unwanted pattern later down the line."
+  },
+  {
+    "timestamp": "24:54",
+    "content": "Second, this process takes time. Not every change you make will result in positive change."
+  },
+  {
+    "timestamp": "25:01",
+    "content": "However, failed experiments tell you just as much as successful ones."
+  },
+  {
+    "timestamp": "25:06",
+    "content": "Third, good experiments require creativity."
+  },
+  {
+    "timestamp": "25:10",
+    "content": "In an intelligent feature, there are so many things you can change."
+  },
+  {
+    "timestamp": "25:15",
+    "content": "In your feature, you can change the instructions, the tools, as well as the model or models you use to generate responses."
+  },
+  {
+    "timestamp": "25:25",
+    "content": "On the evaluation side, you can change the dataset, aggregation methods, and even the evaluators themselves."
+  },
+  {
+    "timestamp": "25:33",
+    "content": "Everything is fair game."
+  },
+  {
+    "timestamp": "25:35",
+    "content": "Make sure to consider all of these when thinking about how to hill climb."
+  },
+  {
+    "timestamp": "25:39",
+    "content": "Finally, watch out for drift."
+  },
+  {
+    "timestamp": "25:42",
+    "content": "It can feel a bit meta to evaluate your evaluators, but a well-tuned model evaluator will save you time in the long run."
+  },
+  {
+    "timestamp": "25:50",
+    "content": "Models can generate ratings much faster than humans can."
+  },
+  {
+    "timestamp": "25:54",
+    "content": "So by keeping them aligned, you get useful signal as your dataset grows to cover more and more use cases."
+  },
+  {
+    "timestamp": "26:02",
+    "content": "If you want to learn more about what we've covered here today, you can review the BookTracker app I've been using, as well as the evaluations for aligning the model judge."
+  },
+  {
+    "timestamp": "26:12",
+    "content": "You can also get a comprehensive rundown of all of our new APIs on the developer documentation website."
+  },
+  {
+    "timestamp": "26:18",
+    "content": "Thank you for taking the time to learn about how to improve your evaluation scores by hill climbing."
+  },
+  {
+    "timestamp": "26:24",
+    "content": "Your dedication will pay off as you deliver high-quality experiences to your users."
+  },
+  {
+    "timestamp": "26:29",
+    "content": "Thanks for watching and happy hill climbing."
+  }
+]

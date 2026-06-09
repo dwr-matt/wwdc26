@@ -1,0 +1,1294 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "."
+  },
+  {
+    "timestamp": "0:07",
+    "content": "Hi there. I'm Christopher Webb, an engineer on the Machine Learning Research team,"
+  },
+  {
+    "timestamp": "0:11",
+    "content": "and I'm excited to talk to you about a new way to use the Foundation Models framework."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "We previously introduced the Foundation Models framework to give you access to Apple's on-device language model."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "And now, we're opening up the framework to work with nearly any LLM, local or server-based."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "This allows anyone from large companies to individual developers"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "to easily build their own model integration on top of the framework."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "The on-device system language model has been rebuilt from the ground up."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "It's smarter, better at instruction following, and accepts images directly in your prompts."
+  },
+  {
+    "timestamp": "0:46",
+    "content": "Beyond the system model, we've added three more options."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "Private Cloud Compute brings you the model behind many Apple intelligence features."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "Now with Reasoning, a 32,000 token context window,"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "and the privacy guarantees you'd expect."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "Core AI lets you run local models efficiently and take advantage of the A&E."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "And MLX unlocks the thousands of models available via the MLX community on Hugging Face."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "And because these are built on top of a brand new public protocol,"
+  },
+  {
+    "timestamp": "1:18",
+    "content": "developers can bring frontier AI models into their apps using the same framework."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "Anthropic and Google will soon extend the Foundation Models framework"
+  },
+  {
+    "timestamp": "1:27",
+    "content": "with Swift and Google."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "With Swift packages of their own, making state-of-the-art,"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "Claude and Gemini models available to all Swift developers."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "Whichever model you use, Apple's, yours, or the community's,"
+  },
+  {
+    "timestamp": "1:39",
+    "content": "you call them the same way, because every model conforms to the language model protocol."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "For app developers, I'll show you how to call any of these models through the same familiar API."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "And for model providers, I'll walk you through how to create a language model package of your own."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "But first, let me show you a preview of the application."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "Here's a preview of how easy it is to use."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "Here's our on-device Foundation Model."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "Create it, pass it into a session, and call the respond function."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "And there are even more model options."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "If you need more horsepower, try Private Cloud Compute."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "Just swap the model."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "If you want to ship your own model, just point Core AI at your resources."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "And if you want to try the latest open source models,"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "simply pass in a model ID and let the framework handle the rest."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "And using a model built on top of the language model protocol"
+  },
+  {
+    "timestamp": "2:31",
+    "content": "means you get access to all kinds of great Foundation Model features, like dynamic profiles."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "For an overview of everything we're adding, check out what's new in the Foundation Models framework."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "The reason it's possible to swap out models so easily is that every language model honors the same protocol."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "The system language model, PCC, Core AI, MLX, and those built by the community."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "If you're a model provider, you should join the fun. Let me show you how."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "There are four steps to bring your model into the framework."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "We'll start with packaging."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "A well-crafted Swift package makes it easy for developers to get started."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "Then you implement the protocol by defining the types that describe your model and the executor that runs it."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Next, we'll talk about how to implement authentication for server-based models, including some best practices."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "And finally, customization."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "If you need to tailor the protocol's building blocks to meet your needs, you can do that."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "From attaching response metadata all the way to defining entirely new modalities."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "First up, packaging."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "We recommend using Swift Package Manager so that developers can simply add your package as a dependency of their app."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "We'll cover how to set up package.swift and how to publish a release."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "An important consideration is which platforms you'll want to support."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "Foundation Models supports iOS."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "MacOS."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "VisionOS."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "And watchOS."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "Allowing developers to create a variety of experiences."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "And we recommend you try to do the same."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "And because the Foundation Models framework is being released as open source, your package could also be useful to developers who deploy Swift on their servers."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "So consider supporting Linux too."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "Third, your dependencies."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "Every dependency translates to bytes that a developer ships to their users."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Carefully consider what dependencies are linked by your package."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Publishing your package is as easy as creating a git tag."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Swift Package Manager is decentralized so your repo URL is your distribution channel."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Developers can paste the URL into Xcode and start integrating your model into their apps."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "For more, see Creating Swift Packages."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "With the package in place, we move on to the protocol."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "The protocol is the bridge between your model and the Foundation Models framework."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "The protocol has a lot of features."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "It's a lot of different things."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "It's a lot of different things."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "It's a lot of different things."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "The protocol has two key pieces."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "The first is language model."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "It describes the model to the framework."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "It declares what the model can do through capabilities."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "It provides the configuration the framework needs to set up the model's executor."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "The second piece is language model executor, where the work happens."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "It has an initializer that takes a configuration, a pre-warn function for preparing resources ahead of the first request, and a respond function that streams generalize the"
+  },
+  {
+    "timestamp": "5:26",
+    "content": "generation back to the session."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "The configuration is what links the two types."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "The model provides it and the framework uses it to construct the executor."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "Now you've seen the protocol in code, let's build an intuition for"
+  },
+  {
+    "timestamp": "5:40",
+    "content": "how the model's configuration links it to the executor."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Each session holds an executor store."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "When model one arrives, the framework checks the store using the model's"
+  },
+  {
+    "timestamp": "5:51",
+    "content": "configuration, but there's no matching executor."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "So the language model session creates a new executor and stores it."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "Model two produces the same configuration and because configuration is hashable,"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "the framework knows it matches and resolves to the same executor."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "The configuration is the lookup key, not the model."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "Model three produces a different configuration, so"
+  },
+  {
+    "timestamp": "6:17",
+    "content": "it gets its own executor."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "Each unique configuration maps to exactly one executor in the store."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "So what does this look like in your code?"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "Here's a language model implementation."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "It declares its capabilities and returns the configuration the framework uses"
+  },
+  {
+    "timestamp": "6:34",
+    "content": "to find its executor."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "The executor is where the real work lives, loading weights, managing resources, and"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "streaming tokens back to the session."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "The framework constructs it from a configuration your model provides,"
+  },
+  {
+    "timestamp": "6:48",
+    "content": "then hands the model in on every request."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "That split is what keeps your model trivial."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "That split is what keeps your model trivial."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "That split is what keeps your model trivial."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "That split is what keeps your model trivial."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "That split is what keeps your model trivial."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "That split is what keeps your model trivial."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "That split is what keeps your model trivial."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "When the session deallocates, the store goes with it."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "Every stored executor gets released."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "Your DNNIT runs, weights are freed, and connections closed, all automatically."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "You don't write any of that teardown code yourself."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "Within that life cycle, your executor has one more function, pre-warn."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "Before a request arrives, the developer can ask the framework to pre-warn."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "It's your chance to do expensive setup ahead of time, like loading weights,"
+  },
+  {
+    "timestamp": "7:21",
+    "content": "opening connections, or anything that would otherwise slow down the process."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "or anything that would otherwise slow down the process."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "Let's look at how to use it."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "One approach is to put that setup in a private helper that loads the weights once and caches them."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "Pre-warn calls the helper eagerly, so the weights are ready before the first request arrives."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "But pre-warn isn't guaranteed to run."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Either way, weights load exactly once."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "And if your executor has no expensive setup, like a server-backed model,"
+  },
+  {
+    "timestamp": "7:49",
+    "content": "pre-warn can simply be a no-op."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "Once your respond function is loaded, it will load the weights."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "It travels throughing the looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping looping"
+  },
+  {
+    "timestamp": "8:23",
+    "content": "But here's what's happening behind the scenes."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "The framework hands you transcript entries,"
+  },
+  {
+    "timestamp": "8:29",
+    "content": "but your inference engine can only process its native types."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "So your executor sits in the middle,"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "translates the entries into messages your inference engine understands,"
+  },
+  {
+    "timestamp": "8:40",
+    "content": "and passes them along for inference."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "When your inference engine answers, the same translation runs in reverse."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Your messages back to transcript entries streamed to the session."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "For now, let's focus on the transcripts that flow in and out of the executor."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "A transcript is the conversation so far, expressed as a sequence of entries."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Each entry plays a role."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "Instructions set by the developer, prompts from the user,"
+  },
+  {
+    "timestamp": "9:11",
+    "content": "tool calls your model made and the outputs they returned,"
+  },
+  {
+    "timestamp": "9:15",
+    "content": "and the responses your model has produced."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "Zooming back out, your executor's job is to turn each transcript"
+  },
+  {
+    "timestamp": "9:23",
+    "content": "entry into a message your inference engine knows how to read."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "So, what's inside a transcript?"
+  },
+  {
+    "timestamp": "9:30",
+    "content": "Foundation Models defines these six entry types."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "Your model defines its own roles."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "Your executor's job is to map between the two, no matter the shape your model takes."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "In this example, instructions, prompt, and response map to SystemUser and Assistant."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Here, tool calls, tool outputs, and reasoning all map to Assistant too."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "They're part of what the model did during its turn, and since this model doesn't have"
+  },
+  {
+    "timestamp": "9:57",
+    "content": "dedicated roles for these, we just map them to Assistant."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "If your model does define something like a dedicated tool role, you can route there instead."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "Either way, your executor stays in control."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "Your executor reads the conversation, but every request carries more than just history."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "It carries the developer's intent for how the model should respond, expressed through"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "two additional properties."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Every request object can include context options and generation options."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "Context options control what goes into the prompt, like the reasoning level you want"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "the model to use or a response schema."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "Generation options control the decoder loop, sampling strategy, temperature, and maximum"
+  },
+  {
+    "timestamp": "10:40",
+    "content": "response length."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "Here's what that looks like inside Respond."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Both types of options come in on the request, and your executor pulls them out and packs"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "them along when calling the model."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "So that's everything coming in."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Transcript, options, all parsed."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "Now for the half your developer sees, the response."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "On the response side, there are a few things to send."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "The text your inference engine generates, any tool calls or reasoning, and the metadata"
+  },
+  {
+    "timestamp": "11:08",
+    "content": "that travels with them."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "They all go out as events on the channel."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "Each chunk that the inference engine emits, a token or tool call fragment, becomes an"
+  },
+  {
+    "timestamp": "11:17",
+    "content": "event."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "A text delta."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "A tool call dot."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "A delta."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "And so on."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "The framework writes them to the transcript."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "Foundation models exposes both one-shot and streaming responses, but the implementation"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "is always streaming."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "The one-shot API just collects the deltas internally."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "So far, we've looked at this from your model's side."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "Events going out as the model produces them."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "But put yourself in the developer's seat for a moment."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "They've called Respond and they're waiting."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "What did they need first?"
+  },
+  {
+    "timestamp": "11:47",
+    "content": "Here's your executor's side of the handshake with the developer."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "There's a deliberate order to it."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "First, a metadata update."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Model and request IDs the developer can use for logging and debugging."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "Then a usage update."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "Prompt token counts for accounting."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "Sending these up front means the developer isn't waiting through the whole stream to"
+  },
+  {
+    "timestamp": "12:06",
+    "content": "learn what each request costs."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "Finally, for each token your model produces, send a text delta the moment it arrives."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "The framework streams those deltas to the session as they arrive, so users see the response"
+  },
+  {
+    "timestamp": "12:19",
+    "content": "appear word by word instead of all at once."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "Earlier, we saw how the framework caches executors by configuration."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "If your integration is stateful, holding a kvcache or persistent session between calls,"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "that caching is what lets you minimize network churn and avoid redoing work."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "Now let's look at how to design yours to take advantage of that, and how your executor"
+  },
+  {
+    "timestamp": "12:41",
+    "content": "can preserve work across calls."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "Your executor receives the full transcript on every call to Respond."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Here's what you processed last time, an instruction, a prompt, and the response you generated."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "When the next call comes in, you compare the new transcript to the one you saved from last"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "time."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "In most cases, new entries have simply been appended, a new prompt after the last response."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "When that's the case, you can preserve your existing state and only process what's new."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "But sometimes, your comparison finds that entries have been removed or modified, for"
+  },
+  {
+    "timestamp": "13:17",
+    "content": "example when the developer has a new call."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "And that's when you can save context."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "You can also save context by using the"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "!"
+  },
+  {
+    "timestamp": "13:48",
+    "content": "If a developer sets a token limit, but also specifies a schema with required fields, there"
+  },
+  {
+    "timestamp": "13:54",
+    "content": "might not be a way to satisfy both."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "So you throw."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "Foundation Models ships language model error for exactly these cases."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "Context window overflows, rate limits, refusals, and more."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "Throw one of these and any developer who's used the framework already knows how to handle"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "it."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "When the built-in language model error cases don't cover your situation, define your own"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "error type."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "Some failures only make sense in the context of your service."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Your subscription tiers, your features, your account states."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "A purpose-built case name carries the intent, so a developer catching it knows exactly what"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "happened."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "Custom errors are powerful, and sometimes you need them."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "But each one is a new case developers must learn, catch, and handle in their app."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Try to use a built-in language model error when it fits, and save the custom ones for"
+  },
+  {
+    "timestamp": "14:44",
+    "content": "failures only your service can produce."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "We've finished implementing the"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "protocol requirements."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "Let's discuss how to handle authentication next."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Your job as a package author is to make it easy for developers to do the right thing."
+  },
+  {
+    "timestamp": "14:58",
+    "content": "If your initializer takes an API key as a string, developers will be tempted to take"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "the path of least resistance."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "Instead, help developers do the right thing by offering a token provider or sign-in flow."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "And if your package fetches access tokens on behalf of developers, make sure to persist"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "them securely using Keychain."
+  },
+  {
+    "timestamp": "15:17",
+    "content": "Credential handling is only half the story."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "Device attestation is the other half."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "If you're shipping a cloud-based language model package, this is worth a deep look."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "This related session walks through verifying the device, catching tampered builds, signing"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "payloads, and using Apple's fraud signal to keep bad traffic off your service."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "Check it out and secure your apps with Apatest."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "You've packaged your model, implemented the protocol, and handled authentication."
+  },
+  {
+    "timestamp": "15:46",
+    "content": "That means you've got a solid package for your language model with all the fundamentals"
+  },
+  {
+    "timestamp": "15:50",
+    "content": "covered."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "Now it's time to differentiate."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "The protocol gives you room to shape language model session around the abilities only your"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "model offers."
+  },
+  {
+    "timestamp": "16:00",
+    "content": "Response metadata is a lightweight option to attach additional information to your responses"
+  },
+  {
+    "timestamp": "16:04",
+    "content": "and give developers clear ways to access it."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "You can attach your own custom metadata to the response."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "Here, after streaming completes, our executor sends tokens per second and time-to-data."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "We recommend providing utilities or documentation that make it easy for developers to work"
+  },
+  {
+    "timestamp": "16:23",
+    "content": "with your metadata."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "Clear keys, typed accessors, whatever makes sense."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "Underneath, metadata is just a dictionary."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "It can contain strings, numbers, and other built-in types."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "But in some cases, you may need something more flexible."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "Custom segments are the answer."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "You'll define a new segment type, receive it in your executor, and stream-referenced,"
+  },
+  {
+    "timestamp": "16:45",
+    "content": "and then send it to your executor."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "The system results back through the same channel, and the developer never has to leave language"
+  },
+  {
+    "timestamp": "16:50",
+    "content": "model session to use them."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "Custom segment types let you extend the protocol."
+  },
+  {
+    "timestamp": "16:55",
+    "content": "When a new modality comes along, audio, video, whatever's next, developers have a type-structured"
+  },
+  {
+    "timestamp": "17:00",
+    "content": "way to send that data to your model."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "Here's how it works."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "First, you'll define a type that conforms to custom segment."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "Because custom segments are required to be prompt-representable, developers can pass"
+  },
+  {
+    "timestamp": "17:14",
+    "content": "it directly in their prompts."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "Just like text."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "In your executor, you'll receive this as a custom segment in the transcript, alongside"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "the text entries you're already handling."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "When your model responds, you emit the result back through the channel as a custom segment"
+  },
+  {
+    "timestamp": "17:29",
+    "content": "update."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "The segment ID controls whether you're adding a new segment or updating one you've already"
+  },
+  {
+    "timestamp": "17:35",
+    "content": "started streaming."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "This gives you full control over how results stream into the app."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "With custom segments in hand, there's one more thing worth calling out, a recommendation"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "for server-side tools."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "Server-side tools are capabilities your model runs on its own, like web search, code execution,"
+  },
+  {
+    "timestamp": "17:54",
+    "content": "or image generation."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "The model invokes them, the server runs them, and your executor watches the results stream"
+  },
+  {
+    "timestamp": "18:01",
+    "content": "in."
+  },
+  {
+    "timestamp": "18:02",
+    "content": "We'll walk through three levels of detail, each surfacing more of the tool's work, using"
+  },
+  {
+    "timestamp": "18:06",
+    "content": "web search as an example."
+  },
+  {
+    "timestamp": "18:10",
+    "content": "Server-side tools are named type values on your model."
+  },
+  {
+    "timestamp": "18:12",
+    "content": "The developer constructs the model with the tools that they're using."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "The model is then used to create a new model."
+  },
+  {
+    "timestamp": "18:14",
+    "content": "The developeringinginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginginging"
+  },
+  {
+    "timestamp": "18:44",
+    "content": "In addition to grounding the answer on the tool's output, you can also attach additional"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "metadata to the response."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "When a text delta carries metadata, like a citation, forward both to the channel, and"
+  },
+  {
+    "timestamp": "18:58",
+    "content": "the framework attaches the metadata to the text segment in the transcript."
+  },
+  {
+    "timestamp": "19:03",
+    "content": "And finally, you can choose to surface the tool's work itself."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "With custom segments, you forward the tool's structured output to the channel, alongside"
+  },
+  {
+    "timestamp": "19:12",
+    "content": "the text and any metadata, giving apps everything the model produced along the way."
+  },
+  {
+    "timestamp": "19:18",
+    "content": "Through one channel, the events you forward, the metadata you attach, and the custom segments"
+  },
+  {
+    "timestamp": "19:23",
+    "content": "you design, server-side tools shape what apps using your package can show their users."
+  },
+  {
+    "timestamp": "19:30",
+    "content": "There's one more thing to keep in mind."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "Whether you're choosing a package or shipping one, make sure everyone in the chain understands"
+  },
+  {
+    "timestamp": "19:36",
+    "content": "the privacy implications of the model behind it."
+  },
+  {
+    "timestamp": "19:39",
+    "content": "On-device and cloud-based models have very different privacy implications."
+  },
+  {
+    "timestamp": "19:42",
+    "content": "You can't just build a model with a lot of privacy characteristics, and your users deserve"
+  },
+  {
+    "timestamp": "19:44",
+    "content": "to know which they're getting."
+  },
+  {
+    "timestamp": "19:47",
+    "content": "You've seen how to bring your model to the framework."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "These sessions show what developers will build with it."
+  },
+  {
+    "timestamp": "19:53",
+    "content": "Check out Integrate On-Device AI Models into Your App Using Core AI for bundling local"
+  },
+  {
+    "timestamp": "19:59",
+    "content": "models directly into an app."
+  },
+  {
+    "timestamp": "20:02",
+    "content": "Build with the new Apple Foundation model on private cloud compute goes deep on server-scale"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "inference with Apple's privacy guarantees."
+  },
+  {
+    "timestamp": "20:09",
+    "content": "And build agentic app experiences with the Foundation model."
+  },
+  {
+    "timestamp": "20:12",
+    "content": "The new Amazon Models framework shows how developers use dynamic profiles to build multi-step,"
+  },
+  {
+    "timestamp": "20:17",
+    "content": "tool-using workflows on top of models like yours."
+  },
+  {
+    "timestamp": "20:22",
+    "content": "We're excited about what's ahead."
+  },
+  {
+    "timestamp": "20:23",
+    "content": "We hope to see a thriving ecosystem of language model packages, giving Swift developers the"
+  },
+  {
+    "timestamp": "20:28",
+    "content": "freedom to choose the model that's right for their app."
+  },
+  {
+    "timestamp": "20:31",
+    "content": "We can't wait to see what you build."
+  }
+]

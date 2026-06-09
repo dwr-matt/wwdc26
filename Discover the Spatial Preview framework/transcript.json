@@ -1,0 +1,702 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Quincy German and I'm a software engineer on the Vision OS team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "One of the features I use the most on Apple Vision Pro is Mac Virtual Display, which lets me work on my Mac through a virtual screen provided by Vision Pro."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "In macOS and Vision OS 27, it's even easier to preview content from Mac to Vision Pro."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "I'm excited to present Spatial Preview, a framework that lets people leverage the spatial computing capabilities of Vision OS when working with content on their Mac."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "You can check out the Spatial Preview framework in action with the Preview app for macOS, alongside other features to help people work with spatial content, including 3D content editing, photorealistic rendering, camera viewpoints, and spatial media output like Apple immersive video frames and spatial photos."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "Using Mac Virtual Display, people can share content seamlessly to Vision Pro."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "On Vision OS, the Quick Look app receives this content and now allows them to work immersively, like moving around the different cameras set up for this living room scene."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "These are tools that are very useful to get a sense of scale and layout of a 3D design, like this one."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "With Spatial Preview, people can now extend content from their Mac into the world around them."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "And these features aren't just available in the Preview app."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "They're also exposed as an API for you, so you can augment new or existing macOS applications to take advantage of the power of Vision Pro."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "These tools enable dynamic workflows with spatial content, including live synchronization and editing across devices."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "With real-time synchronization, apps like Cinema 4D and SketchUp are transforming the creative process, unlocking real-time collaborative 3D workflows, like iterating on material changes live."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "And in this session, I'm going to cover how you can too."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "I'll start with an overview of the framework, designed for developers building content creation tools or any app that works with spatial content."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "Next, I'll walk through an example workflow showing how to share and update documents, like Apple immersive video frames, in place."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "Lastly, I'll show how you can create apps that fully immerse people in the 3D content they're working on, live, by using Universal Scene Description, which is a format used to describe 3D scenes."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "By the end of this session, you'll have everything you need to leverage the spatial preview framework and enable people to work with content from their Mac on Vision OS."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "Now, let's take a look at the components provided by the framework in order to get a sense of just how easy it is to set up."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "The first step is selecting an endpoint that points to a device to share to."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "If someone's actively using Mac Virtual Display, it's easy to use the device that's already connected."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "Alternatively, you can add the device picker UI to your app so people can pick from any nearby Vision Pro on the same iCloud account."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "Next, create a spatial preview session for the content."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "There are two types of preview sessions."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "Document preview sessions cover types like spatial photos, videos, and document types like PDF."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "USD preview sessions handle 3D content."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Once the session starts, Quick Look is launched on Vision Pro and the content your app provides to the session appears."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "No code is required on Vision OS to set this up."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "Now that you have an overview of how a spatial preview session works, let's look at an example of how to send and update documents with document preview."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "In this example, I'll take a still from an Apple immersive video, which is generated out of the preview app on Mac."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "Then, I'll use the Mac Virtual Display endpoint to start a document preview session."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "I'll then provide the image to the session so it appears in Quick Look."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "Let's look at the code to set this up."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "First, create a connected spatial endpoint observer to obtain the spatial preview endpoint from Mac Virtual Display."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Then, create a document preview session, specifying the document type and a name for the session."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "With the returned endpoint, start the session on the selected device and provide the content URL."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "Remember, Mac Virtual Display may not always be active,"
+  },
+  {
+    "timestamp": "4:23",
+    "content": "so consider integrating the spatial preview device picker as a view in your UI to select a different device."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "Use a sheet in SwiftUI to control when it appears."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Then, proceed to create the document preview session, just as you saw previously with the device endpoint selected in the UI."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "It's this easy to get started with spatial preview."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "Let's see the result."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Putting the code I wrote into a button in the UI launches the content on Vision OS when pressed,"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "and I can view it in immersive mode."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "This is pretty cool."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "Let's take this one step further and build a gallery of immersive architectural renderings."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "When you call Update Contents, you're reusing the same scene that was launched when you started the session."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "If you make a new document preview session and call Start, that will launch a new scene."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "So for the gallery view, I'm going to want to leverage Update Contents to ensure I reuse the same scene."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "In this view, I'll create a row of buttons for all the video frames in the gallery,"
+  },
+  {
+    "timestamp": "5:25",
+    "content": "and make the buttons call Update Contents on the session to swap to a different file when selected."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "I also set up a task that observes the session's state."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "If the scene is closed on Vision OS, I'll receive a state change here that the session has been validated."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "When you're done with the session, call Close to end it."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Vision OS will automatically dismiss that scene."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "Now, the gallery switches between immersive renderings live within the same scene using Document Preview Session's Update Contents function."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "This is a great way for people to review design renders and get a better sense of the content they're working on at scale."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "Beyond Apple Immersive Video, many other content types work well with Spatial Preview,"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "including spatial photos, PDFs, standard images and files, and also 3D content."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "Now that you've seen how easy it is to send and update documents,"
+  },
+  {
+    "timestamp": "6:16",
+    "content": "let's look at how to work with 3D content using USD Kit with Spatial Preview."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "If you're new to USD, I recommend starting with the video Understand USD Fundamentals."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "And to learn how to use the new Swift USD Kit framework,"
+  },
+  {
+    "timestamp": "6:31",
+    "content": "I recommend watching Discover USD Kit and What's New in OpenUSD."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "In this section, I'm going to cover how to use USD Kit to work with 3D content from your macOS app on Vision OS."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "I'll go over how easy it is to set up a USD preview session and start navigating a 3D scene,"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "looking through cameras and applying material overrides."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "I'll then cover how to edit content and how people can interact and make changes to USD on Vision OS,"
+  },
+  {
+    "timestamp": "6:59",
+    "content": "including adding annotations and moving objects around."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "Last, I'll go over the events and observable properties of a spatial preview session,"
+  },
+  {
+    "timestamp": "7:07",
+    "content": "including events for animation playback and session synchronization progress,"
+  },
+  {
+    "timestamp": "7:12",
+    "content": "and how to customize the features available in a session."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "Creating a USD preview session is similar to a document preview session,"
+  },
+  {
+    "timestamp": "7:20",
+    "content": "except that the content is a USD Kit stage."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "When you call session start, a scene opens on Vision OS,"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "and the USD content appears in a volumetric view."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "People can then choose to go into an immersive view to see it at full scale."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "Let's see what the code looks like to set this up."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "Just like with document sharing, begin by choosing a target device endpoint."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "Then, use USD Kit to load USD content into a stage."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "Provide that stage to a USD preview session,"
+  },
+  {
+    "timestamp": "7:49",
+    "content": "and then start the session on the selected device endpoint."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "The content appears in 3D on Vision OS in this bounded view."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "I can rotate the scene around to inspect it,"
+  },
+  {
+    "timestamp": "8:01",
+    "content": "and then go immersive to see it at full scale."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "There are some cameras set up in this scene, as you saw before,"
+  },
+  {
+    "timestamp": "8:09",
+    "content": "so selecting one here will move me to that viewpoint."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "I can also look more closely at the geometry"
+  },
+  {
+    "timestamp": "8:14",
+    "content": "by overriding the materials to be in wireframe mode."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "This is all functionality built into Vision OS when using Spatial Preview."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "No additional setup is required from your Mac app."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "USD scenes can contain incredibly high-fidelity content,"
+  },
+  {
+    "timestamp": "8:29",
+    "content": "which might be too complex to render on Vision Pro."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "By default, Spatial Preview automatically optimizes the USD content before sharing,"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "including mesh decimation, texture downsampling,"
+  },
+  {
+    "timestamp": "8:43",
+    "content": "and potential full scene reconstruction if necessary,"
+  },
+  {
+    "timestamp": "8:45",
+    "content": "all to ensure that it performs well on Vision Pro."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "If the scene needs to be reconstructed, it won't be editable,"
+  },
+  {
+    "timestamp": "8:52",
+    "content": "but people can still view it and add annotations."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "To opt out of this optimization,"
+  },
+  {
+    "timestamp": "8:58",
+    "content": "pass the unmodified parameter when creating the session."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "However, if optimization is disabled,"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "complex scenes may not be shareable to Vision Pro,"
+  },
+  {
+    "timestamp": "9:08",
+    "content": "and an error will be thrown from the start function."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "For guidance on how to reduce the rendering cost of your content,"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "check out the developer documentation."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "Now, let's see how editing USD content works on macOS and Vision OS."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "In a USD preview session, people can make changes from either device."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "A live USD stage is used to replicate content between macOS and Vision OS"
+  },
+  {
+    "timestamp": "9:31",
+    "content": "when calling regular USD kit APIs."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "This is very useful if someone wants to make changes to the content on their Mac"
+  },
+  {
+    "timestamp": "9:38",
+    "content": "and see them spatially on Vision OS,"
+  },
+  {
+    "timestamp": "9:40",
+    "content": "or capture the edits during a review session on Vision OS."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "Before jumping into code,"
+  },
+  {
+    "timestamp": "9:47",
+    "content": "let's go over some details of what a USD stage is and some USD terminology."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "A stage is composed of one or many layers,"
+  },
+  {
+    "timestamp": "9:56",
+    "content": "and layers contain USD prims."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "A USD prim is an object that can represent many different features"
+  },
+  {
+    "timestamp": "10:02",
+    "content": "like a 3D transformation or a mesh,"
+  },
+  {
+    "timestamp": "10:05",
+    "content": "and variant sets can swap in alternative data on a prim."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "I've set up some USD variants in this living room scene"
+  },
+  {
+    "timestamp": "10:12",
+    "content": "that change the position and rotation of the furniture using variant sets."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "When I select one of these variants in USD kit,"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "the stage is changed and the edits that move the furniture to different locations"
+  },
+  {
+    "timestamp": "10:23",
+    "content": "are applied and synchronized between macOS and Vision OS."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "The buttons along the toolbar here switch between variants on macOS,"
+  },
+  {
+    "timestamp": "10:31",
+    "content": "and the resulting furniture layout is reflected on Vision OS."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "I can also select a variant in the Quick Look menu and see this change on Mac."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "This is a great way to quickly iterate on content from Mac on Vision OS."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "Now, let's see how to listen for changes coming from Vision OS."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "Changes to this USD stage are automatically synchronized,"
+  },
+  {
+    "timestamp": "10:52",
+    "content": "and you can observe the updates happening in a session,"
+  },
+  {
+    "timestamp": "10:55",
+    "content": "like when someone adds an annotation using standard USD notices."
+  },
+  {
+    "timestamp": "10:59",
+    "content": "Here, I subscribe to objects did change notices"
+  },
+  {
+    "timestamp": "11:02",
+    "content": "that give information about which USD prim paths have changed."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "I can iterate through those paths and find annotations to update them in the UI."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "For a text annotation, you'll want information like author"
+  },
+  {
+    "timestamp": "11:16",
+    "content": "and a unique identifier for the annotation in addition to the actual text node."
+  },
+  {
+    "timestamp": "11:21",
+    "content": "Setting up annotation data in this way allows annotations to show up on Vision OS,"
+  },
+  {
+    "timestamp": "11:26",
+    "content": "as long as they are children of a USD prim specified as a document annotation group."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "In order to have USD prims be editable on Vision OS using gestures,"
+  },
+  {
+    "timestamp": "11:38",
+    "content": "they need to have the spatial editable metadata set on them."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "People can also easily set this up on their USD asset"
+  },
+  {
+    "timestamp": "11:45",
+    "content": "using preview on Mac OS."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Let's see this in action."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "When I apply an annotation on Mac OS, it appears on Vision OS."
+  },
+  {
+    "timestamp": "11:53",
+    "content": "And if I comment here, I like layout A, that is reflected back in the app on Mac OS."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "And since this furniture has spatial editable metadata, I can move it."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "Say I want to move this chair out the window."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "That would show up on Mac OS as well."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "Let's go over the events you can listen for,"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "and the options you can configure within a USD preview session."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "You can control what features are available in Quick Look on Vision OS using the option set on USD preview session start."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "By default, annotations, object manipulation, and USD export are all enabled."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "You can also subscribe to non-USD events like animation playback time via spatial preview API events."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "You can monitor the sharing progress of a session using progress reporter."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "This is useful if you'd like to display a loading bar on Mac OS while large data is synchronized over to Vision Pro."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "For example, here, I've hooked up the time and playback events provided by USD preview session."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "Now, I can hit the play button and see this hummingbird animate outside the window in both apps."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "When you adopt spatial preview in your app, you unlock so many new workflows for creators."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "And share play support is built in on Vision OS, so collaborators can join the same live session to review and edit spatial content simultaneously."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "Here, my friend Joy flagged an issue with my room layout, so I'll adjust it in real time."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Every participant's view updates immediately, eliminating the back and forth of traditional asset review."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "So, how can you get started with spatial preview today?"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "We recommend using the USD kit Swift APIs, as spatial preview works seamlessly with it."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "If you already have USD in your Mac app, you can set up bridging to transfer edits between your USD installation and USD kit."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "For more information, check out the spatial preview developer documentation."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "Next, explore how you can leverage each type of preview session, document preview session and USD preview session."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "They integrate easily into your Mac app."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "Whether you're looking to preview and update documents or work with 3D content immersively, it's only a few lines of code to get started."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "You can go even deeper with 3D using USD kit and spatial preview to support live editing of a USD stage, enabling real-time collaboration across devices, including over SharePlay."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "And finally, take advantage of asset review tools like material overrides, camera viewpoints, object manipulation, variants, and annotations."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "The team and I can't wait to see how your apps will take advantage of spatial preview."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "Whether you're making a creative app, content review tool, or something entirely new."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "Thanks for watching."
+  }
+]

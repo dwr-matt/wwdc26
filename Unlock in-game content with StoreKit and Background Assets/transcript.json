@@ -1,0 +1,726 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, I'm Sam, and I'm an engineer on the Storkit team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "In this session, I'll dive into new tools to help you create the best games on Apple platforms."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "First, I'll cover updates to background assets."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "Then, I'll introduce new Unity plugins to help deliver a great in-app purchase experience."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Finally, I'll review how to enhance your presence on the App Store and Apple Games app."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "I'll start with updates to background assets."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "Here's an app I've been working on called The Coast."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "It's a jam-packed game with many different levels to play."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "In addition to the game content, the app includes lots of audio, video, textures, and machine learning models."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "But these assets are only really needed at specific moments."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Rather than downloading all of the assets up front and taking up storage space,"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "Managed Background Assets saves your players time and storage."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "The system automatically downloads your asset packs when they're needed to provide a great gaming experience for players."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "And for apps on the App Store, Apple can host up to 200 gigabytes of assets per app,"
+  },
+  {
+    "timestamp": "1:14",
+    "content": "included in the developer program membership."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "Apple Hosted Background Assets is available starting with iOS, iPadOS, macOS, tvOS, and visionOS 26."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "For a deep dive on setup and API integration, check out the session,"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "Discover Apple Hosted Background Assets from WWDC25."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "In iOS 27, Managed Background Assets becomes even more powerful with localized asset packs."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "Localized asset packs greatly reduce the size of assets that players need to download"
+  },
+  {
+    "timestamp": "1:46",
+    "content": "by allowing the system to identify the player's preferred language selected in settings"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "and only deliver assets for your game in that language."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "If asset packs for the user-selected language are not provided,"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "the system automatically falls back to the closest language match."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "In the Coast, I set English as the primary language with French and German also available."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "Without localized asset packs, the system installs all of these assets to the player's device."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "After localizing my asset packs, if a player sets their system-wide language preference as German,"
+  },
+  {
+    "timestamp": "2:22",
+    "content": "the system only installs the German asset packs on their device."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "Localizing asset packs significantly decreases the storage that my game requires."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "If I select English-UK as my system language preference,"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "the system understands that an English-UK asset pack was not provided."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "As a fallback, the base language asset pack of the preferred user language is used,"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "which in this case defaults to English-US."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "In another scenario, if I select Spanish as my system language preference,"
+  },
+  {
+    "timestamp": "2:54",
+    "content": "the Coast did not provide Spanish asset packs and there is no similar regional variant available."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "So here, the system falls back to the primary app language, which is English."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "To support localized asset packs in your game,"
+  },
+  {
+    "timestamp": "3:09",
+    "content": "update your asset pack manifest JSON files with a language tag."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "If you're building a game on Steam, you may already manage your game's assets with depots."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "You can now more easily convert your Steam depots to asset packs to distribute with your game on Apple platforms."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "To use the Steam asset converter on macOS,"
+  },
+  {
+    "timestamp": "3:29",
+    "content": "install Xcode 27 and run xcrun.ba.package.convert on the command line."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Three arguments are passed in."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "The ID of the asset pack,"
+  },
+  {
+    "timestamp": "3:39",
+    "content": "the language ID if applicable,"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "and the desired download policy."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Pass your Steam manifest build script as input,"
+  },
+  {
+    "timestamp": "3:48",
+    "content": "and an asset pack manifest with the specified name will be output."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "The same tool is coming soon to Linux and Windows."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "Once the asset pack manifest is created,"
+  },
+  {
+    "timestamp": "3:59",
+    "content": "you can generate an asset pack archive by running ba.package again"
+  },
+  {
+    "timestamp": "4:03",
+    "content": "using the new manifest file as input,"
+  },
+  {
+    "timestamp": "4:06",
+    "content": "and an asset pack archive will be output."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "The packaged asset pack archive is now ready to be used in your game."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "If you are developing with Unity,"
+  },
+  {
+    "timestamp": "4:16",
+    "content": "you can also utilize the updates to background assets."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "I'm excited to share."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "Two new plugins are joining the Apple Unity plugin portfolio,"
+  },
+  {
+    "timestamp": "4:25",
+    "content": "Background Assets and StoreKit."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "Apple Unity plugins enable your game to tap into the latest features"
+  },
+  {
+    "timestamp": "4:32",
+    "content": "and game services across Apple platforms."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "The background assets and store kit plugins are available now for download"
+  },
+  {
+    "timestamp": "4:39",
+    "content": "alongside Apple's existing plugins on GitHub."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "The repository can be found in the resources of this session,"
+  },
+  {
+    "timestamp": "4:46",
+    "content": "and it provides instructions for building and installing the plugins."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "Once you download the new Unity plugins,"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "you can build them with the same Python script used to build the other Apple Unity plugins."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Both new plugins expose a C-sharp-based Unity API,"
+  },
+  {
+    "timestamp": "5:03",
+    "content": "which acts as a bridge to the underlying native framework."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "To build, package, and test the plugins,"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "use Xcode 27, Python 3, and Unity 2022 LTS or later."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "Check out the Meet with Apple session,"
+  },
+  {
+    "timestamp": "5:17",
+    "content": "Chart Your Games Course to Apple Platforms,"
+  },
+  {
+    "timestamp": "5:20",
+    "content": "to learn more about setting up and configuring your project"
+  },
+  {
+    "timestamp": "5:22",
+    "content": "with other Unity plugins from Apple."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "And for best practices when building your game,"
+  },
+  {
+    "timestamp": "5:27",
+    "content": "check out Plugin and Play,"
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Add Apple Frameworks to Your Unity Game Projects,"
+  },
+  {
+    "timestamp": "5:32",
+    "content": "from WWDC 22."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "Once the plugins are installed in your project,"
+  },
+  {
+    "timestamp": "5:38",
+    "content": "open your game in the Unity Editor."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "By adopting store kit in your project,"
+  },
+  {
+    "timestamp": "5:43",
+    "content": "you can reach players around the world across all Apple platforms"
+  },
+  {
+    "timestamp": "5:47",
+    "content": "and offer in-app purchases through the App Store's safe and trusted commerce platform."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "The C-sharp version of the store kit APIs provides access to common flows"
+  },
+  {
+    "timestamp": "5:57",
+    "content": "like fetching and merchandising your in-app purchase products with the product API."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "And you can initiate a purchase for products in your game using the Purchase API"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "to display the system payment sheet."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "After purchasing, use the purchase result to check that the purchase was successful"
+  },
+  {
+    "timestamp": "6:13",
+    "content": "and the transaction is verified."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "Then, deliver the purchase content to your players"
+  },
+  {
+    "timestamp": "6:19",
+    "content": "and call Finish to complete the transaction."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "Throughout your game's lifecycle,"
+  },
+  {
+    "timestamp": "6:24",
+    "content": "listen for new transactions with the Transaction Update sequence."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "A transaction is emitted through this sequence"
+  },
+  {
+    "timestamp": "6:30",
+    "content": "anytime the system creates or updates transactions"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "that occur outside your app or on other devices."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Here, I have an on-update handler"
+  },
+  {
+    "timestamp": "6:39",
+    "content": "that is called at App Startup inside a listener for transaction updates."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "For consumables,"
+  },
+  {
+    "timestamp": "6:45",
+    "content": "I first check that the transaction was not revoked"
+  },
+  {
+    "timestamp": "6:47",
+    "content": "and then grant access to the customer."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "For non-consumables and subscriptions,"
+  },
+  {
+    "timestamp": "6:52",
+    "content": "current entitlements is the source of truth for what a customer is entitled to."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "It already filters refunded, revoked, and expired states"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "for non-consumables and subscriptions,"
+  },
+  {
+    "timestamp": "7:03",
+    "content": "so we can grant access to customers"
+  },
+  {
+    "timestamp": "7:05",
+    "content": "once we know the transaction is verified."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "Finally, call Finish on your verified transaction."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "When content is purchased by your players,"
+  },
+  {
+    "timestamp": "7:15",
+    "content": "you can use the Background Assets plugin"
+  },
+  {
+    "timestamp": "7:16",
+    "content": "to ensure an asset pack is locally available"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "and then start serving the content to players."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "If a download is necessary,"
+  },
+  {
+    "timestamp": "7:24",
+    "content": "then you can monitor download progress"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "and update your game's UI"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "by iterating over the status updates"
+  },
+  {
+    "timestamp": "7:30",
+    "content": "that the Download Status Updates async method yields."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "After configuring your game with the new plugins,"
+  },
+  {
+    "timestamp": "7:37",
+    "content": "export your project to Xcode"
+  },
+  {
+    "timestamp": "7:38",
+    "content": "and leverage the powerful testing capabilities"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "included with Storkit testing in Xcode"
+  },
+  {
+    "timestamp": "7:43",
+    "content": "and the Background Assets mock server."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "To set up Storkit testing in Xcode,"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "create a Storkit configuration file"
+  },
+  {
+    "timestamp": "7:50",
+    "content": "and add your test products."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "Then, edit your target scheme,"
+  },
+  {
+    "timestamp": "7:55",
+    "content": "select Run,"
+  },
+  {
+    "timestamp": "7:57",
+    "content": "and choose your Storkit configuration file in the dropdown."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "Here is where you can also select the folder"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "where your packaged asset packs are stored"
+  },
+  {
+    "timestamp": "8:04",
+    "content": "for the mock server to send to your game."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "Now you're ready to build and run."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "When you run your project in Xcode 27,"
+  },
+  {
+    "timestamp": "8:12",
+    "content": "the Background Assets mock server"
+  },
+  {
+    "timestamp": "8:13",
+    "content": "automatically starts and attaches"
+  },
+  {
+    "timestamp": "8:15",
+    "content": "to your debug session to serve assets in your game."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "Sandbox testing is also available"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "to help test the user experience"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "with products you set up in App Store Connect."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "When you're ready to submit your game to the App Store,"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "you can add new visuals"
+  },
+  {
+    "timestamp": "8:29",
+    "content": "to your product page header and search results"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "to make your game stand out."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "The images and videos you add"
+  },
+  {
+    "timestamp": "8:35",
+    "content": "to your App Store search results"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "will also appear in the Apple Games app,"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "providing more ways to visually highlight your game."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "Check out Enhanced Your Presence on the App Store"
+  },
+  {
+    "timestamp": "8:45",
+    "content": "from WWDC 26"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "to learn more about configuring these assets."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "Finally, when your game is published"
+  },
+  {
+    "timestamp": "8:52",
+    "content": "and players purchase new content,"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "they'll use the redesigned system payment sheet"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "in iOS 27."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "It works great in landscape mode"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "so people can unlock content"
+  },
+  {
+    "timestamp": "9:02",
+    "content": "and continue gaming."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "Before we conclude,"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "let's review the next steps"
+  },
+  {
+    "timestamp": "9:06",
+    "content": "to improve your development workflow"
+  },
+  {
+    "timestamp": "9:08",
+    "content": "and create an even better gaming experience for players."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "Further, reduce your app size"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "and efficiently deliver content to your players"
+  },
+  {
+    "timestamp": "9:16",
+    "content": "by uploading localized versions"
+  },
+  {
+    "timestamp": "9:17",
+    "content": "of your asset packs in App Store Connect."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Bring the power"
+  },
+  {
+    "timestamp": "9:21",
+    "content": "of the native Managed Background Assets"
+  },
+  {
+    "timestamp": "9:23",
+    "content": "and StoreKit APIs to your Unity game"
+  },
+  {
+    "timestamp": "9:25",
+    "content": "by installing new Apple Unity plugins."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "When you finish updating your game,"
+  },
+  {
+    "timestamp": "9:31",
+    "content": "plan for how you can highlight your features"
+  },
+  {
+    "timestamp": "9:32",
+    "content": "using new image and video assets"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "in the App Store and Apple Games app."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "Whether you're starting fresh"
+  },
+  {
+    "timestamp": "9:38",
+    "content": "or building on top of years of work,"
+  },
+  {
+    "timestamp": "9:41",
+    "content": "these new features will help you reach"
+  },
+  {
+    "timestamp": "9:42",
+    "content": "millions of players worldwide on Apple platforms."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "Thank you for joining me,"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "and now, go take your game to the next level."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "Thank you,"
+  }
+]

@@ -1,0 +1,1498 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Norman,"
+  },
+  {
+    "timestamp": "0:08",
+    "content": "and I'm a director in the Vision Products Group."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "In this session, I'll take you through powerful new ways to"
+  },
+  {
+    "timestamp": "0:14",
+    "content": "build next generation experiences with Vision OS 27."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "Looking back over this past year,"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "we've been blown away by what you build on the platform."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "We've seen apps like YouTube,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "introducing world-class content in your living room."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "Valve, bringing Steam Link to Apple Vision Pro to seamlessly stream"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "your 2D Mac and PC games on Infinite Canvas."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "And resolution games,"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "reimagining new ways to relive classic experiences."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "We've also seen companies like Kia and InnoActive using Autodesk,"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "V-RED, NVIDIA CloudXR SDK,"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "and the new Foviet streaming framework to design next generation vehicles."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "And Laminar Research, blending professionals' digital and physical worlds"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "to deliver powerfully immersive training solutions with X-Play."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "Bringing these experiences to life is just the beginning,"
+  },
+  {
+    "timestamp": "1:07",
+    "content": "and the insights you've shared along the way have been invaluable."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "Your feedback continues to shape the future of Vision OS,"
+  },
+  {
+    "timestamp": "1:14",
+    "content": "guiding the features we release and accelerating the next era of computing."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Today, people aren't just working faster,"
+  },
+  {
+    "timestamp": "1:23",
+    "content": "they are inventing entirely new experiences and workflows."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "To make these breakthroughs possible,"
+  },
+  {
+    "timestamp": "1:29",
+    "content": "the latest generation of Apple Vision Pro is powered by the M5 chip,"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "delivering desktop-class compute for real-time rendering."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "Ultra-high resolution display provides over 4K pixels per eye,"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "enabling stunning visual fidelity."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "The system tracks your hand movement at 90 Hz for highly responsive, low latency control."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "And with deep integration across the Apple ecosystem,"
+  },
+  {
+    "timestamp": "1:54",
+    "content": "your apps and games feel seamlessly connected across all your Apple devices."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "Along with powerful hardware and platform capabilities,"
+  },
+  {
+    "timestamp": "2:03",
+    "content": "Vision OS provides multiple ways to render your app's content."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "In the shared space, you can choose to render your app in a window or a volume,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "where your experience can coexist simultaneously with other applications."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "This allows you to organize your workspace across the infinite canvas,"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "taking productivity to the next level."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "Or you could launch an immersive space where your app runs exclusively,"
+  },
+  {
+    "timestamp": "2:31",
+    "content": "allowing you to render 2D and 3D content anywhere in your field of view."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "In the immersive space, your content blends with the physical world,"
+  },
+  {
+    "timestamp": "2:42",
+    "content": "providing three immersion styles to choose from."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "The mixed immersion style allows you to anchor 3D objects in real-world surroundings,"
+  },
+  {
+    "timestamp": "2:51",
+    "content": "like placing an object on a table."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "The progressive style lets your audience delve in the level of immersion that feels right for them."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "Or you can enable full immersion to transport them into a completely virtual world."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "Together, these scene types offer a spectrum of immersion for your content."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "When building experiences on Vision OS, there are three main paths to choose from, depending on your workflow."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "The first path is for existing iOS or iPadOS apps."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "If you already have an app or a game running on iPad or iPhone,"
+  },
+  {
+    "timestamp": "3:29",
+    "content": "it can very likely run on Apple Vision Pro today, with minimal changes to your code."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "Compatibility is the simplest way to get onto the platform quickly."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "You can just check a box in App Store Connect."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "Or you can recompile your iOS or iPadOS app to Vision OS by adding Vision OS as a deployment target in your Xcode settings."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "Both of these paths offer low friction ways to bring your experiences to Vision OS."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "The second path is for apps designed from the ground up for spatial computing."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "This allows your experience to seamlessly blend with and react to people's environments."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "In this vertical, you have two options."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "You can build for the platform using native frameworks like SwiftUI, RealityKit, and tools like Reality Composer Pro,"
+  },
+  {
+    "timestamp": "4:22",
+    "content": "or use your own custom rendering engines with compositor services."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Or if you prefer to use a third-party game engine like Unity, Unreal, or Godot,"
+  },
+  {
+    "timestamp": "4:32",
+    "content": "these all support Vision OS as a platform."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "In addition to these options, we're introducing a third path that offers a way for you to bring your existing experiences"
+  },
+  {
+    "timestamp": "4:43",
+    "content": "on macOS or PC to Vision OS."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "If you have a Mac app that renders spatial content today, Vision OS 27 has a powerful new tool"
+  },
+  {
+    "timestamp": "4:55",
+    "content": "with the spatial preview framework, allowing you to extend images, documents, and 3D content"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "directly from your Mac into Apple Vision Pro."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "Alternatively, if you're bringing a 3D experience from a PC, the Fovid streaming framework lets you"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "display native spatial content alongside stream content."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "For example, a flight simulator could render a highly detailed cockpit using our native rendering framework,"
+  },
+  {
+    "timestamp": "5:24",
+    "content": "RealityKit, while streaming a processor-intensive landscape from a remote computer."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "I'll dive deeper into both of these technologies later in the session."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "Together, these paths give you flexibility to build incredible experiences for Vision OS,"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "no matter where you're starting from."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "I'll share some of the latest updates to these pathways."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "First, I'll cover new capabilities in RealityKit and Reality Composer Pro that help you bring rich"
+  },
+  {
+    "timestamp": "5:54",
+    "content": "3D experiences to life with accelerated workflows."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "I'll share updates on third-party game engines like Unity, Unreal, and Godot."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "Then, I'll take you through Spatial Preview, a feature that extends 3D content from your Mac app"
+  },
+  {
+    "timestamp": "6:11",
+    "content": "into the immersive world of Vision OS."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "I'll also introduce new Fovid streaming framework that enables you to stream immersive content from a PC or cloud instance."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "I'll cover incredible new ways to interact with your content."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "And finally, I'll share updates to the immersive media pipeline to help you tell even more engaging stories on Apple Vision Pro."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "I'll share updates on the future."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "Let's begin with updates to RealityKit and Reality Composer Pro."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "RealityKit is the rendering engine behind some of the best native experiences on Vision OS."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "Reality Composer Pro is where you author content visually, letting you design, iterate, and preview without ever leaving the editor."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "RealityKit is the rendering engine behind the screen."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "With Vision OS 27, we are bringing the two even closer together."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "With RealityKit, you can build interactive, high-fidelity spatial experiences that seamlessly blend with your real world."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "And Vision OS 27 adds powerful new features in RealityKit to make your experience more immersive than ever."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "Let's take a look at a few of them."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "RealityKit's new physical space lighting deepens immersion by blending your virtual lighting with the real world."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "Here is a virtual planetarium projector built in RealityKit."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "The stars and nebulae shine across the space."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "And as the projector spins, its light seamlessly conforms to every surface."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "The stars and nebulae are powered by the new projective texture API, enabling you to add textures to your spotlights."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "With this feature, you can simulate stunning effects like stained glass projection or underwater caustics."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Next, let's look at RealityKit's powerful new cloth simulation."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "Here, a virtual mannequin wears a flowing dress made of highly realistic simulated clothing."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "As the mannequin walks, the fabric moves and folds naturally, all rendered in real time."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "The same simulation also brings the virtual back cover to life."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "As it's pulled back, the fabric responds with realistic weight and drape."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "RealityKit doesn't stop at visual realism."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "With the new custom reverb mesh, it brings the same authenticity to spatial audio."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "Take this virtual band playing in a museum."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "With RealityKit, the sound doesn't just originate in front of me."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "It fills the space from every direction."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "The reverb system accurately simulates how sound is absorbed and scattered"
+  },
+  {
+    "timestamp": "8:55",
+    "content": "by the wood, metal, and stone in the hall,"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "giving your virtual world an even richer, more believable sense of presence."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Another powerful new feature in RealityKit is Gaussian splatting."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "Here's a small potted plant scanned and rendered as a 3D Gaussian splat."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "Every detail comes through, down to the texture of the soil."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "With RealityKit, you can now scan real-world objects and bring them straight into your virtual experiences."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "It's a great way to capture objects that are hard to model by hand and use them to build incredibly realistic worlds."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "To learn about even more features coming to RealityKit, check out the Explore Advances in RealityKit session."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "While RealityKit API enables you to create stunning interactive 3D content,"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "the process of putting that content together is greatly enhanced by RealityComposer Pro."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "We are adding brand new tools and features in a major refresh, enabling fast, AI-powered, and collaborative workflows"
+  },
+  {
+    "timestamp": "9:58",
+    "content": "to the new RealityComposer Pro 3."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "So you can move faster and go further without always needing to touch Xcode."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "The new RealityComposer Pro brings a huge selection of new features to transform your workflows."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "I'll take you through some of these brand new capabilities like RealityComposer Pro Assistant,"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "Animation Graph, Script Graph, and Navigation Meshes."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "Let's start with RealityComposer Pro Assistant, which integrates AI capabilities into your creative workflow,"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "right inside the editor."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "Here's an example that shows how AI Assistant can be used to generate a drive-thru assortment,"
+  },
+  {
+    "timestamp": "10:40",
+    "content": "and then place them in a pre-existing empty bowl in a scene."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "It even generates 3D candles and places them on the table."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "With RealityComposer Pro Assistant, you describe what you want,"
+  },
+  {
+    "timestamp": "10:58",
+    "content": "and they generate 3D models with detailed textures and materials ready to place in your scene."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "It's a great way to start telling your story long before your final game assets are ready to ship."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Once your final assets and animations are ready, Animation Graph in RealityComposer Pro"
+  },
+  {
+    "timestamp": "11:17",
+    "content": "lets you control how they transition between states."
+  },
+  {
+    "timestamp": "11:21",
+    "content": "With the state machine, you can easily transition between idle and walking states at runtime,"
+  },
+  {
+    "timestamp": "11:27",
+    "content": "and visualize that transition live in the editor."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "And to help your character navigate around the environment while avoiding obstacles,"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "you can generate and tweak navigation mesh right inside RealityComposer Pro."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "Simply start and auto-generate the mesh as shown in blue,"
+  },
+  {
+    "timestamp": "11:46",
+    "content": "and then add additional features such as jumps, ladders, and obstacles to complete the course."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "And to connect these pieces and make your scene interactive, RealityComposer Pro also brings ScriptGraph."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "With ScriptGraph, you can add nodes that catch events like tabs, driving where your character should move."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "You can make real-time edits with live preview on Apple Vision Pro, all without opening Xcode."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Now, with everything in place, your character can find its way to its destinations,"
+  },
+  {
+    "timestamp": "12:18",
+    "content": "avoiding obstacles, and using its full animation set to walk, run, or climb."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "RealityComposer Pro's note-based editor called ScriptGraph lets you build logic without ever leaving your visual workflow."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "Here, DevUnitedGames uses a handful of nodes to animate their aquascape characters as it enters the scene."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "As the fish swims through the environment, its animation playback even adjusts to match its exact speed."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Shader Graph materials in RealityComposer Pro are also getting a major upgrade."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "Last year, we introduced a system environment featuring Jupiter's moon, Amalthea, showcasing a subsurface scattering effect"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "that makes the eyes on the moon's surface look strikingly real."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "RealityComposer Pro 3 now exposes subsurface scattering through Shader Graph,"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "so you can bring a similar effect to your own scenes."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "And with additional Shader Graph capabilities, you can now create lifelike skin, eyes, and hair for your characters,"
+  },
+  {
+    "timestamp": "13:25",
+    "content": "or even craft the otherworldly look of a portal."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "RealityComposer Pro 3 brings so much more to explore, including prototypes, behavior trees, compute graph, and custom script graph nodes."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "Check out these sessions to learn more."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "director"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "you the deepest integration with VisionOS. But if you already build your game in another engine"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "like Unity, Unreal, or Godot, it's easier than ever to bring it to Apple Vision Pro."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "Unity has been compatible with VisionOS since we first launched. Here's LEGO Builder's journey"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "that was made with Unity and runs in a volume. If you have a Unity Pro license, you can bring"
+  },
+  {
+    "timestamp": "14:12",
+    "content": "your Unity game to VisionOS. Window games made with Unity use RealityKit for native rendering,"
+  },
+  {
+    "timestamp": "14:20",
+    "content": "while immersive games on VisionOS can be rendered either with RealityKit or Compositor Services"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "framework, depending on your rendering needs. We release plugins to support spatial accessories,"
+  },
+  {
+    "timestamp": "14:32",
+    "content": "such as the PSVR 2 Sense controller, so you can design tactile interactions for your Unity apps and games."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "Unreal Engine is also available in immersive mode, and PolyArch, the developer of Glassbreakers,"
+  },
+  {
+    "timestamp": "14:48",
+    "content": "brought their Unreal Engine game to Apple Vision Pro with static foveation for noticeably sharper visuals."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "Games built with Godot, like Dog Walk from Blender Studios, also run on Apple Vision Pro."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "We've also added support for Godot renderings through Compositor Services, along with a plugin for"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "rendering with RealityKit. And we've published a face audio plugin, so your Godot games can take full"
+  },
+  {
+    "timestamp": "15:16",
+    "content": "advantage of Apple's spatial audio. You can download these game engine plugins from our GitHub page."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "VisionOS also supports experiences built on custom rendering engines. With the Compositor Services"
+  },
+  {
+    "timestamp": "15:31",
+    "content": "framework, you can connect your proprietary engine to the system and render your content directly in an immersive space."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "That was a sneak peek at supported game engines. Next, let's talk about extending content from your Mac to"
+  },
+  {
+    "timestamp": "15:45",
+    "content": "the infinite canvas of Apple Vision Pro using the Spatial Preview framework. Mac virtual display transforms"
+  },
+  {
+    "timestamp": "15:52",
+    "content": "your workspace, offering you the ability to stay in headset while you work on your Mac with complete privacy,"
+  },
+  {
+    "timestamp": "15:59",
+    "content": "your Mac to the perfect privacy, wherever you are. With VisionOS 27, we're taking this capability even"
+  },
+  {
+    "timestamp": "16:05",
+    "content": "further with Spatial Preview. This is a new Mac OS framework that lets you preview spatial content from"
+  },
+  {
+    "timestamp": "16:11",
+    "content": "your Mac directly on your Apple Vision Pro and collaborate with others through SharePlay, all without ever building"
+  },
+  {
+    "timestamp": "16:18",
+    "content": "a VisionOS app. Leveraging QuickLook on VisionOS, you can immediately preview and update content like spatial"
+  },
+  {
+    "timestamp": "16:26",
+    "content": "photos and Apple Photos and Apple Immersive Video, as well as edit 3D content live using USD. You can move freely around 3D scenes, refine your content's placement,"
+  },
+  {
+    "timestamp": "16:40",
+    "content": "adjust material overrides, and share feedback with annotations, all within a spatial environment. With real-time"
+  },
+  {
+    "timestamp": "16:49",
+    "content": "collaborative 3D workflows, whether you are working side by side or across the globe."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "This capability is built directly into Preview on Mac OS 27, so customers can experience these powerful"
+  },
+  {
+    "timestamp": "17:11",
+    "content": "features out of the box. We're also giving Preview new 3D editing tools, making 3D content as easy to work with as images and PDFs."
+  },
+  {
+    "timestamp": "17:23",
+    "content": "For a deeper dive, check out the Discover Spatial Preview Framework session. The Spatial Preview Framework"
+  },
+  {
+    "timestamp": "17:29",
+    "content": "is a great way to stream immersive Mac content to VisionOS. Next, I'll introduce a new way to bring immersive PC content"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "to our platforms with full video streaming. Full video streaming enables Apple Vision Pro to connect to external devices, like a PC, to stream OpenXR content."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "VisionOS automatically sends input data like hands, controller positions, and microphone."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "And the device streams your OpenXR content like video and audio with full-scale immersion, just like a native app."
+  },
+  {
+    "timestamp": "18:04",
+    "content": "The X-Plane app is streaming launched in VisionOS 26.4 and it's already unlocking incredible experiences."
+  },
+  {
+    "timestamp": "18:12",
+    "content": "X-Plane 12 from Laminar Research delivered a best-in-class flight simulation experience."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "The X-Plane app on VisionOS uses ARKit to understand your space and equipment and streams the simulation from a PC."
+  },
+  {
+    "timestamp": "18:27",
+    "content": "This means you can fly using a physical flight simulator while being fully immersed in the virtual world."
+  },
+  {
+    "timestamp": "18:32",
+    "content": "It's an integrated experience only Apple Vision Pro can deliver."
+  },
+  {
+    "timestamp": "18:38",
+    "content": "iRacing, a motorsport racing game for PC, also streams to Apple Vision Pro using full video streaming."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "The iRacing Connect app matches the position of your physical racing wheel with the virtual cockpit."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "Precise ARKit tracking makes this possible, delivering an experience that is immersive and exhilarating."
+  },
+  {
+    "timestamp": "18:58",
+    "content": "iRacing, a"
+  },
+  {
+    "timestamp": "19:02",
+    "content": "to Apple Vision Pro, letting designers visualize"
+  },
+  {
+    "timestamp": "19:05",
+    "content": "massive high fidelity models with ray tracing"
+  },
+  {
+    "timestamp": "19:08",
+    "content": "at one-to-one scale."
+  },
+  {
+    "timestamp": "19:10",
+    "content": "PC-based rendering pairs seamlessly with SwiftUI"
+  },
+  {
+    "timestamp": "19:14",
+    "content": "so you can build advanced streaming applications"
+  },
+  {
+    "timestamp": "19:17",
+    "content": "quickly and intuitively."
+  },
+  {
+    "timestamp": "19:19",
+    "content": "And the quality is exceptional"
+  },
+  {
+    "timestamp": "19:22",
+    "content": "because it uses advanced technology"
+  },
+  {
+    "timestamp": "19:24",
+    "content": "to optimize the video stream."
+  },
+  {
+    "timestamp": "19:26",
+    "content": "Full-video streaming intelligently compresses video"
+  },
+  {
+    "timestamp": "19:29",
+    "content": "based on where a person is looking."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "Areas in focus are streamed at higher quality,"
+  },
+  {
+    "timestamp": "19:35",
+    "content": "while areas in your visual periphery use less bandwidth."
+  },
+  {
+    "timestamp": "19:40",
+    "content": "It happens so quickly and seamlessly"
+  },
+  {
+    "timestamp": "19:42",
+    "content": "that you don't even notice."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "The streaming protocol is powered by NVIDIA CloudXR."
+  },
+  {
+    "timestamp": "19:48",
+    "content": "This is a top-ranked streaming technology,"
+  },
+  {
+    "timestamp": "19:51",
+    "content": "offering high-quality and low-latency."
+  },
+  {
+    "timestamp": "19:54",
+    "content": "CloudXR is performant enough to stream over Wi-Fi"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "with no dongles or cables needed,"
+  },
+  {
+    "timestamp": "20:00",
+    "content": "whether from a local PC or a cloud instance."
+  },
+  {
+    "timestamp": "20:03",
+    "content": "And it is incredibly easy to use."
+  },
+  {
+    "timestamp": "20:07",
+    "content": "We found that just in one day,"
+  },
+  {
+    "timestamp": "20:09",
+    "content": "you can start streaming your OpenXR applications"
+  },
+  {
+    "timestamp": "20:12",
+    "content": "to Apple Vision Pro."
+  },
+  {
+    "timestamp": "20:14",
+    "content": "And in a week, you can enhance your application"
+  },
+  {
+    "timestamp": "20:17",
+    "content": "with features you can find only on Vision OS."
+  },
+  {
+    "timestamp": "20:20",
+    "content": "To learn more, see our dedicated session on full-video streaming."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "Those are the many ways you can bring your content"
+  },
+  {
+    "timestamp": "20:27",
+    "content": "to Apple Vision Pro."
+  },
+  {
+    "timestamp": "20:28",
+    "content": "Next, let's look at some exciting new ways"
+  },
+  {
+    "timestamp": "20:32",
+    "content": "in which people can interact with your content in Vision OS."
+  },
+  {
+    "timestamp": "20:36",
+    "content": "Let's start with enhancement to object tracking."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "We introduced object tracking in Vision OS 2.0,"
+  },
+  {
+    "timestamp": "20:43",
+    "content": "which lets you turn physical objects into virtual anchors."
+  },
+  {
+    "timestamp": "20:47",
+    "content": "To track an object, you can start with this USDC model"
+  },
+  {
+    "timestamp": "20:52",
+    "content": "and train a reference object in CreateML on your Mac."
+  },
+  {
+    "timestamp": "20:55",
+    "content": "You pass that reference object to the object tracking API,"
+  },
+  {
+    "timestamp": "20:59",
+    "content": "and your app receives updates about the position"
+  },
+  {
+    "timestamp": "21:02",
+    "content": "and orientation of the physical object,"
+  },
+  {
+    "timestamp": "21:05",
+    "content": "enabling immersive spatial experiences."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "Object tracking now supports high-frame rate tracking,"
+  },
+  {
+    "timestamp": "21:12",
+    "content": "giving your app more frequent post-updates"
+  },
+  {
+    "timestamp": "21:14",
+    "content": "as objects move through space."
+  },
+  {
+    "timestamp": "21:17",
+    "content": "We've added an extended training option in CreateML"
+  },
+  {
+    "timestamp": "21:20",
+    "content": "that improves accuracy and robustness,"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "particularly for objects held in hand."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "There's a new API for obtaining the object pose"
+  },
+  {
+    "timestamp": "21:29",
+    "content": "in metric space without display corrections."
+  },
+  {
+    "timestamp": "21:32",
+    "content": "This unlocks spatial measurement use case"
+  },
+  {
+    "timestamp": "21:35",
+    "content": "that require high-precision poses."
+  },
+  {
+    "timestamp": "21:37",
+    "content": "And these features are now available on both Vision OS and iOS."
+  },
+  {
+    "timestamp": "21:43",
+    "content": "These enhancements to object tracking"
+  },
+  {
+    "timestamp": "21:45",
+    "content": "let you create dynamic experiences"
+  },
+  {
+    "timestamp": "21:47",
+    "content": "that instantly react as people pick up"
+  },
+  {
+    "timestamp": "21:49",
+    "content": "and interact with objects in physical world."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "For example, you can now accurately track"
+  },
+  {
+    "timestamp": "21:56",
+    "content": "and measure physical spaces using handheld items"
+  },
+  {
+    "timestamp": "21:59",
+    "content": "such as this medical probe."
+  },
+  {
+    "timestamp": "22:01",
+    "content": "This opens up use case like surgical navigation training."
+  },
+  {
+    "timestamp": "22:05",
+    "content": "To bring object tracking to iOS,"
+  },
+  {
+    "timestamp": "22:08",
+    "content": "we're releasing an ARKit API"
+  },
+  {
+    "timestamp": "22:10",
+    "content": "that supports the same functionality as Vision OS."
+  },
+  {
+    "timestamp": "22:13",
+    "content": "We've designed the ML model training in CreateML"
+  },
+  {
+    "timestamp": "22:17",
+    "content": "to be platform agnostic."
+  },
+  {
+    "timestamp": "22:19",
+    "content": "This means once you create a reference object,"
+  },
+  {
+    "timestamp": "22:22",
+    "content": "you can use it in both your iOS and Vision OS app"
+  },
+  {
+    "timestamp": "22:25",
+    "content": "and get the same level of tracking quality."
+  },
+  {
+    "timestamp": "22:27",
+    "content": "To learn more about developing with object tracking API,"
+  },
+  {
+    "timestamp": "22:31",
+    "content": "you can watch the WWDC 24 session or explore our documentation."
+  },
+  {
+    "timestamp": "22:38",
+    "content": "While object tracking is great for tracking regular objects,"
+  },
+  {
+    "timestamp": "22:42",
+    "content": "Vision OS also supports spatial accessories."
+  },
+  {
+    "timestamp": "22:46",
+    "content": "In Vision OS 26,"
+  },
+  {
+    "timestamp": "22:48",
+    "content": "we introduced our first set of spatial accessories,"
+  },
+  {
+    "timestamp": "22:51",
+    "content": "the Logitech Muse and the PSVR2 Sense controller."
+  },
+  {
+    "timestamp": "22:54",
+    "content": "These devices bring a new level of interactivity and immersion to your app"
+  },
+  {
+    "timestamp": "22:59",
+    "content": "through spatial tracking, button input and haptic feedback."
+  },
+  {
+    "timestamp": "23:04",
+    "content": "You can connect to them using the game controller framework"
+  },
+  {
+    "timestamp": "23:07",
+    "content": "and use Reality Kit or ARKit to track each accessory's movement"
+  },
+  {
+    "timestamp": "23:12",
+    "content": "and orientation in space."
+  },
+  {
+    "timestamp": "23:14",
+    "content": "Now in Vision OS 27, we're expanding support to enable you to build your own accessory."
+  },
+  {
+    "timestamp": "23:20",
+    "content": "A spatial accessory is an electronic device containing a board with the following components."
+  },
+  {
+    "timestamp": "23:26",
+    "content": "A constellation of LEDs visible to Apple Vision Pro for tracking,"
+  },
+  {
+    "timestamp": "23:30",
+    "content": "an IMU to capture the orientation and acceleration of the accessory,"
+  },
+  {
+    "timestamp": "23:36",
+    "content": "and a Bluetooth chip to send the signals to Apple Vision Pro."
+  },
+  {
+    "timestamp": "23:41",
+    "content": "Spatial accessories can also host any varieties of input like buttons, touch pad,"
+  },
+  {
+    "timestamp": "23:47",
+    "content": "along with haptic feedback."
+  },
+  {
+    "timestamp": "23:50",
+    "content": "You can turn any object into a compatible spatial accessory"
+  },
+  {
+    "timestamp": "23:53",
+    "content": "by just installing these components in it."
+  },
+  {
+    "timestamp": "23:57",
+    "content": "To help you get started,"
+  },
+  {
+    "timestamp": "23:58",
+    "content": "manufacturers like DF-Robot and MicroE"
+  },
+  {
+    "timestamp": "24:01",
+    "content": "will release off-the-shelf reference hardware and development kits later this year."
+  },
+  {
+    "timestamp": "24:06",
+    "content": "These can be great starting point to include custom spatial accessory input in your Vision OS app."
+  },
+  {
+    "timestamp": "24:12",
+    "content": "For example, this is a 3D printed flashlight mounted with DF-Robot's CMode cap."
+  },
+  {
+    "timestamp": "24:18",
+    "content": "Thanks to the low latency tracking,"
+  },
+  {
+    "timestamp": "24:20",
+    "content": "the virtual light it casts looks completely natural on the physical walls around it."
+  },
+  {
+    "timestamp": "24:24",
+    "content": "As the physical flashlight moves, the virtual beams follows smoothly and accurately."
+  },
+  {
+    "timestamp": "24:31",
+    "content": "Here's another example."
+  },
+  {
+    "timestamp": "24:32",
+    "content": "A MicroE spatial anchor R1 is mounted inside a physical steering wheel."
+  },
+  {
+    "timestamp": "24:37",
+    "content": "Seamlessly anchor a digital vehicle to it."
+  },
+  {
+    "timestamp": "24:40",
+    "content": "When you grab the wheel, you'll feel like you're inside of the car."
+  },
+  {
+    "timestamp": "24:44",
+    "content": "This unlocks use cases like immersive racing simulations and vehicle interior design."
+  },
+  {
+    "timestamp": "24:50",
+    "content": "Apple Vision Pro tracks these devices at the highest possible frequency with extreme low latency,"
+  },
+  {
+    "timestamp": "24:56",
+    "content": "matching the display's native refresh rate for a seamless experience."
+  },
+  {
+    "timestamp": "25:01",
+    "content": "They support use cases like demanding fast motion."
+  },
+  {
+    "timestamp": "25:04",
+    "content": "Spatial accessories will continue to track robustly even when temporarily occluded."
+  },
+  {
+    "timestamp": "25:09",
+    "content": "And they are also trackable under low light conditions."
+  },
+  {
+    "timestamp": "25:13",
+    "content": "Lastly, the physical buttons and haptics allow you to make your experience even more interactive and immersive."
+  },
+  {
+    "timestamp": "25:21",
+    "content": "To learn more about integrating custom spatial accessories into your spatial experiences,"
+  },
+  {
+    "timestamp": "25:27",
+    "content": "check out the section, explore enhancements to VisionOS object tracking."
+  },
+  {
+    "timestamp": "25:32",
+    "content": "Next, let's talk about the workflow to bring immersive media experiences to VisionOS."
+  },
+  {
+    "timestamp": "25:37",
+    "content": "VisionOS supports many forms of spatial and immersive video types."
+  },
+  {
+    "timestamp": "25:42",
+    "content": "But Apple Immersive Video or AIV is the highest fidelity immersive video experience available on VisionOS."
+  },
+  {
+    "timestamp": "25:49",
+    "content": "It has an extremely large field of view and fully immersive audio that plays you in the experience as if you are there."
+  },
+  {
+    "timestamp": "25:58",
+    "content": "It represents a fundamental advancement in video media engineering built on high resolution, high frame rate,"
+  },
+  {
+    "timestamp": "26:05",
+    "content": "stereoscopic 180 degree capture that delivers unprecedented fidelity and dimensional accuracy."
+  },
+  {
+    "timestamp": "26:12",
+    "content": "Apple Immersive Video supports both video on demand and live broadcast streaming in VisionOS."
+  },
+  {
+    "timestamp": "26:18",
+    "content": "Achieving such high quality experience requires video that meets demanding specifications."
+  },
+  {
+    "timestamp": "26:24",
+    "content": "Real world stereoscopic scale is maintained through metadata driven lens calibration,"
+  },
+  {
+    "timestamp": "26:30",
+    "content": "which provides accurate projection during playback."
+  },
+  {
+    "timestamp": "26:34",
+    "content": "Video is captured and streamed at 90 frames per second with near human visual accuracy greater than 100 megapixels per frame."
+  },
+  {
+    "timestamp": "26:42",
+    "content": "That's over 10 billion pixels per second."
+  },
+  {
+    "timestamp": "26:46",
+    "content": "To handle all that video, AIV already has a growing ecosystem of production and post-production tools"
+  },
+  {
+    "timestamp": "26:53",
+    "content": "that are now available with industry leading broadcast hardware and software developed for iOS, macOS, and VisionOS."
+  },
+  {
+    "timestamp": "27:02",
+    "content": "Many of these tools were built by developers like you with the Immersive Media Support Framework or IMS."
+  },
+  {
+    "timestamp": "27:10",
+    "content": "IMS enables reading and writing of rich metadata for Apple Immersive Video"
+  },
+  {
+    "timestamp": "27:16",
+    "content": "and provides support for authoring and modifying immersive content."
+  },
+  {
+    "timestamp": "27:20",
+    "content": "You can get started with integrating IMS in your app by watching this session."
+  },
+  {
+    "timestamp": "27:25",
+    "content": "Learn about Apple Immersive Video technologies and support immersive video playback in VisionOS apps from last year."
+  },
+  {
+    "timestamp": "27:33",
+    "content": "In addition to recently introduced iOS support, important new features have been added to IMS in VisionOS 27,"
+  },
+  {
+    "timestamp": "27:42",
+    "content": "including camera presentation override commands, an immersive preview rendered API,"
+  },
+  {
+    "timestamp": "27:48",
+    "content": "and wide aspect ratio portals."
+  },
+  {
+    "timestamp": "27:51",
+    "content": "We've also published some new sample code that implements static foveation in dual-track QuickTime"
+  },
+  {
+    "timestamp": "27:57",
+    "content": "and updates to the Apple Spatial Audio Format production suite."
+  },
+  {
+    "timestamp": "28:02",
+    "content": "Let's first look at the impact of new camera presentation override commands."
+  },
+  {
+    "timestamp": "28:07",
+    "content": "In live and complex production scenarios, you may need to introduce new camera parameters to override default camera configurations and in real-time."
+  },
+  {
+    "timestamp": "28:17",
+    "content": "That's where the new set camera command override come into play."
+  },
+  {
+    "timestamp": "28:22",
+    "content": "If you would like to learn more about the practical application of IMS in the AIV live production workflow with SMPTE 2110,"
+  },
+  {
+    "timestamp": "28:31",
+    "content": "check out the WWDC 26 session Build Live Production Tools for Apple Immersive Video."
+  },
+  {
+    "timestamp": "28:38",
+    "content": "The new Immersive Preview Renderer enable real-time previewing of Apple Immersive Video on Apple Vision Pro,"
+  },
+  {
+    "timestamp": "28:45",
+    "content": "directly from a Mac during editorial or live production workflows."
+  },
+  {
+    "timestamp": "28:50",
+    "content": "This gives editors, colorists, and directors a more accurate representation of how immersive content will look and be experienced at final delivery."
+  },
+  {
+    "timestamp": "29:00",
+    "content": "We are also adding wide aspect ratio portal support for Apple Immersive Video."
+  },
+  {
+    "timestamp": "29:05",
+    "content": "This lets you keep a very wide portal of immersive video experience in viewing when switching from full immersive mode to portal mode."
+  },
+  {
+    "timestamp": "29:15",
+    "content": "The implementation for your app is straightforward."
+  },
+  {
+    "timestamp": "29:18",
+    "content": "Custom aspect ratios can be set when using AVPlayer ViewController in AVKit-based app,"
+  },
+  {
+    "timestamp": "29:24",
+    "content": "or AVPlayer component in RealityKit-based apps."
+  },
+  {
+    "timestamp": "29:28",
+    "content": "Next, I want to introduce you to a new sample that uses static foveation to deliver a high-quality immersive video while keeping it streamable."
+  },
+  {
+    "timestamp": "29:38",
+    "content": "It would be impractical even for a high-speed home internet connection to stream full-resolution AIV in stereo at 90 frames per second."
+  },
+  {
+    "timestamp": "29:47",
+    "content": "But simply scaling the image down to 4K will sacrifice too much pixel density."
+  },
+  {
+    "timestamp": "29:53",
+    "content": "Instead, a smooth static foveation function can be applied to the image before it is encoded for streaming."
+  },
+  {
+    "timestamp": "30:00",
+    "content": "The new sample project demonstrates one way this technique can be used to achieve high-acuity immersive video in a streamable frame size."
+  },
+  {
+    "timestamp": "30:10",
+    "content": "And we can't forget that any good immersive video experience must also have an immersive spatial audio soundtrack."
+  },
+  {
+    "timestamp": "30:17",
+    "content": "So we have released important new updates to the ASAP production suites."
+  },
+  {
+    "timestamp": "30:22",
+    "content": "The suite of AAX plugins now has the ability to position objects relative to a reference video,"
+  },
+  {
+    "timestamp": "30:29",
+    "content": "with improvements to the ambisonic workflows that include a new scene compressor plugin,"
+  },
+  {
+    "timestamp": "30:34",
+    "content": "an enhancement to the heatmap drawing, and a spatial filtering algorithm."
+  },
+  {
+    "timestamp": "30:38",
+    "content": "The new sample project and the ASAP production suite are both available for download on developer.apple.com."
+  },
+  {
+    "timestamp": "30:46",
+    "content": "From deeper immersion to richer media and powerful new ways to add interactivity,"
+  },
+  {
+    "timestamp": "30:52",
+    "content": "VisionOS 27 gives you so much to build with."
+  },
+  {
+    "timestamp": "30:56",
+    "content": "To round things out, let's spotlight a few final additions, starting with the spatial web."
+  },
+  {
+    "timestamp": "31:01",
+    "content": "In Safari on VisionOS 27, Windows can now be adjusted to a wider aspect ratio,"
+  },
+  {
+    "timestamp": "31:08",
+    "content": "letting you take full advantage of the space around you."
+  },
+  {
+    "timestamp": "31:11",
+    "content": "Larger windows will naturally curve, bringing more of your content into a comfortable view."
+  },
+  {
+    "timestamp": "31:18",
+    "content": "And web environments are now enabled by default, allowing websites to have backgrounds just like apps."
+  },
+  {
+    "timestamp": "31:25",
+    "content": "Here's an example showing a virtual environment from the Apple TV show Severance."
+  },
+  {
+    "timestamp": "31:31",
+    "content": "With streamlined notifications, system status, controls, and environments all in one place via a newly improved control center."
+  },
+  {
+    "timestamp": "31:41",
+    "content": "Alongside with high quality capture, enabling you to capture your apps in stunning 4K video from right inside Apple Vision Pro."
+  },
+  {
+    "timestamp": "31:49",
+    "content": "No Mac required."
+  },
+  {
+    "timestamp": "31:51",
+    "content": "And with accessory widget support on VisionOS, you can extend your app to Apple Vision Pro with smaller glanceable widgets"
+  },
+  {
+    "timestamp": "31:59",
+    "content": "that surface your most relevant information right where you need it."
+  },
+  {
+    "timestamp": "32:04",
+    "content": "VisionOS 27 brings so much more to explore, including Siri enhancements, an all new Iceland environment, spatial panoramas, personal environments, and freeform updates, to name a few."
+  },
+  {
+    "timestamp": "32:18",
+    "content": "Together, they give you even more powerful tools to bring your ideas to life."
+  },
+  {
+    "timestamp": "32:24",
+    "content": "We cannot wait to see what you'll build next."
+  }
+]

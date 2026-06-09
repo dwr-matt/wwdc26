@@ -1,0 +1,350 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Andrew, and I work on the Commerce team at Apple."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "In this session, I'm excited to explain how you can offer"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "subscriptions to groups and organizations."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "Subscriptions have become increasingly important for developers,"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "serving as an excellent way to offer continuous value to customers."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "However, there are times when a subscriber wants to get"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "their social group, team, or company on your app."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "For example, a company wants to give their team of editors video editing software,"
+  },
+  {
+    "timestamp": "0:33",
+    "content": "or members of a run club want to keep each other motivated and"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "accountable through an exercise app."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "To address those needs, you will be able to sell subscriptions to groups and"
+  },
+  {
+    "timestamp": "0:42",
+    "content": "organizations with two ways for your customers to purchase and manage them."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "When you list your subscription on the App Store, you can now offer them to groups and"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "organizations through two new paths."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "Customers can make group purchases through your app,"
+  },
+  {
+    "timestamp": "0:57",
+    "content": "just like they make in-app purchases today."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "And through a brand new channel for subscriptions, through volume purchasing and"
+  },
+  {
+    "timestamp": "1:03",
+    "content": "Apple Business and Apple School Manager."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "With volume purchasing, an organization like a business or school can purchase"
+  },
+  {
+    "timestamp": "1:09",
+    "content": "subscriptions through the App Store inside Apple Business and Apple School Manager."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "They can use a device management service to assign seats through the same workflows they already use for"
+  },
+  {
+    "timestamp": "1:20",
+    "content": "distributing apps at scale."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "This is a perfect solution for organizations with larger scale and requirements for management and identity."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "With group purchases, customers purchase subscriptions from your app just like they do today."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "But instead of only purchasing for themselves, they purchase multiple seats for your plan."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "Then, all they need to do is share an invite link with anyone they want to give access to your plan."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "When they accept, they'll automatically get a seat assigned."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "This is perfect for small teams or social groups to collaborate on apps."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "In this session, I will cover what you need to consider to offer subscriptions to groups and organizations."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "I'll start by covering availability for subscriptions for groups and organizations."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "Next, I'll discuss how you can set up pricing."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "After that, I'll explain how purchasing works."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "And I'll wrap up with seat management."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "These new options are available for all auto-renewable subscriptions using StoreKit 2."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "For most new and existing subscriptions using StoreKit 2, the ability to sell to groups and organizations is on by default."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "If your subscription has family sharing enabled, you can still sell to groups and organizations, but it is opted out by default,"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "so you can control how the two options work for you."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "Subscriptions are available for both group purchases within your app and for volume purchasing in Apple Business and Apple School Manager."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "In App Store Connect, you can make changes to this."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "You can choose to make a subscription available only on Apple School Manager, allowing you to create plans with specific pricing for verified educational institutions."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "And you also have the option to turn off selling to groups and organizations entirely."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "If you do so, your subscription won't be available for volume purchasing in Apple Business and Apple School Manager, or group purchases within your app."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "But you will still be able to sell subscriptions to individuals on the App Store."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "Next, I'll discuss how you can set up pricing for these subscriptions."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "By default, every seat of your subscription is sold at the current price in App Store Connect."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "If you want to offer bulk discounts, you will be able to use a new pricing configuration, volume pricing."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "With volume pricing, you can offer reduced pricing for larger purchases."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "You can set up to five price bands with full control over the quantities required for each band and the price."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "Next, I'll share an example of how you could use volume pricing to offer reduced pricing at purchases of over 20 seats and over 40 seats."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "To accomplish that, you will need to set up three bands."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "The first band would be set at your standard price."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "In this example, the subscription is $19.99 per month per seat until 20 seats."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "For the next band of seats, between 21 and 40, each seat is discounted to $13.99."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "And for seat number 41 or greater, it's $10.99 per seat."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "In this example of a purchase of 50 seats, the average cost per seat for the subscriber comes down about 20% from the base price."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "Volume pricing gives buyers an incentive to cover larger groups and consolidate purchasing."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "It's configured directly in App Store Connect."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "Next, I will cover how groups and organizations purchase your subscriptions."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "With volume purchasing, Apple Business and Apple School Manager display your subscriptions and handle the purchase process."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "All you need to do is make sure your subscription is available to organizations."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "For group purchases, you make your own in-app UI to trigger the StoreKit 2 purchase flow."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "Consider how you can highlight the value of a group purchase during your app's merchandising flows"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "to encourage customers to use a subscription with their social group or team."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "After merchandising, you'll need to get the number of seats requested from your customer and pass that into the StoreKit 2 purchase request."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "To wrap up, I'll discuss how seats are assigned and managed after the purchase is complete."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "Your customers purchase the number of seats they need, either through volume purchasing or group purchases."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "With volume purchasing, the organization assigns seats to their members the same way they assign apps today, through a device management service."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "This makes it easy for them to assign seats at large scale and ensure they are owned and managed by the organization."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "With group purchases, an invitation link will be generated for the initial purchaser to share with members."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "When assignments are completed from either purchase type, the App Store assigns a transaction for each member, and you can give them access."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "If you want group purchases without building the infrastructure, by default, group purchases will use the included seat management system, which covers generating the invitation link, tracking member acceptance and assignment, and seat life"
+  },
+  {
+    "timestamp": "6:19",
+    "content": "cycle management for your application, like cancellations."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "All you need to do is start a purchase request, and Apple will take it from there."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "And if you already implement an invitation and member management system for your app, you can leverage it."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "Integrating custom invitation flows will be powered via new App Store Server API endpoints."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "If your app offers collaborative features or access to shared resources for members under the same subscription, you can use the App Store Server API group management endpoints"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "to access information about a group."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "You will be able to access all of the groups that a single customer is in and all of the members in a group."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "These endpoints are supported for volume purchasing and group purchases using the included seat management flows."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "As I wrap up, start thinking now about how your application can take advantage of group purchases and volume purchasing to extend the reach of your app."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "Make sure you are using StoreKit 2 if you aren't using it already."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "StoreKit 2 is required to offer subscriptions to groups and organizations."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "Next, consider how group purchases, volume purchasing, and volume pricing might impact your availability and pricing strategies for both new and existing subscriptions."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Finally, consider new or existing collaborative experiences you could add or improve in your app for groups and organizations."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "I'm so excited to see how offering subscriptions to groups and organizations enables you to reach more customers."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Thank you for being a part of the Apple Developer Community."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "Thank you,"
+  }
+]

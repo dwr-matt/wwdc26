@@ -1,0 +1,626 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, I'm Sam, and I'm an engineer on the StoreKit team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "The App Store provides a safe and trusted marketplace for people around the world to discover your apps."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "By leveraging the App Store APIs, you can offer digital goods and services to customers,"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "while letting the App Store Commerce platform facilitate transactions and end-to-end payment processing."
+  },
+  {
+    "timestamp": "0:30",
+    "content": "I'll cover new features in this session to help you merchandise products and grow your app's business."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "First, I'll share how to expand pricing options for your subscription products."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "Then, I'll discuss updates coming to the Offer Code Redemption API."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "And finally, I'll review the enhanced App Store Connect submission experience coming to in-app purchases."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "I'll start with updates to subscription pricing."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "iOS 26.5 introduced monthly subscriptions with a 12-month commitment."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "With this new pricing capability, you can offer customers an option to pay monthly for annual subscriptions."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "Billing plans can be added to both new and existing one-year auto-renewable subscriptions for your app in App Store Connect."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "By providing customers with the option to pay upfront or monthly, you can reach a larger customer base"
+  },
+  {
+    "timestamp": "1:19",
+    "content": "and allow the customer to choose which billing plan best suits their needs."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "Once you compile your app against the 26.5 SDK, customers in available markets can subscribe to the new billing plan inside your app"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "on devices running iOS, iPadOS, macOS, tvOS, or visionOS 26.4."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "I'll show you how it works by setting up a new billing plan for the SK Demo app."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "This app uses StoreKit to merchandise and sell in-app purchase products."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "You can download the sample code project in the resources for this session to follow along."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "Here, I have the SK Demo app set up in App Store Connect, and I navigated to the Subscriptions section."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "I want to offer customers more affordable options for the SK Demo Plus subscription,"
+  },
+  {
+    "timestamp": "2:04",
+    "content": "so I'll select a product with a one-year duration."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "Then, under Monthly with a 12-month commitment availability, I'll choose Setup Availability,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "and then follow the steps to configure the billing plan."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "Once created, subscription offers can be configured for each billing plan type."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "For example, I added a free trial only for the customers who subscribe to a 12-month commitment."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "Now that I have new subscription pricing configured for SK Demo in App Store Connect,"
+  },
+  {
+    "timestamp": "2:32",
+    "content": "I can merchandise the new payment option to customers with StoreKit."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Pricing Terms is a new property available on SubscriptionInfo for merchandising billing plan information."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "The Pricing Terms array lists all available billing plans for a given product."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "Every auto-renewable subscription carries at least one billing plan in this array"
+  },
+  {
+    "timestamp": "2:52",
+    "content": "with a default billing plan type of upfront."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "Because I configured a monthly subscription with a 12-month commitment for SK Demo Plus,"
+  },
+  {
+    "timestamp": "3:00",
+    "content": "a second object is returned in the Pricing Terms array."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "This billing plan uses a billing plan type of monthly,"
+  },
+  {
+    "timestamp": "3:07",
+    "content": "which only applies to monthly subscriptions with a 12-month commitment."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "To merchandise pricing terms in my app, I'll use StoreKit Views."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "The StoreKit Views APIs handle the work of loading product metadata from the App Store and adjusting layout,"
+  },
+  {
+    "timestamp": "3:22",
+    "content": "so your store automatically adapts to feel at home across all platforms."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "I'll show you how it works in code."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "I'll start by adding the new SwiftUI View modifier, preferred subscription pricing terms,"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "and attach it to my existing Subscription Store View."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "I'll then filter for the pricing terms with a monthly billing plan type."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "And now, my Subscription Store is updated and ready to merchandise the monthly subscription with a 12-month commitment."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "If you want to customize the Subscription Store View further, check out Meet StoreKit for SwiftUI from WWDC23"
+  },
+  {
+    "timestamp": "3:56",
+    "content": "and learn how StoreKit Views can match your app with custom icons, backgrounds, and any other changes."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "To merchandise the commitment plan in custom store UI in your app, fetch products with the Product API"
+  },
+  {
+    "timestamp": "4:07",
+    "content": "and filter for pricing terms with a monthly billing plan type."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "Then, obtain the monthly and total commitment price and display in the UI."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Note that billing plan metadata is only returned when available in the customer storefront."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "To make the purchase, pass the new billing plan type purchase option and handle the result."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Before a customer subscribes to a commitment plan for the first time,"
+  },
+  {
+    "timestamp": "4:33",
+    "content": "new messaging is included with the disclosure sheet."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "The App Store automatically presents this sheet and is displayed once per Apple account."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "The sheet includes information about the number of payments required to fulfill the commitment,"
+  },
+  {
+    "timestamp": "4:46",
+    "content": "along with cancellation guidance."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "When a subscription is active, the App Store also automatically provides new UI for customers"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "to manage their monthly subscription with a 12-month commitment."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "Here, customers can see all available plans and check the number of remaining payments,"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "along with when their billing commitment renews."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "You can present the Manage Subscriptions Sheet directly inside your app using the Manage Subscriptions Sheet"
+  },
+  {
+    "timestamp": "5:10",
+    "content": "API in SwiftUI, or in UIKit, call the Show Manage Subscriptions API."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "To retrieve the active subscription information in your app, you can use new fields on transaction"
+  },
+  {
+    "timestamp": "5:22",
+    "content": "that provide billing plan-specific metadata."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "For transactions with an upfront billing plan type, commitment info is nil."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "For transactions with a monthly billing plan type, commitment info returns the progress,"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "price, and expiration for the 12-month commitment."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "You can use these fields from the latest transaction to check customer entitlements or build your own"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "commitment progress indicator."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "Always use the latest transaction to get an accurate expiration date."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "Similarly, you can retrieve the renewal billing plan type and commitment info on renewal info for"
+  },
+  {
+    "timestamp": "5:55",
+    "content": "information on the renewal of the overall commitment."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "These new fields are available starting with OS 26.4."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Once you've added logic to merchandise and unlock content for the new billing plan, you can start"
+  },
+  {
+    "timestamp": "6:08",
+    "content": "testing with StoreKit testing in Xcode."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Starting with Xcode 26.5, open your StoreKit configuration file and select a one-year auto-renewable"
+  },
+  {
+    "timestamp": "6:16",
+    "content": "subscription."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "Then, using the new billing plan picker, choose monthly with a 12-month commitment to create"
+  },
+  {
+    "timestamp": "6:23",
+    "content": "a billing plan."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "This creates new fields to configure pricing for the monthly subscription with a 12-month"
+  },
+  {
+    "timestamp": "6:29",
+    "content": "commitment."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "Similar to App Store Connect, offers can be uniquely created for each billing plan type"
+  },
+  {
+    "timestamp": "6:35",
+    "content": "here in Xcode."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "Once configured, test your purchase flow with the transaction manager and verify commitment"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "info in the transaction inspector."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "To learn more about best practices and setting up StoreKit testing in Xcode, check out What's"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "New in StoreKit 2 and StoreKit testing in Xcode from WWDC 23."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "If your app uses the App Store Server APIs or App Store Server Notifications v2, you can leverage"
+  },
+  {
+    "timestamp": "7:00",
+    "content": "new capabilities for customers who subscribe to a monthly subscription with a 12-month commitment."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "There are new fields available in the signed transaction and renewal info objects that provide additional"
+  },
+  {
+    "timestamp": "7:11",
+    "content": "information about the commitment plan."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "Subscription notifications continue to provide updates on the subscription lifecycle, such"
+  },
+  {
+    "timestamp": "7:18",
+    "content": "as monthly renewals, throughout the 12-month commitment."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "The Retention Messaging API also supports this new payment option for auto-renewable subscriptions."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "Check out our WWDC 26 session, Explore Retention Messaging in App Store Connect, to learn how this"
+  },
+  {
+    "timestamp": "7:33",
+    "content": "server-to-server API can help with your customer retention strategy."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "I'll now show you a transaction payload example from the server for one billing period purchase"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "of a 12-month commitment."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "This decoded JWS transaction includes new fields that correspond to the ones I covered earlier"
+  },
+  {
+    "timestamp": "7:50",
+    "content": "in StoreKit."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Use these fields to detect billing period purchases and understand where they live in the context"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "of the overall commitment."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "The signed renewal info object contains similar fields, which reflect the renewal preferences"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "of the customer after the current commitment ends."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Accordingly, they are only present in the renewal info when the subscription is currently in a commitment."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "In this example, the customer changes their subscription to renew into a different build-up front plan"
+  },
+  {
+    "timestamp": "8:18",
+    "content": "once their commitment completes."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "To learn more about handling renewals and other events throughout the 12-month commitment, check out the developer"
+  },
+  {
+    "timestamp": "8:26",
+    "content": "documentation for managing the lifecycle of monthly subscriptions with a 12-month commitment."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "In addition to new pricing capabilities available on annual subscriptions, I'm excited to share that there is another"
+  },
+  {
+    "timestamp": "8:37",
+    "content": "new feature to expand your subscription offerings, bundles and suites."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "Offering subscription bundles and suites is another way you can provide customers with more value in their"
+  },
+  {
+    "timestamp": "8:48",
+    "content": "subscriptions across apps."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "Let's review the difference between bundles and suites."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "A bundle is a group of subscriptions which can be purchased individually, but are sold together in a single purchase"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "and offered at a better price than purchasing all of the subscriptions individually."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "A suite is a group of subscriptions which only exist in the context of the suite."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "These subscriptions cannot be purchased individually, but together typically provide service to a related set of apps."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "You can start testing the APIs for bundles and suites in Xcode 27, and more details on this program are coming later in 2026."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "Shifting gears to offer codes."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "Offer codes can be added to a consumable, non-consumable, auto-renewable subscription, or non-renewing subscription product, and allow you to provide free or discounted in-app purchases to customers for specific duration."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "To learn how to configure offer codes in App Store Connect, check out Implement App Store Offers from WWDC24."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "Customers can redeem offer codes directly within your app when you present this sheet using the OfferCode Redemption API."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "Similar to creating a purchase, the API now returns a verification result when the redemption completes."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "The API also accepts a set of redeem option values that configure the code redemption."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "If the redemption succeeds, you receive a transaction object in the verification result."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "If the redemption fails, you receive an error that describes why the redemption failed."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "A UIKit variation of the updated redemption API is available as well, using Present OfferCode Redeem Sheet."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "You can now test redeeming offer codes in Xcode 27 with the new redemption API on all applicable product types."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "When you're ready to submit an app to the App Store, you can utilize the enhanced submission experience,"
+  },
+  {
+    "timestamp": "10:39",
+    "content": "for in-app purchases in App Store Connect."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "This includes the ability to group multiple products as review items into a single AppReview submission."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "In-app purchase products can now be combined with other review items, including in-app events, custom product pages, and product page optimizations."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "After submission, you can check the status from AppReview in a centralized view for all review items."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "These enhancements help keep your submission workflow organized and consistent across all review item types."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "By unifying the submission process."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "I'll go through an example of the enhanced submission flow using the SK Demo app in App Store Connect."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "When I have an in-app purchase product ready to submit to AppReview, I can add to an in-draft submission with the Add for Review drop-down."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "Then, I can view all of the review items in a submission by clicking on the in-progress draft."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "To add a large group of products to a submission, I'll go to my list of in-app purchase products and select each one that I would like reviewed together."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "Then, I'll click Add for Review and select the in-progress submission."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "In addition to the App Store Connect website, the enhanced submission experience is coming to the App Store Connect API."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "Review Submissions is expanding to support in-app purchase, subscription, and subscription group resources."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "The Review Submissions API collection will enable you to automate your tasks for all review items through a single interface."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "The existing resources for in-app purchase, subscription, and subscription group will be deprecated in favor of the Review Submission and Review Submission Items resources."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "So, start migrating today."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "Check out What's New in App Store Connect from WWDC22 for a deep dive on the mechanics of review items and submitting to AppReview."
+  },
+  {
+    "timestamp": "12:25",
+    "content": "These new features for in-app purchases equip you with more ways to grow your customer base and provide great value to customers."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "Before we conclude, here are some next steps to get you on your way."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "Start by adding new billing plans to offer customers the flexibility of a monthly subscription while still securing a long-term commitment for your annual subscription products."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "Update OfferCode Redemption call sites across your app to take advantage of the extended Redemption API."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "Begin testing these new features today in Xcode 27 and Sandbox."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "When you're ready, submit your updated in-app purchase products with the enhanced AppReview experience."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "Thank you for joining me and being part of the Apple Developer Community."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "I hope these features will drive your in-app purchases to reach even more people, so you can focus on creating great apps and games that people will love."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "Googlecidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacida"
+  }
+]

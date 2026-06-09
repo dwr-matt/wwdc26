@@ -1,0 +1,1294 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Kei Yu from the Game Technology team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Porting your game from Mac to iOS is incredibly straightforward,"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "with help from the Game Porting Toolkit 4."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "Players can already use a wide range of game controllers"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "across Apple devices, Mac, iPad, and iPhone."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "Players love taking their favorite games with them everywhere."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "They'll pull out their iPhone and jump into your game anywhere, anytime."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "But in those spontaneous moments, they may not always have a controller with them."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "So how do you make sure they still get a fantastic responsive experience?"
+  },
+  {
+    "timestamp": "0:48",
+    "content": "The answer is to give your game great touch controls."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "Dredge by Blacksaw Games is a perfect example of how touch controls can elevate an already engaging experience."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "Players get a seamless blend of gameplay and platform interaction."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "Everything feels natural and intuitive, letting players focus on the adventure."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "I'll walk you through, step by step, how to design and implement great touch controls on iOS and iPadOS,"
+  },
+  {
+    "timestamp": "1:22",
+    "content": "using my game as an example."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "Here's the plan."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "I'll set up touch controls for my game, create flexible layouts, design fluid interactions on screen,"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "and provide rich feedback to the player."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "The first step is to set up the touch controller."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "If your game already has support for game controllers, or has keyboard and mouse support,"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "chances are you are familiar with the game controller framework."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "Building on top of that, the touch controller framework extends that support to touch input."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "The core of the game controller framework is straightforward."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "It reacts to notifications when GC controller objects connect or disconnect,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "and then either posts active devices for their input state,"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "or sets up value change handlers to be notified when input state changes."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "And once you've implemented your game logic using GC controller,"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "you are ready to add touch controls on top of it, using the touch controller framework."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "The touch controller framework includes a rich set of button types and behaviors to support the most common game inputs."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "On top of that, each button's appearance can be customized to best fit your game."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "An API integrates directly with metal to ensure the highest possible performance."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "When touch controller is enabled in your game, it shows up as a GC controller object."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "So you can pull its date or set up handlers to listen for input updates, just like any other controller."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "Here's my game."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "It already has game controller support."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "So now I'll add support for touch controls."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "I'll start by creating a touch controller object from a descriptor."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Then I'll enable the touch controller."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "This automatically enables game controller logic."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "With the touch controller enabled, I'll work on two things."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "First, in UI view, I'll add a handler for touch input."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "This notifies the touch controller when players start, end, and move the touch."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "Second, in the Metal Renderer, I'll render the touch controls on screen."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "In the code, I'll use a descriptor to create a touch controller object."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "I'll enable the touch controller using the Connect API."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "Then I'll render all the controls using the touch controller's Render API."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "In UI kit, the touchesBegain function reports when one or more new touches occurred in the view or window."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "I'll override that and call handleTouchBegain instead."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "You'll want to do that for touchesEnd and touchesMove also."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "Finally, I'll set up the polling states and valueChangedHandler."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "There's one more thing I still need to do."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "Add all the controls to the touch controller object."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "But where should I place them?"
+  },
+  {
+    "timestamp": "4:46",
+    "content": "And how can I do it in a way that gives players the best experience?"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "The key is setting up a flexible layout."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "A flexible layout means your game feels comfortable on any screen size."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "With Apple's Unified Gaming platform, players can find your game across a wide variety of devices."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "The key is to plan early and design an adaptive game interface that scales gracefully across all of them."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "The touch controller framework makes it easy to do that."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "It provides nine anchor points for each layout."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "After you assign the anchor for a control, you can place it with enough set which is relative to the anchor."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "You can group related controls into a section and assign the same anchor point to every control in that section."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "Then, as the device shape changes, each section stays at a consistent size and distance from its anchor point."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "This keeps your controls at physically comfortable sizes for mobile players, while making the best use of available screen space across all devices."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "You also want to make sure your controls are always visible."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "The way to do that is to design for the full screen."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "On iPad and iPhone, designing a full screen gaming experience means keeping the safe areas in mind."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "Safe areas are regions of the display where you can safely put UI so that it doesn't overlap with hardware or software features."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "On iPad and iPhone, safe areas help you avoid placing UI where the device's rounded corners could obscure it."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "They also help you steer clear of the system home indicator and dynamic island on iPhone, both of which can potentially overlap your controls type targets."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "On iOS and iPadOS, you can read the safe area insights from any UI view in UIKit."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "Then, you can add the safe area insights to the offset of the controls you want to place on the screen."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "Avoiding the safe areas is a start."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "But I also need to place my controls carefully, so they don't interfere with the game's play area."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "I want to avoid placing controls where I expect movement or camera input to happen."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "And of course, I don't want to cover my character, so no controls will go in the center of the display."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "That leaves the regions near the thumbs, which are ideal for frequent or important actions."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "And the region at the top of the screen, which is a great place to put less frequently used controls like manual buttons."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "With that, I know exactly where to place my touch controls."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Now, I'll implement these controls in my game using the touch controller I set up earlier."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "The touch controller framework provides convenient APIs to create controls, and they all follow a similar pattern."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Set up the relevant properties for the control using a descriptor."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "Some controls have properties in common, some properties are unique to a specific type of control."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "Then, using the descriptor, create the control."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "Add it to the TC touch controller."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "For my game, I'll need to implement these controls to match my controller support."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "I'll start with creating button B."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "Here, I'll create a standard circular button B."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "First, I initialize a TC button descriptor."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "I set its label to TC control label button B."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "This maps it to the physical button B on the game controller."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "Since my game was already handling the input from a physical controller,"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "I don't have to write any more game logic here."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "It's already handled."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "I just have to place the button on screen."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "I anchor it in the bottom right region and set a fixed offset."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "I also need to set the button's visual contents so it actually appears on screen."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "Finally, I call add button on the touch controller and pass this descriptor."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "And since my game is full screen, I'll adjust the offset using safe area insets so nothing gets clipped."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "Button B is showing up at the bottom right in a circular shape."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "I'll adjust the same way."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "After I add all the controls into the touch controller object,"
+  },
+  {
+    "timestamp": "9:43",
+    "content": "they are appearing in the game."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "Because I apply safe areas to the offsets,"
+  },
+  {
+    "timestamp": "9:49",
+    "content": "the dynamic island doesn't overlap any of my controls."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "The controls also don't cover the main character, keeping the game area clean."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "But these controls don't feel quite right."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "I've created a direct one-to-one mapping from a physical controller."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "This makes the screen cluttered with controls that compete for space."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "But I can improve that."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "In this section, I'll clean up the clutter and design controls that feel native to touch."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Because when interactions feel fluid and natural, players feel immersed in a gaming experience."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "There are a few choices you can make here that really make a difference."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "I'll start with using dynamic controls."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "Unlike a physical game controller button,"
+  },
+  {
+    "timestamp": "10:43",
+    "content": "you can easily change the appearance of on-screen controls."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "You can choose a glyph that actually represents what the controls function is."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Since I'm using system assets for my controls,"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "I'll just change the name of the system assets from button B"
+  },
+  {
+    "timestamp": "11:01",
+    "content": "to instead display an icon showing the actual action."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Now the button B displays the icon for the strike action."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "After sweeping out all the system assets,"
+  },
+  {
+    "timestamp": "11:15",
+    "content": "the layout is much more intuitive."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "Players immediately know what each control does"
+  },
+  {
+    "timestamp": "11:21",
+    "content": "without having to check the settings or read hints during gameplay."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "And when the control's behavior changes based on context,"
+  },
+  {
+    "timestamp": "11:30",
+    "content": "you should update its icon to match."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "In my game, besides the default strike power,"
+  },
+  {
+    "timestamp": "11:37",
+    "content": "the single button B can also represent the fireball or water power."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "So the icon should update with the flame or water drop image when players select the power."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "I'll create a helper function that updates the contents of button B."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Then in a cycle power function,"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "I'll call it with the right symbol name for each power type."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "This shows the player exactly what action they are playing with."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "12:09",
+    "content": "once a player selects the power,"
+  },
+  {
+    "timestamp": "12:11",
+    "content": "button B on the bottom right automatically shows the correct icon for that power."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "And importantly,"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "when the action isn't available or relevant,"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "remove it from the screen entirely."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "Don't leave controls visible that players cannot use."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "In my game, here's how I apply this."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "Thumbsticks are hidden when they are not being touched."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "The pick up button only appears when there's an item nearby to pick up."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "And QuickTime event buttons are only show when a QuickTime event is actually happening."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "The Aim and Release Power button should only appear when a specific power is selected."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Hiding thumbsticks when not in use is easy."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "When you create the thumbstick,"
+  },
+  {
+    "timestamp": "13:06",
+    "content": "just set hides when not pressed to true."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "For other controls like buttons,"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "set is enabled to false to hide them."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "The pick up button is a little different."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "It should appear right next to the item that needs picking up."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "So I update its position every time I show it."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "When it's time to dismiss it,"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "I remove the button from the touch controller entirely."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "After hiding the thumbsticks,"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "pick up button,"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "and QuickTime event buttons when they are not needed,"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "the screen is much cleaner."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "One of the real advantages of touch controls is that"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "they can serve as both input and output."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "So instead of showing an overlay and cycling through actions,"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "you can display those actions directly as touch controls."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "In a button X press handler,"
+  },
+  {
+    "timestamp": "14:07",
+    "content": "I open the power wheel controls directly"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "instead of showing the power wheel overlay."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "In the open power wheel function,"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "I add each powered control to the touch controller"
+  },
+  {
+    "timestamp": "14:19",
+    "content": "based on what powers are currently available."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Then I set a value changed handler for each one."
+  },
+  {
+    "timestamp": "14:28",
+    "content": "And since these controls are not used all the time,"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "I auto dismiss them after three seconds if no selection is made."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "Now players can select the power directly from the touch controls."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "No overlay is needed."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "Smooth character and camera movement"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "are essential for a great feeling game."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "So how do you adapt those from a physical controller to touch?"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "I'll use the full screen for both character and camera movement."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "For sprinting,"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "I'll use a single left thumbstick without an extra button."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "I'll also replace the right thumbstick with a touchpad."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "Physical thumbsticks have a fixed size,"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "but on touch screen,"
+  },
+  {
+    "timestamp": "15:17",
+    "content": "you are not bound by those constraints at all."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "And because players can't physically feel"
+  },
+  {
+    "timestamp": "15:24",
+    "content": "where their finger is relative to visual control,"
+  },
+  {
+    "timestamp": "15:27",
+    "content": "it's important to expand the input area as much as possible."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "I'll set the collider shape to either left side or right side,"
+  },
+  {
+    "timestamp": "15:38",
+    "content": "which gives the thumbstick access to the entire half of the screen"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "for touch detection."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "Now the entire left half of the screen"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "responds to the player's touch."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "Let's look at another issue I want to address"
+  },
+  {
+    "timestamp": "15:54",
+    "content": "when a character is sprinting."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "In my game,"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "sprinting requires players to hold down the left thumbstick"
+  },
+  {
+    "timestamp": "16:02",
+    "content": "and move it at the same time."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "On the physical controller,"
+  },
+  {
+    "timestamp": "16:06",
+    "content": "that's fine."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "But on touch,"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "it means using at least two fingers simultaneously."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "This is really difficult to do."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "To solve this,"
+  },
+  {
+    "timestamp": "16:17",
+    "content": "I'll embed the thumbstick bottom's functionality"
+  },
+  {
+    "timestamp": "16:21",
+    "content": "directly into the thumbstick itself."
+  },
+  {
+    "timestamp": "16:23",
+    "content": "And I'll use the tilt magnitude to determine sprint."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "A small tilt means the character moves at a normal pace."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "If it's a big tilt,"
+  },
+  {
+    "timestamp": "16:35",
+    "content": "the character will sprint."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "In the pull input function,"
+  },
+  {
+    "timestamp": "16:40",
+    "content": "I read the left thumbstick from GC controller"
+  },
+  {
+    "timestamp": "16:44",
+    "content": "and get the tilt value from it."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "Then, I do a quick magnitude check"
+  },
+  {
+    "timestamp": "16:50",
+    "content": "to decide whether the tilt is large enough"
+  },
+  {
+    "timestamp": "16:53",
+    "content": "to trigger sprinting."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "Now players can sprint using just the thumbstick."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "No second finger is required."
+  },
+  {
+    "timestamp": "17:01",
+    "content": "Another issue I want to solve is the camera control."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "Directly mapping the right thumbstick to camera movement on touch"
+  },
+  {
+    "timestamp": "17:13",
+    "content": "can cause over rotation and can feel sluggish."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "A touchpad gives you both speed and precision."
+  },
+  {
+    "timestamp": "17:22",
+    "content": "The camera moves immediately."
+  },
+  {
+    "timestamp": "17:24",
+    "content": "The player doesn't have to wait for it to spin around."
+  },
+  {
+    "timestamp": "17:27",
+    "content": "It moves exactly as far as their finger moves"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "with no latency or drift at the start or end of a gesture."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "The touch controller framework provides TC touchpad for this."
+  },
+  {
+    "timestamp": "17:39",
+    "content": "I initialize the descriptor."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "Set its label to right thumbstick."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "So it maps to the existing camera logic."
+  },
+  {
+    "timestamp": "17:47",
+    "content": "Set collider ship to right side."
+  },
+  {
+    "timestamp": "17:50",
+    "content": "So it covers the right half of the screen."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "And set reports relative values to true."
+  },
+  {
+    "timestamp": "17:57",
+    "content": "So it works no matter where on the screen the player touches."
+  },
+  {
+    "timestamp": "18:01",
+    "content": "Then I added to the touch controller."
+  },
+  {
+    "timestamp": "18:05",
+    "content": "Now when players use the touchpad to control the camera,"
+  },
+  {
+    "timestamp": "18:09",
+    "content": "there's no visible control to clutter the screen."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "This leaves more room for the game itself."
+  },
+  {
+    "timestamp": "18:16",
+    "content": "And there's no over rotation when they move their feet."
+  },
+  {
+    "timestamp": "18:19",
+    "content": "When they move their fingers."
+  },
+  {
+    "timestamp": "18:21",
+    "content": "Most modern games have some complex control combinations."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "That are fine on a physical controller."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "But need rethinking for touch."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "It's important to approach those thoughtfully."
+  },
+  {
+    "timestamp": "18:37",
+    "content": "In my game, there are two cases worth working through."
+  },
+  {
+    "timestamp": "18:41",
+    "content": "A quick time event."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "And an aim to release power."
+  },
+  {
+    "timestamp": "18:46",
+    "content": "These events usually require using two or more fingers at once on a physical controller."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "But on touch, there are better ways."
+  },
+  {
+    "timestamp": "18:55",
+    "content": "I'll start with the quick time event."
+  },
+  {
+    "timestamp": "18:59",
+    "content": "One quick time event happens when the big boss freezes your character."
+  },
+  {
+    "timestamp": "19:04",
+    "content": "Players need to hold L1 and R1 to break free."
+  },
+  {
+    "timestamp": "19:09",
+    "content": "While also using the left thumb stick to move away from the boss."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "That's a lot to manage with just two fingers."
+  },
+  {
+    "timestamp": "19:18",
+    "content": "Instead, consider collapsing those two buttons into a single quick time event button."
+  },
+  {
+    "timestamp": "19:24",
+    "content": "And hide it entirely when the event isn't happening."
+  },
+  {
+    "timestamp": "19:29",
+    "content": "In my game, I add this quick time event button once during setup."
+  },
+  {
+    "timestamp": "19:35",
+    "content": "Unlike the pickup button which appears at different positions."
+  },
+  {
+    "timestamp": "19:39",
+    "content": "The quick time event button always appears in the same spot."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "So I use isEnable to show and hide the button."
+  },
+  {
+    "timestamp": "19:48",
+    "content": "Instead of adding and removing it each time."
+  },
+  {
+    "timestamp": "19:51",
+    "content": "Now players can hold the quick time event button to escape."
+  },
+  {
+    "timestamp": "19:56",
+    "content": "While moving with the left thumb stick at the same time."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "The other challenge is aiming to use a power."
+  },
+  {
+    "timestamp": "20:04",
+    "content": "This is a common event in modern games."
+  },
+  {
+    "timestamp": "20:07",
+    "content": "To throw a fireball, players need to use more than two fingers to aim,"
+  },
+  {
+    "timestamp": "20:12",
+    "content": "move and release power at the same time."
+  },
+  {
+    "timestamp": "20:15",
+    "content": "That's very challenging in a busy game."
+  },
+  {
+    "timestamp": "20:18",
+    "content": "The fix is to combine the aim and release into a single action button."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "In code, I'll remove the aim and release buttons."
+  },
+  {
+    "timestamp": "20:31",
+    "content": "Instead, in button B's value change handler,"
+  },
+  {
+    "timestamp": "20:34",
+    "content": "I'll call the release power function based on this press state."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "To implement hold and drag, capture the raw touch delta where button B is held."
+  },
+  {
+    "timestamp": "20:46",
+    "content": "This has to happen in Touch is moved because it's tracked independently from the buttons press state itself."
+  },
+  {
+    "timestamp": "20:54",
+    "content": "Now if a player wants to throw a fireball,"
+  },
+  {
+    "timestamp": "20:57",
+    "content": "they hold button B and drag to aim."
+  },
+  {
+    "timestamp": "21:00",
+    "content": "While still moving with the left thumb stick,"
+  },
+  {
+    "timestamp": "21:03",
+    "content": "when they release button B, the fireball fires."
+  },
+  {
+    "timestamp": "21:07",
+    "content": "The interaction feels much smoother with this redesign."
+  },
+  {
+    "timestamp": "21:12",
+    "content": "Now that players can touch anywhere on screen,"
+  },
+  {
+    "timestamp": "21:16",
+    "content": "it's just as important to give them clear feedback about what they are touching."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "Every touch control you create should have a visible press state,"
+  },
+  {
+    "timestamp": "21:26",
+    "content": "and the touch controller framework handles this for you by default."
+  },
+  {
+    "timestamp": "21:30",
+    "content": "Thumb sticks animate as they move, and the buttons highlight when pressed."
+  },
+  {
+    "timestamp": "21:35",
+    "content": "But in the context of a visually busy game,"
+  },
+  {
+    "timestamp": "21:38",
+    "content": "you may want to go further with custom visual feedback."
+  },
+  {
+    "timestamp": "21:42",
+    "content": "In my game, players don't get much feedback when they are sprinting."
+  },
+  {
+    "timestamp": "21:47",
+    "content": "I'll fix that with a strong visual indicator."
+  },
+  {
+    "timestamp": "21:51",
+    "content": "I'll add a glowing halo around the outer ring of the left thumb stick when sprint is active."
+  },
+  {
+    "timestamp": "21:57",
+    "content": "To do this, I create TC control contents manually."
+  },
+  {
+    "timestamp": "22:02",
+    "content": "First, I generate the halo ring TC control image from a halo metal texture."
+  },
+  {
+    "timestamp": "22:08",
+    "content": "It's size slightly larger than the thumb stick background."
+  },
+  {
+    "timestamp": "22:13",
+    "content": "TC control contents is essentially an array of layers."
+  },
+  {
+    "timestamp": "22:18",
+    "content": "I stack the halo control image on top of the standard background images."
+  },
+  {
+    "timestamp": "22:23",
+    "content": "Then I swap in the new TC control contents with the halo when sprint is active,"
+  },
+  {
+    "timestamp": "22:29",
+    "content": "and revert to the normal background when it's not."
+  },
+  {
+    "timestamp": "22:32",
+    "content": "Now, when a player is sprinting,"
+  },
+  {
+    "timestamp": "22:35",
+    "content": "the glowing halo around the thumb stick"
+  },
+  {
+    "timestamp": "22:38",
+    "content": "makes it immediately clear the character is in sprint mode."
+  },
+  {
+    "timestamp": "22:44",
+    "content": "Great!"
+  },
+  {
+    "timestamp": "22:45",
+    "content": "So far, I've set up a touch controller,"
+  },
+  {
+    "timestamp": "22:48",
+    "content": "redesigned my controls, and implemented the design with touch controller framework in my game."
+  },
+  {
+    "timestamp": "22:54",
+    "content": "Let's check how it works in the game overall."
+  },
+  {
+    "timestamp": "22:58",
+    "content": "This is where I started."
+  },
+  {
+    "timestamp": "23:00",
+    "content": "Every button from a physical controller mapped directly onto the screen,"
+  },
+  {
+    "timestamp": "23:05",
+    "content": "Cluttering the game."
+  },
+  {
+    "timestamp": "23:08",
+    "content": "With all the improvements I went through in today's session,"
+  },
+  {
+    "timestamp": "23:11",
+    "content": "the game view is clear,"
+  },
+  {
+    "timestamp": "23:13",
+    "content": "and controls are straightforward to use."
+  },
+  {
+    "timestamp": "23:15",
+    "content": "The left thumb stick appears when players touch the screen."
+  },
+  {
+    "timestamp": "23:19",
+    "content": "The pickup button shows up when there's an item nearby to pick up."
+  },
+  {
+    "timestamp": "23:23",
+    "content": "The right half screen is the touchpad for camera control without overrotation."
+  },
+  {
+    "timestamp": "23:28",
+    "content": "Simply press the button to pick up power that players just picked up."
+  },
+  {
+    "timestamp": "23:32",
+    "content": "Hold and drag one single action button to aim and release."
+  },
+  {
+    "timestamp": "23:39",
+    "content": "The sprint indicator enhances the gameplay a lot."
+  },
+  {
+    "timestamp": "23:42",
+    "content": "Players can jump into my game with only two fingers anywhere, anytime."
+  },
+  {
+    "timestamp": "23:47",
+    "content": "It's your turn to design touch controls."
+  },
+  {
+    "timestamp": "23:51",
+    "content": "When done well, they can make your game feel brand new to players who pick it up on their phone."
+  },
+  {
+    "timestamp": "23:58",
+    "content": "And implement those great controls with the touch controller framework."
+  },
+  {
+    "timestamp": "24:03",
+    "content": "For more, watch design great interfaces for handheld games"
+  },
+  {
+    "timestamp": "24:08",
+    "content": "and level up with Apple game technologies."
+  },
+  {
+    "timestamp": "24:11",
+    "content": "Thanks so much for watching."
+  },
+  {
+    "timestamp": "24:13",
+    "content": "Thank you for watching."
+  }
+]

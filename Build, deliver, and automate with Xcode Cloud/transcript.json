@@ -1,0 +1,738 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Tony,"
+  },
+  {
+    "timestamp": "0:08",
+    "content": "an engineer on the ExoCloud team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "ExoCloud is a continuous integration and"
+  },
+  {
+    "timestamp": "0:15",
+    "content": "delivery service built into"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "Xcode and designed expressly for Apple developers."
+  },
+  {
+    "timestamp": "0:20",
+    "content": "It builds and tests your app in the Cloud and"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "offers a seamless way to set up distribution,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "so it can take your app to TestFlight or to the App Store."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "This year, we focused on improving"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "the fundamentals of ExoCloud."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "It doesn't matter if you're just starting with an app idea,"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "or if you have been using ExoCloud since day one,"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "you'll find meaningful requirements every step of the way,"
+  },
+  {
+    "timestamp": "0:44",
+    "content": "from building and testing to distribution."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "Today, we'll touch on some essential concepts."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Then, I will show you how seamless it is to get started with"
+  },
+  {
+    "timestamp": "0:55",
+    "content": "ExoCloud with a new app I'm building."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "Next, we'll set up distribution,"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "so we can collect feedback from users."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "And finally, we'll take a peek at how webhooks and"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "built-in repository management tools can extend your workflows"
+  },
+  {
+    "timestamp": "1:10",
+    "content": "and take you to the next level."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "First, let's ground ourselves on some basic concepts."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "App development is constantly changing, and this year is no exception."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "With support for agents arriving at ExoCode, a lot of developers are writing more code than ever before,"
+  },
+  {
+    "timestamp": "1:28",
+    "content": "either reading quickly on features and changes, and delivering more value to users."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "And that's awesome."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "But how do you scale and keep up with the rapid pace of code, new features, and ensure you can catch bugs and performance issues before the reach customer devices?"
+  },
+  {
+    "timestamp": "1:44",
+    "content": "ExoCloud is a companion for quality."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "Compared to local development, ExoCloud builds and tests your app in the cloud in parallel across multiple devices and OS versions."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "Then, when you're ready to get feedback from testers, it is so simple to set up distribution, deliver bills to TestFly and to the App Store."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "Time to get started."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "As a full-time engineer, I'm always looking for interesting problems to solve."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "But I'm also a part-time barista."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "I love making coffee in the office, and my co-workers have taken notice."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "I've been making coffee for them for a while now, but it's starting to become difficult to track all the orders and preferences."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "To help operating my office coffee shop, I've been working on an iOS app."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "As the app grows, so does the test suite."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "Unit test for business logic."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "Unit test to make sure critical flows like Checkout never regress."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "Running all of these tests locally after every change is starting to take real time."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "Time that could spend working on adding new functionalities or responding to user feedback."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "Time to bring ExoCloud so that builds and tests are automated and I'm no longer constrained to my local machine."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "This is my app in Xcode."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "To get started, I will navigate to the report navigator."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "And select the tab called Cloud."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "I will choose Get Started."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "And I see all the products in my workspace."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Right now, there's only one."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "The developer team is already set to match my signing and distribution settings."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "So I will go ahead and click Next."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "In order to build my app, ExoCloud needs to access the source code."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "The onboard assistant will load my repository and I will just need to follow the steps to connect."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Depending on your source provider, the steps may vary."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "To learn more about connecting your project, check out Connect Your Project to ExoCloud."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Great, we are connected."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "But before I click Next, let's talk about your source code."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "ExoCloud builds run on ephemeral virtual machines."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "Your source code is only fetched when a build starts."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "And once your build is done, it's thrown away."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "None of your source code is ever stored."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "And Apple has no way of accessing it."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "Back to Xcode."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "I will click Next."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "And we are done."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "ExoCloud has created my product and a default workflow, which I am happy with right now."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "It's only one more click to start my first build."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "Expand onboarded product."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Look, our first build is running."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "Nice."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "My iPhone app is onboarded."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "But when working in the office, I am often at my MacBook and I want to wait to see the orders"
+  },
+  {
+    "timestamp": "4:59",
+    "content": "come in and manage them."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "So I built a macOS app just for that."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "Let's see how straightforward it is to start onboarding that with ExoCloud."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "My macOS app is located in the same ExoCloud workspace, because it shares a style framework"
+  },
+  {
+    "timestamp": "5:16",
+    "content": "I've built for it."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "Move to the report navigator again."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "And then choose the More button in the bottom left of the navigator."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "From here, I will select Create Workflow."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "Now, I can see my macOS app in the Assistant, as well as my onboarded iOS app."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "I will pick macOS app and click Next."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "Since we have previously allowed ExoCloud to access the remote repository, there is no Connect"
+  },
+  {
+    "timestamp": "5:54",
+    "content": "Repository step again."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "Setup complete."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Select macOS branch."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "Let's start our first build."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "The Cloud session now shows me builds and workflows for both of my apps."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "This is a great starting point, but it's just the beginning."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "I can build up more complex workflows, covering more scenarios, more platforms, and more edge"
+  },
+  {
+    "timestamp": "6:29",
+    "content": "cases across both of my apps."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "If you want to learn more about how to utilize workflows to help ensure quality of your app,"
+  },
+  {
+    "timestamp": "6:36",
+    "content": "check out Create Practical Workflows in ExoCloud for more."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "Next, let's talk about a crucial step of bringing your ideas to life."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "Distribution."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "I have two great apps running builds and tests in ExoCloud, helping me ensure quality."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "But some of my users are eager to test out new features early and provide feedback."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "TestFlight is great at this, and ExoCloud makes it simple to integrate."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "In the Cloud Navigator, I will find my iOS app and then secondary click it."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "I will select Setup Distribution."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "ExoCloud needs content to create my official app record on App Store Connect."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Here, I need to provide a few properties, like my app name, the bundle ID, which is a unique"
+  },
+  {
+    "timestamp": "7:29",
+    "content": "identifier, and the SKU for the store."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "ExoCloud tells you when these properties are taken already, and you can change it here without"
+  },
+  {
+    "timestamp": "7:38",
+    "content": "leaving the assistant."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "I can see my app name is taken, so I need to be creative here."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Okay, good to create."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "It will take a couple of seconds to onboard to distribution."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "ExoCloud will create the app record, verify, then register the bundle ID and SKU, or add the background."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Back to ExoCloud."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "Nice."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "I'm set up for distribution."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "A new distribution workflow has been created for internal TestFlight, ready for me to start anytime."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "This is one way to set up distribution, but it's one more way I want to show you."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "I haven't set up distribution for my Mac OS app yet, and I want to create a new workflow for it."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "Secondary click the app and choose Manage Workflows."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "Press the plus sign on the button of Workflow Manager."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "Here, I need to create an archive action in this new workflow, as this is a required action to distribute to TestFlight."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "As I'm attempting to do this, I'm offered a way to set this up."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "Select Setup."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "I reviewed all the properties and click Create."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "ExoCloud will follow the same process to onboard my Mac OS app to distribution."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "Just like that, I'm done again."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "Building, testing, and distribution is at the core of ExoCloud."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "I'm not sure how to do this work."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "My colleagues are really enjoying ordering coffee and have been providing me great feedback about the app."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Because a few of them are engineers too."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "They've been tracking their own bugs as they are fixed."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "I think we can do way better than manually tracking by leveraging webhooks."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "Webhooks are the perfect tool for building advanced automations."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "When a webhook is configured,"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "ExoCloud automatically sends a payload containing information about your build to a service of your choice."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "There are hooks for every stage."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "When a build is created, when it starts, and when it's completed."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "This is going to be perfect for my dashboard I'm building."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "I'm building a webhook."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "To set up this automation, I will find the iOS app, secondary click it, and select Manage webhooks."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "Here, I will add a new webhook."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "I will name the webhook dashboard."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "And for the payload URL, I will enter a public reservable endpoint."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "And click Add."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "Once configured, it shows up in my webhook list now."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "With no delivery history."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "Let's start a new build to test out webhook configuration."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "The build just finished."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Navigate back to the webhooks view."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "I can see events of webhooks being sent to my dashboard."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "There are three here that correspond to the webhook lifecycle."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "And the green indicates successful deliveries."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "You can learn more about webhooks in our documentation."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "My coffee app is gaining traction around the office."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "TestFly user feedback is now full of great ideas, feature requests, and more."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "As the app grows, so does its complexity."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "A common practice at this stage is to split out code into separate repositories."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "Especially if functionality is shared."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "This keeps your codebacks modular and easier to maintain as your app scales."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "I've recently done exactly that."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "Splitting my style framework into its own repository."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "It's important to make sure ExoCloud stays in sync with new access change."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "Let's include that style framework in the project."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "I will secondary click iOS app again and select manage repositories."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "The repository setting page shop opens up with my primary repository already at the top."
+  },
+  {
+    "timestamp": "12:20",
+    "content": "The additional session is empty."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "I will click add."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "And paste in git remote URL for my style framework."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "Then click add."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "Since I've already granted ExoCloud access to my remote provider,"
+  },
+  {
+    "timestamp": "12:38",
+    "content": "I don't need to grant authorization again."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "ExoCloud can now build the project with all the right dependencies in place."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Now, every new feature I push is automatically built, tested, and deployed."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "My team gets notified the moment anything changes."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "And every build has access to exactly the right dependencies."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Time to try it yourself."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "Revisit ExoCloud concepts."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Onboard the app to build, test, and distribute."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "Then take it further."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "Configure webhooks and additional repositories to automate your workflow and scale your project."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "To learn even more about ExoCloud, check out Extended ExoCloud Workflows and"
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Simplify Distribution in ExoCloud and ExoCloud."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "ExoCloud builds your confidence to ship with quality."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "You can move faster and focus on important matters worry-free."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "So relax, sit back, and enjoy a great cup of coffee."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "Wow, it's still hot."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "Thanks for watching."
+  }
+]

@@ -1,0 +1,658 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Adrian, and I'm an engineer at Apple."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Vision OS allows you to bring people to new worlds and create rich spatial applications."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "Some existing spatial apps require an external device, such as a PC,"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "or they're built with alternative technologies like OpenXR."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Now there's a new way to enhance these apps for Apple Vision Pro."
+  },
+  {
+    "timestamp": "0:30",
+    "content": "It's called foveated streaming."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "Foveated streaming helps Apple Vision Pro connect to external devices, like a PC, to stream OpenXR content."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "Vision OS automatically sends input data like hands, controller positions, and microphone."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "And the device streams your OpenXR content as video and audio."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "We introduced the foveated streaming framework in Vision OS 26.4,"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "and developers have already created some amazing experiences with it."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "For example, X-Plane 12 from Laminar Research brings a premium flight simulation experience to Apple Vision Pro."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "The X-Plane app on Vision OS uses ARKit to understand your space and equipment,"
+  },
+  {
+    "timestamp": "1:16",
+    "content": "and streams the simulated experience from a PC."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "It feels incredible to interact with a physical flight simulator while fully immersed in the virtual world."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "You can look around the cockpit or out the side windows."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "Vision OS seamlessly blends the real and the virtual to deliver an immersive and effective simulation."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "iRacing, a motorsport racing game for PC, delivers an incredible sim racing experience on Apple Vision Pro."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "The iRacing Connect app uses ARKit hand tracking to match the position of your physical racing wheel with the virtual cockpit."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "So you can see your hands holding the virtual wheel."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "And InnoActive brings Autodesk V-Red to Apple Vision Pro."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "This enables designers and engineers to visualize massive 3D assets and simulations."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "In this video, designers at Kia use this technology to see their cars at one-to-one scale and in rigorous detail."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "So foveated streaming already enables some fantastic experiences on Apple Vision Pro."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "And the video quality is incredible because our system intelligently optimizes the video stream."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "Foveated streaming compresses video based on where a person is looking."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "We use the eye tracking technology in Apple Vision Pro to stream things you're focused on in higher detail."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "This sophisticated stream processing is built in to Vision OS, so we've done the heavy lifting for you."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "It all happens so quickly that you don't even notice."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "Under the hood, Vision OS comes with NVIDIA CloudXR streaming built in."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "This means that your immersive content is streamed with a higher performance streaming protocol and with minimal latency."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "CloudXR is so performant that you can stream immersive content without any cables attached over Wi-Fi."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "It can stream content from a local PC over your home network or from the cloud."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "Your apps can also integrate with native Vision OS frameworks."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "So you can build user interfaces with SwiftUI."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "You can mix your content in the real world with ARKit."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "And you can combine on-device Reality Kit rendering with your streamed content."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "It's super easy to use."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "We've found that you can start streaming your OpenXR application in just one day."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "And in a week, you can enhance your application with capabilities that you can only find on Vision OS."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "So let's talk about it."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "First, I'll describe how foveated streaming works and show you how to get started in just a few hours."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "Next, we'll set up a Vision OS app to display the streamed content."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "Then we'll set up your OpenXR client so that it can stream to Apple Vision Pro."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "And finally, I'll talk about how you can enhance your application with capabilities only possible on Vision OS."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "So let's get started."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "Here is a block diagram that outlines the frameworks you will build on, both for Vision OS and for your streaming endpoint."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Your OpenXR app should implement Apple's foveated streaming protocol, which manages pairing with the device."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "Also, your app should use the OpenXR runtime provided by the NVIDIA CloudXR SDK."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "On Vision OS, your app uses the foveated streaming framework to connect to the streaming endpoint."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "And you can integrate with other Vision OS frameworks, such as ARKit, SwiftUI, and RealityKit."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "Let's begin by setting up your streaming endpoint."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "We've provided an open-source, end-to-end example on Apple's GitHub page."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "Our Windows sample code contains a reference implementation of Apple's foveated streaming protocol."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "We've also provided an example OpenXR application and helpful guides to help you set up the NVIDIA CloudXR runtime."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "So to get started, check out our GitHub page and feel free to copy our reference implementation."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "This can help you set everything up in an afternoon."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "Next, let's talk about how to build a Vision OS receiver app."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "The Vision OS app you create welcomes people into your experience."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "It uses the foveated streaming framework to connect to streaming endpoints."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "And most importantly, it adds unique features to your experience by leveraging the great frameworks in Vision OS."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "To get started, download our Vision OS sample on developer.apple.com."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "You can use our sample code, both for Vision OS and for Windows, to get your application streaming in an afternoon."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "For the remainder of the talk, I'll dig in to how these samples work."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "To begin, let's talk more about the receiver app."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "The foveated streaming framework uses a session-based API."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "So your app should create a foveated streaming session."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "When you call Connect, the framework will automatically present a list of endpoints your app can connect to."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "Apple Vision Pro must pair with your endpoint before beginning the stream."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "To do this, the endpoint presents a QR code with pairing information."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "We'll talk more about how to properly present this later."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "When the code is on screen, the framework automatically presents a user interface to scan."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "You scan the code by looking at it."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "Once you're connected, it's time to present the streamed content."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "You can do this with SwiftUI."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "On Vision OS, you present spatial content within immersive space."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "If you pass a foveated streaming session to your immersive space, it will include the streamed content."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "You can add additional windows, just like any other SwiftUI application."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "For example, our sample app adds a window to the scene to pause and resume the session."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "It also adds views to the immersive space itself, like this widget, to reopen the main window."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "And finally, it configures the immersive space to have a progressive immersion style."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "Progressive immersion is a great fit for foveated streaming."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "It allows people to view your experience through a portal grounded in their physical environment."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "In fact, you have access to all of SwiftUI's features when using foveated streaming."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "So, your streaming client can use native spatial gestures and the Vision OS look and feel."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "You can add SwiftUI windows to your app, including volumetric windows."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "And you can use immersion styles, like progressive immersion."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "If you're new to SwiftUI, there are a ton of resources to help you get started."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "I like the talk, Get Started with Building Apps for Spatial Computing, from WWDC23."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Now let's look at what your streaming endpoint needs to do to integrate with foveated streaming."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "I mentioned before that your OpenXR app needs to do two things."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "First, it should implement the foveated streaming protocol, which handles authentication and pairing."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "Second, it should use the OpenXR runtime provided by the NVIDIA CloudXR SDK."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "Let's begin by talking about the foveated streaming protocol."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "This is a lightweight, TCP-based connection, which is established separately from the streaming connection."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "It helps to authenticate the secure foveated stream."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "It also communicates session state between Vision OS and the endpoint."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "For details on the protocol format, see our article on developer.apple.com."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "We've also provided a reference implementation of the protocol on our GitHub page,"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "so you can use that to get started."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "For example, here's what happens when your app calls connect."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Endpoints become visible to your local network with Bonjour."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "When someone selects it, Vision OS establishes a connection."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "Then pairing occurs."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "And once that's done, the stream begins and connect returns."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "Let's dive into the specific messages that are sent and received during barcode pairing."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "Messages in the foveated streaming protocol are JSON encoded."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "The protocol uses a request and acknowledge pattern."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "First, Vision OS requests a connection."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "And if unpaired, it requests a pairing barcode."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "The barcode is also JSON encoded."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "It contains two things."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "A client token and a hash of the secure connections certificate."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Both of these are provided by the NVIDIA CloudXR SDK."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "Vision OS will update your endpoint on the session status."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "And once the endpoint reports the content is ready, streaming begins."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "It's important that you monitor the session status to have a stable user experience."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "For example, when you take off the device, it goes to sleep."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "Just before, it informs your endpoint that the streaming session is paused."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "While asleep, all connections are severed."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "You should keep the endpoint available so that someone can reconnect when they put the device back on."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "Now let's talk about how NVIDIA CloudXR integrates with your OpenXR client."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "NVIDIA CloudXR provides an OpenXR runtime for Windows."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "Your OpenXR application automatically connects to this runtime."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "And CloudXR handles the streaming details."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "CloudXR provides Vision OS input data to OpenXR automatically."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "For example, you can use the OpenXR extension for hand tracking."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "PlayStation VR 2 Sense controllers also pass through."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "We recommend using a depth buffer for the best experience."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "Also, provide an alpha channel to mix your content with the user's surroundings."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "For more information, see our article on developer.apple.com."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "You can also consult our sample code on GitHub to understand how to set up NVIDIA's runtime."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Now that you have everything set up, let's talk about how to evaluate the performance of your streamed experience."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "We've provided an instrument in Xcode to measure statistics of the stream."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "The foveated streaming instrument informs you about the stream's bandwidth, pose latency, frame rate, and more."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "You can use this to diagnose issues with the streamed content."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "To learn more, see our article on developer.apple.com."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "Now that you have your streaming client up and running, I'll talk about some ways that you can enhance the experience with features you can only find on Vision OS."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "As we've seen, your streaming experience is composed of two apps."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "The receiver app on Vision OS and the host app on your streaming endpoint."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "The foveated streaming framework allows them to communicate with the message channels API."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "On Vision OS, message channels are an API on foveated streaming session."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "And CloudXR provides an OpenXR extension for message channels."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "These messages are completely opaque data blobs, so you can send whatever you want."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "For example, you can present a SwiftUI interface to select a level in your game."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "And send a command to the OpenXR application to initiate the load."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "And while it's loading, the OpenXR app can report its progress."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "Or, your Vision OS app can send ARKit data to align the scene in the user's reel space."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "X-Plane 12 is a great example of this."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "The Vision OS app uses ARKit to find the location of a physical flight simulator."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "It uses message channels to sync this to the PC, so the reel and the virtual are perfectly aligned."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "It's easy to use ARKit and message channels to enhance your OpenXR experience."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "Foveated streaming session offers an API to convert between OpenXR and ARKit coordinate frames."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "As a reminder, controller and hand tracking are already built in."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "And use an alpha channel to blend your content with a person's environment."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "You can also compose your streamed content with native RealityKit rendering."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "To do this, simply add a reality view to your immersive space."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "RealityKit content seamlessly composes with your streamed content."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "And if you supply depth to your OpenXR scene, the content will even occlude each other."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "And that concludes our session."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "I invite you to download and review our sample code, which makes it super easy for you to get started."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Try to set up your own receiver app and integrate your OpenXR client with our protocol."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "Have fun, and enjoy the rest of WWDC."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "See you next time."
+  }
+]

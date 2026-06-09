@@ -1,0 +1,1594 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Chris, an engineer on the Car Experience team."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "I'm delighted to go over what's new in CarPlay for iOS 27."
+  },
+  {
+    "timestamp": "0:15",
+    "content": "CarPlay is the smarter, safer way to use your iPhone in the car."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "iOS 27 brings new capabilities to all categories of CarPlay apps"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "so you can rev up your app in CarPlay."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "We will introduce new app categories supported in CarPlay"
+  },
+  {
+    "timestamp": "0:29",
+    "content": "and cover CarPlay framework updates that apply to all apps."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "We will also talk about new features specific to CarPlay navigation apps"
+  },
+  {
+    "timestamp": "0:38",
+    "content": "and see what's new in the CarPlay simulator."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "CarPlay supports a wide variety of app categories."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "Audio apps can play music, podcasts, and more."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Communication apps allow people to send and receive messages and make phone calls."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "Navigation apps provide turn-by-turn directions."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "What all CarPlay apps have in common"
+  },
+  {
+    "timestamp": "1:01",
+    "content": "is that they help people accomplish important tasks"
+  },
+  {
+    "timestamp": "1:04",
+    "content": "without taking out their iPhone."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "In addition, CarPlay supports live activities and widgets from any app."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "You can display timely, relevant information"
+  },
+  {
+    "timestamp": "1:14",
+    "content": "even if your app is not specifically designed for CarPlay."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "This year, we added support for voice-based conversational apps."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "And now, with iOS 27, you can create apps to browse and play videos"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "in new cars that support the video in Car feature."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "If your app supports AirPlay video streaming, no changes are needed."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "People can already watch videos from your app on their CarPlay display"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "when they aren't driving."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "To do so, they simply select the car's display when playing the video on iPhone."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "Now, you can take it to the next level"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "and let people browse their favorite videos from iPhone"
+  },
+  {
+    "timestamp": "1:48",
+    "content": "right on their CarPlay display."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "It's great for those situations when you're sitting in your car"
+  },
+  {
+    "timestamp": "1:52",
+    "content": "waiting for a friend at the airport,"
+  },
+  {
+    "timestamp": "1:54",
+    "content": "parked at a charging station,"
+  },
+  {
+    "timestamp": "1:56",
+    "content": "or just taking a moment in the comfort of your car."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "CarPlay video apps work in cars that support the video in Car feature."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "CarPlay video apps need to support AirPlay video streaming"
+  },
+  {
+    "timestamp": "2:05",
+    "content": "and use the CarPlay framework to provide a browsing experience"
+  },
+  {
+    "timestamp": "2:08",
+    "content": "on the CarPlay display."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "In the next section, we will review additions to the CarPlay framework"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "that help you create a video browsing UI."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "But first, a few additional notes about video apps."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "At any given time, the car may indicate that video playback is not available."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "If this happens, your video will be played as audio only."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "This is great for continuing to listen to a podcast"
+  },
+  {
+    "timestamp": "2:30",
+    "content": "or sports broadcast while driving."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "Apps with the CarPlay video entitlement"
+  },
+  {
+    "timestamp": "2:34",
+    "content": "only appear on the CarPlay home screen"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "if the car supports the video in Car feature."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "If your app's content is suitable for both video and audio listening,"
+  },
+  {
+    "timestamp": "2:43",
+    "content": "include both the CarPlay audio app"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "and CarPlay video app entitlements."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "With both entitlements, your app can always appear in CarPlay."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "Whether a car supports CarPlay or CarPlay Ultra,"
+  },
+  {
+    "timestamp": "2:54",
+    "content": "you can enable your apps on the driver's screens"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "by supporting the CarPlay framework."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "From getting directions, sending a message, to finding a parking garage,"
+  },
+  {
+    "timestamp": "3:02",
+    "content": "apps across all categories use the CarPlay framework to present their user interface."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "We have plenty of UI updates for all CarPlay apps,"
+  },
+  {
+    "timestamp": "3:11",
+    "content": "including many enhancements for lists,"
+  },
+  {
+    "timestamp": "3:13",
+    "content": "a new mini-player for now playing,"
+  },
+  {
+    "timestamp": "3:15",
+    "content": "and voice control has a new presentation style."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "When your app is using the CarPlay framework,"
+  },
+  {
+    "timestamp": "3:21",
+    "content": "iOS manages the display of UI elements"
+  },
+  {
+    "timestamp": "3:23",
+    "content": "and handles the interface with the car."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "By using a rich collection of templates,"
+  },
+  {
+    "timestamp": "3:28",
+    "content": "your app does not need to manage the layout of UI elements"
+  },
+  {
+    "timestamp": "3:31",
+    "content": "for different screen resolutions"
+  },
+  {
+    "timestamp": "3:32",
+    "content": "or support different input hardware,"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "such as touchscreens, knobs, or touchpads."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "We have a sample app called Landmarks,"
+  },
+  {
+    "timestamp": "3:40",
+    "content": "which lets people explore interesting sites around the world."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "For a CarPlay, I wanted to listen to narrated audio stories"
+  },
+  {
+    "timestamp": "3:46",
+    "content": "that tell the history and key facts of the Landmarks."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "Using the CarPlay framework, I built the list of the stories."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "That worked great for browsing"
+  },
+  {
+    "timestamp": "3:55",
+    "content": "and then playing the audio stories in my car."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "But with this new car that supports the video and car feature,"
+  },
+  {
+    "timestamp": "4:01",
+    "content": "now I can also watch videos of these amazing Landmarks."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Landmarks is checking if the CP session configuration supports video"
+  },
+  {
+    "timestamp": "4:08",
+    "content": "and if so, adds a videos tab."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "This list of videos showcases many of the other new APIs"
+  },
+  {
+    "timestamp": "4:15",
+    "content": "available in the CarPlay framework."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Let's take a closer look."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Lists can now show images with portrait or landscape aspect ratios."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Card elements can take that even further with thumbnails,"
+  },
+  {
+    "timestamp": "4:27",
+    "content": "which can have overlays, playback progress,"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "and sports information right on the image."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "Landmarks uses an overlay with a title that describes the video"
+  },
+  {
+    "timestamp": "4:36",
+    "content": "as newly added or live streaming."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "For custom badges, overlays can also be an image."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "The CP playback configuration API"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "is how your app provides metadata"
+  },
+  {
+    "timestamp": "4:46",
+    "content": "about playable items to CarPlay framework."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "For content you prefer to play as a video,"
+  },
+  {
+    "timestamp": "4:52",
+    "content": "set preferred presentation to video."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "Otherwise, set the preferred presentation to audio."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "The playback configuration's elapsed time and duration"
+  },
+  {
+    "timestamp": "5:00",
+    "content": "are shown as a progress bar for your playable item."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "And the playback action indicates if selecting this item"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "will play, pause, or replay this item."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "Make sure to update the thumbnail's playback configuration"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "on any playback state changes"
+  },
+  {
+    "timestamp": "5:14",
+    "content": "to keep the thumbnail accurately representing"
+  },
+  {
+    "timestamp": "5:16",
+    "content": "the state of playback for that item."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "An additional overlay is available for showing sports teams and scorers."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "The sports overlay has a left team, a right team, and event status."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Use a details header when you want to present one item prominently"
+  },
+  {
+    "timestamp": "5:32",
+    "content": "at the top of a list of additional items."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "This works great for showing the current episode"
+  },
+  {
+    "timestamp": "5:37",
+    "content": "at the top of a list of episodes,"
+  },
+  {
+    "timestamp": "5:40",
+    "content": "or for summarizing a movie with bonus content shown below."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "The details header combines together a single thumbnail"
+  },
+  {
+    "timestamp": "5:46",
+    "content": "with a title, body text, playback configuration, and action buttons."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "Here, the Landmarks app added a thumbnail overlay,"
+  },
+  {
+    "timestamp": "5:56",
+    "content": "configured playback as an unplayed item,"
+  },
+  {
+    "timestamp": "5:58",
+    "content": "and set up action buttons for play and add to playlist."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "The playback configuration's current progress"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "is automatically combined with the first action button."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "As with the playback configuration on thumbnails,"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "update the playback configuration in the details header"
+  },
+  {
+    "timestamp": "6:12",
+    "content": "as the playback state changes."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "This ensures that the state and progress are correct"
+  },
+  {
+    "timestamp": "6:17",
+    "content": "when the details header becomes visible again."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "New in iOS 27 is a mini player for the Now Playing template."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "The mini player makes it easy to see what's playing,"
+  },
+  {
+    "timestamp": "6:28",
+    "content": "and on a larger display, you can even play, pause, or skip."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "All apps that show Now Playing will automatically show the mini player."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "The mini player is the best option for Now Playing in CarPlay,"
+  },
+  {
+    "timestamp": "6:39",
+    "content": "but if your app doesn't want to show the mini player,"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "set the Now Playing templates allows Mini Player property to false,"
+  },
+  {
+    "timestamp": "6:47",
+    "content": "and the Now Playing icon will appear in the navigation bar"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "instead of the mini player."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "Earlier this year, we launched support"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "for voice-based conversational apps."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "If your app has its own voice features,"
+  },
+  {
+    "timestamp": "6:58",
+    "content": "you can respond to questions and perform actions in the car."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "The voice control template presents a UI that shows status and control"
+  },
+  {
+    "timestamp": "7:05",
+    "content": "during voice conversations."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "Starting in iOS 27,"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "the voice control template is available for all CarPlay app categories."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "The voice control template includes a prompt"
+  },
+  {
+    "timestamp": "7:16",
+    "content": "and an animated icon to indicate the state of the conversation."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "Both the prompt and the icon are optional."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Your app can now add up to two action buttons,"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "plus leading and trailing navigation bar buttons."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "If your app is used to ask questions about destinations"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "or contact information,"
+  },
+  {
+    "timestamp": "7:34",
+    "content": "action buttons are a good way to offer to start navigation"
+  },
+  {
+    "timestamp": "7:36",
+    "content": "or place a phone call."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "To use URLs to perform those tasks,"
+  },
+  {
+    "timestamp": "7:41",
+    "content": "open the URL with CP template application scene"
+  },
+  {
+    "timestamp": "7:44",
+    "content": "to perform that request in CarPlay."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "The voice control template is also available as an overlay."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Instead of occupying the entire display,"
+  },
+  {
+    "timestamp": "7:53",
+    "content": "your voice control elements can appear overlayed"
+  },
+  {
+    "timestamp": "7:55",
+    "content": "on top of another template,"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "such as the map template in a navigation app."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Use the CP interface controller"
+  },
+  {
+    "timestamp": "8:01",
+    "content": "to show the voice control template as an overlay."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "Although the overlay supports the same text and buttons"
+  },
+  {
+    "timestamp": "8:07",
+    "content": "as the full voice control presentation,"
+  },
+  {
+    "timestamp": "8:09",
+    "content": "provide shorter text variants"
+  },
+  {
+    "timestamp": "8:11",
+    "content": "to better fit the available space"
+  },
+  {
+    "timestamp": "8:12",
+    "content": "when presented as an overlay."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "When supporting voice conversations,"
+  },
+  {
+    "timestamp": "8:17",
+    "content": "try using audio feedback"
+  },
+  {
+    "timestamp": "8:18",
+    "content": "to indicate the status of the conversation."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "Feedback sounds,"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "such as waiting sounds"
+  },
+  {
+    "timestamp": "8:23",
+    "content": "while the app is still preparing the conversation"
+  },
+  {
+    "timestamp": "8:25",
+    "content": "and processing sounds"
+  },
+  {
+    "timestamp": "8:26",
+    "content": "when the app is still preparing a response"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "are helpful cues"
+  },
+  {
+    "timestamp": "8:30",
+    "content": "when interacting with an app,"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "primarily through speaking."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "Set up your AV audio session"
+  },
+  {
+    "timestamp": "8:35",
+    "content": "with the play and record category,"
+  },
+  {
+    "timestamp": "8:37",
+    "content": "use the default mode"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "and disable mixing."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "In addition to the new template APIs,"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "we've expanded the availability"
+  },
+  {
+    "timestamp": "8:44",
+    "content": "of existing templates"
+  },
+  {
+    "timestamp": "8:45",
+    "content": "to more categories of apps."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "For details about app categories"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "and available templates,"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "check the CarPlay developer guide."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "We covered a lot of new UI enhancements"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "available for apps in CarPlay."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "The easiest way for me to see"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "all the improvements I made in Landmarks"
+  },
+  {
+    "timestamp": "9:02",
+    "content": "is right here on my Mac"
+  },
+  {
+    "timestamp": "9:03",
+    "content": "using CarPlay Simulator."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "Let's take a look."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "Here is CarPlay Simulator"
+  },
+  {
+    "timestamp": "9:12",
+    "content": "and I've set up the configuration"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "to represent a vehicle that supports video."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "For vehicles that support video,"
+  },
+  {
+    "timestamp": "9:19",
+    "content": "an app with only the CarPlay video entitlement"
+  },
+  {
+    "timestamp": "9:21",
+    "content": "will appear on the CarPlay home screen."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "Here's the Landmarks app on the home screen."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "I'll launch it to browse videos."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "On the top left, there's a tab bar."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "I added a new videos tab"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "that only appears when video is supported."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "The mini player in the top right"
+  },
+  {
+    "timestamp": "9:39",
+    "content": "offers a quick way to resume playback"
+  },
+  {
+    "timestamp": "9:41",
+    "content": "on the Alps video I was recently watching."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "I set up wide thumbnails for the Landmarks."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "And since I was already watching the Alps video,"
+  },
+  {
+    "timestamp": "9:49",
+    "content": "the thumbnail's playback configuration"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "shows the remaining time and current progress."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "Overlays on the thumbnails provide badging"
+  },
+  {
+    "timestamp": "9:58",
+    "content": "for newly added and live streaming videos."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "The thumbnail for this event"
+  },
+  {
+    "timestamp": "10:04",
+    "content": "has a sports overlay showing the teams and scores."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "While browsing this list of Landmarks,"
+  },
+  {
+    "timestamp": "10:09",
+    "content": "I wanted to know which Landmark"
+  },
+  {
+    "timestamp": "10:11",
+    "content": "has the most visitors every year."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "I added this list row to activate a voice conversation"
+  },
+  {
+    "timestamp": "10:16",
+    "content": "where I can ask that question."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "The voice control template is shown as an overlay,"
+  },
+  {
+    "timestamp": "10:22",
+    "content": "keeping the list behind it visible."
+  },
+  {
+    "timestamp": "10:24",
+    "content": "But I want to get straight to watching a video."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "Selecting a thumbnail pushes into a list template"
+  },
+  {
+    "timestamp": "10:34",
+    "content": "that has a details header."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "The details header provides this large thumbnail"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "and additional information about the Landmark"
+  },
+  {
+    "timestamp": "10:40",
+    "content": "using the title, subtitle, and body text."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "I also added two buttons for play and add to playlist."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "The rest of the list is used to show related videos."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Landmark set the preferred presentation to video"
+  },
+  {
+    "timestamp": "10:55",
+    "content": "in the header's playback configuration."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Since video is the preferred presentation"
+  },
+  {
+    "timestamp": "11:00",
+    "content": "and CarPlay Simulator is currently set"
+  },
+  {
+    "timestamp": "11:02",
+    "content": "to allow video playback,"
+  },
+  {
+    "timestamp": "11:03",
+    "content": "tapping play will show the video."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "I'll go ahead and play this video."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "The video player has menus to control subtitles"
+  },
+  {
+    "timestamp": "11:20",
+    "content": "and audio language selection."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "So your videos should include subtitles"
+  },
+  {
+    "timestamp": "11:26",
+    "content": "and additional languages when available."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Notifications can appear over the video,"
+  },
+  {
+    "timestamp": "11:30",
+    "content": "so there's also a button to enable"
+  },
+  {
+    "timestamp": "11:32",
+    "content": "the Do Not Disturb focus mode"
+  },
+  {
+    "timestamp": "11:33",
+    "content": "without leaving the video."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "With thumbnail overlays,"
+  },
+  {
+    "timestamp": "11:38",
+    "content": "the mini player,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "voice control,"
+  },
+  {
+    "timestamp": "11:40",
+    "content": "and playback configurations,"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "Landmark's built a great interface"
+  },
+  {
+    "timestamp": "11:43",
+    "content": "for discovering and playing videos in the car."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "Now that we've seen all the new UI features"
+  },
+  {
+    "timestamp": "11:48",
+    "content": "in CarPlay Framework,"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "let's change directions"
+  },
+  {
+    "timestamp": "11:50",
+    "content": "to focus on a few more new features"
+  },
+  {
+    "timestamp": "11:52",
+    "content": "for navigation apps."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "Navigation apps now have more control"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "over the primary interface area"
+  },
+  {
+    "timestamp": "11:58",
+    "content": "of the map template,"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "and route sharing coordinates your app's routing"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "with the vehicle."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "In iOS 27,"
+  },
+  {
+    "timestamp": "12:04",
+    "content": "your navigation app can show panels"
+  },
+  {
+    "timestamp": "12:06",
+    "content": "to create your own UI"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "independently from the flow"
+  },
+  {
+    "timestamp": "12:09",
+    "content": "of presenting trip and route options."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "Panels can also include multiple UI elements,"
+  },
+  {
+    "timestamp": "12:13",
+    "content": "providing more flexibility"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "for your navigation UI."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "Panels are built by combining together"
+  },
+  {
+    "timestamp": "12:20",
+    "content": "a list of objects"
+  },
+  {
+    "timestamp": "12:21",
+    "content": "you already use in the CarPlay Framework,"
+  },
+  {
+    "timestamp": "12:23",
+    "content": "such as trips, grids, route choices,"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "route details, waypoints,"
+  },
+  {
+    "timestamp": "12:28",
+    "content": "and other list items."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "The panel's button configuration"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "sets up actions that will appear"
+  },
+  {
+    "timestamp": "12:33",
+    "content": "on the bottom of the panel,"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "such as a go or end button."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "When your navigation app uses panels,"
+  },
+  {
+    "timestamp": "12:40",
+    "content": "you control the primary interface area"
+  },
+  {
+    "timestamp": "12:42",
+    "content": "of the map template."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "By building up and then pushing panels,"
+  },
+  {
+    "timestamp": "12:46",
+    "content": "your app can show more content and controls"
+  },
+  {
+    "timestamp": "12:49",
+    "content": "while keeping the map visible."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "Some vehicles with driver assistance systems"
+  },
+  {
+    "timestamp": "12:53",
+    "content": "work best when the intended route is known."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "vehicles may support automatic lane changes"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "or adjust their guidance systems"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "to more closely match the route shown in your app."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Also, for a certain route,"
+  },
+  {
+    "timestamp": "13:05",
+    "content": "electric vehicles may suggest charging stops,"
+  },
+  {
+    "timestamp": "13:07",
+    "content": "depending on the vehicle's available range."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "With route sharing,"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "these driver assistance features"
+  },
+  {
+    "timestamp": "13:14",
+    "content": "can work even when people use"
+  },
+  {
+    "timestamp": "13:16",
+    "content": "your CarPlay navigation app"
+  },
+  {
+    "timestamp": "13:18",
+    "content": "to get directions."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "Route sharing requires iOS 26.4 or later"
+  },
+  {
+    "timestamp": "13:23",
+    "content": "and a supported vehicle."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "Your app provides a route to the vehicle"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "as an array of route segments,"
+  },
+  {
+    "timestamp": "13:30",
+    "content": "which are geographic coordinates"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "that are sent to the vehicle"
+  },
+  {
+    "timestamp": "13:32",
+    "content": "whenever the trip changes."
+  },
+  {
+    "timestamp": "13:35",
+    "content": "Looking at the Landmarks app"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "has inspired me to go on a camping trip."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "I'm leaving early in the morning"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "and want to stop at a coffee shop along the way,"
+  },
+  {
+    "timestamp": "13:42",
+    "content": "so I added two stops into a navigation app,"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "first coffee and then a campground."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Using the CarPlay framework,"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "the navigation app constructed a trip"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "with two route segments."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "Route sharing sent that trip to the vehicle."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "Since my car is an electric vehicle,"
+  },
+  {
+    "timestamp": "13:57",
+    "content": "it estimated the energy consumption"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "along this trip"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "and determined that this trip"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "requires a charging stop along the way."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "The vehicle searched for the ideal charging station"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "for this trip"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "and sent that destination back to iOS."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "This proposed waypoint is received"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "by the navigation app via the map template."
+  },
+  {
+    "timestamp": "14:14",
+    "content": "The navigation app then has a choice"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "in how to handle the suggested waypoint."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "By returning updated travel estimates"
+  },
+  {
+    "timestamp": "14:20",
+    "content": "to the map template,"
+  },
+  {
+    "timestamp": "14:21",
+    "content": "the map template will automatically prompt the driver"
+  },
+  {
+    "timestamp": "14:24",
+    "content": "to accept the additional waypoint."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "Or the navigation app"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "cannot return travel estimates"
+  },
+  {
+    "timestamp": "14:29",
+    "content": "and instead directly manage confirmation"
+  },
+  {
+    "timestamp": "14:32",
+    "content": "of the additional waypoint."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "Either way,"
+  },
+  {
+    "timestamp": "14:35",
+    "content": "once the driver accepts the waypoint,"
+  },
+  {
+    "timestamp": "14:37",
+    "content": "the navigation app updates the trip"
+  },
+  {
+    "timestamp": "14:39",
+    "content": "to have a new route segment."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "Then the updated trip"
+  },
+  {
+    "timestamp": "14:42",
+    "content": "is again shared with the vehicle."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "Now I'll stop at the charging station"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "and then the coffee shop"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "and both me and the car"
+  },
+  {
+    "timestamp": "14:48",
+    "content": "will get there energized."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "Both the driver and your app"
+  },
+  {
+    "timestamp": "14:52",
+    "content": "control when route sharing occurs."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "When pairing with a vehicle,"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "the driver is prompted"
+  },
+  {
+    "timestamp": "14:57",
+    "content": "to approve route sharing for that vehicle."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "The driver's approval allows any navigation app"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "to share a route"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "when connected to that vehicle."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "To enable sharing routes"
+  },
+  {
+    "timestamp": "15:06",
+    "content": "from your navigation app,"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "opt into route sharing"
+  },
+  {
+    "timestamp": "15:09",
+    "content": "using the map template."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "If your app determines"
+  },
+  {
+    "timestamp": "15:12",
+    "content": "that certain trips are not eligible,"
+  },
+  {
+    "timestamp": "15:14",
+    "content": "route sharing can also be disabled"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "for an individual trip."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "CarPlay Simulator"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "makes testing your CarPlay app"
+  },
+  {
+    "timestamp": "15:21",
+    "content": "as easy as connecting to your Mac."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "For any category of app in CarPlay,"
+  },
+  {
+    "timestamp": "15:26",
+    "content": "CarPlay Simulator supports"
+  },
+  {
+    "timestamp": "15:27",
+    "content": "testing different screen sizes"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "and vehicle configurations."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "CarPlay Simulator"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "is now available in Device Hub."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "Navigation app developers"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "should try out the new diagnostic tools"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "for route sharing."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "For video app developers,"
+  },
+  {
+    "timestamp": "15:40",
+    "content": "download CarPlay Simulator"
+  },
+  {
+    "timestamp": "15:41",
+    "content": "using the additional tools"
+  },
+  {
+    "timestamp": "15:43",
+    "content": "for Xcode package."
+  },
+  {
+    "timestamp": "15:45",
+    "content": "Now that you've seen"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "the new template options,"
+  },
+  {
+    "timestamp": "15:48",
+    "content": "consider adding thumbnails,"
+  },
+  {
+    "timestamp": "15:49",
+    "content": "the details header,"
+  },
+  {
+    "timestamp": "15:50",
+    "content": "and voice control"
+  },
+  {
+    "timestamp": "15:51",
+    "content": "to your app in CarPlay."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "If your app has videos,"
+  },
+  {
+    "timestamp": "15:54",
+    "content": "make them available"
+  },
+  {
+    "timestamp": "15:55",
+    "content": "for browsing in CarPlay."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "Finally,"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "if you have a navigation app,"
+  },
+  {
+    "timestamp": "16:00",
+    "content": "check out the new panels"
+  },
+  {
+    "timestamp": "16:01",
+    "content": "and route sharing."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "Thanks for following along"
+  },
+  {
+    "timestamp": "16:05",
+    "content": "as I pointed out"
+  },
+  {
+    "timestamp": "16:05",
+    "content": "these new features."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "And of course,"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "I'm looking forward"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "to seeing how you'll use them"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "to rev up your app in CarPlay."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "Bye."
+  }
+]

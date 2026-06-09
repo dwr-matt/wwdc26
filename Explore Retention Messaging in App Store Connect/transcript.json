@@ -1,0 +1,1542 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Selling auto-renewable subscriptions on the App Store can be rewarding."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "It can also be challenging to reach customers at critical moments,"
+  },
+  {
+    "timestamp": "0:14",
+    "content": "such as when they're considering canceling a subscription."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "That moment is an ideal time to remind your customers"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "of the value they'll receive from your subscription service."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "I'm Tori, an engineer on the App Store server team,"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "and in this video, I'll share how you can retain subscribers"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "with Retention Messaging in App Store Connect,"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "a new feature built to help you connect with your customers."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "First, I'll share an overview of Retention Messaging"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "and how to set it up in App Store Connect."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "Then I'll discuss how real-time Retention Messaging"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "works alongside Retention Messaging in App Store Connect."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "Here in my exercise app is an example of a customer"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "canceling an active subscription."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "The cancellation page displays messaging to the customer"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "with the impact of canceling."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "For this subscription, the App Store informs the customer"
+  },
+  {
+    "timestamp": "1:04",
+    "content": "that their family will no longer have access to this subscription"
+  },
+  {
+    "timestamp": "1:07",
+    "content": "if they proceed with the cancellation."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "Here is an opportunity to provide messaging or offers to the customer."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Retention Messaging enables you to do just that."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Retention Messaging helps you add value to the cancellation flow"
+  },
+  {
+    "timestamp": "1:22",
+    "content": "by showing a compelling value proposition message to your customers"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "when they're considering canceling their subscription."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "You can use Retention Messaging to remind customers"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "of the benefits of your subscription"
+  },
+  {
+    "timestamp": "1:34",
+    "content": "or provide them an offer to entice them to remain subscribed."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "Retention Messaging supports three different views,"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "a message only, a message and an image,"
+  },
+  {
+    "timestamp": "1:44",
+    "content": "or a message and an offer."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "You can see what these three different views look like with my exercise app."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Here, the message is prominently displayed to the customer."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "I can add an image to add some visual appeal"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "or I can offer the customer three months free"
+  },
+  {
+    "timestamp": "2:00",
+    "content": "for their current subscription, Yoga Plus,"
+  },
+  {
+    "timestamp": "2:03",
+    "content": "to provide an extra incentive to stay subscribed."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "Savory is the percent of subscribers who keep their subscription"
+  },
+  {
+    "timestamp": "2:09",
+    "content": "after reaching the cancel confirmation page and manage subscriptions."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "Subscriptions that have adopted Retention Messaging"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "experience an average save rate increase of plus 1.4 points"
+  },
+  {
+    "timestamp": "2:21",
+    "content": "equivalent to an 82% increase"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "with promotional offer messages"
+  },
+  {
+    "timestamp": "2:26",
+    "content": "achieving the highest observed save rate"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "at plus 5.5 points equivalent to a 223% increase."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Note that we have observed varying results across developers."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "I'll show you how to set up Retention Messaging in App Store Connect."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "With Retention Messaging in App Store Connect,"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "you can configure retention messages for your app,"
+  },
+  {
+    "timestamp": "2:48",
+    "content": "which you can map to any of your subscriptions."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "You can select an image to provide alongside a message from Asset Library."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "You can configure retention offers to provide to your customer alongside a message."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "And App Store Connect API will also support retention messaging,"
+  },
+  {
+    "timestamp": "3:04",
+    "content": "allowing you to set up retention messages and retention offers through the API."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "To learn more about Asset Library,"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "check out the session,"
+  },
+  {
+    "timestamp": "3:14",
+    "content": "Enhance Your Presence on the App Store from WWDC26."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Let's review how this works."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "In App Store Connect, on the subscriptions page,"
+  },
+  {
+    "timestamp": "3:23",
+    "content": "a new area prompts me to get started with retention messaging."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "When I tap the Get Started button,"
+  },
+  {
+    "timestamp": "3:30",
+    "content": "a modal appears for me to name the retention message."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "This message is for my yoga subscriptions,"
+  },
+  {
+    "timestamp": "3:36",
+    "content": "so I'll call this Yoga Message,"
+  },
+  {
+    "timestamp": "3:38",
+    "content": "then tap the Create button."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "A new view shows where I can edit the message text,"
+  },
+  {
+    "timestamp": "3:44",
+    "content": "the image, and applicable subscriptions and offers on the left."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "On the right is a live preview of my retention message,"
+  },
+  {
+    "timestamp": "3:51",
+    "content": "which updates as I edit."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "A retention message must always contain message text,"
+  },
+  {
+    "timestamp": "3:57",
+    "content": "but the image and offer are both optional."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "I'll continue creating a retention message for the Yoga Plus subscription,"
+  },
+  {
+    "timestamp": "4:04",
+    "content": "starting with the text."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "I'll create a message in English,"
+  },
+  {
+    "timestamp": "4:07",
+    "content": "but you can select other localizations as well."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "I'll type Launching Next Month Guided Yoga into the text box."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "Wow, the preview updated right away with the title."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "I'll keep going and add a description."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "Don't miss out on guided yoga classes,"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "new metrics targeted for yoga, and more."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "Again, notice how the preview on the right immediately updates."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "Now I want to see how this looks with an image."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "I already have an image in my asset library, so I'll choose that."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Our preview is looking really good now."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "Now I need to select the Yoga Plus subscription"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "so that all my customers with the Yoga Plus subscription see this message."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "The Yoga Plus subscription is selected now."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "You can also select other subscriptions"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "as a retention message can be associated with many subscriptions."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "Finally, I want to add some offer options for my eligible customers."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "I have some retention offers already set up, so I'll select those."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "Here are all the offers that could appear with this message"
+  },
+  {
+    "timestamp": "5:08",
+    "content": "along with their eligibility and availability."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "The App Store will automatically choose the best offer for eligible customers,"
+  },
+  {
+    "timestamp": "5:16",
+    "content": "so you can select multiple offers for a single subscription with confidence."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "It's also important to note that when the customer is eligible for an offer,"
+  },
+  {
+    "timestamp": "5:25",
+    "content": "the image will be replaced by an offer."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "If you want to see how other offers appear,"
+  },
+  {
+    "timestamp": "5:31",
+    "content": "you can select a different offer from the offer drop-down."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "You can also select no offer from the drop-down"
+  },
+  {
+    "timestamp": "5:36",
+    "content": "to see what the preview looks like without an offer."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "Let's pivot to testing."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "Testing in Sandbox verifies your subscription implementation"
+  },
+  {
+    "timestamp": "5:44",
+    "content": "before proceeding to production."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "I'm happy to share that retention messages are fully testable in Sandbox."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "You can test retention messages when canceling your subscription in Sandbox."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "If you configured a retention offer,"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "you can also verify offer-related fields are properly configured"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "in the signed transaction or renewal info."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "We are also introducing retention offers,"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "a new offer type for retention messages."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "The signed transaction and renewal info are updated"
+  },
+  {
+    "timestamp": "6:16",
+    "content": "with a new offer type value of 5 to indicate a retention offer was redeemed."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "Other offer-related fields such as offer identifier,"
+  },
+  {
+    "timestamp": "6:24",
+    "content": "offer discount type, and offer period will also appear as expected."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "By setting up retention messaging in App Store Connect,"
+  },
+  {
+    "timestamp": "6:31",
+    "content": "you're taking a significant step toward retaining your subscribers"
+  },
+  {
+    "timestamp": "6:34",
+    "content": "at a critical moment in the subscription lifecycle."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "If you want to more directly interact with your customer"
+  },
+  {
+    "timestamp": "6:40",
+    "content": "when they're about to cancel their subscription,"
+  },
+  {
+    "timestamp": "6:43",
+    "content": "you can take this one step further with real-time retention messaging."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "With real-time retention messaging,"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "you set up an endpoint to provide a real-time message preference"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "in response to a server-to-server HTTP request from the App Store."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "With the retention messaging API,"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "you can configure message and image pairs"
+  },
+  {
+    "timestamp": "7:03",
+    "content": "to show to customers in the cancellation flow."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "When you receive a real-time call from the App Store,"
+  },
+  {
+    "timestamp": "7:09",
+    "content": "you can tell the App Store which of these messages"
+  },
+  {
+    "timestamp": "7:11",
+    "content": "you want to show to the customer,"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "or when retention messaging in App Store Connect is configured,"
+  },
+  {
+    "timestamp": "7:17",
+    "content": "you can also indicate one of the messages"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "from App Store Connect as your preference."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "I can create the same views for the Yoga Plus subscription"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "using real-time retention messaging"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "as I can when using retention messages in App Store Connect."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "However, real-time retention messaging"
+  },
+  {
+    "timestamp": "7:35",
+    "content": "also supports a message with a switch plan format,"
+  },
+  {
+    "timestamp": "7:38",
+    "content": "so you can offer your customer a different plan"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "within the same subscription group"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "as an alternative to canceling."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "For the Yoga Plus subscription,"
+  },
+  {
+    "timestamp": "7:46",
+    "content": "I chose to offer an annual subscription as a switch plan."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Real-time retention messaging"
+  },
+  {
+    "timestamp": "7:52",
+    "content": "is powered by the Retention Messaging API,"
+  },
+  {
+    "timestamp": "7:55",
+    "content": "a server-to-server-driven set of endpoints"
+  },
+  {
+    "timestamp": "7:57",
+    "content": "for managing your messages and images."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Using the Retention Messaging API"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "in both Sandbox and Production,"
+  },
+  {
+    "timestamp": "8:04",
+    "content": "I can configure the URL for the Exercise Apps endpoint,"
+  },
+  {
+    "timestamp": "8:08",
+    "content": "set up messages for the Exercise App,"
+  },
+  {
+    "timestamp": "8:11",
+    "content": "choose default messages for each subscription"
+  },
+  {
+    "timestamp": "8:13",
+    "content": "in the Exercise App,"
+  },
+  {
+    "timestamp": "8:15",
+    "content": "and upload and manage the Exercise Apps images."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "In the Sandbox environment only,"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "the Retention Messaging API supports performance testing"
+  },
+  {
+    "timestamp": "8:24",
+    "content": "and provides endpoints to initiate a performance test"
+  },
+  {
+    "timestamp": "8:27",
+    "content": "and check your results."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Passing a performance test is required"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "before using real-time retention messaging in production."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "When the App Store sends a request"
+  },
+  {
+    "timestamp": "8:37",
+    "content": "for real-time retention messaging,"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "we will send the original transaction ID"
+  },
+  {
+    "timestamp": "8:41",
+    "content": "to help identify the subscription,"
+  },
+  {
+    "timestamp": "8:43",
+    "content": "the customer's locale"
+  },
+  {
+    "timestamp": "8:44",
+    "content": "to identify the desired localization,"
+  },
+  {
+    "timestamp": "8:47",
+    "content": "plus a request identifier for tracking,"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "as well as other information."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "When responding to a real-time request,"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "you can choose one of three response formats."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "Respond with a message to show a message"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "or message with an image"
+  },
+  {
+    "timestamp": "9:01",
+    "content": "by providing a message identifier."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "I chose a message identifier"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "that indicates a message about my yoga subscription"
+  },
+  {
+    "timestamp": "9:08",
+    "content": "that is paired with a corresponding image."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "Respond with an alternate product"
+  },
+  {
+    "timestamp": "9:13",
+    "content": "to offer the customer a switch plan"
+  },
+  {
+    "timestamp": "9:15",
+    "content": "in the same subscription group"
+  },
+  {
+    "timestamp": "9:16",
+    "content": "by providing a message identifier and a product ID."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "I chose to offer an annual tier of Yoga Plus"
+  },
+  {
+    "timestamp": "9:23",
+    "content": "as a switch plan."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "Or respond with a promotional offer"
+  },
+  {
+    "timestamp": "9:27",
+    "content": "to give the customer an offer"
+  },
+  {
+    "timestamp": "9:28",
+    "content": "by providing a message identifier"
+  },
+  {
+    "timestamp": "9:30",
+    "content": "and promotional offer signature."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "I chose to provide my promotional offer"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "for three months free of Yoga Plus."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "More information on what to provide"
+  },
+  {
+    "timestamp": "9:40",
+    "content": "in each of these scenarios,"
+  },
+  {
+    "timestamp": "9:42",
+    "content": "other supported scenarios,"
+  },
+  {
+    "timestamp": "9:43",
+    "content": "and the rest of the API"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "can be found in our documentation"
+  },
+  {
+    "timestamp": "9:46",
+    "content": "linked in this session's resources."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "Real-time retention messaging"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "requires a fast, responsive server."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "To ensure a great customer experience,"
+  },
+  {
+    "timestamp": "9:56",
+    "content": "you'll need to pass a performance test in Sandbox"
+  },
+  {
+    "timestamp": "9:59",
+    "content": "before going live to production."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "That said,"
+  },
+  {
+    "timestamp": "10:02",
+    "content": "your server may not always respond in time."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "If it doesn't,"
+  },
+  {
+    "timestamp": "10:06",
+    "content": "the App Store will display"
+  },
+  {
+    "timestamp": "10:07",
+    "content": "fallback messaging to the customer."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "Real-time retention messaging"
+  },
+  {
+    "timestamp": "10:11",
+    "content": "always prioritizes your real-time response."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "If that's unavailable or malformed,"
+  },
+  {
+    "timestamp": "10:16",
+    "content": "the App Store will first fall back"
+  },
+  {
+    "timestamp": "10:18",
+    "content": "to your App Store Connect"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "retention messaging preference,"
+  },
+  {
+    "timestamp": "10:21",
+    "content": "including any eligible offers."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "If App Store Connect messaging"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "is not configured for your subscription,"
+  },
+  {
+    "timestamp": "10:27",
+    "content": "the App Store will then fall back"
+  },
+  {
+    "timestamp": "10:29",
+    "content": "to default messaging"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "configured with the retention messaging API."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "Get started in Sandbox"
+  },
+  {
+    "timestamp": "10:34",
+    "content": "for setting up real-time retention messaging."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "First, set up all your test messages"
+  },
+  {
+    "timestamp": "10:39",
+    "content": "and images in Sandbox."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "When that is completed,"
+  },
+  {
+    "timestamp": "10:43",
+    "content": "set up your endpoint"
+  },
+  {
+    "timestamp": "10:43",
+    "content": "to begin receiving requests"
+  },
+  {
+    "timestamp": "10:45",
+    "content": "when a tester tries"
+  },
+  {
+    "timestamp": "10:46",
+    "content": "to cancel their subscription."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "After you are satisfied"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "with your testing in Sandbox,"
+  },
+  {
+    "timestamp": "10:51",
+    "content": "start a performance test."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "When your performance test passes,"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "then set up messages"
+  },
+  {
+    "timestamp": "10:57",
+    "content": "and images in production,"
+  },
+  {
+    "timestamp": "10:59",
+    "content": "followed by your production endpoint."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "At this point,"
+  },
+  {
+    "timestamp": "11:02",
+    "content": "you are ready to begin responding"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "to requests from the App Store."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Remember to always keep"
+  },
+  {
+    "timestamp": "11:07",
+    "content": "your production messages"
+  },
+  {
+    "timestamp": "11:09",
+    "content": "and images up to date."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "iOS 26.5 introduced monthly subscriptions"
+  },
+  {
+    "timestamp": "11:15",
+    "content": "with a 12-month commitment."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "For this new billing plan type,"
+  },
+  {
+    "timestamp": "11:18",
+    "content": "the Real-Time Retention Messaging API"
+  },
+  {
+    "timestamp": "11:21",
+    "content": "is also updated"
+  },
+  {
+    "timestamp": "11:22",
+    "content": "to support this plan type"
+  },
+  {
+    "timestamp": "11:23",
+    "content": "as a switch plan."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "Simply provide"
+  },
+  {
+    "timestamp": "11:26",
+    "content": "the Billing Plan Type field"
+  },
+  {
+    "timestamp": "11:27",
+    "content": "with your alternate product selection"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "and your response to the App Store"
+  },
+  {
+    "timestamp": "11:31",
+    "content": "to offer this plan"
+  },
+  {
+    "timestamp": "11:32",
+    "content": "to your customers"
+  },
+  {
+    "timestamp": "11:33",
+    "content": "using retention messaging."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "For more information"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "on monthly subscriptions"
+  },
+  {
+    "timestamp": "11:37",
+    "content": "with a 12-month commitment,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "check out the WWDC 26 session,"
+  },
+  {
+    "timestamp": "11:43",
+    "content": "What's New in Apple in App Purchase."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "11:47",
+    "content": "is a powerful tool"
+  },
+  {
+    "timestamp": "11:48",
+    "content": "and it performs best"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "with a fast, responsive server."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "Let's compare it"
+  },
+  {
+    "timestamp": "11:53",
+    "content": "with Retention Messaging"
+  },
+  {
+    "timestamp": "11:54",
+    "content": "in App Store Connect"
+  },
+  {
+    "timestamp": "11:55",
+    "content": "to help you find the right fit"
+  },
+  {
+    "timestamp": "11:57",
+    "content": "for your use case."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "The key difference"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "between Retention Messaging"
+  },
+  {
+    "timestamp": "12:02",
+    "content": "in App Store Connect"
+  },
+  {
+    "timestamp": "12:03",
+    "content": "and Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "12:05",
+    "content": "is decisioning."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "Once Retention Messaging"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "is set up for your subscription"
+  },
+  {
+    "timestamp": "12:09",
+    "content": "in App Store Connect,"
+  },
+  {
+    "timestamp": "12:11",
+    "content": "the App Store will show the message"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "and any applicable offer"
+  },
+  {
+    "timestamp": "12:14",
+    "content": "to the customer"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "without any further interaction"
+  },
+  {
+    "timestamp": "12:16",
+    "content": "with you."
+  },
+  {
+    "timestamp": "12:17",
+    "content": "With Real-Time Retention Messaging,"
+  },
+  {
+    "timestamp": "12:19",
+    "content": "you choose what you want to show"
+  },
+  {
+    "timestamp": "12:21",
+    "content": "to each customer in real-time."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Both Retention Messaging"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "in App Store Connect"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "and Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "12:28",
+    "content": "allow you to configure messages"
+  },
+  {
+    "timestamp": "12:30",
+    "content": "and images,"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "though the mechanisms"
+  },
+  {
+    "timestamp": "12:33",
+    "content": "for doing that differ."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "With Retention Messaging"
+  },
+  {
+    "timestamp": "12:36",
+    "content": "in App Store Connect,"
+  },
+  {
+    "timestamp": "12:37",
+    "content": "this can be done"
+  },
+  {
+    "timestamp": "12:38",
+    "content": "through App Store Connect"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "or the App Store Connect API."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "For Real-Time Retention Messaging,"
+  },
+  {
+    "timestamp": "12:44",
+    "content": "this must be done server-to-server"
+  },
+  {
+    "timestamp": "12:46",
+    "content": "through the Retention Messaging API."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Both frameworks also support offers,"
+  },
+  {
+    "timestamp": "12:51",
+    "content": "with App Store Connect"
+  },
+  {
+    "timestamp": "12:52",
+    "content": "requiring specific retention offers"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "linked to your subscriptions,"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "while Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "allows you to leverage"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "promotional offers"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "so you can choose the offer"
+  },
+  {
+    "timestamp": "13:01",
+    "content": "you want to deliver in real-time."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "A signature is still required"
+  },
+  {
+    "timestamp": "13:05",
+    "content": "for promotional offers"
+  },
+  {
+    "timestamp": "13:07",
+    "content": "used in Retention Messages."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "App Store Connect Retention Messaging"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "supports three views,"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "message, image, or offer."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "13:17",
+    "content": "supports those same three views"
+  },
+  {
+    "timestamp": "13:18",
+    "content": "and also supports a switch plan view."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "Retention Messaging"
+  },
+  {
+    "timestamp": "13:23",
+    "content": "in App Store Connect"
+  },
+  {
+    "timestamp": "13:24",
+    "content": "is an ideal choice"
+  },
+  {
+    "timestamp": "13:25",
+    "content": "if you don't have a server"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "or if you want to be able"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "to configure your retention messages"
+  },
+  {
+    "timestamp": "13:30",
+    "content": "and then let the App Store"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "choose what to display"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "to the customer."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "App Store Connect Messages"
+  },
+  {
+    "timestamp": "13:35",
+    "content": "are tied to specific subscriptions."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "If you have a server"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "and want to choose"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "which message is shown"
+  },
+  {
+    "timestamp": "13:42",
+    "content": "to each customer,"
+  },
+  {
+    "timestamp": "13:43",
+    "content": "consider Real-Time Retention Messaging."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "Also consider Real-Time"
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Retention Messaging"
+  },
+  {
+    "timestamp": "13:48",
+    "content": "if you want to take more control"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "of offers and eligibility"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "using promotional offers."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "13:56",
+    "content": "builds on top of Retention Messaging"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "in App Store Connect."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "You should always consider"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "setting up Retention Messaging"
+  },
+  {
+    "timestamp": "14:02",
+    "content": "in App Store Connect"
+  },
+  {
+    "timestamp": "14:03",
+    "content": "even when using"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "for fallback messaging."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "Retention Messaging"
+  },
+  {
+    "timestamp": "14:09",
+    "content": "in App Store Connect"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "is a wonderful way"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "to provide value"
+  },
+  {
+    "timestamp": "14:12",
+    "content": "to your customers"
+  },
+  {
+    "timestamp": "14:12",
+    "content": "in the subscription cancellation flow"
+  },
+  {
+    "timestamp": "14:14",
+    "content": "and is open to all."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "builds on top of Retention Messaging"
+  },
+  {
+    "timestamp": "14:20",
+    "content": "in App Store Connect."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "If you're interested"
+  },
+  {
+    "timestamp": "14:22",
+    "content": "in Real-Time Retention Messaging,"
+  },
+  {
+    "timestamp": "14:24",
+    "content": "please fill out the interest form"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "linked in this session's resources"
+  },
+  {
+    "timestamp": "14:27",
+    "content": "to request access."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "Let's recap what I covered"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "and how you can make the most"
+  },
+  {
+    "timestamp": "14:32",
+    "content": "of Retention Messaging."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "Consider the types"
+  },
+  {
+    "timestamp": "14:36",
+    "content": "of Retention Messaging"
+  },
+  {
+    "timestamp": "14:37",
+    "content": "you want to set up"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "in App Store Connect."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "To go further,"
+  },
+  {
+    "timestamp": "14:41",
+    "content": "explore the Real-Time Retention Messaging"
+  },
+  {
+    "timestamp": "14:43",
+    "content": "API documentation"
+  },
+  {
+    "timestamp": "14:44",
+    "content": "to determine"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "if it's a good fit for your app."
+  },
+  {
+    "timestamp": "14:47",
+    "content": "If you wish to pursue"
+  },
+  {
+    "timestamp": "14:49",
+    "content": "Real-Time Retention Messaging,"
+  },
+  {
+    "timestamp": "14:51",
+    "content": "submit the interest form"
+  },
+  {
+    "timestamp": "14:52",
+    "content": "to request access."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "Thanks for joining me."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "I've loved teaching you"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "about Retention Messaging"
+  },
+  {
+    "timestamp": "14:58",
+    "content": "and I look forward"
+  },
+  {
+    "timestamp": "14:59",
+    "content": "to how you use"
+  },
+  {
+    "timestamp": "15:00",
+    "content": "Retention Messages"
+  },
+  {
+    "timestamp": "15:01",
+    "content": "in your app."
+  },
+  {
+    "timestamp": "15:01",
+    "content": "Retention Messaging"
+  },
+  {
+    "timestamp": "15:05",
+    "content": "We'll be right back."
+  }
+]

@@ -1,0 +1,1706 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Sean, and welcome to What's New in Wallet."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Since their introduction, passers have become an essential part of how people move through their day."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "From picking up a morning coffee, to tapping through transit gates, to checking in and boarding a flight,"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "all without ever handing over a physical card."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Passers help people move through their world faster, more privately, and more securely."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "In iOS 27, we're taking passes further than ever."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "iOS 27 introduces a stunning new pass style called post-generic."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "Four new barcode types, giving you more flexibility at the point of presentation,"
+  },
+  {
+    "timestamp": "0:46",
+    "content": "and a powerful new way for passes to surface relevant actions right below the pass face."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "And we're also introducing a brand new suite of developer tools for Mac and server platforms,"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "making it easier than ever to design, personalize, and build great passes."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "We have a lot to cover, so let's dive straight in with the brand new pass style, post-generic."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "Post-generic is a great fit for membership cards, loyalty programs, store cards,"
+  },
+  {
+    "timestamp": "1:18",
+    "content": "and anywhere you want bold, colorful artwork to take center stage."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "The pass face consists of a background image, a primary logo, header fields,"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "primary fields, a footer field, and lastly, a barcode if supplied."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "To adopt this style, in the pass JSON of your pass bundle,"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "specify the post-generic top-level style key."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "Then, add your content with the usual pass field structure,"
+  },
+  {
+    "timestamp": "1:53",
+    "content": "and the pass will take care of laying everything out across the pass face."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "One thing to keep in mind is that the pass face supports a single footer field,"
+  },
+  {
+    "timestamp": "2:02",
+    "content": "so if you include more than one, only the first will be displayed."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "Post-generic requires iOS 27 or later."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "To support customers on iOS 26 and earlier,"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "we recommend including the existing generic top-level style key,"
+  },
+  {
+    "timestamp": "2:19",
+    "content": "alongside the post-generic style key in your pass JSON,"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "with relevant fields under each."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "That way, customers who have not yet made the update to iOS 27"
+  },
+  {
+    "timestamp": "2:30",
+    "content": "will still be able to add your pass to wallet."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Next, in iOS 27, pass is support for new barcode types."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "EAN 13, Code 39, Codabar, and ITF."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "These are specified using the existing barcode object"
+  },
+  {
+    "timestamp": "2:48",
+    "content": "and barcodes array in your pass JSON."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "For example, to present your barcode in Codabar format,"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "set the format of your barcode to PK Barcode Format Codabar."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "You can find the full list of format definitions"
+  },
+  {
+    "timestamp": "3:05",
+    "content": "in the wallet passes documentation."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "Because previous versions of iOS do not support these new formats,"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "we strongly recommend providing an array of barcodes in priority order."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "By providing multiple barcodes,"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "you give the system the best chance of rendering a barcode your hardware can scan,"
+  },
+  {
+    "timestamp": "3:23",
+    "content": "regardless of which operating system version your customer is on."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "If you only provide one of the new barcode types and nothing else,"
+  },
+  {
+    "timestamp": "3:32",
+    "content": "the pass will not render a barcode on iOS 26 and earlier."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "So we recommend leading with your preferred format"
+  },
+  {
+    "timestamp": "3:39",
+    "content": "and falling back gracefully."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "Now, we do recognize that there are some circumstances"
+  },
+  {
+    "timestamp": "3:49",
+    "content": "where supporting multiple barcode types simply isn't an option."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "If that's your situation, there are two things that you should do."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "First, surface the credential ID in a pass field"
+  },
+  {
+    "timestamp": "4:01",
+    "content": "so it can be entered manually"
+  },
+  {
+    "timestamp": "4:02",
+    "content": "and make it easy to find."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Consider using a primary field or a header field"
+  },
+  {
+    "timestamp": "4:08",
+    "content": "so it's prominent on the pass face."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "Second, make sure your frontline staff"
+  },
+  {
+    "timestamp": "4:15",
+    "content": "are trained for manual entry workflows."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "A pass that can't be scanned"
+  },
+  {
+    "timestamp": "4:19",
+    "content": "shouldn't result in a blocked customer."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Getting this right can mean the difference"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "between a seamless experience and a frustrating one."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "Next, let's talk about featured actions."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "With the second generation event tickets introduced in iOS 18,"
+  },
+  {
+    "timestamp": "4:35",
+    "content": "you can provide semantic URLs"
+  },
+  {
+    "timestamp": "4:37",
+    "content": "to expose additional user actions drawn below the pass,"
+  },
+  {
+    "timestamp": "4:40",
+    "content": "such as viewing the event schedule."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "In iOS 27, there's a new flexible API"
+  },
+  {
+    "timestamp": "4:45",
+    "content": "that allows you to provide actions for all pass styles."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "In the top level of your pass JSON,"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "define the featured actions key,"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "which takes an array of action objects."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "Each action is defined as a unique ID,"
+  },
+  {
+    "timestamp": "4:58",
+    "content": "the action type,"
+  },
+  {
+    "timestamp": "4:59",
+    "content": "and a value,"
+  },
+  {
+    "timestamp": "5:01",
+    "content": "such as a URL."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "5:03",
+    "content": "to provide an action to view offers,"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "I set the identifier to a unique ID,"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "the action type to membership benefits,"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "and a URL to navigate the user."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "Wallet draws this below the pass"
+  },
+  {
+    "timestamp": "5:17",
+    "content": "with an appropriate colorful icon"
+  },
+  {
+    "timestamp": "5:19",
+    "content": "and a localized call to action."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "Each pass can contain up to two featured actions."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "We recommend providing only the most meaningful"
+  },
+  {
+    "timestamp": "5:30",
+    "content": "and relevant actions to your customers"
+  },
+  {
+    "timestamp": "5:33",
+    "content": "and provide your actions in priority order."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "You can find the full list of supported action types"
+  },
+  {
+    "timestamp": "5:40",
+    "content": "and their expected values"
+  },
+  {
+    "timestamp": "5:41",
+    "content": "in the wallet passes documentation."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "5:45",
+    "content": "passes have gained a lot of features and functionality"
+  },
+  {
+    "timestamp": "5:47",
+    "content": "over the last decade,"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "and it can be hard to connect"
+  },
+  {
+    "timestamp": "5:50",
+    "content": "what is described in the pass bundle"
+  },
+  {
+    "timestamp": "5:52",
+    "content": "to the visual representation presented on device."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "So we're excited to announce a brand new app for Mac"
+  },
+  {
+    "timestamp": "5:59",
+    "content": "that makes designing passes easier than ever,"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "and it's called Pass Designer."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "Pass Designer is a what you see is what you get editor,"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "giving you a true to iOS rendering of your pass"
+  },
+  {
+    "timestamp": "6:13",
+    "content": "as you build it."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "Pass Designer creates template files."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "To convert a template into a personalized signed pass"
+  },
+  {
+    "timestamp": "6:22",
+    "content": "ready for distribution,"
+  },
+  {
+    "timestamp": "6:24",
+    "content": "alongside Pass Designer,"
+  },
+  {
+    "timestamp": "6:26",
+    "content": "we're also announcing a new Swift on server package"
+  },
+  {
+    "timestamp": "6:29",
+    "content": "called Pass Builder."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Pass Builder runs on Mac and Linux."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "It provides a Swift API"
+  },
+  {
+    "timestamp": "6:36",
+    "content": "and a command line executable called Build Pass."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "6:40",
+    "content": "my friend Stacy runs a doggy daycare,"
+  },
+  {
+    "timestamp": "6:43",
+    "content": "and I want to help her create membership cards"
+  },
+  {
+    "timestamp": "6:45",
+    "content": "for each of her fluffy clients."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "I'm going to use Pass Designer to design a template"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "and then use Pass Builder on server"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "to personalize the template"
+  },
+  {
+    "timestamp": "6:54",
+    "content": "and distribute passes at scale."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "Let's jump into Pass Designer."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "And here we go."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "A live preview of the pass on the right"
+  },
+  {
+    "timestamp": "7:04",
+    "content": "and a sidebar to edit the pass on the left."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "The sidebar allows you to configure"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "the pass identity and signing configuration,"
+  },
+  {
+    "timestamp": "7:13",
+    "content": "the pass style,"
+  },
+  {
+    "timestamp": "7:15",
+    "content": "images,"
+  },
+  {
+    "timestamp": "7:16",
+    "content": "barcodes,"
+  },
+  {
+    "timestamp": "7:17",
+    "content": "fields,"
+  },
+  {
+    "timestamp": "7:18",
+    "content": "and semantics"
+  },
+  {
+    "timestamp": "7:18",
+    "content": "if the pass style supports it."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "So this is a bit of a blank canvas,"
+  },
+  {
+    "timestamp": "7:23",
+    "content": "but I know Stacy takes some gorgeous portrait photos"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "of each dog."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "So let's experiment"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "with the new poster generic style"
+  },
+  {
+    "timestamp": "7:30",
+    "content": "and see how those photos look."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "So I'm going to go into Style"
+  },
+  {
+    "timestamp": "7:33",
+    "content": "and change the pass style"
+  },
+  {
+    "timestamp": "7:36",
+    "content": "to poster generic."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "And then I'm going to navigate"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "to images in the sidebar"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "and drag in a sample photo"
+  },
+  {
+    "timestamp": "7:44",
+    "content": "Stacy has given me from my desktop."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "That looks like it fits quite nicely."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Now let's add some fields."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "I'm going to navigate to header fields"
+  },
+  {
+    "timestamp": "7:55",
+    "content": "in the sidebar"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "and add a new header field."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "I'm going to set the key to dog ID"
+  },
+  {
+    "timestamp": "8:01",
+    "content": "and the label to member ID"
+  },
+  {
+    "timestamp": "8:03",
+    "content": "and add a placeholder ID"
+  },
+  {
+    "timestamp": "8:05",
+    "content": "to see how it looks."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "Great."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "Now let's add some primary fields"
+  },
+  {
+    "timestamp": "8:11",
+    "content": "for dog name"
+  },
+  {
+    "timestamp": "8:12",
+    "content": "and their favorite toy."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "In the sidebar,"
+  },
+  {
+    "timestamp": "8:16",
+    "content": "I'm going to navigate to primary fields"
+  },
+  {
+    "timestamp": "8:17",
+    "content": "and add a primary field for name."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "I'll set the key to dog name."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "8:27",
+    "content": "here's a neat trick"
+  },
+  {
+    "timestamp": "8:27",
+    "content": "with the poster generic pass face."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "If I omit the label"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "on the first primary field,"
+  },
+  {
+    "timestamp": "8:34",
+    "content": "we'll get the cool bold title"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "for the field value."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "So I'm going to type in"
+  },
+  {
+    "timestamp": "8:40",
+    "content": "a placeholder name of Finley"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "and add a primary field"
+  },
+  {
+    "timestamp": "8:43",
+    "content": "for favorite toy."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "So again,"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "I'll navigate to primary fields"
+  },
+  {
+    "timestamp": "8:48",
+    "content": "and add a new field."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "I'll set the key to loves,"
+  },
+  {
+    "timestamp": "8:55",
+    "content": "the label to loves,"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "and add a placeholder value"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "of flying disk."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "And now,"
+  },
+  {
+    "timestamp": "9:02",
+    "content": "let's make it super easy"
+  },
+  {
+    "timestamp": "9:03",
+    "content": "for Stacey to check each dog"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "in and out of daycare"
+  },
+  {
+    "timestamp": "9:06",
+    "content": "by encoding their member ID"
+  },
+  {
+    "timestamp": "9:08",
+    "content": "as a barcode."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "I'm going to head over"
+  },
+  {
+    "timestamp": "9:12",
+    "content": "to barcode and NFC"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "and write in a placeholder"
+  },
+  {
+    "timestamp": "9:16",
+    "content": "barcode message."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "This works,"
+  },
+  {
+    "timestamp": "9:20",
+    "content": "but I don't think I need to use"
+  },
+  {
+    "timestamp": "9:21",
+    "content": "that much space for a QR code."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "Let's try and narrow barcode type instead,"
+  },
+  {
+    "timestamp": "9:27",
+    "content": "such as PDF417."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "I'm going to click on the format picker"
+  },
+  {
+    "timestamp": "9:32",
+    "content": "and select PDF417."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "That looks much better."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "Now let's add some finishing touches"
+  },
+  {
+    "timestamp": "9:40",
+    "content": "by adding a primary logo."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "I'll navigate to images"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "and drag in the primary logo"
+  },
+  {
+    "timestamp": "9:47",
+    "content": "from my desktop."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "And adjusting the colors"
+  },
+  {
+    "timestamp": "9:52",
+    "content": "by navigating to style"
+  },
+  {
+    "timestamp": "9:54",
+    "content": "and setting the label color."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "And the final finishing touch,"
+  },
+  {
+    "timestamp": "9:59",
+    "content": "adding Stacey's doggy daycare"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "to the footer."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "I'll navigate to footer fields"
+  },
+  {
+    "timestamp": "10:05",
+    "content": "and add a new field."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "And set the text value"
+  },
+  {
+    "timestamp": "10:10",
+    "content": "to Stacey's doggy daycare."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Now that's a Q pass"
+  },
+  {
+    "timestamp": "10:15",
+    "content": "for a very cute dog."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "The very last thing to do"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "is to save our template."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Pass Designer saves templates"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "as PK pass template files."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "I'm going to go to file,"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "then save,"
+  },
+  {
+    "timestamp": "10:33",
+    "content": "and then save the template."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Now I don't want to create"
+  },
+  {
+    "timestamp": "10:39",
+    "content": "an individual pass"
+  },
+  {
+    "timestamp": "10:40",
+    "content": "for every member of Stacey's doggy daycare"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "in Pass Designer."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "Instead,"
+  },
+  {
+    "timestamp": "10:45",
+    "content": "I want to personalize this template"
+  },
+  {
+    "timestamp": "10:47",
+    "content": "at scale"
+  },
+  {
+    "timestamp": "10:48",
+    "content": "on a server"
+  },
+  {
+    "timestamp": "10:49",
+    "content": "using Pass Builder."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "I'm going to switch over"
+  },
+  {
+    "timestamp": "10:52",
+    "content": "to the Swift server"
+  },
+  {
+    "timestamp": "10:53",
+    "content": "for Stacey's doggy daycare."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "First,"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "I'm going to add Pass Builder"
+  },
+  {
+    "timestamp": "10:57",
+    "content": "as a dependency"
+  },
+  {
+    "timestamp": "10:59",
+    "content": "to the Swift package manifest"
+  },
+  {
+    "timestamp": "11:00",
+    "content": "and to the server target."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "11:05",
+    "content": "I'm going to implement"
+  },
+  {
+    "timestamp": "11:06",
+    "content": "this function Create Pass"
+  },
+  {
+    "timestamp": "11:07",
+    "content": "in the server source"
+  },
+  {
+    "timestamp": "11:08",
+    "content": "to generate a personalized pass."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "The function Create Pass"
+  },
+  {
+    "timestamp": "11:12",
+    "content": "receives a model"
+  },
+  {
+    "timestamp": "11:13",
+    "content": "already loaded"
+  },
+  {
+    "timestamp": "11:14",
+    "content": "from the database"
+  },
+  {
+    "timestamp": "11:14",
+    "content": "with the dog's name,"
+  },
+  {
+    "timestamp": "11:16",
+    "content": "membership ID,"
+  },
+  {
+    "timestamp": "11:18",
+    "content": "their favorite toy,"
+  },
+  {
+    "timestamp": "11:19",
+    "content": "and a URL"
+  },
+  {
+    "timestamp": "11:20",
+    "content": "to a gorgeous photo"
+  },
+  {
+    "timestamp": "11:21",
+    "content": "of each dog."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "Let's get started"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "by first loading"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "the template"
+  },
+  {
+    "timestamp": "11:25",
+    "content": "I made earlier"
+  },
+  {
+    "timestamp": "11:26",
+    "content": "using the Pass Package type."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Pass Package"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "provides a type-safe way"
+  },
+  {
+    "timestamp": "11:30",
+    "content": "to access"
+  },
+  {
+    "timestamp": "11:31",
+    "content": "and configure"
+  },
+  {
+    "timestamp": "11:32",
+    "content": "the Pass Bundle,"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "including a Pass property"
+  },
+  {
+    "timestamp": "11:35",
+    "content": "to interact with"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "the contents"
+  },
+  {
+    "timestamp": "11:37",
+    "content": "of the Pass JSON."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Let's personalize the fields."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "I'll call Set Value"
+  },
+  {
+    "timestamp": "11:43",
+    "content": "on the Pass Fields property"
+  },
+  {
+    "timestamp": "11:45",
+    "content": "to set the dog's name,"
+  },
+  {
+    "timestamp": "11:47",
+    "content": "their membership ID,"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "and their favorite toy."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "let's set the background image"
+  },
+  {
+    "timestamp": "11:52",
+    "content": "to the photo of the dog."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "I'm going to create"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "an instance of Pass Image,"
+  },
+  {
+    "timestamp": "11:58",
+    "content": "passing in a URL"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "to the photo of the dog"
+  },
+  {
+    "timestamp": "12:00",
+    "content": "and assigning it"
+  },
+  {
+    "timestamp": "12:02",
+    "content": "to the background image property"
+  },
+  {
+    "timestamp": "12:03",
+    "content": "on the Pass Package type."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "And let's configure the barcode"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "so dogs can be quickly checked"
+  },
+  {
+    "timestamp": "12:08",
+    "content": "in and out of daycare."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "I'll create a Pass barcode"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "with the encoded message"
+  },
+  {
+    "timestamp": "12:14",
+    "content": "being the dog's membership ID"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "and using the PDF417 format."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "And lastly,"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "I think it'd be great"
+  },
+  {
+    "timestamp": "12:23",
+    "content": "to have a featured action"
+  },
+  {
+    "timestamp": "12:24",
+    "content": "for clients to view"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "their membership."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "So let's add that"
+  },
+  {
+    "timestamp": "12:28",
+    "content": "by setting a Pass action"
+  },
+  {
+    "timestamp": "12:30",
+    "content": "on Featured Actions."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "And just like that,"
+  },
+  {
+    "timestamp": "12:33",
+    "content": "the server is generating"
+  },
+  {
+    "timestamp": "12:34",
+    "content": "a personalized Pass."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "12:37",
+    "content": "we need to build our Pass"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "and sign it for distribution."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "As a reminder,"
+  },
+  {
+    "timestamp": "12:43",
+    "content": "to build and sign"
+  },
+  {
+    "timestamp": "12:44",
+    "content": "a Pass for Wallet,"
+  },
+  {
+    "timestamp": "12:45",
+    "content": "you need to generate"
+  },
+  {
+    "timestamp": "12:46",
+    "content": "and write a manifest"
+  },
+  {
+    "timestamp": "12:47",
+    "content": "of the contents of your Pass"
+  },
+  {
+    "timestamp": "12:49",
+    "content": "into your Pass bundle."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "12:52",
+    "content": "create a detached signature"
+  },
+  {
+    "timestamp": "12:53",
+    "content": "of the manifest"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "and write the signature"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "into your Pass bundle."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "compress the resulting directory"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "and add the PK Pass"
+  },
+  {
+    "timestamp": "13:02",
+    "content": "file extension."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "Pass Builder takes care"
+  },
+  {
+    "timestamp": "13:05",
+    "content": "of all of that for you."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "You just need to provide"
+  },
+  {
+    "timestamp": "13:07",
+    "content": "the certificates."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "Going back to the server source,"
+  },
+  {
+    "timestamp": "13:12",
+    "content": "using the Pass certificate type,"
+  },
+  {
+    "timestamp": "13:14",
+    "content": "I'm going to load"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "the Pass signing certificate"
+  },
+  {
+    "timestamp": "13:16",
+    "content": "and the WWDR"
+  },
+  {
+    "timestamp": "13:18",
+    "content": "intermediate certificate."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "I'm going to create"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "an instance of Pass signer"
+  },
+  {
+    "timestamp": "13:24",
+    "content": "passing in the certificates."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "And finally,"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "I'm going to call"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "the sign pass function"
+  },
+  {
+    "timestamp": "13:29",
+    "content": "on Pass signer,"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "passing in the personalized package"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "I made earlier"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "and the URL on disk"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "to write the signed Pass"
+  },
+  {
+    "timestamp": "13:37",
+    "content": "for distribution"
+  },
+  {
+    "timestamp": "13:38",
+    "content": "and then return the URL."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "And now,"
+  },
+  {
+    "timestamp": "13:44",
+    "content": "Stacy's Doggy Daycare"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "has gorgeous wallet passes"
+  },
+  {
+    "timestamp": "13:47",
+    "content": "for every client."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "Pass Builder can also be used"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "from other programming languages."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "The Swift Java project"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "can generate native Java bindings"
+  },
+  {
+    "timestamp": "13:57",
+    "content": "for the Swift API,"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "allowing you to invoke"
+  },
+  {
+    "timestamp": "14:00",
+    "content": "Pass Builder"
+  },
+  {
+    "timestamp": "14:00",
+    "content": "from the Java runtime."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "We're also making"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "protobuf definitions"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "of the pass package"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "format available,"
+  },
+  {
+    "timestamp": "14:07",
+    "content": "allowing you to generate"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "type safe models"
+  },
+  {
+    "timestamp": "14:09",
+    "content": "in your preferred"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "programming language."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "You can then generate"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "a customization message"
+  },
+  {
+    "timestamp": "14:15",
+    "content": "and invoke the"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Build Pass command line"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "executable to personalize"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "and sign your pass."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "For more information"
+  },
+  {
+    "timestamp": "14:21",
+    "content": "on using Swift Java,"
+  },
+  {
+    "timestamp": "14:23",
+    "content": "check out the Explore Swift"
+  },
+  {
+    "timestamp": "14:25",
+    "content": "and Java Interoperability"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "Developer Session."
+  },
+  {
+    "timestamp": "14:28",
+    "content": "And for documentation"
+  },
+  {
+    "timestamp": "14:29",
+    "content": "on the Build Pass command line,"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "see the Pass Builder"
+  },
+  {
+    "timestamp": "14:32",
+    "content": "Developer Documentation,"
+  },
+  {
+    "timestamp": "14:33",
+    "content": "both of which are linked"
+  },
+  {
+    "timestamp": "14:35",
+    "content": "in the session description."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "And that's a brief"
+  },
+  {
+    "timestamp": "14:39",
+    "content": "end-to-end demo"
+  },
+  {
+    "timestamp": "14:40",
+    "content": "of Pass Designer"
+  },
+  {
+    "timestamp": "14:41",
+    "content": "and Pass Builder"
+  },
+  {
+    "timestamp": "14:42",
+    "content": "from designing a template"
+  },
+  {
+    "timestamp": "14:44",
+    "content": "to personalizing it"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "to signing it"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "for distribution."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "You can find links"
+  },
+  {
+    "timestamp": "14:50",
+    "content": "to download Pass Designer,"
+  },
+  {
+    "timestamp": "14:51",
+    "content": "the Pass Builder source,"
+  },
+  {
+    "timestamp": "14:53",
+    "content": "and comprehensive documentation"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "in the session description."
+  },
+  {
+    "timestamp": "14:57",
+    "content": "I've covered a lot today,"
+  },
+  {
+    "timestamp": "14:59",
+    "content": "so for next steps,"
+  },
+  {
+    "timestamp": "15:00",
+    "content": "check out Pass Designer."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "Use Pass Designer"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "to experiment"
+  },
+  {
+    "timestamp": "15:04",
+    "content": "with the new"
+  },
+  {
+    "timestamp": "15:05",
+    "content": "poster generic style"
+  },
+  {
+    "timestamp": "15:06",
+    "content": "and check if it's"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "the right fit"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "for your pass."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "If you plan on adopting"
+  },
+  {
+    "timestamp": "15:12",
+    "content": "any of the new"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "barcode types,"
+  },
+  {
+    "timestamp": "15:14",
+    "content": "make a plan"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "for providing"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "graceful fallbacks"
+  },
+  {
+    "timestamp": "15:16",
+    "content": "and take a moment"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "to identify"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "the most meaningful"
+  },
+  {
+    "timestamp": "15:20",
+    "content": "and relevant actions"
+  },
+  {
+    "timestamp": "15:21",
+    "content": "for your customers,"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "then bring them to life"
+  },
+  {
+    "timestamp": "15:24",
+    "content": "with featured actions."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "This is a new chapter"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "for building"
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Wallet Passes,"
+  },
+  {
+    "timestamp": "15:30",
+    "content": "and we're so excited"
+  },
+  {
+    "timestamp": "15:31",
+    "content": "to see all the amazing"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "passes that you're"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "going to create."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "Thanks for watching"
+  },
+  {
+    "timestamp": "15:35",
+    "content": "and have a wonderful"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "WWDC."
+  }
+]

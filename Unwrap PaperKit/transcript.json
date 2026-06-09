@@ -1,0 +1,306 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Matt, an engineer on the Pencil and Paper team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Apps that give users a canvas to create whatever they want have been some of the most iconic and"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "empowering experiences on Apple platforms. And PaperKit is what powers the canvas experience"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "across many of Apple's own applications. When you sketch an idea, drop in an image,"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "or mark up a document in Notes, that's PaperKit. It's the full canvas experience. Pencil, shapes, text,"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "images, all working together. When you open a PDF in preview and add a signature, highlight a passage"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "or circle something important, that's PaperKit too. And when you're ideating in freeform on macOS,"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "that's also PaperKit. And in iOS, macOS and visionOS 27, PaperKit opens up. Today, I'll show you how to"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "unwrap PaperKit so you can take full control over your canvas experience. I'll start with the data"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "model, which gives you access to everything on the canvas. Then I'll show you how to work with"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "elements like shapes and images. And I'll finish with the dormants, which lets you add interactive"
+  },
+  {
+    "timestamp": "1:19",
+    "content": "overlays and controls. Let's get going with the data model. I've been building a comic book editor"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "powered by PaperKit. I've already set up some basic templates, but that's as far as I got. Now I need to"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "turn those templates into PaperMarkup. PaperMarkup has a new sub elements property. It gives you access to"
+  },
+  {
+    "timestamp": "1:40",
+    "content": "every element on the canvas as a markup ordered set, which is an ordered collection you can read from"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "and write to. This code snippet creates a shape element for each panel and then updates the markup."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "That's it. Let's try this on the iPad. I'll add a three page panel to my comic. Great. It's showing up"
+  },
+  {
+    "timestamp": "2:02",
+    "content": "exactly how I wanted. The canvas is fully interactive, which is a problem for my comic book editor. I can"
+  },
+  {
+    "timestamp": "2:08",
+    "content": "select the panels, drag them around and even delete them. That's not what I want. The template elements"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "should not be editable. To fix this, I need to change how those shape elements behave. Every element"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "on the canvas conforms to the markup protocol. This gives you common properties like frame and rotation."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "There's also a new allowed interactions property, which is a markup interactions option set. It gives you"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "fine-grained control over what can be modified on each element. Markup interactions lets you control"
+  },
+  {
+    "timestamp": "2:44",
+    "content": "moving, resizing and rotating, deleting, styling and selecting individually or in any combination. And if you"
+  },
+  {
+    "timestamp": "2:55",
+    "content": "want to lock down everything at once, read only combines them all into a single flag, which is perfect for the comic template."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "To limit interactions with the panels in the comic book editor, I need to set allowed interactions to read"
+  },
+  {
+    "timestamp": "3:08",
+    "content": "only. I'll give it a try. Now, when I tap a panel border, nothing happens. The template shapes are read only."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "I can add a speech bubble, move that around and stylize it."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "But the panels stay fixed. Perfect. The app is starting to take shape, but the panels need to really pop."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "So I've added a color picker in the toolbar for styling our template."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "To implement styling, I'm going to dive into elements."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "I'm going to dive into elements. Every element in Paper Markup has a concrete type."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "Shapes, images, links, loops and pencil strokes. They're all part of the same markup ordered set"
+  },
+  {
+    "timestamp": "3:57",
+    "content": "and conform to the markup protocol. But each of those types had their own custom properties."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "Let's take a deeper look at shapes. PaperKit supports many shape types and each type has its own properties,"
+  },
+  {
+    "timestamp": "4:09",
+    "content": "like corner radius for rounded rectangles, or control points for curved lines."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "I used rectangles for the comic panels. They have a stroke color, and that's what we're looking for."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "To apply a color to our panels, I need to iterate over the sub-elements."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "Then, set their stroke and fill colors. To give it that extra pop, I'm going to use the same color"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "for the markup background. And lastly, I update the markup on the Paper Markup View Controller."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "Let me check the results on the iPad."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "And just like that, the canvas transforms. The page is styled with the color I chose,"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "and it's starting to unwrap into something more personal."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "PaperKit is built on top of PencilKit, so I can use the Apple Pencil to draw."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Each stroke becomes a markup element, and I can use all of the PencilKit model APIs."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "Those APIs now support character recognition and Bezier path conversion."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "For all the details, check out reading between the strokes with PencilKit."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "Now, let's look at how to add custom controls with adornments."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "I want to add a button to each panel that lets users create artwork,"
+  },
+  {
+    "timestamp": "5:25",
+    "content": "but I don't want those controls to become part of the document."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "They shouldn't be saved, printed, or exported. I want them to exist on top of the canvas only when I'm editing."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "That's exactly what markup adornments are. A visual overlay anchored to canvas coordinates."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "This makes adornments ideal for buttons, annotations, and collaboration UI."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "They automatically track zoom and scroll, and they're completely separate from the persisted markup."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "And then, I'm going to create a markup adornment."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "I anchor it to the center of the panel, and I give it an SF symbol icon through the image configuration."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "Then, I assign the array to the controller's adornments property."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "To handle taps, I implement the delegate method, didTapAdornmentWithID."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "When the user taps in adornment, I present the imagePlaygroundViewController."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "When an image comes back from imagePlayground, I create an image markup."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "Then, I insert it into the sub-elements, and update the view controller's markup."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Let's give it another try."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "I'll tap one of the panels to create some artwork."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "My comic is going to be about a superhero dog fighting crime in the city."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "I'll tap one of the images in the city."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "And the generated image fills the panel."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "To learn more about generating images in your app, watch Create High Quality Images Using Image"
+  },
+  {
+    "timestamp": "6:59",
+    "content": "Playground."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "And now, with just a couple more images, some text and fonts, I've got the first page of my comic."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "Our superhero dog is going to save the day."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "Now, you can build a fully interactive, canvas-based experience in your app with PaperKit."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "Use the data model to programmatically read and modify what's on the canvas."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "And add adornments to create interactive overlays tailored to your app."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "I can't wait to see how you will unwrap PaperKit."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Thanks for watching."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumps"
+  }
+]

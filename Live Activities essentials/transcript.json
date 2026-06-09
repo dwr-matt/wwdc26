@@ -1,0 +1,638 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Adi and I'm a System Experience Engineer."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "Today, I'll cover the essentials for building live activities and how to make them shine on every screen."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "I'll start with an overview of the experience that live activities offer."
+  },
+  {
+    "timestamp": "0:20",
+    "content": "And I'll go into how your app can create them and keep them up to date."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Then, I'll touch on how you can further optimize them for your app."
+  },
+  {
+    "timestamp": "0:30",
+    "content": "Live activities are a great way for apps to provide timely and glanceable updates for something that's happening right now."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "Like this one from the MLB app."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "It keeps track of someone's favorite teams and shows a live activity when they're playing."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "People stay up to date with the score, the current inning, and key game updates right from the lock screen."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "And on the home screen, or when they're using apps, they appear right in the dynamic island, so people never miss a thing."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "Live activities can also expand to show more information from the dynamic island."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "This occurs when an alerting update happens or when someone long presses on it."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "The expanded view provides even more space to let people know about essential updates."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "And in iOS 27, live activities are visible in the dynamic island when in portrait and landscape."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "They also appear in other places too, like in standby, when iPhone is in landscape and charging."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "When your app runs a live activity on iPhone, it automatically appears on other Apple devices, including right on the Apple Watch in the Smart Stack,"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "in the macOS menu bar, or right on the CarPlay dashboard."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "This makes it super easy for people to glance at the key information they need from your app, no matter where they are."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "To bring live activities to your app, I'll cover how they get created and how your app keeps them up to date."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "It starts by planning your data model, so that your live activities updates can be fast and efficient."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "Then, create the basic views in each of its key presentations."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "Finally, I'll provide updates, either from the app when it's running or through push notifications in the background."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "I'll start with the data model."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "To explore how to do this, I'll add a live activity to an app that I'm working on."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "It lets me order coffee from a local coffee shop."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "I can pick my favorite drink and customize it just the way I like it."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "When I'm done, I send my order to the store for pickup."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "The first step to building a live activity is to come up with a great design."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "They're meant to provide immediate, glanceable information."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "You'll want to craft a design that prioritizes the key things people need to know over time."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "For inspiration, check out the Human Interface Guidelines for help designing your live activity."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "And check out the session Design Dynamic Live Activities."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "For this app, I'll use my initial designs for the lock screen to start planning the data model."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "It will have different presentations for when the order is placed, when it's being worked on, when it's ready for pickup, and a brief opportunity to leave feedback after I'm done."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "I'll need to consider which parts of the data are static and which parts of the data are dynamic."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "That's because live activities treat static and dynamic data differently in order to provide efficient updates."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Only the dynamic data can be updated during the lifetime of a live activity."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "Data that never changes will be contained in a struct that conforms to the activity attributes protocol."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Values that do change over time are part of a separate content state struct."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "In the coffee order, there are a few things that are static and won't change."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "An order always stays with the same coffee shop, so the name of the shop is static."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "The drink that someone orders also won't change."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "But the status of the order, as well as the remaining time, are dynamic."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "The app will update those values over time."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "To create a data model for this live activity, I'll import activity kit and create a drink order attribute struct conforming to activity attributes."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "Then, I'll add properties for all of the static data."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "The name of the shop, the drink for the order, and a unique identifier that my server uses to track each order."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "Then, I'll add a content state struct containing the dynamic data."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "This includes the order's phase, like whether it's being prepared or ready for pickup, as well as the estimated ready time, and the rating left for the order."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "And that's it."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "Now that I have the data model in place, I'll build the views for the live activity."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "The interface for a live activity is built using WidgetKit."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "To get started, add a widget extension to your app if you don't already have one."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "There, you'll provide an activity configuration that describes its views."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "Each presentation of live activity is a SwiftUI view, which reads the attributes and content state provided to it."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "If you're new to SwiftUI, check out the video SwiftUI Essentials."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "For the drink order, I'll start by creating an activity configuration in my Widget extension."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "By specifying the drink order attributes type, these views will be associated with the right live activity."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "The content closure provides the SwiftUI view that should appear."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "In this case, I have a view called ActivityView."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "To show the right values, like whether the coffee is being prepared or ready, it uses the context parameter."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "The context contains the attributes and the most recent content state that should be rendered."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "Next, I'll provide views for the dynamic island."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "The first three are compact leading, compact trailing, and minimal views."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "These views are small and appear when someone isn't actively interacting with it."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "Carefully consider which information is essential from the larger presentation to appear in these views."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "For the coffee order, the leading view shows a symbol of the type of drink I ordered, while the trailing view has a label for the order's phase."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "I'll also provide the minimal view."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "This view may appear when multiple live activities are running."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "Minimal views should provide the most essential information that someone will glance at."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "For this order, it provides a circular gauge showing the time remaining."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "Finally, I'll build up the expanded view in the dynamic island."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "This view is much larger and can accommodate more information, similar to the lock screen view."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "It consists of multiple regions that surround the sensors on iPhone."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "In each closure, I'll provide a view for each of the regions I need in a dynamic island expanded region block."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "Now that the data model and views are built, it's time to start the live activity and keep it up to date."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Live activities can be started in a few different ways."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "Using the ActivityKit framework, you can start one directly anytime your app is running in the foreground."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "Or, a live activity can be scheduled to start in advance at a specific time."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "Alternatively, you can also start it from a push notification."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "The simplest way is to use ActivityKit."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "For my app, I'll start by checking if live activities are authorized."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Then, I'll create an instance of the DrinkOrder attribute struct for the order."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "I'll fill in the static data, like the coffee shop name and the drink order."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Then, I'll construct the content state, which contains the initial values for the dynamic data of this live activity."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "I'll set the first phase of the order, the ordered phase."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "And most drinks are ready in 15 minutes, so I'll set an initial ready time of 15 minutes from now."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "The content state of a live activity also has a stale date."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "A stale date lets you specify when this content should be considered out of date."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "When the content is stale, your live activity views can indicate that."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "For now, I won't set a stale date for a coffee order."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "Then, I'll request the system start a live activity using the attributes and content I've defined."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "When the live activity is running, it's just as easy to update."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "Call the update method on the activity with a new content state as well as a new stale date."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "Live activities can also be updated with push notifications."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "There are two strategies to choose from."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "First, you can broadcast updates."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "This is a great choice when you have hundreds, thousands, or more people running the same live activity at the same time."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "With this strategy, your server sends updates to everyone using a broadcast channel."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "Then, you configure the live activity to subscribe to that channel for its updates."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "The other strategy is to use push notifications."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "This is great for all other use cases."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "The server can send push notifications to target updates to specific devices."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "For this strategy, you'll obtain a push token for the live activity and use that to send each update."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "To learn more, the documentation has a great guide on how to use ActivityKit push notifications."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "So far, I've covered just the first steps with live activities."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "Next, I'll share how to go even further to optimize them."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "I'll discuss adding more customized presentations and bringing interactivity to the views."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "I'll start with further refining their presentations."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "In iOS 27, the dynamic island compact and minimal views are visible in both portrait and landscape."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "In portrait, compact views are flexible in width."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "But in landscape, they don't have room to grow in width."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "Your live activity needs to account for when the dynamic island is constrained in width like this."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "Here's the implementation of the compact trailing view for the coffee order."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "It's a SwiftUI view that either shows the estimated time for the drink order, if there's one available, or it shows the label for the order's face, like the string ready."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "I'll start by adding the environment value, is dynamic island limited in width."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Then, I'll adjust the view body."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "When the dynamic island is limited in width, I'll display an alternate trailing view that shows an icon of the order's progress instead."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Now, the new trailing view fits nicely into the limited width."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "Another presentation to consider is standby, which can appear when iPhone is charging in the landscape."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "In this presentation, the lock screen view is used, scaled up to 200%."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "The gradient background that works great on lock screen makes the activity feel small and doesn't fill the screen, leaving a lot of blank space."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "To fix this, I'll adjust how my live activity's view displays its background."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "I'll add the showsWidgetContainerBackground environment value to the view."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "This value is true on the lock screen, so there, I'll apply my gradient background."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "Next, I'll use the activity background tint on the view to set a recognizable background color otherwise."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "Now, the live activity presents an edge-to-edge background tint color in standby."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "Live activities also appear in the Smart Stack on Apple Watch and in CarPlay."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "To customize them for these places, just add support for the small device family."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "Live activities are automatically forwarded from iPhone to CarPlay and use my activity view by default."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "This view looks great on lock screen, but doesn't fit well in the space."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "To adapt for this layout, first, declare support for the small activity family."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "This indicates to the system that your views are adapted to the smaller format."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "Then, add the activity family environment value to the view."
+  },
+  {
+    "timestamp": "12:45",
+    "content": "And provide a customized view for this presentation when the value of activity family is small."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "Now, the live activity looks great everywhere."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "People love being able to access your app's glanceable information while on the go."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "To learn even more about adapting views for the small activity family, check out the session, Bring Your Live Activity to Apple Watch."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "Live activities can be a great opportunity for people to take quick, immediate actions."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "You can provide this by adding interactivity."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "When an order is complete in the coffee app, I want to make it easy for people to rate their order."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "To do this, each button in the live activity is associated with an app intent."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "When someone taps a button, the system executes the associated intent."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "In the implementation, the rate drink intent conforms to live activity intent."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "And it takes two parameters, the ID for the order, and a boolean describing whether the rating was positive or not."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "The perform method is where the app's logic is implemented."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "When either button is tapped, this function will run."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "The app can implement this method to do all of the work involved, like sharing this rating back with the server and updating the database."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "Finally, I'll update the ratings button view, which is used in both my activity view and Dynamic Island Expanded Region."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "I'll add two buttons for each intent and can create a rate drink intent for each action."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "Live activities are a great way to keep people updated about things they care about that are happening in real time."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "Now you're empowered to get started with them in your apps."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "Some next steps are build live activities with the Activity Kit and Widget Kit frameworks."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Use attributes and content state to model your static and dynamic data for efficient updates."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "Create outstanding presentations on the lock screen, in the Dynamic Island, and more."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "Use Activity Kit and push notifications for timely updates to its data."
+  },
+  {
+    "timestamp": "14:58",
+    "content": "And curate each experience, like in Landscape, in Standby, on Apple Watch, and others."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "And others."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "Thanks for watching!"
+  }
+]

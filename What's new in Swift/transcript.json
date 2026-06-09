@@ -1,0 +1,1478 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Becca from the Swift team. My teammate Evan and I are here to tell you about some of the"
+  },
+  {
+    "timestamp": "0:11",
+    "content": "improvements we've made during the development of Swift 6.3 and 6.4. I'll start by showing you"
+  },
+  {
+    "timestamp": "0:17",
+    "content": "some changes to the language that'll streamline your day-to-day coding. Then Evan will discuss"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "updates to important libraries and developments and support beyond Xcode and the Apple platforms."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "After that, I'll walk you through some specialized features for tuning performance-sensitive code"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "without compromising on safety. Then Evan will finish up by talking about how you can follow along"
+  },
+  {
+    "timestamp": "0:38",
+    "content": "or contribute to Swift's development. But let's start with some of the simple improvements that"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "you might use every day. Some of them you might barely notice except as little annoyance is going"
+  },
+  {
+    "timestamp": "0:48",
+    "content": "away. So let's look at some of the smaller changes first. For example, previously if you wanted to use"
+  },
+  {
+    "timestamp": "0:54",
+    "content": "some or any with an optional type, you had to parenthesis it. This behavior fell out of Swift's"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "operator precedence rules, but it was a little pedantic. So in Swift 6.4, you can simply get rid"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "of those parentheses, and the compiler will take that to mean the only thing that really makes sense."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "You'll now get a warning if you silently ignore an error thrown from a Swift concurrency task, reminding"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "you to either handle the error in the task, or save the task and check for the error later. And the old"
+  },
+  {
+    "timestamp": "1:22",
+    "content": "restriction on calling async functions from a defer block is now gone. If you have a class that needs"
+  },
+  {
+    "timestamp": "1:28",
+    "content": "to use unchecked Sendable because it has a weak var property, you can now change that property to weak let"
+  },
+  {
+    "timestamp": "1:34",
+    "content": "so it's immutable, and doesn't stop you from using Sendable checking. Or if a type shouldn't be Sendable,"
+  },
+  {
+    "timestamp": "1:40",
+    "content": "you can state that explicitly with the new tilde Sendable syntax, which as an added bonus doesn't"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "stop subclasses from being Sendable. And a struct with a mix of internal and private properties will"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "now have a second memberwise initializer that you can use from other files in your project. But there"
+  },
+  {
+    "timestamp": "1:56",
+    "content": "are also some changes you'll definitely notice. The Apple ecosystem has grown over the last two decades,"
+  },
+  {
+    "timestamp": "2:02",
+    "content": "and as it has, the availability attributes in your Swift code have grown with it. Last year,"
+  },
+  {
+    "timestamp": "2:08",
+    "content": "Apple began to address this problem by aligning the version numbers of our OS releases. Now,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "Swift is taking that even further by letting you condense all of those platform names into one,"
+  },
+  {
+    "timestamp": "2:19",
+    "content": "any Apple OS. So if the availability lines up on all the platforms you care about,"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "you can specify all of the OSes at once. Or if there are carve-outs, you can use any Apple OS to"
+  },
+  {
+    "timestamp": "2:30",
+    "content": "establish the default, and then add more specific attributes for the exceptions. And this also works"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "for pound-if OS conditions if you want to compile a section of your code out entirely. Another thing"
+  },
+  {
+    "timestamp": "2:41",
+    "content": "that changes over the years is APIs. As they evolve, older APIs are sometimes deprecated to indicate that"
+  },
+  {
+    "timestamp": "2:48",
+    "content": "you should move to newer versions. But sometimes you can't do that right away. Maybe the new API is very"
+  },
+  {
+    "timestamp": "2:53",
+    "content": "different, and you need time to adapt. Wouldn't it be nice to turn off these warnings temporarily without affecting the rest of your project?"
+  },
+  {
+    "timestamp": "3:00",
+    "content": "Well, now you can. The atDiagnose attribute lets you change the behavior of specific warnings inside a particular declaration. So you can tell Swift to ignore the warning group deprecated declaration, and make that kind of warning go away in that one place."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "You can also use it to selectively enable warnings that are off by default. For example, you could turn on strict memory safety in security critical functions to make sure you've audited their uses of unsafe APIs."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Or you can treat certain warnings as errors. Here we've upgraded warnings that will become errors in the future to errors right now. All that gives you a lot of flexibility."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "And Swift 6.3 also has a new feature to better handle situations where two modules have APIs with the same name. For example, the rocket module might have a type representing a real 100 meter tall Saturn V rocket."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "While the gift shop toys module has a type representing a child sized model of the Saturn V rocket. If you've imported both of these modules in the same file, Swift won't be able to tell which one you wanted to use. So it will give you an error."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "So it will give you an error. When this happens, you've always been able to clarify your code by using the dot syntax. Rocket dot Saturn V will first find the rocket module, then look for the type Saturn V inside it, without ever noticing that there's another Saturn V somewhere else."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "This usually works, but there are some tricky situations where it breaks down. For example, what happens if the module rocket also has a type rocket?"
+  },
+  {
+    "timestamp": "4:28",
+    "content": "Well, I'll tell you what happens. Swift prefers type names over module names. So it decides you must mean the type rocket, and then looks inside it for a member called Saturn V."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "When it doesn't find one, it gives you an error. Swift 6.3 has a solution to this problem. Just change that dot to a double colon. This new syntax is called a module selector, and the name on the left is always treated as a module name."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "So Swift will ignore the type rocket, and go straight to the module rocket. And from there, you'll have no trouble finding the type you're looking for."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "This syntax also works on the name of a method or property, which is handy if a type gets identically named methods from extensions in two different modules."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "After all, calling the wrong method could really ruin someone's day."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "Now, module selectors are super useful when there's a conflict between two modules you don't control."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "Like if SwiftUI and the database package you're using both have a type called view, a module selector can really save you some trouble."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "It can also be a good idea to use them defensively in macro expansions and other automatically generated code, since you don't know what else might have been imported into the project."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "But we don't recommend you intentionally design your API's to have name conflicts and then rely on module selectors to distinguish them."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Even if your code is unambiguous, some of the error messages in documentation might still be confusing."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "So don't."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "Now that we've seen what's new in the language, here's Evan to tell you about updates to important libraries."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "Evan Branden All of these language improvements share the same goal of helping you express exactly what you mean without extra noise."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "That same goal carries into updates to the libraries you use every day."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "The standard library, Swift testing, subprocess, and foundation."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "Let's start with updates to the standard library, specifically with new tools for task cancellation, dictionary transformations, and file path manipulations."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "It's important to check the task cancellation status before starting any expensive work."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "But there are times where we actually want to do the work even after the task was cancelled, like finishing writing data to disk to avoid corrupting a file."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Now you can use the task cancellation shield."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "Inside of the shield, task cancellation checks always return false."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "It's important to keep this region short, focusing on either finishing or rolling back any work that you already started."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "Mapping values from dictionaries also received an update."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "Map values only passes the old value into the mapping closure."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "So if you needed the key to compute the new value, you had to construct a new dictionary by hand."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "Now we can call map keyed values, which passes both the key and the old value into the mapping closure to compute the new value."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "Programs often need to manipulate file paths."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "There are subtle differences between how different platforms represent file paths that can make it tricky to handle them correctly."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "This year, we added a new file path type to the standard library, based on the type from Swift system, making it easier to get right."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "Testing in Swift 6.4 offers you more control over the behavior of your tests, allowing you to surface non-fatal issues and dynamically skip test cases."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "Now you can set the severity level of issues recorded with issue.record."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "Setting it to a warning means you can surface issues in a test case that are worth investigating, but not worth blocking CI workflows."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "You can cancel tests dynamically by calling the test.cancel API."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "This is especially powerful with parameterized tests, where you can cancel individual arguments that shouldn't run, rather than running them to completion or failing the test."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "Sometimes, you're trying to tackle a flaky test."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "The Swift test command adds new functionality to repeat a test until it either passes or fails, while also allowing you to control the maximum number of repetitions."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "If you specify that you want to repeat until the tests pass, only failing tests are rerun, saving time by not rerunning tests that are already passing."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Many projects have large test suites that have utilities built on XeTest APIs."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "In Swift 6.4, XeTest Assertion failures are now reported as test issues when called from Swift testing."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "This means that you can migrate to Swift testing without worrying about accidentally losing test coverage along the way."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "And, the interoperability also works in the other direction too."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "Swift testing APIs like the pound expect macro work when called from an XeTest case."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "This means that you can build helper APIs with Swift testing, and they'll have consistent behavior, regardless of whether they're called from XeTest or Swift testing."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "If you're working in an existing project, you might already be calling XeTest Assertions from Swift testing and vice versa."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "To make this transition easier, these issues are reported as warnings by default."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "You can opt into promoting them to test failures in the Xcode build settings."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "To learn more about Swift testing interoperability and migration strategies, check out Migrate to Swift testing."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "Last year, we announced the subprocess package containing modern APIs for launching subprocesses."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "This year, we're releasing subprocess 1.0, incorporating your feedback from real-world use."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "The API refinements include a simplified execution type, improved error handling, and convenience APIs for easily streaming process output."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "Cross-platform support is also greatly improved, including platform-specific process file descriptors and termination statuses to more accurately reflect the semantics on different platforms."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "Here is an example of the refined API in subprocess 1.0."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "When calling the run method to launch a subprocess, the standard output and standard error streams can be included in the execution object as async buffer sequences."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "This model guarantees that each stream is only created once."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "The new strings method on async buffer sequence makes it easy to read the output of a subprocess line by line."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "This API respects graphene cluster boundaries, so you don't have to worry about multibyte characters getting split."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "Finally, let's talk about improvements to foundation."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "Progress Manager is a new type in foundation for progress reporting."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "It's designed to work well with async await style concurrency."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "It cleanly separates progress composition from progress reporting."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "And provides a structured type-safe mechanism for attaching additional metadata."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "We announced Swift Foundation two years ago, an effort to migrate foundation to a safe, consistent, cross-platform codebase written in Swift."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "This year, we continued that effort, replacing decades of Objective-C with modern Swift."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "We modernized more parts of data, resulting in improvements across the board, including faster span accesses, equality checks, iteration, and mutation."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "On Apple platforms, bridging between data and NSData is also faster."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "NSURL and CFURL were unified to a single Swift implementation."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "Leveraging Swift makes these types run faster and use less memory."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "Migrating a library as large and mature as foundation is only possible because of Swift's language interoperability."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "You can add entirely new APIs in Swift."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "And you can migrate the implementation of existing APIs to Swift without changing the API surface."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "In addition to crossing language boundaries, many real-world projects extend into services, devices, web components, cross-platform clients, and more."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "At Apple, we use Swift in every part of the OS."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "In apps, like weather."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "In services, like the real-time phone call spam detection."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "In the kernel itself, and all of the way down to the lowest layers of firmware, Swift is designed to be a language that you can reach for across every layer of your software stack."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "To make it easier to use in your existing software systems, Swift 6.4 extends language interoperability, improves cross-platform IDE support, and makes it easier and safer to bring your Swift code to other environments like the web and embedded devices."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "You've always been able to import C into Swift with ease."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "Swift 6.4 allows you to expose functions written in Swift back to C."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "You've likely seen or used the at-obj C attribute when migrating your apps from Objective-C to Swift."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "The at-C attribute works the same way, but for C."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "The at-C attribute applies to functions that operate on C-compatible types."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Any type that you can import from C to Swift can also be used in functions that are exported from Swift to C, like integers, pointers, imported C structs, and enums with raw integer value types."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "And the compiler prevents you from accidentally passing types that are incompatible with C."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "Let's see the at-C attribute in action."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "I'm working on an app for scheduling rocket launches."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "We'll focus on the code tracking launch windows."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "It's currently written in C, but we're migrating to Swift for memory safety and improving developer ergonomics."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "Let's use the new features in Swift 6.4 to rewrite portions of the application from C."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "There are currently two functions declared in the header."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "One to get the length of a launch window, and another to compute the total time spent in a collection of launch windows, allowing us to compute launchpad utilization."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "Let's start by replacing the C implementation of the function computing the length of a launch window."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "We can use the at-C and at-implementation attributes together to implement a C function without creating a C declaration for it since it already exists in the original header file."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Next, we'll provide an implementation for the function computing the total time spent in a launch window across many launch windows."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "Functions are imported verbatim when you're implementing them in Swift."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "We can translate the types into native Swift types, allowing us to use the ergonomics of Swift to reimplement our C functions."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Safe interop features provide safe wrappers when we call the functions, so instead of passing the array and count separately, we can pass it as a span."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "It's easier to write, and it's safe."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "While we're working on this, I want to add a new function that gets the average launch window length."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "We don't use the at-implementation attribute here, because the function isn't declared in the original C header."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "The Swift compiler emits the appropriate function declaration into the generated C interop header instead,"
+  },
+  {
+    "timestamp": "14:51",
+    "content": "so we can call the new function from our C code."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "Swift automatically bridges Swift spans to C."
+  },
+  {
+    "timestamp": "14:57",
+    "content": "Now, Swift C++ interoperability also supports bridging between Swift and C++20 spans,"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "so this declaration imports to Swift with a span, so you can pass a span in directly."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "Interoperability is key to bringing Swift into existing codebases written in other languages."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "Swift Java is the package that enables interoperability between Swift and Java."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "It now supports calling async and throwing Swift functions from Java."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "It captures more features of the generic system, including constrained extensions, and conforming Java classes to Swift protocols."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "All of these improvements make calling Swift code from Java and Kotlin feel natural on Android."
+  },
+  {
+    "timestamp": "15:37",
+    "content": "And you can now download an official Swift SDK for Android on Swift.org."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "The latest version of the Swift extension for VS Code adds new integration with Swiftly,"
+  },
+  {
+    "timestamp": "15:48",
+    "content": "making it easy to install tool chains from Swift.org right in your editor."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "So, now you'll always have the right tool chain for any platform right at your fingertips."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "Last year, we added the Swift extension to the Visual Studio Marketplace."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "This year, we've added it to the OpenVSX Marketplace, making the integrated Swift experience available to new editors,"
+  },
+  {
+    "timestamp": "16:13",
+    "content": "including VS Codeium, Cursor, Kiro, and Antigravity."
+  },
+  {
+    "timestamp": "16:17",
+    "content": "The latest version of the plugin makes it easier to get started with Swift than ever before,"
+  },
+  {
+    "timestamp": "16:21",
+    "content": "with a checklist that guides you through installing Swift, creating a new project, running your code,"
+  },
+  {
+    "timestamp": "16:26",
+    "content": "setting up tests, and generating documentation."
+  },
+  {
+    "timestamp": "16:29",
+    "content": "If you have Swiftly installed, it can help manage your tool chains."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "I'm installing a nightly tool chain so that I can play with the new language features targeting WebAssembly and embedded platforms."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "The open source tool chain we just installed can compile to WebAssembly."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "WASM support in Swift means that you can use the same language to write your native apps, your back-end web servers, and your front-end too."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Let's look at some of the improvements in the JavaScript interoperability story coming out of the open source project JavaScript Kit."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "Bridging between Swift and JavaScript used to involve a lot of dynamic lookups and hoping that types would match up."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "The most recent efforts in JavaScript Kit have made bridging between the languages safer and faster."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "The code looks like native Swift code, but it's making calls to WebGL through JavaScript."
+  },
+  {
+    "timestamp": "17:17",
+    "content": "The popular note-taking app GoodNotes recently implemented a web-based interface in addition to their native iOS app."
+  },
+  {
+    "timestamp": "17:24",
+    "content": "The cost of moving their core app to another language, working through the bugs, and then maintaining two code bases was too high."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "So they took their existing battle-tested Swift code and compiled it to the web using WASM."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "And with improvements to JavaScript Kit, their benchmarking found the safe bridging to be 35 to 40 times faster than the dynamic bridging."
+  },
+  {
+    "timestamp": "17:45",
+    "content": "WASM support in Swift means you can take your Swift code running in your native iOS applications and get it running as part of a web app."
+  },
+  {
+    "timestamp": "17:52",
+    "content": "Unlike with a native application, though, you have to send the compiled code to each device every time they visit your site."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "There are CDNs to help, but big binaries can quickly eat into yours and your customers' data."
+  },
+  {
+    "timestamp": "18:05",
+    "content": "This means that size is a bigger concern than ever."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "With embedded Swift, we can take advantage of the ergonomics of Swift in more constrained environments."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "We strip down the language to make it fit."
+  },
+  {
+    "timestamp": "18:15",
+    "content": "And now, as we learn how people are using Swift in these environments, we're able to grow the available subset of the language."
+  },
+  {
+    "timestamp": "18:21",
+    "content": "Embedded Swift now has support for existential types."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "This means that you can work with multiple types conforming to a protocol stored in an array or passed to a function."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "Type throws are great when you know the error type, but they're limited to a specific error type."
+  },
+  {
+    "timestamp": "18:37",
+    "content": "Using the same underlying machinery for handling existential types, embedded Swift now supports untyped throws."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "The debugger needs extra metadata about type layout to display variables."
+  },
+  {
+    "timestamp": "18:48",
+    "content": "To keep binary size down, embedded Swift doesn't include that data in the binary itself."
+  },
+  {
+    "timestamp": "18:53",
+    "content": "Furthermore, many embedded systems only leave you with a core dump of the memory state when the program crashed, so you're not even debugging a live process."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "Swift 6.4 saves all of the necessary metadata into dwarf debug info, keeping binary sizes down while greatly improving the experience debugging an embedded Swift core dump."
+  },
+  {
+    "timestamp": "19:13",
+    "content": "These are just a few of the improvements we made this year, bridging the gap between full and embedded Swift."
+  },
+  {
+    "timestamp": "19:19",
+    "content": "While the subset of Swift that works on embedded platforms is growing, it is still a subset of the language."
+  },
+  {
+    "timestamp": "19:25",
+    "content": "Diagnostics in the embedded restrictions warning group identify language features that aren't available in embedded contexts."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "If you're working with a library that supports both embedded and full Swift, you may need to expose functions that use features that aren't available in embedded contexts."
+  },
+  {
+    "timestamp": "19:42",
+    "content": "The at diagnose attribute that Becca showed us earlier lets us control these diagnostics."
+  },
+  {
+    "timestamp": "19:47",
+    "content": "Embedded code often runs on incredibly constrained hardware environments."
+  },
+  {
+    "timestamp": "19:51",
+    "content": "That's why it's critical to get the most out of every clock cycle."
+  },
+  {
+    "timestamp": "19:55",
+    "content": "Back to Becca to talk about how to squeeze performance from your Swift code."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "Swift is designed to have great performance, even when you've written the most straightforward, expressive implementation of your logic."
+  },
+  {
+    "timestamp": "20:06",
+    "content": "But when you're doing a lot of computation or running in constrained environments like embedded systems,"
+  },
+  {
+    "timestamp": "20:11",
+    "content": "sometimes it's worth complicating your code to squeeze out just a little bit more when it counts."
+  },
+  {
+    "timestamp": "20:17",
+    "content": "You usually won't need these advanced performance features, but when you do, you'll be glad you have them."
+  },
+  {
+    "timestamp": "20:23",
+    "content": "I'm going to focus on two areas we've worked on this year."
+  },
+  {
+    "timestamp": "20:27",
+    "content": "Explicitly controlling optimizer decisions and further extending the ownership system to safely prevent unnecessary copying."
+  },
+  {
+    "timestamp": "20:34",
+    "content": "The Swift compiler's optimizer applies dozens of techniques to make your code faster."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "But some of the most powerful ones can be counterproductive when they're applied incorrectly."
+  },
+  {
+    "timestamp": "20:44",
+    "content": "These involve duplicating code, so it can be customized for a particular situation."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "But if the customization doesn't pay off, you could end up with a program that's larger and slower, instead of smaller and faster."
+  },
+  {
+    "timestamp": "20:55",
+    "content": "For example, one of the most important optimizations the compiler performs is inlining."
+  },
+  {
+    "timestamp": "21:01",
+    "content": "Replacing function calls with their implementations, and then optimizing those implementations for the specific call site."
+  },
+  {
+    "timestamp": "21:07",
+    "content": "When inlining pays off, the program does less work to get the same result."
+  },
+  {
+    "timestamp": "21:12",
+    "content": "But when it doesn't, it just makes the binary bigger, without making it any faster."
+  },
+  {
+    "timestamp": "21:17",
+    "content": "To keep that from happening, the optimizer analyzes the function in call site to decide whether inlining is likely to pay off."
+  },
+  {
+    "timestamp": "21:24",
+    "content": "But sometimes it makes the wrong decision, so you might want a way to force the issue."
+  },
+  {
+    "timestamp": "21:28",
+    "content": "Swift has long had an inline never attribute that completely forbids inlining."
+  },
+  {
+    "timestamp": "21:33",
+    "content": "Useful when you know that inlining the function will never be a win."
+  },
+  {
+    "timestamp": "21:37",
+    "content": "In Swift 6.4, there's now a matching inline always attribute, which forces the compiler to inline, even when the optimizer isn't sure it'll be a good idea."
+  },
+  {
+    "timestamp": "21:46",
+    "content": "Sometimes it still won't be able to though, like when you call an object method that might be overridden."
+  },
+  {
+    "timestamp": "21:51",
+    "content": "So consider using final with inline always for methods of classes."
+  },
+  {
+    "timestamp": "21:55",
+    "content": "Another important optimization is specialization."
+  },
+  {
+    "timestamp": "21:58",
+    "content": "Cloning a generic function for a specific concrete type."
+  },
+  {
+    "timestamp": "22:02",
+    "content": "Eliminating generic overhead and often enabling further optimization."
+  },
+  {
+    "timestamp": "22:06",
+    "content": "Specializing a function only helps if the optimizer knows that you're going to use it with that type."
+  },
+  {
+    "timestamp": "22:11",
+    "content": "But sometimes, especially in libraries, the compiler can't see how the function will be used."
+  },
+  {
+    "timestamp": "22:17",
+    "content": "Swift 6.3 introduces the at specialized attribute to give you direct control over this."
+  },
+  {
+    "timestamp": "22:22",
+    "content": "Inside the attribute, you write a where clause constraining some or all of the generic parameters."
+  },
+  {
+    "timestamp": "22:28",
+    "content": "And Swift will generate a specialized version of the function with those constraints."
+  },
+  {
+    "timestamp": "22:32",
+    "content": "So, if you have some slow generic code that gets used a lot with one or two specific types,"
+  },
+  {
+    "timestamp": "22:37",
+    "content": "you can let Swift know that it needs to prioritize them."
+  },
+  {
+    "timestamp": "22:40",
+    "content": "But the biggest improvements we've made for performance tuning are to the ownership system."
+  },
+  {
+    "timestamp": "22:45",
+    "content": "To understand what we've done, let's start by reviewing what we already have."
+  },
+  {
+    "timestamp": "22:49",
+    "content": "A lot of performance problems in Swift boil down to unnecessarily copying data."
+  },
+  {
+    "timestamp": "22:54",
+    "content": "You have a piece of data in one place, and you need it in another."
+  },
+  {
+    "timestamp": "22:57",
+    "content": "So you copy the data across to new storage."
+  },
+  {
+    "timestamp": "23:00",
+    "content": "Sometimes these components are big, like the model and view layers of your app."
+  },
+  {
+    "timestamp": "23:04",
+    "content": "Or sometimes they're small, like the two variables on either side of a for-loops-in keyword."
+  },
+  {
+    "timestamp": "23:09",
+    "content": "But the basic pattern is the same."
+  },
+  {
+    "timestamp": "23:12",
+    "content": "The way to solve slowdowns due to copying is to recognize that, in certain situations, the copy is unnecessary."
+  },
+  {
+    "timestamp": "23:19",
+    "content": "If you know that the storage will stay allocated, and that both of the components using it will follow the Swift's exclusivity rules,"
+  },
+  {
+    "timestamp": "23:25",
+    "content": "so they don't mutate data they both have access to, then you don't need to copy the data."
+  },
+  {
+    "timestamp": "23:29",
+    "content": "You just need to grant access to the existing storage."
+  },
+  {
+    "timestamp": "23:32",
+    "content": "The simplest way to avoid copying is to put the data in an object, and pass that object to the other component."
+  },
+  {
+    "timestamp": "23:38",
+    "content": "This is often good enough, but it doesn't entirely eliminate the problem."
+  },
+  {
+    "timestamp": "23:42",
+    "content": "After all, objects are reference counted, and passing an object changes its reference count."
+  },
+  {
+    "timestamp": "23:48",
+    "content": "Releasing and retaining an object has less overhead than copying a large value."
+  },
+  {
+    "timestamp": "23:52",
+    "content": "But it still might be too slow for the most performance-sensitive code."
+  },
+  {
+    "timestamp": "23:56",
+    "content": "When objects aren't an option, you've traditionally had to pass an unsafe pointer to the storage instead."
+  },
+  {
+    "timestamp": "24:01",
+    "content": "But the problem with doing that is right in its name."
+  },
+  {
+    "timestamp": "24:04",
+    "content": "Unsafe pointers are...unsafe!"
+  },
+  {
+    "timestamp": "24:08",
+    "content": "Sharing storage like this is only safe because both components are following certain rules."
+  },
+  {
+    "timestamp": "24:12",
+    "content": "But the compiler has no idea about those rules, and can't make sure that each side will hold up its end of the bargain."
+  },
+  {
+    "timestamp": "24:18",
+    "content": "Component 1 could mutate data that Component 2 expected to remain unchanged."
+  },
+  {
+    "timestamp": "24:22",
+    "content": "Or it could deallocate the storage while Component 2 is still using it."
+  },
+  {
+    "timestamp": "24:26",
+    "content": "You're back to a world with no memory safety, like the C languages had."
+  },
+  {
+    "timestamp": "24:30",
+    "content": "So, a few years ago, we started working on a better solution."
+  },
+  {
+    "timestamp": "24:35",
+    "content": "We codified the set of guarantees needed to safely share storage as a borrow."
+  },
+  {
+    "timestamp": "24:40",
+    "content": "As long as Component 2 is borrowing the storage, both components can only read it, not write it."
+  },
+  {
+    "timestamp": "24:45",
+    "content": "Component 2 has to finish using the storage first."
+  },
+  {
+    "timestamp": "24:48",
+    "content": "And when it does, Component 1 regains full control."
+  },
+  {
+    "timestamp": "24:52",
+    "content": "Mutation is similar, except that the other component is completely blocked from accessing the storage."
+  },
+  {
+    "timestamp": "24:57",
+    "content": "This ensures that it doesn't read half-updated data or behave differently depending on when the other component chooses to write back its changes."
+  },
+  {
+    "timestamp": "25:05",
+    "content": "And whether it's borrowing or mutating, Swift can verify at compile time that both components are following the rules."
+  },
+  {
+    "timestamp": "25:12",
+    "content": "But our goal has always been to support these advanced use cases without affecting how you write ordinary Swift code."
+  },
+  {
+    "timestamp": "25:18",
+    "content": "That's required careful, incremental design of ownership features."
+  },
+  {
+    "timestamp": "25:22",
+    "content": "This has been a multi-year process and it's still not over."
+  },
+  {
+    "timestamp": "25:25",
+    "content": "But this year, we've taken a few more steps forward."
+  },
+  {
+    "timestamp": "25:28",
+    "content": "For example, the Equatable, Comparable, and Hashable protocols can now be used on non-copyable types."
+  },
+  {
+    "timestamp": "25:34",
+    "content": "And Equatable and Comparable can also be used with non-escapable types."
+  },
+  {
+    "timestamp": "25:38",
+    "content": "This lets types tuned for performance and safety take advantage of some of the most universal capabilities that ordinary Swift types have."
+  },
+  {
+    "timestamp": "25:45",
+    "content": "Associated types can also now be non-copyable or non-escapable."
+  },
+  {
+    "timestamp": "25:50",
+    "content": "This opens up powerful new capabilities for high-performance protocol-driven development."
+  },
+  {
+    "timestamp": "25:54",
+    "content": "Like the iterable protocol seen here."
+  },
+  {
+    "timestamp": "25:57",
+    "content": "Its element type is non-copyable."
+  },
+  {
+    "timestamp": "25:59",
+    "content": "And its iterator type is both non-copyable and non-escapable."
+  },
+  {
+    "timestamp": "26:03",
+    "content": "Of course, that doesn't mean you can't use a copyable or escapable type for these."
+  },
+  {
+    "timestamp": "26:06",
+    "content": "It just means that the protocol doesn't require it."
+  },
+  {
+    "timestamp": "26:10",
+    "content": "Gosh, though, that iterable type looks really handy."
+  },
+  {
+    "timestamp": "26:14",
+    "content": "Don't you wish it were real?"
+  },
+  {
+    "timestamp": "26:16",
+    "content": "Well, good news."
+  },
+  {
+    "timestamp": "26:17",
+    "content": "It is."
+  },
+  {
+    "timestamp": "26:18",
+    "content": "In Swift 6.4, for loops support a new iterable protocol."
+  },
+  {
+    "timestamp": "26:22",
+    "content": "The sequence protocol we all know and love works by copying the elements out of the sequence."
+  },
+  {
+    "timestamp": "26:26",
+    "content": "The iterable protocol allows the for loop to borrow them instead."
+  },
+  {
+    "timestamp": "26:30",
+    "content": "This means it works with non-copyable elements,"
+  },
+  {
+    "timestamp": "26:33",
+    "content": "and also that it doesn't need to perform reference counting when it's working with objects or copy on write types."
+  },
+  {
+    "timestamp": "26:38",
+    "content": "Plus, it can optionally throw an error during the loop, just like an async sequence can."
+  },
+  {
+    "timestamp": "26:43",
+    "content": "However, like any borrow, exclusivity checking prohibits you from mutating the iterable while you're looping over it."
+  },
+  {
+    "timestamp": "26:49",
+    "content": "Which isn't necessarily a bad thing since this was often a performance trap with sequences."
+  },
+  {
+    "timestamp": "26:54",
+    "content": "Because of this behavior difference, the for loop will prefer the sequence protocol if available,"
+  },
+  {
+    "timestamp": "26:58",
+    "content": "and fall back to iterable otherwise."
+  },
+  {
+    "timestamp": "27:00",
+    "content": "Much like a sequence, an iterable works by creating an iterator for the for loop to retrieve the elements from."
+  },
+  {
+    "timestamp": "27:06",
+    "content": "But unlike a sequence, it retrieves elements in batches."
+  },
+  {
+    "timestamp": "27:10",
+    "content": "The for loop will ask the iterator for a span of elements, and go through them one by one."
+  },
+  {
+    "timestamp": "27:14",
+    "content": "Then ask for another span, and visit those too."
+  },
+  {
+    "timestamp": "27:17",
+    "content": "When it runs out of elements, it returns an empty span, which terminates the for loop."
+  },
+  {
+    "timestamp": "27:21",
+    "content": "This batching design makes the loop a lot more efficient, especially for types that can just return everything in one big span."
+  },
+  {
+    "timestamp": "27:27",
+    "content": "Swift 6.4 also makes a major improvement to accessors."
+  },
+  {
+    "timestamp": "27:31",
+    "content": "To understand why it's important, consider this unique box struct."
+  },
+  {
+    "timestamp": "27:35",
+    "content": "It automatically manages a pointer to a large value, and provides a computed property to access it."
+  },
+  {
+    "timestamp": "27:41",
+    "content": "Unfortunately, as it's written right now, this property has a serious performance problem."
+  },
+  {
+    "timestamp": "27:47",
+    "content": "Let's see why."
+  },
+  {
+    "timestamp": "27:49",
+    "content": "Suppose you put an inline array of 256 ints in a unique box."
+  },
+  {
+    "timestamp": "27:54",
+    "content": "Inline arrays are, well, inline."
+  },
+  {
+    "timestamp": "27:56",
+    "content": "So on a 64-bit device, that's going to be a 2 kilobyte struct."
+  },
+  {
+    "timestamp": "28:01",
+    "content": "Not something you want to be copying around all the time."
+  },
+  {
+    "timestamp": "28:03",
+    "content": "Which is a problem, because get and set work by copying the data."
+  },
+  {
+    "timestamp": "28:07",
+    "content": "To change one int in the array, you have to copy the whole thing out, and then back again."
+  },
+  {
+    "timestamp": "28:12",
+    "content": "That's not going to help your performance very much."
+  },
+  {
+    "timestamp": "28:15",
+    "content": "Fortunately, there's now a better option."
+  },
+  {
+    "timestamp": "28:18",
+    "content": "You can switch from get and set, to borrow and mutate."
+  },
+  {
+    "timestamp": "28:22",
+    "content": "The new borrow accessor gives you read-only access to shared storage without copying it."
+  },
+  {
+    "timestamp": "28:26",
+    "content": "While the mutate accessor gives you exclusive access to modify it in place."
+  },
+  {
+    "timestamp": "28:30",
+    "content": "Once you've switched, Swift can just mutate the element in the original array, without copying anything."
+  },
+  {
+    "timestamp": "28:36",
+    "content": "And as a nice little bonus, the new accessor's mean unique box can also handle non-copyable values."
+  },
+  {
+    "timestamp": "28:42",
+    "content": "The borrow and mutate accessors are a big help for both performance and expressivity."
+  },
+  {
+    "timestamp": "28:46",
+    "content": "And we're excited they're ready for everyone to use."
+  },
+  {
+    "timestamp": "28:49",
+    "content": "Gosh, though, that unique box type looks really handy."
+  },
+  {
+    "timestamp": "28:53",
+    "content": "Don't you wish it..."
+  },
+  {
+    "timestamp": "28:54",
+    "content": "Okay, okay, you know how that ends. I won't do the spiel again."
+  },
+  {
+    "timestamp": "28:57",
+    "content": "Yes, unique box is a real type that's now in the standard library."
+  },
+  {
+    "timestamp": "29:01",
+    "content": "There are also some other new APIs that save you from writing unsafe code."
+  },
+  {
+    "timestamp": "29:05",
+    "content": "Unique array is a lot like an ordinary Swift array, except that it's non-copyable."
+  },
+  {
+    "timestamp": "29:09",
+    "content": "That means you can store non-copyable elements and avoid reference counting overhead,"
+  },
+  {
+    "timestamp": "29:13",
+    "content": "without limiting yourself to a fixed size."
+  },
+  {
+    "timestamp": "29:16",
+    "content": "The with temporary allocation function uses an output span instead of an unsafe mutable buffer pointer,"
+  },
+  {
+    "timestamp": "29:21",
+    "content": "to ensure that temporary memory is handled safely."
+  },
+  {
+    "timestamp": "29:25",
+    "content": "The continuation type checks at compile time that you only resume at once,"
+  },
+  {
+    "timestamp": "29:28",
+    "content": "making it even safer than a check continuation, but just as efficient as an unsafe continuation."
+  },
+  {
+    "timestamp": "29:33",
+    "content": "And there's also one more pair of types I want to tell you about."
+  },
+  {
+    "timestamp": "29:36",
+    "content": "But they're not improved versions of an existing API."
+  },
+  {
+    "timestamp": "29:39",
+    "content": "They bring new capabilities to the language."
+  },
+  {
+    "timestamp": "29:41",
+    "content": "A ref is a bit like a span, but for one value instead of many."
+  },
+  {
+    "timestamp": "29:45",
+    "content": "It's sort of like a container for a borrow or mutation that can be stored in variables,"
+  },
+  {
+    "timestamp": "29:51",
+    "content": "passed and returned from functions, and used in generic types."
+  },
+  {
+    "timestamp": "29:54",
+    "content": "You can make an instance of the ref type from a read access by borrowing storage,"
+  },
+  {
+    "timestamp": "29:58",
+    "content": "or an instance of the mutable ref type from a write access by using the prefix ampersand."
+  },
+  {
+    "timestamp": "30:03",
+    "content": "These types can be used to create new APIs that were impossible to write before,"
+  },
+  {
+    "timestamp": "30:07",
+    "content": "like a method that returns a mutable ref for one of its properties."
+  },
+  {
+    "timestamp": "30:10",
+    "content": "But they can also be used to address performance issues."
+  },
+  {
+    "timestamp": "30:14",
+    "content": "For example, consider this update count function."
+  },
+  {
+    "timestamp": "30:17",
+    "content": "It looks up a dictionary key every time it needs to increment it,"
+  },
+  {
+    "timestamp": "30:20",
+    "content": "even though the key is always the same."
+  },
+  {
+    "timestamp": "30:22",
+    "content": "You usually want to hoist repeated work like that out of the loop,"
+  },
+  {
+    "timestamp": "30:26",
+    "content": "so you only have to do it once."
+  },
+  {
+    "timestamp": "30:28",
+    "content": "But until now, the only way to do a dictionary lookup and just sort of hold it open for a while,"
+  },
+  {
+    "timestamp": "30:33",
+    "content": "was by moving the loop into a function and passing the lookup as an in-out parameter."
+  },
+  {
+    "timestamp": "30:38",
+    "content": "It's a pretty obscure trick."
+  },
+  {
+    "timestamp": "30:41",
+    "content": "Mutable ref gives you a better way."
+  },
+  {
+    "timestamp": "30:43",
+    "content": "Now you can make a mutable ref from the dictionary lookup once,"
+  },
+  {
+    "timestamp": "30:46",
+    "content": "before the loop starts,"
+  },
+  {
+    "timestamp": "30:48",
+    "content": "and then use it when you want to mutate the dictionary entry."
+  },
+  {
+    "timestamp": "30:51",
+    "content": "The refs are non-escapable, so Swift knows the access ends when the variable goes out of scope."
+  },
+  {
+    "timestamp": "30:56",
+    "content": "All these new ownership features combine to make speeding up your most performance-sensitive code"
+  },
+  {
+    "timestamp": "31:01",
+    "content": "safer and easier than ever."
+  },
+  {
+    "timestamp": "31:04",
+    "content": "The ownership system isn't the only work that's still in progress."
+  },
+  {
+    "timestamp": "31:07",
+    "content": "Let's hand it back to Evan to tell you about the future of Swift."
+  },
+  {
+    "timestamp": "31:11",
+    "content": "The features we covered today were developed in open source,"
+  },
+  {
+    "timestamp": "31:14",
+    "content": "improving the overall experience across the Apple OSes, Linux, Windows, and beyond."
+  },
+  {
+    "timestamp": "31:19",
+    "content": "Here are some more future developments happening in the open source community that you can get involved with."
+  },
+  {
+    "timestamp": "31:25",
+    "content": "Last year, we announced that we were open sourcing Swift Build, the build system in Xcode."
+  },
+  {
+    "timestamp": "31:30",
+    "content": "Swift Build is now the default build system backend for the Swift Package Manager,"
+  },
+  {
+    "timestamp": "31:35",
+    "content": "improving the consistency between Swift Package Builds and what you see from Xcode."
+  },
+  {
+    "timestamp": "31:39",
+    "content": "Joining the growing list of workgroups are the Build and Packaging workgroup,"
+  },
+  {
+    "timestamp": "31:43",
+    "content": "addressing the build and packaging needs of the Swift community."
+  },
+  {
+    "timestamp": "31:46",
+    "content": "The networking workgroup, designing the next generation of cross-platform networking APIs."
+  },
+  {
+    "timestamp": "31:52",
+    "content": "And the Windows workgroup, improving the Swift experience on Windows."
+  },
+  {
+    "timestamp": "31:56",
+    "content": "This year, the Android workgroup released the first Swift SDK for Android as part of Swift 6.3."
+  },
+  {
+    "timestamp": "32:02",
+    "content": "This means that it is now possible to share Swift code between Android and iOS apps."
+  },
+  {
+    "timestamp": "32:08",
+    "content": "If you're interested in participating in the development of the Swift ecosystem,"
+  },
+  {
+    "timestamp": "32:12",
+    "content": "please join us on the Swift forums at forums.swift.org."
+  },
+  {
+    "timestamp": "32:16",
+    "content": "We would love to have your unique feedback."
+  },
+  {
+    "timestamp": "32:19",
+    "content": "Thank you for following along with us today to learn more about what's new in Swift."
+  },
+  {
+    "timestamp": "32:23",
+    "content": "Whether you've submitted a bug report, posted a pull request, joined us at an event,"
+  },
+  {
+    "timestamp": "32:28",
+    "content": "or participated on the forums, your contributions help shape the future of Swift,"
+  },
+  {
+    "timestamp": "32:32",
+    "content": "making programming safer and more approachable for everyone."
+  },
+  {
+    "timestamp": "32:35",
+    "content": "Thank you."
+  }
+]

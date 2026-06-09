@@ -1,0 +1,482 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Ángelos, an engineer on the MLX team. Today, I'm going to show you how to build and run"
+  },
+  {
+    "timestamp": "0:12",
+    "content": "agentic AI workflows entirely on your Mac using MLX. No cloud, no API keys, just your hardware"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "doing the work. Over the past year, AI agents have gone from research prototypes to everyday"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "productivity tools. But before we talk about agents, let's look at what we had before."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "Here's a chat experience you're familiar with. You send a prompt to that language model, the model"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "sends a response back. If you need to act on that response, run a command, check a file, or fix an error,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "that's on you. But now, you're talking to an agent. The agent talks to the model to decide what to do."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "Then, it calls tools to actually do it. Running commands, reading files, hitting APIs. It observes"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "the results and goes back to the model to figure out the next step. User to agent, agent to model,"
+  },
+  {
+    "timestamp": "1:04",
+    "content": "agent to tools. This is the agentic loop, and it keeps cycling until your task is done. What makes"
+  },
+  {
+    "timestamp": "1:10",
+    "content": "this particularly exciting on Apple Silicon is that the entire loop can run locally. Your data stays on"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "your machine. AI is available anywhere, at any time, and there are no usage costs. Let me now show you"
+  },
+  {
+    "timestamp": "1:24",
+    "content": "what this looks like in practice. Here, I have an agent running locally on my Mac. On my screen,"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "you can see the setup. On the left, MLX running the model, and on the right, the open code agent I'm"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "interacting with. I asked it to fetch the recent pull requests from our MLX repository, summarize the"
+  },
+  {
+    "timestamp": "1:43",
+    "content": "changes, and identify anything that needs my attention. The model reasons about the requests,"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "calls the GitHub CLI to fetch PR data, reads to the diffs, and produces a concise summary. All of this"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "is happening locally. The model runs on my hardware, and only the git commands reach the network."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "Well, it seems like I have a lot of work to do after finishing this video. Now that you've seen what's"
+  },
+  {
+    "timestamp": "2:08",
+    "content": "possible, let me walk you through how we'll get there today. We'll start by introducing the local"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "agentic AI stack. The four layers that make all of this work, from MLX at the foundation, all the way"
+  },
+  {
+    "timestamp": "2:20",
+    "content": "up to the agent. Then, I'll show you step by step how to set up your own local agent. After that, we'll"
+  },
+  {
+    "timestamp": "2:27",
+    "content": "look at how MLX gets the most out of your hardware to make agents fast. And finally, we'll go through more"
+  },
+  {
+    "timestamp": "2:34",
+    "content": "live demos, including building a Swift UI app from scratch and fixing a bug in Xcode. Let's start with"
+  },
+  {
+    "timestamp": "2:40",
+    "content": "the stack. The stack that powers locally agentic AI on the Mac has four layers. Let me walk you through"
+  },
+  {
+    "timestamp": "2:47",
+    "content": "each one, starting from the bottom. At the bottom is MLX, our open source array framework, purpose-built"
+  },
+  {
+    "timestamp": "2:54",
+    "content": "for Apple Silicon. It handles all the low-level computation, metal acceleration, and memory management."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "This is the foundation everything else is built on. One level up, we have the language model layer."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "MLX LEN provides everything you need to load, run, quantize, and fine-tune large language models."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "It supports thousands of models from Hagenface and gives you both CLI tools and a Python API."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "If you saw our sessions last year, this is what we covered in depth. But to serve an agent, we need"
+  },
+  {
+    "timestamp": "3:24",
+    "content": "something more. A persistent server with a standard API. That's where MLX LEN server comes in. This is an"
+  },
+  {
+    "timestamp": "3:31",
+    "content": "open AI compatible HTTP server that exposes your local model through a standard API. It supports"
+  },
+  {
+    "timestamp": "3:37",
+    "content": "structural tool calling so the model can invoke functions reliably and the reasoning models that"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "can analyze complex problems step by step before responding. It's a drop-in replacement for any Cloud LLM API."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "And at the top of the stack, we have the agent itself. This can be any framework or tool that speaks the"
+  },
+  {
+    "timestamp": "3:55",
+    "content": "open AI chat completions protocol. Xcode, OpenCode, PyAgent, a custom script, or anything else. Because MLX LEN server"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "provides a standard interface, any agent framework works out of the box. And it's not just us building on"
+  },
+  {
+    "timestamp": "4:12",
+    "content": "this stack. Several popular apps and tools build on MLX and MLX LEN. Ollama, LM Studio, and VLLM are just a"
+  },
+  {
+    "timestamp": "4:20",
+    "content": "few of the most popular ones. The ecosystem is broad and growing. And if you're using one of these tools,"
+  },
+  {
+    "timestamp": "4:26",
+    "content": "chances are you are already running on MLX. So that's the stack. Let me now show you how to set everything up"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "yourself. It only takes three steps to go from zero to a fully locally agentic workflow. Step one, install MLX LEN."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "A single pip install gets you everything you need. Step two, start the server. Run MLX LEN server with a"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "model that supports tool calling. Starting with a small model to test your setup is always a good idea."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "The server starts up, loads the model, and is ready to accept requests on localhost."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "Step three, point your agent at the local server. In most agent frameworks, you just set the base URL to"
+  },
+  {
+    "timestamp": "5:08",
+    "content": "your local server's address and you're done. The agent doesn't know or care that the model is running"
+  },
+  {
+    "timestamp": "5:14",
+    "content": "on your Mac rather than in the cloud. Let me show you a concrete example. Here's the configuration for"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "OpenCode. We define a local provider. In particular, we set the URL to localhost and set the model name"
+  },
+  {
+    "timestamp": "5:28",
+    "content": "the server expects. We also tell OpenCode to use this local model for everything. That's it. Now every"
+  },
+  {
+    "timestamp": "5:35",
+    "content": "interaction runs through your local model. Now that we have an agent talking to MLX, let's look at how"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "MLX gets the most out of your hardware and addresses the key challenges of running agents locally."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "The first challenge is prompt processing. In an agentic workflow, every time the model receives tool output,"
+  },
+  {
+    "timestamp": "5:54",
+    "content": "it has to process all that new context before it can reason about the next step. This happens over and"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "over throughout the agentic loop and it adds up fast. Agentic sessions usually comprise hundreds of"
+  },
+  {
+    "timestamp": "6:07",
+    "content": "thousands of tokens and most of those are not generated. The M5 chip introduces dedicated neural"
+  },
+  {
+    "timestamp": "6:14",
+    "content": "accelerators and MLX can target them for exactly this kind of work. Specifically, neural accelerators make"
+  },
+  {
+    "timestamp": "6:21",
+    "content": "matrix multiplication four times faster on M5 compared to M4. And with a specialized multiplication and"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "attention kernels in MLX, this translates almost exactly to prompt processing speedup. Reducing prompt"
+  },
+  {
+    "timestamp": "6:34",
+    "content": "processing time means your agents can read your code base or process tool results almost four times faster."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "And the best part? Taking advantage of neural accelerators requires no spatial arguments or code changes on"
+  },
+  {
+    "timestamp": "6:47",
+    "content": "your part. MLX selects the best kernel for the available hardware and it just works."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "Let's now talk about the second challenge, concurrency. In practice, agents rarely work alone. A common pattern"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "is for an agent to spawn several sub-agents, each tackling a different part of the problem in parallel. One"
+  },
+  {
+    "timestamp": "7:07",
+    "content": "might be reading documentation, another searching code, and a third writing tests. All at the same time. That means"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "multiple requests hitting your local model simultaneously. MLX LMServer handles this with continuous batching."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "Instead of processing requests one at a time, it dynamically groups incoming requests into batches"
+  },
+  {
+    "timestamp": "7:30",
+    "content": "and processes them together on the GPU. New requests can join a batch in progress without waiting for the"
+  },
+  {
+    "timestamp": "7:36",
+    "content": "current one to finish. The result is that your sub-agents don't stall waiting in a queue. They all get served"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "concurrently, which keeps the entire agentic workflow moving. Finally, the third challenge is model size."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "Sometimes a single machine, even one with 512 gigabytes of RAM, just isn't enough because the model"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "is too large to fit in memory. The most recent DeepSeq model, for instance, has a whopping 1.6 trillion"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "parameters and requires more than 800 gigabytes of memory just for the weights. MLX's distributed support lets you"
+  },
+  {
+    "timestamp": "8:10",
+    "content": "spread the model across multiple MACs connected over Thunderbolt or Ethernet. For agents, this is powerful"
+  },
+  {
+    "timestamp": "8:16",
+    "content": "in two ways. First, it lets you run much larger, more capable models that wouldn't fit on a single machine."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "Second, it parallelizes prompt processing across devices, which directly speeds up the agentic loop,"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "since the model can process tool results faster. Setting up distributed inference with MLX LMServer is fairly"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "straightforward. You launch a server using MLX launch and a host file that contains information"
+  },
+  {
+    "timestamp": "8:41",
+    "content": "about the nodes and the type of connection. The model is automatically sharded across all available"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "devices and everything else just works. Starting with macOS 26.2, we have support for Thunderbolt RDMA,"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "which provides low latency, high bandwidth communication over Thunderbolt. As a result,"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "distributed inference with MLX has seen significant speedups, up to three times with four nodes."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "To learn how to set up your MACs for distributed inference with MLX, check out our session,"
+  },
+  {
+    "timestamp": "9:10",
+    "content": "Explore Distributed Inference and Training with MLX. Remember our PR summary demo from earlier? That was a"
+  },
+  {
+    "timestamp": "9:17",
+    "content": "simple read and report task. Let's now push things further and see what happens when we ask an agent to write"
+  },
+  {
+    "timestamp": "9:24",
+    "content": "an entire project from scratch and then fix a bug in an existing one. In this demo, I'm going to ask the agent to build a"
+  },
+  {
+    "timestamp": "9:31",
+    "content": "small SwiftUI application from scratch. I have started with a blank Xcode project and I'm asking the agent to build a drawing app for the iPad."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "And off it goes. The agent first looks at the current directory to find out the existing project structure,"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "makes a plan to guide its implementation, and gets on to writing the code. Using an agent means we don't need to copy anything or even build the project. The agent writes the file, then builds the app,"
+  },
+  {
+    "timestamp": "10:00",
+    "content": "fixing any errors it encounters along the way. And here we are. The model is done. It only took a couple of minutes to create the first version of the app."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "At the same time, I have the project open in Xcode and I'm launching the app in the simulator."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Let's have a look at what the agent created."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "It seems that we have a fully functional drawing app. That's really nice for something that was built in two minutes."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "With agentic coding, however, we can keep iterating until we are happy with the result."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "For instance, I prefer rounded end caps. I think they look much better. Let's ask the agent to add them."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "The agent will edit the code and recompile the app until it compiles without errors."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Let's test the new version."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "We now have rounded end caps. This is cool indeed. It is even more cool that all of this happened locally."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "The model ran through MLXLM server on this Mac and the agent used standard development tools like"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "Xcode build to verify and build its work."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "For our final demo, let's look at something that integrates directly with your development environment."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "Here, I have the same drawing app project open in Xcode."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "Let's connect Xcode to our already running MLX server."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "We open the settings and navigate to the intelligence tab."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "We click on app chat provider and select a locally hosted provider."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "We set the port to 8080 or whichever port we selected when launching our MLX server and we're done."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "Now Xcode can talk to our local model."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "I have introduced a bug to our previously working app and now we can ask the model to fix it."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Within seconds, it identifies the bug and inspects the code around it."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "Finally, it writes a fix and we can now build and run our app."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "This shows how a locally running agent can integrate with your existing development workflow in Xcode."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "Reading project files, understanding build errors and making targeted fixes."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "Local AI means your code never leaves your Mac."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "Today, we showed you the full stack for running agentic AI locally on your Mac."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "From MLX all the way up to the agent and how neural accelerators, continuous batching and distributed inference make it fast."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "To get started, install MLX LM, launch the server and point your favorite agent at it."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "Everything we showed today is open source and available right now."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "Thank you for watching and I'm excited to see what you built with locally authentic AI on the Mac."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "All right!"
+  },
+  {
+    "timestamp": "13:35",
+    "content": "Thank you."
+  }
+]

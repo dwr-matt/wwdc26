@@ -1,0 +1,534 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Welcome everyone. My name is David Hayward and I'm excited to talk about enhancements to Core"
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Image and its support for raw image files. I will talk about four main topics. First,"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "I will review how raw image files from cameras are supported by Core Image on Apple platforms"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "and show you significant raw quality improvements that are coming in iOS, iPadOS, macOS, and visionOS 27."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "After that, I will discuss how to get optimal performance when rendering raws. And lastly,"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "I will describe features that Apple added to the CI image processor class for raw. To start,"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "here is a quick summary of how Core Image supports raw. Raw files come from a diverse set of camera"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "makes and models, but unlike HEIFs and JPEGs, they need special handling before they can be displayed."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "The first step is to parse the file's metadata and unpack the raw sensor values. At this stage,"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "each pixel location only has a red, green, or blue value arranged in a mosaic pattern."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "This image is cropped way in so that this pattern is visible. The next step is to demosaic the sensor data,"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "so that each pixel contains red, green, and blue values. The following stage is to denoise the pixels,"
+  },
+  {
+    "timestamp": "1:40",
+    "content": "so that the image is free of photon noise, read noise, and thermal noise. After this, convolutions are applied"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "to sharpen edges and add local contrast. The last major step is to adjust white balance, exposure,"
+  },
+  {
+    "timestamp": "1:58",
+    "content": "color, and tone to make a pleasing final image. The algorithms for all these steps are built into iOS,"
+  },
+  {
+    "timestamp": "2:05",
+    "content": "iPadOS, MacOS, and VisionOS. This means that people can view raw files in system apps like Finder, Preview,"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "and Freeform. In fact, any app or framework that uses the ImageIO API gets raw support automatically."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "And beyond basic viewing, apps that use the CI Raw Filter API can present advanced editing controls. This API"
+  },
+  {
+    "timestamp": "2:37",
+    "content": "is used by apps like Photos, Pixelmator Pro, and others like Nitro, Acorn, and many more."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "Starting back in 2006, the system included hand-tuned calibrations for just 21 camera models. In the years"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "since, that number has grown to 784 models across all major camera vendors. This even includes support"
+  },
+  {
+    "timestamp": "3:04",
+    "content": "for Apple Pro Raw files for iPhone cameras. But the key feature of raw is that a beloved photo you took"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "years ago can be reprocessed using the latest state-of-the-art algorithms. Apple's raw processing"
+  },
+  {
+    "timestamp": "3:19",
+    "content": "pipeline has been updated eight times, each improving demosaic, denoise, and color. Some older versions have"
+  },
+  {
+    "timestamp": "3:28",
+    "content": "been maintained so that people can still use them if desired. Now Apple has made its biggest update yet,"
+  },
+  {
+    "timestamp": "3:35",
+    "content": "raw 9. This version dramatically improves the rendering of raw files. It is built atop a tiled Core ML model"
+  },
+  {
+    "timestamp": "3:44",
+    "content": "that combines demosaic with denoise for best quality. And the model is run on device using the Apple"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "Neural Engine cores for optimal performance. Let me demonstrate the improvements up close. This is a"
+  },
+  {
+    "timestamp": "4:01",
+    "content": "zoomed-in crop of a low noise image using RAW 8. This Sony Alpha 7 II image of a vintage dial indicator"
+  },
+  {
+    "timestamp": "4:10",
+    "content": "actually looks quite good. However, when you explore that same image under RAW 9, the image is sharper,"
+  },
+  {
+    "timestamp": "4:18",
+    "content": "clearer, and the fine text is easier to read. The differences are even more dramatic when you view"
+  },
+  {
+    "timestamp": "4:25",
+    "content": "high noise images. First, observe the actual RAW data that is contained in this very noisy ISO 51200 image."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "In this example from a Canon 5D Mark III, the image is a 10x crop of a box of crayons. There is so much luma and"
+  },
+  {
+    "timestamp": "4:45",
+    "content": "chroma noise in the RAW data that it is impossible to discern the unique color of each crayon. Using our previous"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "algorithms, this is the result. RAW 8 did an acceptable job of recovering the actual colors. But if you examine"
+  },
+  {
+    "timestamp": "5:03",
+    "content": "the results under RAW 9, the output is significantly better. The colors are accurate and well-defined."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "Even the shiny specular highlights on the crayons are visible."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "This last example is a crop of a photo of embroidery yarn shot with a Fujifilm X-T5 at ISO 12800. This camera has a"
+  },
+  {
+    "timestamp": "5:27",
+    "content": "non-traditional sensor pattern which is challenging to demosaic. In the RAW 8 results, there are some color"
+  },
+  {
+    "timestamp": "5:35",
+    "content": "artifacts and loss of detail in the yarn. But if you observe the same image under RAW 9, the results are discernibly better."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "The small text is more legible and the texture in the yarn is much clearer."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "So here is how you can enable RAW 9 in your application."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "First, use the CIRAW filter API to load a RAW file. This API is well described in the Capture and Process"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "Pro-Pro-RAW images from WWDC21. However, it is important to know that RAW 9 is not enabled by default."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "You should check that the Supported Decoder Versions property contains the version 9 enumeration."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "If so, you can opt in by setting the Decoder Version property to version 9."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "To know what camera models support RAW 9, there is now a class method called Supported Camera Models."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "This API will provide your app an array of all the models that are supported with a given version."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "In the release of iOS, iPadOS, macOS, and visionOS 27, there will be hundreds of models that can use RAW 9,"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "including all major professional camera vendors. This camera list will grow via over-the-air updates to the operating system."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "RAW 9 is also automatically supported by cameras that shoot DNG natively, such as Apple iPhones."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "RAW 9 is also automatically supported by the CIRAW filter API. The true power of the CIRAW filter API is unleashed when your app modifies its properties."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "This allows people to customize how RAW files are displayed. There are currently 20 calibrated properties that can be adjusted."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "Adopt these adjustments in your app to unlock the full power of editing RAW images. These are the most important controls for editing RAW."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "The"
+  },
+  {
+    "timestamp": "7:39",
+    "content": "exposure, which controls how much to brighten or darken the image. Luminous noise reduction amount, which adjusts how much fine luma grain is visible."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "Sharpness amount, which determines how much the edges are sharpened."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "And contrast amount, which alters how much local contrast is applied near edges."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "All of these controls work even better in RAW 9 than they did in prior versions."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "The color noise reduction amount, which is the color noise reduction amount, which is the color noise reduction amount."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "The color noise reduction amount property now has no effect because the Core ML model handles color noise reduction automatically."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "Also, the detail amount and moray noise reduction amount properties are no longer needed nor supported in RAW 9."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "You can call the isSupported properties to check if properties work for the filter instance."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "Now that you have learned how RAW 9 appears and behaves, I would like to discuss its performance."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "In order to get such quality improvements, RAW 9 is more performance and resource intensive than prior versions."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "Even though RAW 9 runs the Core ML model hundreds of times per image, when an app edits CI RAW filter properties,"
+  },
+  {
+    "timestamp": "8:58",
+    "content": "subsequent renders are fast and responsive."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "This is because Core Image caches intermediate results."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "The best practices to get optimal performance depends on how your app uses RAW files."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "I will give some recommendations for the two most common use cases."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "First, here is advice on the interactive editing use case."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "Interactive editing is when one RAW file is rendered multiple times at screen resolution."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "Typically, this is in response to the app adjusting a CI RAW filter property, such as exposure or sharpness."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "When interactive editing RAWs, use the scale factor property of the CI RAW filter when displaying the image at a reduced size."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "This is important because it reduces the work to render images that have more megapixels than the display."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "This is a good way."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "Use one CI context per view and set its cache intermediates option to true."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "Caching allows the intensive Core ML work to be skipped while the app is adjusting CI RAW filter properties."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "Core Image will use more memory for caching between renders if you add the extended virtual addressing entitlement to your application."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "There is detailed documentation for this on Apple's website."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Also, render directly to Metal back views."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "This improves performance of repeated renders because Metal can start work on the next frame before the previous frame is completed."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "For more information on rendering to an MTK view,"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "consult the display EDR content with Core Image, Metal, and SwiftUI from WWDC22."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "After that advice on the interactive editing use case, here are the most important tips when exporting files."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "The exporting use case is when multiple RAW files are each rendered once at full resolution to other formats like HEAF or JPEG."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "The best practice for this case is to export with a CI context with the option Cache Intermediates set to false."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "Also, you can tell Core Image to use more memory during each export by setting the context memory limit option."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "On iOS, the default limit is a conservative 256 MB."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "For the first time, you can use the context memory limit to 512 or 1024 MB can significantly improve performance."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "And you can get extra memory savings by using the context methods HEAF representation or JPEG representation instead of calling ImageIO directly."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "In the last section, I want to talk about improvements to the CI ImageProcessor API."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "RAW 9 uses the CI ImageProcessor API because it enables algorithms that use CoreML in conjunction with other CI kernels."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "As a result of this effort, the Core Image team added two features to the CI ImageProcessor API that you may want to use in your app."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "The first I will talk about is Support for Explicit Output Tile Sizes."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "This is an example of a typical CI ImageProcessor class."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "It implements the region of interest callback that defines how much of its input is needed for a given output rectangle."
+  },
+  {
+    "timestamp": "12:36",
+    "content": "Most importantly, within the process callback, you must be aware of the input region and output region that the processor should operate on."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "If there is plenty of memory, then CoreImage will call the process function with an output region for the entire image."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "But when memory is limited, the output region might be considerably smaller."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Now, a processor can explicitly control output tile sizes."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "The code in your processor class remains as before."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "But you tell CoreImage to use the output regions of your choice."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "First, create an array."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "And then fill the array with all the desired tiles to cover your image."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "In this example, the tiling strategy takes the input image extent and breaks it up into 512 by 512 pixel tiles."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "When you create an image which uses the processor, call its apply method and pass in the tile array that covers the image."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "So now that I have described explicit output tile sizes, my last topic is the temporary buffers feature."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "It is common for a CI image processor that calls CoreML to use temporary buffers."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "This is because CoreImage uses interleaved image buffers, which must be converted to planar data for CoreML."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "And then, the other thing is that the CI image processor is created and destroyed repeatedly."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "This can impact performance."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "The CI image processor output class now has methods to help."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Here's how this works."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "Here's an example of a simple CI image processor class that uses the temporary buffer feature."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "Instead of processing directly from input to output, this callback requests a scratch buffer by asking the output object for a temporary CV pixel buffer."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "When doing so, provide an identifier."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "This is vital for process callbacks that use more than one temporary buffer."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Then, this example processor copies from the input pixel buffer to the temporary buffer."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "Alters the temporary buffer pixels in place."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "And finally, copies that to the output."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "CoreImage will manage the life cycle of temporary buffers for you."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "They will be released automatically and released at the correct time and recycled when the processor is called for the next tile."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Here are the key points to take away."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "Try RAW 9 in your app."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "It is a major quality improvement and it's just a few lines of code to enable."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "Follow the performance best practices I outlined for fast exporting and responsive editing."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "Give your app access to the powerful editing properties of CI RAW filter that let people fine tune how their RAW images appear."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "And finally, for optimal performance in your CI image processor, use the explicit tiling and temporary buffer APIs."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "I have really enjoyed revisiting my library of over 7,000 family photos that I have shot in RAW over the past 20 years."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "It has been really great to see the improved quality of noise reduction."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "I think that people using your app will also enjoy these improvements."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "Thank you for watching."
+  }
+]

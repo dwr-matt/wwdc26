@@ -1,0 +1,814 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, my name is Vincent. I'm a Reality Composer Pro engineer. Today, I'll show you how visual,"
+  },
+  {
+    "timestamp": "0:14",
+    "content": "no-based tools in Reality Composer Pro can supercharge your spatial workflow. These tools"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "let you author functionality, animation, particle effects, and customize the look of your scene all"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "within the editor, making it faster to prototype and iterate on your ideas. Reality Composer Pro"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "is a visual editor for composing 3D scenes, creating materials, adding visual effects,"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "setting up lighting, building interactivity, and so much more. There's a lot you can do with Reality"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "Composer Pro, and this year it gets even more capable. For a deeper dive into some of these"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "capabilities, check out the session, iterate your spatial scenes faster with Reality"
+  },
+  {
+    "timestamp": "0:54",
+    "content": "Composer Pro 3. This is the Sharp Row Village game that was built entirely using Reality Composer Pro"
+  },
+  {
+    "timestamp": "1:01",
+    "content": "3 and Swift, and utilizes many of the latest capabilities. Today, I'll take you through the"
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Alchemy Area scene from this game and bring it to life with an interactive character and the particle"
+  },
+  {
+    "timestamp": "1:13",
+    "content": "effect for the caoutron. I would like the Alchemist character to perform a routine where it walks through"
+  },
+  {
+    "timestamp": "1:19",
+    "content": "the table, prepares the ingredients, and waits. When someone taps the Alchemist, it will turn and walk"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "to the caoutron to start brewing the potion. To build this, I'll begin with an animation graph to blend"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "between idle and walk animations as the character moves. I'll set up a behavior tree to define how the"
+  },
+  {
+    "timestamp": "1:38",
+    "content": "character moves around the Alchemy Area autonomously. I'll wire up a script graph to add interactivity"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "to the scene response when someone taps. After that, I'll show you how the Navigation Mesh component"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "lets characters pathfind around obstacles and navigate through complex environments. I'll show you"
+  },
+  {
+    "timestamp": "1:58",
+    "content": "how I built the particle effect for the caoutron with Compute Graph. And finally, I'll share some"
+  },
+  {
+    "timestamp": "2:04",
+    "content": "enhancements to Shader Graph in Reality Composer Pro 3. Let's start with the Animation Graph. Animation"
+  },
+  {
+    "timestamp": "2:11",
+    "content": "Graph in Reality Composer Pro 3 is a visual, no-base editor for controlling how a character animates"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "at runtime. It supports a wide array of capabilities, from motion warping, to blend spaces, to inverse"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "kinematics, and a lot more. To make the Alchemist move naturally, I'll use a state machine, some animation"
+  },
+  {
+    "timestamp": "2:31",
+    "content": "clips, transition conditions, and runtime parameters to blend the Alchemist's idle and walk animation."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Let's take a look. This is the Animation Graph workspace where I can define my animations."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "The Animation Graph starts with a final pose node by default. Whatever pose flows into this node is"
+  },
+  {
+    "timestamp": "2:50",
+    "content": "what the character displays. I'll drag from the final pose node's input and connect a state machine node."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "The state machine decides which animation is active at any given moment. Next, I'll double-click the"
+  },
+  {
+    "timestamp": "3:04",
+    "content": "state machine node to step inside. This opens the state machine editor, where states and transitions are defined."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "The canvas starts empty, and the character needs two states. I'll add two animation state nodes and"
+  },
+  {
+    "timestamp": "3:17",
+    "content": "land them idle and walk. With the states in place, I'll add the transitions. The two states are independent"
+  },
+  {
+    "timestamp": "3:25",
+    "content": "right now, with no way to switch between them. I'll drag from idle to walk to create the transition."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Then, I'll do the send from walk back to idle, so the character can return to idle when it's done working."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "The transitions are in place, but they don't have any conditions yet. Without conditions, the state"
+  },
+  {
+    "timestamp": "3:46",
+    "content": "machine has no way of knowing when to switch between states. Before I can add conditions, I need to"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "define the inputs they'll reference. I'll go to the input inspector and add a boolean called isWalking."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "This is the parameter that I will set at runtime to tell the character when to walk."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Now I can add the conditions. I'll select the transition from idle to walk."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "In the inspector, I'll click add in the condition section, choose bool condition,"
+  },
+  {
+    "timestamp": "4:16",
+    "content": "and set it to check whether it's walking is true. For the walk to idle transition, the condition is the"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "same but inverted. I'll select that transition, add bool condition, and set it to check whether it's"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "walking is false. I'll step back out to the main graph by clicking the back arrow. The state machine"
+  },
+  {
+    "timestamp": "4:39",
+    "content": "node now shows two state inputs, one for idle and one for walk. Each input needs an animation source. I'll"
+  },
+  {
+    "timestamp": "4:47",
+    "content": "drag from the idle input and add an animation clip node. In the inspector, I'll set the timeline to the"
+  },
+  {
+    "timestamp": "4:59",
+    "content": "idle animation and set the node name to idle. Then I'll do the same for the walk input, dragging out to"
+  },
+  {
+    "timestamp": "5:08",
+    "content": "create another animation clip node, setting it to the walk animation and rename it to walk."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "Let me test this. I'll press the play button at the top of the workspace."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "The character in the viewport begins playing the idle animation. In the inspector, I can manually"
+  },
+  {
+    "timestamp": "5:33",
+    "content": "toggle the isWalking boolean. Setting it to true blends the character into the walk animation."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Setting it back to false, the character finishes its current walk cycle and then blends back to idle."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "Notice the graph editor as I toggle the isWalking boolean. The active state node gets highlighted as the"
+  },
+  {
+    "timestamp": "5:57",
+    "content": "character transitions between states. This makes it easy to follow what the state machine is doing in"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "real time, which becomes especially useful when debugging more complex graphs with many states."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "The character can now blend smoothly between idle and walk animations, but it doesn't know where to go"
+  },
+  {
+    "timestamp": "6:19",
+    "content": "or when to start moving. To give the alchemist a full routine around the alchemy area,"
+  },
+  {
+    "timestamp": "6:24",
+    "content": "I'll use a behavior tree to define each step of its movement. Behavior trees in Reality Composer Pro"
+  },
+  {
+    "timestamp": "6:30",
+    "content": "let you author autonomous, multi-step behavior directly in the editor. For example, a character"
+  },
+  {
+    "timestamp": "6:37",
+    "content": "that patrols an area, reacts to events, or follows a routine. As shown here, behavior tree typically"
+  },
+  {
+    "timestamp": "6:44",
+    "content": "consists of a structured hierarchy of nodes. These are steps that can be rearranged in any order,"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "and everything can be tested without writing code. A behavior tree describes an entity's behavior as a"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "hierarchy of nodes. The tree is evaluated from top to bottom, and when nodes share the same level,"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "they are evaluated from left to right. Higher nodes and leftmost nodes are always evaluated first."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "There are two kinds of nodes, composite nodes and action nodes. Composite nodes control the flow,"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "action nodes do the actual work. Action nodes are bound to composite nodes as children,"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "and the composite node determines the order and condition under which they run. Behavior tree in Reality Composer Pro"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "provides three composite nodes for controlling the flow. A sequence runs its children one by one in order."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "If any action fails, the entire sequence stops immediately. A selector evaluates its children until one succeeds,"
+  },
+  {
+    "timestamp": "7:41",
+    "content": "then stops. A parallel runs all of its children at the same time."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Behavior trees provide a range of built-in action nodes. For composing the alchemist routine, I'll use the"
+  },
+  {
+    "timestamp": "7:55",
+    "content": "moveTo action node to walk the character to a destination, rotateToPhase node to turn towards the target,"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "the wait node to pause between steps, and the parameterSetter node to update entity parameters along the way."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "In my app, I'm just going to use a few built-in nodes, but there are a number of other action nodes that you will find in the editor."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "Let's head back to the editor and build the behavior tree that will help the alchemist character through"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "its routine around the alchemy area. This is the behavior tree workspace where I will define the alchemist routine."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "I want the alchemist character to turn towards the table, walk to it, and wait for a second to prepare the ingredients."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "These actions need to happen in order, so I'll use the sequence composite node."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "Inside the sequence, I'll add a rotateToPhase node, a moveTo node, and a wait node."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "I'll set the wait time to one second."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "The rotate and move nodes both need the target position and the speed."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "I'll add inputs for table position, rotation rate, and movement rate, then plug them into the nodes."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "Before the character starts moving, the animation graph needs to know about it."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "I'll add an isWalking input for the animation graph."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "Then, I'll add a parameter setter before the rotateToPhase, setting isWalking to true."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "And another parameter setter after moveTo, setting isWalking back to false."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "Now the work animation plays only while the character is in motion."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "The alchemist also needs to work to the cauldron using the same pattern."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "The steps are identical, just with a different destination."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "I've gone ahead and built out the full graph with both sub-sequences already wired up."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "Here's what I built. The cauldron sub-sequence follows the same structure,"
+  },
+  {
+    "timestamp": "10:07",
+    "content": "with its own rotateToPhase, moveTo, and parameter setter nodes pointing to a cauldron position input."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Let me create a parent sequence node and connect both of the sub-sequences to the parent sequence."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "So the alchemist visits the table first, then moves on to the cauldron."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "The behavior tree defines the character's routine, but it isn't functional yet."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "In order to make my character perform its routine, where it turns and walks to the cauldron and starts"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "brewing, I will need to use scriptGraph."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "ScriptGraph allows you to define interactivity and functionality for the entities in your scene."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "It is a visual scripting system that lets you define how entities in the scene behave and interact"
+  },
+  {
+    "timestamp": "10:47",
+    "content": "with each other. It is event-driven. A scriptGraph runs in response to events,"
+  },
+  {
+    "timestamp": "10:52",
+    "content": "either at the scene level or on specific entities. Because all of this is visual, prototyping and"
+  },
+  {
+    "timestamp": "10:58",
+    "content": "iteration are fast. Anyone on the team can build and test behaviors directly in the editor,"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "without the build cycle. To see how the scriptGraph can power your workflow, check out the session,"
+  },
+  {
+    "timestamp": "11:10",
+    "content": "Design No-Code Gamps with Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "Let's jump back to the editor to set up the table and cauldron position,"
+  },
+  {
+    "timestamp": "11:17",
+    "content": "and add an interaction with the tab gesture using scriptGraph. This is scriptGraph. Here,"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "I will define some logic to interact with the alchemist character. I will start with an onInitialize node."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "This sends the event the first time the scripting component is initialized,"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "making a good place for setup logic. The behavior tree needs the table and cauldron positions,"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "and I will use a subgraph to provide them. A subgraph is a reusable piece of logic that works like a"
+  },
+  {
+    "timestamp": "11:48",
+    "content": "function. My team member has already built a setup behavior tree position subgraph in the project"
+  },
+  {
+    "timestamp": "11:54",
+    "content": "browser. It finds the table and cauldron entities in the scene and sets their work position on the entity"
+  },
+  {
+    "timestamp": "12:00",
+    "content": "parameter. I will drag the subgraph from project browser onto the canvas, then connect its event input to"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "the onInitializeNodes event output. All right, let's give it a go. I'll click the play button on top."
+  },
+  {
+    "timestamp": "12:20",
+    "content": "The alchemist turns to the table, prepares the ingredients for a while, then heads straight to"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "the cauldron. The entire routine plays out from start to finish just as we defined in the behavior tree."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "But I'm thinking it would be a lot more engaging if the alchemist responded to a tap interaction."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "Let's make it so that the alchemist stays at the table preparing the ingredients until someone taps"
+  },
+  {
+    "timestamp": "12:43",
+    "content": "it to indicate that it's time to brew the potion. To set this up, let's jump back to the behavior tree."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "First, I'll delete the wait node in the table subsequence. The alchemist should wait indefinitely"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "now until told to move on. In the inputs inspector, I'll add a boolean input called ready to brew with"
+  },
+  {
+    "timestamp": "13:02",
+    "content": "a default value of false. Next, I'll select the cauldron subsequence. In the inspector, I'll add a"
+  },
+  {
+    "timestamp": "13:09",
+    "content": "precondition and choose boolean condition. With that setup, the alchemist is configured to stay at the"
+  },
+  {
+    "timestamp": "13:16",
+    "content": "table until ready to brew becomes true, after which it moves on to the cauldron. Now I'll go back to the"
+  },
+  {
+    "timestamp": "13:23",
+    "content": "screen graph to wire up the tap interaction to make our new behavior fully functional. I'll use the Mac"
+  },
+  {
+    "timestamp": "13:29",
+    "content": "virtual display along with the live preview feature in Reality Composer Pro 3 that will allow me to work"
+  },
+  {
+    "timestamp": "13:35",
+    "content": "on my scene immersively on Apple Vision Pro. Let me show you what that looks like. I'll add an on tap"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "node. This node listens for tap gesture events on the entity. I'll also need a set entity parameter node."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "This node will help me set the precondition parameter that I previously defined in my behavior tree."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "In the name field, I'll define the parameter name as ready to brew, which will match with the name I"
+  },
+  {
+    "timestamp": "14:00",
+    "content": "defined in my behavior tree. This parameter will indicate to my character when it should move to the"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "cauldron. I will enable the toggle to set it to true. Finally, I'll connect the on tap nodes event output to"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "the set entity parameter node. I've started a live preview session on Apple Vision Pro using the Reality"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "Composer Pro companion app. The Alchemist turns to the table and stays there preparing the ingredients."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "When I tap the character, it turns and walks to the cauldron to begin brewing. The scene is now interactive."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "The Alchemist now animates, follows a routine, and responds to interaction, all authored visually in the"
+  },
+  {
+    "timestamp": "14:40",
+    "content": "editor with a combination of animation graph, behavior tree, and script graph. Next, I want to make my"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "character move on an autonomous path and even avoid obstacles in the scene. For that, I will use a new"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "navigation mesh feature. A navigation mesh defines the walkable surfaces in a scene. The navigation controller"
+  },
+  {
+    "timestamp": "15:01",
+    "content": "uses the navigation mesh to route characters from one point to another, automatically avoiding obstacles"
+  },
+  {
+    "timestamp": "15:07",
+    "content": "like the trees and water shown here. And when mesh is unnaturally connected, like this bridge on the"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "right, an off mesh connection can be altered to link them. Let me show you how the village scene in the"
+  },
+  {
+    "timestamp": "15:20",
+    "content": "Sharper Row Village project uses navigation mesh to guide the character around the village. Here's the"
+  },
+  {
+    "timestamp": "15:25",
+    "content": "navigation mesh component that I set up for the village scene. Starting with the shape section. This is"
+  },
+  {
+    "timestamp": "15:30",
+    "content": "where the bounding box is defined for mesh generation. The bounding box determines which parts of the mesh"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "geometry in the scene should be included when computing the navigation mesh. Any parts of the scene within"
+  },
+  {
+    "timestamp": "15:41",
+    "content": "the bounding box will be used for generating a navigation mesh resource. Next is the off mesh connection"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "section that can help define links between areas that the mesh wouldn't otherwise connect. Like the ladder"
+  },
+  {
+    "timestamp": "15:53",
+    "content": "here that lets the character climb up to the building's roof. Each connection has a start and end point. You can"
+  },
+  {
+    "timestamp": "16:00",
+    "content": "adjust the positions directly using the gizmo in the viewport. This makes it quick to set up and reposition"
+  },
+  {
+    "timestamp": "16:06",
+    "content": "the navigation connections as the scene evolves. Next is the generation parameters section."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "These control how the scene geometry is sampled. For example, cell size sets the Voxo size used during"
+  },
+  {
+    "timestamp": "16:17",
+    "content": "sampling. Smaller values capture finer detail, while larger values produce a more approximate mesh."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "There are many more parameters available for fine-tuning the navigation mesh. For a complete reference,"
+  },
+  {
+    "timestamp": "16:30",
+    "content": "check out the documentation on developer.apple.com. To learn how to use the navigation mesh in code,"
+  },
+  {
+    "timestamp": "16:37",
+    "content": "check out Dennis's session, Explore Advances in Reality Kit. Once the navigation mesh is set up,"
+  },
+  {
+    "timestamp": "16:44",
+    "content": "you can use it with the behavior tree, animation graph, or your own custom Swift system through the"
+  },
+  {
+    "timestamp": "16:49",
+    "content": "navigation component to guide your character through the scene. Just like the character in the village here,"
+  },
+  {
+    "timestamp": "16:55",
+    "content": "navigating to the tap location autonomously while avoiding obstacles along the way. And with an"
+  },
+  {
+    "timestamp": "17:02",
+    "content": "off-mesh connection on the ladder, the character even knows it can climb up to the rooftop. Next, let me"
+  },
+  {
+    "timestamp": "17:08",
+    "content": "show you how I built the smoke particle effects for the cauldron using Compute Graph. The Compute Graph is a"
+  },
+  {
+    "timestamp": "17:14",
+    "content": "visual, no-base tool for building GPU-driven particle simulations backed by metal directly in Reality Composer Pro."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "It gives you full control over spawning, simulation, and rendering with support for custom shaders."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "A Compute Graph is organized into four phases, each handling a different stage of a particle's life."
+  },
+  {
+    "timestamp": "17:33",
+    "content": "The first phase is an emitter phase, which controls how and when particles are born,"
+  },
+  {
+    "timestamp": "17:38",
+    "content": "whether continuously, in bursts, or as a single shot. The second phase is an initialized phase,"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "and it runs once per particle at birth, setting starting values like velocity, lifetime, and size."
+  },
+  {
+    "timestamp": "17:52",
+    "content": "Next is the simulate phase. It runs every frame, applying forces like gravity and turbulence to"
+  },
+  {
+    "timestamp": "17:58",
+    "content": "evolve particles over time. And the final phase is the output phase, which controls how particles look"
+  },
+  {
+    "timestamp": "18:05",
+    "content": "on the screen, defining the visual appearance as they age and move through space. Let me walk you through the"
+  },
+  {
+    "timestamp": "18:11",
+    "content": "Compute Graph I built for the cauldron smoke effects. Every Compute Graph starts with these four phases"
+  },
+  {
+    "timestamp": "18:17",
+    "content": "as a template. For the emitter phase, I'm using a continuous emit node. This gives a dense rolling"
+  },
+  {
+    "timestamp": "18:24",
+    "content": "flow of particles while keeping each frame's spawn count in check. In the initialized phase, I first set"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "the size so each particle starts at the right scale, with some random variation. Then I randomize the lifetime,"
+  },
+  {
+    "timestamp": "18:36",
+    "content": "so particles don't all disappear at the same instant, giving the smoke a more natural feel."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "Next, a Spawn in Sphere node distributes particles within a spherical volume. This node comes from a"
+  },
+  {
+    "timestamp": "18:48",
+    "content": "custom Compute Graph bundle. Please check out the link for how you can write your custom Compute Graph"
+  },
+  {
+    "timestamp": "18:53",
+    "content": "node using a bundle. And finally, a Set Position node clamps the Y position to zero, flattening the spawn area"
+  },
+  {
+    "timestamp": "19:00",
+    "content": "to the surface of the sphere. This way, particles spawn in a circle, like smoke rising from the surface of the"
+  },
+  {
+    "timestamp": "19:06",
+    "content": "liquid. In the simulate phase, I'm applying a negative gravity force. This makes the smoke particles drift upward,"
+  },
+  {
+    "timestamp": "19:14",
+    "content": "just like rising steam from the cauldron. Lastly, in the output phase, particles fading and out over"
+  },
+  {
+    "timestamp": "19:22",
+    "content": "lifetime scale down as they rise, and shift color based on height. For rendering, Compute Graph uses a"
+  },
+  {
+    "timestamp": "19:28",
+    "content": "shader graph material. Here, I'm using one that draws a circle on a billboard for a rounder look."
+  },
+  {
+    "timestamp": "19:34",
+    "content": "And that's it! The particle effects look beautiful in my scene, thanks to the Compute Graph feature in"
+  },
+  {
+    "timestamp": "19:41",
+    "content": "Reality Composer Pro. Next, I would like to share some enhancements to Shader Graph. Shader Graph is"
+  },
+  {
+    "timestamp": "19:47",
+    "content": "getting some powerful updates this year, like the subsurface scattering effect that you might have seen"
+  },
+  {
+    "timestamp": "19:52",
+    "content": "in the Jupiter environment that improves the realism of the eyes on the moon's surface. In addition to"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "subsurface scattering effect, there are many other enhancements to Shader Graph this year. RealityKey"
+  },
+  {
+    "timestamp": "20:04",
+    "content": "PBR Surface 2 is now available in Shader Graph. It expands the original RealityKey PBR surface node with"
+  },
+  {
+    "timestamp": "20:10",
+    "content": "new surface properties like Sheen, subsurface scattering, plus more accurate diffuse and occlusion shading."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "Hair Surface is a dedicated surface shader for rendering hair and fur. It models how light reflects the"
+  },
+  {
+    "timestamp": "20:24",
+    "content": "length and scatters through fine strands for realistic results. Portal surface and portal geometry"
+  },
+  {
+    "timestamp": "20:29",
+    "content": "modifier are also available in Shader Graph. You can now modify the per-pixel opacity of a portal surface"
+  },
+  {
+    "timestamp": "20:35",
+    "content": "and drive vertex animated portal geometry, giving you much more flexibility over how portals look and behave."
+  },
+  {
+    "timestamp": "20:42",
+    "content": "If you are new to Shader Graph, I recommend go over a new session, explore materials in Reality Composer Pro."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "Those were some exciting new features I covered in my session. I show you how to bring a scene to life"
+  },
+  {
+    "timestamp": "20:54",
+    "content": "using visual node base tools in Reality Composer Pro 3 to supercharge your workflow with building"
+  },
+  {
+    "timestamp": "21:00",
+    "content": "character animations, defining complex behaviors, to even adding interactivity and particle effects to your"
+  },
+  {
+    "timestamp": "21:06",
+    "content": "scene. And this is just scratching the surface of what you can do with Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "21:12",
+    "content": "Before I wrap up, I highly encourage you to download Reality Composer Pro 3 from"
+  },
+  {
+    "timestamp": "21:17",
+    "content": "developer.apple.com and start building your own interactive experience. For a deeper dive,"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "there are also some great related sessions to check out. Design No-Code Games with Reality Composer Pro 3"
+  },
+  {
+    "timestamp": "21:29",
+    "content": "goes deeper into building games with the Skrid Graph. And Explore Advances in Reality Kit covers the"
+  },
+  {
+    "timestamp": "21:35",
+    "content": "Reality Kit features that power many of the tools shown today. Thanks for watching, and I can't wait to see what"
+  },
+  {
+    "timestamp": "21:41",
+    "content": "you build with Reality Composer Pro 3."
+  }
+]

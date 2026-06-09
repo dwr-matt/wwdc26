@@ -1,0 +1,4594 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, my name is Jake."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "I'm an engineer on the camera performance team."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "Welcome to build a responsive camera app that launches quickly."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "When launch is slow, people notice."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "From years of optimizing the native camera app,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "I've learned that the single most important factor"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "in making a camera launch feel fast"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "is how quickly the preview frame appears on the display."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "I want to capture a cool shot of my dominoes,"
+  },
+  {
+    "timestamp": "0:39",
+    "content": "but I forgot to launch my camera"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "before the dominoes were already falling."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "I've placed a red domino in the middle,"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "so it's essential that I launch and capture the moment"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "just before the red domino falls."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "As the app launches, there's a period of blank preview."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "By the time preview begins rendering,"
+  },
+  {
+    "timestamp": "1:04",
+    "content": "I've already missed the red domino tumbling over."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Having the preview render shortly after the app has launched"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "allows customers to capture a quick action shot,"
+  },
+  {
+    "timestamp": "1:16",
+    "content": "ensuring they don't miss the moment."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "I'll help you build a camera app designed for performance."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "In this video, I'll talk about four main topics to enhance performance."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "First, I'll discuss how to accelerate a camera launch experience,"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "so preview is up and running without a hitch."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "Then, I'll talk about best practices for rendering preview,"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "so no frames are dropped."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "Third, I'll touch on APIs that help sustain performance,"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "even in challenging environments."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Lastly, I'll introduce a new API,"
+  },
+  {
+    "timestamp": "1:55",
+    "content": "designed to offer deterministic file write performance"
+  },
+  {
+    "timestamp": "1:58",
+    "content": "for high data rate video captures."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "I'll start with fast launch."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "There are four stages of a camera app launch sequence."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "First, the app launches."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "This covers the time for the linker to load the binary,"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "run static initializers,"
+  },
+  {
+    "timestamp": "2:19",
+    "content": "and create URI scenes,"
+  },
+  {
+    "timestamp": "2:21",
+    "content": "plus anything else the app does"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "before creating a capture session."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "Second, the session is configured and started."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "Initializing the capture session,"
+  },
+  {
+    "timestamp": "2:34",
+    "content": "committing the configuration,"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "and starting the session"
+  },
+  {
+    "timestamp": "2:37",
+    "content": "all take time and system resources."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "Third, once the session is started,"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "all AV capture output objects initialize."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "This time varies with the number of outputs"
+  },
+  {
+    "timestamp": "2:52",
+    "content": "and their quality settings."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "Finally, preview begins streaming"
+  },
+  {
+    "timestamp": "2:57",
+    "content": "and frames start flowing to the app."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "I'll walk through specific optimizations"
+  },
+  {
+    "timestamp": "3:03",
+    "content": "for each of these stages."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "The app's UI plays an important role"
+  },
+  {
+    "timestamp": "3:08",
+    "content": "in the camera launch experience."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "When designing a launch flow,"
+  },
+  {
+    "timestamp": "3:13",
+    "content": "split the work into two phases."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Resources critical for launching"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "and displaying preview,"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "and resources that can be created"
+  },
+  {
+    "timestamp": "3:23",
+    "content": "after preview is running."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "Take AVCam, for example,"
+  },
+  {
+    "timestamp": "3:29",
+    "content": "the classic sample camera app"
+  },
+  {
+    "timestamp": "3:30",
+    "content": "for AV Foundation."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "There are several UI elements."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "A camera preview,"
+  },
+  {
+    "timestamp": "3:37",
+    "content": "a shutter button,"
+  },
+  {
+    "timestamp": "3:39",
+    "content": "an image well,"
+  },
+  {
+    "timestamp": "3:40",
+    "content": "and a mode picker."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "The camera preview"
+  },
+  {
+    "timestamp": "3:43",
+    "content": "is the most critical UI element"
+  },
+  {
+    "timestamp": "3:45",
+    "content": "for someone"
+  },
+  {
+    "timestamp": "3:45",
+    "content": "the moment they launch the app."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "Because this is what makes the camera"
+  },
+  {
+    "timestamp": "3:50",
+    "content": "feel like it's ready to use."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "The image well"
+  },
+  {
+    "timestamp": "3:53",
+    "content": "and the mode picker"
+  },
+  {
+    "timestamp": "3:54",
+    "content": "aren't needed"
+  },
+  {
+    "timestamp": "3:55",
+    "content": "before preview renders."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "So this work should wait"
+  },
+  {
+    "timestamp": "3:59",
+    "content": "until after preview starts."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "UI elements"
+  },
+  {
+    "timestamp": "4:03",
+    "content": "aren't the only factor"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "in launch time."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Any resource created"
+  },
+  {
+    "timestamp": "4:08",
+    "content": "before preview is rendered"
+  },
+  {
+    "timestamp": "4:09",
+    "content": "will influence launch time."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "Applying these two phases"
+  },
+  {
+    "timestamp": "4:14",
+    "content": "to AVCam,"
+  },
+  {
+    "timestamp": "4:16",
+    "content": "I create the shutter button"
+  },
+  {
+    "timestamp": "4:17",
+    "content": "and preview on launch,"
+  },
+  {
+    "timestamp": "4:19",
+    "content": "but fade in all other UI elements"
+  },
+  {
+    "timestamp": "4:21",
+    "content": "after launch finishes."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "Now that the app's impact"
+  },
+  {
+    "timestamp": "4:25",
+    "content": "to launch is reduced,"
+  },
+  {
+    "timestamp": "4:27",
+    "content": "I'll focus on how"
+  },
+  {
+    "timestamp": "4:28",
+    "content": "AVCapture session"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "and its related objects"
+  },
+  {
+    "timestamp": "4:32",
+    "content": "impact the next stage,"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "session configuration."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "Configuring and starting"
+  },
+  {
+    "timestamp": "4:39",
+    "content": "AVCapture session"
+  },
+  {
+    "timestamp": "4:40",
+    "content": "takes a lot of system resources"
+  },
+  {
+    "timestamp": "4:42",
+    "content": "and allocations"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "that directly impact app launch."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "A typical AVCapture session"
+  },
+  {
+    "timestamp": "4:50",
+    "content": "consists of an AVCapture device input,"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "usually the camera or microphone."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "AVCapture connection"
+  },
+  {
+    "timestamp": "4:57",
+    "content": "wires the capture device"
+  },
+  {
+    "timestamp": "4:59",
+    "content": "to the outputs."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "In this example,"
+  },
+  {
+    "timestamp": "5:03",
+    "content": "I want two outputs,"
+  },
+  {
+    "timestamp": "5:05",
+    "content": "one for preview"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "and one for capture."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "The AVCapture video preview layer"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "is the output"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "for displaying the preview."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "While the AVCapture photo output"
+  },
+  {
+    "timestamp": "5:17",
+    "content": "serves as the output"
+  },
+  {
+    "timestamp": "5:18",
+    "content": "for image captures."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "These objects together"
+  },
+  {
+    "timestamp": "5:22",
+    "content": "power an app's camera experience."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Because AVCapture session"
+  },
+  {
+    "timestamp": "5:29",
+    "content": "coordinates all the capture objects,"
+  },
+  {
+    "timestamp": "5:32",
+    "content": "I want to create it first,"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "as soon as the main thread"
+  },
+  {
+    "timestamp": "5:35",
+    "content": "finishes UI setup."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "Creating AVCapture session"
+  },
+  {
+    "timestamp": "5:40",
+    "content": "blocks the main thread."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "To avoid a hang,"
+  },
+  {
+    "timestamp": "5:44",
+    "content": "create it in parallel"
+  },
+  {
+    "timestamp": "5:45",
+    "content": "with UI initialization."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "When displaying preview on launch,"
+  },
+  {
+    "timestamp": "5:50",
+    "content": "dispatch AVCapture session creation"
+  },
+  {
+    "timestamp": "5:53",
+    "content": "off the main thread."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "This allows the session setup"
+  },
+  {
+    "timestamp": "5:57",
+    "content": "to run in the background"
+  },
+  {
+    "timestamp": "5:58",
+    "content": "while the app's UI scene"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "is being created."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "Committing multiple configurations"
+  },
+  {
+    "timestamp": "6:05",
+    "content": "extends launch time."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "Commit a single configuration up front"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "to avoid lengthy reconfigurations"
+  },
+  {
+    "timestamp": "6:12",
+    "content": "during launch."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "Start running"
+  },
+  {
+    "timestamp": "6:15",
+    "content": "and stop running"
+  },
+  {
+    "timestamp": "6:16",
+    "content": "on AVCapture session"
+  },
+  {
+    "timestamp": "6:17",
+    "content": "are blocking calls."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "Don't call them on the main thread"
+  },
+  {
+    "timestamp": "6:21",
+    "content": "or the app will hang."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "6:25",
+    "content": "I'll cover the most expensive part"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "of camera launch."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "Initializing AVCapture outputs."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "Initializing AVCapture outputs"
+  },
+  {
+    "timestamp": "6:35",
+    "content": "noticeably slows down launch."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "To render preview,"
+  },
+  {
+    "timestamp": "6:40",
+    "content": "the app only needs a preview layer"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "or one output initialized."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "Outputs like the movie file output"
+  },
+  {
+    "timestamp": "6:48",
+    "content": "and photo output"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "aren't needed for preview."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "To reduce time spent"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "initializing outputs,"
+  },
+  {
+    "timestamp": "6:56",
+    "content": "adopt the Deferred Start API,"
+  },
+  {
+    "timestamp": "6:58",
+    "content": "available in iOS 26 and later."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "Deferred Start lets apps"
+  },
+  {
+    "timestamp": "7:04",
+    "content": "put off output initialization"
+  },
+  {
+    "timestamp": "7:05",
+    "content": "until launch has finished."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "In this launch sequence,"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "all AVCapture outputs"
+  },
+  {
+    "timestamp": "7:12",
+    "content": "initialize before"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "the first preview frame renders."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "The idea with Deferred Start"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "is to postpone any output"
+  },
+  {
+    "timestamp": "7:21",
+    "content": "that isn't needed for launch"
+  },
+  {
+    "timestamp": "7:23",
+    "content": "until after preview has started."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "With Deferred Start,"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "the launch sequence changes."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "The app launches,"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "configures the session,"
+  },
+  {
+    "timestamp": "7:33",
+    "content": "and starts it."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "Now only the preview output"
+  },
+  {
+    "timestamp": "7:37",
+    "content": "initializes before"
+  },
+  {
+    "timestamp": "7:38",
+    "content": "the first frame displays."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "The system then either runs"
+  },
+  {
+    "timestamp": "7:43",
+    "content": "the Deferred Initialization"
+  },
+  {
+    "timestamp": "7:44",
+    "content": "automatically when conditions allow,"
+  },
+  {
+    "timestamp": "7:48",
+    "content": "or waits for the app to signal"
+  },
+  {
+    "timestamp": "7:50",
+    "content": "when it's a good time."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Every AVCapture output"
+  },
+  {
+    "timestamp": "7:54",
+    "content": "and AVCapture video preview layer"
+  },
+  {
+    "timestamp": "7:57",
+    "content": "has an IsDeferredStart enabled property."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Set it to true"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "to defer that output."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "To optimize for launch,"
+  },
+  {
+    "timestamp": "8:07",
+    "content": "defer all outputs"
+  },
+  {
+    "timestamp": "8:08",
+    "content": "except the output"
+  },
+  {
+    "timestamp": "8:10",
+    "content": "used to render preview."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "There are two ways to specify"
+  },
+  {
+    "timestamp": "8:15",
+    "content": "when Deferred Start runs."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "Automatic Start"
+  },
+  {
+    "timestamp": "8:18",
+    "content": "and Manual Start."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "Apps recompiled against"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "the iOS 26"
+  },
+  {
+    "timestamp": "8:24",
+    "content": "and later SDKs"
+  },
+  {
+    "timestamp": "8:25",
+    "content": "use Automatic mode"
+  },
+  {
+    "timestamp": "8:27",
+    "content": "by default."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "The Automatically Runs"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "Deferred Start property"
+  },
+  {
+    "timestamp": "8:32",
+    "content": "is set to true"
+  },
+  {
+    "timestamp": "8:33",
+    "content": "when in this mode."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "In Automatic mode,"
+  },
+  {
+    "timestamp": "8:37",
+    "content": "the system picks the best time"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "to initialize"
+  },
+  {
+    "timestamp": "8:40",
+    "content": "the deferred outputs."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "This happens"
+  },
+  {
+    "timestamp": "8:43",
+    "content": "shortly after preview"
+  },
+  {
+    "timestamp": "8:44",
+    "content": "appears on the device."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "The session sends"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "two delegate callbacks"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "so the app knows"
+  },
+  {
+    "timestamp": "8:52",
+    "content": "when Deferred Start begins"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "and ends."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "Session will run"
+  },
+  {
+    "timestamp": "8:57",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "8:58",
+    "content": "fires before"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "output initialization begins."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "And session did run"
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "fires after it completes."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "9:09",
+    "content": "I'll show how to adopt this."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "first,"
+  },
+  {
+    "timestamp": "9:13",
+    "content": "I'll create a class"
+  },
+  {
+    "timestamp": "9:15",
+    "content": "that handles"
+  },
+  {
+    "timestamp": "9:15",
+    "content": "the delegate callbacks"
+  },
+  {
+    "timestamp": "9:17",
+    "content": "from the Deferred Start"
+  },
+  {
+    "timestamp": "9:18",
+    "content": "API."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Session will run"
+  },
+  {
+    "timestamp": "9:21",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "9:22",
+    "content": "is called"
+  },
+  {
+    "timestamp": "9:23",
+    "content": "before Deferred Start"
+  },
+  {
+    "timestamp": "9:25",
+    "content": "begins."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "This is a good place"
+  },
+  {
+    "timestamp": "9:27",
+    "content": "to create"
+  },
+  {
+    "timestamp": "9:28",
+    "content": "any background resources"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "the app needs."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "Session did run"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "is called"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "after Deferred Start"
+  },
+  {
+    "timestamp": "9:37",
+    "content": "completes."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "At this point"
+  },
+  {
+    "timestamp": "9:40",
+    "content": "all capture outputs"
+  },
+  {
+    "timestamp": "9:41",
+    "content": "are initialized"
+  },
+  {
+    "timestamp": "9:42",
+    "content": "and ready to use."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "9:45",
+    "content": "I'll add Deferred Start"
+  },
+  {
+    "timestamp": "9:47",
+    "content": "to the capture session."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "During configuration"
+  },
+  {
+    "timestamp": "9:50",
+    "content": "set"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "automatically runs"
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "to true"
+  },
+  {
+    "timestamp": "9:54",
+    "content": "on AVCapture session."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "Remember"
+  },
+  {
+    "timestamp": "9:57",
+    "content": "if your app"
+  },
+  {
+    "timestamp": "9:58",
+    "content": "recompiled against"
+  },
+  {
+    "timestamp": "9:59",
+    "content": "iOS 26 and later"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "this is automatically"
+  },
+  {
+    "timestamp": "10:03",
+    "content": "set to true for you."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "Next"
+  },
+  {
+    "timestamp": "10:06",
+    "content": "enable Deferred Start"
+  },
+  {
+    "timestamp": "10:07",
+    "content": "on every output"
+  },
+  {
+    "timestamp": "10:09",
+    "content": "that isn't required"
+  },
+  {
+    "timestamp": "10:10",
+    "content": "for launch."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "Here"
+  },
+  {
+    "timestamp": "10:12",
+    "content": "I defer"
+  },
+  {
+    "timestamp": "10:13",
+    "content": "the photo capture output"
+  },
+  {
+    "timestamp": "10:14",
+    "content": "and use the video preview layer"
+  },
+  {
+    "timestamp": "10:17",
+    "content": "to render preview."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "Then"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "I'll attach"
+  },
+  {
+    "timestamp": "10:21",
+    "content": "the delegate callback class"
+  },
+  {
+    "timestamp": "10:23",
+    "content": "from earlier"
+  },
+  {
+    "timestamp": "10:24",
+    "content": "to the capture session."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "The session"
+  },
+  {
+    "timestamp": "10:27",
+    "content": "is now configured"
+  },
+  {
+    "timestamp": "10:28",
+    "content": "so I'll commit"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "the configuration"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "and call"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "Start Running."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "For apps"
+  },
+  {
+    "timestamp": "10:35",
+    "content": "that want"
+  },
+  {
+    "timestamp": "10:35",
+    "content": "finer control"
+  },
+  {
+    "timestamp": "10:36",
+    "content": "the Deferred Start"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "API"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "also offers"
+  },
+  {
+    "timestamp": "10:40",
+    "content": "a manual mode"
+  },
+  {
+    "timestamp": "10:41",
+    "content": "with"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "Run Deferred Start"
+  },
+  {
+    "timestamp": "10:43",
+    "content": "when needed."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "In manual mode"
+  },
+  {
+    "timestamp": "10:46",
+    "content": "the app"
+  },
+  {
+    "timestamp": "10:47",
+    "content": "tells the system"
+  },
+  {
+    "timestamp": "10:48",
+    "content": "when to begin"
+  },
+  {
+    "timestamp": "10:49",
+    "content": "Deferred Start."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "This is useful"
+  },
+  {
+    "timestamp": "10:52",
+    "content": "for apps"
+  },
+  {
+    "timestamp": "10:53",
+    "content": "that want to read"
+  },
+  {
+    "timestamp": "10:53",
+    "content": "preferences"
+  },
+  {
+    "timestamp": "10:54",
+    "content": "or set up UI"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "before the heavy"
+  },
+  {
+    "timestamp": "10:57",
+    "content": "initialization begins"
+  },
+  {
+    "timestamp": "10:58",
+    "content": "or for apps"
+  },
+  {
+    "timestamp": "11:00",
+    "content": "using Video Data"
+  },
+  {
+    "timestamp": "11:01",
+    "content": "output"
+  },
+  {
+    "timestamp": "11:01",
+    "content": "to render preview"
+  },
+  {
+    "timestamp": "11:02",
+    "content": "which I'll discuss"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "in more detail"
+  },
+  {
+    "timestamp": "11:05",
+    "content": "later in this video."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "With manual mode"
+  },
+  {
+    "timestamp": "11:09",
+    "content": "the sequence"
+  },
+  {
+    "timestamp": "11:10",
+    "content": "changes."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "Once the app"
+  },
+  {
+    "timestamp": "11:14",
+    "content": "finishes startup work"
+  },
+  {
+    "timestamp": "11:16",
+    "content": "such as creating"
+  },
+  {
+    "timestamp": "11:17",
+    "content": "non-critical resources"
+  },
+  {
+    "timestamp": "11:19",
+    "content": "call"
+  },
+  {
+    "timestamp": "11:20",
+    "content": "Run Deferred Start"
+  },
+  {
+    "timestamp": "11:22",
+    "content": "when needed"
+  },
+  {
+    "timestamp": "11:22",
+    "content": "on the capture session."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "This tells the system"
+  },
+  {
+    "timestamp": "11:26",
+    "content": "it could run"
+  },
+  {
+    "timestamp": "11:27",
+    "content": "Deferred Start."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "To opt"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "into manual mode"
+  },
+  {
+    "timestamp": "11:31",
+    "content": "set"
+  },
+  {
+    "timestamp": "11:32",
+    "content": "Automatically Runs"
+  },
+  {
+    "timestamp": "11:33",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "on AV Capture Session"
+  },
+  {
+    "timestamp": "11:35",
+    "content": "to False."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "In this example"
+  },
+  {
+    "timestamp": "11:38",
+    "content": "I want to render"
+  },
+  {
+    "timestamp": "11:40",
+    "content": "preview myself"
+  },
+  {
+    "timestamp": "11:41",
+    "content": "using AV Capture"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "Video Data"
+  },
+  {
+    "timestamp": "11:43",
+    "content": "output"
+  },
+  {
+    "timestamp": "11:43",
+    "content": "so I'll disable"
+  },
+  {
+    "timestamp": "11:45",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "11:46",
+    "content": "on this output."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "I'll leave the rest"
+  },
+  {
+    "timestamp": "11:48",
+    "content": "of the code"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "the same"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "as the previous"
+  },
+  {
+    "timestamp": "11:50",
+    "content": "example."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "Next"
+  },
+  {
+    "timestamp": "11:53",
+    "content": "I need to decide"
+  },
+  {
+    "timestamp": "11:54",
+    "content": "when to run"
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "on the deferred"
+  },
+  {
+    "timestamp": "11:57",
+    "content": "output."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "To do that"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "I'll track"
+  },
+  {
+    "timestamp": "12:00",
+    "content": "whether the first"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "frame has been"
+  },
+  {
+    "timestamp": "12:02",
+    "content": "presented."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "Here"
+  },
+  {
+    "timestamp": "12:04",
+    "content": "I'm using"
+  },
+  {
+    "timestamp": "12:05",
+    "content": "a CA meta layer."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "Once the first"
+  },
+  {
+    "timestamp": "12:08",
+    "content": "frame is presented"
+  },
+  {
+    "timestamp": "12:09",
+    "content": "I'll set up"
+  },
+  {
+    "timestamp": "12:11",
+    "content": "any non-critical"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "UI elements"
+  },
+  {
+    "timestamp": "12:13",
+    "content": "and tell"
+  },
+  {
+    "timestamp": "12:14",
+    "content": "AV Capture Session"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "to run"
+  },
+  {
+    "timestamp": "12:16",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "12:17",
+    "content": "on the postponed"
+  },
+  {
+    "timestamp": "12:18",
+    "content": "outputs."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "After the first"
+  },
+  {
+    "timestamp": "12:20",
+    "content": "frame is presented"
+  },
+  {
+    "timestamp": "12:21",
+    "content": "no special handling"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "is needed."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "to verify"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "the launch"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "is faster"
+  },
+  {
+    "timestamp": "12:27",
+    "content": "with Deferred Start"
+  },
+  {
+    "timestamp": "12:28",
+    "content": "I set up"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "a light board"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "in the lab."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "My goal"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "is to compare"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "the difference"
+  },
+  {
+    "timestamp": "12:33",
+    "content": "in position"
+  },
+  {
+    "timestamp": "12:33",
+    "content": "of the LED"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "pattern"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "in preview."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "The phone"
+  },
+  {
+    "timestamp": "12:38",
+    "content": "on the right"
+  },
+  {
+    "timestamp": "12:38",
+    "content": "has Deferred Start"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "enabled"
+  },
+  {
+    "timestamp": "12:40",
+    "content": "the one"
+  },
+  {
+    "timestamp": "12:41",
+    "content": "on the left"
+  },
+  {
+    "timestamp": "12:41",
+    "content": "doesn't."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "I want to"
+  },
+  {
+    "timestamp": "12:43",
+    "content": "capture the pattern"
+  },
+  {
+    "timestamp": "12:44",
+    "content": "when both"
+  },
+  {
+    "timestamp": "12:45",
+    "content": "the red"
+  },
+  {
+    "timestamp": "12:45",
+    "content": "and green"
+  },
+  {
+    "timestamp": "12:46",
+    "content": "LEDs"
+  },
+  {
+    "timestamp": "12:47",
+    "content": "are on screen."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "I screenshotted"
+  },
+  {
+    "timestamp": "12:51",
+    "content": "the moment"
+  },
+  {
+    "timestamp": "12:51",
+    "content": "when one device"
+  },
+  {
+    "timestamp": "12:53",
+    "content": "successfully"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "shows preview."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "The Deferred Start"
+  },
+  {
+    "timestamp": "12:56",
+    "content": "phone on the right"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "is clearly"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "able to capture"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "that expanding"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "pattern."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "By the time"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "the phone"
+  },
+  {
+    "timestamp": "13:04",
+    "content": "without Deferred Start"
+  },
+  {
+    "timestamp": "13:05",
+    "content": "finishes launching"
+  },
+  {
+    "timestamp": "13:06",
+    "content": "the green LEDs"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "have nearly"
+  },
+  {
+    "timestamp": "13:09",
+    "content": "faded out"
+  },
+  {
+    "timestamp": "13:10",
+    "content": "missing"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "that clear"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "separation."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "I also"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "timed the launch"
+  },
+  {
+    "timestamp": "13:16",
+    "content": "sequence"
+  },
+  {
+    "timestamp": "13:16",
+    "content": "on both phones."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "Without Deferred Start"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "the app launch"
+  },
+  {
+    "timestamp": "13:21",
+    "content": "was close"
+  },
+  {
+    "timestamp": "13:21",
+    "content": "to a second."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "With Deferred Start"
+  },
+  {
+    "timestamp": "13:24",
+    "content": "launch is cut"
+  },
+  {
+    "timestamp": "13:26",
+    "content": "in half."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "That's a two"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "times faster"
+  },
+  {
+    "timestamp": "13:29",
+    "content": "launch."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "This is a massive"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "step forward"
+  },
+  {
+    "timestamp": "13:32",
+    "content": "in launch times."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "Preview is up"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "and running"
+  },
+  {
+    "timestamp": "13:35",
+    "content": "faster than ever."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "For complex"
+  },
+  {
+    "timestamp": "13:38",
+    "content": "capture sessions"
+  },
+  {
+    "timestamp": "13:39",
+    "content": "apps may see"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "an even bigger"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "improvement."
+  },
+  {
+    "timestamp": "13:43",
+    "content": "Deferring"
+  },
+  {
+    "timestamp": "13:44",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "photo output"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "does have a catch."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "preview starts"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "much sooner"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "but the time"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "to the first"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "capture stays"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "the same."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "Because the"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "photo output"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "is deferred"
+  },
+  {
+    "timestamp": "13:56",
+    "content": "the system"
+  },
+  {
+    "timestamp": "13:57",
+    "content": "has to finish"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "initializing it"
+  },
+  {
+    "timestamp": "14:00",
+    "content": "before a capture"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "can begin."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "Preview is up"
+  },
+  {
+    "timestamp": "14:03",
+    "content": "quickly"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "but someone"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "can still"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "miss the shot."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "To solve"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "this problem"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "set"
+  },
+  {
+    "timestamp": "14:09",
+    "content": "is responsive"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "capture enabled"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "to true"
+  },
+  {
+    "timestamp": "14:12",
+    "content": "an AV capture"
+  },
+  {
+    "timestamp": "14:14",
+    "content": "photo output."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "This property"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "adds buffering"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "between starting"
+  },
+  {
+    "timestamp": "14:19",
+    "content": "a capture"
+  },
+  {
+    "timestamp": "14:20",
+    "content": "and when"
+  },
+  {
+    "timestamp": "14:21",
+    "content": "processing begins"
+  },
+  {
+    "timestamp": "14:22",
+    "content": "so people can"
+  },
+  {
+    "timestamp": "14:24",
+    "content": "capture the moment"
+  },
+  {
+    "timestamp": "14:25",
+    "content": "even if the photo"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "output isn't"
+  },
+  {
+    "timestamp": "14:27",
+    "content": "fully ready yet."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "The green phone"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "enables responsive"
+  },
+  {
+    "timestamp": "14:32",
+    "content": "capture in conjunction"
+  },
+  {
+    "timestamp": "14:33",
+    "content": "with Deferred Start."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "As the dominoes"
+  },
+  {
+    "timestamp": "14:36",
+    "content": "fall I quickly"
+  },
+  {
+    "timestamp": "14:37",
+    "content": "launch"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "and take a picture."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "The green phone"
+  },
+  {
+    "timestamp": "14:44",
+    "content": "allowed me to get"
+  },
+  {
+    "timestamp": "14:44",
+    "content": "a perfect shot"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "of the dominoes"
+  },
+  {
+    "timestamp": "14:46",
+    "content": "while the purple phone"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "missed the moment."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "To learn more"
+  },
+  {
+    "timestamp": "14:52",
+    "content": "about how to use"
+  },
+  {
+    "timestamp": "14:53",
+    "content": "responsive capture"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "and how to capture"
+  },
+  {
+    "timestamp": "14:55",
+    "content": "stunning"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "high resolution images"
+  },
+  {
+    "timestamp": "14:58",
+    "content": "watch"
+  },
+  {
+    "timestamp": "14:59",
+    "content": "Implement High Resolution"
+  },
+  {
+    "timestamp": "15:01",
+    "content": "Photo Capture"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "from WWDC26."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "Once preview"
+  },
+  {
+    "timestamp": "15:06",
+    "content": "is running"
+  },
+  {
+    "timestamp": "15:07",
+    "content": "keeping a steady"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "frame rate"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "and cadence"
+  },
+  {
+    "timestamp": "15:09",
+    "content": "is essential."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "Otherwise"
+  },
+  {
+    "timestamp": "15:11",
+    "content": "the camera"
+  },
+  {
+    "timestamp": "15:12",
+    "content": "feels laggy."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "Next"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "I'll share"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "best practices"
+  },
+  {
+    "timestamp": "15:16",
+    "content": "for rendering"
+  },
+  {
+    "timestamp": "15:17",
+    "content": "preview."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Revisiting"
+  },
+  {
+    "timestamp": "15:20",
+    "content": "the session"
+  },
+  {
+    "timestamp": "15:21",
+    "content": "architecture"
+  },
+  {
+    "timestamp": "15:21",
+    "content": "from earlier"
+  },
+  {
+    "timestamp": "15:22",
+    "content": "the easiest"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "way to render"
+  },
+  {
+    "timestamp": "15:24",
+    "content": "preview"
+  },
+  {
+    "timestamp": "15:25",
+    "content": "is with"
+  },
+  {
+    "timestamp": "15:26",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "15:27",
+    "content": "video preview"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "layer."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "It shows"
+  },
+  {
+    "timestamp": "15:30",
+    "content": "exactly"
+  },
+  {
+    "timestamp": "15:30",
+    "content": "what the camera"
+  },
+  {
+    "timestamp": "15:31",
+    "content": "is"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "directly"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "in the"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "app's UI."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "video preview"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "layer"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "is optimized"
+  },
+  {
+    "timestamp": "15:38",
+    "content": "for rendering"
+  },
+  {
+    "timestamp": "15:39",
+    "content": "preview."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "No need"
+  },
+  {
+    "timestamp": "15:41",
+    "content": "to process"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "video frames"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "in the app."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "15:44",
+    "content": "video preview"
+  },
+  {
+    "timestamp": "15:45",
+    "content": "layer"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "does this"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "automatically"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "handling"
+  },
+  {
+    "timestamp": "15:48",
+    "content": "tricky"
+  },
+  {
+    "timestamp": "15:49",
+    "content": "situations"
+  },
+  {
+    "timestamp": "15:50",
+    "content": "such as"
+  },
+  {
+    "timestamp": "15:51",
+    "content": "HDR tone"
+  },
+  {
+    "timestamp": "15:52",
+    "content": "mapping."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "It also"
+  },
+  {
+    "timestamp": "15:54",
+    "content": "keeps CPU"
+  },
+  {
+    "timestamp": "15:54",
+    "content": "and GPU"
+  },
+  {
+    "timestamp": "15:56",
+    "content": "overhead low"
+  },
+  {
+    "timestamp": "15:57",
+    "content": "which saves"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "power"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "and leaves"
+  },
+  {
+    "timestamp": "15:59",
+    "content": "more headroom"
+  },
+  {
+    "timestamp": "16:00",
+    "content": "for the UI."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "and it's"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "tuned"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "for low"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "latency"
+  },
+  {
+    "timestamp": "16:04",
+    "content": "preview"
+  },
+  {
+    "timestamp": "16:04",
+    "content": "so the"
+  },
+  {
+    "timestamp": "16:05",
+    "content": "app shows"
+  },
+  {
+    "timestamp": "16:06",
+    "content": "what the"
+  },
+  {
+    "timestamp": "16:06",
+    "content": "camera sees"
+  },
+  {
+    "timestamp": "16:07",
+    "content": "with very"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "little delay."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "As a tradeoff"
+  },
+  {
+    "timestamp": "16:11",
+    "content": "for simplicity"
+  },
+  {
+    "timestamp": "16:12",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "16:13",
+    "content": "video preview"
+  },
+  {
+    "timestamp": "16:14",
+    "content": "layer does"
+  },
+  {
+    "timestamp": "16:15",
+    "content": "not allow"
+  },
+  {
+    "timestamp": "16:15",
+    "content": "for per-frame"
+  },
+  {
+    "timestamp": "16:16",
+    "content": "access."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "For apps"
+  },
+  {
+    "timestamp": "16:19",
+    "content": "that want"
+  },
+  {
+    "timestamp": "16:19",
+    "content": "more control"
+  },
+  {
+    "timestamp": "16:20",
+    "content": "over preview"
+  },
+  {
+    "timestamp": "16:21",
+    "content": "rendering"
+  },
+  {
+    "timestamp": "16:21",
+    "content": "then AV capture"
+  },
+  {
+    "timestamp": "16:23",
+    "content": "video data"
+  },
+  {
+    "timestamp": "16:24",
+    "content": "output"
+  },
+  {
+    "timestamp": "16:24",
+    "content": "is the better"
+  },
+  {
+    "timestamp": "16:25",
+    "content": "choice."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "16:27",
+    "content": "video data"
+  },
+  {
+    "timestamp": "16:27",
+    "content": "output"
+  },
+  {
+    "timestamp": "16:28",
+    "content": "takes the"
+  },
+  {
+    "timestamp": "16:29",
+    "content": "place"
+  },
+  {
+    "timestamp": "16:29",
+    "content": "of AV capture"
+  },
+  {
+    "timestamp": "16:30",
+    "content": "video preview"
+  },
+  {
+    "timestamp": "16:31",
+    "content": "layer"
+  },
+  {
+    "timestamp": "16:32",
+    "content": "and the"
+  },
+  {
+    "timestamp": "16:32",
+    "content": "session"
+  },
+  {
+    "timestamp": "16:33",
+    "content": "architecture"
+  },
+  {
+    "timestamp": "16:33",
+    "content": "and becomes"
+  },
+  {
+    "timestamp": "16:35",
+    "content": "the primary"
+  },
+  {
+    "timestamp": "16:36",
+    "content": "output"
+  },
+  {
+    "timestamp": "16:36",
+    "content": "for displaying"
+  },
+  {
+    "timestamp": "16:37",
+    "content": "frames"
+  },
+  {
+    "timestamp": "16:38",
+    "content": "on the"
+  },
+  {
+    "timestamp": "16:38",
+    "content": "device."
+  },
+  {
+    "timestamp": "16:41",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "16:41",
+    "content": "video data"
+  },
+  {
+    "timestamp": "16:42",
+    "content": "output"
+  },
+  {
+    "timestamp": "16:42",
+    "content": "gives more"
+  },
+  {
+    "timestamp": "16:44",
+    "content": "control"
+  },
+  {
+    "timestamp": "16:44",
+    "content": "over the"
+  },
+  {
+    "timestamp": "16:45",
+    "content": "flow of"
+  },
+  {
+    "timestamp": "16:45",
+    "content": "preview"
+  },
+  {
+    "timestamp": "16:46",
+    "content": "enabling"
+  },
+  {
+    "timestamp": "16:47",
+    "content": "apps to"
+  },
+  {
+    "timestamp": "16:48",
+    "content": "process"
+  },
+  {
+    "timestamp": "16:48",
+    "content": "individual"
+  },
+  {
+    "timestamp": "16:49",
+    "content": "frames."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "It also"
+  },
+  {
+    "timestamp": "16:52",
+    "content": "lets the"
+  },
+  {
+    "timestamp": "16:52",
+    "content": "app apply"
+  },
+  {
+    "timestamp": "16:53",
+    "content": "custom"
+  },
+  {
+    "timestamp": "16:54",
+    "content": "UI overlay"
+  },
+  {
+    "timestamp": "16:55",
+    "content": "on each"
+  },
+  {
+    "timestamp": "16:56",
+    "content": "frame"
+  },
+  {
+    "timestamp": "16:56",
+    "content": "and per-frame"
+  },
+  {
+    "timestamp": "16:58",
+    "content": "processing"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "makes it"
+  },
+  {
+    "timestamp": "17:00",
+    "content": "easier to"
+  },
+  {
+    "timestamp": "17:00",
+    "content": "integrate"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "with metal"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "and to"
+  },
+  {
+    "timestamp": "17:02",
+    "content": "analyze"
+  },
+  {
+    "timestamp": "17:02",
+    "content": "frame data."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "Use"
+  },
+  {
+    "timestamp": "17:05",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "17:06",
+    "content": "video preview"
+  },
+  {
+    "timestamp": "17:06",
+    "content": "layer"
+  },
+  {
+    "timestamp": "17:07",
+    "content": "when you just"
+  },
+  {
+    "timestamp": "17:08",
+    "content": "need to"
+  },
+  {
+    "timestamp": "17:08",
+    "content": "show the"
+  },
+  {
+    "timestamp": "17:08",
+    "content": "camera feed"
+  },
+  {
+    "timestamp": "17:09",
+    "content": "and remember"
+  },
+  {
+    "timestamp": "17:10",
+    "content": "apps using"
+  },
+  {
+    "timestamp": "17:12",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "17:12",
+    "content": "video preview"
+  },
+  {
+    "timestamp": "17:13",
+    "content": "layer are"
+  },
+  {
+    "timestamp": "17:14",
+    "content": "opted in"
+  },
+  {
+    "timestamp": "17:15",
+    "content": "to automatic"
+  },
+  {
+    "timestamp": "17:15",
+    "content": "deferred start"
+  },
+  {
+    "timestamp": "17:16",
+    "content": "when recompiled"
+  },
+  {
+    "timestamp": "17:18",
+    "content": "against iOS 26"
+  },
+  {
+    "timestamp": "17:19",
+    "content": "and later."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "Use"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "video data"
+  },
+  {
+    "timestamp": "17:23",
+    "content": "output"
+  },
+  {
+    "timestamp": "17:24",
+    "content": "when per-frame"
+  },
+  {
+    "timestamp": "17:25",
+    "content": "processing"
+  },
+  {
+    "timestamp": "17:26",
+    "content": "is the"
+  },
+  {
+    "timestamp": "17:26",
+    "content": "priority."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "Deferred start"
+  },
+  {
+    "timestamp": "17:29",
+    "content": "doesn't apply"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "automatically"
+  },
+  {
+    "timestamp": "17:31",
+    "content": "with AV capture"
+  },
+  {
+    "timestamp": "17:32",
+    "content": "video data"
+  },
+  {
+    "timestamp": "17:33",
+    "content": "output"
+  },
+  {
+    "timestamp": "17:33",
+    "content": "so adopt"
+  },
+  {
+    "timestamp": "17:35",
+    "content": "manual deferred"
+  },
+  {
+    "timestamp": "17:36",
+    "content": "start"
+  },
+  {
+    "timestamp": "17:36",
+    "content": "to get the"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "same launch"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "gains."
+  },
+  {
+    "timestamp": "17:39",
+    "content": "When rendering"
+  },
+  {
+    "timestamp": "17:39",
+    "content": "preview"
+  },
+  {
+    "timestamp": "17:40",
+    "content": "keep per-frame"
+  },
+  {
+    "timestamp": "17:42",
+    "content": "work short."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "This helps"
+  },
+  {
+    "timestamp": "17:44",
+    "content": "avoid frame"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "drops"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "and keeps"
+  },
+  {
+    "timestamp": "17:46",
+    "content": "the experience"
+  },
+  {
+    "timestamp": "17:47",
+    "content": "fluid."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "As the device"
+  },
+  {
+    "timestamp": "17:49",
+    "content": "heats up"
+  },
+  {
+    "timestamp": "17:50",
+    "content": "performance"
+  },
+  {
+    "timestamp": "17:51",
+    "content": "gets harder"
+  },
+  {
+    "timestamp": "17:52",
+    "content": "to maintain."
+  },
+  {
+    "timestamp": "17:52",
+    "content": "because the"
+  },
+  {
+    "timestamp": "17:54",
+    "content": "system throttles"
+  },
+  {
+    "timestamp": "17:55",
+    "content": "to adapt."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "Monitor the"
+  },
+  {
+    "timestamp": "17:57",
+    "content": "session's"
+  },
+  {
+    "timestamp": "17:58",
+    "content": "performance"
+  },
+  {
+    "timestamp": "17:58",
+    "content": "and adjust"
+  },
+  {
+    "timestamp": "18:00",
+    "content": "to system"
+  },
+  {
+    "timestamp": "18:00",
+    "content": "conditions"
+  },
+  {
+    "timestamp": "18:01",
+    "content": "for a"
+  },
+  {
+    "timestamp": "18:02",
+    "content": "sustainable"
+  },
+  {
+    "timestamp": "18:02",
+    "content": "experience."
+  },
+  {
+    "timestamp": "18:04",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "18:04",
+    "content": "I'll cover"
+  },
+  {
+    "timestamp": "18:05",
+    "content": "APIs that"
+  },
+  {
+    "timestamp": "18:06",
+    "content": "let your"
+  },
+  {
+    "timestamp": "18:06",
+    "content": "app monitor"
+  },
+  {
+    "timestamp": "18:07",
+    "content": "performance"
+  },
+  {
+    "timestamp": "18:08",
+    "content": "and adapt"
+  },
+  {
+    "timestamp": "18:09",
+    "content": "to system"
+  },
+  {
+    "timestamp": "18:10",
+    "content": "conditions."
+  },
+  {
+    "timestamp": "18:11",
+    "content": "Revisiting"
+  },
+  {
+    "timestamp": "18:12",
+    "content": "the architecture"
+  },
+  {
+    "timestamp": "18:13",
+    "content": "from earlier,"
+  },
+  {
+    "timestamp": "18:14",
+    "content": "there's a"
+  },
+  {
+    "timestamp": "18:14",
+    "content": "capture session,"
+  },
+  {
+    "timestamp": "18:16",
+    "content": "a photo output,"
+  },
+  {
+    "timestamp": "18:17",
+    "content": "and a preview"
+  },
+  {
+    "timestamp": "18:18",
+    "content": "layer."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "feature."
+  },
+  {
+    "timestamp": "18:19",
+    "content": "This is a"
+  },
+  {
+    "timestamp": "18:20",
+    "content": "fairly basic"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "setup, but"
+  },
+  {
+    "timestamp": "18:22",
+    "content": "it grows in"
+  },
+  {
+    "timestamp": "18:23",
+    "content": "complexity as"
+  },
+  {
+    "timestamp": "18:24",
+    "content": "an app adds"
+  },
+  {
+    "timestamp": "18:25",
+    "content": "more cameras"
+  },
+  {
+    "timestamp": "18:25",
+    "content": "or input"
+  },
+  {
+    "timestamp": "18:26",
+    "content": "devices."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "As complexity"
+  },
+  {
+    "timestamp": "18:29",
+    "content": "grows, so"
+  },
+  {
+    "timestamp": "18:31",
+    "content": "does the"
+  },
+  {
+    "timestamp": "18:31",
+    "content": "performance"
+  },
+  {
+    "timestamp": "18:32",
+    "content": "cost."
+  },
+  {
+    "timestamp": "18:33",
+    "content": "Understanding the"
+  },
+  {
+    "timestamp": "18:34",
+    "content": "capture session's"
+  },
+  {
+    "timestamp": "18:35",
+    "content": "cost helps you"
+  },
+  {
+    "timestamp": "18:36",
+    "content": "design for a"
+  },
+  {
+    "timestamp": "18:37",
+    "content": "sustainable"
+  },
+  {
+    "timestamp": "18:38",
+    "content": "experience."
+  },
+  {
+    "timestamp": "18:39",
+    "content": "The hardware"
+  },
+  {
+    "timestamp": "18:40",
+    "content": "cost API"
+  },
+  {
+    "timestamp": "18:41",
+    "content": "returns a value"
+  },
+  {
+    "timestamp": "18:43",
+    "content": "between 0 and"
+  },
+  {
+    "timestamp": "18:44",
+    "content": "1."
+  },
+  {
+    "timestamp": "18:44",
+    "content": "It tells you"
+  },
+  {
+    "timestamp": "18:46",
+    "content": "what share of"
+  },
+  {
+    "timestamp": "18:47",
+    "content": "the session's"
+  },
+  {
+    "timestamp": "18:47",
+    "content": "hardware is"
+  },
+  {
+    "timestamp": "18:48",
+    "content": "actively in"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "use."
+  },
+  {
+    "timestamp": "18:50",
+    "content": "A value"
+  },
+  {
+    "timestamp": "18:51",
+    "content": "above 1 means"
+  },
+  {
+    "timestamp": "18:52",
+    "content": "the system"
+  },
+  {
+    "timestamp": "18:53",
+    "content": "can't support"
+  },
+  {
+    "timestamp": "18:54",
+    "content": "the configuration."
+  },
+  {
+    "timestamp": "18:56",
+    "content": "Several things"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "contribute to"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "this cost."
+  },
+  {
+    "timestamp": "18:59",
+    "content": "The number"
+  },
+  {
+    "timestamp": "18:59",
+    "content": "of cameras"
+  },
+  {
+    "timestamp": "19:00",
+    "content": "used,"
+  },
+  {
+    "timestamp": "19:01",
+    "content": "the active"
+  },
+  {
+    "timestamp": "19:02",
+    "content": "formats of"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "the source"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "devices,"
+  },
+  {
+    "timestamp": "19:05",
+    "content": "such as using"
+  },
+  {
+    "timestamp": "19:05",
+    "content": "1080p or"
+  },
+  {
+    "timestamp": "19:07",
+    "content": "4K,"
+  },
+  {
+    "timestamp": "19:08",
+    "content": "the frame"
+  },
+  {
+    "timestamp": "19:09",
+    "content": "rate of"
+  },
+  {
+    "timestamp": "19:09",
+    "content": "the source"
+  },
+  {
+    "timestamp": "19:10",
+    "content": "device's"
+  },
+  {
+    "timestamp": "19:10",
+    "content": "formats,"
+  },
+  {
+    "timestamp": "19:12",
+    "content": "hardware cost"
+  },
+  {
+    "timestamp": "19:13",
+    "content": "assumes the"
+  },
+  {
+    "timestamp": "19:14",
+    "content": "format's"
+  },
+  {
+    "timestamp": "19:14",
+    "content": "max frame"
+  },
+  {
+    "timestamp": "19:15",
+    "content": "rate."
+  },
+  {
+    "timestamp": "19:16",
+    "content": "So if you're"
+  },
+  {
+    "timestamp": "19:16",
+    "content": "running at a"
+  },
+  {
+    "timestamp": "19:17",
+    "content": "lower frame"
+  },
+  {
+    "timestamp": "19:17",
+    "content": "rate, like"
+  },
+  {
+    "timestamp": "19:18",
+    "content": "30 frames per"
+  },
+  {
+    "timestamp": "19:19",
+    "content": "second instead"
+  },
+  {
+    "timestamp": "19:20",
+    "content": "of 60 frames"
+  },
+  {
+    "timestamp": "19:20",
+    "content": "per second,"
+  },
+  {
+    "timestamp": "19:22",
+    "content": "use the"
+  },
+  {
+    "timestamp": "19:22",
+    "content": "frame rate"
+  },
+  {
+    "timestamp": "19:23",
+    "content": "overwrite"
+  },
+  {
+    "timestamp": "19:23",
+    "content": "property to"
+  },
+  {
+    "timestamp": "19:24",
+    "content": "reduce the"
+  },
+  {
+    "timestamp": "19:25",
+    "content": "cost."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "And lastly,"
+  },
+  {
+    "timestamp": "19:28",
+    "content": "the use of"
+  },
+  {
+    "timestamp": "19:28",
+    "content": "binned formats."
+  },
+  {
+    "timestamp": "19:30",
+    "content": "Binned formats"
+  },
+  {
+    "timestamp": "19:31",
+    "content": "use less"
+  },
+  {
+    "timestamp": "19:32",
+    "content": "hardware bandwidth"
+  },
+  {
+    "timestamp": "19:32",
+    "content": "since these"
+  },
+  {
+    "timestamp": "19:34",
+    "content": "formats group"
+  },
+  {
+    "timestamp": "19:35",
+    "content": "pixels."
+  },
+  {
+    "timestamp": "19:37",
+    "content": "The system"
+  },
+  {
+    "timestamp": "19:38",
+    "content": "pressure cost"
+  },
+  {
+    "timestamp": "19:39",
+    "content": "API also"
+  },
+  {
+    "timestamp": "19:40",
+    "content": "returns a value"
+  },
+  {
+    "timestamp": "19:41",
+    "content": "between 0 and"
+  },
+  {
+    "timestamp": "19:42",
+    "content": "1."
+  },
+  {
+    "timestamp": "19:42",
+    "content": "1."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "It represents"
+  },
+  {
+    "timestamp": "19:44",
+    "content": "the cost of"
+  },
+  {
+    "timestamp": "19:45",
+    "content": "the session's"
+  },
+  {
+    "timestamp": "19:45",
+    "content": "current"
+  },
+  {
+    "timestamp": "19:46",
+    "content": "configuration."
+  },
+  {
+    "timestamp": "19:47",
+    "content": "When it"
+  },
+  {
+    "timestamp": "19:48",
+    "content": "goes above"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "1, the"
+  },
+  {
+    "timestamp": "19:50",
+    "content": "configuration"
+  },
+  {
+    "timestamp": "19:50",
+    "content": "is unsustainable."
+  },
+  {
+    "timestamp": "19:53",
+    "content": "To adjust"
+  },
+  {
+    "timestamp": "19:54",
+    "content": "to the"
+  },
+  {
+    "timestamp": "19:54",
+    "content": "current"
+  },
+  {
+    "timestamp": "19:55",
+    "content": "system"
+  },
+  {
+    "timestamp": "19:55",
+    "content": "state,"
+  },
+  {
+    "timestamp": "19:56",
+    "content": "monitor the"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "system"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "pressure state"
+  },
+  {
+    "timestamp": "19:58",
+    "content": "property of"
+  },
+  {
+    "timestamp": "19:59",
+    "content": "AV capture"
+  },
+  {
+    "timestamp": "20:00",
+    "content": "device."
+  },
+  {
+    "timestamp": "20:01",
+    "content": "As the"
+  },
+  {
+    "timestamp": "20:02",
+    "content": "system pressure"
+  },
+  {
+    "timestamp": "20:03",
+    "content": "state increases,"
+  },
+  {
+    "timestamp": "20:05",
+    "content": "consider"
+  },
+  {
+    "timestamp": "20:05",
+    "content": "reducing the"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "capture device's"
+  },
+  {
+    "timestamp": "20:07",
+    "content": "frame rate,"
+  },
+  {
+    "timestamp": "20:08",
+    "content": "or throttling"
+  },
+  {
+    "timestamp": "20:09",
+    "content": "any use of"
+  },
+  {
+    "timestamp": "20:10",
+    "content": "the GPU or"
+  },
+  {
+    "timestamp": "20:11",
+    "content": "Apple neural"
+  },
+  {
+    "timestamp": "20:12",
+    "content": "engine,"
+  },
+  {
+    "timestamp": "20:12",
+    "content": "or minimizing"
+  },
+  {
+    "timestamp": "20:14",
+    "content": "UI work."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "Use the"
+  },
+  {
+    "timestamp": "20:17",
+    "content": "hardware cost"
+  },
+  {
+    "timestamp": "20:18",
+    "content": "and system"
+  },
+  {
+    "timestamp": "20:18",
+    "content": "pressure state"
+  },
+  {
+    "timestamp": "20:19",
+    "content": "API after"
+  },
+  {
+    "timestamp": "20:20",
+    "content": "initial session"
+  },
+  {
+    "timestamp": "20:21",
+    "content": "setup."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "After committing"
+  },
+  {
+    "timestamp": "20:24",
+    "content": "the configuration,"
+  },
+  {
+    "timestamp": "20:26",
+    "content": "check that the"
+  },
+  {
+    "timestamp": "20:27",
+    "content": "hardware cost doesn't"
+  },
+  {
+    "timestamp": "20:28",
+    "content": "exceed the device's"
+  },
+  {
+    "timestamp": "20:29",
+    "content": "capabilities."
+  },
+  {
+    "timestamp": "20:31",
+    "content": "Once"
+  },
+  {
+    "timestamp": "20:32",
+    "content": "hardware cost is"
+  },
+  {
+    "timestamp": "20:33",
+    "content": "at or below 1,"
+  },
+  {
+    "timestamp": "20:35",
+    "content": "observe AV"
+  },
+  {
+    "timestamp": "20:36",
+    "content": "capture device's"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "system pressure"
+  },
+  {
+    "timestamp": "20:38",
+    "content": "state and"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "register a"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "handler for"
+  },
+  {
+    "timestamp": "20:41",
+    "content": "state changes."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "Use this"
+  },
+  {
+    "timestamp": "20:43",
+    "content": "handler to"
+  },
+  {
+    "timestamp": "20:44",
+    "content": "adapt using"
+  },
+  {
+    "timestamp": "20:45",
+    "content": "the techniques"
+  },
+  {
+    "timestamp": "20:46",
+    "content": "I just"
+  },
+  {
+    "timestamp": "20:47",
+    "content": "covered."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "Video capture"
+  },
+  {
+    "timestamp": "20:49",
+    "content": "is also"
+  },
+  {
+    "timestamp": "20:50",
+    "content": "sensitive to"
+  },
+  {
+    "timestamp": "20:51",
+    "content": "performance"
+  },
+  {
+    "timestamp": "20:51",
+    "content": "issues once"
+  },
+  {
+    "timestamp": "20:52",
+    "content": "the device"
+  },
+  {
+    "timestamp": "20:53",
+    "content": "enters a"
+  },
+  {
+    "timestamp": "20:54",
+    "content": "pressured"
+  },
+  {
+    "timestamp": "20:54",
+    "content": "state."
+  },
+  {
+    "timestamp": "20:56",
+    "content": "Traditional"
+  },
+  {
+    "timestamp": "20:56",
+    "content": "file system"
+  },
+  {
+    "timestamp": "20:57",
+    "content": "input-output"
+  },
+  {
+    "timestamp": "20:58",
+    "content": "is variable"
+  },
+  {
+    "timestamp": "20:59",
+    "content": "because the"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "system is"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "juggling"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "competing"
+  },
+  {
+    "timestamp": "21:02",
+    "content": "operations,"
+  },
+  {
+    "timestamp": "21:04",
+    "content": "memory"
+  },
+  {
+    "timestamp": "21:04",
+    "content": "fragmentation,"
+  },
+  {
+    "timestamp": "21:05",
+    "content": "and device"
+  },
+  {
+    "timestamp": "21:06",
+    "content": "storage"
+  },
+  {
+    "timestamp": "21:07",
+    "content": "wear."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "This means"
+  },
+  {
+    "timestamp": "21:09",
+    "content": "file input-output"
+  },
+  {
+    "timestamp": "21:10",
+    "content": "behavior is"
+  },
+  {
+    "timestamp": "21:12",
+    "content": "non-deterministic."
+  },
+  {
+    "timestamp": "21:14",
+    "content": "High data rate"
+  },
+  {
+    "timestamp": "21:15",
+    "content": "video captures"
+  },
+  {
+    "timestamp": "21:16",
+    "content": "like ProRes"
+  },
+  {
+    "timestamp": "21:17",
+    "content": "need sustained"
+  },
+  {
+    "timestamp": "21:18",
+    "content": "high bandwidth"
+  },
+  {
+    "timestamp": "21:19",
+    "content": "input-output"
+  },
+  {
+    "timestamp": "21:20",
+    "content": "to record"
+  },
+  {
+    "timestamp": "21:21",
+    "content": "smoothly"
+  },
+  {
+    "timestamp": "21:22",
+    "content": "without dropping"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "frames."
+  },
+  {
+    "timestamp": "21:24",
+    "content": "To address"
+  },
+  {
+    "timestamp": "21:25",
+    "content": "this challenge,"
+  },
+  {
+    "timestamp": "21:26",
+    "content": "use AV"
+  },
+  {
+    "timestamp": "21:27",
+    "content": "Pro Video"
+  },
+  {
+    "timestamp": "21:28",
+    "content": "Storage,"
+  },
+  {
+    "timestamp": "21:29",
+    "content": "new in"
+  },
+  {
+    "timestamp": "21:30",
+    "content": "iOS 27."
+  },
+  {
+    "timestamp": "21:31",
+    "content": "This class"
+  },
+  {
+    "timestamp": "21:33",
+    "content": "tracks and"
+  },
+  {
+    "timestamp": "21:34",
+    "content": "manages pre-allocated"
+  },
+  {
+    "timestamp": "21:36",
+    "content": "storage for"
+  },
+  {
+    "timestamp": "21:37",
+    "content": "high data rate"
+  },
+  {
+    "timestamp": "21:38",
+    "content": "video captures."
+  },
+  {
+    "timestamp": "21:40",
+    "content": "It's a system-wide"
+  },
+  {
+    "timestamp": "21:41",
+    "content": "resource that"
+  },
+  {
+    "timestamp": "21:42",
+    "content": "all apps share."
+  },
+  {
+    "timestamp": "21:45",
+    "content": "AV Pro Video"
+  },
+  {
+    "timestamp": "21:46",
+    "content": "Storage works"
+  },
+  {
+    "timestamp": "21:47",
+    "content": "with the existing"
+  },
+  {
+    "timestamp": "21:48",
+    "content": "movie recording"
+  },
+  {
+    "timestamp": "21:49",
+    "content": "APIs."
+  },
+  {
+    "timestamp": "21:51",
+    "content": "Applications opt-in"
+  },
+  {
+    "timestamp": "21:53",
+    "content": "by setting"
+  },
+  {
+    "timestamp": "21:54",
+    "content": "uses Pro Video"
+  },
+  {
+    "timestamp": "21:55",
+    "content": "Storage"
+  },
+  {
+    "timestamp": "21:56",
+    "content": "on AV"
+  },
+  {
+    "timestamp": "21:57",
+    "content": "Capture Movie"
+  },
+  {
+    "timestamp": "21:57",
+    "content": "File output"
+  },
+  {
+    "timestamp": "21:58",
+    "content": "or on AV"
+  },
+  {
+    "timestamp": "22:00",
+    "content": "Asset Writer"
+  },
+  {
+    "timestamp": "22:01",
+    "content": "when using"
+  },
+  {
+    "timestamp": "22:02",
+    "content": "AV Capture Video"
+  },
+  {
+    "timestamp": "22:04",
+    "content": "Data Output"
+  },
+  {
+    "timestamp": "22:04",
+    "content": "to record"
+  },
+  {
+    "timestamp": "22:05",
+    "content": "content."
+  },
+  {
+    "timestamp": "22:07",
+    "content": "The system"
+  },
+  {
+    "timestamp": "22:08",
+    "content": "handles allocation"
+  },
+  {
+    "timestamp": "22:09",
+    "content": "and file input-output"
+  },
+  {
+    "timestamp": "22:11",
+    "content": "so write performance"
+  },
+  {
+    "timestamp": "22:12",
+    "content": "stays consistent"
+  },
+  {
+    "timestamp": "22:13",
+    "content": "for high"
+  },
+  {
+    "timestamp": "22:14",
+    "content": "data rate"
+  },
+  {
+    "timestamp": "22:15",
+    "content": "codecs."
+  },
+  {
+    "timestamp": "22:16",
+    "content": "Camera settings"
+  },
+  {
+    "timestamp": "22:17",
+    "content": "is updated"
+  },
+  {
+    "timestamp": "22:18",
+    "content": "so people can"
+  },
+  {
+    "timestamp": "22:19",
+    "content": "control how much"
+  },
+  {
+    "timestamp": "22:21",
+    "content": "storage to allocate."
+  },
+  {
+    "timestamp": "22:22",
+    "content": "The remaining"
+  },
+  {
+    "timestamp": "22:23",
+    "content": "capacity method"
+  },
+  {
+    "timestamp": "22:25",
+    "content": "reports how much"
+  },
+  {
+    "timestamp": "22:26",
+    "content": "storage is left."
+  },
+  {
+    "timestamp": "22:27",
+    "content": "That value"
+  },
+  {
+    "timestamp": "22:29",
+    "content": "decreases"
+  },
+  {
+    "timestamp": "22:30",
+    "content": "during your"
+  },
+  {
+    "timestamp": "22:31",
+    "content": "recording"
+  },
+  {
+    "timestamp": "22:31",
+    "content": "and stops"
+  },
+  {
+    "timestamp": "22:33",
+    "content": "decreasing"
+  },
+  {
+    "timestamp": "22:33",
+    "content": "when the"
+  },
+  {
+    "timestamp": "22:34",
+    "content": "recording stops."
+  },
+  {
+    "timestamp": "22:36",
+    "content": "Use the"
+  },
+  {
+    "timestamp": "22:37",
+    "content": "Open Settings"
+  },
+  {
+    "timestamp": "22:38",
+    "content": "method"
+  },
+  {
+    "timestamp": "22:38",
+    "content": "to take someone"
+  },
+  {
+    "timestamp": "22:39",
+    "content": "from your"
+  },
+  {
+    "timestamp": "22:40",
+    "content": "app"
+  },
+  {
+    "timestamp": "22:40",
+    "content": "to the"
+  },
+  {
+    "timestamp": "22:41",
+    "content": "Settings UI."
+  },
+  {
+    "timestamp": "22:43",
+    "content": "To use"
+  },
+  {
+    "timestamp": "22:44",
+    "content": "AV Pro Video"
+  },
+  {
+    "timestamp": "22:45",
+    "content": "Storage,"
+  },
+  {
+    "timestamp": "22:46",
+    "content": "first check that"
+  },
+  {
+    "timestamp": "22:47",
+    "content": "the storage is"
+  },
+  {
+    "timestamp": "22:48",
+    "content": "supported."
+  },
+  {
+    "timestamp": "22:50",
+    "content": "AV Pro Video"
+  },
+  {
+    "timestamp": "22:51",
+    "content": "Storage is a"
+  },
+  {
+    "timestamp": "22:52",
+    "content": "singleton,"
+  },
+  {
+    "timestamp": "22:53",
+    "content": "so use the"
+  },
+  {
+    "timestamp": "22:53",
+    "content": "Shared method"
+  },
+  {
+    "timestamp": "22:54",
+    "content": "to obtain the"
+  },
+  {
+    "timestamp": "22:55",
+    "content": "instance of"
+  },
+  {
+    "timestamp": "22:56",
+    "content": "this object."
+  },
+  {
+    "timestamp": "22:58",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "22:59",
+    "content": "create the"
+  },
+  {
+    "timestamp": "23:00",
+    "content": "Movie File"
+  },
+  {
+    "timestamp": "23:00",
+    "content": "Output,"
+  },
+  {
+    "timestamp": "23:01",
+    "content": "AV Capture"
+  },
+  {
+    "timestamp": "23:02",
+    "content": "Session,"
+  },
+  {
+    "timestamp": "23:03",
+    "content": "AV Capture"
+  },
+  {
+    "timestamp": "23:04",
+    "content": "Connections,"
+  },
+  {
+    "timestamp": "23:05",
+    "content": "and select the"
+  },
+  {
+    "timestamp": "23:06",
+    "content": "format for"
+  },
+  {
+    "timestamp": "23:06",
+    "content": "recording."
+  },
+  {
+    "timestamp": "23:09",
+    "content": "Use the"
+  },
+  {
+    "timestamp": "23:09",
+    "content": "new"
+  },
+  {
+    "timestamp": "23:09",
+    "content": "Is Pro Video"
+  },
+  {
+    "timestamp": "23:10",
+    "content": "Storage"
+  },
+  {
+    "timestamp": "23:11",
+    "content": "supported method"
+  },
+  {
+    "timestamp": "23:12",
+    "content": "on"
+  },
+  {
+    "timestamp": "23:12",
+    "content": "AV Capture"
+  },
+  {
+    "timestamp": "23:13",
+    "content": "Movie File"
+  },
+  {
+    "timestamp": "23:14",
+    "content": "Output"
+  },
+  {
+    "timestamp": "23:14",
+    "content": "to check for"
+  },
+  {
+    "timestamp": "23:15",
+    "content": "compatibility."
+  },
+  {
+    "timestamp": "23:18",
+    "content": "Before recording,"
+  },
+  {
+    "timestamp": "23:19",
+    "content": "confirm the"
+  },
+  {
+    "timestamp": "23:20",
+    "content": "storage is not"
+  },
+  {
+    "timestamp": "23:21",
+    "content": "busy resizing"
+  },
+  {
+    "timestamp": "23:22",
+    "content": "or servicing"
+  },
+  {
+    "timestamp": "23:23",
+    "content": "file creation"
+  },
+  {
+    "timestamp": "23:24",
+    "content": "or deletion"
+  },
+  {
+    "timestamp": "23:25",
+    "content": "requests."
+  },
+  {
+    "timestamp": "23:26",
+    "content": "Finally,"
+  },
+  {
+    "timestamp": "23:27",
+    "content": "turn on"
+  },
+  {
+    "timestamp": "23:28",
+    "content": "Pro Video"
+  },
+  {
+    "timestamp": "23:28",
+    "content": "Storage on"
+  },
+  {
+    "timestamp": "23:29",
+    "content": "the Movie File"
+  },
+  {
+    "timestamp": "23:30",
+    "content": "Output and"
+  },
+  {
+    "timestamp": "23:31",
+    "content": "start recording."
+  },
+  {
+    "timestamp": "23:33",
+    "content": "During capture,"
+  },
+  {
+    "timestamp": "23:35",
+    "content": "the recording is"
+  },
+  {
+    "timestamp": "23:36",
+    "content": "written to the"
+  },
+  {
+    "timestamp": "23:36",
+    "content": "pre-allocated"
+  },
+  {
+    "timestamp": "23:37",
+    "content": "storage and"
+  },
+  {
+    "timestamp": "23:38",
+    "content": "then moved to"
+  },
+  {
+    "timestamp": "23:39",
+    "content": "the specified"
+  },
+  {
+    "timestamp": "23:40",
+    "content": "location once the"
+  },
+  {
+    "timestamp": "23:42",
+    "content": "capture finishes."
+  },
+  {
+    "timestamp": "23:44",
+    "content": "As I mentioned"
+  },
+  {
+    "timestamp": "23:45",
+    "content": "before, this"
+  },
+  {
+    "timestamp": "23:46",
+    "content": "feature also works"
+  },
+  {
+    "timestamp": "23:47",
+    "content": "great with"
+  },
+  {
+    "timestamp": "23:48",
+    "content": "AV Asset"
+  },
+  {
+    "timestamp": "23:49",
+    "content": "Writer."
+  },
+  {
+    "timestamp": "23:49",
+    "content": "I covered"
+  },
+  {
+    "timestamp": "23:52",
+    "content": "ways to"
+  },
+  {
+    "timestamp": "23:53",
+    "content": "optimize a"
+  },
+  {
+    "timestamp": "23:53",
+    "content": "camera app"
+  },
+  {
+    "timestamp": "23:54",
+    "content": "for launch,"
+  },
+  {
+    "timestamp": "23:55",
+    "content": "best practices"
+  },
+  {
+    "timestamp": "23:56",
+    "content": "for rendering"
+  },
+  {
+    "timestamp": "23:57",
+    "content": "preview,"
+  },
+  {
+    "timestamp": "23:58",
+    "content": "APIs for"
+  },
+  {
+    "timestamp": "23:59",
+    "content": "sustained"
+  },
+  {
+    "timestamp": "24:00",
+    "content": "performance,"
+  },
+  {
+    "timestamp": "24:01",
+    "content": "and how to"
+  },
+  {
+    "timestamp": "24:02",
+    "content": "get deterministic"
+  },
+  {
+    "timestamp": "24:03",
+    "content": "file write"
+  },
+  {
+    "timestamp": "24:04",
+    "content": "speeds for"
+  },
+  {
+    "timestamp": "24:05",
+    "content": "ProRes"
+  },
+  {
+    "timestamp": "24:05",
+    "content": "captures."
+  },
+  {
+    "timestamp": "24:07",
+    "content": "Adopt"
+  },
+  {
+    "timestamp": "24:07",
+    "content": "Deferred Start"
+  },
+  {
+    "timestamp": "24:08",
+    "content": "with the"
+  },
+  {
+    "timestamp": "24:08",
+    "content": "quality photo"
+  },
+  {
+    "timestamp": "24:09",
+    "content": "output."
+  },
+  {
+    "timestamp": "24:10",
+    "content": "You'll keep"
+  },
+  {
+    "timestamp": "24:11",
+    "content": "launch fast"
+  },
+  {
+    "timestamp": "24:12",
+    "content": "and get"
+  },
+  {
+    "timestamp": "24:13",
+    "content": "gorgeous image"
+  },
+  {
+    "timestamp": "24:14",
+    "content": "quality too."
+  },
+  {
+    "timestamp": "24:15",
+    "content": "Analyze"
+  },
+  {
+    "timestamp": "24:16",
+    "content": "performance in"
+  },
+  {
+    "timestamp": "24:17",
+    "content": "other parts of"
+  },
+  {
+    "timestamp": "24:18",
+    "content": "your camera app."
+  },
+  {
+    "timestamp": "24:19",
+    "content": "Use instruments"
+  },
+  {
+    "timestamp": "24:20",
+    "content": "and Xcode"
+  },
+  {
+    "timestamp": "24:21",
+    "content": "to measure,"
+  },
+  {
+    "timestamp": "24:23",
+    "content": "identify,"
+  },
+  {
+    "timestamp": "24:24",
+    "content": "and fix"
+  },
+  {
+    "timestamp": "24:24",
+    "content": "performance issues."
+  },
+  {
+    "timestamp": "24:26",
+    "content": "And remember,"
+  },
+  {
+    "timestamp": "24:27",
+    "content": "most of the time"
+  },
+  {
+    "timestamp": "24:28",
+    "content": "you're developing"
+  },
+  {
+    "timestamp": "24:29",
+    "content": "your app at a"
+  },
+  {
+    "timestamp": "24:30",
+    "content": "desk or in a"
+  },
+  {
+    "timestamp": "24:32",
+    "content": "controlled"
+  },
+  {
+    "timestamp": "24:32",
+    "content": "environment,"
+  },
+  {
+    "timestamp": "24:33",
+    "content": "but people use"
+  },
+  {
+    "timestamp": "24:34",
+    "content": "your app in the"
+  },
+  {
+    "timestamp": "24:35",
+    "content": "real world."
+  },
+  {
+    "timestamp": "24:37",
+    "content": "Test and measure"
+  },
+  {
+    "timestamp": "24:37",
+    "content": "performance in"
+  },
+  {
+    "timestamp": "24:39",
+    "content": "all conditions,"
+  },
+  {
+    "timestamp": "24:40",
+    "content": "like on a hot"
+  },
+  {
+    "timestamp": "24:41",
+    "content": "sunny day."
+  },
+  {
+    "timestamp": "24:42",
+    "content": "Lastly,"
+  },
+  {
+    "timestamp": "24:43",
+    "content": "watch Create a"
+  },
+  {
+    "timestamp": "24:44",
+    "content": "More Responsive"
+  },
+  {
+    "timestamp": "24:45",
+    "content": "Camera Experience"
+  },
+  {
+    "timestamp": "24:46",
+    "content": "from WWDC"
+  },
+  {
+    "timestamp": "24:47",
+    "content": "23,"
+  },
+  {
+    "timestamp": "24:48",
+    "content": "and implement"
+  },
+  {
+    "timestamp": "24:50",
+    "content": "High Resolution"
+  },
+  {
+    "timestamp": "24:51",
+    "content": "Photo Capture"
+  },
+  {
+    "timestamp": "24:52",
+    "content": "from WWDC"
+  },
+  {
+    "timestamp": "24:53",
+    "content": "26 to learn"
+  },
+  {
+    "timestamp": "24:55",
+    "content": "how to integrate"
+  },
+  {
+    "timestamp": "24:56",
+    "content": "capture responsiveness"
+  },
+  {
+    "timestamp": "24:57",
+    "content": "into your app."
+  },
+  {
+    "timestamp": "25:01",
+    "content": "Performance"
+  },
+  {
+    "timestamp": "25:01",
+    "content": "isn't just a feature."
+  },
+  {
+    "timestamp": "25:03",
+    "content": "It's the foundation"
+  },
+  {
+    "timestamp": "25:04",
+    "content": "of a great"
+  },
+  {
+    "timestamp": "25:05",
+    "content": "camera experience."
+  },
+  {
+    "timestamp": "25:07",
+    "content": "Keep optimizing"
+  },
+  {
+    "timestamp": "25:08",
+    "content": "and keep capturing."
+  },
+  {
+    "timestamp": "25:10",
+    "content": "Thanks for"
+  },
+  {
+    "timestamp": "25:10",
+    "content": "watching."
+  },
+  {
+    "timestamp": "25:17",
+    "content": "and"
+  }
+]

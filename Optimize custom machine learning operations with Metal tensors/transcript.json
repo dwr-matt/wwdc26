@@ -1,0 +1,542 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, my name is Xiao. I'm a GPU software engineer. Today, I'm pleased to guide you"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "through an exploration of metal tensors and show you how to write optimized custom ML"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "kernels with Tensor Ops. Apple platforms provide first-class support for running ML models at"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "every layer of the software stack. High-level frameworks like CoreAI and MLX make it easy"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "to deploy your models with minimal code, while lower-level APIs like Metal Performance Shaders"
+  },
+  {
+    "timestamp": "0:38",
+    "content": "provide access to high-performance metal kernels. These layers all build on the low-level acceleration"
+  },
+  {
+    "timestamp": "0:44",
+    "content": "provided by Metal Performance Primitives and the Tensor Ops library. There are a few reasons why"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "you might want to work at the metal level. ML research moves quickly, so you might want to"
+  },
+  {
+    "timestamp": "0:56",
+    "content": "implement custom operations which can plug into high-level frameworks such as CoreAI. You may"
+  },
+  {
+    "timestamp": "1:02",
+    "content": "also need to write metal kernels if you are contributing to an ML framework such as MLX or"
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Lama.cpp, or if you're working on a metal-based application. The easiest way to get started is"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "using the Tensor Ops library. Tensor Ops is a metal shading language API which accelerates tensor operations"
+  },
+  {
+    "timestamp": "1:24",
+    "content": "on the GPU, including matrix multiplication and convolution. It automatically uses any available"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "hardware acceleration across all Apple Silicon GPU generations, so you don't need to worry about the"
+  },
+  {
+    "timestamp": "1:37",
+    "content": "differences between the hardware generations. In particular, it takes the full advantage of the"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "Neuron Accelerator in the M5 chip family. The Neuron Accelerator is a new hardware block in M5,"
+  },
+  {
+    "timestamp": "1:50",
+    "content": "located directly in each shader core. It sits alongside other GPU pipelines and is designed to"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "accelerate dense compute-bound work such as the pre-fill stage of an LLM."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "You can check out the related sessions to learn the basics of getting started with Tensor Ops."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "In this session, I will build on those basics, starting with best practices for working with"
+  },
+  {
+    "timestamp": "2:16",
+    "content": "Quantizer data. Then, I will show you how to build advanced customer operations, such as flash attention."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "Let's dive into the first topic, working with Quantizer data. As we know, state-of-the-art machine"
+  },
+  {
+    "timestamp": "2:31",
+    "content": "learning models are getting larger. The inference stage is typically memory's bandwidth bound."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "So, compressing the weights becomes unnecessary, both to better fit models into memory, and to save memory bandwidth."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "The standard approach for compressing weights is quantization. The idea is simple. Take higher"
+  },
+  {
+    "timestamp": "2:53",
+    "content": "position weights and reduce them into lower position data types. For example, 16-bit half position weights"
+  },
+  {
+    "timestamp": "3:01",
+    "content": "could be compressed down to just 4-bit. These quantized weights are paired with scale factors,"
+  },
+  {
+    "timestamp": "3:08",
+    "content": "which let us scale the quantized value back into the original range when it's time to compute."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "In addition to 16-bit floating point types, Tensor Ops now natively supports quantized data types."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "We added support for 4- and 8-bit integer types in the update to macOS and iOS 26. And we're extending"
+  },
+  {
+    "timestamp": "3:32",
+    "content": "support to even more data types in macOS and iOS 27. This includes 4- and 8-bit floating point types"
+  },
+  {
+    "timestamp": "3:40",
+    "content": "and 2-bit integer types. You can simply create and pass your app's quantized tensors to TensorOps,"
+  },
+  {
+    "timestamp": "3:47",
+    "content": "and it will automatically take advantage of any available hardware acceleration."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Creating a tensor with a quantized data type is very similar to creating a regular tensor."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "You fill in your descriptor's properties like any other tensor, but simply specify a quantized data type."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Then, create the tensor by calling newTensorWithDescriptor on your Meadow device."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "So, that's how you can store your quantized element data. Next, let's talk about the scale factors."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "In macOS and iOS 27, a single MTL tensor object can now represent your scales, alongside your tensor's"
+  },
+  {
+    "timestamp": "4:29",
+    "content": "quantizer data, as an additional scales plan. This plan supports the popular FP8"
+  },
+  {
+    "timestamp": "4:35",
+    "content": "EAM0 block-wide scale factor format. Each element of the scales plan applies to a block of element"
+  },
+  {
+    "timestamp": "4:42",
+    "content": "in the data plane. Declaring the scales plane is similar to declaring a tensor. First, create a"
+  },
+  {
+    "timestamp": "4:49",
+    "content": "descriptor object for the scales plane. Then, fill in the data type and block factors. Finally, create an"
+  },
+  {
+    "timestamp": "4:58",
+    "content": "auxiliary plane map to specify that this plane is for scales. Then, simply attach the auxiliary plane"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "map to your original tensor descriptor. The quantized data, scales, and the metadata will all be packed"
+  },
+  {
+    "timestamp": "5:14",
+    "content": "into a single tensor object. Now, let's put this into practice by extending a basic matrix multiplication"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "kernel to support quantization. Matrix multiplication is the core operation in machine learning workload."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "For instance, LAMs performs millions of matrix multiplication during inference."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "We covered the basics of how to write a high-performance matrix multiplication kernel with"
+  },
+  {
+    "timestamp": "5:41",
+    "content": "TensorOps in the M5 machine learning talk. The basic approach is to slice the input matrices"
+  },
+  {
+    "timestamp": "5:47",
+    "content": "into smaller tiles and then perform tile-wise matrix multiplications using TensorOps. This maximizes"
+  },
+  {
+    "timestamp": "5:55",
+    "content": "parallelism and keeps the data in the cache. We can use quantization to further reduce memory traffic"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "and fit larger models in memory. In the kernel, it helps to define type aliases up front before binding"
+  },
+  {
+    "timestamp": "6:11",
+    "content": "the tensors. Here, we declare a scale factor plane with FP8 EAM0 data type and a block size of 32 by 1."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "That means every 32 elements in the data plane share a single element in the scales plan. Then, we declare"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "a full tensor type, specifying an FP8 data type along with the scales plan. You can simply bind these"
+  },
+  {
+    "timestamp": "6:35",
+    "content": "tensors to buffer binding points. The kernel will then have access to the tensors you've allocated"
+  },
+  {
+    "timestamp": "6:41",
+    "content": "on the host side. Alternatively, if you don't want to create a full mtl tensor on the host, you can create"
+  },
+  {
+    "timestamp": "6:48",
+    "content": "a temporary tensor right on the shader stack. The syntax is almost identical. Just swap the tag"
+  },
+  {
+    "timestamp": "6:54",
+    "content": "tensor handle with tensor inline. Then, pass your buffer pointers and other metadata to the tensor constructor"
+  },
+  {
+    "timestamp": "7:02",
+    "content": "to create a tensor on the stack. As I mentioned earlier, we will divide the problem over many thread"
+  },
+  {
+    "timestamp": "7:09",
+    "content": "groups for better parallelism. First, we will slice out the tile for each thread group and then perform"
+  },
+  {
+    "timestamp": "7:15",
+    "content": "the multiplication with tensor ops. To do this, simply call slice on your input and output tensors"
+  },
+  {
+    "timestamp": "7:24",
+    "content": "using the thread group ID. The data and the scales plan will both be sliced simultaneously according to"
+  },
+  {
+    "timestamp": "7:30",
+    "content": "the block size. Setting up the matrix multiplication with quant as a tensor is identical to normal tensors."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "First, set up the memo 2D descriptor specifying the tile sizes and other parameters. Then, create a memo 2D op"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "specifying the number of cmd groups in the thread group. Then, simply pass in your quant as a tensor"
+  },
+  {
+    "timestamp": "7:54",
+    "content": "and tensor ops will handle the dequantization for you. In most cases, you should fit your quant as a data"
+  },
+  {
+    "timestamp": "8:01",
+    "content": "straight into tensor ops so that it can automatically utilize any available hardware acceleration."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "However, if you need to dequantize the custom format, tensor ops still have you covered."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "The simplest approach is to have each thread load a chunk of quantized data from device memory and"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "dequantize it to F16 values in the thread group memory. You can then pass it as an inline thread group"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "tensor to tensor ops. However, this approach requires extra load and stores through thread group memory."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "Ideally, we will keep all this data in thread registers instead. You can do this by dequantizing the data"
+  },
+  {
+    "timestamp": "8:43",
+    "content": "into a cooperative tensor, which can now be passed as the input to the memo 2D op. Cooperative tensors"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "distribute their storage across the thread private memory of the thread participating in the memo operation."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "So, if you cannot use quantized tensor directly, you can still skip the round trip through thread group memory."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "To recap, metal tensors natively support a wide range of quantized data types, including the new"
+  },
+  {
+    "timestamp": "9:12",
+    "content": "MX scaling formats and the E-M0 scale factors coming in ls and macOS 27. Know that these new data types have"
+  },
+  {
+    "timestamp": "9:22",
+    "content": "additional alignment requirements compared to the larger data types. So be sure to check the"
+  },
+  {
+    "timestamp": "9:27",
+    "content": "metal documentation for details. Now, let's take it up a notch, building a full, more complex"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "customer operation with tensor ops. Attention is at the core of every transformer network, including lms."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "To compute attention, you first multiply two matrices together, called q and k. Next, you compute"
+  },
+  {
+    "timestamp": "9:52",
+    "content": "the softmax using reductions on the rows of intermediate matrix. Finally, you multiply by a third matrix called v."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "The popular flash attention algorithm fuses all these operations together into a single kernel."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "To implement this with TensorOps, you will first need to set up a custom CMD group mapping,"
+  },
+  {
+    "timestamp": "10:14",
+    "content": "so that each CMD group owns complete rows of the intermediate matrix. This allows you to compute the"
+  },
+  {
+    "timestamp": "10:22",
+    "content": "software max without exchanging data between CMD groups. You can do this using the execution CMD group"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "operation scope. This means that each CMD group will perform an independent matrix multiplication in parallel."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "You can use the CMD group id to slice your input tiles. We will use a cooperative tensor to store the intermediate matrix"
+  },
+  {
+    "timestamp": "10:46",
+    "content": "so that we can use it as an input to the next step without writing it to the memory. We will compute"
+  },
+  {
+    "timestamp": "10:52",
+    "content": "software max on the result. To do this, we will need to compute a couple of reductions on the cooperative tensor."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "TensorOps includes a reduceRows function to help with this. Threads will exchange data among themselves to"
+  },
+  {
+    "timestamp": "11:08",
+    "content": "calculate the max for each row. The result is returned in another cooperative tensor."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "Let's set it up. First, create a cooperative tensor to store the reduction output. Then, pass the source"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "end destination to the reduceRows function. Here, we will use the maxed reduction operation with an initial"
+  },
+  {
+    "timestamp": "11:31",
+    "content": "value of a negative infinity. These two cooperative tensors have different shapes, so to help map"
+  },
+  {
+    "timestamp": "11:40",
+    "content": "between them, TensorOps also include a map iterator function. Given an iterator pointing to an element in"
+  },
+  {
+    "timestamp": "11:47",
+    "content": "the reduction destination. First, set up a loop over the 2D cooperative tensor using iterators. Then, call"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "mapIterator to map each element to its corresponding rowmax. Finally, dereference these iterators to"
+  },
+  {
+    "timestamp": "12:09",
+    "content": "compute the software max and store the result back into the cooperative tensor. Now, we are ready to"
+  },
+  {
+    "timestamp": "12:16",
+    "content": "multiply this cooperative tensor by v. In macOS 26, you will have to first store it to thread group memory,"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "but it's now possible to use cooperative tensors directly as inputs to minimal operations."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "To do this, call getLeftInputCooperativeTensor method, passing the source cooperateTensor as an argument."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "You can then pass the result as an input to the second minimal operation. One thing to watch out for,"
+  },
+  {
+    "timestamp": "12:48",
+    "content": "not every cooperative tensor can be reused as an input. The layouts may be different depending on the data"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "types and other factors. So, before you do this, call the isCompatibleAsLeft or RightInput method to"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "check for compatibility. If it returns true, you're good to go. If not, you will need to store and reload the data"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "through thread group memory to convert it to the correct layout. Either way, the call to op.run is the same."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Those are the key TensorOps features you will need to build an advanced operation like flash attention using"
+  },
+  {
+    "timestamp": "13:26",
+    "content": "TensorOps. Now that we've walked through how to build this operation, let's see how it runs in a real model"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "using CoreAI. CoreAI provides tools for Python developers to convert PyTorch models to CoreAI models,"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "including support for customer metal kernels. Check out the Deep Dive into CoreAI Model Authoring and"
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Authorization session for the details of how to integrate a metal kernel into a CoreAI model."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "I followed the steps outlined in that session to integrate our customer flash attention kernel"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "into a SAM3 image segmentation model. We define the body of our customer attention kernel as a string in"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "Python and register the Torch metal kernel object, shown here. Then we replace the default HuggingFace"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "attention implementation with one that calls our kernel, shown here."
+  },
+  {
+    "timestamp": "14:25",
+    "content": "Finally, we load the model from HuggingFace and export it from Petwatch as optimized CoreAI asset."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "The export will take a moment to finish."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "Now we're ready to do the inference. SAM3 performs the promptable concept segmentation, so we provide the model with the image and text, and then it responds with the segmentation mask indicating where objects are located in the image."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "Here I'm prompting the model to label all pixels containing a car in this image."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "Okay, now I will run the segmentation."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "Looking at the final result, we can see the model correctly segmented the image."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "The car is highlighted in blue, so our attention kernel is fully integrated into the model as expected."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "Today, I've covered all the tools you can use to build optimized customer ML kernels on Apple Silicon,"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "from quantized data types, to advanced TensorOps features like cooperative tensors and reductions, to integrating with CoreAI."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "To go further, explore the Metal Performance Primitive documentation for the full API reference,"
+  },
+  {
+    "timestamp": "15:48",
+    "content": "add the programming guide for more performance optimization guidelines."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "You can also download the TensorOps sample code to see the details that I couldn't cover here."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "And be sure to check out the related sessions to learn more about CoreAI and Metal."
+  },
+  {
+    "timestamp": "16:03",
+    "content": "Thank you."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "For the мам мам мам мам мам мам мам мам мам мам мам мам мам"
+  },
+  {
+    "timestamp": "16:15",
+    "content": "мам мам"
+  },
+  {
+    "timestamp": "16:16",
+    "content": "мам мам"
+  },
+  {
+    "timestamp": "16:17",
+    "content": "мам"
+  }
+]

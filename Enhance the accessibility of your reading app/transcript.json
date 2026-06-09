@@ -1,0 +1,734 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Josh, and I'm a software engineer on the accessibility team."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "Today, I'm going to talk about how to make your long-form text or reading app accessible to everyone on Apple platforms."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "Reading long-form content is fundamentally different from navigating UI."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "It's about moving fluidly through text, not just moving between UI elements like controls."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "Apple's frameworks come built in with accessible text in mind."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "But there's more work you can do as a developer to enrich and extend the accessibility experience with long-form text."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "Today, I'm going to share some best practices and techniques for you to consider as you build your long-form content."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "First, I'll talk about what characteristics make up a great reading experience for someone using VoiceOver or another assistive technology."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "Then, I'll show how you can use and extend views from UIKit and SwiftUI using rich APIs designed specifically for the reading experience."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "And last, I'll cover how you can make custom text in your app accessible to VoiceOver, SpeakScreen, or the accessibility reader."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "Starting off, I'll discuss what makes a great accessible experience in an app that displays long-form content."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "Today, I want to build an app so that I can share recommendations and travel tips for one of my favorite cities, Chicago."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "My app has paginated content with multiple paragraphs and text that wraps across multiple lines."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "I want to make sure that anyone using an assistive technology has a great experience with this app."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "In this session, I'll focus on two popular assistive technologies built into Apple platforms, VoiceOver and SpeakScreen."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "VoiceOver is Apple's built-in screen reader designed for individuals who are blind or low vision."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "When I activate it, I can hear whatever is highlighted by the cursor."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "Google мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам мам"
+  },
+  {
+    "timestamp": "2:48",
+    "content": "At lunchtime, we walked along the Chicago River."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "The riverfront path gave us great views of the city's magnificent architecture."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Our favorite view was from the middle of the DuSable Bridge, where we could look straight down the river."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "Keeping these technologies in mind, I've made three goals to improve the interaction between those features and my app."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "Specifically, I want to make sure my app offers granular text navigation, so that voiceover and speak screen can fluidly move through the text."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "I also want to make sure I'm developing a continuous reading experience, so someone using an assistive technology doesn't encounter any interruptions."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "Lastly, I want to make sure my app provides comprehensive text selection."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "I'm going to focus on these main goals during the rest of this video, and make sure that my travel app satisfies them all."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Apple's frameworks provide many text components that are accessible right out of the box."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "So now I'll focus on what those are, what they provide you, and how you can extend them with additional functionality."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Both UIKit and SwiftUI provide accessible text views that allow for line, word, and character navigation with voiceover and speak screen, alongside accessible text selection."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "You might already be familiar with UI accessibility reading content, which is a great way to make full-page content accessible."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "While I'm not going to focus on that protocol, you can still use it and adopt it on top of everything I'll discuss today."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "To learn more, check out Creating an Accessible Reading Experience."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "Today, I'm going to focus on UI Text Input, a higher-fidelity protocol that native text views use, and one that you can adopt as well on custom views."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "Standard text views across the system adopt the UI Text Input protocol."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "With UIKit, using UI Text View on iOS will give you a rich text experience from the get-go, as will Text Editor in SwiftUI."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "You can even use a simple SwiftUI Text View with selection enabled and benefit from these features on all Apple platforms."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "For those of you building macOS apps, using AppKit's NS Text View or the SwiftUI views discussed will give you these benefits as well."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "When the constraints of your app allow, you should always try to use these components."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "In my Travel Guide app, I chose to use UI Text Views for each individual paragraph for its accessible properties."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "The unique layout I designed required me to use separate text views for each paragraph, rather than one that contained multiple paragraphs."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "I'll first assess how I'm doing with my goal of providing granular text navigation."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "VoiceOver has a setting that allows someone to choose what granularity of text is read when touching their finger on the screen."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "I have my preference set to lines, so with VoiceOver on, I am able to tap on any line on the screen and hear the line read aloud."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "VoiceOver also provides options to change the way it moves through a feature called Rotors."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "The active rotor can be changed using a two-finger rotation gesture to switch modes."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "Now, I will switch into the lines rotor using that gesture and swipe down with one finger to find the next line on the page."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "Lines."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "The views of the Chicago skyline."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "Now, I'll try moving from the end of this paragraph to the first line of the next one."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Right now, because each of these paragraphs are separate views, VoiceOver is stuck navigating by line within the paragraph, so someone can't fully explore the page by line and is why that sound is played."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "To allow VoiceOver to move between paragraphs seamlessly, iOS 18 introduced the text navigation APIs."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "For each text element you want to connect, return the next and previous accessible text element that VoiceOver should navigate to."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "For example, if I have two paragraph views, I can return paragraph 2 from paragraph 1's accessibility next text navigation element method and paragraph 1 from paragraph 2's accessibility previous text navigation element."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "Here, I have the controller for the pages in my travel guide app."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "During setup, when the configure navigation element's code path is run, I set the proper navigation element in each direction, where applicable."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "Now that I've implemented it, VoiceOver can move past the end of one paragraph and onto the first line of the next."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "Before we left the park, we made sure to stop in the free zoo to check out all of the..."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "And if you're using SwiftUI, starting in iOS 27, linking multiple text elements together using the accessibility linked group modifier will achieve the same effect."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "For example, I have an equivalent page view here with two selectable text elements."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "By linking them both with accessibility linked group using the same ID and namespace, they will get the text navigation behavior."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "And if you're using AppKit on Mac, check out accessibility shared text UI elements for a similar result."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "Now I know that VoiceOver can navigate around the pages of my app with different text granularities, without any unexpected gaps."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "But I also set out to make sure that the continuous reading experience of my app is as smooth as possible."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Paginated content, by nature, requires swiping between pages."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "The goal is for assistive technologies to interact with this content seamlessly, without the pages getting in the way."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "VoiceOver and SpeakScreen both have features that allow someone to read all content, from start to end, without having to swipe."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "VoiceOver and SpeakScreen is a little bit more."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "I'll explore my current app experience with SpeakScreen."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "To do a read all, I'll swipe down from the top of my screen with two fingers."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "Midday."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "At lunchtime, we walked along the Chicago River."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "The riverfront path gave us great views of the city's magnificent architecture."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Our favorite view was from the middle of the DuSable Bridge, where we could look straight down the river."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "You'll notice that SpeakScreen stopped reading when it got to the bottom of the page."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "With paginated content, the best experience for a read all would be to move through all of the pages, advancing when appropriate, similar to an audiobook."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Here I have my app's page view controller again."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "In my ViewDidLoad override, I can apply the CausesPageTurn trait to the last paragraph on my page, which is available in both UIKit and SwiftUI."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "And when paired with AccessibilityScroll, SpeakScreen and VoiceOver will automatically scroll the page when it reaches the end."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "I'll try using SpeakScreen with that trait applied to my last paragraph."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "Midday."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "At lunchtime, we walked along the Chicago River."
+  },
+  {
+    "timestamp": "10:24",
+    "content": "The riverfront path gave us great views of the city's magnificent architecture."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "Our favorite view was from the middle of the DuSable Bridge, where we could look straight down the river."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "Evening."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "To end the day, we walked along the lakefront alongside groups of runners and cyclists."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "This gave us another great view of the skyline towering over the waters of Lake Michigan."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "Great!"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "SpeakScreen automatically moved focus to the next page when it finished reading, just like I'd expect."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "If you recall from earlier, the last behavior I want to validate is how text selection works with VoiceOver."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "In my app, I added a feature to save selected content for referencing later by using a button in the toolbar."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "I need to make sure this feature is accessible."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "I'm using a UI text view here, which already has accessible selection."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "You'll get the same experience by using text editor or text with selection enabled in SwiftUI."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "But I also want people to be able to discover this save recommendation feature for their selected text."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "Visually, I added this button to my toolbar to save the current selection."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "But I can make this even more discoverable to VoiceOver through the edit rotor."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "To do this, I can create a custom action and add it to VoiceOver's edit rotor by specifying the edit category when building my action."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "In my case, I'll override accessibility custom actions on my paragraph UI text view subclass and add my save recommendation custom action alongside any actions from the super implementation."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "Be sure to use the edit category when you have a custom action that would be associated with text selection rather than a generic action."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "Now, I'm going to turn VoiceOver on to try it out."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "To select text, I'll switch to the text selection rotor, switch to word edit mode, and increase my selection by swiping right."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "Text selection."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "Text selection. Swipe right to expand selection. Swipe left to shrink selection."
+  },
+  {
+    "timestamp": "12:36",
+    "content": "Word selection."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "Our favorite view was from the middle of the DuSable bridge. Selected."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "With the text selected, I'll switch to the edit rotor and activate the save selection action to save it."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "Text selection."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Lines. Words. Characters. Edit."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "Save selection. Text saved."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "Great. Now I have an accessible app experience using system text views and unlocked a new set of accessible reading features by adopting APIs."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "Line navigation across elements, continuous reading, and text selection all work as I'd expect."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "And the best part is that VoiceOver and SpeakScreen aren't the only technologies to benefit from these changes."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "Since iOS 26, someone can open the Accessibility Reader, a tool designed to display text content for easier consumption."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "I have added the reader control to my control center, so pressing that opens my app's content in the Accessibility Reader."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Implementing accessible text practices like I've shared so far will make the reader experience better for your content as well."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "That's how you make standard text views accessible for reading content."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "And while I'd always recommend reaching for those views first, not every situation allows for them."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Now I'm going to focus on what you should do when you are using custom text or custom text elements in your app to make them accessible."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "Using custom text is a common pattern seen in dedicated reading apps to support advanced topography, shared code across the developer's applications, or displaying of scanned pages."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "When I travel, I like to take handwritten notes on the places I go."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "So I've decided to replace my text views with scanned-in pages from my notebook to give it a more personal touch."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "Unfortunately, this means that I've lost the accessibility behavior that UI TextView gave me for free, including the most basic thing, reading out the text."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "Morning, heading, image."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "The best way to make this content accessible is by using the UI Text Input protocol, which can be adopted on any accessibility element."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "This protocol can make rendered text or text in images, for example, just as accessible as if they were in standard text views."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "Fully implementing UI Text Input gives you the same text experience you'd get as if you were using a native text view."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "You'll get line-by-line touch exploration with voiceover, granular navigation with the voiceover rotor and speak screen, and text selection."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "To implement this protocol, you'll have to solve for a few problems."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "You'll need to manage the geometry of your text and compute selection rectangles for a given range, for example, in the selection recs method."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "When an assistive technology queries for a range in your view, you'll need to be able to return just that portion of text."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "And importantly, you'll need to provide a tokenizer, which will help manage navigation by line, sentence, word, or character."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "And these are just a few things you'll need to implement."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "To get all of the accessibility benefits of this protocol, make sure you implement it in its entirety."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "In my app, I've implemented this protocol on my accessibility elements to make the text accessible."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "Here, I've implemented the selection recs method from this protocol, which determines how voiceover and other assistive technology highlight my content."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "Since I'm working with handwriting from an image, I can use the known height and width of each line to compute the approximate recs for a given range using a custom function, selection recs from image."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "I then use this information to build out my array of selection recs, which I'll return from this method."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "I'll also complete implementations for the rest of the methods in the protocol, such as grabbing the right substring for text in range and providing a tokenizer."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "In my case, I've subclassed the UI text input string tokenizer provided by UIKit to create a custom tokenizer that works with my implementation."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "So I'll return that."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "Lastly, I want my selection experience to feel complete visually with selection handles and highlights."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "To do this, I added a UI text interaction to my page view and call the input delegate when my selection changes so the system knows to update the visuals."
+  },
+  {
+    "timestamp": "17:26",
+    "content": "This isn't required as part of the UI text input implementation, but rounds out my app by matching expectations about the experience in a standard text view."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "UI text input also works great in conjunction with the causes page turn and navigation element APIs."
+  },
+  {
+    "timestamp": "17:43",
+    "content": "So I've made sure to implement those as well in the new version of my app."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "I've finished updating my app, taking the time to carefully implement the rest of the UI text input protocol on my scanned in text and ensuring that I've implemented all of the APIs necessary."
+  },
+  {
+    "timestamp": "18:00",
+    "content": "So now I'm going to check out the voiceover experience."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "First, I'm going to navigate by line."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "Lines."
+  },
+  {
+    "timestamp": "18:09",
+    "content": "We started out our morning in Lincoln Park, admiring the views of the Chicago skyline."
+  },
+  {
+    "timestamp": "18:16",
+    "content": "The zoo had lots of animals."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "Now, I will select some text by switching to the text selection rotor and swiping right."
+  },
+  {
+    "timestamp": "18:26",
+    "content": "Text selection."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "Swipe right to expand selection."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "Swipe left to shrink selection."
+  },
+  {
+    "timestamp": "18:33",
+    "content": "Line selection."
+  },
+  {
+    "timestamp": "18:35",
+    "content": "The zoo had lots of animals."
+  },
+  {
+    "timestamp": "18:37",
+    "content": "Selected."
+  },
+  {
+    "timestamp": "18:38",
+    "content": "Lines."
+  },
+  {
+    "timestamp": "18:39",
+    "content": "Words."
+  },
+  {
+    "timestamp": "18:40",
+    "content": "Characters."
+  },
+  {
+    "timestamp": "18:41",
+    "content": "Edit."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "Save selection."
+  },
+  {
+    "timestamp": "18:44",
+    "content": "Text saved."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "And finally, I can try a read-all."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "Morning."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "Heading."
+  },
+  {
+    "timestamp": "18:53",
+    "content": "We started out our morning in Lincoln Park, admiring the views of the Chicago skyline."
+  },
+  {
+    "timestamp": "18:58",
+    "content": "The zoo had lots of animals."
+  },
+  {
+    "timestamp": "19:00",
+    "content": "Midday."
+  },
+  {
+    "timestamp": "19:01",
+    "content": "Heading."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "At lunchtime, we walked along the Chicago River."
+  },
+  {
+    "timestamp": "19:04",
+    "content": "The view from the DuSable Bridge was perfect for photos."
+  },
+  {
+    "timestamp": "19:09",
+    "content": "Amazing."
+  },
+  {
+    "timestamp": "19:10",
+    "content": "It all works seamlessly."
+  },
+  {
+    "timestamp": "19:12",
+    "content": "Now that I've covered what makes a great reading experience and the APIs that make it possible,"
+  },
+  {
+    "timestamp": "19:18",
+    "content": "it's time for you to examine your own app."
+  },
+  {
+    "timestamp": "19:21",
+    "content": "Audit your app with VoiceOver on, trying out the read-all gesture, navigate using the lines rotor, and selecting text."
+  },
+  {
+    "timestamp": "19:31",
+    "content": "If you're using standard text views, consider adopting CausesPageTurn and the text navigation element APIs for a smooth cross-page reading behavior."
+  },
+  {
+    "timestamp": "19:40",
+    "content": "If you use custom rendered text, adopt UI text input."
+  },
+  {
+    "timestamp": "19:46",
+    "content": "Doing this work will enable a great experience for everyone who downloads your app."
+  },
+  {
+    "timestamp": "19:51",
+    "content": "Happy reading."
+  },
+  {
+    "timestamp": "19:51",
+    "content": "Googlecidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacidacida"
+  }
+]

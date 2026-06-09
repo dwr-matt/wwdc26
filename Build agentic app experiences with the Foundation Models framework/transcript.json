@@ -1,0 +1,1038 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Eric Bauer, Hello everyone, and thank you for joining us."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "My name's Eric."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "And I'm Oliver."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Today, we're going to dig into a new set of APIs that open up whole new possibilities for your apps."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "Dynamic profiles."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "But before we dive into the code, we want to lay the groundwork by identifying the problems these APIs solve,"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "and our philosophy behind their design."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "The first challenge these APIs solve is context management."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "In long-running sessions, dynamic profiles let you trim or summarize the transcript to keep it within the model's context window."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "The second problem these APIs solve is establishing boundaries."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "When using multiple models, you should design around capability and cost considerations."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "Dynamic profiles give you that option."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "This field is changing week to week."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "The primitives that we're introducing are designed to be flexible, ensuring it's possible to build today's abstractions and tomorrow's."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "Exactly."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "Dynamic profiles enable context engineering, defining model boundaries, and can be scaffolded into just about any architecture."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "And it's in that spirit today that we're announcing a new package."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "Foundation models framework utilities."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "Utilities is an open source Swift package that houses components helpful for building agentic experiences."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "It will be updated in between OS releases and give you access to emerging or experimental patterns, all backed by dynamic profiles."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "So now that we've set the stage, let's jump into our agenda."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "In the first half of this video, Oliver is going to teach you about the mechanics of dynamic profiles."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "In the second half, I'll rejoin to cover some advanced topics related to orchestration patterns."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Finally, we'll wrap up with a foray into performance and accuracy considerations."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "And so with that, it's over to you, Oliver."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "Thanks, Eric."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "мам мам мам мам мам мам"
+  },
+  {
+    "timestamp": "2:04",
+    "content": "мам"
+  },
+  {
+    "timestamp": "2:05",
+    "content": "мам"
+  },
+  {
+    "timestamp": "2:06",
+    "content": "мам"
+  },
+  {
+    "timestamp": "2:20",
+    "content": "!"
+  },
+  {
+    "timestamp": "2:06",
+    "content": "мам"
+  },
+  {
+    "timestamp": "2:20",
+    "content": "мам"
+  },
+  {
+    "timestamp": "2:22",
+    "content": "Profile is the foundation on which you can build many useful abstractions, such as agents"
+  },
+  {
+    "timestamp": "2:27",
+    "content": "or skills."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "Today, I'll give you a tour of the API, starting with leveraging multiple models before diving"
+  },
+  {
+    "timestamp": "2:34",
+    "content": "into transcript considerations and finishing with session lifecycle events."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "Let's start by looking at an example."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "I'm working on a craft app called Origami, which can produce both origami and crochet"
+  },
+  {
+    "timestamp": "2:48",
+    "content": "tutorials."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "Here, the user will upload images and our app will help them brainstorm ideas using the"
+  },
+  {
+    "timestamp": "2:55",
+    "content": "image as inspiration."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "The user can provide feedback on the shortlist of ideas before a tutorial is generated for"
+  },
+  {
+    "timestamp": "3:03",
+    "content": "the selected concept."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "While the user works through the tutorial, they can upload in-progress photos and get advice"
+  },
+  {
+    "timestamp": "3:10",
+    "content": "on their technique."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "Each stage in the app requires shared context, but individually, they have a unique set of"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "capabilities."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "They may benefit from a diverse set of models with different instructions and generation"
+  },
+  {
+    "timestamp": "3:25",
+    "content": "options."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "These configurations are agents."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "They act on your app's behalf and are configured with a particular goal and set of capabilities"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "in mind."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "Dynamic Profile allows you to declare individual profiles, which represent a configuration state"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "or agent in your language model session."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "A profile is made up of instructions, tools, and modifiers for configuring things like the"
+  },
+  {
+    "timestamp": "3:50",
+    "content": "model, temperature, sampling mode, and more."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "So let's start by declaring a dynamic profile for our craft experience."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "Here, we have an observable class called Craft Orchestrator that will track the different phases of"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "the app."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "We'll focus on the brainstorming phase first, which is used for presenting different craft"
+  },
+  {
+    "timestamp": "4:12",
+    "content": "project ideas to the user."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "Here, our new profile has some instructions explaining its goal and a tool for generating titles."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "Because origami is a complicated craft, let's also include some additional instructions and"
+  },
+  {
+    "timestamp": "4:29",
+    "content": "tools, but only when the user is working on an origami project."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Origami Expert makes use of another new type called Dynamic Instructions."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "Dynamic Instructions enables grouping of relevant tools and instructions together into a"
+  },
+  {
+    "timestamp": "4:45",
+    "content": "single component that can be reused throughout your codebase."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "Origami Expert contains knowledge and tools that can be reused every time we're prompting"
+  },
+  {
+    "timestamp": "4:55",
+    "content": "a model about origami."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "Dynamic Instructions are also composable, so nesting Origami Expert inside another Dynamic"
+  },
+  {
+    "timestamp": "5:04",
+    "content": "Instructions body will concatenate the instructions and tools together."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "Here we've created Brainstorm Facilitator to hold our profile's instructions."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "Now we can clean up our Brainstorming profile using the new declaration."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "Since Brainstorming requires both a broad knowledge of crafts and creative thinking, this profile"
+  },
+  {
+    "timestamp": "5:26",
+    "content": "will use Private Cloud Compute Language Model, which is a new model available in Foundation"
+  },
+  {
+    "timestamp": "5:32",
+    "content": "Models."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "Be sure to check out the talk from Louis on PCC in Foundation Models to learn more about"
+  },
+  {
+    "timestamp": "5:39",
+    "content": "what this model has to offer."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "We'll also set the temperature to 1 to allow the model to produce more creative responses."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "We've just defined our first agent using Dynamic Profiles."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "Let's move on to the next mode in our profile, Planning."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "The Planning Profile is responsible for creating directions for an agreed-upon craft project."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "Again, we'll use PCC Language Model since this requires in-depth knowledge of crafts."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "We'll also configure Reasoning Level, which is a capability available to most server models."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "This controls the model's capacity to think through the problem before responding."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "Since generating a tutorial is complex, we'll set it to Deep."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "Lastly, the reviewing phase provides advice and guidance as the user works through the tutorial."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "To save on unnecessary server calls, this makes use of System Language Model."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "And just like that, we've finished defining our crafting Dynamic Profile."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "To make use of Dynamic Profile in your session, it's as simple as using the new Language Model"
+  },
+  {
+    "timestamp": "6:48",
+    "content": "Session initializer."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "Note that the body of a Dynamic Profile is re-evaluated each time the model is prompted."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "So as the app moves between each mode, the persona of the Language Model Session changes."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "You can think of this as swapping hats or switching agents."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "You can move from brainstorming to planning to reviewing, all by changing the mode."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "You've now seen how you can route between different models using Dynamic Profile."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "But it's important to consider that each model may have different context size limits."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "Our craft example switches between PCC Language Model and System Language Model."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "When moving between models, you may need to trim unnecessary entries to stay within the context"
+  },
+  {
+    "timestamp": "7:36",
+    "content": "size."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "But that's not the only reason for adjusting the model's context."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "You can also improve the model's focus by removing irrelevant entries or redact private information"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "from existing entries when moving to a less private model."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "The transcript is Language Model Session's representation of the model's context."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "Dynamic Instructions offers one way to modify the transcript."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "More specifically, it allows modifying the Instructions entry."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "For updating the remaining entries, we'll use a window into the transcript called History."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "Dropping tool calls is one easy way to trim history."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "Let's take a look at how you'd implement this."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "History transform can be applied to a profile to transform the history prior to prompting the"
+  },
+  {
+    "timestamp": "8:25",
+    "content": "model."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "This is the opportune time to filter out entries that may not be necessary for the request."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "Applying a transformation on our reviewing profile helps keep the transcript within the on-device"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "model's context size."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "Transforms don't permanently mutate the session's transcript."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "Instead, they're local transformations applied prior to prompting the model."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "This means you don't need to worry about losing context that may become relevant at a later"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "point."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "Our history transform has a lot going on."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "Let me show you how we can use custom modifiers to hide the complexity of our transform."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "First, we'll declare a new type that conforms to dynamic profile modifier and apply our history"
+  },
+  {
+    "timestamp": "9:10",
+    "content": "transform."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "We can then make it available for reuse by implementing an extension on dynamic profile."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "Any new profiles that would benefit from reducing context can now utilize the new modifier."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "We've made a number of useful modifiers available in the new Foundation Models Framework Utilities"
+  },
+  {
+    "timestamp": "9:30",
+    "content": "package."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "We encourage you to take a look."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Custom modifiers are a great way to build reusable configuration for your declarations."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "But transforms aren't the only way that you can influence the transcript."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "Let's take a look at another more stateful approach."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "At certain points in the session, you may need to summarize earlier entries from the existing"
+  },
+  {
+    "timestamp": "9:54",
+    "content": "transcript to reclaim context."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "Doing this after each model's response provides a clear boundary in the session's lifecycle."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "Let's take a look at how we can perform our summarize operation after each response using a new set of modifiers."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "Lifecycle modifiers provide access to your profile's progress by giving you the opportunity to run imperative"
+  },
+  {
+    "timestamp": "10:17",
+    "content": "code directly in your profile declaration."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "This can be useful for updating state external to your session, like reflecting progress in UI."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "But it's also useful for internal state updates, like changing the mode in our craft profile or modifying the session's history."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "Let's use the onResponse modifier to mutate the history at the response boundary that I mentioned earlier."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "You'll notice this is also making use of another new concept, session properties."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "Session properties allow you to define state that's accessible from any tool or profile."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "The history property that we just used is a built-in property provided by the framework."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "It captures the session's history and can be used as an alternative to history transform for updating the transcript."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "Keep in mind that the history property is lossy and its changes will be reflected across all profiles in the session."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "For lossless transformations targeted to specific profiles, you should prefer history transform."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "In addition to history, you can also create your own session properties."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "Let's create a new property to store our conversation summary when onResponse is called."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "You can declare properties using the atSessionPropertyEntry macro within an extension on session property values."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "All session properties are mutable and must have an initial value."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "Here, we've declared our summary as an optional string."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Each profile can now read the value of the summary by accessing the session property that we just declared."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "We'll include the summary in our profile's instructions to ensure they have the context on the transcript entries that were dropped."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "Any profile can write to the property and changes will be visible across the session."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "Now let me produce a conversation summary for you."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Use lifecycle modifiers to run code at specific points in the session."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "Use the history property to update the session's history for all profiles."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "Use custom session properties for storing state that's shared by all session components."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "And with that, I'll hand it back to Eric to teach you about agent orchestration."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Thanks, Oliver."
+  },
+  {
+    "timestamp": "12:36",
+    "content": "Hopefully, you're starting to develop an intuition for how profiles can be used to build things like agents."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "Let's take a look at two common patterns for orchestrating agentic experiences."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "We like to refer to these patterns as BatonPass and Phone-a-Friend."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "BatonPass is a collaboration and Phone-a-Friend is a consultation."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Let's look at BatonPass first."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "In this pattern, there are two or more profiles, typically each leveraging different models."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "There also needs to be a variable that controls which profile is active."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "Finally, we give each profile a tool that allows the model to set that variable."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "Together, these pieces make up the BatonPass pattern."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "If we're currently brainstorming and ask how to fold a crane,"
+  },
+  {
+    "timestamp": "13:30",
+    "content": "the brainstorm profile will call a tool to pass the baton to the tutorial profile."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "A tool output signals a successful handoff, and the tutorial profile produces the final answer."
+  },
+  {
+    "timestamp": "13:43",
+    "content": "The most important attributes of the BatonPass pattern are that the full transcript history"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "is visible to both profiles, and that the profile that receives the Baton"
+  },
+  {
+    "timestamp": "13:54",
+    "content": "can carry it across the finish line and provide the final response."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "Both of those attributes will be in contrast to the next pattern we look at, Phone-a-Friend."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "In the Phone-a-Friend pattern, you also rely on tool calling."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "The key difference is that instead of toggling a variable, the tool spawns a short-lived session."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "If we ask for a fun project for kids, the model may reason that it needs a title for the project"
+  },
+  {
+    "timestamp": "14:25",
+    "content": "and call its Phone-a-Friend tool to consult with the title profile."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "The Phone-a-Friend tool spawns a new session with an independent transcript,"
+  },
+  {
+    "timestamp": "14:35",
+    "content": "prompts it, and then delivers the response back as tool output."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "The child session disappears, and the parent session produces the final response."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "The most important attributes of the Phone-a-Friend pattern are that the transcripts for each profile are isolated,"
+  },
+  {
+    "timestamp": "14:53",
+    "content": "and that the parent profile is always responsible for giving the final answer."
+  },
+  {
+    "timestamp": "14:58",
+    "content": "BatonPass and Phone-a-Friend are good tools to have in your belt, but there are other options as well."
+  },
+  {
+    "timestamp": "15:05",
+    "content": "For example, the Foundation Models Framework Utilities Package houses a skills type,"
+  },
+  {
+    "timestamp": "15:11",
+    "content": "which you may be familiar with as a popular pattern for procedural context loading."
+  },
+  {
+    "timestamp": "15:16",
+    "content": "So now that you've got a grasp on the many ways tools can be used for orchestration,"
+  },
+  {
+    "timestamp": "15:21",
+    "content": "we're going to look at a new knob you can use to exert control over when tool calls happen, tool calling mode."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "Tool calling mode has three options, allowed, disallowed, and required."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "The default value is allowed, which is the existing behavior."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "The model may produce a tool call, or it may respond directly."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "This is the option to use when you just don't know if tools will be necessary or not,"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "which is the most common case."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "Disallowed prevents the model from calling tools."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "This can be helpful if the user navigates into a part of your app where the session's tools are known to be irrelevant."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "Finally, required means that the model can only call tools,"
+  },
+  {
+    "timestamp": "16:06",
+    "content": "and this can be particularly useful in agentic systems that represent all actions as tool calls."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "If you're using profiles, you can specify tool calling mode with a modifier."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "If you're not using a profile, tool calling mode can be set via generation options when calling respond to."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "Here is the most important thing to remember."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "When tool calling is required, the model is essentially in a while loop."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "It is your job to ensure that there is an exit condition of some kind."
+  },
+  {
+    "timestamp": "16:41",
+    "content": "One good option is to conditionalize the tool call mode on a variable."
+  },
+  {
+    "timestamp": "16:47",
+    "content": "Here, we're requiring tool calls until the model calls the database tool."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "A second, more forceful option is to equip your model with a final answer tool that throws an error."
+  },
+  {
+    "timestamp": "17:00",
+    "content": "Throwing an error aborts the tool calling loop and immediately returns control flow to you."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "By default, when you throw an error from a tool or when you cancel a response,"
+  },
+  {
+    "timestamp": "17:11",
+    "content": "your session's transcript will roll back to its previous state."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "For advanced use cases where you want to allow canceling partway through a response and then resuming again,"
+  },
+  {
+    "timestamp": "17:23",
+    "content": "you need to keep your transcript in state after an error."
+  },
+  {
+    "timestamp": "17:27",
+    "content": "We've added new API to enable this."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "If you're using profiles, you can now set transcript error handling policy using a modifier."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "If you're not using a profile, you can set it directly on your session."
+  },
+  {
+    "timestamp": "17:42",
+    "content": "The two options are revert transcript and preserve transcript."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "When using preserve transcript, the onus is on you to put your transcript back into a good state"
+  },
+  {
+    "timestamp": "17:56",
+    "content": "if you intend to continue using your session."
+  },
+  {
+    "timestamp": "18:00",
+    "content": "To facilitate that, the transcript property on session is now mutable."
+  },
+  {
+    "timestamp": "18:05",
+    "content": "Remember though, you can only modify the transcript when the session's is responding property is false."
+  },
+  {
+    "timestamp": "18:12",
+    "content": "Attempting to mutate the transcript during a response is a programmer error."
+  },
+  {
+    "timestamp": "18:20",
+    "content": "Now that we've taken a look at our new APIs, we need to talk about the implications of mutating the transcript on performance and accuracy."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "Key value or KV caches are an important optimization mechanism in large language models,"
+  },
+  {
+    "timestamp": "18:33",
+    "content": "and they can be invalidated by transcript mutations."
+  },
+  {
+    "timestamp": "18:38",
+    "content": "Generally, appending to the transcript preserves the KV cache and minimizes the time to first token."
+  },
+  {
+    "timestamp": "18:46",
+    "content": "If you rewrite history by removing entries, changing the attached tools, or updating the instructions,"
+  },
+  {
+    "timestamp": "18:53",
+    "content": "that will typically trigger a cache invalidation and can increase latency."
+  },
+  {
+    "timestamp": "18:58",
+    "content": "Now, we didn't talk about this last year, because we intentionally shaped language model session APIs to be append only."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "By default, they ensured optimal use."
+  },
+  {
+    "timestamp": "19:11",
+    "content": "But this year, we're taking the training wheels off, so to say."
+  },
+  {
+    "timestamp": "19:17",
+    "content": "It's important to understand that different models have different caching behavior."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "And the only way to be certain is by measuring."
+  },
+  {
+    "timestamp": "19:26",
+    "content": "The best way to do that is the upgraded Foundation Models instrument in Xcode."
+  },
+  {
+    "timestamp": "19:31",
+    "content": "For more about detecting cache invalidations with instruments, make sure to check out our video on debugging and profiling."
+  },
+  {
+    "timestamp": "19:39",
+    "content": "In addition to performance implications, the other thing you have to be careful about when rewriting history is accuracy,"
+  },
+  {
+    "timestamp": "19:47",
+    "content": "because it's possible to confuse the model."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "Let's say I have a session where I ask the model to think of fun origami project names."
+  },
+  {
+    "timestamp": "19:57",
+    "content": "And then, let's say I add a generate title tool to the session and prompt it for more ideas."
+  },
+  {
+    "timestamp": "20:05",
+    "content": "What do you expect will happen next?"
+  },
+  {
+    "timestamp": "20:08",
+    "content": "If we're lucky, the model will use the tool like we want."
+  },
+  {
+    "timestamp": "20:13",
+    "content": "But, it's also possible that the model will notice it previously generated titles without the tool."
+  },
+  {
+    "timestamp": "20:21",
+    "content": "And it may think it's supposed to do that again."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "That's not what we want."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "Our history modification confused the model."
+  },
+  {
+    "timestamp": "20:29",
+    "content": "When you start to get into nuanced transcript modifications like this, it becomes even more important to use the evaluations framework to create eval sets and quantify the effect of context engineering strategies."
+  },
+  {
+    "timestamp": "20:42",
+    "content": "Data-driven optimization is the only way to be confident."
+  },
+  {
+    "timestamp": "20:47",
+    "content": "I highly recommend watching all of our videos about the evaluations framework."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "All right."
+  },
+  {
+    "timestamp": "20:53",
+    "content": "That brings us to the end of our section on performance and accuracy."
+  },
+  {
+    "timestamp": "20:57",
+    "content": "That was a lot."
+  },
+  {
+    "timestamp": "20:59",
+    "content": "Are you ready to bring it home, Oliver?"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "You know it."
+  },
+  {
+    "timestamp": "21:02",
+    "content": "We've shown you how dynamic profiles allow you to steer model behavior and manage your session's transcript."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "We talked through patterns like phone a friend and baton pass, tool calling mode, manual transcript management, and even KV caches."
+  },
+  {
+    "timestamp": "21:16",
+    "content": "And we hope you're as enthusiastic about Foundation Models Framework utilities as we are."
+  },
+  {
+    "timestamp": "21:21",
+    "content": "Next, try playing around with the sample app."
+  },
+  {
+    "timestamp": "21:24",
+    "content": "Or test out PCC together with the revamped Xcode instrument."
+  },
+  {
+    "timestamp": "21:31",
+    "content": "Until next time, thanks for watching."
+  },
+  {
+    "timestamp": "21:33",
+    "content": "Thank you."
+  }
+]

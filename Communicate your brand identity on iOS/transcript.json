@@ -1,0 +1,818 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Branding is likely top of mind for you, and it's a helpful way to communicate and differentiate"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "your products. But how do you achieve the expression of your brand identity while keeping"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "the integrity of familiar paradigms on iOS? I'm Sarah, a design evangelist, and today I'm going"
+  },
+  {
+    "timestamp": "0:24",
+    "content": "to unpack that. I'll share how to approach design in ways that feel familiar where it matters,"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "but bespoke where needed. There's an aspect of branding that is aesthetic, such as the use of"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "refined and memorable typography, the expressive use of color, or the visual language of iconography."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "I'll share practical guidance as these relate to iOS apps. But branding is also a feeling. It's an"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "extension of how you see a product that bleeds into how you experience a product. This is less tangible,"
+  },
+  {
+    "timestamp": "0:57",
+    "content": "but in many ways more meaningful. It's possible your product has a website, digital marketing,"
+  },
+  {
+    "timestamp": "1:04",
+    "content": "a retail store, or even an app on another platform. And you might be tempted to make your brand identical"
+  },
+  {
+    "timestamp": "1:10",
+    "content": "across all of these experiences. But each of these placements should consider the context."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "They shouldn't default to being the same. People who use iPhones expect the apps on their phone to"
+  },
+  {
+    "timestamp": "1:23",
+    "content": "look and feel like iOS. This is comprised of components, patterns, and functionality that has"
+  },
+  {
+    "timestamp": "1:30",
+    "content": "been meticulously refined for the iPhone. And people don't typically have experience with other versions"
+  },
+  {
+    "timestamp": "1:36",
+    "content": "of your app outside of Apple's ecosystem. The tips I'll share today are centered around how branding can be"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "of service to your app experience. This doesn't mean your app needs to look identical to an Apple app."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "There are a lot of ways to refine your brand within the bounds of the operating system."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "I'll share some great examples from developers who strike the balance of distinct branding without compromising"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "the native feel. First, you'll learn how the UI and components of your app can be customized while still feeling"
+  },
+  {
+    "timestamp": "2:07",
+    "content": "like they belong on the operating system. I'll cover ways to make your content shine, the appropriate places to use color"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "in your interface, considerations when using custom fonts, and examples of great iconography and resources you can use."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "Let's set the foundation for how to think about where brand belongs."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "With the introduction of Liquid Glass and iOS 26, we started thinking about interfaces in a slightly different way."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Think of your app as two distinct layers."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "The UI layer, which serves as the global navigation, and the content layer, which sits beneath these controls"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "and contains all the features that make your app unique."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "Conceptually, the content layer is the best opportunity to express your brand identity."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "This allows the UI layer of your app to act as a foundation that helps people get around and find what they're looking for."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "The UI layer is an app's navigation and actions, expressed through components like tab bars and top toolbars."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "They stay floating above the content layer for easy access."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "Try to lean into what's already familiar for people on iOS, rather than reinvent the wheel."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Gentler Streak is an app that keeps you motivated and helps you build a fitness routine."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "At a glance, you can tell the app has a distinct identity, playful illustrations, and detailed data visualizations."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "But their navigation, the tab bar, and top toolbar actions are all native."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "They don't heavily customize the UI or deviate from the patterns."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "Establishing a baseline of platform familiarity is important."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "Otherwise, people will need to learn how to use your app."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "Standard components, such as grid views and grouped tables, are highly flexible and functional."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "If you draw upon what people already understand, they'll instinctively know how to use your app."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Now, it's expected that components will occasionally need to be customized to fit your app needs."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "The messaging app Slack has built a custom top toolbar where a middle action shows channel information."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "But the overall look of the component, like button sizes, placement of floating actions, and the popover behavior, all feel very iOS."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Another example that I love is from the app Moonlit."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "The app tracks the lunar cycle for photography and moon phases."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "The UI is simple, it's a flat hierarchy, and doesn't need a tab bar."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "The lunar cycle calendar is a custom component that shows moon phases throughout the month at a glance."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "But it leverages the design language of iOS."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "With a liquid glass backing, a primary action to dismiss, and the sheet has concentric edges to match the hardware."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "This app is totally unique, and yet clearly belongs on iOS."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "Custom components take refinement, so you should focus your time building them for areas of your app that have the biggest impact or make your content stand out."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "Then, audit your app for opportunities to use standard components for aspects of your app that are functional."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "For example, beyond navigation, one standard component that's often overlooked is context menus."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "They're often displayed from a button in the top toolbar and contain actions related to the whole screen, as opposed to inline."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "They provide convenient access to frequently used items just to tap away."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "And they're super flexible."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Your actions can have icons."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "They can be grouped into sections with optional headers, or present a secondary menu or modal."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "Moonlit uses a context menu for their settings."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "Notice the animation that's built into the control, deliberately morphing from the action that was tapped."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "With SwiftUI, you get these components and interactions out of the box."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "This is just one example where creating a custom component will require work to build and maintain."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "These types of custom elements, the ones that serve a very utilitarian purpose, don't usually reinforce a brand."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "In fact, they can make the product appear less native, or even dated, because they feel misplaced, replicating something tried and true."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "When it comes to your UI, there are endless possibilities, but try to build on what people know."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "Use platform components for conventional tasks, and customize components to cater to your specific needs."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "With this perspective about your UI, think of the content layer as your canvas."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "This can include imagery, videos, even words."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "It's the information your app provides people."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "For example, the Crumble app uses full-bleed videos to highlight their weekly flavors."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "These videos aren't just generic assets."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "They help draw a deeper connection to the product, because they change weekly."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "Incorporating content well is all about making sure it has a clear purpose."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "Moonlit takes a different approach."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "Their content is edge-to-edge color, mimicking gradation in the night sky."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "The 3D elements dynamically portray your position in relation to the moon."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "It feels relevant for their content to feel immersive and take over the entire interface."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "But content can also be the words used throughout your messaging."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "And words are powerful, because they can affect how we feel."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "I encourage you to explore how voice and tone can shape your brand."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "Sometimes an app is targeting a specific emotion, such as feeling playful and fun."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Or trustworthy and safe."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "Be very deliberate about how you want to make people feel."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "There's a lot more to say here, so to learn about copywriting for your content,"
+  },
+  {
+    "timestamp": "7:57",
+    "content": "check out the video, Add Personality to Your App Through UX Writing."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Keep in mind, people don't experience apps as static screens."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "They're dynamic experiences, as people scroll, tap, and interact."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "So transitions and animations are the ways in which your content is experienced."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "One example is the New York Times Cooking app."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "In a recipe detail view, comments are an important part of the content."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "The app uses SwiftUI's Zoom transitions for the comments related to a recipe."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "These kinds of transitions are delightful and feel fluid,"
+  },
+  {
+    "timestamp": "8:34",
+    "content": "but they also improve interaction by connecting the tap target to the transition state."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "For gentler streak, motion makes the app feel active, engaging, and approachable."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "As you scroll through a monthly recap page, your activities feel almost magical."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "Spring animations make the content really pop."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Motion helps emphasize hierarchy and brings attention to what matters."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "But delayed load times or dropped frames translate poorly to people's perception of your app,"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "even if they couldn't pinpoint exactly why."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "People remember how a product makes them feel."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "Design an experience that's satisfying, enriching, and a joy to use."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "Now that you're mindful of how the foundation of your app should honor platform patterns,"
+  },
+  {
+    "timestamp": "9:22",
+    "content": "let's talk about color."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "Before iOS 26, apps would often use solid backgrounds on the top toolbars and tab bars of their apps."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "But these UI elements were bulky and letterboxed the content area,"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "restricting it to an even smaller portion of the screen."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "With the new design language we introduced,"
+  },
+  {
+    "timestamp": "9:41",
+    "content": "our recommendation is to move color into the content area of your app, into the scroll view."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "That way, liquid glass controls sit above the content layer and pick up your brand color dynamically."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "The other thing to consider here is that color can be distracting and make an interface feel overwhelming."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "Aim to use color in ways that create meaning, such as portraying hierarchy, groupings, or indicating interaction."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "Which is why color is often seen on controls and actions."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "This is referred to as your app's accent or tint color."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Slack uses color sparingly."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "They use tint for primary actions, like sections with new information,"
+  },
+  {
+    "timestamp": "10:23",
+    "content": "badges to show unread messages,"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "new message creation, and the selected state in the tab bar."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "Intentional use of color communicates status, feedback, and selection states,"
+  },
+  {
+    "timestamp": "10:36",
+    "content": "helping people focus on what's important."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "And they move to their solid top toolbar color into the content area so it scrolls away,"
+  },
+  {
+    "timestamp": "10:44",
+    "content": "allowing content to spread edge to edge."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "Don't be afraid to use color in your app."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "It can enhance communication, evoke your brand, and provide visual continuity."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Keep in mind, the iPhone is an incredibly personal device."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "Features like dark mode are preferences people set for their comfort and needs."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Gentler Streak, Slack, and New York Times Cooking have a refined color palette for low-light environments."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "If your app doesn't support dark mode, people may have a negative experience that translates to your product."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "There are also various touch points where your brand identity can extend beyond your app."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "For example, if people find the data in your app valuable, they can choose to use your widget."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "Here's an example of Crumbles widgets, branded with their pastel color palette in distinct imagery."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "They don't just look delicious, they're also immediately recognizable."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "When working with color, exercise restraint."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "Use it sparingly and with intention so it has the biggest impact."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Of all of the tools at your disposal, typography is often a favorite."
+  },
+  {
+    "timestamp": "11:53",
+    "content": "It can be expressive, bold, or elegant, but should always be functional."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "Let's revisit the Crumble app."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "They've built their own typeface, Crumble Sands, that they use throughout their marketing"
+  },
+  {
+    "timestamp": "12:05",
+    "content": "and in moments of their iOS app that are memorable."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "This is particularly obvious with large headers like their cookie flavors."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "The primary thing to be aware of when using custom fonts on iOS is how they scale."
+  },
+  {
+    "timestamp": "12:20",
+    "content": "Dynamic type is a setting within accessibility to increase font sizes across the operating system."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "It's important to think about this for people with vision and cognitive disabilities,"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "but dynamic type is also a preference that many people rely on."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "This is built into Apple system fonts, but you'll need to build support and test for this when you use your own custom fonts."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "Notice how when someone increases their system font size through dynamic type, the Crumble app is still legible."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "As the font size increases, rather than truncating the labels,"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "their layout accommodates them, dropping text to multiple lines as needed."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Dynamic type also applies to standard components."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "When the type is set to larger accessibility sizes, the tab labels and icons appear larger in the center of the screen."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "Strive to have your app accommodate as many people as possible."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "It might sound simple, but when people can clearly see the UI and read the text in your app,"
+  },
+  {
+    "timestamp": "13:21",
+    "content": "they're going to have a more positive experience."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "San Francisco is a system font for all Apple platforms."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "It's a typeface that provides a consistent, legible, and friendly typographic voice supporting over 150 languages."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "SF Pro is the default, but there are other variants."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "SF Compact is optimized for small sizes."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "SF Mono is designed for row and column alignment, which is great for coding."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "And New York is a serif for traditional reading and a graphic display face."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "Some apps, like Gentler Streak, use system fonts entirely."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "With a mix of font widths and variants, like SF Rounded,"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "they've achieved variety and hierarchy while still feeling distinct."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "Typography is a strong way to express identity."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "Try to design the fonts in your interface to be flexible and adapt to people's needs."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "And finally, iconography."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "For the most part, you can use your own iconography anywhere throughout your app,"
+  },
+  {
+    "timestamp": "14:23",
+    "content": "from the content view to controls."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "An example of custom iconography that works really well is the New York Times Cooking app."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "Their icons have sharper edges and typically use a line weight variant."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "I like that they're unique to the app, but not overly detailed,"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "so they scale well to small sizes."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Their icons are used on their tab bar, top toolbars, and inline actions in the content layer."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "They're consistent, cohesive, and a simple nod to their brand."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Something I respect about their iconography is platform consideration."
+  },
+  {
+    "timestamp": "14:58",
+    "content": "Here are three different versions of the share icon across iOS, Android, and web."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "Even though they've created their own style of icons,"
+  },
+  {
+    "timestamp": "15:07",
+    "content": "each of these actions stays true to the platform pattern of sharing."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "Iconography doesn't need to be heavily stylized."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "It should aim to be identifiable and serve a clear purpose."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "And not every app needs custom iconography."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "SF Symbols is a Mac app with over 7,000 symbols that you can use for free."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "SF Symbols are built like a font, so they scale dynamically like text."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "And they're designed to be neutral."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "The style of SF Symbols is intended to work for all types of apps across Apple platforms."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "They have various line weights, accessibility, and localization support."
+  },
+  {
+    "timestamp": "15:46",
+    "content": "Best of all, they're built right into Xcode,"
+  },
+  {
+    "timestamp": "15:48",
+    "content": "so no need for design teams to export icon libraries and manage file handoff."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "On the topic of icons, let's touch briefly on logos."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "In the context of iOS, people don't need to be reminded which app they're using."
+  },
+  {
+    "timestamp": "16:03",
+    "content": "And logos can take up precious real estate, best reserved for more pertinent information."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "In New York Times Cooking, their logo is only displayed on the Home tab, and it fades on scroll."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "There's something really elegant about how understated this is."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "Aim to incorporate branding like this,"
+  },
+  {
+    "timestamp": "16:22",
+    "content": "in refined and unobtrusive ways that don't distract people from your experience."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "If you choose to use your own iconography, make sure they're recognizable,"
+  },
+  {
+    "timestamp": "16:31",
+    "content": "consistent, and that they scale well to small sizes."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "All of the apps I talked about today have approached branding in a way that complements the experience,"
+  },
+  {
+    "timestamp": "16:41",
+    "content": "rather than distracts from it."
+  },
+  {
+    "timestamp": "16:43",
+    "content": "They have predictable navigation patterns that help people quickly understand how to use their app."
+  },
+  {
+    "timestamp": "16:48",
+    "content": "But they've integrated their own identity in ways that are subtle but meaningful."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "We encourage exploration of your brand throughout your iOS apps."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "Just remember that iOS is a platform with established interactions."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "Enforcing your brand can compromise the user experience."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "Be mindful of where it oversteps with system behavior or confuses familiar conventions."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "We're delighted by the creative ways people inject their brand identity."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "So continue to exercise your creativity."
+  }
+]

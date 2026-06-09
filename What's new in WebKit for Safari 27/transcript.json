@@ -1,0 +1,826 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Jen Simmons,"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "and I'm here to share the latest news about WebKit,"
+  },
+  {
+    "timestamp": "0:12",
+    "content": "the web browser engine that powers Safari."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "The WebKit and Safari teams have been busy this year."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "I'm excited to share what we've been working on and how it impacts"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "you as you make websites, web apps, and web content."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "We've already shipped a lot of new web technology,"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "including CSS Grid Lanes, Navigation API,"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "Largest Contentful Paint, and many more."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "The first beta of Safari 27 brings over 60 more new features,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "including customizable select, image sizes equals auto,"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "the stretch keyword for layout, and more."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "Later in this session, I'll walk you through five of the most exciting new features."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "Stick around to see what CSS Grid Lanes can do,"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "learn how you can customize select UI,"
+  },
+  {
+    "timestamp": "1:01",
+    "content": "explore what the model element brings to the web, and more."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "But first, I think what you might find most exciting as a web developer"
+  },
+  {
+    "timestamp": "1:11",
+    "content": "is the time my team put in this year to improve the quality of WebKit."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "I hear from web developers that it's challenging when you have to work around a problem in our browser engine."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "You expect more."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "We hear you, and we set out to greatly improve the quality of existing web platform features."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "We put our focus there this year rather than on implementing a whole lot of brand new ones."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "When I look at what we've accomplished so far, a few clear themes emerge."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "I want to share one quick story from each."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "First, compatibility."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "A big part of this work focuses heavily on the things that directly affect users,"
+  },
+  {
+    "timestamp": "1:53",
+    "content": "making sure real websites work for real people."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "Your users are our customers, and we want them to have a fantastic experience."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "My team got a report about a particular website."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "When users typed emoji, the totally wrong character appeared."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "But why?"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "Well, normally, when a user presses a key, the browser sends a Unicode number to the website."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "The number for this A uses seven bits of data."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "Some websites want to intercept keyboard input and process it with JavaScript."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "For decades, websites used the fromcharcode method"
+  },
+  {
+    "timestamp": "2:33",
+    "content": "to turn those numbers back into characters."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "Fromcharcode can handle data that's 16 bits or smaller."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "And for a long time, even as Unicode grew, that was enough."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "But then a lot of emoji came along."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "And these new characters got assigned bigger numbers."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "This one needs 17 bits."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "And on websites that still use fromcharcode, that number got truncated to 16 bits,"
+  },
+  {
+    "timestamp": "3:04",
+    "content": "which maps to a totally different character."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "So what should we do?"
+  },
+  {
+    "timestamp": "3:10",
+    "content": "Try to get every website to stop using fromcharcode?"
+  },
+  {
+    "timestamp": "3:13",
+    "content": "That's not realistic."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "Users want to type emoji now."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "So my colleagues adopted a clever workaround."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "Now, when a user types a character with a code point beyond 16 bits,"
+  },
+  {
+    "timestamp": "3:26",
+    "content": "WebKit doesn't send the number to the website at all."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "The emoji arrives as text instead."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "No number, no truncation."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "And now, everyone can type a face holding back tears on any website they wish."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "It's one example of the many changes we've made to directly help users."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "But as a web developer, you just want your work to become easier."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "My team is also working to rebuild the foundations of WebKit in quite a few areas."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "Sometimes, we just got to start from scratch to pay off technical debt."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "This deep work isn't necessarily visible on the surface,"
+  },
+  {
+    "timestamp": "4:01",
+    "content": "but it makes everything built on these foundations more reliable."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Here's one."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Block and inline layout."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "Block elements end up nested inside of inline elements all the time."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "The code for handling such a layout was over two decades old and had grown tangled and hard to maintain."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "So we rewrote it from scratch with a new architectural approach."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "You probably won't notice, but the work did fix a bunch of issues."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "My team is also going deep to make significant progress in specific areas."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "Media and video playback, scrolling, SVG, accessibility,"
+  },
+  {
+    "timestamp": "4:40",
+    "content": "webrtc, even HTML tables."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "Each of these areas needed something different."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Take SVG, for example."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "To make real progress, we needed the web standard to have more clarity and detail."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "Only, there was no active SVG working group."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "So that's how my teammates accelerated their journey, by reviving and leading a new standards effort."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "For example, what happens if a web developer makes an SVG with a radial gradient, but doesn't"
+  },
+  {
+    "timestamp": "5:10",
+    "content": "explicitly define its focal point with the fx and fy attributes?"
+  },
+  {
+    "timestamp": "5:16",
+    "content": "In SVG1, the spec text describing the initial values of fx and fy was confusing, and different browsers"
+  },
+  {
+    "timestamp": "5:25",
+    "content": "interpreted it differently."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "Now, SVG2 removes all ambiguity."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "The initial value is clearly defined."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "And we re updating WebKit in Safari 27."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "We ve made over 75 improvements to SVG so far, and there s definitely more work to do."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "A lot of the improvements my team is making are to better align with web standards, both to shore up the"
+  },
+  {
+    "timestamp": "5:51",
+    "content": "interoperability of long-standing web technology, and to keep up with the evolution of new features."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "Here s something new, the CSS Random function."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "You can use it to generate random values."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "With this code, width and height get random lengths."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "You can name random values to reuse them, but originally, names were scoped per instance."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "Each time the box class was called, new random values got calculated."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "We shipped random in Safari 26.2, but then developers argued that maybe this could be better."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "After discussion at the CSS working group, these names were redefined to be global by default."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Now all these boxes get the same random size."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "We updated the scoping of names in Safari 26.5."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "We re still the only browser with support, so there was time to make it better."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "We re keeping up with recent changes to features like anchor positioning and view transitions,"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "and we re strengthening older features too."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "There are hundreds of updates to better align with web standards."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "We want it to be easier for you to create websites that just work in every browser."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "We want it to be easier for you to create a new browser."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "We want it to be easier for you to create a new browser."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "We want it to be easier for you to create a new browser."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "We want it to be easier for you to create a new browser."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "A bunch of improvements make sure separate features integrate together correctly."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "In 2014, WebKit shipped support for the sizes attribute in HTML, enabling responsive images."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "In 2018, we shipped support for the CSS min and max functions."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "But when we did, we somehow missed implementing support for min and max inside of sizes."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "Thank you to the developers who filed issues about this."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "When Clamp came along in 2020, we didn't do it then either."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "This year, we circled back and closed the gap in Safari 26.4."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "These are the kinds of problems that we want to keep finding and fixing."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "We care deeply about the experience people have when interacting with the web on our platforms."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "Browser engines are huge, and we rely on the feedback and contributions from developers"
+  },
+  {
+    "timestamp": "8:00",
+    "content": "to help identify pain points and inform our priorities."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "We're going to take advantage of the web technologies built into WebKit and JavaScript core,"
+  },
+  {
+    "timestamp": "8:12",
+    "content": "including apps for iOS, iPod OS, macOS, Vision OS, and even watchOS."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "We care about the web, and we sincerely hope our efforts make a real difference in your success."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "With this focus, we were able to tackle over 1,100 feature improvements and fixes since last fall."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "That's a record for us."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "We'd love to have you test your projects in the most recent versions of Safari Technology Preview or Safari Beta."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "And if you are having problems, please file an issue. We know there's more to do."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "I only covered a few examples of our quality efforts. For all the detail, check out Safari Release Notes."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Quality improvements are a huge part of what my team has been doing this year, but it's not all."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "We've shipped some genuinely exciting new features, too. In the rest of this session, I'll go through several."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "Starting with CSS Grid Lanes, we shipped in Safari 26.4."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "Use it to create the classic masonry layout in pure CSS. No JavaScript needed."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "It can handle use cases you've maybe never considered before. The code is simple, and it includes all the power of CSS Grid to define tracks."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "And yes, it works in the other direction."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "Check out our field guide to Grid Lanes at gridlanes.webkit.org."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "Click through different configurations to experience how it works and explore the many demos."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "Use Safari Web Inspector to better understand and adjust your layout."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Enable order numbers to reveal the order of items."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "It's super helpful for adjusting flow tolerance to finesse the experience for users tabbing through content."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "And watch Learn CSS Grid Lanes, where Brandon will walk you through exactly how to create these layouts."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Customizable Select is another exciting feature coming to the web."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "Safari 27 transforms the select element."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "It's easier than ever to implement a fully custom design to match your website or web app with great accessibility automatically."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "You start by applying Appearance Based Select in CSS to the select element."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "Immediately, the control starts inheriting more CSS, including your font family, text color, and background color."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "Also, apply Appearance Based Select to the new picker pseudo element."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "This unlocks the ability to style the menu of options that pops up when a user taps on the control."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Other brand new pseudo elements let you target specific parts of the control, like the check mark and the picker icon."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "Now you can add additional HTML inside select, like subtext describing the details or images representing each option."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "All while leveraging the benefits of using a real HTML form control with its accessibility and robustness."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "Use Grid or Flexbox to lay out the options."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Or anything from CSS and make it look nothing like a traditional drop-down menu."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "Tim will teach you how in his session Rediscover the HTML select element."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "Last year, we shipped Model, a brand new HTML element for Safari and Vision OS."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "In Safari 27, Model is coming to iOS, iPadOS, and macOS."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "It joins image, audio, and video in the family of elements that handle media files, this time putting 3D models into HTML."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "By adding a model to your website, you can provide a way for users to check out products, preview an object in their space, or just have a cool experience."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "The markup works like you would expect."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "You can keep it simple, or just like the other media elements, you can use Source to link to multiple files in different formats."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "You can optionally include attributes like Environment Map to provide custom lighting for your model,"
+  },
+  {
+    "timestamp": "12:10",
+    "content": "or Stage Mode, which sets the default interaction behavior."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "Target your model with JavaScript to open up a wide range of possibilities."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "Or wrap the model in A rel equals AR to let users on iOS and iPadOS see the product in their space."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "You can find much more about making and using 3D models on developer.apple.com."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "There's years of documentation, videos, and sample projects diving into what's possible."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "Watch Get Started with HTML Model Element to learn more."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "Alexei will explain where to get a 3D model, how to optimize it for the web, and what to do in JavaScript."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "In VisionOS 27, model goes even further with immersive website environments."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "A user can go to your website in Safari, tap to open an immersive environment, and step into the model you provide."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "Maybe you've made an immersive video game and you want to give potential customers a way to preview it."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "Maybe your site sells theater tickets."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "You can show people the view from their seats on any platform."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "And then, in VisionOS, they can experience the whole theater."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "There's a new immersive API for manipulating models."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "It works just like the full screen API."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "Learn all about it watching Explore Immersive Website Environments in VisionOS,"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "where Jean will show you how he built the theater."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "And then, there's web extensions."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "Not that long ago, making a browser extension meant creating entirely separate projects for each browser,"
+  },
+  {
+    "timestamp": "13:46",
+    "content": "with different code, using different APIs."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "That's why so many extensions only worked in one browser."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "Things started to change in 2017, when Mozilla deprecated support for Firefox add-ons,"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "and committed to a cross-compatible future."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "In 2020, Safari 14 shipped support for Safari web extensions."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "And then, in 2021, we led an effort to create the W3C Web Extensions Community Group,"
+  },
+  {
+    "timestamp": "14:12",
+    "content": "and turn these ideas into official web standards."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Today, the dream of an interoperable extension future is becoming a reality."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "You can create an extension using one code base, one set of scripts, one manifest."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "It's all interoperable HTML, CSS, and JavaScript, just like the rest of the web."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "You just have to know how to package and distribute your extension to the users of each browser."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "But if you don't use Xcode, or even have a Mac, how can you distribute your extension to Safari users?"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "Now, you can use the Safari Web Extension Packager."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "It enables you to package and distribute your extension using App Store Connect from"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "any web browser on any operating system."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "Today, it's easier than ever to reach Safari users."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "You can read the documentation to learn how on developer.apple.com."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "And watch Create Web Extensions for Safari, where Kiara will guide you through how to build"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "a web extension from the ground up, as well as how to use App Store Connect."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "Finally, I want to quickly mention MapKit.js."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "It's a tool you can use to embed interactive maps on your website or web app,"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "all while preserving the privacy of your users."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "It works in all browsers on any operating system."
+  },
+  {
+    "timestamp": "15:36",
+    "content": "Learn all about it at developer.apple.com."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "My team has done a lot of work this year."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "WebKit is packed with improvements."
+  },
+  {
+    "timestamp": "15:45",
+    "content": "I truly hope these efforts make your work more satisfying, more successful, easier,"
+  },
+  {
+    "timestamp": "15:51",
+    "content": "and maybe more fun."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "Check out our website at webkit.org where we teach all about the new features in every release of Safari."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "There, you can learn more about what's in Safari 27,"
+  },
+  {
+    "timestamp": "16:04",
+    "content": "watch other WWDC sessions about web technology to dive deeper,"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "and file issues at bugs.webkit.org."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "We'd love to hear from you and to know what more we can do to support your work,"
+  },
+  {
+    "timestamp": "16:18",
+    "content": "making projects on the web for people to use and enjoy."
+  },
+  {
+    "timestamp": "16:21",
+    "content": "You"
+  }
+]

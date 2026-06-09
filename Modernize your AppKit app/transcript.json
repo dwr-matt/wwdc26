@@ -1,0 +1,834 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Udjoaini,"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "a Mac UI Frameworks engineer,"
+  },
+  {
+    "timestamp": "0:11",
+    "content": "and this is Modernize Your AppKit App."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "A modern app that takes advantage"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "of how AppKit interfaces with Mac so that"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "its form and function feel"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "in harmony with the rest of the system."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "That harmony shows up in three places."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "in how people drive your app,"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "in how the system manages it,"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "and in how it looks and feels on the screen."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "Today, I'll share tips for all three."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "I'll begin with modern precision input methods"
+  },
+  {
+    "timestamp": "0:42",
+    "content": "that your app should adapt to."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "Then I'll discuss the importance of"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "preserving continuity across launches."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "That is, how your app can"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "terminate gracefully when the system needs it to,"
+  },
+  {
+    "timestamp": "0:54",
+    "content": "and come back to where it was left off."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "Finally, I'll go through updates to"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "the look and feel in Mac OS 27,"
+  },
+  {
+    "timestamp": "1:01",
+    "content": "many of which you'll notice without having to rebuild your app."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "I'll start where the Mac started, at the input device."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "Precision input devices have been at"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "the heart of the Mac since the very beginning."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "The first Mac shipped with the keyboard and mouse."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "Over time, the APIs for handling"
+  },
+  {
+    "timestamp": "1:21",
+    "content": "these various kinds of input have"
+  },
+  {
+    "timestamp": "1:23",
+    "content": "evolved and become far more convenient."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "Mouse down and tracking loops have been the go-to pattern for"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "implementing interactive behaviors in AppKit apps."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "However, AppKit isn't the only framework on Mac."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "SwiftUI, UIKit through Mac Catalyst,"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "and AppKit work together to create the Mac experience."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "They rely on gesture recognizers to provide a common event handling"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "language across all three frameworks."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "Gesture recognizers empower AppKit to provide"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "advanced behaviors without having to build that yourself."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "The modern way of dealing with events is gesture recognizers."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "I'll explore three solutions that interface well with them."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "View-based APIs, control events,"
+  },
+  {
+    "timestamp": "2:11",
+    "content": "and custom gesture recognizers themselves."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "These offer the same customizability as tracking loops and"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "mouse down overrides and support cross-framework compatibility."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "I'll tell you when to reach for each."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "Common mouse down overrides enable tracking selection,"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "showing context menus, drag and drop, and text selection."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "If you're currently overriding mouse down,"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "AppKit has dedicated APIs that handle"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "these behaviors more reliably and take full advantage of the modern Mac platform."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "Mass down is often overridden to track selection."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "Instead, observe the selected property on types like NSCollectionViewItem and NSTableRowView."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "Or use delegate callbacks that are notified when selection changes,"
+  },
+  {
+    "timestamp": "3:00",
+    "content": "like NSTableViewDelegate and NSOutlineViewDelegate."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "To show context menus from a view, you have a few options."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "Use the class property default menu on NSView,"
+  },
+  {
+    "timestamp": "3:13",
+    "content": "where all instances of the view will show the same menu."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Use the instance property menu on NSResponder to provide"
+  },
+  {
+    "timestamp": "3:21",
+    "content": "a different menu for every responder."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "Or use the instance method menu for event on NSView,"
+  },
+  {
+    "timestamp": "3:28",
+    "content": "to dynamically create the menu based on the event."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "If your app uses collection container views,"
+  },
+  {
+    "timestamp": "3:35",
+    "content": "use modern dragging delegate methods like TableViewPasteboardWriterForRow."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "Create a pasteboard item, set the data on it, and return it."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Similar methods exist on NSCollectionView, NSOutlineView, and NSBrowser."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "If you need text selection behavior outside of NSTextView, use NSTextSelectionManager."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "It's a new API in macOS 27 that takes advantage of gesture recognizers,"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "and brings classic macOS text selection behaviors to any view."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "Attach it to a view and set up a text selection data source."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "You'll then have support for bidirectional selection, drag and drop with text, toggling, and much more."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "The next solution might seem a little familiar if you know control events from UIKit."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Control events are now in AppKit."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Control events can be added to standard Mac controls, like buttons or sliders."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Control events can be added to the user-driven tracking state changes, rather than having to implement complex mouse down tracking logic."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "AppKit calls a registered target an action when the control event is triggered."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "Most of these control events have been made available from OS 10.11."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "Here's an example of NSControl events."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "Instantiate the button and register a target in action for a control event."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "Note that you don't even have to subclass NSButton to get this to work."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "For more control over interactions in your views, add standard gesture recognizers."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "For even more flexibility, create your own gesture recognizer subclasses."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "Learn more in the gestures documentation."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "Because gesture recognizers operate on a view and its subviews, overlapping sibling views can silently block mouse events."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "If a control doesn't seem to be responding to a click, make sure you don't have some sibling view that overlaps that button."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "To address this issue, resize the view so it doesn't overlap."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "If the view should not be resized because it's an overlay, override hitTest and return nil, so hitTesting can fall through to the content underneath."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "Now, I'll focus on keyboard navigation."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "Your app needs to respond to keyboard input seamlessly to enable speed and accessibility."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "Keyboard navigation for controls can be turned on in system settings."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "When it's on, focus moves between controls using tab or shift tab."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "The key view loop is the order in which controls are cycled through when the tab key is pressed."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "To automatically recalculate the loop every time a view is added or removed in the hierarchy, enable auto recalculates key view loop on the window."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "If you do not set this value, you are in charge of creating and maintaining the key view loop."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Keyboard navigation also reaches beyond your app's windows into the menu bar and status items."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Navigating across status items is a little different from main menu items."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "Status items that show a menu when clicked already behave like menus on the menu bar."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "But status items can also be triggers for actions or display some kind of transient UI."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "To trigger an action, modify NSStatusItemsButton property to include a target and action."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "And optionally an image."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "This behaves like a regular button and the action fires automatically when return is pressed during keyboard navigation."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "To use a custom view for your status menu item, use status items view property to set the view."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "Then, add a target and action to the status item to enable performing that action."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "Status items can also be triggers to show custom windows, for example."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "When a status item shows its window, AppKit needs to know when that UI is active so that keyboard focus can behave correctly."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "Track the lifecycle of your custom UI using the Expanded Interface Session API."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "First, set a delegate when the item is created that will receive begin and end calls to display or dismiss your window."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "In the delegate, implement status item did begin expanded interface session and status item did end expanded interface session."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "These methods are called by AppKit to manage the lifecycle of an expanded interface session."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "In the did begin call, show the window."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "In the did end call, order the window out."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "When it is time to dismiss the session, for example, because an action has been selected, call Cancel on the expanded interface session."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "Note that the session might be canceled for you if focus naturally moves somewhere else."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "SwiftUI menu bar extras do a lot of this work for you."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Check out the WWDC 26 video, Use SwiftUI with AppKit and UIKit, to learn how an AppKit app can use a SwiftUI menu bar extra."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "Make sure your app works just as well with the keyboard as with the mouse is especially important for the many power users who choose the Mac."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "Providing a seamless transition within and outside of your app is one more way to enable them."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "Speaking of seamless transitions, a great Mac app seamlessly quits and quickly restores."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "It quits without pushback and comes back as if it was never quit in the first place."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "People should be able to quit their apps at any time."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "Sometimes because they want to, sometimes because the system needs to reboot, which might happen during an overnight software update."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "So your app should only block quit when it genuinely needs to."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "When your app is presenting a sheet, the window might not be able to close."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "And when a window can't close, the app can't quit."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "The NSWindow property prevents application termination when modal defaults to true and for good reason."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "It's important to make sure your app doesn't lose data when a document needs to be saved, for example."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "Set this property to false for all modals or sheets that don't strictly require intervention to allow more graceful application termination."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "With graceful termination handled, the next step is restoration."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "Use NSWindowRestoration to customize how your app comes back."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "State restoration requires three steps."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Opting into state restoration, encoding the UI state, and decoding the state to restore windows in UI."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "I'll go through some code that uses NSWindowRestoration."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "First, set an identifier for the window on the window controller."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "For common windows, like your main window or a preferences window, set an autosave name."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "This helps restore your window to an active space with the same frame."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "There is no need to set an autosave name for document windows."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Then, ensure window.isRestorable is set to true, so AppKit can call encodeRestorableState and restoreState on your windows."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "This also lets AppKit automatically restore window state, like which window was minimized, which one was frontmost, and which was fullscreen."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "Also, set a windowRestoration class, which will be invoked when the app is relaunched to restore the window itself."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "Use encodeRestorableState to preserve everything you need to recreate your window's state."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "Call Super's implementation as well, so your state is restored correctly."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "In this example, the selected items identifier is encoded with the product identifier key."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "Avoid encoding data that lives in your document or database."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "The goal of state restoration is to be able to reconstruct the state of the UI, not to re-serialize the whole app."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "All NSResponders have an encodeRestorableState method that you can override, so manage state for your views as well."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "EncodeRestorableState is only called when state for the object has been invalidated."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "Every time there is a change to your view hierarchy that should alter the saved state, call InvalidateRestorableState."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "In this example, this method is called when a different product is selected in the sidebar."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "At a later time, encodeRestorableState will be called on everything that was invalidated."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "That's what your app needs to save the state of its UI before it has quit."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "When the app is relaunched, you'll need to decode all that information to restore the UI."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "First, restore your windows, and then restore the state on those windows."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "In the Window Restoration class, implement the method RestoreWindowWithIdentifier to recreate the windows in your app."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "This method is called for every window that's being restored."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "Its parameters include the window's identifier and the completion handler that needs to be called with the corresponding window."
+  },
+  {
+    "timestamp": "12:45",
+    "content": "Using the identifier, recreate the window controller and windows."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "The main window is already available on the app delegate's main window controller."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "Call the completion handler with the existing window."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "For other windows, instantiate the window controller and pass in its window to the completion handler."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "If window creation fails, still call the completion handler with the error."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "AppKit waits on every restorable window, so always call the completion handler."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "If you can't call it from within this method, save the handler and call it later, but be absolutely sure to call it."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "Once the windows have been restored, the last step is to restore the UI for each window."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "In the window controller's restoreState method, AppKit will hand you the same coder object containing the keys you encoded before."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "This is the place to fetch any data required to reconstruct your app's state."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "Decode the identifiers and hand them to the corresponding view controllers."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "When you're done, your windows should be in the same state as before."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Enhancing quit and relaunch to feel uninterrupted helps people pick up right where they left off, whether they quit the app or restarted their Mac."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "To learn state restoration in practice, check out the code sample, Restoring your app state with AppKit."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "With input and restoration in hand, there's one more area where your app and the Mac meet, the UI."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "The Liquid Glass material introduced in macOS 26 continues to evolve."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "Your app will benefit from many of the updates automatically."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "If you adopted Liquid Glass in macOS 26, your app will pick up a few changes when you run it on macOS 27."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "The automatic NSScrollEdgeEffectStyle resolves to a hard edge effect when there is free-floating text, like the window title in the title bar."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "Sidebars extend to the window's edges."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "Selection in the sidebar uses a semi-bold text style for emphasis."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "And content still flows behind them."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "Bordered toolbar items over the sidebar adopt Liquid Glass as well."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "New in macOS 27, there is an effect that can be added to Glass, where the Glass subtly bounces when clicked, giving a sense that the control is responding to the interaction."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "Maps uses this for some of their custom controls."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "This would not apply to all uses of Glass in your app."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "Use this effect with controls and buttons or a Glass container of interactive controls."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "A little goes a long way."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Rounded rectangles have been a signature of the Apple ecosystem for decades, from hardware bezels to controls and containers across macOS."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "AppKit has new API for concentricity."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "Content meant for the corner can adapt the shape of its container instead of feeling at odds with the rest of the window."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "For example, the local weather view in Maps is concentric with the window."
+  },
+  {
+    "timestamp": "15:57",
+    "content": "When a view sits near the corner of its container, its own rounded corners should follow the curve of that container."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "The closer the view is to that container's corner, the more its radius should match."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "To make your button or view concentric, use the Corner Configuration API."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "First, create a custom view subclass."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "On the custom view, override Corner Configuration to return an NSViewCorner configuration."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "For the radius, use ContainerConcentric on NSViewCornerRadius."
+  },
+  {
+    "timestamp": "16:32",
+    "content": "This calculates a radius based on the container view."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "Set a minimum value as well, so that every corner is always rounded."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "You can choose from many different kinds of factory methods for the configuration."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "To maintain a rounded rect with the same radii across all four corners, use Uniform Corners."
+  },
+  {
+    "timestamp": "16:53",
+    "content": "These are a few pointers that can help make your app harmonious on modern macOS."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "I'll leave you with a quick recap of where to start."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "Identify places in which you are overriding mouse down in your app, and instead use View APIs, Control Events, or Gesture Recognizers."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "Prioritize user intent over tracking loops."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "Make sure your app works just as well from the keyboard as from the mouse."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "Make quit and relaunch feel seamless so your app picks up exactly where people left off."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "And evaluate your view hierarchies to adopt concentricity in Views and Buttons."
+  },
+  {
+    "timestamp": "17:36",
+    "content": "Thank you so much for watching."
+  },
+  {
+    "timestamp": "17:38",
+    "content": "Whether your app is for the students at school learning how to use a computer,"
+  },
+  {
+    "timestamp": "17:42",
+    "content": "or the power users who build some of the world's most important tools and art,"
+  },
+  {
+    "timestamp": "17:46",
+    "content": "your apps have played a central role in this experience."
+  },
+  {
+    "timestamp": "17:50",
+    "content": "Keep on creating."
+  }
+]

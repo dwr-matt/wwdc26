@@ -1,0 +1,1062 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Dennis and I'm a software engineer on the RealityKit team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Welcome to my session, Explore Advances in RealityKit, where I'll be introducing you to"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "some of the latest advancements in RealityKit. In 2019, we reintroduced RealityKit, a framework"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "that enables you to easily build 3D spatial experiences across a wide range of Apple platforms."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "With RealityKit, you can build your apps and games once and deploy them to VisionOS, iOS,"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "iPadOS, MacOS, and tvOS. And this year, we are introducing a better way to build these apps"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "and games with RealityComposer Pro 3. Check out these sessions to learn more about RealityComposer Pro 3."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "From its fast, iterative scene editing tools, to its powerful graph interfaces for modeling complex particle and character behaviors."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "And thanks to the amazing feedback we got from all of you, we are adding exciting new features to RealityKit this year."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "These features will make it easier than ever to craft high-fidelity, immersive experiences."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "To start, I'll go over the advancements we made to RealityKit's lighting and shadows, enabling more realistic effects that blend seamlessly into your world."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "Then, I'll introduce RealityKit's navigation mesh as a way to help your players and NPCs navigate the worlds you have crafted."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "I'll show you how to build elaborate cloth simulations that can be used to address your virtual furnishings and characters."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "If you're not careful, utilizing these features can hinder performance. To help you tackle this, I'll cover the tools available to you to both mitigate and monitor such issues."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "Once you have a handle on performance, I'll demonstrate how you can bring a piece of the real world into your apps and games with RealityKit's ability to render 3D Gaussian splats."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Finally, I'll talk about RealityKit's immersive audio features and how they can improve the spatial realism of your virtual worlds."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "Let's begin right away and go over what's new in RealityKit's lighting and shadows through a new game we've built, Shaparo Village."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "In this game, a mysterious village is transported into the player's world. They are then shrunk down by an owl and must navigate their way through the village in order to get to the alchemy area, where they'll brew a number of potions under the owl's direction."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "Let's take a look inside the alchemy area of Shaparo Village."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "Hmm, it looks pretty good, but it seems a little dark in some of the corners."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "Here, we can take advantage of RealityKit's support for lightmaps to enhance the lighting of the area's interior."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Using the LightBaker in RealityComposer Pro 3, I'll create an indirect lighting lightmap and apply it to the scene."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "There, the corners and shadows have brightened as they're now correctly seeing contributions from reflected light."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "RealityKit's API supports attaching your own lightmap textures for indirect lighting, ambient occlusion, and beauty,"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "but to get the best experience, I recommend using RealityComposer Pro 3's LightBaker to generate these instead."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "To learn more about light baking in RealityComposer Pro 3, please check out the session"
+  },
+  {
+    "timestamp": "3:08",
+    "content": "Iterate your spatial scenes faster with RealityComposer Pro 3."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "Lightmaps help you render complex lighting effects, but only for static lighting."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "We can, however, bring one of these complex effects to dynamic lights with RealityKit's soft shadows."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "By default, the shadows in RealityKit have hard edges."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "This is accurate in some scenarios."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "For instance, if the light source is infinitesimally small, but this is no longer accurate when the light has some area."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Now, the shadow cast exhibits softer edges as only some of the light is obscured in these regions,"
+  },
+  {
+    "timestamp": "3:41",
+    "content": "also known as the penumbra of the shadow."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "The size of the penumbra is influenced by the light's area."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "The greater the light's area, the greater the penumbra."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "Here is the hearth in the alchemy area."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "I am currently simulating the light coming from the hearth using a spotlight."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Let's make the shadows cast by the spotlight soft."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "I'll start by getting the hearth's spotlight's shadow."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "I'll then update the shadow's light size variable."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "This represents the diameter in meters of the light."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "By default, it is set to 0, producing a hard shadow."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "I'll update it to 0.7 meters to produce a nice soft shadow."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "I also have to set the shadow's quality."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "This variable controls the number of samples used to calculate the soft shadow."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Setting the quality to high can produce more pleasing results, but with a greater performance penalty."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "For this reason, I'll stick to medium, as this still looks good at the viewing distance."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "Note that if I had set the quality to low, the shadow would be hard regardless of the light's size."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "The quality must be set to either medium or high to achieve soft shadows."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Finally, I add the shadow back to the hearth spotlight entity."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "Now, if I apply the changes to the shadow, we can see the shadows have softened."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "Especially the shadow cast by the cauldron."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "So far, all of the lighting I've shown you is casting onto virtual objects."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "But what if you wanted your lights to extend beyond the virtual world, to cast lights onto your world?"
+  },
+  {
+    "timestamp": "5:15",
+    "content": "Here is a planetarium projector I've built with RealityKit."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "As the projector spins, my real-world environment is painted with virtual stars and nebulae."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "Notice how they realistically conform to the walls in my room."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "I was able to achieve this effect with two reallocate features."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "Projective textures and physical space lighting."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "Let's first take a look at projective textures."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "Imagine taking a flashlight and a piece of film."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "If I shined light through the film, the image on the film will now appear on whatever surface the flashlight is pointing at."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "This effect is what RealityKit's projective texture feature emulates."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "With projective textures, you can render various effects from the pattern caused by light shining through an intricate window,"
+  },
+  {
+    "timestamp": "6:01",
+    "content": "or, when animated, the bright undulating caustics seen on the sea floor."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "For my virtual planetarium, the stars and nebulae are attached as projective textures to rotating spotlights."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "To build one of these spotlights, I'll start by creating an entity and attaching a spotlight component to it."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "I'll make sure the color is white so I don't apply a tint to the projective texture."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "I'll tweak the other parameters as necessary for the room I am in."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "For example, a larger room may need more intensity to make the projective texture visible on the walls."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "I'll then generate a stars and nebulae texture."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "This will be the texture that I project from the planetarium."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "Finally, I'll create and attach my spotlight's projective texture component and attach the texture I just generated."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "Here we can see the stars and nebulae projecting onto virtual walls."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "But how do we get them to project onto the walls in my real room?"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "For that, we must enable physical space lighting."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "This feature enables virtual lights to interact with system environments or the world around you using RealityKit's Scene Understanding Mesh."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "Currently, physical space lighting is only supported for spotlights and point lights."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "Let's enable this feature on our planetarium spotlights."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "Here we have the spotlight entity from earlier."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "To enable physical space lighting, all we have to do is add the spotlights surrounding's light component."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "That's it."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "Now the stars and nebulae project onto my real world room."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "We have also enabled this physical space lighting effect in the alchemy area of the Chaparral Village."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Speaking of which, how does the player's character choose the path we take to the alchemy area?"
+  },
+  {
+    "timestamp": "7:43",
+    "content": "This path is determined using RealityKit's navigation mesh."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Let me illustrate how such a mesh works with a simple example."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Imagine a scene where I start off on one side of the map and my goal is to make it to the flags on the other side."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "Seems simple enough."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "But oh no, some obstacles have appeared in my way."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "I can use a navigation mesh to define the traversable parts of the scene, avoiding the dense forests."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "RealityKit can then use this navigation mesh to calculate a path to the flag."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "But what if I don't want to rule out the forests entirely?"
+  },
+  {
+    "timestamp": "8:15",
+    "content": "I can make my way through the forests, I'll just be slower."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "We can reflect this in the navigation mesh by giving these regions a different traversal cost."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "This will reflect the lower speed I'll go at when going through the forest."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "Now, if I calculate a path, it'll take into account this cost and pick a new route for me."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "But what's this?"
+  },
+  {
+    "timestamp": "8:34",
+    "content": "A rift has broken up my scene and left the flag stranded."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "This has led to two regions represented with two disconnected navigation meshes."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "But not to worry, I can connect them using an off-mesh connection, in this case a bridge."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "The placement of this connection, however, means that a new path must be calculated."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "To use RealityKit's navigation mesh, you first need to define a navigation mesh resource."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "This holds the geometric data for the navigation mesh, including labeled areas, custom flags for those areas, and the connection between areas."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "This can either be defined using the Swift API or in RealityComposer Pro 3."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "To learn how to build navigation meshes in RealityComposer Pro 3, check out the session,"
+  },
+  {
+    "timestamp": "9:18",
+    "content": "Supercharge Your Spatial Workflows with RealityComposer Pro 3."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "This navigation mesh resource is then fed into a navigation component."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "This component has a filter that is used to define the cost of areas, and which areas to include or exclude given the areas flag."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "The navigation component is then used by the navigation controller to calculate the path, either synchronously or asynchronously."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "In Chaparral Village, the navigation mesh is queried in the NavigateEntityExtension function."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Within Navigate, I first create a navigation controller."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "The controller requires an entity with a navigation component."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "I'll get this from the entity itself."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "I'll then use the async computePath function to get the path from the entity's current position to a desired position, where the player tapped."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "If the result is nil, then the navigation controller could not find a valid path, and we return."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "If this array is empty, then we have reached our destination, and we return as well."
+  },
+  {
+    "timestamp": "10:24",
+    "content": "Otherwise, this array holds a collection of path nodes representing the path the navigation controller computed."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "I'll iterate over these nodes so that I can determine the final path the entity should take."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "If it's a node on the navigation mesh itself, I can just append its position to our path."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "If it's an off-mesh connection, then we have to traverse a ladder."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "I'll handle this situation separately."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "Here, we can see the player's character navigating the village with Reallocate's navigation mesh."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "Once they reach the top, they must walk through two curtains that adorn the entrance to the alchemy area."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "These curtains were built with Reallocate's advanced cloth simulation."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "In Reallocate's cloth simulation, the cloth is described through a mesh, where the vertices represent particles, and the edges connecting the vertices represent springs."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "Given a mesh with enough vertices, Reallocate can accurately simulate everything from the flow of this golden dress to these bed covers."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "See how, as I pull off these covers, they realistically crease and fold, all in real time."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "To use Reallocate's cloth simulation, you need to add a cloth body component to your scene."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "This component represents cloths themselves."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "It contains a reference to its material properties and a cloth mesh resource that describes the layout of the particles and springs."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "You can also add a cloth collider component, which represents the rigid objects that a cloth can collide with, like the bed or mannequin from earlier."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Just as with the cloth body component, it contains a reference to its material properties and the geometry of the collider itself."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "To run the simulation, you need to add the cloth simulation component."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "This component contains an array of materials that are referenced by the cloth bodies and colliders."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "Each material has a set of properties, like spring stiffness and friction."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "The specific properties depend on whether it's describing a cloth or cloth collider material."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "The simulation itself also has a number of properties that affect all descendant entities involved in the cloth simulation."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "Some of these properties include which solver to use, the gravity to apply, and how big of a time step to take in the simulation."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "In Chaparral Village, Reallocate's cloth simulation is used to adorn curtains to the entrance of the alchemy area."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "But how do we implement the hoops that keep the curtains from falling down?"
+  },
+  {
+    "timestamp": "12:50",
+    "content": "For that, we use the custom CurtainPin component."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "Here we iterate over pins, an array that holds a tuple of these custom components and their corresponding entity."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "We use this entity's position as the position at which we are pinning the curtain."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "Then we build a sphere to represent the size of the pin itself."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "The size is controlled through the custom component."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "We use the position and the sphere we just created to get an array of all vertices that should be pinned or made immovable."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "We then set the vertices to Kinematic."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "Kinematic vertices can only be moved by an entity's transform and not by the cloth simulation itself."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "This will essentially keep them in place."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "And with that, we can pin the curtains to the alchemy area at the position of the hoops and keep them from falling over."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "At this point, I've gone over a number of features that, when not used with care, may come at a performance cost."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "To help tackle this, I'll first cover a technique that can be used to improve performance,"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "and then how you can track a performance indicator of your apps and games so that they can adapt accordingly."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "Mesh level detail refers to the process of rendering geometry at a lower detail such that the visual impact is negligible."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "To demonstrate this, I'll use the cauldron from the alchemy area in Chaparro Village."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "By convention, these so-called levels of detail, or LODs, start at index 0."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Notice how the geometric complexity of the cauldron decreases as I go to LOD 1, 2, 3, 4, and finally 5."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "At LOD 5, the cauldron looks pretty bad."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "However, if I scale it down as if the cauldron were very far away, I can now compare it to LOD 0."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "The difference is negligible, and we require less compute to render the cauldron."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Let's see how we can set up LODs in RealityKit."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "The different LODs are specified as arrays of entities."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "In this example, I'll have three different LEDs, each made up of one entity."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "Then, I will create the entity that will hold the LEDs themselves and switch between them."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "But how does RealityKit know which LED to use?"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "For that, I need to pick a switching algorithm."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "I will walk you through two of RealityKit's switching algorithms."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "The first one is based on the distance to the camera."
+  },
+  {
+    "timestamp": "15:13",
+    "content": "The further away from the camera the entity is, the higher the LED we can select."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "The second one is based on the screen area the entity takes up."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "The less area the entity takes up on screen, the higher the LED we can select."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "Here, I am using the Level of Detail components Add by Camera Distance convenience function"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "to set up camera distance based LODs."
+  },
+  {
+    "timestamp": "15:36",
+    "content": "For each LOD, I specify a max distance at which I will use this LOD."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "Once the entity goes beyond this distance, it will switch over to the next LOD."
+  },
+  {
+    "timestamp": "15:46",
+    "content": "For the last LOD, I want to set the max distance to infinity to indicate that, no matter how far the entity is beyond the previous threshold,"
+  },
+  {
+    "timestamp": "15:55",
+    "content": "I will be using this LOD."
+  },
+  {
+    "timestamp": "15:57",
+    "content": "If I want to switch LODs based on screen area, then I use the Add by Screen Area convenience function."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "Here, I specify a minimum area as a fraction of the screen area."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "If the entity takes up less than the specified screen area, it will switch over to the next LOD."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "Using LODs in your apps and games is a great way to improve performance."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "However, it is also important to react in your apps and games when performance is becoming a problem."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "This can be done by registering an observer on the Thermal State Did Change notification."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "This will allow me to know if the device's processor is running too hot."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "If a change in the thermal state occurred, I can query the current state."
+  },
+  {
+    "timestamp": "16:39",
+    "content": "If it's nominal or fair, then my mitigation efforts succeeded and the app or game can keep running as is."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "However, if it's serious or critical, then I should take steps to improve performance."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Like making the LOD switching threshold more aggressive or lowering the quality of shadows."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "Keeping a handle on the performance of your apps and games is important as it ensures the comfort of your users"
+  },
+  {
+    "timestamp": "17:03",
+    "content": "and enables you to take advantage of other advanced Reallocate features."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "One such feature is Reallocate's ability to render 3D Gaussian splats."
+  },
+  {
+    "timestamp": "17:12",
+    "content": "3D Gaussian splats are a high performance, high quality technique to render volumetric data captured from the real world."
+  },
+  {
+    "timestamp": "17:20",
+    "content": "With this technique, 3D scenes are represented as a collection of 3D Gaussians."
+  },
+  {
+    "timestamp": "17:26",
+    "content": "You can think of these as ellipsoids with different levels of opacity."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "To render such a scene, we would need to evaluate at each pixel a ray along all the Gaussians."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "There are a number of optimizations that can be made when doing this."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "And if you use Reallocate's API, it will handle them for you."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "To see this API in action, download the Gaussian splat sample from developer.apple.com."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "Here I have the sample running on an Apple Vision Pro."
+  },
+  {
+    "timestamp": "17:52",
+    "content": "Notice the fine details of the potted succulent."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "We were able to capture the geometric complexity of the plants and the soil they sit in,"
+  },
+  {
+    "timestamp": "18:00",
+    "content": "and Reallocate was able to render them both flawlessly."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "Reallocate API does not assume a specific file format for Gaussian splats."
+  },
+  {
+    "timestamp": "18:09",
+    "content": "Instead, you have to provide buffers that describe the properties of the splats in a capture."
+  },
+  {
+    "timestamp": "18:15",
+    "content": "Specifically, their position, scale, rotation, opacity, and their spherical harmonics."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "The spherical harmonics allow you to control the color of an ellipsoid depending on the viewing direction."
+  },
+  {
+    "timestamp": "18:30",
+    "content": "We also need to specify a degree for the spherical harmonics."
+  },
+  {
+    "timestamp": "18:34",
+    "content": "This articulates the number of color variations as you move around the ellipsoid."
+  },
+  {
+    "timestamp": "18:38",
+    "content": "For instance, a degree of zero implies a solid color at all viewing directions."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "I can then assimilate all of these buffers into a buffer resource and create a Gaussian splat resource."
+  },
+  {
+    "timestamp": "18:49",
+    "content": "For this resource, I'll create a Gaussian splat component."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "Then, to render the 3D Gaussian splats, I'll attach the component to an entity in my scene."
+  },
+  {
+    "timestamp": "18:58",
+    "content": "With that, you are able to bring 3D Gaussian splats into your virtual experiences,"
+  },
+  {
+    "timestamp": "19:02",
+    "content": "enabling you to bring high fidelity captures of real-world objects to your users."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "Finally, let's go over RealityKit's new immersive audio features, enabling enhanced realism for your Apple Vision Pro apps and games through sound."
+  },
+  {
+    "timestamp": "19:16",
+    "content": "Spatial audio rendering is an important aspect of sound design for spatial computing."
+  },
+  {
+    "timestamp": "19:21",
+    "content": "Accurate direction and timing of the direct path and the reflection path are required for a realistic spatial audio experience."
+  },
+  {
+    "timestamp": "19:29",
+    "content": "As a person and the audio source move around the environment, the timing and orientation must be updated accordingly to maintain realism."
+  },
+  {
+    "timestamp": "19:38",
+    "content": "The geometry and materials of your environment have a big impact on how an audio source sounds."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "For example, the same audio source will sound very different if it's in a small living room or a large museum."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "We can use RealityKit to simulate the reflections and reverb of our environment using ray-traced geometrical acoustics."
+  },
+  {
+    "timestamp": "19:58",
+    "content": "For example, in this kitchen and dining room scene, we can use RealityKit's custom reverb mesh to acoustically model the wood floors, plaster walls, and stone countertop."
+  },
+  {
+    "timestamp": "20:08",
+    "content": "Depending on where a person and the audio source are in the scene, they will take on the reverb appropriate for their placement."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "To show this feature in action, we are releasing a sample that takes advantage of the custom reverb mesh."
+  },
+  {
+    "timestamp": "20:22",
+    "content": "In this sample, you can hear a virtual band play as you navigate around a large museum environment."
+  },
+  {
+    "timestamp": "20:28",
+    "content": "You can even control the sound coming from each instrument independently."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "Thanks to RealityKit's custom reverb mesh, the sound emitted from these instruments realistically scatters around the museum before they hit your ears."
+  },
+  {
+    "timestamp": "20:40",
+    "content": "This can only truly be experienced on an Apple Vision Pro."
+  },
+  {
+    "timestamp": "20:44",
+    "content": "Download the sample from developer.apple.com and give it a try."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "To create a custom reverb mesh, you start by defining the geometry of the scene with a reverb mesh resource."
+  },
+  {
+    "timestamp": "20:54",
+    "content": "This can be created from a mesh descriptor or a mesh resource."
+  },
+  {
+    "timestamp": "20:58",
+    "content": "But the easiest way to get started is with a shoot box, which is a box with faces pointed inward."
+  },
+  {
+    "timestamp": "21:04",
+    "content": "I'll set it to be 5 meters wide, 4 meters tall, and 6 meters deep."
+  },
+  {
+    "timestamp": "21:09",
+    "content": "I'll then combine this mesh with the drywall preset audio material to create a simulated reverb."
+  },
+  {
+    "timestamp": "21:17",
+    "content": "Finally, I'll use this reverb to create a reverb component and attach it to an entity in the scene."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "This will allow the reverb mesh to take effect."
+  },
+  {
+    "timestamp": "21:25",
+    "content": "But I'm not limited to just the built-in preset materials."
+  },
+  {
+    "timestamp": "21:28",
+    "content": "Let's see how I can create custom materials for my custom reverb mesh."
+  },
+  {
+    "timestamp": "21:32",
+    "content": "I'll start by defining a thick carpet material."
+  },
+  {
+    "timestamp": "21:35",
+    "content": "I want this material to be more absorbent than the preset carpet material."
+  },
+  {
+    "timestamp": "21:40",
+    "content": "So I call scaling absorption and increase the absorption a little bit for all frequencies."
+  },
+  {
+    "timestamp": "21:46",
+    "content": "Next, I'll create a bookshelf material, but this time from scratch."
+  },
+  {
+    "timestamp": "21:50",
+    "content": "This means we need to define both the absorption coefficients and scattering coefficients."
+  },
+  {
+    "timestamp": "21:55",
+    "content": "These define how much sound energy is absorbed or scattered at different frequencies."
+  },
+  {
+    "timestamp": "22:01",
+    "content": "I'll start by setting the absorption coefficients for the 10 band center frequencies."
+  },
+  {
+    "timestamp": "22:05",
+    "content": "But what if I only know the coefficients for specific frequencies?"
+  },
+  {
+    "timestamp": "22:09",
+    "content": "Then I'll define the scattering coefficients for a few specific frequencies."
+  },
+  {
+    "timestamp": "22:13",
+    "content": "RealityKit will then extrapolate and cover the entire audible frequency spectrum."
+  },
+  {
+    "timestamp": "22:18",
+    "content": "Finally, I create the bookshelf material itself by composing the absorption and scattering data."
+  },
+  {
+    "timestamp": "22:26",
+    "content": "Please note that this only works in immersive spaces."
+  },
+  {
+    "timestamp": "22:29",
+    "content": "If you are in a shared space, the system's RoomSense reverb geometry will be used instead."
+  },
+  {
+    "timestamp": "22:35",
+    "content": "This is a reverb mesh that the Apple Vision Pro has built based on your real-world surroundings."
+  },
+  {
+    "timestamp": "22:41",
+    "content": "I've covered a lot of material in this session, but it only scratches the surface of what RealityKit has to offer this year."
+  },
+  {
+    "timestamp": "22:48",
+    "content": "There are many more features that we are also releasing this year."
+  },
+  {
+    "timestamp": "22:51",
+    "content": "Like coordinated multi-source audio that enables precise synchronizing audio playback across multiple entities."
+  },
+  {
+    "timestamp": "22:57",
+    "content": "High quality character rendering that provides subsurface scattering and advanced hair shaders to bring your character to life."
+  },
+  {
+    "timestamp": "23:03",
+    "content": "Portal customizations where you can create custom portal materials to alter a portal's opacity and shape."
+  },
+  {
+    "timestamp": "23:09",
+    "content": "And much more."
+  },
+  {
+    "timestamp": "23:11",
+    "content": "I recommend that you visit the Apple Developer Portal at developer.apple.com to download the samples from this session so that you can see some of the exciting new RealityKit features in action."
+  },
+  {
+    "timestamp": "23:21",
+    "content": "And while you are there, make sure to check out RealityComposer Pro 3, a major new release of RealityComposer Pro that enables you to better take advantage of RealityKit's features."
+  },
+  {
+    "timestamp": "23:31",
+    "content": "You can check out these sessions to learn more about RealityComposer Pro 3 and all of its new capabilities."
+  },
+  {
+    "timestamp": "23:37",
+    "content": "I can't wait to see what amazing spatial experiences you built with RealityKit."
+  },
+  {
+    "timestamp": "23:41",
+    "content": "Thank you for watching."
+  }
+]

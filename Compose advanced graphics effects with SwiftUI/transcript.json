@@ -1,0 +1,778 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Hauqian, an engineer on the UI Frameworks team."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "Since its inception, SwiftUI has been steadily growing with its capabilities in graphics and"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "layout, making it the choice for people who want to ship rich and custom experiences on"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Apple devices. Apple used SwiftUI to build advanced effects across its own apps, too."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "Well, the word advanced can sound intimidating. But here's the thing. Even with advanced effects,"
+  },
+  {
+    "timestamp": "0:44",
+    "content": "SwiftUI apps share the same basic elements. It's like a pipeline. Data flows through a series of"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "standard pipes. It takes something in, transforms it, and passes it along."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "SwiftUI's progressive disclosure means each pipe already works on its own. But you can connect them,"
+  },
+  {
+    "timestamp": "1:10",
+    "content": "create branches, or merge the flows. That's when you get creative."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "SwiftUI's progressive. The advanced lies in the construction, not the complexity. Here's the roadmap."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "First, I will take a design and break it apart. Then, I will build advanced effects. And finally,"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "I will share how you can incorporate these techniques in your apps using a creative pipeline."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "Here is the design I'm building. So, I have been building my own podcast app. This is what it"
+  },
+  {
+    "timestamp": "1:48",
+    "content": "currently looks like. A bare-bones transcript view. And I'm going to make it fancy, like the live lyrics"
+  },
+  {
+    "timestamp": "1:56",
+    "content": "view in Apple Music, with animated cover art and transcripts that scroll in sync with time."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "How do I even start? I start with what I already have. My existing user interface already contains all the data I need,"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "including the cover art, the playback info, and the transcript text. The question isn't what data I need,"
+  },
+  {
+    "timestamp": "2:27",
+    "content": "is how I transform it using the pipeline. Here are a couple of examples."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "Starting with the cover art, I need a pipe that converts the image into a visualizer. And the shader pipe fits here."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "The visualizer needs to be in motion to reflect our playback state."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "By dynamic visuals, I connect the time pipe to the pipeline. That is two pipes merged into one."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "Well, the time pipe can do more than that. The transcript pipe was transformed to have timestamp overlays."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "But it does not know about the current time and therefore cannot scroll correctly."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "I can connect the same time pipe to form a pipeline of time-synced scrolling text."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "And now I have dynamic visuals for the background and a scrolling transcript for the foreground."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Time to connect those two parallel pipes together."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "And if you zoom out, you realize that every modifier, every API is another stage in the pipeline."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "It just flows."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "Just like what was shown, my podcast app contains advanced layout and graphics."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "I have a full screen cover art applied with shader effect and time-driven animation."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "On the other front, I have a time-synced scrollable transcript view refined with floating view attachment."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "I will go through each of those and explain how to achieve them starting with the cover art."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Here's our raw material, a cover art image."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "The cover art is beautiful, but it's going to sit behind the transcript."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "I soften it with a blur modifier so it doesn't compete."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "Now that my cover art is blurred, next I will apply some shader magic."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "You might ask, what is a shader?"
+  },
+  {
+    "timestamp": "4:45",
+    "content": "And how different is it from writing SwiftUI code?"
+  },
+  {
+    "timestamp": "4:49",
+    "content": "Let me explain."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "The icon here starts as a vector."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "Then it was rasterized by GPU to pixels."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "At this point, I can run a program on GPU called shader to decide which color to fill in those pixels."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "The shader function runs in parallel."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "Each pixel executes independently, with no awareness of its neighbors."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "Knowing that, it will make perfect sense how metal shader can be called from SwiftUI's shader effect APIs."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "There are three types of shader effects."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "Each has different method signature."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "Certain parameters are required, although you can also append additional ones for the information you want to forward from SwiftUI to shaders."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "The color effect works by transforming each pixel's color to a new color, where each pixel is provided with the pixel position and the original view's pixel color at that position."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "You then return a new color based on that information."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "This is useful for sample effects, like turning a colored image into a black and white one."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "Distortion effect works differently."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "Instead of expecting a color on a certain position, the searching effect function takes the existing position for a new position that SwiftUI will sample from the original image."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "There's no pixel color involved."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "You tell SwiftUI, I want this position's color to follow that position's color."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "This is useful for geometric effects, like the shear effect shown here."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "Layer effect is the most flexible."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "The layer effect function still works per pixel, but it provides the layer of the entire view, which allows you to sample adjacent pixels or the entire region."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "This is useful for effects like blur, where the output pixel color depends on multiple input pixels."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "For my use case, distortion effect works."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "But layer effect provides the most flexibility."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "I will add a layer effect modifier."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "Then I will add a shader function called backgroundwap."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "For now, it just samples from the original layer at the given position, which gives me back the same image."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "But now I have a shader function I can build on."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "With layer effect, I can sample anywhere from the original view."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "For example, I can pass a flow to vector to the shader function and use it to offset the sample position in the shader."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "To match with the function parameters, I now put a flow to vector from the SwiftUI side."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "Now, as I increase the offset, each pixel runs the shader with this offset value."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "And so they all uniformly and increasingly sample from a distance."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "And as I decrease the offset to zero, the image goes back."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "Still, because of the uniform offset, I only get the shifted pixels in a fixed pattern."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "I need something more organic, something that varies per pixel."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "For organic variation, I use a noise texture, a pre-computed image of smooth random values."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "This time, on the SwiftUI side, I pass the view size alongside the noise texture and the image parameter."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "And on the metal side, the image arrives as texture 2D."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "Now, I'm about to show some really metal, metal code."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "I first use the current pixel position and the size to get the UV value, which stands for where I am relative to this image."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "It allows me to sample textures without an absolute position."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "Now, I will unpack the noise texture."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "I will unpack the color of the color of the color of the color of the color of the color of the color."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "It has RGB channels."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "The red and green channels are interesting because each one contains a different noise pattern."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "If I move my UV, I get different red and green values."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "This pair of constantly changing values happen to be a good fit for our organic offset in X and Y,"
+  },
+  {
+    "timestamp": "9:50",
+    "content": "since it's different per pixel."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "Now, come back to the metal shader."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "I'll create a sampler with repeat mode, so it tiles."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "Then, I sample the noise at each pixel's UV position."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "The red and green channels give me a two-dimensional offset,"
+  },
+  {
+    "timestamp": "10:12",
+    "content": "which I scaled and added to the position to sample from the original view."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Now, the shader twists the image slightly."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "That was per-pixel variation, but I want something richer."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "So, I experiment."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "What if, instead of a white noise sample, I do it twice?"
+  },
+  {
+    "timestamp": "10:35",
+    "content": "The first gives me an initial offset."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "Then, I sample the noise again, but this time at a position shifted by the initial offset."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "And just like that, I get these organic flowing blobs."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "This layer noise approach is a well-known technique called domain warping."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "To explore how I did it, download the sample app."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "It even has a preview so that you can play with your parameters as you want."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "Now, I have a cool shaded effect, but it's still frozen."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "I need to make it move."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "That's where time comes in."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "Different from SwiftUI's transaction-based animation, shaders are stateless."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "They have no memory of the previous frame."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "So, if I want animation, I need to pass in a value that changes over time."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Timeline view is exactly the pipe that I need to connect."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "I need to connect."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "With the animation schedule, it fires every frame with a timestamp."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "I pass that timestamp into the shader, add it to the position to sample from noise."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "And the pattern starts flowing."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "That was shader animation driven by time."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "For my transcript view, I also need to add time to the mix."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "So that the current running transcript line will be highlighted and centered in the score view."
+  },
+  {
+    "timestamp": "12:17",
+    "content": "Here's my transcript."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "Text views in a lazy-viz stack inside a score view."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Each line is its own view."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "Familiar SwiftUI."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "Now, I need to make it follow the playback state."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "I use the playback timestamp to determine which line is current."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "The current line is bold and clear."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "The rest fades back."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "And with the onChange modifier to monitor the current line change,"
+  },
+  {
+    "timestamp": "12:48",
+    "content": "I scroll to keep the current line centered."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "I have got my time-sense score view working."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "Now, I want to focus on the small timestamp on the current line."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "I have a time-sense score view."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "Every line has a timestamp in its overlay."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "But only the one for the current line is visible."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "This way, it doesn't interfere with the layout."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "It's always there, just waiting to be shown."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "Let's focus on this one row."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "A side view attached on the edge of its container."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "How do I get it there?"
+  },
+  {
+    "timestamp": "13:26",
+    "content": "The offset modifier cannot do it without knowing the size of both views."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "First, let's talk about alignment."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "Every view has alignments."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "Think of it as the point the layout system uses to position the view."
+  },
+  {
+    "timestamp": "13:45",
+    "content": "And it's defined by both axes."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "When I place the subview in the overlay container, the layout system aligns them using the default center alignment."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "Think of it like a pin punching through both views."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "So it holds them together at each view's alignment point."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "I change the overlay's alignment to bottom leading."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "Now, the pin goes through the bottom leading point of each view."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "And they lock together there."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Right now, the layout system asks for the bottom leading alignment."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "And so the subview returns its bottom leading point to point through."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "If I were to explicitly express this in code, I would write an alignment guide here to mean bottom is bottom."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "Now, remember, the goal is that the subview's top edge should touch the bottom edge of the container."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "So the subview is the bottom line."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "What if I tell the subview that when the layout system asks about the bottom alignment, don't use the default one."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "Instead, I have a custom override that moves the bottom alignment to the top edge."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "And now, when the pin comes to punch through, it follows that point instead."
+  },
+  {
+    "timestamp": "15:13",
+    "content": "I get the result by just writing a purely semantic override without manually offsetting the view."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "There's more to this API."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "I can define my own custom alignment."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "And the closure gives me view dimensions, so I can compute point from the view's actual size."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "Check out the documentation on SwiftUI alignment for the proof picture."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "And here it is."
+  },
+  {
+    "timestamp": "15:45",
+    "content": "The bare bones transcript view I started with."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "Now, with an animated background driven by a shader and time."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "A transcript that scores in sync with playback."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "And a floating timestamp positioned with alignment guides."
+  },
+  {
+    "timestamp": "16:02",
+    "content": "All from the sample pipes."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "Composed together."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "And it works across Apple devices."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "Let's step back."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "I took a design, broke it down into layers."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "And for each layer, I found the right API to turn raw data into views."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "Each stage's output fits the next stage's input."
+  },
+  {
+    "timestamp": "16:30",
+    "content": "Connecting stages like this is what I call a creative pipeline."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "But those were the choices I made for this podcast app."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "For your own app, the pipeline can get even more creative."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "The inputs could have been JavaScript data instead of audio."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "The shader could have been a ripple instead of a twist."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "The foreground could have been a free-form canvas instead of a screw view."
+  },
+  {
+    "timestamp": "16:59",
+    "content": "Every combination gives you something different."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "That's the creative part."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "The APIs are the same."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "What you fit in and how you connect them, that's yours."
+  },
+  {
+    "timestamp": "17:12",
+    "content": "So, go magic your scene."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "Download the sample project and experiment with the shader."
+  },
+  {
+    "timestamp": "17:19",
+    "content": "Change the noise, take the speed,"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "try a different image,"
+  },
+  {
+    "timestamp": "17:24",
+    "content": "look for opportunities in your own app"
+  },
+  {
+    "timestamp": "17:27",
+    "content": "where a small visual effect could make a big difference."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "And when you start connecting those pipes together,"
+  },
+  {
+    "timestamp": "17:34",
+    "content": "you'll be surprised how quickly something simple"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "becomes something advanced."
+  },
+  {
+    "timestamp": "17:39",
+    "content": "Oh, thank you for watching, and goodbye."
+  },
+  {
+    "timestamp": "17:46",
+    "content": "Bye!"
+  },
+  {
+    "timestamp": "17:48",
+    "content": "jumpscare"
+  },
+  {
+    "timestamp": "17:49",
+    "content": "Thank you."
+  }
+]

@@ -1,0 +1,478 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Isis."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "I'm an engineering manager on the accessibility team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "This year, there is great news for accessibility on tvOS 27."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "Large tech support is now available,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "bringing system-wide tech scaling to every app on the platform."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "Many people need or prefer different text sizes,"
+  },
+  {
+    "timestamp": "0:28",
+    "content": "and making your app dynamic helps everyone get a great experience."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "Your tvOS app customers have been waiting for this accessibility feature,"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "and I'll show you how to make the most out of it in your apps."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "In addition, you'll be able to indicate support for larger techs"
+  },
+  {
+    "timestamp": "0:44",
+    "content": "in your accessibility nutrition labels for tvOS in the App Store."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "This is a great way to reach users who specifically look for accessible apps"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "that support larger techs."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "In this session, I'll start by covering how large text works on tvOS,"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "and where people can find it."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "Then, I'll go into identifying small parts of your app"
+  },
+  {
+    "timestamp": "1:05",
+    "content": "that may need to adjust for larger tech sizes."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "And finally, I'll touch on a few examples of how to adapt layout"
+  },
+  {
+    "timestamp": "1:13",
+    "content": "in response to text size."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Let's start with an overview."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "If you're familiar with dynamic type on iOS, you have a head start."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "Dynamic type works the same way on tvOS."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "UIKit and SwiftUI can adapt text sizes automatically,"
+  },
+  {
+    "timestamp": "1:29",
+    "content": "based on what someone prefers."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "This gives people control over the text size to match their needs and comfort."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "People can turn on larger text sizes in the Settings app,"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "by navigating to Accessibility, Display, then Text Size."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "They'll have the option of choosing text sizes, starting at large,"
+  },
+  {
+    "timestamp": "1:50",
+    "content": "all the way up to Accessibility, Extra, Extra, Extra large."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "I'm working on a media app that lets people discover and watch their favorite movies."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "Here's how this app adapts to these larger text sizes."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "This media app has a top bar at the top for navigation."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "There's a large title with a few action buttons."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "And a gallery of movie posters to explore in a collection view below that."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "With larger text sizes turned on, the navigation title at the top has become much larger."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "In the top bar, each label is now bigger."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "And all of the text throughout the interface has scaled up significantly."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "A standard UI kit and SwiftUI components like labels, buttons,"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "and navigation tab bars handle this automatically."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "For your apps, your job is just to identify and update any custom elements that may need attention."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "When examining your app with large text, there are a few types of issues to identify."
+  },
+  {
+    "timestamp": "2:52",
+    "content": "When your app runs with larger text sizes, you'll want to ensure that you avoid fixed font sizes"
+  },
+  {
+    "timestamp": "2:57",
+    "content": "that don't allow your text to scale."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "Interfaces that don't adapt to dynamic type, like hard-coded sizes or constraints,"
+  },
+  {
+    "timestamp": "3:05",
+    "content": "may cause issues like truncation of text or clipping of UI elements."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "You may also need to adjust layouts for the padding and spacing needed"
+  },
+  {
+    "timestamp": "3:15",
+    "content": "when some elements grow to larger sizes."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Here's an example from my media app where a description of a movie is displayed."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "There is a title shown at the top with text labels and controls towards the bottom."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "With text set to the larger size, most of the text has grown larger."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "But there's one text element on the left that isn't scaling."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "That is a caption that reads sign-up information above the controls that let someone sign up,"
+  },
+  {
+    "timestamp": "3:45",
+    "content": "buy or rent a movie."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Now, a caption like this may have hard-coded text sizes for a specific layout reason."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "For example, it might have originally been in a container with static dimensions or rigid constraints."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "While this can seem appealing for creating predictable layouts, it's not recommended."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "This approach lacks flexibility and can't adapt to larger text."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "Instead, adapt the layout to be flexible and remove the hard-coded values."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "Here is the code representing the description view of my media app."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "It has a V-Stack containing the sign-up information caption"
+  },
+  {
+    "timestamp": "4:23",
+    "content": "and an H-Stack containing the buttons and other text information about the movie."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "This code contains a few different challenges for larger text."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "It specifies a fixed font size, which will not adapt when someone changes their size preference."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "And on the text view, there is a fixed width constraint to 300 points."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "As text grows, 300 points may not be wide enough for the text, which could lead to text truncation."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "To make this caption adjust to larger text sizes, I'll replace a hard-coded font style with a semantic text style."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "In this case, I'll use caption."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "With those changes, the text size is now dynamically growing, but the content is now truncated."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "To fix this, replace fixed widths with flexible constraints that let the view grow as needed."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "On the text view, I'll replace the fixed width with the parameter maxWid and set it to infinity."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "This tells SwiftUI to use as much width as needed for the content."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "With those changes, my text view scales beautifully with larger text and has enough space to display its content."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "Perfect."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "To find these types of common issues in your app, search for hard-coded text sizes and migrate to standard styles instead."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "Search your app for hard-coded height and width constraints and use flexible constraints to allow your content to grow."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "If you're using UIKit, the approach is similar with one additional step."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Replace hard-coded fonts with text styles and set Adjust Font for Content Size Category to True."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "This tells UIKit to automatically update when preferences change."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "Sometimes, fixing hard-coded values isn't enough."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "You may want to adapt the layout in response to larger text, while preserving the original layout for default sizes."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "Consider this collection view."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "It contains six movie posters with a title underneath each."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "With a standard text size, the full title fits comfortably in the space below the image."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "With large text enabled, there isn't enough room to fit six titles horizontally."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "This layout will need to be adapted when the text is larger."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "Here is the SwiftUI code for the view."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "It presents a horizontal scroll view with a lazy H-duck."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "Inside the container, I have a button for each cell."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "To adapt this layout, I will first read the Dynamic Type Size Environment keypad."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "Then, I'll change the column count parameter on the cell in the container relative frame modifier."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "When larger text sizes are enabled, I'll set the layout to show four columns at the time instead of six."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "This provides wider cell dimensions and gives each title more room to grow."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "To accommodate even longer text, consider a custom marquee strategy."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "Here's another example where I'll adjust layout in this app."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "This part of my app contains cards for different types of content, like a video of a beach or a video of camping."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "Each of these content cards contains an image, the title, and a subtitle."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "With larger text, there isn't enough visual padding between elements, and text is easily truncated with the space that it has."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "One solution is to provide a conditional layout for when larger sizes are turned on."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Here's how a conditional layout can be achieved in SwiftUI."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "First, read the Dynamic Type Size Environment value to detect when accessibility sizes are turned on."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Then, create a VStack layout or an HStack layout, depending on whether larger text is being used."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "Any layout lets you extract over these two types."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "Use a new layout like any other stack."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "It will dynamically switch between horizontal and vertical, depending on the text size."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "In UIKit, use UISTackView and update the Access property based on preferred content size category is accessibility category."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "Call register for trade changes and pass UITradePreferredContentSizeCategory to update the layout in response to size changes while your app is running."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "Here it is in action in MyApps Content Cards."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "When larger text sizes are enabled, the layout switches to a vertical stack."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "This lets the title and subtitle grow to the entire width of the cell, rather than sharing the width with the image."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "This layout also allows the cells to become taller to provide more room for the content."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "Now you're ready to test your app with larger text sizes on tvOS."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "Discover where you can make refinements by using system text styles and tailoring your layouts to prioritize text legibility."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "Here's your action plan."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "Use standard text styles instead of hard-coded fonts."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "Test systematically with large text enabled."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "Adapt layouts when needed for best experience."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "And indicate support for larger text in your app's accessibility nutrition labels for tvOS."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "Now it's your turn to make your tvOS app accessible for everyone."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "Thanks for watching."
+  }
+]

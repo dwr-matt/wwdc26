@@ -1,0 +1,1158 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Jonathan Long,"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "and I'm an engineer on the System Experience team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "People love using widgets."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "Your widgets provide relevant content in"
+  },
+  {
+    "timestamp": "0:17",
+    "content": "the convenient places people visit most."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "Widgets are available on many Apple platforms,"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "including iOS, iPadOS,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "watchOS, visionOS, and macOS."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "Your widgets extend the reach of your app across the system,"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "providing another opportunity for people to experience your great apps."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "So let's dive into widgets and discuss the foundations of WidgetKit,"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "how to build your first widget, and how to keep it up to date."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "Today, I will cover widget fundamentals and building your first widget,"
+  },
+  {
+    "timestamp": "0:48",
+    "content": "what WidgetKit offers to better integrate your app and widget experience,"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "and how to ensure your widgets adapt when the system environment changes,"
+  },
+  {
+    "timestamp": "0:56",
+    "content": "like to a tinted environment."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "First, fundamentals, beginning with, what are widgets?"
+  },
+  {
+    "timestamp": "1:02",
+    "content": "There are three qualities that make widgets memorable."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "Widgets are glanceable."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "People should be able to understand your widgets with a quick glance."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "For example, weather shows me just enough information about the current forecast"
+  },
+  {
+    "timestamp": "1:16",
+    "content": "to help me get ready for my day."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "Widgets are relevant."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "Widgets content should match expectations for time, personal patterns, and location."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "The calendar widget shows me the next events at the current time and updates throughout the day."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "Widgets are personalizable, able to be configured with the content that matters to me,"
+  },
+  {
+    "timestamp": "1:36",
+    "content": "like this photos memory widget, showing me a great memory at a family camp with my daughters."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "Widgets are also available to my friends."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "Using WidgetKit and SwiftUI, you can provide great, glanceable, relevant, and personalizable widgets"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "for your app's content."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "I have been building an app for my book club to encourage me to read more."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "The app lets me track how much I have read, the books I have completed,"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "and creates a schedule to help me complete a book before my next book club meeting."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "I also created some widgets so I can view this data right from my home screen."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "The first widget is the Reading Goals widget, encouraging me to read throughout the day."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "The second, the Reading Log widget, helps me keep track of my current progress through a book."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "The third widget builds a schedule for me to follow so I can finish my book on time."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "Throughout this talk, I'll cover key decisions for each widget that can help when creating your widgets."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "I'll start by covering how an app provides widgets to the system."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Whether an app is built with SwiftUI or UIKit, it can have widgets, and the widgets will be built with SwiftUI."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "Your app provides widgets to the system from a widget extension."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "This extension runs as a separate process from your app."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "Because your widget extension is running as a separate process,"
+  },
+  {
+    "timestamp": "2:53",
+    "content": "you will need to use a shared container in an app group to provide data from your app to your widget extension."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "You can use something like a shared database or user defaults."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "The widget extension is solely focused on the widget."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "The system and widget kit interact with the extension to get the data needed for widgets."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "Widget kit asks the extension for content."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "This content is called a timeline."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "A timeline is made up of multiple timeline entries."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "Widget kit provides these entries as data for the widget's view."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "The resulting views are archived."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "The system displays them at their relevant time."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "Widget extensions expose your widgets to the system and provide their timeline content."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "Timelines are a series of entries, each carrying the data needed to render your widget's view at a specific point in time."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "Now let's look at the code for the reading goals widget that brings these pieces together."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "When you create a new target for your widget extension, Xcode generates a widget for you."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "For a simple widget, this implementation already has a lot of what we need, starting with a body providing a widget configuration."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "There are two types of configurations for widgets, app intent configurations and static configurations."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "App intent configurations are used when your widget can be configured by the user."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "My widget will be automatically configured using the current book I am reading, so I'm using the static configuration, which is the most simple."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "The static configuration needs a few parameters."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "The kind, which is a unique identifier for this specific type of widget."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "A timeline provider that produces timeline entries for the widget."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "And a closure that takes a timeline entry and returns a view."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "From the closure, you return a SwiftUI view for the provided timeline entry."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "Because my book club app is built in SwiftUI, I already have a view, the daily reading goal view, that is exactly what I need for my widget."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "To specify the background, I am using the container background modifier."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "This modifier identifies which view is the background of my widget."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "When people using my widget customize their devices with a colored or clear tint, this allows the system to replace the background view specified with a glass material view."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "The view portion of the reading goal widget is implemented."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "Let's have a closer look at what is expected of the timeline provider and how timelines keep widgets relevant."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "The timeline provider supplies entries to represent three separate states for my widget."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "Snapshots, placeholder, and timeline."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "A snapshot is a realistic preview of a widget."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "It's what people see in the widget gallery."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "This is an opportunity for my widget to make a strong first impression."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "My app has no data before someone starts using it."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "So I feature a popular book, Atomic Habits, with a default message."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "So people can imagine my widget at its best before they ever add it to their home screen."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "A placeholder is a stand-in view the system shows when your widget doesn't have content to display yet."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "Like the very first time it's loading your timeline."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "Because it needs to show up instantly, fetching a placeholder has to be synchronous."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "So provide a placeholder that does not need data from disk or over the network."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "And then I'll see how it works."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "For the Reading Goals widget, I am using SwiftUI's redacted modifier, which creates a simplified version of my view."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "A timeline entry is what your widget shows at a specific moment in time."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "That could be right now or any point in the future."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "Your timeline provider produces a collection of these entries,"
+  },
+  {
+    "timestamp": "6:39",
+    "content": "and the system renders each one at its specific time."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "The timeline entry for the Reading Goals widget has all the information the widget needs to render this view."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "The motivational message, pages read, title, and cover name."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "Most of this data will be the same for this widget, except for the motivational message."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "The message updates at various times throughout the day."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "As I begin discussing the timelines, I'm going to only show the message that will be changing over time."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "Timelines are critical to how widgets stay up to date."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "Each timeline entry provides the needed data to render a widget view."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "This timeline is currently showing two entries, one at 9am and one at 11.30am."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "The core piece of data my Reading Goals widget needs is the motivational message that updates throughout the day as WidgetKit advances the timeline."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "These timeline entries are provided to my widget to produce the relevant view for that entry at this specific time."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Keeping my widget relevant with fresh content."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "At some point, your timeline will need to be refreshed with more timeline entries."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "This is referred to as reloading a timeline."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "Timelines specify their reload behavior through a reload policy."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "The reload policy can be one of three options."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "At end, after date, and never."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "Let's discuss each policy and when it makes sense to choose which one."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "The at end policy indicates that the timeline should be reloaded when all timeline entries have been exhausted."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "The time is rendered."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "Throughout the day, new timeline entries will be rendered."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "When the last entry has been shown at 1pm, the system issues a reload, asking your widget extension for more content."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "Your widget extension will provide a new timeline with more timeline entries."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "The Reading Goals widget updates its motivational message at varied times throughout the day."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "The at end policy makes sense because this widget provides a series of entries where the end is not a single known time and needs to be reloaded when the timeline is exhausted."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "The after date policy allows you to specify a specific date your widget desires to reload."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "These are different timeline entries, powering the Reading Schedule widget."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "I have redacted the complete set of data and only include the chapter information that changes over time."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "Here, the Reading Schedule widget provides two timeline entries indicating what needs to be read today and tomorrow."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "The widget needs to be reloaded at the end of the day to recalculate the downstream schedule."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "It uses the after date reload policy, specifying a date at the end of the day."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "Once the current time reaches this date, my extension is reloaded and asked for a new timeline."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "The new timeline provides entries for Tuesday and Wednesday with the recalculated schedule."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "The after date policy is great in cases like the Reading Schedule widget, when there is a specific time you know your widget will need to be reloaded."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "And lastly, the Never Reload policy."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "As the name suggests, your widget won't reload on its own."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "Use this when automatic reloads don't make sense."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "The Reading Log widget is a good example."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "It only needs to refresh when someone interacts with the app or widget."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "When you do need to reload, you can do this with an explicit call to Widget Center's reload APIs,"
+  },
+  {
+    "timestamp": "10:11",
+    "content": "or by sending a push notification."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "To dig deeper into reload policies, check out Principles of Great Widgets from WWDC21."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "There are a few best practices to keep in mind when considering building and reloading your timeline."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "Provide multiple timeline entries whenever possible."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "This ensures the system always has content to show for your widget."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "WidgetKit was built with all-day battery life in mind, so each widget is given a budget for updates."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "The budget is heavily influenced by users viewing habits and is updated throughout the day."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "The frequency of updates can vary, and the system is smart enough to adapt reloads for your widget as it makes sense."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "If your widget data may have changed, a final call to reload when your app enters the background is usually a good idea."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "Some content is ephemeral with a defined start and end date, needs more frequent updates, and wants alerting capabilities like a sporting event."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "If this describes your content, consider building a live activity."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "You can learn more about live activities and live activities essentials from WWDC26."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "So far, all my widgets have been the same size, the system medium family."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "But now that my widget extension and timeline provider are wired up, a whole lineup of other widget families are available to me."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "Widgets come in all different shapes and sizes."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "It is recommended to support as many sizes as you can so that people using your widget have choices when placing their widgets."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "The system extra large portrait family was introduced in Vision OS 26."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "New in macOS, iOS, and iPadOS 27, the system extra large portrait family is now available."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "This new family allows people using your widgets to have a really good look at your app's content."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "The book club reading schedule can reuse the same data from the medium widget we have already implemented."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "This larger size allows me to see how far along I should be in the next couple of days."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumpscare jumps"
+  },
+  {
+    "timestamp": "12:48",
+    "content": "with a widget extension that is focused on your widget."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "You provide content to your widget through a timeline"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "made up of timeline entries."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "Choose a timeline reload policy"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "that makes sense for your use case."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "My app now has a great iOS widget"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "to keep me on track for Book Club,"
+  },
+  {
+    "timestamp": "13:06",
+    "content": "and my widget is actually available in other places as well."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "My iOS widget is available on CarPlay"
+  },
+  {
+    "timestamp": "13:12",
+    "content": "and as a remote widget on macOS."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "We just discussed what you need to do to build a widget."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "Now, let's discuss some additional options Widget Kit provides"
+  },
+  {
+    "timestamp": "13:21",
+    "content": "to better integrate your app's content with your widget."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "You can better integrate your widget with your app"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "by using deep links,"
+  },
+  {
+    "timestamp": "13:29",
+    "content": "making your widgets configurable,"
+  },
+  {
+    "timestamp": "13:32",
+    "content": "and by adding interactive elements to your widgets."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "The default interaction for your widget is to open your app,"
+  },
+  {
+    "timestamp": "13:39",
+    "content": "which is a great starting point."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "If your widget is showing specific content from within your app,"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "your widget can provide a deep link directly to that content."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "Let's jump back into the Reading Goals widget code"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "and see how to do this."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "The Reading Goals widget shows the current book I am reading."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "I will provide a deep link to the book's details page,"
+  },
+  {
+    "timestamp": "14:00",
+    "content": "so tapping the widget lands people where they expect."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "I will use the widget URL modifier,"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "specifying a deep link URL for my app to handle on launch."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "The URL encodes the book's ID,"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "so the app launches directly to the book's details page."
+  },
+  {
+    "timestamp": "14:17",
+    "content": "Deep links are a great way to integrate your widget with your app,"
+  },
+  {
+    "timestamp": "14:22",
+    "content": "keeping people in context as they move between them."
+  },
+  {
+    "timestamp": "14:25",
+    "content": "Configurable widgets are another great way"
+  },
+  {
+    "timestamp": "14:27",
+    "content": "to integrate your widget with your app."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "Making your widget configurable lets people personalize their widget"
+  },
+  {
+    "timestamp": "14:34",
+    "content": "with specific content from your app."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "The weather widget is a great example."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "People can configure this widget to show conditions"
+  },
+  {
+    "timestamp": "14:42",
+    "content": "from a location that is important to them."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "I like to keep track of the weather in Yosemite,"
+  },
+  {
+    "timestamp": "14:46",
+    "content": "just in case I can plan a spur of the moment trip."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "The Reading Log widget in my Book Club app"
+  },
+  {
+    "timestamp": "14:52",
+    "content": "is another example of a configurable widget."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "People using my app can configure this widget"
+  },
+  {
+    "timestamp": "14:57",
+    "content": "to track reading sessions for a specific book."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "Configurable widgets can be configured"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "from wherever they are placed,"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "like from the iOS home screen."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "This is the configuration UI for my Reading Log widget,"
+  },
+  {
+    "timestamp": "15:09",
+    "content": "which only has one parameter."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "The UI allows people using my widget"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "to select the book they want to track."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "I made the most recently read book the default,"
+  },
+  {
+    "timestamp": "15:18",
+    "content": "so people don't need to make a selection."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "Configurable widgets also let people add multiple widgets"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "with different configurations."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "Here, my home screen has three Reading Log widgets,"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "tracking the three different books I am reading."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "When you're thinking about configurable widgets,"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "there are a few things to keep in mind."
+  },
+  {
+    "timestamp": "15:36",
+    "content": "Consider whether your widget's content should change"
+  },
+  {
+    "timestamp": "15:38",
+    "content": "depending on who's using it."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "Keep configuration fast."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "One or two parameters is usually all you need."
+  },
+  {
+    "timestamp": "15:45",
+    "content": "And don't require configuration upfront."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "Provide sensible defaults that people can tweak later"
+  },
+  {
+    "timestamp": "15:50",
+    "content": "if they want to."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "To learn more about making your widget configurable"
+  },
+  {
+    "timestamp": "15:54",
+    "content": "with App Intents, check out"
+  },
+  {
+    "timestamp": "15:56",
+    "content": "Explore Enhancements to App Intents from WWDC 23."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "Configurable widgets give people using your widget"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "options to make their devices relevant"
+  },
+  {
+    "timestamp": "16:05",
+    "content": "and personal for them."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "Your widget can also integrate with your app"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "through interactive elements."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "Buttons and toggles let people perform actions"
+  },
+  {
+    "timestamp": "16:14",
+    "content": "directly from the widget."
+  },
+  {
+    "timestamp": "16:17",
+    "content": "Reminders is a great example of an interactive widget."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "Once I have completed a task, I can check it off right"
+  },
+  {
+    "timestamp": "16:23",
+    "content": "from the widget, receiving the dopamine hit I need"
+  },
+  {
+    "timestamp": "16:26",
+    "content": "to keep moving through my day."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "When you're thinking about interactive elements, here are a few things"
+  },
+  {
+    "timestamp": "16:31",
+    "content": "to keep in mind."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "Widgets can surface interactive elements as either a toggle or a button."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "Think about the most important action in your app"
+  },
+  {
+    "timestamp": "16:39",
+    "content": "and expose it from your widget, like the complete chapter button"
+  },
+  {
+    "timestamp": "16:42",
+    "content": "on the reading log widget."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "Widget views are archived and rendered by the system,"
+  },
+  {
+    "timestamp": "16:48",
+    "content": "so your code isn't running while the widget is on screen."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Buttons and toggles take an app intent that the system can execute"
+  },
+  {
+    "timestamp": "16:54",
+    "content": "on your behalf when someone interacts with the element."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "To learn more about interactive widgets, check out Bring Widgets to Life"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "from WWDC 23."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "Your widget is an extension of your app."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "Deep links, configurable widgets, and interactive elements"
+  },
+  {
+    "timestamp": "17:11",
+    "content": "are all great ways to unify the experience between your app and widget."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "People using your widget can also customize their system experience."
+  },
+  {
+    "timestamp": "17:19",
+    "content": "Widgets were designed to adapt to these system changes."
+  },
+  {
+    "timestamp": "17:23",
+    "content": "On iOS, the system can be customized to be tinted with a specific color"
+  },
+  {
+    "timestamp": "17:27",
+    "content": "or to have a clear tint."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "With either customization, the system renders your widget through a glass material,"
+  },
+  {
+    "timestamp": "17:33",
+    "content": "tinting your content and replacing your background with an adaptive glass effect."
+  },
+  {
+    "timestamp": "17:38",
+    "content": "This keeps every widget on the home screen feeling cohesive."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "SwiftUI does a lot of the heavy lifting here,"
+  },
+  {
+    "timestamp": "17:44",
+    "content": "but it is important to test your widget to make sure it looks great."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "As I begin testing my reading goals widget,"
+  },
+  {
+    "timestamp": "17:51",
+    "content": "I can see that it is looking really great when rendered in full color."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "Before I'm done, I want to test with a tinted customization"
+  },
+  {
+    "timestamp": "17:59",
+    "content": "to make sure my widget is rendering as expected."
+  },
+  {
+    "timestamp": "18:02",
+    "content": "I'll do this by running on-device and customizing my home screen."
+  },
+  {
+    "timestamp": "18:07",
+    "content": "When I change my iPhone to use the clear mode,"
+  },
+  {
+    "timestamp": "18:09",
+    "content": "my widget isn't rendering correctly."
+  },
+  {
+    "timestamp": "18:12",
+    "content": "The book cover is a large white rectangle,"
+  },
+  {
+    "timestamp": "18:14",
+    "content": "which is not the intended behavior."
+  },
+  {
+    "timestamp": "18:16",
+    "content": "This is my book cover image view."
+  },
+  {
+    "timestamp": "18:19",
+    "content": "In the view's body, the image is rendered for this specific book from the asset catalog."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "When rendering in the accented rendering mode,"
+  },
+  {
+    "timestamp": "18:26",
+    "content": "the system is unable to accent the image appropriately."
+  },
+  {
+    "timestamp": "18:29",
+    "content": "I can specify the rendering mode to be used for this image with the widget accented rendering mode modifier."
+  },
+  {
+    "timestamp": "18:35",
+    "content": "With this option, my widget now renders the book cover using full color."
+  },
+  {
+    "timestamp": "18:40",
+    "content": "I'm using the full color option so the book covers are rendered respecting their original colors."
+  },
+  {
+    "timestamp": "18:46",
+    "content": "With this change, my widget is looking great in the accented rendering mode."
+  },
+  {
+    "timestamp": "18:50",
+    "content": "It's important to test your widget in every environment they appear."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "Start with your local devices."
+  },
+  {
+    "timestamp": "18:56",
+    "content": "Try your widgets in full color, tinted, and clear mode to make sure they render as expected."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "Remember that your iOS widgets also show up on macOS as remote widgets."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "Take the time to test that your interactions still feel right when someone is using them from a Mac."
+  },
+  {
+    "timestamp": "19:13",
+    "content": "Lean on SwiftUI previews to iterate quickly."
+  },
+  {
+    "timestamp": "19:17",
+    "content": "In the SwiftUI canvas on the right side of Xcode, you can check different families, color schemes, and rendering modes without ever leaving Xcode."
+  },
+  {
+    "timestamp": "19:26",
+    "content": "Turn on WidgetKit developer mode while you're testing to lift constraints like reload budgets."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "This allows you to iterate on your widgets more quickly."
+  },
+  {
+    "timestamp": "19:35",
+    "content": "To learn more about adapting your widget to these system customizations, check out What's New in Widgets from WWDC25."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "I covered a lot today. Before I let you go, keep these things in mind."
+  },
+  {
+    "timestamp": "19:49",
+    "content": "I hope you are inspired to go and build a great widget."
+  },
+  {
+    "timestamp": "19:53",
+    "content": "Consider how you can extend and personalize your widget experience by integrating with your app."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "And be sure to test and adapt your widget to all the custom environments that each platform provides."
+  },
+  {
+    "timestamp": "20:05",
+    "content": "Widgets make my iPhone fun and personal to me."
+  },
+  {
+    "timestamp": "20:08",
+    "content": "I can't wait to use the great widgets you create."
+  }
+]

@@ -1,0 +1,1206 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Alexey, an engineer from the Safari team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Today I'm thrilled to tell you about the HTML model element"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "and how we are making it easier for developers to bring 3D content to the web across Apple platforms and beyond."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Whether you're a web developer exploring 3D for the first time"
+  },
+  {
+    "timestamp": "0:29",
+    "content": "or an experienced 3D artist looking to bring your work to the web,"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "I've got everything you need to get started."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "We pioneered the model element in Vision OS,"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "a native HTML element that makes adding a 3D model as simple as adding an image."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "Now, the model element comes to iOS, iPadOS and macOS."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "The same markup, the same element works across Apple's platforms."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "Your 3D content reaches every Safari visitor, whether they are on iPhone on the go,"
+  },
+  {
+    "timestamp": "1:07",
+    "content": "on iPad at the coffee shop,"
+  },
+  {
+    "timestamp": "1:10",
+    "content": "or on Mac at their desk."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "You might be familiar with Model Viewer, the go-to JavaScript library for 3D today."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "It serves developers well, but the model element is native."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "No extra library, rendered directly by the platform,"
+  },
+  {
+    "timestamp": "1:30",
+    "content": "with built-in stereoscopic rendering on Vision OS."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "It's also an emerging web standard, so your code is future-proof."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "To reach all platforms across the web,"
+  },
+  {
+    "timestamp": "1:43",
+    "content": "a polyfill is available for browsers that don't natively support the model element yet."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "I'll cover that in more detail later."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Let's say I'm working on an e-commerce platform for outdoor adventures,"
+  },
+  {
+    "timestamp": "1:56",
+    "content": "and I already have images for the products."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "Today, I'll walk you through adding 3D models to the product pages."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "First, I'll show you how to get assets ready."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "Then, we will dive into the model element,"
+  },
+  {
+    "timestamp": "2:10",
+    "content": "building up the experience one feature at a time."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "And finally, I'll show you command-line tools to optimize models for production."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "Let's get into it!"
+  },
+  {
+    "timestamp": "2:22",
+    "content": "What if you don't have 3D assets in the first place?"
+  },
+  {
+    "timestamp": "2:26",
+    "content": "We recommend a capture-convert-create approach."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "Using your iPhone to scan real-world objects,"
+  },
+  {
+    "timestamp": "2:32",
+    "content": "converting existing files,"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "or building from scratch in tools like Blender."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "But there has also been a revolution in generative AI,"
+  },
+  {
+    "timestamp": "2:42",
+    "content": "and with it, an entirely new way to make the content you want."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "You can use images to generate a model that matches a real-world object,"
+  },
+  {
+    "timestamp": "2:51",
+    "content": "or a text prompt for more creative generation."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "Apps like Tripod3D and Mesh AI are only a couple to choose from."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "My store already has a few products,"
+  },
+  {
+    "timestamp": "3:02",
+    "content": "but I want to add an essential, a camping mullet."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "I started with several images of a mullet,"
+  },
+  {
+    "timestamp": "3:09",
+    "content": "and after a few minutes, my model was ready to use."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "I exported it as a USDZ file."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "The model element supports USDZ,"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "universal scene description zipped into a single file."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "It packages everything a 3D model needs,"
+  },
+  {
+    "timestamp": "3:27",
+    "content": "geometry, materials, textures, animations."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "Safari supports other formats too,"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "but for the best experience, I would recommend starting with USDZ."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "It's time to put a model on the page."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "Now, the mullet is ready as a USDZ file."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "I'll cover different ways of presenting the model element."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "I'll talk about how to embed a model,"
+  },
+  {
+    "timestamp": "3:53",
+    "content": "know when it's ready to display,"
+  },
+  {
+    "timestamp": "3:55",
+    "content": "and handle fallbacks,"
+  },
+  {
+    "timestamp": "3:57",
+    "content": "how to match the model to my page design,"
+  },
+  {
+    "timestamp": "4:00",
+    "content": "let visitors interact and explore."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "I'll guide you on how to implement custom transforms and play animations,"
+  },
+  {
+    "timestamp": "4:09",
+    "content": "and bring models into the real world"
+  },
+  {
+    "timestamp": "4:11",
+    "content": "with AR Quick Look and spatial computing."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "Okay, starting with loading a model."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "Just like image tag or video tag,"
+  },
+  {
+    "timestamp": "4:21",
+    "content": "you point model tag at a file with the source attribute,"
+  },
+  {
+    "timestamp": "4:25",
+    "content": "and the browser handles the rest."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "No plugins required."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "You can also use the source tag with a specified MIME type."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Again, the same pattern as video tag."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "It's also important to think about fallback."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "The simplest approach, place an image tag inside your model tag."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "Older versions of Safari and browsers"
+  },
+  {
+    "timestamp": "4:49",
+    "content": "that don't yet support the model element"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "will render the image instead."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "Your visitors still get an idea of the product."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "3D models can be tens of megabytes or more in size,"
+  },
+  {
+    "timestamp": "5:01",
+    "content": "so it can take a while to load."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "The Ready Promise lets you know"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "when the model is actually loaded and ready to display."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "While the model is loading,"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "it's a good idea to provide a visual cue,"
+  },
+  {
+    "timestamp": "5:14",
+    "content": "like a spinner."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "Hide it when the Ready Promise resolves."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "And if something unexpected happens,"
+  },
+  {
+    "timestamp": "5:22",
+    "content": "handle it in the catch block"
+  },
+  {
+    "timestamp": "5:23",
+    "content": "and show your fallback content."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "You can also polyfill the model functionality as well."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "A polyfill retrofits the API of a new standard via JavaScript,"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "letting you use modern features"
+  },
+  {
+    "timestamp": "5:36",
+    "content": "even before they land on every platform."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "The model element samples at the W3C"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "show an example of exactly this."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "If the native element isn't defined on the window,"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "they load the polyfill library"
+  },
+  {
+    "timestamp": "5:50",
+    "content": "to fill in as much of functionality as they can,"
+  },
+  {
+    "timestamp": "5:54",
+    "content": "as close to the native API as possible."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "Just make sure to test the functionality"
+  },
+  {
+    "timestamp": "5:59",
+    "content": "of both the polyfill and the native element."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "And remember that some features of the element"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "cannot be polyfilled,"
+  },
+  {
+    "timestamp": "6:08",
+    "content": "such as the stereoscopic display"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "on special platforms like Apple Vision Pro."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "The model element is rendered in its own virtual space,"
+  },
+  {
+    "timestamp": "6:17",
+    "content": "so it won't pick up the page's background."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "To match your page design,"
+  },
+  {
+    "timestamp": "6:22",
+    "content": "set background color directly on the model."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "Keep in mind,"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "the background is always rendered opaque."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "Even if you specify color with transparency,"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "it will be converted."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "Now we have a model loaded"
+  },
+  {
+    "timestamp": "6:37",
+    "content": "and integrated into the existing page."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Giving our visitors an option to interact with it"
+  },
+  {
+    "timestamp": "6:43",
+    "content": "is a natural next step."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "Let me show you how easy that is."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "The stage mode attribute with value orbit"
+  },
+  {
+    "timestamp": "6:51",
+    "content": "lets your visitors rotate the model freely side to side."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "And if they tilt it up or down,"
+  },
+  {
+    "timestamp": "6:57",
+    "content": "it gently sprints back to its original angle."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "Interactive, but always looking its best."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "The attribute also makes the model slightly smaller."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "It's rescaled to ensure no parts get clipped during rotation."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "Sometimes, you want to add custom interactivity to the experience."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "The EntityTransform property lets you set exact viewing angles via JavaScript."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "And I'm going to add two buttons to show how it works."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "One for side view"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "and a reset button to bring the model back to its original orientation."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "To use EntityTransform,"
+  },
+  {
+    "timestamp": "7:34",
+    "content": "you'll need to disable orbit."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "As a remove stage mode attribute or set it to none."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "When you transform the model manually,"
+  },
+  {
+    "timestamp": "7:44",
+    "content": "parts of it may get clipped"
+  },
+  {
+    "timestamp": "7:46",
+    "content": "or even disappear if rotated out of the visible area."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "You might need to adjust the position to make it visible."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "To implement a transform,"
+  },
+  {
+    "timestamp": "7:57",
+    "content": "I create a DOM matrix."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "This represents the model's orientation in 3D space."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Then call rotateSelf to define the rotation."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "Here we are rotating 135 degrees around the Y axis to get the side view."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "Finally,"
+  },
+  {
+    "timestamp": "8:13",
+    "content": "assign it to model EntityTransform to apply the change."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "Capture the initial transform up front,"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "then use it to reset the model back to its original orientation."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "The view switched instantly from one to another."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "To make the transition smooth,"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "you can animate the rotation with requestAnimationFrame."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "First,"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "set up the state,"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "the current angle,"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "the animation duration in milliseconds,"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "500 gives you half a second,"
+  },
+  {
+    "timestamp": "8:44",
+    "content": "which feels snappy but smooth,"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "and the reference to cancel any in-flight animation."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "The animateTo first cancels any running animation,"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "so transitions don't conflict,"
+  },
+  {
+    "timestamp": "8:58",
+    "content": "captures the current angles as a starting point,"
+  },
+  {
+    "timestamp": "9:01",
+    "content": "and marks the start time."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "Then, I add the step function."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "On each frame,"
+  },
+  {
+    "timestamp": "9:09",
+    "content": "it computes how far along the animation is,"
+  },
+  {
+    "timestamp": "9:13",
+    "content": "eases the rotation for a smooth finish,"
+  },
+  {
+    "timestamp": "9:16",
+    "content": "and updates EntityTransform with the new DOM matrix."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "While animation is still running,"
+  },
+  {
+    "timestamp": "9:22",
+    "content": "it requests the next frame."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "Finally, assign animateTo calls to the buttons."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "SideView animates to 135 degrees,"
+  },
+  {
+    "timestamp": "9:33",
+    "content": "reset to zero."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "Let's see it in action."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "When a user taps sidebutton,"
+  },
+  {
+    "timestamp": "9:39",
+    "content": "the model smoothly rotates to show the sideview."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "After tapping reset,"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "it glides right back to where it started."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "Custom transforms and animations give you full control,"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "but they require extra work."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "Pounding boxes,"
+  },
+  {
+    "timestamp": "9:55",
+    "content": "clipping,"
+  },
+  {
+    "timestamp": "9:56",
+    "content": "manual animation code."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "If your use case allows it,"
+  },
+  {
+    "timestamp": "9:59",
+    "content": "the orbit stage mode"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "gets you interactive 3D with a single attribute."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "Choose what works best for your product."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "Models can also come to life with built-in animation."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "These animations are typically authored in 3D tools like Blender or Maya"
+  },
+  {
+    "timestamp": "10:17",
+    "content": "and baked into the USDZ file."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "The model element plays the first animation track."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "And with a couple of lines of JavaScript,"
+  },
+  {
+    "timestamp": "10:26",
+    "content": "you can control the playback rate,"
+  },
+  {
+    "timestamp": "10:28",
+    "content": "or even run it in reverse by providing a negative value."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "To do that,"
+  },
+  {
+    "timestamp": "10:33",
+    "content": "I implement a simple play function"
+  },
+  {
+    "timestamp": "10:36",
+    "content": "that sets playback rate on the model"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "and calls model's play method."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "That's it."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "A positive value plays forward,"
+  },
+  {
+    "timestamp": "10:45",
+    "content": "a negative one reverses it."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Here, I'm using 5 and minus 5 for a faster playback."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "So far, the store visitors can explore products in 3D right on the page."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "But what if they want to see how it looks in their environment?"
+  },
+  {
+    "timestamp": "11:04",
+    "content": "Wrap a model in a tag with rel equals AR attribute,"
+  },
+  {
+    "timestamp": "11:10",
+    "content": "point to the same resource,"
+  },
+  {
+    "timestamp": "11:13",
+    "content": "and on iOS and iPadOS,"
+  },
+  {
+    "timestamp": "11:16",
+    "content": "your customers get a full AR quick-look experience."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "On VisionOS,"
+  },
+  {
+    "timestamp": "11:21",
+    "content": "the model element was already making 3D content"
+  },
+  {
+    "timestamp": "11:24",
+    "content": "feel like a natural part of the web."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "With stereoscopic rendering,"
+  },
+  {
+    "timestamp": "11:30",
+    "content": "models gain real depth."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "Your customers can pull the product out of the page"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "and examine it as if it were right in their hands."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "VisionOS also supports immersive website environments,"
+  },
+  {
+    "timestamp": "11:44",
+    "content": "which use the model element"
+  },
+  {
+    "timestamp": "11:47",
+    "content": "and let you transport your audience right inside the scene,"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "all from Safari."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "If you want to learn more about this feature,"
+  },
+  {
+    "timestamp": "11:57",
+    "content": "be sure to check the Explore Immersive Website Environment session."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "It explains the API in detail."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "With the assets ready and the model elements in place,"
+  },
+  {
+    "timestamp": "12:08",
+    "content": "let's see it all come together."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "Here's our catalog page with 3D models."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "And the interactive exploration is my personal favorite."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "Your customers can rotate, tilt,"
+  },
+  {
+    "timestamp": "12:21",
+    "content": "and view every angle of the product,"
+  },
+  {
+    "timestamp": "12:24",
+    "content": "exploring it in the way they want,"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "all running right in Safari."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "Our product page looks fantastic running locally,"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "but you may find loading can take a while over the internet."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "It would be great if we could get this model smaller."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "To do that,"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "I'm going to run a command line tool called USD CRUSH on the boot model."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "And with no changing quality,"
+  },
+  {
+    "timestamp": "12:47",
+    "content": "the file goes from 7.9 MB"
+  },
+  {
+    "timestamp": "12:49",
+    "content": "down to 1.9 MB."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "That's crushing savings."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "When we opened both versions side by side in Safari,"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "they look identical."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "Same visual quality,"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "significantly smaller file."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "If you have a 3D file,"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "but no image for it yet,"
+  },
+  {
+    "timestamp": "13:10",
+    "content": "you can use USD record tool to generate a thumbnail"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "or a fallback image directly,"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "specifying things like output format"
+  },
+  {
+    "timestamp": "13:18",
+    "content": "or rendering from a custom camera"
+  },
+  {
+    "timestamp": "13:20",
+    "content": "if there is one in the file."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "And unlike a screenshot,"
+  },
+  {
+    "timestamp": "13:24",
+    "content": "you can write a script."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "Well, who am I kidding?"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "Your favorite LLM can write the script"
+  },
+  {
+    "timestamp": "13:29",
+    "content": "to run it across your entire catalog."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "Both these command line tools"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "are already installed on your Mac."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "They are part of a larger suite of tools"
+  },
+  {
+    "timestamp": "13:39",
+    "content": "for working with USD content."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "You can learn more about all of them"
+  },
+  {
+    "timestamp": "13:43",
+    "content": "and the overall USD ecosystem"
+  },
+  {
+    "timestamp": "13:46",
+    "content": "in the WWDC24 session"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "What's New in USD and Material X."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "The model element started on Vision OS"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "and with iOS, iPadOS, and MacOS support,"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "it's expanding across the Apple family"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "and we want to bring it to the web at large."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "Our team actively contributing"
+  },
+  {
+    "timestamp": "14:07",
+    "content": "to the model specification as a W3C."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "And we would love to hear from you."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "If there are features you would add"
+  },
+  {
+    "timestamp": "14:14",
+    "content": "or use cases we haven't considered,"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "now it's a great time to share your feedback."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Web standards are shaped"
+  },
+  {
+    "timestamp": "14:22",
+    "content": "by the developer community"
+  },
+  {
+    "timestamp": "14:24",
+    "content": "and your voice matters."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "For 3D content in the USDZ file format,"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "the Alliance of OpenUSD"
+  },
+  {
+    "timestamp": "14:32",
+    "content": "has published the full specification."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "A clear, vendor-neutral reference."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "The Alliance also provides conversion tools"
+  },
+  {
+    "timestamp": "14:40",
+    "content": "and resources to help you integrate USDZ"
+  },
+  {
+    "timestamp": "14:43",
+    "content": "into your existing content pipelines."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "That's the model element."
+  },
+  {
+    "timestamp": "14:47",
+    "content": "From assets to production."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "Now let me tell you about next steps."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Try to create a 3D model of your own"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "using text-based prompts"
+  },
+  {
+    "timestamp": "14:57",
+    "content": "or images you already have."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "Add a model tag to your website,"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "point it at a USDZ file"
+  },
+  {
+    "timestamp": "15:05",
+    "content": "and see how it comes to life in Safari."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "Use the USD tools to optimize your assets."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "Play with it on different platforms"
+  },
+  {
+    "timestamp": "15:14",
+    "content": "and see how the element adapts."
+  },
+  {
+    "timestamp": "15:17",
+    "content": "Join the immersive web community group"
+  },
+  {
+    "timestamp": "15:20",
+    "content": "at the W3C."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "Bring your use cases,"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "your feedback and your ideas."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "Catch up on the related sessions"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "like immersive website environments."
+  },
+  {
+    "timestamp": "15:30",
+    "content": "And for a deep dive into spatial web features,"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "see what's new for the spatial web"
+  },
+  {
+    "timestamp": "15:35",
+    "content": "from WWDC25."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "I can't wait to see what you build."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "Thank you and have a great WWDC."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "You"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "Thank you."
+  }
+]

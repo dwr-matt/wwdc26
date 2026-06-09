@@ -1,0 +1,2810 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Tatyana, research scientist at MLX team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "It's been a remarkable time for local LLMs."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "Models keep getting larger and gaining new, amazing capabilities,"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "becoming smarter and handling harder problems."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "And as they improve, we use them for more."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "Longer context, harder tasks, more complex workflows."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Eventually, memory, compute or bandwidth on a single machine becomes a limitation."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "In our video Run local agentic AI on the Mac using MLX,"
+  },
+  {
+    "timestamp": "0:39",
+    "content": "it is shown how to run AI agents locally."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "But when you have multiple devices, you can take local AI even further,"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "running larger LLMs or accelerating them through distributed inference and training."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Today, we'll take a deep dive into scaling across multiple Macs with MLX,"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "using the hardware right on your desk."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "We'll start with the command line interface to get models running on your machines,"
+  },
+  {
+    "timestamp": "1:07",
+    "content": "move to the Python API for experimentation,"
+  },
+  {
+    "timestamp": "1:09",
+    "content": "and finish with Swift for embedding these workflows directly into your apps."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Let's start."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "First, we'll look at the full hardware and software stacks to make distributed workloads on Apple Silicon possible."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "Then, we'll put everything together, turn 4 and 3 ultras into a cluster."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "We'll walk through every step, choosing the right topology to connect machines,"
+  },
+  {
+    "timestamp": "1:34",
+    "content": "enabling fast communication, and launching distributed jobs."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "Once the cluster is ready, we'll get to the exciting part,"
+  },
+  {
+    "timestamp": "1:42",
+    "content": "fast and local distributed LLM inference and fine tuning."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "We'll run it with MLX, compare it side by side against a single Mac,"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "and look at how MLX distributes the model across the cluster."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "Having most examples in command line interface,"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "in the end, we'll show how distributed communication is also exposed to you via Python, Swift, and C++ APIs."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "Let's start by looking at distributed communication for Apple Silicon."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "To send and receive data fast, machines need to be connected with a physical link and interconnect."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "On top of that, we also need a transport protocol,"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "a mechanism that pushes bytes from one machine's memory to another's."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "Starting in macOS 26.2, Remote Direct Memory Access Protocol, shortly RDMA,"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "is supported over Thunderbolt 5."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "RDMA moves data directly from one machine's memory to another's,"
+  },
+  {
+    "timestamp": "2:43",
+    "content": "avoiding most CPU and operating system overhead."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "RDMA over Thunderbolt gives us the high bandwidth,"
+  },
+  {
+    "timestamp": "2:50",
+    "content": "low latency communication we need for distributed workloads."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "However, alone, it gives us raw data movement between two machines only."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "Thus, distributed programs need something higher level,"
+  },
+  {
+    "timestamp": "3:03",
+    "content": "a communication backend,"
+  },
+  {
+    "timestamp": "3:05",
+    "content": "which provides communication primitives for sending data between individual machines"
+  },
+  {
+    "timestamp": "3:10",
+    "content": "or coordinating across the entire group."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "These two operations are building blocks of distributed training and inference."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "And this is where JAKL comes in."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "JAKL is an open-source collective communication library built by Apple."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "It leverages RDMA over Thunderbolt"
+  },
+  {
+    "timestamp": "3:28",
+    "content": "and gives you collective communication primitives for sending data between machines"
+  },
+  {
+    "timestamp": "3:33",
+    "content": "and combining results across the group,"
+  },
+  {
+    "timestamp": "3:35",
+    "content": "without managing any of the low-level transport yourself."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "And it's not limited to machine learning."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "Any distributed workload on Apple Silicon can be built on top of it."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "And the final piece of the stack is a machine learning framework"
+  },
+  {
+    "timestamp": "3:50",
+    "content": "that uses the communication backend for distributed inference and training."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "That's Amalix."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Amalix is an open-source machine learning library built by Apple for Apple Silicon."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "It leverages JAKL for low-latency distributed communication"
+  },
+  {
+    "timestamp": "4:06",
+    "content": "and provides tools for orchestrating distributed jobs across the cluster."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "If you are new to Amalix,"
+  },
+  {
+    "timestamp": "4:13",
+    "content": "check out our video"
+  },
+  {
+    "timestamp": "4:14",
+    "content": "Getting Started with Amalix on Apple Silicon from WWDC25."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "So now we understand the full stack."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Let's put it all together and build a cluster,"
+  },
+  {
+    "timestamp": "4:25",
+    "content": "a group of machines that work together on the same task."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "We will use four M3 Ultras."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "To set up the cluster,"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "we need to connect the machines with Thunderbolt 5 cables."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "There are different ways to wire them together,"
+  },
+  {
+    "timestamp": "4:40",
+    "content": "and the topology directly affects the communication time."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "So to begin with,"
+  },
+  {
+    "timestamp": "4:45",
+    "content": "we'll look at what defines that time."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "Next, we'll look at how to actually connect the machines,"
+  },
+  {
+    "timestamp": "4:51",
+    "content": "which topologies JAKL supports,"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "and the trade-offs between them."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "After that,"
+  },
+  {
+    "timestamp": "4:56",
+    "content": "we'll show how to enable RDMA on the machines for fast communication."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "And finally,"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "we'll launch distributed jobs on the cluster using Amalix."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "So, communication time has two components,"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "latency and transfer time."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "Latency is the fixed cost paid for each communication operation,"
+  },
+  {
+    "timestamp": "5:17",
+    "content": "independent of the amount of data being sent."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "Transfer time is the cost of moving the data through the link."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "It grows with message size,"
+  },
+  {
+    "timestamp": "5:27",
+    "content": "and depends on the bandwidth of the link."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "For small messages,"
+  },
+  {
+    "timestamp": "5:32",
+    "content": "the data movement cost is tiny,"
+  },
+  {
+    "timestamp": "5:35",
+    "content": "so latency dominates."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "For large messages,"
+  },
+  {
+    "timestamp": "5:41",
+    "content": "the trade-off is opposite."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Depending on whether communication is latency-bound"
+  },
+  {
+    "timestamp": "5:45",
+    "content": "or bandwidth-bound,"
+  },
+  {
+    "timestamp": "5:46",
+    "content": "we may prefer different topologies."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "JAKL supports two of them,"
+  },
+  {
+    "timestamp": "5:52",
+    "content": "a mesh and a ring."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "In a full mesh,"
+  },
+  {
+    "timestamp": "5:55",
+    "content": "every machine connects directly to every other,"
+  },
+  {
+    "timestamp": "5:58",
+    "content": "thus any group communication"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "has the lowest possible latency."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "In a ring,"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "each node connects only to its two neighbors."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "Communication between non-adjacent nodes"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "must travel through intermediate machines,"
+  },
+  {
+    "timestamp": "6:11",
+    "content": "which increases latency."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "However,"
+  },
+  {
+    "timestamp": "6:15",
+    "content": "the ring requires fewer cables and ports per machine,"
+  },
+  {
+    "timestamp": "6:18",
+    "content": "making it easier to scale to more nodes."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "And because each node has only two connections,"
+  },
+  {
+    "timestamp": "6:24",
+    "content": "we can use the extra Thunderbolt ports"
+  },
+  {
+    "timestamp": "6:26",
+    "content": "to run two or three cables per neighbor,"
+  },
+  {
+    "timestamp": "6:28",
+    "content": "depending on the mark,"
+  },
+  {
+    "timestamp": "6:30",
+    "content": "thus increasing the bandwidth per link"
+  },
+  {
+    "timestamp": "6:31",
+    "content": "and reducing transfer time."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "When machines are connected into a mesh,"
+  },
+  {
+    "timestamp": "6:36",
+    "content": "we have the flexibility to route each communication"
+  },
+  {
+    "timestamp": "6:39",
+    "content": "through either a mesh topology"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "or a ring topology."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "What's nice about JAKL,"
+  },
+  {
+    "timestamp": "6:47",
+    "content": "it automatically picks the best topology"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "depending on the message size"
+  },
+  {
+    "timestamp": "6:52",
+    "content": "and communication operation."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "Mesh when latency matters,"
+  },
+  {
+    "timestamp": "6:57",
+    "content": "ring when bandwidth matters."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "For this flexibility,"
+  },
+  {
+    "timestamp": "7:00",
+    "content": "let's connect all M3 Ultras into a mesh."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "As we connected all M3 Ultras together,"
+  },
+  {
+    "timestamp": "7:08",
+    "content": "now we need to enable RDMA on all machines."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "Open settings on the machine."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "Search for RDMA."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "Click on Enable RDMA over Thunderbolt."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Enable RDMA."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "And reboot."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "Great."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Macs are connected with Thunderbolt 5 cables"
+  },
+  {
+    "timestamp": "7:31",
+    "content": "and RDMA is enabled."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "Now we need a way to launch distributed programs."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "One way to do it is over the local network,"
+  },
+  {
+    "timestamp": "7:41",
+    "content": "for example, through Wi-Fi or Ethernet."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "From any machine with SSH access to the cluster,"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "for example, MacBook in my case,"
+  },
+  {
+    "timestamp": "7:49",
+    "content": "we connect to each mug, start the program,"
+  },
+  {
+    "timestamp": "7:52",
+    "content": "and from that point on,"
+  },
+  {
+    "timestamp": "7:54",
+    "content": "all machines communicate directly"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "over the Thunderbolt links."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Amolix provides a launch helper,"
+  },
+  {
+    "timestamp": "8:01",
+    "content": "which exactly does all of this for you."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "You run Amolix launch on your MacBook,"
+  },
+  {
+    "timestamp": "8:08",
+    "content": "and it orchestrates the cluster."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "You give it the executable you want to run,"
+  },
+  {
+    "timestamp": "8:14",
+    "content": "and a JSON host file describing your cluster."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "From there, it SSH into each node"
+  },
+  {
+    "timestamp": "8:20",
+    "content": "using hostnames from provided host file,"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "and start the executable on every machine."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "Let's see how the host file"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "that describes the cluster should look like."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "It is a JSON array, one entry per node."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "SSH is the hostname used by Amolix launch"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "to reach the machine."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "IPs is the machine's IP on your local network"
+  },
+  {
+    "timestamp": "8:43",
+    "content": "used by JAKL for initial coordination"
+  },
+  {
+    "timestamp": "8:45",
+    "content": "between nodes."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "And RDMA is a list of the RDMA device names"
+  },
+  {
+    "timestamp": "8:50",
+    "content": "for each Thunderbolt pure connection."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "You can write it manually,"
+  },
+  {
+    "timestamp": "8:55",
+    "content": "but Amolix also provides a helper script"
+  },
+  {
+    "timestamp": "8:57",
+    "content": "Amolix-distributed config"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "that generates it for you."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "You pass the list of hostnames"
+  },
+  {
+    "timestamp": "9:04",
+    "content": "and an output path."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "You can also embed environment variables"
+  },
+  {
+    "timestamp": "9:09",
+    "content": "in the config."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "They will be set automatically"
+  },
+  {
+    "timestamp": "9:12",
+    "content": "on every node at launch time."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "Here, we set Amolix Metal Fast Sync into one,"
+  },
+  {
+    "timestamp": "9:18",
+    "content": "which enables faster GPU-to-CPU synchronization."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "It is critical for distributed tasks"
+  },
+  {
+    "timestamp": "9:24",
+    "content": "because computation runs on the GPU,"
+  },
+  {
+    "timestamp": "9:27",
+    "content": "while communication runs on the CPU."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "You can also pass the auto setup flag"
+  },
+  {
+    "timestamp": "9:32",
+    "content": "to configure the Thunderbolt network automatically."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "Communication backend argument defines"
+  },
+  {
+    "timestamp": "9:38",
+    "content": "whether it is a mesh or ring."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "For a mesh, backend is set to JAKL,"
+  },
+  {
+    "timestamp": "9:43",
+    "content": "as in this example."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "For a ring, we would change it to JAKL ring."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Let's run this command"
+  },
+  {
+    "timestamp": "9:50",
+    "content": "and generate the host file for our cluster."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "First, it checks that all hosts"
+  },
+  {
+    "timestamp": "9:56",
+    "content": "are reachable over SSH."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "Then, it probes each machine's Thunderbolt ports"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "to discover which machines are physically connected"
+  },
+  {
+    "timestamp": "10:04",
+    "content": "to which,"
+  },
+  {
+    "timestamp": "10:06",
+    "content": "building a map of the topology."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "Since we passed auto setup,"
+  },
+  {
+    "timestamp": "10:10",
+    "content": "it disables the Thunderbolt bridge on all machines"
+  },
+  {
+    "timestamp": "10:13",
+    "content": "and configures each Thunderbolt link for RDMA."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "Finally, it writes a JSON host file"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "with everything Amolix launch needs."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "Note that without auto setup flag,"
+  },
+  {
+    "timestamp": "10:24",
+    "content": "script prints the configuration commands"
+  },
+  {
+    "timestamp": "10:27",
+    "content": "so you can review them and run yourself."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "Now, the cluster is ready."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "Let's move to the exciting part,"
+  },
+  {
+    "timestamp": "10:35",
+    "content": "distributed language model inference and fine tuning."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "And the easiest way to start this"
+  },
+  {
+    "timestamp": "10:41",
+    "content": "via command line interface and MLX LM."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "MLX LM is an open source Python package"
+  },
+  {
+    "timestamp": "10:47",
+    "content": "built on top of MLX"
+  },
+  {
+    "timestamp": "10:49",
+    "content": "that provides command line tools"
+  },
+  {
+    "timestamp": "10:51",
+    "content": "and a Python API for running language models"
+  },
+  {
+    "timestamp": "10:54",
+    "content": "locally on Apple Silicon."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "Check out our video"
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Explore large language models"
+  },
+  {
+    "timestamp": "10:59",
+    "content": "on Apple Silicon with MLX"
+  },
+  {
+    "timestamp": "11:01",
+    "content": "from WWDC25"
+  },
+  {
+    "timestamp": "11:03",
+    "content": "to get started on a single device."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "As we showed last year,"
+  },
+  {
+    "timestamp": "11:09",
+    "content": "chatting with a model on a single Mac"
+  },
+  {
+    "timestamp": "11:11",
+    "content": "can be done via command line interface"
+  },
+  {
+    "timestamp": "11:14",
+    "content": "with MLX LM chat."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "We run it in the terminal,"
+  },
+  {
+    "timestamp": "11:17",
+    "content": "specifying the model we want to use,"
+  },
+  {
+    "timestamp": "11:19",
+    "content": "for example, QN3.6,"
+  },
+  {
+    "timestamp": "11:22",
+    "content": "and the maximum number of tokens for the response."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "Under the hood,"
+  },
+  {
+    "timestamp": "11:26",
+    "content": "MLX LM loads and runs the model"
+  },
+  {
+    "timestamp": "11:28",
+    "content": "on a single machine."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "To chat with the same model"
+  },
+  {
+    "timestamp": "11:33",
+    "content": "on the cluster"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "via command line interface,"
+  },
+  {
+    "timestamp": "11:36",
+    "content": "we wrap the command with MLX launch."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "On our MacBook,"
+  },
+  {
+    "timestamp": "11:40",
+    "content": "in the terminal,"
+  },
+  {
+    "timestamp": "11:41",
+    "content": "we run MLX launch"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "with the host file"
+  },
+  {
+    "timestamp": "11:44",
+    "content": "pointing to our cluster configuration."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "After the double dash,"
+  },
+  {
+    "timestamp": "11:48",
+    "content": "we pass the exact same"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "MLX LM chat command,"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "but using the remote path"
+  },
+  {
+    "timestamp": "11:53",
+    "content": "to the executable on each node."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "The command is almost identical."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "MLX LM shards the model"
+  },
+  {
+    "timestamp": "12:00",
+    "content": "and coordinates the distributed inference for you."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "Keep in mind that"
+  },
+  {
+    "timestamp": "12:04",
+    "content": "all necessary libraries,"
+  },
+  {
+    "timestamp": "12:06",
+    "content": "like MLX,"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "must be installed on each Mac,"
+  },
+  {
+    "timestamp": "12:09",
+    "content": "and the executable"
+  },
+  {
+    "timestamp": "12:10",
+    "content": "must be accessible on all machines."
+  },
+  {
+    "timestamp": "12:12",
+    "content": "One line via command line interface,"
+  },
+  {
+    "timestamp": "12:16",
+    "content": "and we are running a model"
+  },
+  {
+    "timestamp": "12:18",
+    "content": "spread across the entire cluster."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "Let's try both side-by-side"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "and chat with QN3.6,"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "a 27 billion parameter model"
+  },
+  {
+    "timestamp": "12:27",
+    "content": "on a single M3 Ultra"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "and on four of them."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "I have already started MLX LM chat"
+  },
+  {
+    "timestamp": "12:34",
+    "content": "on both sides."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "On the left,"
+  },
+  {
+    "timestamp": "12:36",
+    "content": "the model is loaded"
+  },
+  {
+    "timestamp": "12:37",
+    "content": "on a single M3 Ultra."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "On the right,"
+  },
+  {
+    "timestamp": "12:40",
+    "content": "it sharded across four machines."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "Let's prompt both"
+  },
+  {
+    "timestamp": "12:44",
+    "content": "with implement a transformer model"
+  },
+  {
+    "timestamp": "12:46",
+    "content": "in MLX."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "It is a quite oppressive speedup."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "The cluster generates tokens"
+  },
+  {
+    "timestamp": "12:53",
+    "content": "at nearly three times"
+  },
+  {
+    "timestamp": "12:55",
+    "content": "the rate of a single machine"
+  },
+  {
+    "timestamp": "12:56",
+    "content": "for QN3.6 model."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "As we see,"
+  },
+  {
+    "timestamp": "13:01",
+    "content": "running a model across multiple mugs"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "can significantly boost inference speed."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "The exact speedup"
+  },
+  {
+    "timestamp": "13:07",
+    "content": "depends on the model size"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "and architecture."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "But time improvement"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "is not the only reason"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "to go distributed."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "Sometimes,"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "a model is simply"
+  },
+  {
+    "timestamp": "13:16",
+    "content": "too large for one machine."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "Kimi 2.6, for example,"
+  },
+  {
+    "timestamp": "13:20",
+    "content": "has one trillion total parameters."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "Even with 8-bit quantization,"
+  },
+  {
+    "timestamp": "13:26",
+    "content": "the weights alone require"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "about one terabyte of memory."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "That does not fit"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "on a single M3 Ultra,"
+  },
+  {
+    "timestamp": "13:32",
+    "content": "but it can fit across four."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "So how do we actually split"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "the weights and computation"
+  },
+  {
+    "timestamp": "13:38",
+    "content": "across machines?"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "MLX and MLXLM"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "support two approaches,"
+  },
+  {
+    "timestamp": "13:43",
+    "content": "pipeline and tensor parallelism."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "Pipeline parallelism splits"
+  },
+  {
+    "timestamp": "13:48",
+    "content": "the model by depth."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "In this case,"
+  },
+  {
+    "timestamp": "13:51",
+    "content": "each machine holds"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "a group of layers"
+  },
+  {
+    "timestamp": "13:53",
+    "content": "and data moves"
+  },
+  {
+    "timestamp": "13:54",
+    "content": "through the machines sequentially."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "It does not speed up"
+  },
+  {
+    "timestamp": "13:57",
+    "content": "the inference"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "because each token"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "still has to path"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "through the layers groups"
+  },
+  {
+    "timestamp": "14:02",
+    "content": "one after another."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "But the benefit"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "is simple communication."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "Machines only exchange"
+  },
+  {
+    "timestamp": "14:08",
+    "content": "activations"
+  },
+  {
+    "timestamp": "14:09",
+    "content": "at the boundaries"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "between layer groups."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "Tensor parallelism"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "splits the model"
+  },
+  {
+    "timestamp": "14:14",
+    "content": "by width."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "In this case,"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "each machine"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "holds part of every layer,"
+  },
+  {
+    "timestamp": "14:19",
+    "content": "so all machines"
+  },
+  {
+    "timestamp": "14:20",
+    "content": "process the same token"
+  },
+  {
+    "timestamp": "14:22",
+    "content": "at the same time."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "It improves inference speed"
+  },
+  {
+    "timestamp": "14:25",
+    "content": "due to paralyzed"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "per-layer computation."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "However,"
+  },
+  {
+    "timestamp": "14:29",
+    "content": "the troidoff"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "is much more frequent"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "communication."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "That happens"
+  },
+  {
+    "timestamp": "14:33",
+    "content": "at every layer"
+  },
+  {
+    "timestamp": "14:34",
+    "content": "and for every token."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "This makes low latency"
+  },
+  {
+    "timestamp": "14:37",
+    "content": "important,"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "and that is why"
+  },
+  {
+    "timestamp": "14:39",
+    "content": "the mesh topology"
+  },
+  {
+    "timestamp": "14:40",
+    "content": "is crucial for this case."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "Every machine"
+  },
+  {
+    "timestamp": "14:43",
+    "content": "can reach every other machine"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "in a single hop."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "Tensor parallelism"
+  },
+  {
+    "timestamp": "14:49",
+    "content": "is the default"
+  },
+  {
+    "timestamp": "14:49",
+    "content": "sharding strategy"
+  },
+  {
+    "timestamp": "14:50",
+    "content": "in MLXLM."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "To shard the model"
+  },
+  {
+    "timestamp": "14:53",
+    "content": "with pipeline parallelism,"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "we can simply"
+  },
+  {
+    "timestamp": "14:55",
+    "content": "append a flag"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "pipeline to the command."
+  },
+  {
+    "timestamp": "14:58",
+    "content": "Note"
+  },
+  {
+    "timestamp": "14:58",
+    "content": "that not all models"
+  },
+  {
+    "timestamp": "15:00",
+    "content": "support pipeline parallelism."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "Now let's chat"
+  },
+  {
+    "timestamp": "15:04",
+    "content": "with the 1 trillion parameter"
+  },
+  {
+    "timestamp": "15:05",
+    "content": "Kimi 2.6"
+  },
+  {
+    "timestamp": "15:07",
+    "content": "on our cluster."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "For this,"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "we use MLX launch"
+  },
+  {
+    "timestamp": "15:11",
+    "content": "from our MacBook"
+  },
+  {
+    "timestamp": "15:12",
+    "content": "as before,"
+  },
+  {
+    "timestamp": "15:14",
+    "content": "pointing to the host file."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "I am not passing"
+  },
+  {
+    "timestamp": "15:16",
+    "content": "the pipeline flag,"
+  },
+  {
+    "timestamp": "15:18",
+    "content": "so we are using"
+  },
+  {
+    "timestamp": "15:18",
+    "content": "tensor parallelism."
+  },
+  {
+    "timestamp": "15:20",
+    "content": "We need to wait a moment."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "MLX launch"
+  },
+  {
+    "timestamp": "15:22",
+    "content": "is connecting"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "to every machine"
+  },
+  {
+    "timestamp": "15:24",
+    "content": "MLXLM loads"
+  },
+  {
+    "timestamp": "15:25",
+    "content": "and shards the model"
+  },
+  {
+    "timestamp": "15:26",
+    "content": "and starts the chat."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Great."
+  },
+  {
+    "timestamp": "15:30",
+    "content": "The model is loaded."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "Let's prompt model"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "with implement"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "machine learning"
+  },
+  {
+    "timestamp": "15:34",
+    "content": "architecture for GPT"
+  },
+  {
+    "timestamp": "15:35",
+    "content": "in Python"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "with Amolix."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "And there we go."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "With one command"
+  },
+  {
+    "timestamp": "15:44",
+    "content": "and massive"
+  },
+  {
+    "timestamp": "15:45",
+    "content": "trillion parameter model"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "is running locally"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "across your Macs,"
+  },
+  {
+    "timestamp": "15:49",
+    "content": "answering your questions."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "with MLX and MLXLM,"
+  },
+  {
+    "timestamp": "15:55",
+    "content": "you can not only run"
+  },
+  {
+    "timestamp": "15:56",
+    "content": "language model inference,"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "you can also fine-tune models"
+  },
+  {
+    "timestamp": "15:59",
+    "content": "on your hardware."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "Fast,"
+  },
+  {
+    "timestamp": "16:02",
+    "content": "efficient,"
+  },
+  {
+    "timestamp": "16:02",
+    "content": "and fully private."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "Your data never"
+  },
+  {
+    "timestamp": "16:05",
+    "content": "leaves your machines."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "Let's start"
+  },
+  {
+    "timestamp": "16:07",
+    "content": "with a single Mac"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "and then scale"
+  },
+  {
+    "timestamp": "16:09",
+    "content": "to our cluster."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "When fine-tuning"
+  },
+  {
+    "timestamp": "16:12",
+    "content": "or training"
+  },
+  {
+    "timestamp": "16:13",
+    "content": "on a single machine,"
+  },
+  {
+    "timestamp": "16:14",
+    "content": "we split the training data"
+  },
+  {
+    "timestamp": "16:16",
+    "content": "into batches,"
+  },
+  {
+    "timestamp": "16:17",
+    "content": "a set of multiple examples."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "For each batch,"
+  },
+  {
+    "timestamp": "16:22",
+    "content": "the Mac computes gradients"
+  },
+  {
+    "timestamp": "16:23",
+    "content": "and updates"
+  },
+  {
+    "timestamp": "16:24",
+    "content": "the model weights."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "We repeat this process"
+  },
+  {
+    "timestamp": "16:27",
+    "content": "for one or more passes"
+  },
+  {
+    "timestamp": "16:28",
+    "content": "over the training data set"
+  },
+  {
+    "timestamp": "16:29",
+    "content": "until the model reaches"
+  },
+  {
+    "timestamp": "16:31",
+    "content": "the desired quality."
+  },
+  {
+    "timestamp": "16:32",
+    "content": "The faster we process"
+  },
+  {
+    "timestamp": "16:34",
+    "content": "the training data,"
+  },
+  {
+    "timestamp": "16:35",
+    "content": "the sooner fine-tuning finishes."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "So how can we use"
+  },
+  {
+    "timestamp": "16:38",
+    "content": "multiple machines"
+  },
+  {
+    "timestamp": "16:39",
+    "content": "to speed this up?"
+  },
+  {
+    "timestamp": "16:41",
+    "content": "The idea is straightforward."
+  },
+  {
+    "timestamp": "16:43",
+    "content": "We replicate the model"
+  },
+  {
+    "timestamp": "16:44",
+    "content": "on every Mac."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "Each machine receives"
+  },
+  {
+    "timestamp": "16:47",
+    "content": "a different batch of data"
+  },
+  {
+    "timestamp": "16:48",
+    "content": "and computes gradients locally."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "16:52",
+    "content": "we average the gradients"
+  },
+  {
+    "timestamp": "16:53",
+    "content": "so the model's update"
+  },
+  {
+    "timestamp": "16:54",
+    "content": "uses information"
+  },
+  {
+    "timestamp": "16:56",
+    "content": "from all batches."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "This is called"
+  },
+  {
+    "timestamp": "16:58",
+    "content": "data parallel training"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "because the model"
+  },
+  {
+    "timestamp": "17:00",
+    "content": "is replicated"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "while the data"
+  },
+  {
+    "timestamp": "17:02",
+    "content": "is processed in parallel"
+  },
+  {
+    "timestamp": "17:03",
+    "content": "across machines."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "This is what gives us"
+  },
+  {
+    "timestamp": "17:06",
+    "content": "the speed up."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "So with n machines,"
+  },
+  {
+    "timestamp": "17:09",
+    "content": "we can process data"
+  },
+  {
+    "timestamp": "17:10",
+    "content": "up to n times faster."
+  },
+  {
+    "timestamp": "17:12",
+    "content": "Sounds amazing."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "Let's see how we can use"
+  },
+  {
+    "timestamp": "17:14",
+    "content": "data parallelism"
+  },
+  {
+    "timestamp": "17:15",
+    "content": "with MLXLM."
+  },
+  {
+    "timestamp": "17:17",
+    "content": "As before,"
+  },
+  {
+    "timestamp": "17:18",
+    "content": "the only difference"
+  },
+  {
+    "timestamp": "17:19",
+    "content": "from a single device"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "is launching the job"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "with MLX Launch"
+  },
+  {
+    "timestamp": "17:23",
+    "content": "from your MacBook,"
+  },
+  {
+    "timestamp": "17:24",
+    "content": "specifying a path"
+  },
+  {
+    "timestamp": "17:25",
+    "content": "to MLXLM LoRa"
+  },
+  {
+    "timestamp": "17:27",
+    "content": "on remote machines."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "Data sharding"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "is handled by MLXLM"
+  },
+  {
+    "timestamp": "17:31",
+    "content": "and the command"
+  },
+  {
+    "timestamp": "17:33",
+    "content": "is almost identical."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "We scale batch size"
+  },
+  {
+    "timestamp": "17:35",
+    "content": "by the number"
+  },
+  {
+    "timestamp": "17:36",
+    "content": "of devices"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "so each machine"
+  },
+  {
+    "timestamp": "17:38",
+    "content": "still processes"
+  },
+  {
+    "timestamp": "17:39",
+    "content": "the same number"
+  },
+  {
+    "timestamp": "17:40",
+    "content": "of samples"
+  },
+  {
+    "timestamp": "17:40",
+    "content": "per step"
+  },
+  {
+    "timestamp": "17:41",
+    "content": "as before."
+  },
+  {
+    "timestamp": "17:42",
+    "content": "Let's fine-tune"
+  },
+  {
+    "timestamp": "17:44",
+    "content": "QN 3.5"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "with 9 billion parameters"
+  },
+  {
+    "timestamp": "17:46",
+    "content": "on a single machine"
+  },
+  {
+    "timestamp": "17:48",
+    "content": "and on the cluster"
+  },
+  {
+    "timestamp": "17:49",
+    "content": "and compare the number"
+  },
+  {
+    "timestamp": "17:51",
+    "content": "of tokens"
+  },
+  {
+    "timestamp": "17:51",
+    "content": "the model processes"
+  },
+  {
+    "timestamp": "17:52",
+    "content": "per second."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "We are launching"
+  },
+  {
+    "timestamp": "17:55",
+    "content": "fine-tuning"
+  },
+  {
+    "timestamp": "17:56",
+    "content": "on a single device"
+  },
+  {
+    "timestamp": "17:57",
+    "content": "on the left"
+  },
+  {
+    "timestamp": "17:57",
+    "content": "and on the cluster"
+  },
+  {
+    "timestamp": "17:59",
+    "content": "on the right"
+  },
+  {
+    "timestamp": "18:00",
+    "content": "using MLX Launch"
+  },
+  {
+    "timestamp": "18:01",
+    "content": "and host file,"
+  },
+  {
+    "timestamp": "18:03",
+    "content": "specifying paths"
+  },
+  {
+    "timestamp": "18:03",
+    "content": "to MLXLM LoRa"
+  },
+  {
+    "timestamp": "18:04",
+    "content": "on the remote machine."
+  },
+  {
+    "timestamp": "18:07",
+    "content": "First,"
+  },
+  {
+    "timestamp": "18:07",
+    "content": "it loads data"
+  },
+  {
+    "timestamp": "18:08",
+    "content": "and model"
+  },
+  {
+    "timestamp": "18:08",
+    "content": "and then training starts."
+  },
+  {
+    "timestamp": "18:10",
+    "content": "Single M3 Ultra"
+  },
+  {
+    "timestamp": "18:12",
+    "content": "is processing"
+  },
+  {
+    "timestamp": "18:12",
+    "content": "around 180 tokens"
+  },
+  {
+    "timestamp": "18:14",
+    "content": "per second,"
+  },
+  {
+    "timestamp": "18:16",
+    "content": "while on the cluster"
+  },
+  {
+    "timestamp": "18:17",
+    "content": "we process"
+  },
+  {
+    "timestamp": "18:18",
+    "content": "around 600 tokens"
+  },
+  {
+    "timestamp": "18:19",
+    "content": "per second,"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "which gives us"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "more than three times"
+  },
+  {
+    "timestamp": "18:23",
+    "content": "speed up"
+  },
+  {
+    "timestamp": "18:23",
+    "content": "for fine-tuning."
+  },
+  {
+    "timestamp": "18:25",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "18:25",
+    "content": "with MLX,"
+  },
+  {
+    "timestamp": "18:26",
+    "content": "you can turn"
+  },
+  {
+    "timestamp": "18:27",
+    "content": "your devices"
+  },
+  {
+    "timestamp": "18:28",
+    "content": "into a local"
+  },
+  {
+    "timestamp": "18:29",
+    "content": "training cluster"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "for efficient"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "fine-tuning"
+  },
+  {
+    "timestamp": "18:31",
+    "content": "without moving"
+  },
+  {
+    "timestamp": "18:32",
+    "content": "to a cloud."
+  },
+  {
+    "timestamp": "18:34",
+    "content": "So far,"
+  },
+  {
+    "timestamp": "18:35",
+    "content": "we used"
+  },
+  {
+    "timestamp": "18:35",
+    "content": "command-line interface"
+  },
+  {
+    "timestamp": "18:36",
+    "content": "for distributed"
+  },
+  {
+    "timestamp": "18:37",
+    "content": "inference"
+  },
+  {
+    "timestamp": "18:38",
+    "content": "and fine-tuning"
+  },
+  {
+    "timestamp": "18:38",
+    "content": "within MLXLM."
+  },
+  {
+    "timestamp": "18:41",
+    "content": "However,"
+  },
+  {
+    "timestamp": "18:42",
+    "content": "MLX provides"
+  },
+  {
+    "timestamp": "18:43",
+    "content": "a fine-grained"
+  },
+  {
+    "timestamp": "18:43",
+    "content": "control over sharding"
+  },
+  {
+    "timestamp": "18:45",
+    "content": "and distributed"
+  },
+  {
+    "timestamp": "18:45",
+    "content": "operations"
+  },
+  {
+    "timestamp": "18:46",
+    "content": "via flexible"
+  },
+  {
+    "timestamp": "18:47",
+    "content": "Python,"
+  },
+  {
+    "timestamp": "18:48",
+    "content": "Swift,"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "and C++"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "APIs."
+  },
+  {
+    "timestamp": "18:50",
+    "content": "This allows"
+  },
+  {
+    "timestamp": "18:51",
+    "content": "you to experiment"
+  },
+  {
+    "timestamp": "18:52",
+    "content": "with models"
+  },
+  {
+    "timestamp": "18:53",
+    "content": "in Python"
+  },
+  {
+    "timestamp": "18:53",
+    "content": "and C++"
+  },
+  {
+    "timestamp": "18:54",
+    "content": "or embed models"
+  },
+  {
+    "timestamp": "18:56",
+    "content": "into your app"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "with the Swift."
+  },
+  {
+    "timestamp": "18:58",
+    "content": "Let's look"
+  },
+  {
+    "timestamp": "18:59",
+    "content": "at the examples."
+  },
+  {
+    "timestamp": "19:01",
+    "content": "To run"
+  },
+  {
+    "timestamp": "19:01",
+    "content": "distributed inference"
+  },
+  {
+    "timestamp": "19:02",
+    "content": "with Python API"
+  },
+  {
+    "timestamp": "19:03",
+    "content": "and MLXLM,"
+  },
+  {
+    "timestamp": "19:05",
+    "content": "we first initialize"
+  },
+  {
+    "timestamp": "19:06",
+    "content": "the distributed group"
+  },
+  {
+    "timestamp": "19:07",
+    "content": "for communication."
+  },
+  {
+    "timestamp": "19:08",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "19:09",
+    "content": "define the type"
+  },
+  {
+    "timestamp": "19:10",
+    "content": "of parallelism"
+  },
+  {
+    "timestamp": "19:11",
+    "content": "we want,"
+  },
+  {
+    "timestamp": "19:12",
+    "content": "for example,"
+  },
+  {
+    "timestamp": "19:12",
+    "content": "tensor parallelism."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "Finally,"
+  },
+  {
+    "timestamp": "19:15",
+    "content": "we shard the model"
+  },
+  {
+    "timestamp": "19:16",
+    "content": "using sharded load"
+  },
+  {
+    "timestamp": "19:17",
+    "content": "function."
+  },
+  {
+    "timestamp": "19:18",
+    "content": "After that,"
+  },
+  {
+    "timestamp": "19:19",
+    "content": "we use the model"
+  },
+  {
+    "timestamp": "19:20",
+    "content": "exactly as we would"
+  },
+  {
+    "timestamp": "19:21",
+    "content": "on a single device."
+  },
+  {
+    "timestamp": "19:23",
+    "content": "MLXLM handles"
+  },
+  {
+    "timestamp": "19:24",
+    "content": "all distributed"
+  },
+  {
+    "timestamp": "19:25",
+    "content": "communications"
+  },
+  {
+    "timestamp": "19:26",
+    "content": "under the hood."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "To have more control"
+  },
+  {
+    "timestamp": "19:29",
+    "content": "over the model"
+  },
+  {
+    "timestamp": "19:30",
+    "content": "and its sharding,"
+  },
+  {
+    "timestamp": "19:31",
+    "content": "we can use"
+  },
+  {
+    "timestamp": "19:32",
+    "content": "low-level primitive"
+  },
+  {
+    "timestamp": "19:33",
+    "content": "from MLX itself."
+  },
+  {
+    "timestamp": "19:35",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "19:36",
+    "content": "after defining"
+  },
+  {
+    "timestamp": "19:36",
+    "content": "a simple linear layer,"
+  },
+  {
+    "timestamp": "19:38",
+    "content": "we can shard it"
+  },
+  {
+    "timestamp": "19:39",
+    "content": "with tensor parallelism"
+  },
+  {
+    "timestamp": "19:40",
+    "content": "using shard linear function."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "You can even control"
+  },
+  {
+    "timestamp": "19:44",
+    "content": "basic distributed operations"
+  },
+  {
+    "timestamp": "19:46",
+    "content": "like all-reduce."
+  },
+  {
+    "timestamp": "19:48",
+    "content": "In Python,"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "Swift,"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "or C++,"
+  },
+  {
+    "timestamp": "19:50",
+    "content": "after initializing"
+  },
+  {
+    "timestamp": "19:51",
+    "content": "the distributed group"
+  },
+  {
+    "timestamp": "19:52",
+    "content": "via Jackal,"
+  },
+  {
+    "timestamp": "19:53",
+    "content": "we perform"
+  },
+  {
+    "timestamp": "19:54",
+    "content": "a collective distributed sum"
+  },
+  {
+    "timestamp": "19:55",
+    "content": "across all marks"
+  },
+  {
+    "timestamp": "19:56",
+    "content": "for our tensor"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "using corresponding"
+  },
+  {
+    "timestamp": "19:59",
+    "content": "MLX primitives."
+  },
+  {
+    "timestamp": "20:01",
+    "content": "As we pointed out"
+  },
+  {
+    "timestamp": "20:02",
+    "content": "at the beginning"
+  },
+  {
+    "timestamp": "20:03",
+    "content": "of the session,"
+  },
+  {
+    "timestamp": "20:04",
+    "content": "Jackal is available"
+  },
+  {
+    "timestamp": "20:05",
+    "content": "on its own"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "and you can leverage"
+  },
+  {
+    "timestamp": "20:07",
+    "content": "it for any applications"
+  },
+  {
+    "timestamp": "20:08",
+    "content": "requiring"
+  },
+  {
+    "timestamp": "20:09",
+    "content": "distributed communication,"
+  },
+  {
+    "timestamp": "20:12",
+    "content": "even non-ML applications."
+  },
+  {
+    "timestamp": "20:14",
+    "content": "Jackal can be built"
+  },
+  {
+    "timestamp": "20:15",
+    "content": "without MLX"
+  },
+  {
+    "timestamp": "20:16",
+    "content": "and it provides"
+  },
+  {
+    "timestamp": "20:17",
+    "content": "a C++ API"
+  },
+  {
+    "timestamp": "20:18",
+    "content": "with communication primitives."
+  },
+  {
+    "timestamp": "20:21",
+    "content": "After initializing"
+  },
+  {
+    "timestamp": "20:22",
+    "content": "a Jackal group,"
+  },
+  {
+    "timestamp": "20:23",
+    "content": "we again perform"
+  },
+  {
+    "timestamp": "20:24",
+    "content": "a collective distributed sum"
+  },
+  {
+    "timestamp": "20:26",
+    "content": "across all marks"
+  },
+  {
+    "timestamp": "20:27",
+    "content": "for our tensor,"
+  },
+  {
+    "timestamp": "20:29",
+    "content": "but via Jackal directly,"
+  },
+  {
+    "timestamp": "20:30",
+    "content": "not MLX."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "Now you know"
+  },
+  {
+    "timestamp": "20:33",
+    "content": "both high-level"
+  },
+  {
+    "timestamp": "20:34",
+    "content": "and low-level APIs"
+  },
+  {
+    "timestamp": "20:35",
+    "content": "for distributed inference"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "and training"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "with MLX and Jackal,"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "and you are ready"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "to build"
+  },
+  {
+    "timestamp": "20:41",
+    "content": "advanced distributed workloads"
+  },
+  {
+    "timestamp": "20:42",
+    "content": "with MLX."
+  },
+  {
+    "timestamp": "20:44",
+    "content": "Throughout the session,"
+  },
+  {
+    "timestamp": "20:45",
+    "content": "we looked at the full stack"
+  },
+  {
+    "timestamp": "20:47",
+    "content": "that makes distributed training"
+  },
+  {
+    "timestamp": "20:49",
+    "content": "and inference"
+  },
+  {
+    "timestamp": "20:50",
+    "content": "possible on Apple Silicon,"
+  },
+  {
+    "timestamp": "20:52",
+    "content": "from RDMA"
+  },
+  {
+    "timestamp": "20:53",
+    "content": "over Thunderbolt"
+  },
+  {
+    "timestamp": "20:54",
+    "content": "all the way up"
+  },
+  {
+    "timestamp": "20:56",
+    "content": "to MLX and MLX LM."
+  },
+  {
+    "timestamp": "20:58",
+    "content": "We showed you"
+  },
+  {
+    "timestamp": "20:59",
+    "content": "how easy it is"
+  },
+  {
+    "timestamp": "21:00",
+    "content": "to scale"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "from a single device"
+  },
+  {
+    "timestamp": "21:02",
+    "content": "to multiple devices"
+  },
+  {
+    "timestamp": "21:03",
+    "content": "and the benefits"
+  },
+  {
+    "timestamp": "21:04",
+    "content": "it brings."
+  },
+  {
+    "timestamp": "21:05",
+    "content": "Faster inference,"
+  },
+  {
+    "timestamp": "21:06",
+    "content": "the ability"
+  },
+  {
+    "timestamp": "21:07",
+    "content": "to run trillion parameter models,"
+  },
+  {
+    "timestamp": "21:09",
+    "content": "and faster fine-tuning,"
+  },
+  {
+    "timestamp": "21:11",
+    "content": "all with minimal changes"
+  },
+  {
+    "timestamp": "21:12",
+    "content": "to your single device code,"
+  },
+  {
+    "timestamp": "21:14",
+    "content": "supporting command line"
+  },
+  {
+    "timestamp": "21:15",
+    "content": "interface,"
+  },
+  {
+    "timestamp": "21:16",
+    "content": "Python,"
+  },
+  {
+    "timestamp": "21:17",
+    "content": "Swift,"
+  },
+  {
+    "timestamp": "21:18",
+    "content": "and C++ APIs."
+  },
+  {
+    "timestamp": "21:20",
+    "content": "With distributed cluster,"
+  },
+  {
+    "timestamp": "21:22",
+    "content": "now you can run"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "local AI agents"
+  },
+  {
+    "timestamp": "21:24",
+    "content": "powered entirely"
+  },
+  {
+    "timestamp": "21:25",
+    "content": "by MLX."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "Fast,"
+  },
+  {
+    "timestamp": "21:27",
+    "content": "private,"
+  },
+  {
+    "timestamp": "21:28",
+    "content": "and on the hardware"
+  },
+  {
+    "timestamp": "21:29",
+    "content": "you own."
+  },
+  {
+    "timestamp": "21:30",
+    "content": "To know more,"
+  },
+  {
+    "timestamp": "21:31",
+    "content": "check out our"
+  },
+  {
+    "timestamp": "21:32",
+    "content": "WWDC 2026 video"
+  },
+  {
+    "timestamp": "21:34",
+    "content": "Run Local Agentic AI"
+  },
+  {
+    "timestamp": "21:36",
+    "content": "on the Mac"
+  },
+  {
+    "timestamp": "21:36",
+    "content": "using MLX."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "To further dive"
+  },
+  {
+    "timestamp": "21:39",
+    "content": "into advanced"
+  },
+  {
+    "timestamp": "21:40",
+    "content": "distributed features,"
+  },
+  {
+    "timestamp": "21:42",
+    "content": "including custom parallelism"
+  },
+  {
+    "timestamp": "21:43",
+    "content": "strategies"
+  },
+  {
+    "timestamp": "21:44",
+    "content": "and training loops,"
+  },
+  {
+    "timestamp": "21:45",
+    "content": "check out"
+  },
+  {
+    "timestamp": "21:46",
+    "content": "our documentation."
+  },
+  {
+    "timestamp": "21:47",
+    "content": "You can also use"
+  },
+  {
+    "timestamp": "21:48",
+    "content": "MLX LM"
+  },
+  {
+    "timestamp": "21:49",
+    "content": "to serve models"
+  },
+  {
+    "timestamp": "21:50",
+    "content": "distributedly"
+  },
+  {
+    "timestamp": "21:51",
+    "content": "with the built-in server."
+  },
+  {
+    "timestamp": "21:54",
+    "content": "We can't wait"
+  },
+  {
+    "timestamp": "21:55",
+    "content": "to see"
+  },
+  {
+    "timestamp": "21:55",
+    "content": "what you build"
+  },
+  {
+    "timestamp": "21:56",
+    "content": "with MLX"
+  },
+  {
+    "timestamp": "21:57",
+    "content": "on Apple Silicon."
+  },
+  {
+    "timestamp": "21:57",
+    "content": "Googlecida"
+  },
+  {
+    "timestamp": "21:59",
+    "content": "Google"
+  },
+  {
+    "timestamp": "22:01",
+    "content": "Google"
+  },
+  {
+    "timestamp": "22:02",
+    "content": "Google"
+  },
+  {
+    "timestamp": "22:02",
+    "content": "Google"
+  },
+  {
+    "timestamp": "22:03",
+    "content": "Google"
+  },
+  {
+    "timestamp": "22:04",
+    "content": "Google"
+  },
+  {
+    "timestamp": "22:05",
+    "content": "Thank you."
+  }
+]

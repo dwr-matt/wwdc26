@@ -1,0 +1,710 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Mike Armstrong, Engineering Manager at Apple. In this video, you'll learn how to use"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "Trust Insights to detect and respond to social engineering threats in your app."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "Social scams are a growing challenge, attacks that target people, not systems."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Social engineering exploits human psychology rather than technical vulnerabilities."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "Your users may be pressured, frightened or deceived into performing legitimate actions."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "And your app can't tell the difference between a genuine and coerced intent."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Across the industry and from partner feedback, several recurring coercion patterns stand out."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Tech support scams, where fake alerts prompt remote access, deceiving the user into handing over control."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "Authority impersonation, posing as banks, government agencies or law enforcement to collect sensitive information."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "And family emergency fraud, with urgent requests for money that exploit emotional bonds, increasingly using AI generated deepfakes."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Real-time coaching makes detection especially difficult."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "Attackers guide victims through actions via voice calls, chat or messaging."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "The user then performs the actions themselves, authenticated and legitimately."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "Existing protections like multi-factor authentication and biometrics don't help in this scenario, because the user is the one acting."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "A new kind of signal is needed."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Authentication confirms who, but not whether they're acting freely."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "Behavioural context can help distinguish genuine intent from a coerced action."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "Critically, this signal must preserve privacy while still protecting users."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "Trust insights, a framework introduced in iOS 27 provides a new approach to help your app understand this behavioural context."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "I'll take you through how to integrate trust insights into your app."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "Cover the requirements for using the API."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "Explain its privacy architecture."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "And wrap up with an example of how your app could respond to a trust signal."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "Starting with generating insights."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "Trust insights is a framework that combines device and cloud infrastructure."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "But your integration is entirely client-side, using a Swift API."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "The first step is configuration."
+  },
+  {
+    "timestamp": "2:52",
+    "content": "Generating trust insights requires an entitlement."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "Configure this in Xcode by declaring the capability on your app target."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "After importing trust insights, the next step is to create a parameter pack containing the insights to request."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "A schema is required, but model version is optional."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "Specifying both a current and prior version of the same insight can support model governance and validation."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "The insight evaluator accepts multiple insights."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "In its context, specify the operation category and the evaluations."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "The operation category tells the system what kind of action the user is performing and determines which model logic is applied."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "Five categories are available."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Payment."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "Any exchange of assets, content or money, including in-game purchases."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "Account."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Updating account details or security information."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "The application."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "Resource use."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "Requests to costly or constrained infrastructure, such as AI inference."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "Communication."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "Sending messages, submitting forms or signing documents."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "And other."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "A fallback for operations that don't fit the above."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "If your use case lands here, please file feedback through Feedback Assistant."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Next, create your insight evaluator, passing in your insight context."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "As your user has full control over the usage of trust insights, you should check if your app is authorized."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "If not, you may want to notify the user."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "You're ready to go."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "Asynchronously call request evaluation."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "Take note."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "This can take a couple of seconds to provide a result and requires internet reachability."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "It's important to consider where in your user experience or flow you have this code."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "You may want to take advantage of existing animations or interstitial screens at the right moment."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "When in development, your requests will hit a sandbox environment."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "Once distributed on the app store, your requests will be evaluated by production models and servers."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "To test decision logic and UX variations, you can override insight values and errors by customizing the build schemes for a project in Xcode."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "For more information about which launch arguments are available, check the developer documentation for Trust Insights."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "The response contains one result per insight evaluation requested."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "For is likely being coached insight, there are three possible values."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "Unknown"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "The system has no evidence of scam risk, but this should not be interpreted as low risk."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "Some evidence of coaching risk."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "Depending on the use case, consider introducing friction, additional verification or adjusting risk scoring."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "High"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "Significant evidence of coaching risk."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "The user should be informed of the determined risks before proceeding."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "You should handle both evaluation level and insight level errors independently."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "Details are in the developer documentation."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "Behind those three values is a sophisticated ML model."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "device-sourced data is processed locally."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Inputs are immediately discarded after evaluation,"
+  },
+  {
+    "timestamp": "6:38",
+    "content": "with only a single output value leaving a user's device."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "The final output may incorporate Apple account signals"
+  },
+  {
+    "timestamp": "6:47",
+    "content": "and velocity checks for additional context."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "Two types of feedback complete the integration."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "Real-time consumption feedback,"
+  },
+  {
+    "timestamp": "6:56",
+    "content": "which reports how your app responded to an insight,"
+  },
+  {
+    "timestamp": "6:58",
+    "content": "and offline feedback for cases where a transaction"
+  },
+  {
+    "timestamp": "7:02",
+    "content": "later turned out to be fraudulent."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "To submit real-time feedback,"
+  },
+  {
+    "timestamp": "7:06",
+    "content": "call Report Consumption on the evaluation result."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "This call is mandatory for each insight evaluation request."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "If omitted, your app may be rate-limited."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "Six consumption values are available."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Used Reduced Friction."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "The insight contributed to making the operation easier."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Used Unchanged Friction."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "The insight was evaluated but didn't change the experience."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Used Increased Friction."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "The insight led to additional checks of friction,"
+  },
+  {
+    "timestamp": "7:43",
+    "content": "though outright blocking based solely on a Trust Insight is not recommended."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Not Used Not Needed."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "The user cancelled, so no decision was required."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "Not Used Error."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "A technical failure prevented use, such as the result arriving too late."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "Used Evaluation Only."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "The insight was used, for example, in internal evaluations and benchmarking,"
+  },
+  {
+    "timestamp": "8:12",
+    "content": "without affecting the user experience."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "Offline labels are vital for model improvement."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "When a Trust Insight evaluation ultimately results in confirmed fraud,"
+  },
+  {
+    "timestamp": "8:26",
+    "content": "that signal helps the model understand its real-world performance."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "The reports may come days, weeks, or months later."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "Submit them through Apple Business Register using a server-to-server API,"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "with a defined schema that includes the insight identifier from the original evaluation."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Don't Include any surplus information, such as PII, in your submission."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "And Apply Privacy Preserving techniques against any remaining values that could be used for fingerprinting."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "Offline label submission is not required to benefit from Trust Insights,"
+  },
+  {
+    "timestamp": "9:08",
+    "content": "but it strengthens the ecosystem for everyone."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "More details are available in the developer documentation."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "That covers the full integration."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "Configuration, evaluation, results, and feedback."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "Next, Privacy."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "Data minimization is central to how Trust Insights works."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "The framework processes only what's needed, discards inputs immediately,"
+  },
+  {
+    "timestamp": "9:37",
+    "content": "and keeps all device-sourced data on the device."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "Privacy is foundational to every Apple product and service."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "It's considered from the start, throughout development, and continuously as each service operates."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "Trust Insights analyzes interaction patterns, timing, context, and basic sensor data."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "Never content within photos, messages, or mail."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "Trust Insights are available in the app."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "None of these device-derived signals are shared with Apple or third parties."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Users have full control and can disable Trust Insights within settings."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "A call-down period may apply after disabling, to protect users who may have themselves been coached into turning it off."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "You should query authorization status to check whether the user has Trust Insights enabled for your app."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "Trust Insights has been in use within Apple's own services, and there are some practical recommendations to share."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "Here's an example. A user is setting up a large money transfer to someone claiming to be a doctor treating a family member."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "Behind the scenes, the app has requested a Trust Insight."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "The medium result prompts the app to adjust its flow."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "The right approach depends on your app, your users, and your product."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "The"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "credentials or personal documents."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "Beyond identifying critical moments,"
+  },
+  {
+    "timestamp": "11:54",
+    "content": "there are other best practices to consider."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "Integrate trust insights into your existing risk"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "and decision logic."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "It should not be the sole factor"
+  },
+  {
+    "timestamp": "12:04",
+    "content": "or determinant in any decision."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "Utilize the ability to sample different model versions"
+  },
+  {
+    "timestamp": "12:11",
+    "content": "over time to understand how newer models"
+  },
+  {
+    "timestamp": "12:14",
+    "content": "impact your decisioning logic before taking action."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "Handle errors at every level,"
+  },
+  {
+    "timestamp": "12:20",
+    "content": "as evaluation errors and insight errors"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "carry different meaning."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "Never treat unknown or a missing value as low risk."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "Your feedback helps to enrich the ecosystem"
+  },
+  {
+    "timestamp": "12:33",
+    "content": "and protect everyone from being the victims of coercion."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "To avoid rate limits,"
+  },
+  {
+    "timestamp": "12:38",
+    "content": "you must submit real-time insight feedback"
+  },
+  {
+    "timestamp": "12:41",
+    "content": "directly in your app."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "And if possible, contribute offline fraud labels"
+  },
+  {
+    "timestamp": "12:45",
+    "content": "by Apple Business Register."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Identify the moments in your app where Trust Insights"
+  },
+  {
+    "timestamp": "12:51",
+    "content": "can work along your existing logic to protect users."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "From there, adopt the framework following the best practices"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "and develop a documentation."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "Register your business on Apple Business Register"
+  },
+  {
+    "timestamp": "13:05",
+    "content": "to learn about partner data services."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "You may also be interested in Appattest,"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "a framework for verifying that server requests come from legitimate instances of your app."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "Now is the best time to submit feedback through Feedback Assistant"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "on any aspect of Trust Insights,"
+  },
+  {
+    "timestamp": "13:24",
+    "content": "including the framework, its capabilities, or any high-volume use cases."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "Trust Insights brings behavioral context to your app,"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "helping detect coercion while preserving privacy."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "Integrate it at the moments that matter most."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "Handle results thoughtfully."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "And close a feedback loop to strengthen the ecosystem."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "Handle results thoughtfully."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "Handle results thoughtfully."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "And close a feedback loop to strengthen the ecosystem."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Thank you for watching."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "Thank you"
+  },
+  {
+    "timestamp": "13:53",
+    "content": "We'll be right back."
+  }
+]

@@ -1,0 +1,706 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "."
+  },
+  {
+    "timestamp": "0:07",
+    "content": "Hi, and welcome to WWDC 2026."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "I'm Cathy, an engineer on the Musicit team."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "Today, my teammate Alan and I want to"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "demonstrate how to integrate Musicit into an app."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "Musicit is a Swift framework for"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Apple platforms that offers a set of APIs for"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "your apps to access and play music."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "Designed with Swift concurrency and Swift UI in mind,"
+  },
+  {
+    "timestamp": "0:38",
+    "content": "Musicit streamlines integration with Apple Music."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "You can build rich, music-enhanced experiences so"
+  },
+  {
+    "timestamp": "0:47",
+    "content": "people can browse and play the Apple Music catalog"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "and a person's media library straight from an app."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "Alan and I will cover many key Musicit concepts today,"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "while enhancing the workout app he and I made."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "First, I'll explain how to configure Xcode and handle music access."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "Then, I will cover what a Musicit music item is and how I can select one."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "Alan will build on my music selection work and prepare selected songs for playback."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "And lastly, Alan will dive into Music Catalog requests to further customize the app he and I made."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "Now, I want to go through the flow of the workout app before diving into Musicit integration."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "To follow along, you can find the completed sample code at the developer documentation site."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "I'll run the app and go through the current flow."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "When I start a bike workout, a screen pops up with a stopwatch,"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "along with a button to end my session."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "This is a good start, but I'd like to pick Music to play during my workouts, so I want to integrate Musicit."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "Before I start to code, I need to configure some settings as part of my project setup."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "One of those settings is registering for a developer token on the developer portal, which is needed to make Musicit requests."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "Once you register for a developer token, it's generated on your behalf automatically."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "To enable automatic token generation, I'll navigate to the page where I register my app ID."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "I need to make sure the Musicit checkbox is checked in the App Services tab."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "The tokens are associated with my developer account, so I'll want to verify that I'm logged into that same account in Xcode."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "Now, I'll return back to the app."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "I'd like to pick Music to play during my workout."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "But before I can pick Music, I have to give permission for Musicit to access my music content."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "To request authorization, I will use Musicit's Music Authorization Request method, which is an asynchronous method that returns whether the app's music access is approved."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Musicit will then prompt the person with a permissions alert."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "I have the ability to configure the description of this alert with more context for how my app will use the access, which I can do in my project settings."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "To provide a reason to access music content, I'll navigate to the Signing and Capabilities tab of my Xcode project and add the Media Library capability."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "In the text box, I can describe how my app intends to use the person's music library."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "This description will appear at the bottom of the permissions alert when you request authorization."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "If the person isn't subscribed but wants to listen to content in the Apple Music catalog, I want to give them a way to subscribe."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "An Apple Music subscription is not required to use Musicit, but the app will only be able to access purchased or synced music without one."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "If there isn't an active subscription, I can use a Musicit subscription offer view modifier to give an opportunity to subscribe to Apple Music without leaving my app."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "The Music subscription offer is a View modifier that accepts an Is presented binding parameter, which changes in this view when the button is tapped."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "When presented, the subscription offer UI gives people steps to quickly sign up for an Apple Music subscription."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "As a developer, you have the potential to earn commissions when someone subscribes to Apple Music through your app as part of the Apple Services Performance Partner Program."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "You can specify your information for this program in a Music subscription offer option structure and pass it into the view modifier."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "The option struct also allows you to set a message identifier, which changes what UI is presented."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "Since my ultimate goal is to play music, I'll set the message identifier for my options as play music."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "You can customize the message identifier to have different UI treatments for your use case."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "In the main view, I need to declare a state property representing the subscription status."
+  },
+  {
+    "timestamp": "6:05",
+    "content": "I only want to have the subscription button if the person isn't subscribed and has the potential to become subscribed."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "To update the subscription status, I can add a task that runs when authorization is granted."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "In here, I'll grab the current value as well as listen for any updates that might occur and set the value accordingly."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "Now that I'm authorized and subscribed, I can use my subscription to play music from the Apple Music catalog during my workout."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "First, I need to pick a song to play."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "Specifically, I'm going to pick a MusicKit song object."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "Music items are the building blocks for using MusicKit APIs."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "So I'll begin with explaining those."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "Then, I'll explain how to pick Music items using the Music picker."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "I'll dive into Music items first."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "An album Music item, for example, is a value type in MusicKit's model layer."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "Each Music item has attributes, which are simple built-in properties."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "An album object, for example, has attributes that describe the title of the album or what the album's content rating is."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "Music items also have relationships, which describe related content, like an album's tracks, another MusicKit music item type."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "Associations describe a type's related content as well."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "But associations generally have weaker ties to the type than a relationship has."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "One album association is the other versions, which is a collection of other albums."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "So far, I've focused on album."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "But there are many other MusicKit music item types, like genres, stations, and playlists."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "Now that I've covered what music items are, it's time to start using them."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "To pick music to listen to for my workout, I can utilize the Music Picker, which surfaces both the Apple Music Catalog and the Music Library in a single unified interface."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "The Music Picker leverages many kinds of MusicKit requests in one place, allowing for several ways to discover music someone may want to pick."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "To pick a MusicKit song, I need to add the Music Picker SwiftUI View modifier."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "I have a base button already, but I need to add some state variables, starting with a toggle for if the picker should be shown."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Next, the Selected Song property represents an initial song selection."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "I don't have anything selected, so it can be nil here by default."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "Now, I can add the modifier."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "Now, I'm going to add my Music Picker button to my main view where I added the other buttons."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "The Music Picker does not require a subscription, which is why I have it regardless of the subscription check."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "If there is no subscription, the picker will only show music items from the person's library, rather than both the library and catalog."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "I'll now build and run this."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "I really like Olivia Dean, so I'll pick my current favorite Olivia Dean song."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "To do so, I'm going to tap the search bar and search for the song."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "Once I find the result I want, I can tap the plus button on the right of the song information and dismiss the picker."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "I have Lady Lady selected for my bike ride, but for a 30 minute workout, I want to listen to more than one song."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "I need to allow for multi-selection in the picker by changing the selection object to an array."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "I'll pick three songs to start, but I can also select entire albums or playlists by going to their detail pages and pressing the plus button at the top."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Okay, I've chosen my songs and can now dismiss the picker."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "Now that I've selected music, I want to play it."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "My teammate, Alan, will take it from here to go over adding playback to the workout app."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Thanks, Cathy."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "Time to play some music using Music Kit's Music Players."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "Music Kit offers two different players, System Music Player and Application Music Player."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "Both players are subclasses of Music Player."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "System Music Player controls the System Music app, while Application Music Player plays from your app."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "With System Music Player, you may only set the cue."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "You can't see what is in the cue except for the currently playing item."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "Meanwhile, you have full read and write access to the Application Music Player's Cue."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Both Music Players let you set whether a cue will show up in the Music apps recently played."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "And, both allow you to set playback state, such as the Repeat and Shuffle mode."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "Finally, because System Music Player controls the System Music app, it will continue playing even when your app is backgrounded or quits."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "For the same backgrounding behavior using Application Music Player, enable the Audio Background Mode capability in the Xcode project settings."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "A cue consists of a collection of playable music items, such as songs."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "A cue is set on a Music Player."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "The Music Player's Repeat or Shuffle behavior is configurable by its state."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "A cue is set on a Music Player."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "To start playing, call Play on the Music Player."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "To stop playing, call Pause."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "First, the Music Player loads the cue."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "Then, the Music Player has to load the audio assets before the player can output music."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "This may take a bit of time."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "If you know ahead of time what to play, buffer the Music Player using Prepare to Play."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "This reduces the amount of time needed to output music when you call Play."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "A cue can be created from any playable music item, such as songs or container types such as an album or playlist."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "Using the special Cue initializers for container types allows the Music Player to lazily load the container's items, further reducing the load time."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "When music is played using Music Kit, it will generally appear in the person's listening history in the Music app."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Effects Listening History is an instance property that determines whether the cue will show in the person's recently played shelf in the Music app."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "It defaults to true, but respects the use listening history setting for the Music app."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "To observe and control the player, both Music Players have observable properties for their playback state and cue."
+  },
+  {
+    "timestamp": "14:14",
+    "content": "Application Music Player has a cue where you have full control."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "These are observable classes that you can use directly in your SwiftUI view."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "To learn more about observation in Swift, check out the Discover Observation in SwiftUI session from WWDC 2023."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "In the Workout app, I'd like to put the artwork front and center during a workout."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "I'll also show the title and subtitle of the current song, and a set of controls."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "To get the currently playing song, I'll reference the player's cue."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "Then, if the currently playing song in the cue has an artwork, I'll use Music Kit's artwork image SwiftUI view to display the artwork."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "To show the song info, I'll use the title and subtitle of the currently playing entry."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "To control play pause, I'll add a button."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "I'll read the state of Application Music Player, and derive whether it's currently playing by checking playback status."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "The button calls pause when the player is currently playing, and play otherwise."
+  },
+  {
+    "timestamp": "15:37",
+    "content": "Finally, the back button calls Skip to Previous Entry to go to the previous song, and Skip to Next Entry in the Next button."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "In the Music Picker, I can tap on the plus button at the top of my running playlist to choose all the songs in this playlist."
+  },
+  {
+    "timestamp": "15:59",
+    "content": "Then, I'll tap on Done. The first song is playing now, and the artwork image I just put reflects the currently playing song."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "I'll tap on Pause, and the player pauses. Tap on Next, and the artwork now shows the next song."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "I'd like to make it more convenient for those using my app to get their workout going by suggesting some songs that they can tap on in the workout view to quickly start listening."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "мам мам"
+  },
+  {
+    "timestamp": "16:34",
+    "content": "мам"
+  },
+  {
+    "timestamp": "16:36",
+    "content": "In MusicKit, structured music catalog requests allow you to fetch content from Apple Music API."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "MusicKit offers several structured requests, such as getting items based on a specific filter,"
+  },
+  {
+    "timestamp": "16:52",
+    "content": "searching for music, and other Apple Music curated and personalized content."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "Explore the MusicKit documentation for the full list and how to use them."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "MusicCatalogResourceRequest is a structured catalog request for a specific resource."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "In this example, we'll make a request for songs."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "A request contains some configurations, such as options, if you want to set the behavior of the request."
+  },
+  {
+    "timestamp": "17:20",
+    "content": "I'll talk more about options in a moment."
+  },
+  {
+    "timestamp": "17:24",
+    "content": "You can also set properties on the request that specifies relationships and associations you also want to fulfill as part of the songs request."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "For example, you may also want the artist's relationship of the song."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "And you can set a limit on the number of items to return in the response."
+  },
+  {
+    "timestamp": "17:47",
+    "content": "When you call the asynchronous response method, MusicKit fulfills the request."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "The method returns a MusicCatalogResourceResponse, which contains the results of the request as a strongly typed MusicItemCollection."
+  },
+  {
+    "timestamp": "18:04",
+    "content": "MusicItemCollection is a MusicKit type containing a collection of music items."
+  },
+  {
+    "timestamp": "18:10",
+    "content": "In this example, it contains songs."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "MusicItemCollection supports pagination."
+  },
+  {
+    "timestamp": "18:17",
+    "content": "So if your request produced too many results, HasNextBatch will be true, and you can get the next page using the asynchronous NextBatch method."
+  },
+  {
+    "timestamp": "18:27",
+    "content": "When making resource requests, resource availability depends on the account settings and storefront or region."
+  },
+  {
+    "timestamp": "18:35",
+    "content": "For example, a resource you request in one region may have an equivalent resource with a different ID in another region."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "Additionally, a resource for explicit content may have an equivalent clean resource."
+  },
+  {
+    "timestamp": "18:50",
+    "content": "When the account does not allow explicit content."
+  },
+  {
+    "timestamp": "18:58",
+    "content": "I'll make a fetch songs method that has an input of a collection of song IDs, where the first ID is treated as a featured song."
+  },
+  {
+    "timestamp": "19:06",
+    "content": "The method uses a MusicCatalog resource request for songs that match the IDs in a song."
+  },
+  {
+    "timestamp": "19:12",
+    "content": "I'll also add the FindEquivalence option flag to enable the resource equivalency behavior I just talked about."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "Then, I'll call the response method to fetch the content."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "To capture the featured song, I'll use the ItemFor method using the first ID in the input collection of IDs."
+  },
+  {
+    "timestamp": "19:34",
+    "content": "The Catalog request is not guaranteed to return everything that was requested, such as if a resource is unavailable."
+  },
+  {
+    "timestamp": "19:46",
+    "content": "Finally, I'll get the other songs in order."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "Now, I'm ready for my workout."
+  },
+  {
+    "timestamp": "19:54",
+    "content": "I'll go back to my app, start another workout, and now I have a shelf of some songs that you can quickly pick when you want to get your workout going now."
+  },
+  {
+    "timestamp": "20:04",
+    "content": "Tapping on one of these artworks will immediately start playing it."
+  },
+  {
+    "timestamp": "20:09",
+    "content": "That's what you need to know about getting started with integrating MusicKit into your app."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "As Cathy talked about, adopt the MusicPicker view modifier to provide a unified and familiar music picking experience in your app."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "The Apple Music Catalog contains a wealth of content that your app can play."
+  },
+  {
+    "timestamp": "20:30",
+    "content": "For example, add some background music to enrich your app experience."
+  },
+  {
+    "timestamp": "20:35",
+    "content": "And check out other MusicKit APIs, such as requests to browse and modify library content covered in Explore More Content with MusicKit from WWDC 2022."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "If you're interested in integrating on Android or the web, check out Meet Apple Music API and MusicKit."
+  },
+  {
+    "timestamp": "20:57",
+    "content": "Thank you for watching."
+  }
+]

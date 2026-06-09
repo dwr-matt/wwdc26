@@ -1,0 +1,594 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Jennifer from the Spotlight Engineering team."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "This year, we're taking search to a whole new level with"
+  },
+  {
+    "timestamp": "0:13",
+    "content": "foundation models and Core Spotlight."
+  },
+  {
+    "timestamp": "0:15",
+    "content": "You can build rich conversational experiences in"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "your app simply by making your app content available"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "to a large language model for reasoning and response generation."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Now, I'm from California,"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "and there are so many beautiful hikes in the area."
+  },
+  {
+    "timestamp": "0:30",
+    "content": "I've been slowly making my way through some of the nicest trails."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "So I thought I'd build an app to help me along."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "In my hiking trails app,"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "I can already browse through state parks and trails."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "And once I've completed a trail,"
+  },
+  {
+    "timestamp": "0:42",
+    "content": "I like to write my own notes on what I enjoyed most about the hike."
+  },
+  {
+    "timestamp": "0:46",
+    "content": "But it would be really great to be able to ask a language model all about"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "the hikes I've already gone on or even about new hikes I should try."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "Well, the foundation models framework makes it easy to get started."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "By introducing a language model session into the app,"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "I can ask broad questions and the model will answer just by drawing on its own knowledge of the world."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "Now, I really only want answers about hikes that my app knows about."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "And this is where Spotlight can help."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "The hiking trails app has indexed all these great hikes into a core spotlight search index."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "So to help the model answer questions about those particular hikes,"
+  },
+  {
+    "timestamp": "1:21",
+    "content": "we can use the app's core spotlight search index through tool calling from the foundation models framework."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "The tool protocol from foundation models is a powerful concept that can be used to extend a model's capabilities,"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "both by taking actions for a request or by looking up context that a model needs to generate a response."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "A tool works by declaring its arguments and output, along with some instructions on what the tool does."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "And then when the model decides it needs to use a tool, it will simply generate the arguments to call up that tool and use that output for response generation."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "If you haven't already, there's some great sessions such as the deep dive into the foundation models framework to learn more about how tool calling works."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "So what if we had a tool that lets a model generate a search on an app's core spotlight index?"
+  },
+  {
+    "timestamp": "2:08",
+    "content": "Well, today we're introducing Spotlight Search Tool."
+  },
+  {
+    "timestamp": "2:11",
+    "content": "It's a tool that adopts the tool protocol to let a language model directly search your app's content in core spotlight for contextual response generation."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "Spotlight Search Tool is available on iOS, iPadOS, macOS, and visionOS."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "Before we get started, you'll want to make sure your app donates searchable content with core spotlight."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "Take a look at our past session on supporting semantic search with core spotlight, where we talk through how to donate searchable content to spotlight,"
+  },
+  {
+    "timestamp": "2:39",
+    "content": "how to manage donations with a delegate and re-index extension,"
+  },
+  {
+    "timestamp": "2:42",
+    "content": "and how to perform structured search over item attributes and search against the semantic index."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "Once your app has donated searchable items to core spotlight, or indexed entities for apple intelligence, we're ready to begin."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "We have a lot to cover in this video."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "We'll show you how to provide the new spotlight search tool to your language model session."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "Then we'll explore how to customize spotlight search tool with guidance, knowledge providers, and specialized capabilities."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "And finally, we'll look at ways to evaluate model responses with the evaluations framework."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "All right, let's get started."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "First, let's see how spotlight search tool can be used for contextual response generation."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "In our hiking trails app, we've donated searchable items to the spotlight index that represent hiking trails."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "Each trail has metadata, like the trail's name and location."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "And on some of the hikes, there's also some personal details, such as the date when a hike was completed,"
+  },
+  {
+    "timestamp": "3:40",
+    "content": "and some notes I wrote about how those hikes went."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "If I wanted to ask, what hikes have I gone on?"
+  },
+  {
+    "timestamp": "3:46",
+    "content": "The model will need to search for items by attributes like completion date and location to be able to formulate its response."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "So let's build this functionality into our app."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "There's three things we'll look at when adopting spotlight search tool."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "We'll need to configure the tool for the kind of search we want the model to perform."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Then we'll want to add additional context to the model while the search is active to get the best response."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "And finally, we'll explore different ways to display results in our app's user interface."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "Configuring the tool is not too different from performing a spotlight query directly."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "We'll start by importing both core spotlight and foundation models."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Then in one line of code, the tool is ready to search your app's core spotlight index."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "You can also provide spotlight search tool with a custom configuration."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "Here, we're specifying a file source to perform a search against file paths in your app's sandbox."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Next, you'll want to choose the right model for your app, whether it's the system language model,"
+  },
+  {
+    "timestamp": "4:43",
+    "content": "or a model of your choosing, which you can do using the new model provider APIs."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "Once you've chosen the model, add the new spotlight search tool instance to your language model session"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "to start getting a response. It feels like magic, but the response follows a path of tool calling and"
+  },
+  {
+    "timestamp": "4:59",
+    "content": "generation. For a question like, what hikes have I gone on? The trajectory might start with the model"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "deciding it needs to use spotlight search tool. The model will invoke the tool with a generated query."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "Spotlight will execute that query and return a description of the result setback."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "And the model will reason over that output and generate its final response."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "Now, when I ask what hikes have I gone on, the model can generate an answer grounded in the app's content."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "You might notice from some responses that the model was not able to see all of the metadata that was"
+  },
+  {
+    "timestamp": "5:35",
+    "content": "donated for the items. That's because some metadata than spotlight index like text content and HTML is"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "stored in a highly compact representation that can be searched, but not recovered in a way that a"
+  },
+  {
+    "timestamp": "5:47",
+    "content": "language model can read it. For these cases, you'll want to consider providing additional metadata for"
+  },
+  {
+    "timestamp": "5:53",
+    "content": "an item while spotlight search tool is performing a search. If your app donates searchable content to"
+  },
+  {
+    "timestamp": "5:59",
+    "content": "core spotlight, you'll already be familiar with the index delegate protocol. Your app would set an index"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "delegate on your CS searchable index to handle re-index requests, such as when spotlight needs to"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "perform migration or recovery. For spotlight search tool, we've added a method to the delegate to recover"
+  },
+  {
+    "timestamp": "6:16",
+    "content": "the full CS searchable item by its unique identifier. This allows the model to efficiently manage responses"
+  },
+  {
+    "timestamp": "6:21",
+    "content": "over potentially millions of results. On your index delegate, simply adopt the new searchable items for"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "identifiers to return the complete CS searchable item. If your app has metadata that doesn't make sense to"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "donate for search, but might be useful for the model to reason about, this is the right time to set any"
+  },
+  {
+    "timestamp": "6:38",
+    "content": "additional attributes on an item for the model to see. Now that we've configured the tool to perform"
+  },
+  {
+    "timestamp": "6:44",
+    "content": "searches, we'll want to think about how to display results and responses in our user interface. The session"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "response is a concise description over the result set. And in an assistant style interface, this response is"
+  },
+  {
+    "timestamp": "6:56",
+    "content": "typically when an app would want to display. But search results are also available directly on"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "spotlight search tool itself. For a list style display, this is the best way to access searchable"
+  },
+  {
+    "timestamp": "7:06",
+    "content": "items, especially when the result set is large. Search replies pass back results in batches during the"
+  },
+  {
+    "timestamp": "7:12",
+    "content": "search. So query tokens can be used to manage the conversation stream, ensuring that the user interface"
+  },
+  {
+    "timestamp": "7:18",
+    "content": "stays up to date with the model. To access results from the spotlight search tool, your app can wait for"
+  },
+  {
+    "timestamp": "7:24",
+    "content": "search replies and check for CS searchable item in the content of the reply. Search replies come as an"
+  },
+  {
+    "timestamp": "7:29",
+    "content": "async sequence of events, where each reply may include a batch of results until the tool call completes."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "Keep in mind that for any given response, the model may call spotlight search tool more than once before"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "generating its final response. For that reason, use the query token on each reply to determine when the"
+  },
+  {
+    "timestamp": "7:46",
+    "content": "user interface should refresh. Spotlight search tool provides a host of search capabilities, from semantic"
+  },
+  {
+    "timestamp": "7:52",
+    "content": "search over text to structured search over metadata, like dates, persons, locations, and more."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "But depending on the language model you choose, you may want to customize spotlight search tool,"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "both for the model and your app content. There's a few ways to customize spotlight search tool."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "Guidance profiles can be used to scope the tool's search capabilities. Providing the tool with world"
+  },
+  {
+    "timestamp": "8:14",
+    "content": "knowledge can help with reference resolution. And implementing custom pipeline stages can improve"
+  },
+  {
+    "timestamp": "8:19",
+    "content": "model reasoning over your app's content. Spotlight search tool provides its entire set of search"
+  },
+  {
+    "timestamp": "8:24",
+    "content": "capabilities to a model for guided generation. But guidance profiles can help scope that guidance to"
+  },
+  {
+    "timestamp": "8:30",
+    "content": "only what an app needs. The hiking trails app doesn't donate person relationships, so guiding the model on"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "how to search for authors and recipients could be skipped for limited context models. To selectively enable"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "guidance on search capabilities, like people and dates, use a guidance profile. You can even specify the exact"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "list of metadata attributes that the model should consider during a search. Then set a dynamic guide"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "level using the profile when creating spotlight search tool. On-device models have a more restricted"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "model context size, so it's best to use focus guidance for simpler search capabilities. Reference resolution is"
+  },
+  {
+    "timestamp": "9:07",
+    "content": "another way for your app to provide context that's not directly available in the search index. As an"
+  },
+  {
+    "timestamp": "9:12",
+    "content": "example, if the hiking trails app did donate person relationships, the person using the app might"
+  },
+  {
+    "timestamp": "9:17",
+    "content": "want to ask about other participants on the trip. In that case, the model needs to know who that person"
+  },
+  {
+    "timestamp": "9:22",
+    "content": "refers to in a prompt. If the app already knows who that person is, use a contact resolver to help the tool"
+  },
+  {
+    "timestamp": "9:28",
+    "content": "filter to the right set of results. A contact resolver should return any contact information related to the"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "user's identity that can be matched against metadata in the search index. And at last, your app can take"
+  },
+  {
+    "timestamp": "9:41",
+    "content": "advantage of custom pipeline stages that take document reasoning even further. For really complex requests, the"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "language model might forego a simple search query in favor of a pipeline search. A pipeline search brings together"
+  },
+  {
+    "timestamp": "9:54",
+    "content": "queries to the index plus computation over a result set for maximal efficiency. I could ask, how many trails have I hiked this year and for each month, how"
+  },
+  {
+    "timestamp": "10:04",
+    "content": "many miles have I gone on average? Now, the model could perform a simple search and keep a tally in memory to answer the question."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "Or if the result set is likely to be large, Spotlight search tool allows the model to request that Spotlight run a pipeline of search and computation stages."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "With the pipeline search, the model can break down this complex query into a set of steps. The model might generate a search for completed hikes, along with a counting stage that builds a table by month, then a stage that"
+  },
+  {
+    "timestamp": "10:32",
+    "content": "computes an average over all counts. Pipeline stages allow the tool to perform efficient computation, or transformation, over a search result set on behalf of the model."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "And your app can participate by registering its own custom stages. Pipeline stages are generable, so the model will generate a stage on demand based on the user's input. And whenever a stage is generated, the model may choose to return data back to the app when it makes sense."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "The foundation model's deep dive has a great segment on guided generation and generable types that I highly recommend."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "Let's take a look at the hiking trails app again. Some trails include personal notes on how each hike went. So I might want to ask, I remember being really happy on some of my hikes. Which ones were they? On its own, the model could make its best guess at my happiness level just by reading my notes."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "Or the app could register a custom stage that computes a happiness score over each item, allowing the model to generate a response solely on the computed top scoring results."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "To build a custom stage that computes a happiness score, we'll want to operate on CS searchable item as the input and return a scored version as the output. The score could be computed by running a sentiment analysis model over the notes attribute on the item."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "Or by some other custom logic, perhaps taking into account hikes rated with five stars. And since this is a generable type, we can add properties with guides to inform the model on which results to prefer."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "Then we simply register the stage by adding it to the tool's configuration."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "There's one more thing. Remember how Spotlight Search Tool returns replies with search results for display? Well, the model may decide to send back a search reply with the output data of a pipeline stage as another kind of partial result."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "From aggregate counts and tables to freeform text or computed numeric values, your app can display some or all of these data types. And each reply comes with a handy LLM generated label describing the content, giving your app the most"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "flexibility for its user interface. With so many options for customization, from the model we choose and the searchable content our app donates, to guidance levels and custom reasoning."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "How can we verify in a broad way how well the model is responding in our app? Well, the evaluations framework can help us in a few important ways. Not only can we quickly build evaluations to see how well the model is calling the tool and how meaningful the response, we can also rapidly iterate on our app's searchable content and"
+  },
+  {
+    "timestamp": "13:01",
+    "content": "paired with different guidance profiles on Spotlight search tool itself. The evaluations framework has some great APIs for building an end-to-end evaluation suite."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "From large-scale dataset generation to evaluation runs using custom metrics and reporting. There's some great sessions that go in-depth on sample generation APIs. And the video on creating robust evaluations for an agentic app is a great resource to get started on evaluating model responses with tool calling."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "For our purposes, we're going to focus on result coverage as a way to evaluate the hiking trails conversational experience. We want to know, given a dataset that's indexed in Core Spotlight, how well does the model generate responses based on the items we expected to find?"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "We'll start by defining a dataset that adopts the model sample protocol. Our trail request already includes the natural language input that a person might ask about trails in our app. The output, which is a language model response, and an expectation of the trajectory of the request."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "We'll also be adding a set of unique identifiers of searchable items that we expect the tool to return for that input."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "If we have real data to test against, that's great. But if not, we can use sample generation APIs to generate data based on a prompt. Let's take a look at this in Xcode."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "For our evaluations, we can define a set of hiking trails with the metadata that our app is expected to donate to Core Spotlight. Then we'll build a set of seed samples to use in our evaluations. Samples can be serialized in any codable format, and JSON works well for that purpose."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "Our samples include the query and the set of item identifiers we expect to be returned for that search. We can also provide a sample response that we can use later in a quality comparison with the model's actual response."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "Using the sample generation APIs in a command line tool, I can expand this seed set to many more variations to get broad coverage on how people might want to ask about trails."
+  },
+  {
+    "timestamp": "15:01",
+    "content": "The next step is to define our evaluation with metrics and trajectory. For our samples, we expect the trajectory of a response to include a call to Spotlight search tool to perform a query. So here's how we might define that expectation."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "And here's an overview of an evaluation flow that takes into account how many expected items were included in the final response. In our test target, our evaluation will load the trail items and samples from our generated datasets."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Then, we'll donate the trail items to Core Spotlight and configure Spotlight search tool for this evaluation. Once the evaluation completes its run, we can set the expectation for any metric we've included, like result coverage."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "This is just a start towards building comprehensive evaluations that will help you craft the best experience possible for your app."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "It's a big year for foundation models, and we hope you'll make the most of it. Download our sample code to see the hiking trails app in action. Try adding your own custom functionality to the app to really see what's possible."
+  },
+  {
+    "timestamp": "16:03",
+    "content": "You might also want to add your own evaluation suite with some inspiration from the evaluation's agentic deep dive."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "And remember, we're not writing search queries anymore. We're providing the content and letting intelligence do the rest."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "мам мам"
+  }
+]

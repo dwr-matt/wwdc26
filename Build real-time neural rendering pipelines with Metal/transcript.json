@@ -1,0 +1,918 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Yulia, a GPU software engineer here at Apple."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "Today, I'll share how to bring machine learning to your real-time rendering pipeline with Metal 4."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "You'll learn practical ways to integrate machine learning into your renderer, best practices for"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "building high-performance pipelines, and two techniques to start adopting today."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Machine learning is moving from research into production and real-time rendering."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "Across the rendering pipeline, many established techniques that have traditionally relied on analytical methods can also be implemented with machine learning."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "Neural denoising, neural textures, learned tone mapping, and many others are among the techniques that can leverage machine learning."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "At every stage of the pipeline, these approaches can improve quality, performance, or memory footprint."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "I'll share just how this works in Metal."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "On Apple platforms, you have a complete machine learning toolset for your rendering needs."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "At the highest level, Metal FX provides a ready-to-use neural denoising and upscaling API as a fully integrated blackbox solution."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "The Metal 4 ML command encoder lets you run pre-trained models directly in your command buffer, giving you more control over integration and scheduling."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "And at the most flexible level, the Tensor Ops API provides the building blocks to design and run custom models directly in your shaders, enabling you to fully leverage the neural accelerator introduced in our M5 and A19 Pro Apple Silicon GPUs."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "Today, I'll talk about all these in turn."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "Here is the plan."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "I'll cover how to adopt and achieve production quality results in your rendering pipeline with Metal FX."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Using Maxon's Redshift Live as an example of a modern real-time path tracing viewport that adopted Metal FX denoising using Apple's best practices."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "Then, I'll describe how you can train a neural tone mapper and deploy it with Metal 4."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "Finally, I'll explain how to build a small network directly in a shader using the Tensor Ops API."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "It starts with Metal FX."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "In your path bracer, your frame budget might only allow you one or few samples per pixel to stay interactive."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "However, one sample is naturally noisy."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "To keep the quality bar, use Metal FX denoising."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "It is designed specifically for the low latency demands of a live viewport."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "Metal FX denoising is a combined neural upscaler and denoiser, the platform integrated solution optimized for Apple Silicon."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "You can integrate it easily in your pipeline."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "You will need to generate a few extra auxiliary inputs, like diffuse albedo, depth, and a few others."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Depending on your renderer, you might already have produced those."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "You feed all these inputs to Metal FX, which produces a beautiful denoised image."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "From there, you complete your pipeline with post-processing and displaying the output."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "This is Redshift Live, Maxon's modern real-time path tracer, rendering one of their high-quality 3D assets in Cinema 4D on Apple Silicon."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "You get all the benefits of path tracing in the viewport, but during camera movement, you can see some noise from the one sample per pixel presentation."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "Enable the Metal FX denoiser, and the image becomes dramatically more stable and noise-free."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "Redshift Live can now deliver clean near-final image quality at interactive frame rates, with real-time ray-traced lighting, shadows, and global illumination."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "Now artists can see lighting effects take place in real-time in their viewport, like this tree being moved."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "This becomes possible when you combine hardware-accelerated ray-tracing with Metal FX neural denoising."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "Here is an example of a one sample per pixel frame rendered by Redshift Live."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "By leveraging both spatial and temporal techniques, Metal FX is able to transform the noisy one sample per pixel frame into an image with near-final quality, in real-time."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "To get all the details on the inputs and how to leverage Metal FX in your application, check out Go Further with Metal 4 Games session."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "I'll outline three key best practices that Maxon used to get the best quality from Metal FX, starting with denoiser inputs and noise."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "The output quality of the denoiser is directly dependent on the quality of your inputs."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "Normally, your auxiliary inputs are noise-free. Do your best to keep them that way."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Among all the inputs, the diffuse albedo is the strongest signal for denoising."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "When in doubt, make it as close as possible to a noise-free version of the final result you want to see on the screen."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "Consider building debug views for each input directly in your engine."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "Use a GPU capture to inspect textures frame by frame."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "This will allow you to validate your inputs and make sure they look the way the model expects."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "You might have some noise-free layers in your scene, or some parts you don't want to denoise as strongly."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "You have two tools at your disposal, the transparency overlay and the denoiser strength mask."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "Using them will help you to maximize the quality in these scenarios."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "Particles, fog, volumetrics, and sky are effects that don't have a meaningful surface"
+  },
+  {
+    "timestamp": "5:38",
+    "content": "and might be already noise-free based on your rendering pipeline."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Metal FX will denoise and upscale your noisy input."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "For those noise-free effects, you can leverage the Metal FX transparency overlay input instead."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "The overlay input will only be upscaled and composited in the final result for you."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "For areas that are already noise-free, like the sky, you can configure Metal FX to skip denoising for those pixels,"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "using the denoiser strength mask."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "I'll share an example."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Here, the sky has been marked as not to be denoised."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "The value can be tuned from 0, meaning no denoising, all the way to 1, meaning denoise at max strength depending on your use case."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "This gives you control over the denoising effect in the scene."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "By now, you should already have a great output by Metal FX, but there are a few tricky cases with reflection and transmission."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "This is what the second best practice will help you with."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "A mirror has no color of its own."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "The viewer sees the reflected surface."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "As discussed previously, your inputs, and especially the diffuse albedo, should represent the final desired output as close as possible."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "Store your reflected geometry properties like albedo, normal, and roughness in the mirror-like objects."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "Glass builds on the same foundational concepts and pushes it a bit further."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "The viewer sees a combination of what is reflected and what is transmitted, which could be noisy."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "One solution is to blend geometry properties like diffuse albedo by the Fresnel term, reducing substantially the noise of your inputs."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "The Fresnel is the term telling you at a given intersection point how much light would be reflected versus refracted."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "On the left, you can see the primary surface albedo, while on the right, it is replaced by the combined reflected and refracted albedo."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "This is a well-known technique called primary surface replacement."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "Getting this right will keep the reflection beautiful and sharp."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "Now that your materials look rich and your reflection and refraction are sharp, let's dive into the third best practice."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "Get your motion vectors right."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "Correct motion vectors are essential for temporal stability."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "Motion vectors are per-pixel screen-space displacements from the current frame to the previous frame."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "For every pixel, the motion vector should answer the question, where was this pixel in the previous frame?"
+  },
+  {
+    "timestamp": "8:13",
+    "content": "Motion vectors have been a staple of modern rendering technique."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "Getting motion vectors right makes the difference between a blurry result and a sharp output under motion."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "The model uses motion vectors to understand the scene under motion and over time."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Metal FX expects de-jittered motion vectors, meaning without the sub-pixel shifts."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "Without this, Metal FX might receive motion vectors that might be up to one pixel wrong, creating edge shimmering."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "Here is how you can compute them correctly."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "Here is the code to compute camera-only motion vectors for static objects."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "You can start by computing the projected position of the current vertex."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Then project the same position through the previous frame's matrix."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "Your motion vector is the difference between the two."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "However, since the camera matrices were jittered, subtract the jittered deltas from the current and previous frame."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "Finally, get a clean un-jittered motion vector for a cleaner motion."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "For objects that move and deforming geometry, the camera-only path won't see the displacement."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Store each vertex's previous frame world position or skin twice."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "And compute the actual motion vector."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "For objects where motion is genuinely unreliable fast motion, like alpha-blended particles, use the reactive mask."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "For more on the reactive mask, check out Go Further with Metal 4 Games."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "This is what it looks like in practice."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "Redshift Live from Maxon ships every best practice I just covered,"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "getting the most of Metal FX denoising, running on Apple Silicon, and delivering near-final image quality."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "Now, I'll take you beyond platform solutions and share how you can build your own ML-powered solutions."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "Neural rendering goes well beyond denoising."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "More and more techniques across the pipeline are becoming machine learning-based."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "And with Metal 4, you have the tools to build and deploy your own."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "Metal 4 gives you two ways to bring your own machine learning technique into the pipeline."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "The machine learning command encoder lets you deploy a trained model right in your command buffer in the same pipeline without context switch."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "The TensorOps API lets you build a small hardware-accelerated network directly in your shader."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "For more details on both APIs, check out Combined Metal 4, Machine Learning and Graphics."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "Today, I'll focus on tone mapping."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Most renderers have extended post-processing pipelines to correctly map the HDR image to something that can be displayed and matches their artistic vision,"
+  },
+  {
+    "timestamp": "10:54",
+    "content": "like tone mapping, color grade, or film emulation."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "The pipeline is composed of multiple stages, each with its own parameters and concatenated outputs."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "The pipeline can grow arbitrarily complex."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "The best results come from understanding the content of the image, and that's exactly what a neural network can learn."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "The idea is simple. Take your existing whole color pipeline or part of it, and replace it with a single neural network."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "The network will learn the color transformation."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "An example of such a workflow is called HDRNet, a 2017 architecture from Garby and colleagues."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "Here is the bird's eye view on how it works."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "The network works on a small, down-sembled version of the image."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "It performs two types of analysis, a global and a local one, to capture both scene level and small details."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "This process allows the network to create color transformations for 16 by 16 tiles of the image."
+  },
+  {
+    "timestamp": "11:58",
+    "content": "These localized transformations are applied with smart edgyware techniques to produce the beautiful tone mapped final result."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "To create this solution, you would first develop and train the network in your framework of choice."
+  },
+  {
+    "timestamp": "12:12",
+    "content": "For example, PyTorch."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "The training data could be deployed from manually tone mapped previous projects, or a lot of tone mapped images generated by your renderer."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "Once the model is trained, export it to an MTL package."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "In order to execute your network in Metal 4, there are a few steps that need to be done on both setup and on the actual execution."
+  },
+  {
+    "timestamp": "12:36",
+    "content": "First, you need to set up the pipeline by loading an MTL package, specifying the network function with a function descriptor, and creating a machine learning pipeline descriptor."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "This process is very similar to loading regular pipelines."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "The next step is to dispatch your network execution."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "To do that, you will create an encoder, create an argument table with the inputs and outputs, and finally, dispatch the common buffer."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "That will kick off the execution, where you will have a mix of compute, machine learning, and rendering work happening at the same time."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "Here is the updated pipeline."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "First, your path tracer produces samples, followed by Metal FX denoising, and the new neural tone mapper, all encoded in the same common buffer, executing in the same frame."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "The ML encoder replaced your entire multi-stage, post-processing chain with a single neural evaluation."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "I've shared how you can train and deploy your networks."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "Now, go one level deeper and build small networks directly in your shaders with the TensorOps API."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "So far, you have explored large general-purpose networks trained offline on a very large dataset."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "Now, I will show you the opposite approach."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "Tiny networks for one specific task."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "A few thousand parameters or less trained on your scene data, sometimes even trained online every few frames."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "The network only sees one scenario, it does not need to generalize."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "So far, you have learned how to execute ML in the same common buffer as a standalone step."
+  },
+  {
+    "timestamp": "14:17",
+    "content": "Here, it is executing alongside compute and render."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "However, a small network can fit in line in your shader, among the rest of your code, LU and texture sampling instructions."
+  },
+  {
+    "timestamp": "14:32",
+    "content": "The key enabling technology is TensorOps, available in any stage of the rendering pipeline."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "All this combined unlocks new possibilities and workflows that involve online training."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "Here is an example, a skybox used for image-based lighting."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "The skybox is casting light on the geometry in the scene, creating a natural soft illumination."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "The soft illumination is the result of the average light coming from all visible directions at a specific point."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "Normally, this result is pre-computed offline and sampled at runtime."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "However, a scene is rarely static."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "You might have a dynamic day-night cycle."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "Your offline learn signal may be out of sync."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "This is a learnable function for a neural network, and this is where online training comes into play."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "Here is how you could recreate this technique."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "Based on what you learned about the machine learning encoder so far, a simplified rendering loop might look like this."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "First, you update your world so that all the information is up to date for rendering."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "Next, you dispatch the machine learning encoder to run the inference on the model,"
+  },
+  {
+    "timestamp": "15:45",
+    "content": "and produce the necessary lighting information that you will use later for shading."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "Online training disrupts this paradigm."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "By creating your own training and inference routines, you can run one or more training iterations per frame to improve the model accuracy."
+  },
+  {
+    "timestamp": "16:03",
+    "content": "This is how the online training loop would look like for the sky illumination model."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "You start by generating a direction you wish to sample, and run inference on your model to get the result."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "Then you are able to compute the analytical solution to the sky illumination problem,"
+  },
+  {
+    "timestamp": "16:20",
+    "content": "that you can use to compute the error and finally run a backpropagation pass, to progressively improve the model."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "This is the exact same flow you could use to train offline, but this time repeating training iteration over frames."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "So, you are now running your own inference and training routines."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "This enables you to run the inference pass inline in your shading pass."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "And Tensor Ops will allow you to implement this very efficiently."
+  },
+  {
+    "timestamp": "16:50",
+    "content": "You now have a model that every frame adapts to the new world condition and can use this information for shading right away."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "This would not be possible with the standard offline training workflow."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "This concept generalizes to any technique that can learn a signal."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "Here is how to start building your own solutions."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "At a high level, a neural network is composed of three main building blocks."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "The input layer, which processes the network inputs, also known as input features."
+  },
+  {
+    "timestamp": "17:20",
+    "content": "The output layer, which generates the network's final predictions."
+  },
+  {
+    "timestamp": "17:24",
+    "content": "And finally, the hidden layers, where the magic of learning happens."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "The sky probe is a small network."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "The hidden layers group is composed of two hidden layers of four neurons each."
+  },
+  {
+    "timestamp": "17:35",
+    "content": "The network takes as an input value three floats to encode a direction,"
+  },
+  {
+    "timestamp": "17:40",
+    "content": "and produces three floats as an output that represents the average illumination coming from that direction as a color."
+  },
+  {
+    "timestamp": "17:47",
+    "content": "This is called a fully connected multilayer perceptron, or in short an MLP, a 3-4-4-3 network."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "You can experiment with the input sizes, amount, and size of layers to get the best result for your application."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "To be able to evaluate your network, you need to prepare your input tensor."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "It's best to batch multiple inputs at the same time making it a 2D matrix."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "For the sky probe example, this will be a 2D matrix of a batch of input directions you wish to evaluate."
+  },
+  {
+    "timestamp": "18:20",
+    "content": "But the input can contain whatever data might be useful for the network, like positional or material data."
+  },
+  {
+    "timestamp": "18:27",
+    "content": "Same principle applies to the output tensor."
+  },
+  {
+    "timestamp": "18:30",
+    "content": "For sky probe, make it a 2D matrix of a batch of colors."
+  },
+  {
+    "timestamp": "18:35",
+    "content": "Now that you know the structure of an MLP, here is how you can implement it in your shader and evaluate it in a forward pass."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "Now you're ready to begin the evaluation."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "You have your input tensor and the first hidden layer waste tensor."
+  },
+  {
+    "timestamp": "18:50",
+    "content": "You can multiply the two together using a matmul2d tensor operation."
+  },
+  {
+    "timestamp": "18:56",
+    "content": "You will obtain a pre-activation result on which you want to apply your activation function."
+  },
+  {
+    "timestamp": "19:01",
+    "content": "Before doing that, you will need to restore your matrix multiplication result."
+  },
+  {
+    "timestamp": "19:06",
+    "content": "I'll explain how to do that efficiently."
+  },
+  {
+    "timestamp": "19:09",
+    "content": "You may be familiar with the thread execution scope, where a single thread will be in charge of executing the whole tensor operation."
+  },
+  {
+    "timestamp": "19:16",
+    "content": "This works great for executing the urgent work or in pipeline stages where you don't have full control of a thread group."
+  },
+  {
+    "timestamp": "19:23",
+    "content": "However, when you do have full control, new possibilities arise."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "In a compute stage, you can use CMDigGroup execution scope, where all participating threads will work on the same matrix multiplication."
+  },
+  {
+    "timestamp": "19:37",
+    "content": "This execution mode will also give you access to a cooperative tensors."
+  },
+  {
+    "timestamp": "19:42",
+    "content": "Cooperative tensor storage is distributed among multiple threads in the thread group, avoiding expensive roundtrip to main memory."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "By using a cooperative tensor as an output of your first multiplication, the result will stay in fast thread storage memory."
+  },
+  {
+    "timestamp": "19:58",
+    "content": "Then you can apply your activation function in place."
+  },
+  {
+    "timestamp": "20:02",
+    "content": "You can now repeat the same operation of matrix multiplication and activation for the next layer."
+  },
+  {
+    "timestamp": "20:08",
+    "content": "And all the subsequent layers, all the way to the output layer."
+  },
+  {
+    "timestamp": "20:13",
+    "content": "You can also use the same method to use the same method to use the same method to use the same method."
+  },
+  {
+    "timestamp": "20:21",
+    "content": "On the left, there is the ground truth render computed using ray tracing."
+  },
+  {
+    "timestamp": "20:26",
+    "content": "On the right, the neural rendering version."
+  },
+  {
+    "timestamp": "20:29",
+    "content": "The small neural network was capable of learning the signal efficiently."
+  },
+  {
+    "timestamp": "20:33",
+    "content": "This was a high-level overview of how you can construct an MLP and evaluate it in your shader using TensorOps."
+  },
+  {
+    "timestamp": "20:41",
+    "content": "The same exact building blocks can be used to create an efficient backpropagation path needed for the online training step."
+  },
+  {
+    "timestamp": "20:49",
+    "content": "For all the code details, please check the Metal Performance Primitives programming guide."
+  },
+  {
+    "timestamp": "20:54",
+    "content": "To recap, today I have covered three levels of ML in your rendering pipeline."
+  },
+  {
+    "timestamp": "21:00",
+    "content": "First, MetalFX gives you platform-integrated neural denoising with three best practices."
+  },
+  {
+    "timestamp": "21:06",
+    "content": "Keep your inputs clean, store for the viewer sees, get motion vectors right."
+  },
+  {
+    "timestamp": "21:11",
+    "content": "Next, the MTL package lets you export your offline trained models and deploy at runtime."
+  },
+  {
+    "timestamp": "21:17",
+    "content": "You learned how to replace an entire post-processing pipeline with one neural evaluation."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "Finally, I covered the TensorOps API."
+  },
+  {
+    "timestamp": "21:25",
+    "content": "It lets you build tiny networks directly in your shaders running on the neural accelerator."
+  },
+  {
+    "timestamp": "21:31",
+    "content": "Each level gives you more control. Pick the one that's right for your app."
+  },
+  {
+    "timestamp": "21:37",
+    "content": "Download Xcode and explore the Metal 4 sample code."
+  },
+  {
+    "timestamp": "21:42",
+    "content": "If your app has real-time requirements like viewports in pro apps or games,"
+  },
+  {
+    "timestamp": "21:46",
+    "content": "adopt MetalFX denoising and upscaling."
+  },
+  {
+    "timestamp": "21:49",
+    "content": "Try training a neural tone mapper with your own post-processing pipeline."
+  },
+  {
+    "timestamp": "21:54",
+    "content": "And experiment with small specialized networks using the Tensor API."
+  },
+  {
+    "timestamp": "22:00",
+    "content": "Check out our sessions from previous years for more details."
+  },
+  {
+    "timestamp": "22:04",
+    "content": "I can't wait to see what you build!"
+  },
+  {
+    "timestamp": "22:07",
+    "content": "Googlecidacidacidacidacidacidacidacidacidacidacidacidacidacida"
+  }
+]

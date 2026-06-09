@@ -1,0 +1,1154 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Howdy, I'm Willy. Today, I'll be telling you how you can identify and mitigate new risks to"
+  },
+  {
+    "timestamp": "0:14",
+    "content": "agentic features within your app. Later, my colleague Akshay will provide the concrete,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "actionable steps you can take to secure your app using APIs available on our platform."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "With large language models or LLMs becoming commonplace, many apps are looking at ways to"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "use them to enable new intelligent features, making the LLM a key system component."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "Within your application, you can send instructions and a prompt containing the user's request and"
+  },
+  {
+    "timestamp": "0:44",
+    "content": "extra context to an LLM to have it execute one or multiple actions to get intermediate results,"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "until finally providing a response to the user."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "Our platform lets you create agentic experiences using either the Foundation Models framework to"
+  },
+  {
+    "timestamp": "1:00",
+    "content": "design your own agent or the App Intense framework to let your app work with Siri."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "Now with new capabilities comes new security risks. LLMs introduce a new probabilistic engine within"
+  },
+  {
+    "timestamp": "1:14",
+    "content": "your application that is both powerful, but risks being tricked. The purpose of this talk is to"
+  },
+  {
+    "timestamp": "1:20",
+    "content": "highlight the new security risks with agentic features and provide techniques and APIs you can"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "use to protect your users. The key thing is we want to make sure that your app works as you intend and"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "with the user security in mind. Before going forward, we want to make clear what this talk is not covering."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "We won't be talking about model safety, which refers to ensuring that what the model outputs is safe."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "And we also won't be discussing model guardrails and protecting against our convention. While some"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "of the principles we will discuss could be used to handle such cases, we'll be focusing on an external"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "attacker trying to compromise your application. If you want to review model safety, check out the"
+  },
+  {
+    "timestamp": "2:03",
+    "content": "Great Talk link below. Let's start by talking about the new risks that come with agentic systems."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "To begin, we'll start by considering why an attacker may try to target your app. Your application may do"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "things an attacker is interested in, such as host-sensitive user data, perform financial transactions,"
+  },
+  {
+    "timestamp": "2:25",
+    "content": "access system resources like the microphone or camera, or even control physical devices. An attacker may"
+  },
+  {
+    "timestamp": "2:32",
+    "content": "want to exploit your application to achieve their goals. To help illustrate our attacks and mitigations,"
+  },
+  {
+    "timestamp": "2:39",
+    "content": "we'll be working with the Loose Leaf app, an example app that could be the next-generation social network"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "for all things tea, from hot to cold to boba, we're certain Loose Leaf is a future of social networking."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "Loose Leaf already ships with some exciting features, such as being able to message tea recipes to friends,"
+  },
+  {
+    "timestamp": "2:59",
+    "content": "or the ability to share the incredible tea party photos you took."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "We previously talked about how you can threat model and mitigate these traditional features."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "It's worth reviewing that video to ensure we don't forget our essentials."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "Now the Loose Leaf developers have been brewing, and they're excited to announce a spicy new feature called"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "Organize a Tea Party, which uses the Foundation models and AppIntense framework to look at your calendar to find the best time to host a tea party,"
+  },
+  {
+    "timestamp": "3:26",
+    "content": "determine what friends should be invited along with what teas to serve based on their profiles, and also order the teas that everyone likes."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Wow!"
+  },
+  {
+    "timestamp": "3:37",
+    "content": "This new feature relies on Loose Leaf's agentic loop and has two notable properties."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "First, this feature takes in context from multiple locations to help the agent make decisions."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "Second, the agent can call one or more actions on the user's behalf that can have different kinds of side effects."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Starting with the first property, we introduce a new risk, Indirect Prompt Injection."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Indirect Prompt Injection refers to instructions embedded in extra context provided to the model with the intent to redirect control flow."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "Indirect Prompt In our agentic loop, we see that this refers to instructions that may be embedded in the initial extra context in the prompt or within a tool result."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "What this may look like in practice is a user requesting to start a tea party with their calendar appended,"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "but the calendar containing an event with instructions to the model to perform another action, such as deleting sensitive user data."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "Yikes!"
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Part of the threat modeling exercise we'll go through is identifying all the sources of untrusted context."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "The second property of our agentic system is the action calling capability, which could potentially have side effects or unintended consequences of executing the action."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "When combined with Indirect Prompt Injections, an attacker could cause an action with side effects to be executed that achieves their goal,"
+  },
+  {
+    "timestamp": "5:03",
+    "content": "such as exfiltrating your user's data, stealing money, controlling physical devices, or deleting data."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "When an Indirect Prompt Injection leads to an unintended action, we can consider the injection having two different effects."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "First is data poisoning, which we refer to an attacker influencing the parameters of an executed action."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "For example, a user may want to send a message to their mom, but an attacker injects an instruction to send a message to themselves instead."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "Second is action poisoning, where the attacker influences what action to execute."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "A user may simply ask to summarize an email, but an attacker could steer the LLM to open a malicious webpage with the email appended to an attacker-chosen URL instead."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "Conceptualizing these risks, we can look to Simon Willison's lethal trifecta, which describes that a user is in most danger whenever an agentic system has"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "access to private data, exposure to untrusted content, and the ability to externally communicate."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "This last bullet, we can further generalize to consider the risk of actions with any side effect."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "Summarizing this section, we want to emphasize that solving Indirect Prompt Injection is an active research area, meaning that our best approach at the moment is to understand how much your app is at risk and aim to mitigate that risk."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "Slide 13"
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Now that we've discussed the risks that come from agentic systems, we will go through a threat modeling exercise that you can do on your app to identify untrusted sources of data and identify potentially risky actions."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "Slide 13"
+  },
+  {
+    "timestamp": "6:44",
+    "content": "We start by performing a data flow analysis for our agentic loop input, aka the prompt."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "We want to identify the data sources you'll use to construct your prompt."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "For this exercise, we want to pinpoint the sources of untrusted context that may contain prompt injections."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "Going back to our Looseleaf app, there are a few data sources that feed into prompt construction."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "First is the instructions that provides the LLM some guidance about its purpose and role."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "Next is the user's prompt, the task the LLM will work on and the goal it's trying to achieve."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "The prompt can also include extra context to help the LLM achieve the goal, such as including past tea orders, tea recipes the user has stored, upcoming calendar events to help determine the best time for a tea party,"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "and a friend feed to incorporate content our friends are sharing."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Once we have an understanding of data sources that feed into our prompt, we need to identify what is considered untrusted."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "As a general rule of thumb, we can consider any inputs coming from an external entity as the attack surface."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "In our case, we identify the calendar content and the friend feed as untrusted because anyone could send the user a calendar invite that may get fed into the model,"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "and a user's friend could post anything on their feed that gets fed into the prompt, which could all contain prompt injections to influence the action to execute."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "After identifying the sources of untrusted context, we want to examine the actions available to the agent and what side effects they may have."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "First, we have the order tea tool, which is an essential action for getting tea for your tea party."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "The post and fetch public feed tool will post on the user's feed with a message generated by the model, helpful for getting the word out to friends."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "The brewing timer intent will help you during your tea party to ensure your tea is brewed for the right amount of time."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "Finally, the delete photo will remove a photo from the user's feed, in case the tea leaves didn't look just right."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "As we consider all these actions, we need to identify what side effects each action may have."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "The order tea tool has a financial risk associated with it, meaning the user could lose money if unintentionally called."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "The post and fetch public feed tool, on the other hand, has a data exfiltration risk, as the model could leak sensitive information via a public post."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "Brewing timer intent may not have side effects on its own, but if it takes a label, it could allow a prompt injection to write more instructions for later attacks."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "Delete photo has a data loss risk, especially if there's no undo capability."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "Now that we've identified where malicious inputs could go into the LLM and the side effects actions may have, we can begin to design and implement mitigations that will protect the user."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "We want to highlight that we should try to focus on deterministic mitigations as a baseline because their security guarantees are easier to audit and reason about."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "Given the rapid development of model capabilities, we can also consider other mitigations that have more probabilistic guarantees."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "Here we present a few different mitigations that can be used to protect your application by either adding checks at the prompt level or at the action execution stage."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "We've used some of these as we've designed Siri AI."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "Let's walk through these now."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "First, we can look back at our prompt and begin to add prompt mitigations."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "We can redact sensitive data, such as personally identifiable information or PII that may be stored in past orders."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "That way, sensitive data never reaches the LLM and thus cannot be exfiltrated."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "Next, we can incorporate spotlighting to the model to indicate that this content is considered untrusted."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "This is a probabilistic mitigation because the prompt injection could be constructed in a way that negates the spotlighting."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "We suggest incorporating it though, as different models could more effectively enforce these restrictions."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Now, let's look at the action mitigations you can implement."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "First, consider which actions should have a user confirmation."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "These are actions that are worth having a human check before continuing due to the side effects they contain."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "Next, consider which tool should only work whenever the device is authenticated or unlocked."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "Because the agent may be reachable from the lock screen, actions with significant risk to the user should not be accessible."
+  },
+  {
+    "timestamp": "11:23",
+    "content": "We've walked through different kinds of mitigations and how they can apply to your system."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "But there are many more types that exist, and we welcome you to go and explore them to mitigate the risk to your app."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "The key thing to remember when threat modeling is that you want to identify what an attacker may want from your application,"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "and from there apply mitigations to address risk at the prompt level or the action execution stage."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "And now Akshay will show you concrete tools that you can use to protect your app."
+  },
+  {
+    "timestamp": "11:53",
+    "content": "Take it away, Akshay."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Thanks, Willy."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "Hi, I'm Akshay, and I'll show you how to secure your agentic app with some of the guardrails that Willy just discussed."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "If you're building your app using Foundation Models Framework, I'll show you how to inject security checkpoints into your agent execution."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "If you're integrating with Apple Intelligence using App Intents, I will cover the security mitigations available there."
+  },
+  {
+    "timestamp": "12:17",
+    "content": "Let's start with Foundation Models."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "The Foundation Models Framework provides a powerful API for building agents."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "I'm going to highlight the Lifecycle Event Modifier API and use it for injecting security guardrails."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "I will assume basic familiarity with the framework."
+  },
+  {
+    "timestamp": "12:32",
+    "content": "To learn more, do check out the excellent talk link below."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "Let's first build a simple agent for our loose leaf app using Foundation Models."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "Now, I don't know about you, but I can't build any agents without a cup of my Darjeeling Black Tea."
+  },
+  {
+    "timestamp": "12:45",
+    "content": "So before we do anything else, we'll build a tool to order teas."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "To define a tool, we conform to the tool protocol. We specify the name, description, and arguments to the tool."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "The model uses this metadata to understand our tool's purpose and how to call it."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Then we provide the actual implementation that is run when the tool is called."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "Let's define one more tool."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "The Post and Fetch Public Feed tool posts your message to the public feed and retrieves newly posted messages."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "The next step in building our agent is to create a profile."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "In the profile, we first add model instructions and the tools we just defined."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "Then we attach session properties, like which model to use."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "Here, we are using the on-device model."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "This profile is then used to instantiate a language model session, which can then be used in an agentic loop."
+  },
+  {
+    "timestamp": "13:35",
+    "content": "Now that we have a basic agent, we will inject our security policy."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "To do this, we'll use lifecycle event modifiers."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "These modifiers are callbacks that deterministically trigger at certain lifecycle points in a session execution."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "Thus, we can use these lifecycle events as checkpoints to implement security policy."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "We'll look at two of these modifiers now."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "Let's go back to our simplified agentic loop."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "Like Sisyphus, the LLM outputs an action at each iteration."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "This action is run by the executor and its output rendered back to the LLM for the next iteration."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "The first modifier lets us intercept tool calls before they run."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "This is the on-tool-call modifier."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "It is guaranteed to trigger when the LLM outputs a tool call before the executor runs the tool."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "The important point here is if this callback throws an error, then the tool is never executed."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "Control returns to the loop immediately."
+  },
+  {
+    "timestamp": "14:28",
+    "content": "This makes this the perfect place to enforce confirmations."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "Going back to our loose-leaf agent, we notice that the order-t tool has financial impact, and that makes me very nervous."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "So I want to always ask for user confirmation before running this tool and transferring money."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "To do this, we add an on-tool-call callback to our profile."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "As this callback runs before every tool call, we first check if the current tool is the order-t tool."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "If not, we return immediately, and the tool is run."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "But if it is, we ask the user for confirmation."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "If the user does not confirm, we throw an error, which stops the tool from running."
+  },
+  {
+    "timestamp": "15:07",
+    "content": "You'll replace confirm with user function with your own implementation."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "The point is that by adding confirmation logic to just this one point in our code,"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "we get full coverage for all our tool calls."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "So in summary, remember that this modifier runs before every tool execution,"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "and the tool itself is not run until this callback returns."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "You can block tool execution by throwing an error."
+  },
+  {
+    "timestamp": "15:30",
+    "content": "So conceptually, the on-tool-call modifier runs on the output of the model."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "Let's now look at a modifier that helps us check the input to the model."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "The history transform fires before the transcript is rendered to the model for inference."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "This happens both when a new user request arrives and at each iteration of the loop."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "The transformation modifies the tail of the transcript,"
+  },
+  {
+    "timestamp": "15:52",
+    "content": "and we'll use that for spotlighting and redacting PII."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "Returning to our example, note that post and fetch public feed tool"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "returns post from a public feed."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "An attacker can easily post a prompt injection to that feed."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "We must treat this feed's output with suspicion."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "So we want to demarcate this output with special tags"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "to tell the model that this is untrusted data."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "We do this by adding spotlighting delimiters inside the history transform."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "In the callback, we first iterate over the entries and focus only on tool output entries from our tool."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "All other entries are copied to the output transcript unmodified."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "We then modify the tool output entries."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "We iterate over the segments and for each relevant segment, add delimiter tags."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "We're using angled brackets untrusted in this example."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "You'll use tags that are relevant for your model."
+  },
+  {
+    "timestamp": "16:41",
+    "content": "The delimit function, whose implementation we'll skip, transforms a text segment to one with delimited content."
+  },
+  {
+    "timestamp": "16:47",
+    "content": "And now let's look at redaction."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "Actually, we can use exactly the same idea for redacting sensitive data too."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "We just need to replace the delimit function with a redaction function"
+  },
+  {
+    "timestamp": "16:57",
+    "content": "that replaces sensitive data with the placeholder string literal redactive."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "Here's an important thing to remember."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "The transformed entries are scoped to the current inference iteration only."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "This means that these modifications will not be visible to the next inference call."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "You must apply them again."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "For expensive transformations that you want to persist, use the session property annotation."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "This lets you apply stateful transformations to your session history."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "See the documentation for details."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "Okay, so we saw how lifecycle event modifiers provide deterministic hooks for injecting security policy."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "But I did not cover all the modifiers."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "The framework provides many more that trigger at other critical points in the agentic loop."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "The framework also allows you to build your own profile modifiers and package them in reusable components."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "Do see the foundation model's documentation to learn more about these and many other powerful features."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "All right, now let's change context to App Intents."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "App Intents let you integrate your app with Apple intelligence and rich system experiences like Siri,"
+  },
+  {
+    "timestamp": "18:04",
+    "content": "Spotlight, Shortcuts, and many more."
+  },
+  {
+    "timestamp": "18:06",
+    "content": "For the rest of this talk, I will assume you are familiar with the basics of App Intents and App Schemers."
+  },
+  {
+    "timestamp": "18:11",
+    "content": "To learn more, check out these great sessions linked below."
+  },
+  {
+    "timestamp": "18:14",
+    "content": "As a quick recap, when an App Intent adopts an intent schema, it becomes available as a tool to the Siri model."
+  },
+  {
+    "timestamp": "18:20",
+    "content": "For example, here our DeletePhoto intent adopts the DeleteAsset schema from the Photos domain."
+  },
+  {
+    "timestamp": "18:26",
+    "content": "Conceptually, this adds our DeletePhoto action into the Siri toolbox."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "And this allows Siri to reason over our tool definition and invoke it to service user queries."
+  },
+  {
+    "timestamp": "18:36",
+    "content": "However, as it is the model which decides which intent to call, a prompt injection attack can let an attacker misuse your app for data exfiltration or other malicious goals."
+  },
+  {
+    "timestamp": "18:48",
+    "content": "For example, here we are running with external context, which may try to run our DeletePhoto function without user intent."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "If such an attack succeeds and we don't have any other deterministic guardrails in spite of Willy's vigorous warnings, then there's a real possibility of data loss."
+  },
+  {
+    "timestamp": "19:05",
+    "content": "Actions which have externally visible side effects or are destructive are tempting targets for attackers."
+  },
+  {
+    "timestamp": "19:10",
+    "content": "The App Intent system has a number of guardrails in place to help developers mitigate such attacks."
+  },
+  {
+    "timestamp": "19:16",
+    "content": "We will look at two of these, confirmations and lock screen authentication."
+  },
+  {
+    "timestamp": "19:20",
+    "content": "Let's start with confirmations."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "The system uses a risk-based contextual confirmation mechanism."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "This automatically triggers confirmations on high-risk actions from your app."
+  },
+  {
+    "timestamp": "19:31",
+    "content": "The risk of an action is determined by considering static action metadata and the dynamic system state."
+  },
+  {
+    "timestamp": "19:37",
+    "content": "When an intent is chosen before execution, the system invokes a risk evaluation system with the intent's risk metadata."
+  },
+  {
+    "timestamp": "19:45",
+    "content": "We will come back to this metadata later."
+  },
+  {
+    "timestamp": "19:47",
+    "content": "The risk evaluation component also takes as input the dynamic state of the system."
+  },
+  {
+    "timestamp": "19:52",
+    "content": "It combines both to determine the overall risk of this intent."
+  },
+  {
+    "timestamp": "19:57",
+    "content": "If the risk is considered high, the user is asked for a confirmation."
+  },
+  {
+    "timestamp": "20:01",
+    "content": "If the user confirms this action, normal control flow continues and the intent is executed."
+  },
+  {
+    "timestamp": "20:07",
+    "content": "On the other hand, if the user declines, execution is blocked and the intent is never invoked."
+  },
+  {
+    "timestamp": "20:13",
+    "content": "Now let's go back to risk metadata."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "Risk metadata is internal risk data that is assigned to all intents."
+  },
+  {
+    "timestamp": "20:21",
+    "content": "It is based on the intent's side effects."
+  },
+  {
+    "timestamp": "20:23",
+    "content": "Certain side effects are considered riskier than others."
+  },
+  {
+    "timestamp": "20:26",
+    "content": "For example, intents that delete device state, like our delete photo intent, can be considered high risk."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "Intents which exfiltrate data may also cause damage if executed in a poisoned context."
+  },
+  {
+    "timestamp": "20:38",
+    "content": "And update intents that operate on shared content can also be risky."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "The system is more likely to trigger confirmations for high risk tools."
+  },
+  {
+    "timestamp": "20:47",
+    "content": "So how is risk metadata associated with your app intent?"
+  },
+  {
+    "timestamp": "20:50",
+    "content": "The risk metadata is automatically assigned to an intent when it adopts a schema."
+  },
+  {
+    "timestamp": "20:57",
+    "content": "You don't have to do anything extra. Technically, it is the schemas which have risk metadata associated with them."
+  },
+  {
+    "timestamp": "21:03",
+    "content": "For example, the delete asset schema is used to delete photos and thus has a destructive side effect."
+  },
+  {
+    "timestamp": "21:09",
+    "content": "And so our delete photo intent is assigned this destructive side effect too."
+  },
+  {
+    "timestamp": "21:13",
+    "content": "But risk is subtle."
+  },
+  {
+    "timestamp": "21:15",
+    "content": "Let's define a new intent that sets a brewing timer."
+  },
+  {
+    "timestamp": "21:19",
+    "content": "This intent adopts the createTimer schema."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "What do we think about the risk of this schema?"
+  },
+  {
+    "timestamp": "21:24",
+    "content": "On the face of it, it seems an attacker cannot cause too much damage by creating timers."
+  },
+  {
+    "timestamp": "21:29",
+    "content": "So perhaps we don't need to confirm this action."
+  },
+  {
+    "timestamp": "21:32",
+    "content": "But if we look further, the schema defines an optional string property for a label for the timer."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "Now remember that it is the model which determines the arguments for your intent."
+  },
+  {
+    "timestamp": "21:42",
+    "content": "So a prompt injection can cause this label being set to an attacker-controlled value."
+  },
+  {
+    "timestamp": "21:48",
+    "content": "And a subsequent query to list timers can then pull this attacker-controlled data into that context,"
+  },
+  {
+    "timestamp": "21:54",
+    "content": "thus poisoning the new context too."
+  },
+  {
+    "timestamp": "21:57",
+    "content": "So it is not safe to entirely skip confirmation in cases like createTimer."
+  },
+  {
+    "timestamp": "22:02",
+    "content": "The system understands these in between situations."
+  },
+  {
+    "timestamp": "22:05",
+    "content": "This is where the dynamic system state we discussed earlier plays a role."
+  },
+  {
+    "timestamp": "22:08",
+    "content": "This information is used to figure out if a confirmation is needed in the current system context,"
+  },
+  {
+    "timestamp": "22:15",
+    "content": "thus capturing the dynamic risk of this action."
+  },
+  {
+    "timestamp": "22:18",
+    "content": "To recap, remember that the confirmation system is contextual and risk-based."
+  },
+  {
+    "timestamp": "22:23",
+    "content": "Your intents will inherit side effects from the intent schemas they adopt."
+  },
+  {
+    "timestamp": "22:27",
+    "content": "And actions with risky side effects are more likely to be confirmed."
+  },
+  {
+    "timestamp": "22:32",
+    "content": "Now let's look at lock screen authentication."
+  },
+  {
+    "timestamp": "22:34",
+    "content": "As you know, you can interact with Siri on the lock screen without having to first unlock your device."
+  },
+  {
+    "timestamp": "22:40",
+    "content": "This is great for accomplishing quick tasks or when your hands are occupied."
+  },
+  {
+    "timestamp": "22:44",
+    "content": "But this also means that an attacker in physical possession of a locked device"
+  },
+  {
+    "timestamp": "22:48",
+    "content": "can potentially invoke your intent via Siri."
+  },
+  {
+    "timestamp": "22:51",
+    "content": "So if you're not careful, your app can be used by such an attacker for data exfiltration"
+  },
+  {
+    "timestamp": "22:55",
+    "content": "or running malicious actions."
+  },
+  {
+    "timestamp": "22:56",
+    "content": "The main mitigation against such a threat is to request the user to unlock their device"
+  },
+  {
+    "timestamp": "23:02",
+    "content": "before running risky actions."
+  },
+  {
+    "timestamp": "23:04",
+    "content": "So let's see how authentication policy is defined on an app intent."
+  },
+  {
+    "timestamp": "23:08",
+    "content": "For custom app intents, you can explicitly set authentication behavior"
+  },
+  {
+    "timestamp": "23:12",
+    "content": "by setting the authentication policy property."
+  },
+  {
+    "timestamp": "23:15",
+    "content": "For example, here, as our delete photo intent is destructive,"
+  },
+  {
+    "timestamp": "23:18",
+    "content": "we want to ensure it does not run on a locked device."
+  },
+  {
+    "timestamp": "23:21",
+    "content": "So we explicitly set authentication policy property to requires authentication."
+  },
+  {
+    "timestamp": "23:27",
+    "content": "The situation is slightly different when your app intent adopts an intent schema."
+  },
+  {
+    "timestamp": "23:32",
+    "content": "Schemas have their own default authentication policy."
+  },
+  {
+    "timestamp": "23:35",
+    "content": "This policy is set internally based on the sensitivity of each schema and the data it handles."
+  },
+  {
+    "timestamp": "23:41",
+    "content": "And similar to side effects, your intent is automatically assigned the schema's default policy."
+  },
+  {
+    "timestamp": "23:46",
+    "content": "But if you want, you can still explicitly override the default."
+  },
+  {
+    "timestamp": "23:49",
+    "content": "The only constraint is that your policy has to be stricter."
+  },
+  {
+    "timestamp": "23:53",
+    "content": "For example, let's assume the default policy of the delete asset schema is requires authentication."
+  },
+  {
+    "timestamp": "23:59",
+    "content": "Then as we don't explicitly set policy here, our app intent is assigned the same"
+  },
+  {
+    "timestamp": "24:03",
+    "content": "and will require authentication before running."
+  },
+  {
+    "timestamp": "24:07",
+    "content": "But if we try to set a weaker policy, we get a build error,"
+  },
+  {
+    "timestamp": "24:10",
+    "content": "which helpfully tells us the minimum allowed policy."
+  },
+  {
+    "timestamp": "24:14",
+    "content": "So to recap, authentication is an important mitigation for lock screen attacks."
+  },
+  {
+    "timestamp": "24:18",
+    "content": "Schemas have their own default authentication policies, which get assigned to your app intent."
+  },
+  {
+    "timestamp": "24:23",
+    "content": "And you can override the schema policy, but only to make it stricter."
+  },
+  {
+    "timestamp": "24:28",
+    "content": "So please go and review your intents with their lock screen behavior in mind."
+  },
+  {
+    "timestamp": "24:31",
+    "content": "Now back to Willy."
+  },
+  {
+    "timestamp": "24:32",
+    "content": "Willy Wonka"
+  },
+  {
+    "timestamp": "24:33",
+    "content": "Quality stuff, Akshay."
+  },
+  {
+    "timestamp": "24:35",
+    "content": "Willy Wonka"
+  },
+  {
+    "timestamp": "24:35",
+    "content": "To summarize, the next steps for your agentic application consist of coming up with a threat model,"
+  },
+  {
+    "timestamp": "24:41",
+    "content": "which requires finding sources of untrusted context in your prompt,"
+  },
+  {
+    "timestamp": "24:45",
+    "content": "and then determining the risk level for each action based on its side effects."
+  },
+  {
+    "timestamp": "24:50",
+    "content": "With Akshay's guidance, you have some stepping stones on how you can implement the best mitigations"
+  },
+  {
+    "timestamp": "24:55",
+    "content": "for your app using the foundation models framework and the app intent's framework."
+  },
+  {
+    "timestamp": "25:00",
+    "content": "Now let's raise the bar and promptly inject your defenses."
+  },
+  {
+    "timestamp": "25:03",
+    "content": "Thank you."
+  }
+]

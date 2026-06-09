@@ -1,0 +1,610 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Megan Williams from the Vision Framework team."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "This year, there are some powerful advancements in image understanding,"
+  },
+  {
+    "timestamp": "0:14",
+    "content": "which you can now use to create incredible experiences in your apps."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "I'll talk about a few of them, starting with what's new."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "Oh, that's weird. My agenda is missing."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Let me see if I can create one quickly."
+  },
+  {
+    "timestamp": "0:30",
+    "content": "I made notes of the topics I want to cover."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "I bet AI can help me make an agenda."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "I'll use this picture of my notes and ask a large language model to generate an agenda."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "This is pretty easy to do with the Foundation Models Framework."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Thankfully, this year Foundation Models is supporting image inputs."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "Great, the model made me an agenda. Now I can get back to the presentation."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "This year, there's more ways than ever to bring image understanding to your apps."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "Starting with what's new in Vision, the Tap to Segment API allows you to isolate any object in an image just by tapping on it."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "There's also a new and powerful way to analyze images using large language models."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "I'll talk about how to do this with the Foundation Models Framework."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Then I'll show how you can create image-based tools for large language models that unlock even more possibilities in image understanding."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "Finally, Vision is also now available on watchOS."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "I'll show how to use Vision to enhance your watch apps."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "But first, I'll show you some of the awesome things you can do with the Tap to Segment API."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "Vision already has several image segmentation capabilities."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "For example, there's Person Segmentation, which will isolate all of the people in an image."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "But what if I want to segment something else in the image?"
+  },
+  {
+    "timestamp": "1:56",
+    "content": "Like this flower base."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "Now with Vision's Tap to Segment API, I can choose any object in the image to segment."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "Like this board game, a piece of clothing, or even the floor."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "There are multiple ways that I can select an object to segment."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "I'll demonstrate a few of them."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "In my app, I have a photo from a cafe, and I want to segment the coffee cup on the table."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "First, I can choose a point on the cup."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "And now the cup is isolated."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "I can choose a box of objects."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "This works well for simple objects, but if my subject is complex, then selecting just one point"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "may not be enough."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "For example, maybe I want to include the plate as well."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "I can instead draw a bounding box around all of the objects I want to segment."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "And now I'm able to get both the cup and the plate."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "I can also draw a lasso around an object."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "I'll use a lasso to segment this croissant."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "Another great option is to draw a scribble."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "I can scribble over multiple objects to easily segment all of them at once."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "Once I have a mask, I can refine the mask by adding or subtracting more points."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "I've already segmented this cup with an initial point, and now I want to include the plate."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "I'll just tap the plate, and now it's included too."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "I can also remove sections from my mask."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "Maybe I only want the coffee, not the cup."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "I can choose a point on the cup to exclude from my mask."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "And now I get just the coffee."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "To use the API, you'll start with an image."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "I can use an image request handler to hold your image."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "In Vision, images are processed using requests."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "To segment an object, you'll use Generate Iterative Segmentation Request."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "Use the image request handler to perform the request."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "This generates a mask of the segmented object."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "The mask is a pixel buffer that shows which pixels belong to the segmented object."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "Here's the code."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "I'll start with an image and create an image request handler."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Now I'll create the request using a point inside the object I want to segment as a starting seed."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Then I'll use the image request handler to perform the request on the image."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "image. This produces a segmentation mask of the object. I can now refine this mask with"
+  },
+  {
+    "timestamp": "4:38",
+    "content": "a new point if I want. To do this, I'll just include the point in the request, and then"
+  },
+  {
+    "timestamp": "4:45",
+    "content": "I'll perform the request again. There are a few other things to keep in mind."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Vision uses a normalized coordinate system, with the coordinate origin in the lower left-hand"
+  },
+  {
+    "timestamp": "4:56",
+    "content": "corner. Points should be normalized to the image width and height, with coordinate values"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "between 0 and 1. It's also important when you're drawing a lasso that your stroke width"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "is wide enough. Thin strokes may not produce the best result. The line width should be at"
+  },
+  {
+    "timestamp": "5:16",
+    "content": "least 1% of the total image width. Lastly, I want to mention that before you perform a"
+  },
+  {
+    "timestamp": "5:23",
+    "content": "segmentation request for the first time on a device, you'll have to download the model."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "You can use the Download Assets API to begin a download. And if you're not sure whether"
+  },
+  {
+    "timestamp": "5:35",
+    "content": "the model is downloaded or not, you can check Asset Status to see if the model is ready to"
+  },
+  {
+    "timestamp": "5:41",
+    "content": "use. With Tap to Segment, you can now interactively segment any part of an image you'd like."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "Now I want to talk about a new and exciting way to analyze images using the Foundation Models"
+  },
+  {
+    "timestamp": "5:56",
+    "content": "Framework. I showed an example earlier of using a large language model to put together an agenda"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "using a photo of my sticky notes. But large language models can do a lot more. I can also"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "ask a model to help generate captions for the images in my app. Models tend to do well with"
+  },
+  {
+    "timestamp": "6:17",
+    "content": "descriptive tasks. It can even help me with my interior decorating and provide some helpful"
+  },
+  {
+    "timestamp": "6:23",
+    "content": "suggestions for my living room. And my personal favorite, I can use a large language model to"
+  },
+  {
+    "timestamp": "6:30",
+    "content": "create a recipe from a picture of my fridge. The possibilities are endless, and the API to do this"
+  },
+  {
+    "timestamp": "6:38",
+    "content": "is really simple. Here's the code to generate a caption for an image. I'm using the prompt builder"
+  },
+  {
+    "timestamp": "6:46",
+    "content": "syntax from Foundation Models. I have a text prompt with instructions for the model about how to process"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "the image. Then I'll include the image as an attachment in my prompt. Now I can ask the model"
+  },
+  {
+    "timestamp": "7:00",
+    "content": "to respond to the prompt, and it will generate a caption for me. Now you can try this with your own"
+  },
+  {
+    "timestamp": "7:07",
+    "content": "prompts. There are now multiple ways to analyze images, each with their own benefits. The Foundation"
+  },
+  {
+    "timestamp": "7:15",
+    "content": "Models Framework leverages large language models, which can do almost anything you ask them. By comparison,"
+  },
+  {
+    "timestamp": "7:23",
+    "content": "traditional image processing frameworks like Vision use a fixed set of computer Vision APIs. Vision APIs"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "are fine-tuned for specific tasks, which they do really well. And Vision is fast, often fast enough"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "to analyze video frames in real time. But you don't always have to choose between Vision and Foundation"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Models to analyze your images. There is a way to leverage Vision's expertise with Foundation"
+  },
+  {
+    "timestamp": "7:53",
+    "content": "model's versatility using tool calling. I'll demonstrate how you can give large language"
+  },
+  {
+    "timestamp": "8:00",
+    "content": "models access to tools that run traditional image processing APIs, like those in Vision,"
+  },
+  {
+    "timestamp": "8:06",
+    "content": "to take image understanding to new levels. But first, I'll give a quick refresher on tool calling."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Earlier I showed how you can give a prompt to a model and have it generate a response."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "With tool calling, your model can now invoke a tool to run external code and get back a result."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "The model can use this result in its response. For example, I can have a weather tool, which fetches"
+  },
+  {
+    "timestamp": "8:35",
+    "content": "a weather forecast for a specific day. My prompt is a question about the weather. The model can't answer"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "the question by itself, so it makes a tool call to the weather tool. When a model makes a tool call, it will"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "generate arguments needed by the tool. In this case, the argument will be the date that the model wants to"
+  },
+  {
+    "timestamp": "8:55",
+    "content": "fetch the weather for. The tool will then fetch the weather for the requested date and report back to the model."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "Now the model can respond to the question about the weather. For more information on tool calling,"
+  },
+  {
+    "timestamp": "9:10",
+    "content": "check out Deep Dive into the Foundation Models Framework."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "This year, tool calling supports image arguments. For example, now you can give a photo of a plant and"
+  },
+  {
+    "timestamp": "9:22",
+    "content": "ask a question about it. If the model can't identify the plant by itself, I could create my own plant"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "identification tool and give the model access. The model would call the tool on the image to identify"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "the plant. Rather than passing the whole image as an argument, the model would instead pass a reference"
+  },
+  {
+    "timestamp": "9:42",
+    "content": "to the image. The tool will analyze the image and return the name of the plant. Now the model can respond"
+  },
+  {
+    "timestamp": "9:50",
+    "content": "with the correct information. Here's the code. My tool conforms to the tool protocol from the Foundation"
+  },
+  {
+    "timestamp": "9:57",
+    "content": "Models Framework. Tools must define input arguments. For my plant identifier tool, I want the argument to be"
+  },
+  {
+    "timestamp": "10:06",
+    "content": "an image reference. This signals to the model that the argument needs to be a reference to an existing"
+  },
+  {
+    "timestamp": "10:13",
+    "content": "image from the current chat session. Tools also need to define a call method, which is invoked when the"
+  },
+  {
+    "timestamp": "10:20",
+    "content": "model calls the tool. Inside the call method, I can access the image reference from the tool arguments."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "But now I need to resolve this reference into an actual image. Each image reference is only valid in"
+  },
+  {
+    "timestamp": "10:36",
+    "content": "the context of the transcript from which it was generated. To access this transcript, use the history"
+  },
+  {
+    "timestamp": "10:43",
+    "content": "session property. Using the transcript, the image reference is resolved back into an image attachment."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "Now the attachment is converted into a pixel buffer so it can be analyzed. Tools can provide a lot of"
+  },
+  {
+    "timestamp": "10:59",
+    "content": "utility for models, particularly in tasks that models don't do well. While you can write your own tools,"
+  },
+  {
+    "timestamp": "11:06",
+    "content": "for common tasks, Vision is providing some tools for you. Some models struggle to read barcodes and QR codes."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "I have an event flyer here and I'm asking the model to extract information like the date, location,"
+  },
+  {
+    "timestamp": "11:22",
+    "content": "and website registration. Without tools enabled, the model can find the location and the date,"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "but it can't read the QR code. Vision provides a barcode reader tool, which will help the model."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "Now the model can make a tool call to the barcode reader. The tool will analyze the image and return"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "the website from the QR code. Now the model can read all of the information correctly."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "Vision gives you two tools. You've already seen the barcode reader tool for scanning barcodes and QR codes."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "There's also an OCR tool, which is good for helping models read really fine or dense text."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "It can read text in over 30 languages. To use the tools, all you need to do is import vision,"
+  },
+  {
+    "timestamp": "12:13",
+    "content": "and then configure your language model session with the tools you want to use."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "Now the model will be able to call the tool to help answer your prompts. It's also important that you"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "give attached images a label when you want the model to make an image-based tool call."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "This label is how the model will identify which image to pass to the tool."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "You can also make your own tools using vision. Vision supports over 30 different types of image"
+  },
+  {
+    "timestamp": "12:44",
+    "content": "analysis. I've mentioned image segmentation, but I'll highlight a few more. Vision can also do facial"
+  },
+  {
+    "timestamp": "12:52",
+    "content": "analysis, pose estimation, detection and image classification, and even trajectory analysis and"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "object tracking. Check out Discover Swift enhancements in the Vision Framework to see the full list."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "This year, Vision is available in more places than ever. You can even use Vision to enhance your"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "watchOS apps. I have a watch app that displays information about local wildlife I can look at"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "when I'm on a hike. It has a bunch of different animals I might encounter, and I can select an animal"
+  },
+  {
+    "timestamp": "13:29",
+    "content": "to learn more about it. The app displays a photo of the animal, but because the watch screen is so small,"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "it's hard to see. Vision can help. I can use Vision's saliency analysis to identify subjects of interest in the photo."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Then I can crop the image to feature the main subject more prominently. Here's the code to generate a crop"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "using Vision. First, I'll create the request. I'm using generate objectness-based saliency image request."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "Now I'll perform the request on the image. This produces a saliency observation. From this observation,"
+  },
+  {
+    "timestamp": "14:14",
+    "content": "I can access the bounding boxes of the salient objects detected in the image. I'll take the most"
+  },
+  {
+    "timestamp": "14:21",
+    "content": "prominent object and use this for my crop. I've updated my app to display only the salient portion of the image."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "Now when I select an animal, I can get a zoomed-in view. That looks much better."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "I've covered a lot in this video. Here's a quick recap. Vision's new Tap to Segment API lets you"
+  },
+  {
+    "timestamp": "14:46",
+    "content": "interactively segment objects in an image. Foundation Models now supports image inputs for large language"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "models, which lets you analyze images in new ways that weren't possible before. And you can create"
+  },
+  {
+    "timestamp": "15:01",
+    "content": "tools that use frameworks like Vision to make your image analysis even better. You can also use Vision"
+  },
+  {
+    "timestamp": "15:08",
+    "content": "to enhance your apps on all platforms, including watchOS. You can download the watchOS"
+  },
+  {
+    "timestamp": "15:16",
+    "content": "and tap to segment sample apps I showed earlier from the developer website. And don't forget to watch"
+  },
+  {
+    "timestamp": "15:22",
+    "content": "Discover Swift enhancements in the Vision framework to learn about more Vision APIs."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "You can also check out What's New in the Foundation Models Framework to learn about the other ways"
+  },
+  {
+    "timestamp": "15:34",
+    "content": "large language models."
+  }
+]

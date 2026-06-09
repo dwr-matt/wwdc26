@@ -1,0 +1,1070 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Renz, and I'm a UI Frameworks engineer."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "LazyStacks are an essential component"
+  },
+  {
+    "timestamp": "0:14",
+    "content": "for any SwiftUI app showing long and custom scrolling content."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "And they have long been a part of SwiftUI."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "Like many other SwiftUI components,"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "the power of LazyStacks comes from their simplicity."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Different SwiftUI components can be"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "mixed with many other SwiftUI components to build complex apps."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "For example, from the 2027 releases,"
+  },
+  {
+    "timestamp": "0:35",
+    "content": "you can use Reorderable to drag and reorder views."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "You can learn more about that in CodeAlong,"
+  },
+  {
+    "timestamp": "0:41",
+    "content": "build powerful drag and drop in SwiftUI."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "And SwiftUI allows swipe actions to be added on views outside list."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "Of course, both work great when used with LazyStacks."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "I think it's a good time for a refresh and dive"
+  },
+  {
+    "timestamp": "0:55",
+    "content": "into LazyStacks and scrolling."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "I'll explain how they work, what you can do with them,"
+  },
+  {
+    "timestamp": "1:01",
+    "content": "and what you may want to avoid."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "Afterwards, you'll have a better understanding of the internals of LazyStacks"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "that you'll be able to apply to LazyStacks in your own apps."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "This video will assume basic familiarity with SwiftUI layout using Stacks."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "If you're new to SwiftUI, I recommend Stacks, Grids, and Outlines in SwiftUI."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "I've been working on an origami app that shows the instructions to make some popular origami pieces."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "In this early version, it's only showing the steps to make a swan."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "Here's the setup for the main view."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "I have a scroll view with a LazyVStack inside,"
+  },
+  {
+    "timestamp": "1:40",
+    "content": "that in turn contains a step view for each step."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "The LazyStack allows scrolling through a potentially large number of steps,"
+  },
+  {
+    "timestamp": "1:47",
+    "content": "without loading all views at once immediately."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "I'll now focus on the LazyVStack."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "Three of the steps to create an origami swan are fully visible."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "A small part of the step view for step 4 is also visible."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "Now, the full LazyVStack is a lot larger than a visible fuse."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "But unlike a VStack, a LazyVStack does not evaluate or render views that aren't visible."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "A LazyVStack simply lays out its views top to bottom,"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "and stops once the visible rect is filled."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "If you scroll down, the LazyVStack adds views as appropriate,"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "to make sure the visible rect remains filled."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "And as fuser scrolls out of screen, they're removed from the LazyStack."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "By not loading all views at once,"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "a LazyVStack can be more efficient than a VStack."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "But there is a correctness cost."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "Since a LazyVStack doesn't load all of its views,"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "the height of the sub-fuse that are off-screen are estimated."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "This estimated height is based on the average size of views that have been placed before,"
+  },
+  {
+    "timestamp": "2:54",
+    "content": "and the estimated number of remaining sub-fuse."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "The LazyStack is also unaware of changes in off-screen views, since they aren't loaded."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "Similarly, since not all views are loaded,"
+  },
+  {
+    "timestamp": "3:06",
+    "content": "it wouldn't be able to find the maximum width of all views."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "So, the ideal width of a LazyVStack is that of its first sub-view."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "In the case of my Origami app, the first view is infinitely flexible,"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "so the width of the LazyVStack equals the screen width."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "Since the height of the LazyVStack is estimated and not precise,"
+  },
+  {
+    "timestamp": "3:26",
+    "content": "it can change during scrolling as the LazyStack learns more about the layout of new views scrolled"
+  },
+  {
+    "timestamp": "3:32",
+    "content": "onto screen."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "For example, if you scroll down all the way, and the last views are a bit smaller than the other views,"
+  },
+  {
+    "timestamp": "3:40",
+    "content": "the LazyStack has to adjust its originally estimated size to account for this."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "The space above the visible rect isn't precise either."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "The scroll position, or content offset of the scroll view,"
+  },
+  {
+    "timestamp": "3:53",
+    "content": "therefore depends on an estimated position of the visible items."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "The LazyVStack is less tall in landscape than they are in portrait."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "The subtitle text generally fits on fewer lines and landscape."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "During the orientation change, the LazyStack will keep the StepView for Step 4,"
+  },
+  {
+    "timestamp": "4:19",
+    "content": "the topmost visible view, anchored."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "The LazyVStack isn't yet aware of the exact layout changes in the first few StepViews,"
+  },
+  {
+    "timestamp": "4:26",
+    "content": "since they aren't loaded."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "But when scrolling all the way back up, the LazyStack must align to the top of the scroll view."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "This means it must correct the estimated space above the visible region along the way."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "It will update the content offset of the scroll view with the same amount,"
+  },
+  {
+    "timestamp": "4:42",
+    "content": "such that the content offset at the top is zero as well."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "The LazyStack and the embedding scroll view coordinate the position and content offset."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "That way, when the estimations are updated,"
+  },
+  {
+    "timestamp": "4:54",
+    "content": "the relative position of the visible sub-views in the scroll view doesn't change."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "It's common to compose different types of views or content in the same LazyStack."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "For my Origami app, I think it could be cool if people could share a photo of their creation"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "with others when they are done."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "I'd like to display these photos at the bottom in a horizontal scroll view."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "I've added a showcase view for these photos."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "I've added a little bit of a view that I've added to the view of the view of the view."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "The showcase view has the horizontally scrolling scroll view with a LazyStack within."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "This means that my app now has a LazyStack nested inside the outer LazyVStack."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "Nesting a LazyStack in a LazyVStack like this can also be good for performance,"
+  },
+  {
+    "timestamp": "5:39",
+    "content": "since not everyone will scroll this nested scroll view to see the extra views."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "For a LazyStack, the ideal height, and therefore its height in a vertical scroll view,"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "is that of the first sub-view."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "For my Origami app, all photos use the same height."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "But if every photo had a user description label with a variable number of lines,"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "longer subtitles would be cut off."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "The LazyHStack cannot know in advance what the largest subtitle of all views is."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "It hasn't loaded all of them."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "The best solution is to fix the view heights."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "For example, for text, you can set a line limit and reserve space for shorter text."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "But I'm actually thinking the photos in my Origami app should be a bit larger."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "Maybe I should just add them vertically below the steps."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "If I add them in a section, I could even pin the section header."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "To pin section headers, use the Pinned Views parameter on the LazyVStack."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "I've added a new section inside the Showcase view with a header view."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "If I scroll down, the Showcase section header sticks to the top."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "I'll now discuss some patterns to avoid, so the LazyStacks perform at their best."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "I'll do that using the Photo Showcase I've just added."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "It could be nice to add a scroll transition to the photos as they scroll into and out of screen."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "Here, I'm using the Scroll Transition modifier to give my steps an effect as they scroll on or off screen."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "However, LazyStacks only load views that are on screen based on their original position."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "And the Transform here is pushing them out of their original frame."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "That causes them to disappear when they should be visible since the LazyStack believes they're off screen."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "Here, as you scroll down, the pink Swan disappears too soon."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "If you apply a scroll transition to views in a LazyStack, make sure that views that wouldn't normally be visible"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "aren't pushed into the visible rect."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "Here, I'm using a different scale effect."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "This works fine."
+  },
+  {
+    "timestamp": "7:49",
+    "content": "Here, I'm using the LazyStack."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Since you need to scroll down a little to get to the Showcase, I will also add a button to quickly scroll there."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "But the button shouldn't always be visible."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "I'd like it to only be visible when near the top of the ScrollView."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "When someone scrolls down, it should disappear."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "Here, I'm using an onScroll geometry change on my ScrollView to get the absolute content offset."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "When I'm scrolled down more than 100 points, the button disappears."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "This works, but since the content offset of a LazyStack is estimated,"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "the exact position where the button disappears can change when the estimations change."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "Instead, it's better to use the relative positions of subviews in the visible region of the ScrollView."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "One way to do that is to use the onScroll target visibility change modifier."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "The closure in that modifier is called when the visibility of the subviews in the visible region"
+  },
+  {
+    "timestamp": "9:01",
+    "content": "of the ScrollView changes."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "Here, the visibility of the Scroll to Showcase button depends only on which"
+  },
+  {
+    "timestamp": "9:08",
+    "content": "subviews are visible, with a threshold of 80%."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "I've now covered the layout of LazyStacks in detail."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "I've said that LazyStacks add subviews when they're about to enter the visible part of the ScrollView."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "However, the subviews that LazyStack loads individually do not always correspond directly"
+  },
+  {
+    "timestamp": "9:26",
+    "content": "to the view structs you define in code."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Let's go back to my original code and take another look at the content view."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "In this simple case, there is a one-to-one correspondence of StepView instances and the subviews that the LazyVStack sees."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "There's a ScrollView, and the ScrollView has a LazyVStack as a subview,"
+  },
+  {
+    "timestamp": "9:46",
+    "content": "and the LazyVStack has the foreach as a subview."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "But, of course, the foreach isn't just a single view."
+  },
+  {
+    "timestamp": "9:54",
+    "content": "It's resolved to one StepView for every step."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "And in most cases, these are the subviews that the LazyVStack loads."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "But here, the StepView is slightly more complicated."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "And that will be important."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "The body contains two views, StepDiagram and StepInstructions at the top level of the body."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "They're also not embedded in another layout, like a VStack."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "In this case, LazyVStack still has the foreach, which is resolved to a StepView for every step."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "But just like the foreach resolves to multiple StepViews,"
+  },
+  {
+    "timestamp": "10:31",
+    "content": "each StepView now resolves to two views as well."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "The LazyVStack evaluates and loads StepDiagram and StepInstructions separately."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "Of course, StepViews don't need to be evaluated for the LazyStack to create either of those."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Views can also resolve to a dynamic number of views, but that is something you have to watch out for."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "In this case, StepView is using a DetailLevel environment value to check whether it should be visible."
+  },
+  {
+    "timestamp": "10:59",
+    "content": "The foreach again resolves to a StepView for each step."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "StepView now resolves to either one SubView or zero SubViews."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "In this case, Step2 isn't visible given the current DetailLevel, but the first and third steps are."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "That works, and the contents of the StepView are loaded lazily,"
+  },
+  {
+    "timestamp": "11:18",
+    "content": "but the StepView itself can be kept alive longer than you may expect."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "That is because a LazyVStack addresses the visible SubViews using their index."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "It now has to keep earlier StepViews around, just in case the DetailLevel environment value changes,"
+  },
+  {
+    "timestamp": "11:35",
+    "content": "because that would affect the indices."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "In-leave SubViews that are created many times in a foreach, like StepView,"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "the StepViews, avoid creating a dynamic number of SubViews."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "The example, where a DetailLevel environment value is used to filter out steps, is therefore not a good idea."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Say that an unrelated environment value, like WritingStyle, is used in the contents of the StepView body."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "A change in this environment value can now cause body evaluations for views that are scrolled out of screen,"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "causing unnecessary view updates."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "The LazyStack also won't release state allocated for the StepView."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "Instead, filter at the data level."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "If you're using SwiftData, use a predicate to filter your query."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "Here, I'm using the DetailLevel in the predicate."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "This makes the number of SubViews immediately clear to the LazyVStack."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "It doesn't have to construct views to compute view counts or indices."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "Note that unwrapping an optional in a view body has the same effect."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "Here, I'm optionally unwrapping an API token environment variable."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "The body only returns something if that token isn't nil."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "The token is something that could be handled by a NetworkClientModel object."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "If someone is not authenticated, a view higher up in the hierarchy could show a content unavailable view."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "Instead of showing the LazyStack in the first place."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Since LazyStacks only keep a small part of their data in memory, they do not need to perform a full div of their contents."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "They only perform a minimal check for changes in the visible views."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "LazyStacks don't always load a subview all at once."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "I'll now discuss prefetching."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "An internal mechanism with which LazyStacks improve the scrolling performance of your apps."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "When you scroll in a specific direction and the visible part of the LazyStack reaches the end of the placed content,"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "the LazyStack already prefetches views before adding them on screen."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "Prefetching means that the LazyStacks will perform part of the work of displaying a view before it's visible."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "While scrolling, a scroll view needs to draw frames at a constant rate."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "That means there's only a limited time available to perform computations, up to a frame deadline."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "This work includes the scroll view updating the content offset, your views rendering at a new position,"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "and work your app may do in response to the content offset change."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "And when the scroll view contains a LazyStack, it includes the work for evaluating views scrolled on screen,"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "performing the layout, and rendering them."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "But the work for placing new views on screen can be expensive."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "If the work would take too long passing the deadline, that would result in a dropped frame."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "That is visible as a hitch while scrolling, so that should be avoided."
+  },
+  {
+    "timestamp": "14:30",
+    "content": "Prefetching is used to prevent such dropped frames."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "While scrolling, the LazyStack already checks if there's enough time available"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "to perform part of the work of rendering a new subview before it is scrolled on screen."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "For example, a LazyStack may be able to evaluate the body and layout of a view about to appear on screen,"
+  },
+  {
+    "timestamp": "14:50",
+    "content": "before it appears."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "When a view finally does appear, most of the work has already been performed,"
+  },
+  {
+    "timestamp": "14:57",
+    "content": "broken up across multiple frames."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "The work to show a nested LazyHStack in a LazyVStack can be broken up across multiple frames as well."
+  },
+  {
+    "timestamp": "15:07",
+    "content": "When a view appears, onAppear is called."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "So generally your view's body is called at one point, and onAppear only a little later,"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "when the view is placed on screen."
+  },
+  {
+    "timestamp": "15:16",
+    "content": "If the scroll direction is reversed, it's even possible that the view's body is called,"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "as part of prefetching, and onAppear is never called."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "Using onAppear in a LazyStack is useful for a number of things, even for data loading."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "One such use case is infinite scrolling."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "Here, the Origami app fetches more photos from the web when you scroll down to the end."
+  },
+  {
+    "timestamp": "15:36",
+    "content": "The last view, a progress view, has an onAppear modifier."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "When that view appears, a new page is fetched."
+  },
+  {
+    "timestamp": "15:46",
+    "content": "But loading everything in onAppear for each view is not a good idea."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "In this example, onAppear is used to set up every view."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "The size and large parts of the view's contents completely change after it's placed."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "The work that prefetching has done earlier will be thrown away and has to be redone when the view appears."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "The LazyStack may also load more views than needed, and scrolling can be affected, as I'll show later."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "Instead, set up the view in the initializer such that it is in a reasonable state before it appears on screen."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "Even when it's not essential, it can be useful to load content before views appear."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "Here, I'm using the Task modifier to remotely load a diagram from the internet when the view appears."
+  },
+  {
+    "timestamp": "16:34",
+    "content": "But I can actually make use of prefetching to load it slightly earlier, so the chance is higher it's loaded by the time it appears."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "For example, I could use a diagram loader observable object connected to a cache."
+  },
+  {
+    "timestamp": "16:47",
+    "content": "When the cache doesn't contain the data for a specific ID, it could load the data immediately when it's initialized."
+  },
+  {
+    "timestamp": "16:53",
+    "content": "Since it starts loading the diagram in the initializer, the diagram will be fetched slightly earlier."
+  },
+  {
+    "timestamp": "16:59",
+    "content": "Views that are scrolled out of screen aren't rendered or updated anymore, but they aren't removed from memory immediately."
+  },
+  {
+    "timestamp": "17:04",
+    "content": "LazyStacks keep these around for a number of updates, in case they're scrolled back on screen."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "When views finally are deleted from memory, state variables are deleted alongside."
+  },
+  {
+    "timestamp": "17:17",
+    "content": "Since the data associated with views scrolled out of screen will be deleted,"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "don't depend on view state for data that needs to be kept alive after scrolling."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "Here, StepView uses an isHighlighted state variable."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "But if the view was scrolled away, that highlight state will be lost."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "StepView is a little bit more than the view of the view."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "Instead, move important state to model objects, or outer views using binding, as here."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "You typically use lazy stacks inside a scroll view."
+  },
+  {
+    "timestamp": "17:43",
+    "content": "I'd now like to give you some tips to make scrolling work well in lazy stacks."
+  },
+  {
+    "timestamp": "17:47",
+    "content": "Earlier, I added a button to my origami app to scroll to the showcase with user photos."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "The code to programmatically scroll to the section would look like this."
+  },
+  {
+    "timestamp": "17:57",
+    "content": "I'm using a scroll position binding to scroll to the showcase's section header."
+  },
+  {
+    "timestamp": "18:04",
+    "content": "Programmatic scrolling works in lazy stacks, even if the target view isn't on screen."
+  },
+  {
+    "timestamp": "18:10",
+    "content": "Scrolling to an off-screen view requires the lazy stack to estimate its position."
+  },
+  {
+    "timestamp": "18:15",
+    "content": "In an animated scroll, the lazy stack updates this estimated position on every frame."
+  },
+  {
+    "timestamp": "18:20",
+    "content": "Still, there are some things that can prevent scrolling from being smooth and fast."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "For example, also here, having a dynamic number of views in step view has a performance impact."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "Programmatic scrolling to a view with an ID is most performant if each view in your for-each"
+  },
+  {
+    "timestamp": "18:36",
+    "content": "always resolves to one single sub-view."
+  },
+  {
+    "timestamp": "18:39",
+    "content": "In that case, the lazy stack can query the for-each to find the ID to scroll to,"
+  },
+  {
+    "timestamp": "18:43",
+    "content": "without constructing any of the views."
+  },
+  {
+    "timestamp": "18:46",
+    "content": "Scrolling to a sub-view near the end is also more performant,"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "if the lazy stack can quickly count its sub-views."
+  },
+  {
+    "timestamp": "18:53",
+    "content": "As before, instead of filtering out views with the conditional in the view body,"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "you should filter on the data level, for example, with a predicate on a query."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "Programmatic scrolling also becomes less smooth if too many views change their layout after they appear"
+  },
+  {
+    "timestamp": "19:07",
+    "content": "on screen. A common pattern that does this is using on geometry change to set a state value"
+  },
+  {
+    "timestamp": "19:12",
+    "content": "that is then used in another layout pass. Here, step view has a state variable, subtitleHeight,"
+  },
+  {
+    "timestamp": "19:19",
+    "content": "updated in an on geometry change on the subtitle. The view is then evaluated again,"
+  },
+  {
+    "timestamp": "19:26",
+    "content": "and subtitleHeight is used to compute the frame of the diagram. This makes scrolling less reliable."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "The lazy stack measures the view's original height, but the height changes after the view appears,"
+  },
+  {
+    "timestamp": "19:37",
+    "content": "pushing down other content. In cases like this, if you cannot use SwiftUI's layout primitives,"
+  },
+  {
+    "timestamp": "19:44",
+    "content": "use a custom layout instead. Here, that custom layout is tab layout. To learn more about using"
+  },
+  {
+    "timestamp": "19:50",
+    "content": "custom layouts, check out Compose Custom Layouts with SwiftUI. Alright, I've shown you many aspects of"
+  },
+  {
+    "timestamp": "19:58",
+    "content": "lazy stacks. I've talked about their layout, how few structs don't always resolve to a single sub-view,"
+  },
+  {
+    "timestamp": "20:04",
+    "content": "and how that affects lazy stacks. How lazy stacks prefetch views for better scrolling performance,"
+  },
+  {
+    "timestamp": "20:09",
+    "content": "and how they allow programmatic scrolling to fuse off-screen. Along the way, I've given some tips and"
+  },
+  {
+    "timestamp": "20:15",
+    "content": "best practices that you can use for lazy stacks in your apps. For example, avoid using the absolute"
+  },
+  {
+    "timestamp": "20:22",
+    "content": "content size or content offset with lazy stacks, since these are estimated and unstable. Avoid using"
+  },
+  {
+    "timestamp": "20:28",
+    "content": "conditional view content in leaf views to filter out data, as that can cause SwiftUI views to"
+  },
+  {
+    "timestamp": "20:34",
+    "content": "stay alive longer than expected. Set up your lazy stack sub-views before on appears called where"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "possible, to ensure prefetching works best. And don't change the layout of sub-views of lazy stacks"
+  },
+  {
+    "timestamp": "20:45",
+    "content": "after they appear, as that can push the lazy stack out of the targeted scroll position."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "Understanding some of the mechanisms with which SwiftUI components work helps you excel at using them,"
+  },
+  {
+    "timestamp": "20:57",
+    "content": "and I think after preparing this video, I now excel at creating swans."
+  }
+]

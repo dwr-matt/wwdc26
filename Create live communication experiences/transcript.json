@@ -1,0 +1,882 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Yasin, a software-engineered Apple."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "In this session, I'll show you how to deliver a rich, native conversation UI that puts your app right where people need it,"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "from a full-screen presentation on the lock screen to seamless multitasking with the dynamic island."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "It starts the moment a conversation comes in."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "When your app adopts this API, its conversations get a full-screen presentation on the lock screen,"
+  },
+  {
+    "timestamp": "0:29",
+    "content": "complete with the contact's name, photo, and a standard set of controls."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "This is exactly what appears when the phone rings."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "Apps that adopt this API get the same presentation."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "Conversations can also show up in phone app recents and in contact details."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "Recents shows who the person spoke with and when, and they can tap to start a new conversation."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Live Communication Kit is the modern way to create communication apps that integrate with these system experiences."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "If you have an app that uses traditional approaches like the CX Provider API,"
+  },
+  {
+    "timestamp": "1:02",
+    "content": "now is a great time to move over to Live Communication Kit."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "It provides a more flexible and feature-rich API to integrate all of the different types of real-time conversations that your app supports."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "I'll start with the core concepts."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "What a conversation is, how it moves through its lifecycle, and how your app communicates with the system."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "Then I'll walk through receiving conversations, from waking your app with a push notification,"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "to presenting the conversation on the lock screen."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "Then starting outgoing conversations from inside your app, and making them available through Siri and recents."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "And finally, group conversations, managing participants and merging conversations together."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "To explore how all of this works, I'll follow a group of college friends, David, Ryan, Andre, and Adam,"
+  },
+  {
+    "timestamp": "1:49",
+    "content": "as they use my audio conversation app to plan their annual reunion trip."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "But first, a quick introduction to how Live Communication Kit works."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "Every experience I just walked through is driven by a single object, a conversation."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "A conversation represents a single real-time interaction between people."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "It lives only as long as someone is in it."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "When everyone leaves, it's gone."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "A conversation has two parts."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "Handles, which represent the people in the conversation,"
+  },
+  {
+    "timestamp": "2:18",
+    "content": "and capabilities, which describe what the conversation can do."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "I'll start with handles."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "A handle identifies a person."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "It has three properties, kind, value, and display name."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "I'll go through each one."
+  },
+  {
+    "timestamp": "2:31",
+    "content": "The kind tells the system what type of identifier the handle is."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "A phone number, an email address, or a generic string."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "If your app already identifies people by phone number or email,"
+  },
+  {
+    "timestamp": "2:42",
+    "content": "setting the right kind allows the system to match the person's handle to a saved contact,"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "and show their name and photo in the system conversation UI."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "The value is the identifier itself, the phone number, email address, or generic string."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "This is what the system uses to look up the contact,"
+  },
+  {
+    "timestamp": "2:58",
+    "content": "and what your app gets back when someone redials from Recents."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "And the display name is what the system shows when it can't match the handle to a contact."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "Set this to the name your app already knows for the person,"
+  },
+  {
+    "timestamp": "3:09",
+    "content": "so the conversation UI always has something to display."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "Capabilities tell the system what a conversation can do."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "The system uses them to decide which controls to show and which gestures to enable,"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "so that the conversation UI only offers what your app actually supports."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "The system shows a standard set of in-conversation controls."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "Mute, speaker, keypad, and more."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "Some of them only appear when my app opts in."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Here, the pausing capability is declared, so a long press on the mute button puts the conversation on hold."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "Without that capability, the long press would do nothing."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "The video capability tells the system this is a video conversation."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "The video button itself is enabled by my app's provider configuration, which I'll cover later."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Capabilities can change over the lifetime of a conversation."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "When this one upgrades from audio to video, my app updates the capabilities,"
+  },
+  {
+    "timestamp": "4:01",
+    "content": "and the system reflects the change immediately."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Now that you know what makes a conversation, I'll walk through how it moves through its lifecycle with the system."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "When your app first reports a conversation to the system, the conversation starts in the idle state,"
+  },
+  {
+    "timestamp": "4:15",
+    "content": "and the device starts ringing."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "While it's ringing, your app can begin its local setup."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "When the person answers, your app sets the state to joining."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "The system updates the UI to show the conversation is connecting,"
+  },
+  {
+    "timestamp": "4:27",
+    "content": "while your app finishes setting up and gets ready to join."
+  },
+  {
+    "timestamp": "4:30",
+    "content": "No audio or video capture happens yet."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "When your app finishes preparing, it sets the state to joined and starts capturing and sending audio and video,"
+  },
+  {
+    "timestamp": "4:39",
+    "content": "and the conversation is now live."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "If the person switches to AirPods or connects to car Bluetooth,"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "your app gets a root change notification and updates its capture pipeline to match."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "If your app declares the pausing capability, the system enables its hold control."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "When someone holds the conversation, the system asks your app to pause."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "Your app pauses its media streams and reports the new state."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "When the person resumes the conversation, the system asks your app to resume the conversation's media streams and report the change."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "When the conversation ends, your app sets the state to leaving."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "This is where your app tears down the conversation and cleans up its connections."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "After tear down, your app sets the state to left and the conversation is over."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "How does your app actually drive all of this?"
+  },
+  {
+    "timestamp": "5:26",
+    "content": "I'll start with the architecture."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "Your app drives the conversation lifecycle through the conversation manager and its delegate."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "Your app reports conversations and events through the manager."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "Every time you tell the system about a new conversation, or about a change to an existing one, you go through the manager."
+  },
+  {
+    "timestamp": "5:43",
+    "content": "That's how your conversations show up on the lock screen, in the dynamic island, and everywhere else."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "The delegate is where your app responds to the system."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "Whenever something needs to happen on a conversation, the action arrives at a delegate method, and your app does the work to fulfill it."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "They communicate through actions."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "When someone interacts with the system UI, for example, accepting a conversation from the lock screen, or ending one from the dynamic island,"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "the system creates an action and sends it to your delegate."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "And when someone taps a button in your app's own UI, your app creates the action instead."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "Every interaction, whether it starts from the system UI or from within the app, flows through the same delegate callback."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "So there's exactly one place to put the logic for each action."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "That single code path means there's no duplicated state management, and no risk of the app and the system getting out of sync."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Before my app can report any conversations, it needs a conversation manager."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "Here's how my app creates one."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "The conversation manager's configuration tells the system everything it needs to present and manage conversations for your app."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "You can update this configuration at any time during the app's lifetime."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "Here, my app provides a ringtone from its bundle and a PNG of its icon."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "The system presents both alongside my app's conversations across the system UI."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "Next to the conversation group limits, when conversations get merged together, they form a group."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "These values cap how many groups can exist at once and how many conversations each group can hold."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "Then, there's whether my app's conversations show up in the phone app's recents list."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "For something like a one-time room that doesn't support redialing, pass false to keep it out."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "And whether the app supports video, which enables the video button in the system UI, and which handle types my app supports."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "With that, my app creates its conversation manager."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "Because the manager is needed for the entire lifetime of the app, my app creates it right at launch."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "Finally, my app sets the manager's delegate."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "To continue conversations when the app is backgrounded or the device is locked, my app registers for the audio and voice over IP background modes in the app targets capabilities in Xcode."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "With the conversation manager configured, I'll walk through an incoming conversation from start to finish."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "David wants to start planning this year's reunion trip."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "So he starts a conversation with Adam to talk about potential destinations."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "Adam's device is locked, but when David's conversation comes in, it appears right on the lock screen."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Here's how my app makes this happen."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "When David starts the conversation with Adam, the app on his device builds a payload with two fields."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "A handle, representing David's phone number, and a unique identifier for the conversation."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "David's app then sends that payload to my app's server, and the server forwards it to Adam's device."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "When Adam's device receives the push, my app wakes up and decodes the payload."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "It then uses the decoded handle to build a conversation update."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "This update also includes the conversation's capabilities, in this case video, pausing, and merging."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "My app then uses the update to report the conversation to the conversation manager, and the system updates its UI to match."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "PushKit is what wakes your app when a conversation arrives and the app isn't already running."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "When your app's server sends a voice over IP push, PushKit launches your app and delivers the payload to the delegate method immediately."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "Your app must report the conversation before the method returns, or the system will terminate the app."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "For more on voice over IP push handling, check out the PushKit documentation."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "Here's that PushKit delegate method in my app."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "This is the entry point every incoming conversation goes through."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "My app first extracts the handle and conversation UUID from the payload."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "Then it builds a conversation update with the decoded handle and the conversation's capabilities, and reports it."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "Adam sees the incoming conversation and slides to answer."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "The system updates the UI to show the conversation is connecting, then sends my app a join conversation action through the delegate."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "Every time someone answers, pauses, or merges a conversation, the system delivers it to my app as an action."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "My app handles them in one place, the perform action delegate callback."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "The conversation manager calls this every time an action comes in."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "Inside, my app uses a switch statement to route each action type to its appropriate handler."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "I'll trace the join action."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "To handle the join action, my app first verifies that the conversation manager is tracking a conversation matching the action's unique identifier."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "If no matching conversation is found, my app fails the action."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "Then it reports that the conversation has started connecting, which will set the state to join it."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "Once my app reports the connecting event, the system updates the conversation UI on Adam's device."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "Now my app does its own setup, connecting to its server and configuring the media stream."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "That work is async, so my app wraps it in a task to keep the delegate responsive."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "After setup finishes, my app reports the connection and fulfills the action."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "If setup fails for any reason, my app marks the action accordingly so the system can clean up the conversation on its side."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "The conversation is now in the join state and the UI updates accordingly."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "After weighing a few options, they settle on Iceland for this year's destination, and Adam taps the end button."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "As soon as he does, the conversation transitions into the leaving state and the UI updates to match."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "The system then sends my app an end conversation action through the delegate, and my app tears down the media stream and fulfills the action."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "And on Adam's device, the conversation disappears from the system UI."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "Next, I'll talk about how to place outgoing conversations."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "Now that David and Adam have settled on Iceland, Adam starts a conversation with Ryan to figure out where the friends will stay."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "This time, Adam starts the conversation from inside my app."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "When someone starts a conversation from inside your app, you should report it to the system so people can keep the conversation going while they're using other apps."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "To do this, your app creates a start action to ring the recipient's device."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "Then it calls perform on the conversation manager and handles the action in its delegate, the same way as the join action from earlier."
+  },
+  {
+    "timestamp": "12:02",
+    "content": "Once the action is handled, the recipient either answers or your app reports the conversation went unanswered or failed."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "Here's how my app represents Adam's conversation with Ryan."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "It builds a start conversation action with a fresh unique identifier in Ryan's handle."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "Then it sends the action to the conversation manager."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "The manager first updates the system UI."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "Then it forwards the action to the delegate."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "From here, my app handles it the same way as the join action from earlier."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Once the conversation connects, Adam and Ryan look through a few options before finally settling on a cabin near Reykjavik."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "With lodging decided, they catch up for a few more minutes."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "Then they say their goodbyes and hang up."
+  },
+  {
+    "timestamp": "12:46",
+    "content": "After a conversation ends, people can redial them from Spotlight or Recents."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "Your app handles this by having support for the start call intent."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "This intent will be delivered to your app scene to continue as an NS user activity."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "When your app's conversations are saved to Recents, Apple Intelligence already knows about them."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "But to surface your app's own representation of the conversation, donate your own intent at the end of each conversation as well."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "To learn more about integrating intents in your app, check out the session Get to Know App Intents."
+  },
+  {
+    "timestamp": "13:18",
+    "content": "Everything so far has been one-to-one."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "Group conversations bring in multiple participants."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "Having settled on a destination and lodging, Adam starts a group conversation with David and Ryan to plan their itinerary."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "Group conversations track two types of members."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "Members include everyone who's been invited to the conversation."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "Whereas active remote members includes only those with media actively flowing."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "The system needs both. Members tells it how many participants the conversation has."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "And active remote members tells it which ones are actively sending media."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "When reporting a group conversation, my app creates a handle for each participant."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "Then creates a start action with all invited members and reports it."
+  },
+  {
+    "timestamp": "14:00",
+    "content": "After the conversation starts, David and Ryan both join."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "To report this change, my app builds a conversation update."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "It names Adam as the local member, declares the new active remote membership,"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "and lists the capabilities the conversation supports, including merging and unmerging, which I'll come back to in a moment."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "My app then reports the conversation update through the manager."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "And the system updates the conversation to reflect the new membership."
+  },
+  {
+    "timestamp": "14:28",
+    "content": "While Adam, David, and Ryan are working through the itinerary,"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "Ryan realizes Andre still needs to confirm that the trip dates work for him."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "So, Ryan starts a separate conversation with Andre to loop him in."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Now two conversations are running in parallel."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "The original group with Adam, David, and Ryan, and Ryan's side conversation with Andre."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "Ryan is in both conversations, but only active on the one with Andre."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "Once Andre and Ryan have agreed on the trip dates, they want to bring everyone back together to review the full plan."
+  },
+  {
+    "timestamp": "14:58",
+    "content": "Rather than the group having to hang up and start a new conversation, my app can merge the two together."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "My app declares the merging capability, and the system enables its merge control UI."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "When Ryan taps it, my app merges the two conversations, and the whole group, now with Andre, can finish planning their itinerary."
+  },
+  {
+    "timestamp": "15:16",
+    "content": "I'll walk through the conversation merging code next."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Unmerging follows the same delegation pattern."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "So once you've seen the merge handler, the unmerged one will seem familiar."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "When two conversations merge, the conversation manager delivers a merge conversation action to my app's delegate."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "The merge action carries two unique identifiers, one for each conversation being merged."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "The handler uses these to look up my app's local representation of both conversations."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "If either one is missing, maybe it already ended, the handler fails the action immediately."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "Once my app has both conversations, it combines the media streams on its server with combined streams."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "Then it reports the updated membership and fulfills the action."
+  },
+  {
+    "timestamp": "15:59",
+    "content": "If anything throws, the catch block fails the action instead."
+  },
+  {
+    "timestamp": "16:03",
+    "content": "Once my app has merged the two conversations, the system updates the conversation UI to reflect the new merge conversation."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "With everyone in the same conversation, the group finalizes their itinerary."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "A soak in the Blue Lagoon, a day on the Golden Circle, and a few glacier hikes."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "With the itinerary set, Andre and Ryan want to split off and book their flights together so they can sit next to each other on the plane."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "Since the conversation supports the unmerging capability, they can go back to their own conversation while Adam and David wrap up the last few details."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "That's Live Communication Kit."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "From a single incoming conversation on the lock screen all the way to merging group conversations,"
+  },
+  {
+    "timestamp": "16:42",
+    "content": "the framework gives your app system-level conversation UI everywhere people expect it."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "On the lock screen, in Recents, and Siri."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "Here's what to do next."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Adopt Conversation Manager and report your first incoming conversation on the lock screen."
+  },
+  {
+    "timestamp": "16:56",
+    "content": "Donate intents so Siri knows how to start conversations."
+  },
+  {
+    "timestamp": "17:00",
+    "content": "Replace any transient tokens with stable handles to support redialing from Recents."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "And make sure to keep conversation membership updated."
+  },
+  {
+    "timestamp": "17:08",
+    "content": "Thanks for watching."
+  }
+]

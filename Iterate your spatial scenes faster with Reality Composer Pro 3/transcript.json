@@ -1,0 +1,666 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi everyone, I'm JP,"
+  },
+  {
+    "timestamp": "0:08",
+    "content": "an engineer on Reality Composer Pro here at Apple."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "In this session, I want to talk about how you can iterate on"
+  },
+  {
+    "timestamp": "0:15",
+    "content": "your spatial content faster than ever using Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "0:20",
+    "content": "Since the launch of Apple Vision Pro,"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "we have seen remarkable spatial experiences brought to the platform."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Reality Composer Pro has been at the center of bringing that amazing content to Vision OS."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "And it's inspiring to see what this community has been building."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "Our goal is to continue to give you more and better tools to bring your ideas to"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "life with as little friction as possible."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "With that in mind, we are introducing some brand new capabilities that will help you"
+  },
+  {
+    "timestamp": "0:48",
+    "content": "realize even your most ambitious spatial projects."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Reality Composer Pro 3 is built from the ground up for"
+  },
+  {
+    "timestamp": "0:56",
+    "content": "fast, iterative, and collaborative workflows."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "It helps you get further along in your development without the need to touch Xcode."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "In this session, I'll take you through some of these brand new capabilities,"
+  },
+  {
+    "timestamp": "1:09",
+    "content": "like Live Preview, Light Maps, and the Reality Composer Pro Assistant,"
+  },
+  {
+    "timestamp": "1:14",
+    "content": "which can generate 3D content using AI."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "I'll show you the process of adding a few small features to the interactive game, Chaparral Village."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "I'll start with a quick overview of the Editor Core functionalities."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "I'll cover how to use entities and components to build up a scene."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "I'll introduce the new prototype and instancing system designed to help you efficiently organize,"
+  },
+  {
+    "timestamp": "1:38",
+    "content": "reuse, and manage your assets."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "I'll demonstrate how you can preview and even author your content directly on the Vision Pro."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "I'll use Light Maps to bake the indirect lighting of my scene."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "And finally, I'll introduce you to the Reality Composer Pro Assistant and how you can leverage it to add content to your world."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "First things first, Reality Composer Pro 3 is no longer available as an Xcode developer tool."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "You can now download it from developer.apple.com and simply launch it straight from your Applications folder."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "If you would like to familiarize yourself with the basics of using the Reality Composer Pro Editor,"
+  },
+  {
+    "timestamp": "2:19",
+    "content": "I would recommend checking out the session, Meet Reality Composer Pro from WWDC23."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "Let's start with a quick overview of the project I'll work on today."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "This is the Alchemy area from the Chaparral Village."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "All objects in this scene were modeled in Blender, imported as USD files, and then laid out in Reality Composer Pro."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "To get a better look, I'll use the Focus mode from the View menu and explore the scene a bit."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "This is a gorgeous scene."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "I'll start by adding an asset to my project."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "To do so, I'll use the Import Asset icon available in the project browser and select the Calderon USD file I have in my desktop."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "When a USD file is imported, its content gets organized and optimized into an Import Bundle."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Once imported, I can expand the bundle to inspect it."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "Within the bundle, I see the imported geometry, materials, textures, and more."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "The Calderon asset looks good."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "Now, to bring it into the lab, I'll just drag and drop the bundle into the viewport."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "This added asset is shown in the hierarchy view, and it's called an entity."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "It has a transform component that's shown in the inspector panel on the right."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Entities and components are the core building blocks of everything you create in Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "Let's go through them in more detail."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "In the hierarchy panel, I can see a list of all the entities that make up my scene,"
+  },
+  {
+    "timestamp": "4:11",
+    "content": "and they can be reordered and nested as needed."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "I'll expand the fireplace,"
+  },
+  {
+    "timestamp": "4:15",
+    "content": "and drag the Calderon underneath it."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "I'll select the Calderon entity and position it at the right spot and angle by adjusting the values within the transform component."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "I can choose to add more components to an entity using the Add Component button."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "I'll select the same type of scene."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "You can add light, physics, audio, and a lot more to your entity using this panel."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "I'll use a couple of these components to create an interesting visual effect for my scene."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "First, I'll create a child under the table entity."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "I will use the context menu and choose Add Child Entity."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "I will call it Magic Effect."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "To frame an entity, you can always press F."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "To the Magic Effect entity, I'll add another child called Glow."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "And I'll add a simple point light component."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "I'll adjust the position of the light."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "And tweak its attenuation."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "Adjust the color."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "Adjust the intensity."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "I'll also add the new Compute Simulation component to the Magic Effect."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "In the Inspector panel, I'll choose the Magic Graph that I created for my project."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "I can do that using the Compute Graph Picker."
+  },
+  {
+    "timestamp": "6:41",
+    "content": "Notice that it shows all available compute graphs in this project."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "I have a Magic Graph and a Brewing Graph available."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "I'll use the Magic Graph for now and keep the Brewing Graph for later."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "Compute Graph makes GPU programming accessible to anyone."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "Its node-based graphs let's you build anything, from simple particle systems to complex fluid simulations."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "For a deeper dive on this topic, watch the session Supercharge Your Spatial Workflows with Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "You'll notice that the Compute Graph isn't visible right now."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "That's because this graph only runs during the simulation stage."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "To test it, I'll use the Launch Control and run my game by pressing the Play button."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "This is where Reality Composer Pro 3 really starts to shine."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "The Alchemy Area is now running, and I can see the Compute Graph being simulated."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "Let me get a closer look."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "I'll dock the Simulation tab next to the Scene tab."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "This allows me to keep authoring my content even as the game is running."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "I'll place this magic effect into the bowl on the table."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "I'll place this tool and tweak the Graph's Twist amount to my liking."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "The Simulation tab allows me to make tweaks rapidly, without any deployment process getting in the way."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "From physics simulation, to script graphs, to animations, everything you author in Reality Composer Pro"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "can be previewed in real time in the Simulation tab, greatly reducing the friction between you and the final experience."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "Next, I'll cover a new addition to Reality Composer Pro, called Prototypes, which can be used to create powerful and reusable objects."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "To turn an entity into a prototype, you can drag it from the Hierarchy tab directly into the Project Browser."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "This creates a new prototype asset."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "I can then instantiate this new prototype by dragging it into the viewport."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "I'll rename this new instance, BrewingEffect."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "Notice that now I have two instances using the MagicEffect prototype."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "I can provide overrides to these instances, allowing me to customize them."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "First, I'll change the effect of the Brewing instance to the Brewing Graph I mentioned earlier."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "And adjust the color."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "Attenuation."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "And fall off of the glow entity."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "Uh-oh, that looks bad."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "I can always reset and override back to its source value by choosing Reset in the Context menu."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "I'll right-click on the attenuation fall off property and reset it."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "Okay, that's much better."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "I'll keep the original fall off value."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "I'll keep the original value."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "With prototypes, you edit your content in one place, and the system handles the rest."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "You can instantiate a prototype multiple times."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "And override any of those instances individually."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "If you don't like those overrides, you can reset them to their original values."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Or you can even propagate the overrides back to the source."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "Nothing is ever permanently changed unless you want it to be."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "I'll show you another cool new feature in Reality Composer Pro called Live Preview."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Since we're building this experience for the Vision Pro, I can target a simulation to be played on any"
+  },
+  {
+    "timestamp": "11:17",
+    "content": "Vision Pro device currently connected to my Mac."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "I'll use the Launch Control Panel to start a Live Preview session, which will ship later this year."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "This will open the companion app on Vision OS."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Now, I can continue to author in Reality Composer Pro and see the updates reflected instantly."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "Notice how the blue fill light has the new physical space lighting feature enabled."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "Authoring an effect like this on device allows me to get an instant feel of its impact in a spatial experience."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "This way of live previewing dramatically cuts down on iteration times."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "It removes any guesswork from the process of authoring."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "What you see is truly what you get."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "This is coming along nicely."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "But after these lighting edits, I'm noticing that the scene no longer feels quite right."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "This is because the indirect lighting previously generated for the scene no longer matches the new lighting."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "To fix this, I'll use the new light maps in Reality Composer Pro."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Indirect lighting captures the way light bounces around the scene and contributes to areas not"
+  },
+  {
+    "timestamp": "12:20",
+    "content": "directly visible by any single light. The space underneath this table, for instance, has no"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "direct lighting to it. But by simulating indirect lighting, we can capture the subtle light that"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "still reaches that area, however faint it may be. For example, in my scene, most of the alchemy area"
+  },
+  {
+    "timestamp": "12:38",
+    "content": "isn't directly lit by the fireplace. But light maps helps fill in those dark"
+  },
+  {
+    "timestamp": "12:43",
+    "content": "areas with soft bounce light, greatly improving the overall look of the scene."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "Simulating indirect lighting can be costly. But as the lights in the alchemy area don't move,"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "I can use the new light mapping component to pre-calculate the indirect lighting term"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "and save the results to a texture called the light map."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "Simulating indirect lighting. The alchemy area entity has a light map component attached to it."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "Simulating indirect lighting. Here, I can control what lighting term gets baked and fine tune quality"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "settings. I'll change the quality of the light maps under bake settings from low to high."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Simulating indirect lighting. To preview the output of the baked lights, I'll open the light map preview tab."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "I can do this from the tab menu."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "Simulating indirect lighting. This allows me to see in real time how much the indirect lighting impacts the scene."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "I'll tweak the light map settings."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "Simulating indirect lighting. The preview tab lets me get a clear picture of the final results before committing to a full bake."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "I'm pretty happy with those settings and I'm ready to regenerate the scene's light map."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "While my lights are getting baked, let me go through the different lighting terms that the light map component supports."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "In addition to the indirect lighting, Reality Composer Pro can also generate ambient occlusion and beauty light maps."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Ambient occlusion represents the visibility of each point in a scene to its surroundings."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "And beauty represents the final color of each point in a scene, taking into account both indirect and dark lighting."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "Let me go check on my light maps."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "And it's done. My light maps are completely baked and my scene looks beautiful."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "Before I wrap up, I'd like to add one more thing to this scene."
+  },
+  {
+    "timestamp": "14:47",
+    "content": "I was thinking it would look great if we had a few more items on the workbench."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "For this, I'll use the all new Reality Composer Pro Assistant."
+  },
+  {
+    "timestamp": "14:57",
+    "content": "The new AI Assistant is always available from the right panel."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "From there, I can simply prompt the Assistant for help."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "You probably want to be featured at the Red стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал стал"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "The Reality Composer Pro Assistant uses powerful generative models to craft 3D objects and materials on demand,"
+  },
+  {
+    "timestamp": "15:49",
+    "content": "letting you iterate faster, experiment freely, and turn ideas into reality with ease."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "It is also ready to answer any Reality Composer Pro questions you might have."
+  },
+  {
+    "timestamp": "16:00",
+    "content": "I've covered a lot of ground today, and it only scratches the surface of what Reality Composer Pro 3 has to offer."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "To continue your journey with Reality Composer Pro, first, download it from developer.apple.com."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "While you're there, be sure to explore the available sample projects."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "There is a lot more in Reality Composer Pro that I wasn't able to cover in this session."
+  },
+  {
+    "timestamp": "16:22",
+    "content": "To learn more, I recommend that you check out the Reality Composer Pro sessions."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "I speak on behalf of the whole team when I say we cannot wait to see what you will create with it."
+  },
+  {
+    "timestamp": "16:34",
+    "content": "Thanks for watching."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "I'll see you next time."
+  }
+]

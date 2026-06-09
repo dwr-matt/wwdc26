@@ -1,0 +1,626 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, I'm David Nadober, an engineer on the UI Frameworks team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Today, I'm excited to talk to you about using SwiftUI with your existing AppKit or UIKit app."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "SwiftUI was designed from the beginning to work great alongside AppKit and UIKit,"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "just like Swift was designed to work together with Objective-C."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "This is ideal for incremental adoption without the need to rewrite everything or start from scratch."
+  },
+  {
+    "timestamp": "0:33",
+    "content": "Apple has used this strategy throughout the years."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "Logic Pro is using SwiftUI for plugins like the Quantic Room Simulator"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "or the Beatbreaker plugin for both macOS and iPadOS."
+  },
+  {
+    "timestamp": "0:46",
+    "content": "The coding assistant in Xcode was from the start using SwiftUI"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "and in Xcode 27 is expanding from the sidebar to the editor."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "Even without explicit adoption, most apps use SwiftUI implicitly nowadays."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "The UI Frameworks team used a new design as an opportunity to implement controls in SwiftUI."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "Now, even if you use AppKit types like NSSlider, NSSwitch and NSSecretMeterControl,"
+  },
+  {
+    "timestamp": "1:14",
+    "content": "SwiftUI is used under the hood to render these views and more."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "Liquid Glass used in those controls and in other parts of the OS is also using SwiftUI"
+  },
+  {
+    "timestamp": "1:23",
+    "content": "to share large parts of the implementation across frameworks and platforms."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "In this video, I will share how you can start adopting SwiftUI in more places too."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "I will focus on macOS, but the concepts apply to all other Apple platforms as well."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "First, I will show how you can use Observable to automatically update your NSView even before using any SwiftUI."
+  },
+  {
+    "timestamp": "1:47",
+    "content": "Next, I will talk about when it's a good time to consider using SwiftUI and integrate it in an NSView hierarchy."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "I will also show you how you can add an NSGesture Recognizer directly to your SwiftUI view."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "Then, I will create menu items in SwiftUI and add them to the existing main menu."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "Finally, I will cover how you can use SwiftUI scenes from your existing NSApplicationDelegate."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "Over the course of this presentation, I will use a reduced version of an existing AppKit app that I made."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "This app can control lights like this addressable ring lamp on my desk."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "It has controls to change the color"
+  },
+  {
+    "timestamp": "2:26",
+    "content": "and run animations."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "I will walk you through how the sliders work"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "and then demonstrate how the observable macro can help."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "The app uses a color picker that is similar to the system color panel or color well,"
+  },
+  {
+    "timestamp": "2:44",
+    "content": "but is displayed in line to keep the controls always within reach."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "The color is controlled for three sliders with a custom track gradient and knob."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "As I move the knob of one slider, it redoss itself with the newly selected color."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "At the same time, all other sliders also update accordingly."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "A slider automatically redosses itself when its own value changes."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "In my case, the changed value also influences the appearance of the other sliders,"
+  },
+  {
+    "timestamp": "3:15",
+    "content": "but AppKit doesn't automatically redraw them."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "I currently need to manually tell AppKit to redraw the saturation and brightness slider"
+  },
+  {
+    "timestamp": "3:24",
+    "content": "whenever the hue value changes."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "This is done by setting needs display to true."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "This also needs to be implemented similarly for value changes"
+  },
+  {
+    "timestamp": "3:33",
+    "content": "of all the remaining sliders and other external changes."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "AppKit also supports automatic observation of properties from observable types."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "All mutable variables then participate in the observation system."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "The sliders are implemented as subclasses of any slider cell"
+  },
+  {
+    "timestamp": "3:57",
+    "content": "and customize the appearance by overriding certain draw methods like drawNob."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "I only need to access the properties of my new color model inside the drawNob method."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "AppKit tracks each axis and redraws whenever any axis properties change."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "No need for manually setting needs display to true anymore."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "This works for any draw method that is called as part of NSViewDraw like the drawNob"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "or this drawBar method from NSSliderCell."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "NSViewDraw is only one method that supports observation."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "Update constraints, layout, update layer, and NSViewController equivalents support observation too."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "UIKit has even more methods that extend beyond UIView and UIViewController to UIButton,"
+  },
+  {
+    "timestamp": "4:47",
+    "content": "UICollectionViewCell, and more."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "You can backdeploy the integration to macOS 15 by adding NSObservationTrackingEnabled to your info plist"
+  },
+  {
+    "timestamp": "4:57",
+    "content": "and to iOS 18 by adding UIObservationTrackingEnabled."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "It is enabled by default with the 2026 releases and later."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "For a closer look at observation tracking in UIKit, watch"
+  },
+  {
+    "timestamp": "5:10",
+    "content": "What's New in UIKit from WWDC 2025."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "Okay, here it is in action."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "I will increase the brightness"
+  },
+  {
+    "timestamp": "5:19",
+    "content": "and change the hue to red."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Great."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "All sliders update and the new color is sent to the light over the network."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Adopting Observable is a great start to get automatic updates in your NSView and NSViewController."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "It also makes it easier to move to SwiftUI when you want to implement something new."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "Speaking about something new, I have an idea for a different color picker design."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "Hue starts with red, progresses through all the colors, and returns back to red."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "I would like to represent this as a circular slider."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "I can represent saturation and brightness as two semicircles inside the outer hue ring."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "Right in the middle, I want to draw a preview of the resulting color as a circle."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "The whole drawing code and interaction will completely change."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "So this is a great time to move to SwiftUI."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "I can reuse the same observable color model from the previous NSLider-based color picker."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "In the views body, I use the canvas view, which gives me access to an immediate mode drawing API."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Canvas is very similar to drawRect in AppKit or UIKit."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "Each redraw calls your closure with a fresh graphics context."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "And you issue draw commands like strokes, fills, transforms, and filters directly against it."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "You can also reuse your existing core graphics drawing code in SwiftUI by calling the WithCGContext API."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "For an introduction to canvas, watch Add Rich Graphics to your SwiftUI app from WWDC 2021."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "If you want to know how you can combine SwiftUI with your own metal shaders,"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "watch Compose Advanced Graphics Effects with SwiftUI from WWDC 2026."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "I still have a lot of places where the color picker is embedded in an NSView hierarchy."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "I can wrap my SwiftUI view in an NSHostingView, which is a subclass of NSView."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "Because I've already moved my model to observable, this is really all I need to do."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "For an in-depth tour of NSHostingView and related types, watch Use SwiftUI with AppKit"
+  },
+  {
+    "timestamp": "7:43",
+    "content": "and Use SwiftUI with UIKit from WWDC 2022."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Before I show you this new color picker in action, I want to add one more feature."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "I want to quickly reset the brightness and saturation to 100% with a single force click,"
+  },
+  {
+    "timestamp": "7:59",
+    "content": "which is a firm press on the trackpad."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "I already have an NSGestureRecognizer for this that I use in other parts of the app."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "I can bring this to a new SwiftUI view using NSGestureRecognizerRepresentable."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "I start by creating a new struct that conforms to the NSGestureRecognizerRepresentable protocol."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "In Make NSGestureRecognizer, I initialize and return my NSGestureRecognizer subclass."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "Force click gesture recognizer is a type that I use in other parts of my app."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "It recognizes when the pressure stage 2 is reached,"
+  },
+  {
+    "timestamp": "8:35",
+    "content": "which indicates that enough pressure has been applied to trigger a force click."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "Handle NSGestureRecognizer action is called when the gesture is recognized."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "This is the right place to reset the saturation and brightness to 100%."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "Back in the HSB color picker SwiftUI view,"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "I can now add this gesture with the dot gesture modifier, just like a SwiftUI gesture."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "The force click reset gesture works together with the existing drag gesture,"
+  },
+  {
+    "timestamp": "9:04",
+    "content": "without any other changes."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "SwiftUI also comes with more representable protocols,"
+  },
+  {
+    "timestamp": "9:10",
+    "content": "like NSViewRepresentable,"
+  },
+  {
+    "timestamp": "9:12",
+    "content": "that allows you to embed your NSViews in your SwiftUI views."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "A force click is not possible with all input devices,"
+  },
+  {
+    "timestamp": "9:19",
+    "content": "like the magic mouse or the trackpad of the MacBook Neo."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "To make sure everyone can take advantage of this shortcut,"
+  },
+  {
+    "timestamp": "9:25",
+    "content": "I need to add a different way to access this feature."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "In this case, I will add a menu item with a keyboard shortcut."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "My app is using AppKit's NSMenu for the main menu."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "I will explain how to add the new menu item using SwiftUI."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "I start by creating a new struct that conforms to the viewboard call."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "It has access to the shared color model."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "In the view's body, I create a button with a label and an action closure,"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "which resets the brightness and saturation to 100%."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "Wrapping the modification in width animation makes SwiftUI animate the change."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "To give quick access, I am adding a keyboard shortcut."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "I have also added a picker with the palette style to precisely select common colors."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "I now need to add the SwiftUI view to the main menu."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "I initialize an NSHostingMenu with the color menu view for that."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "NSHostingMenu is a subclass of NSMenu and therefore has properties like the title to configure the menu."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "All that is left to do is to create an NSMenu item, set the color menu as its submenu and add that item to the main menu."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "Now it is time to try it out."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "I will turn it on."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "And circle through all the hues to green."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "I will press the keyboard shortcut to decrease the brightness a couple times."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "And then use the menu item to turn it off completely."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "When I force click, my NSGestureRecognizer resets the brightness."
+  },
+  {
+    "timestamp": "11:21",
+    "content": "I incrementally edit this Custom SwiftUI control to my app."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "The rest of my AppKit app continues to work just like it did before."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "As a final step, here's how you can bring complete SwiftUI scenes to your app using your existing AppDelegate."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "I always wanted to give people quick access to change the color or brightness of their lights."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "For this, I can add a menu by extra item."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "SwiftUI's menu by extra scene makes this possible with just a few lines."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "NSHostingSceneRepresentation wraps the SwiftUI scene and allows it to be added dynamically from an existing AppKit app."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "A good place to add a scene is application will finish launching a new NSAppDelegate."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "Call addSceneRepresentation with your scenes and SwiftUI will do the rest."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "If you have a menu by extra scene, it is also a good idea to make it possible for people to remove and insert it again."
+  },
+  {
+    "timestamp": "12:17",
+    "content": "A setting scene is the perfect place to add a toggle that controls whether the menu by extra scene is inserted."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "NSHostingSceneRepresentation has an environment property that exposes the open settings action."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "It can be used from an IB action to open the settings window programmatically."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "I'm opening the settings from the app's main menu and enable the menu by extra item."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Let me quickly open the color picker and turn the light on one last time."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "To learn more about SwiftUI scenes, watch Bring Multiple Windows to Your SwiftUI App from WDAPTC 2022."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "I've shown how you can mix SwiftUI and AppKit in different ways."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "The right way to combine them depends on your app and the problem you're solving."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "All APIs I've talked about today are available already on the 2026 releases or earlier."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "A great first step is to try out Observable to keep your model and NSView automatically in sync and make the transition to SwiftUI seamless."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "Consider SwiftUI when you implement a new component or rewrite an existing one."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "Add your existing gesture recognizer subclasses to SwiftUI views."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "Start with SwiftUI for new scenes even in your existing apps."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "And remember, there are no expectations that an app needs to be entirely SwiftUI in order to take advantage of it."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "Thank you for watching and thank you for building great apps."
+  }
+]

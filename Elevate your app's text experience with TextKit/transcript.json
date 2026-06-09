@@ -1,0 +1,1030 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, and welcome to"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "Elevate Your Apps Text Experience with TextKit."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "I'm Tarun Uday, an engineer on the TextKit team."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "TextKit is Apple's next-generation text engine,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "and the foundation of text layout and"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "rendering across all of Apple's platforms."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Text controls in SwiftUI, UIKit, and AppKit all use TextKit to"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "layout and render their text content."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "In this video, I want to talk about something we've been hearing from developers for a while."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "A tension between convenience and control,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "and the new APIs we built to resolve it."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "If you're building a text editing experience on Apple platforms, you'll have two paths."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "The first path is to use the framework text view."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "That's NSTextView in AppKit,"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "UITextView in UIKit, and TextEditor in SwiftUI."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "With these, you get an incredible amount for free."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "Text input, selection, accessibility, undo and redo,"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "dictation, inline predictions, and more."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "These TextViews use TextKit internally, but that internal implementation is mostly hidden."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "You have limited ability to customize how the text is drawn,"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "or how the viewport manages its visual elements."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "The second path is to use TextKit as a text engine,"
+  },
+  {
+    "timestamp": "1:34",
+    "content": "and render the text in a view or a layer directly."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "We call this a custom TextView,"
+  },
+  {
+    "timestamp": "1:40",
+    "content": "to differentiate them from the prepackaged framework TextViews."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "You set up an NSTextLayoutManager,"
+  },
+  {
+    "timestamp": "1:48",
+    "content": "implement viewport layout on your own view or layer,"
+  },
+  {
+    "timestamp": "1:52",
+    "content": "and handle all the rendering yourself."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "When you build custom TextViews,"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "you get total control over the storage,"
+  },
+  {
+    "timestamp": "2:00",
+    "content": "layout, and the viewport layout process."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "But you give up everything that the framework TextViews provide."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "And building a production quality text editing experience from scratch is a lot of work."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "For some scenarios though, choosing between the convenience of a framework TextView,"
+  },
+  {
+    "timestamp": "2:16",
+    "content": "and the control of a custom TextView, has been difficult."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "Today, we'll look at how we can get the best of both worlds."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "For an in-depth introduction to the TextKit architecture and custom TextViews,"
+  },
+  {
+    "timestamp": "2:30",
+    "content": "watch Meet TextKit 2 from WWDC21."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "And for details on how framework TextViews adopted TextKit,"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "watch What's New in TextKit and TextViews from WWDC22."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "While this talk is self-contained,"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "these two sessions will give you a deeper foundation for everything we cover today."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "I'm going to start by giving you a recap on TextKit's architecture."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Later on, I'll talk about some new API we've introduced in TextKit."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "At the very end, I'll show you new ways of extending TextViews, using some examples."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "Understanding the TextKit architecture is pivotal to making a great custom text experience."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "Let's start there. TextKit uses a four-layer architecture for text rendering."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "At the base is the TextStorage layer."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "This encapsulates all the text data to be rendered."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "The Layout layer sits on top of the text storage."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "It's responsible for breaking the text into chunks for rendering."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "Next is the Viewport layer."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "This keeps track of which of the chunks from the layout are visible."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "At the top is the View layer."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "This is where the text appears in your app."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "The storage, layout, and viewport layers are shared across all of Apple's UI frameworks."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "You can use these shared layers to render text on any view or view-like drawable visual element provided by a UI framework."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Next, I'll cover how each layer works."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "By understanding the pieces that make up each layer, you can customize TextKit to create unique experiences in your apps."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "To do that, I'll use the example of rendering a long NSAttributedString in a custom TextView."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "TextContentStorage is responsible for breaking this attributed string into paragraphs."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "For this example, the TextContentStorage creates NSTextParagraph objects for each paragraph of the underlying attributed string."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "NSTextContentStorage and NSTextParagraph are concrete types that work with NSAttributedStrings."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "If you have a different backing storage type, you can write your own subclasses of the corresponding abstract classes,"
+  },
+  {
+    "timestamp": "4:55",
+    "content": "NSTextContentManager and NSTextElement."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "Okay, that was the TextStorage layer."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "Continuing the example, I'll look at layout next."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "After the TextContentStorage breaks the attributed string into paragraphs,"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "the NSTextLayoutManager does the work to prepare the paragraphs for rendering."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "The TextLayoutManager performantly measures the metrics of the glyphs that make up the represented text"
+  },
+  {
+    "timestamp": "5:23",
+    "content": "and dynamically creates an NSTextLayoutFragment that stores the calculated layout information of the paragraph."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "These objects are immutable, which means if a paragraph is edited,"
+  },
+  {
+    "timestamp": "5:36",
+    "content": "the NSTextParagraph and NSTextLayoutFragment are recreated."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "For example, if I replace the word sandwich with slider,"
+  },
+  {
+    "timestamp": "5:48",
+    "content": "a new NSTextParagraph is created for that paragraph,"
+  },
+  {
+    "timestamp": "5:52",
+    "content": "and a corresponding new NSTextLayoutFragment is created with new layout information."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "Next, I'll show you how the top two layers, the viewport and the view,"
+  },
+  {
+    "timestamp": "6:03",
+    "content": "work together to efficiently render huge amounts of text."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "The TextView is a dynamically sized view that can grow as text is laid out and drawn into it,"
+  },
+  {
+    "timestamp": "6:14",
+    "content": "and shrink as text is removed."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "The viewport is the part of the TextView that is visible to the user."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "TextKit organizes all of its work around the viewport, only rendering text that the user can see."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "This means that one of your core tasks when working with TextKit is enhancing the user's interaction based on the layout information that the viewport provides."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "To facilitate the rendering of layout fragments onto the TextView,"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "TextKit provides a dedicated class, NSTextViewportLayoutController."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "The NSTextViewportLayoutController, I'll just call it the ViewportController."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "The ViewportController coordinates with the TextLayoutManager and the TextView to efficiently layout and render paragraphs of text."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "Let me show you how."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "The TextView knows the scroll position and size of the viewport with respect to the whole document,"
+  },
+  {
+    "timestamp": "7:13",
+    "content": "and provides this to the ViewportController."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "The ViewportController then requests the TextLayoutManager to provide all of the layout fragments that intersect with the viewport,"
+  },
+  {
+    "timestamp": "7:24",
+    "content": "and sends them to the TextView for rendering."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "This coordination facilitated by the ViewportController repeats on any change of viewport state,"
+  },
+  {
+    "timestamp": "7:33",
+    "content": "that is, any scroll, edit, or selection event, and is called the ViewportLayoutProcess."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "The ViewportLayoutProcess is central to TextKit's performant layout and rendering."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "And that's it. To build your own custom TextView, instantiate an NSTextContentStorage, NSTextLayoutManager,"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "and render the text using an NSTextViewportLayoutController into its delegate, a view provided by the UI framework."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Even though I refer to the TextView as a view, this could be any drawable visual element that the UI framework provides."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "For example, in UIKit, you can choose a UI view or a CA layer to render text into a custom TextView."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "UI frameworks also package its own type of TextView for your convenience with these TextKit layers."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "In UIKit, you can use UI TextView to implement an off-the-shelf text editing experience."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "AppKit and SwiftUI have similar views."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "Occasionally, a framework TextView might not meet the needs of your app."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "Perhaps, you're building an app that has multiple presentations of the same text."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "Connect multiple TextLayoutManagers to the same TextContentStorage,"
+  },
+  {
+    "timestamp": "8:55",
+    "content": "and edits in one view will propagate through the shared content storage to the other."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "This means you can present the same document in two different views, and they stay in sync automatically."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "With the flexibility that TextKit provides, you can build custom TextViews with a layering configuration that's right for your scenario."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "Now, let's take a look at some of the new APIs that we're introducing in TextKit."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "In the previous section, we talked about rendering text from a layout fragment onto the viewport."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "That's the viewport layout process."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "And before the 2027 releases, we did not have a way of referring to the destination views where the text is rendered across TextKit."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "This meant that while TextKit helped you keep track of layout fragments, it did not help you keep track of the views that they were drawn in."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "First, meet nstext viewport rendering surface."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "This is a new protocol that represents a visual element inside the viewport that you can draw into."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "The view that actually renders a layout fragment's text, and provides a common abstraction to work with."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "You can confirm your UI view, ns view, or CA layer to this protocol,"
+  },
+  {
+    "timestamp": "10:10",
+    "content": "and use it in the viewport controller's delegate methods to keep track of what views are visible in the viewport."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "The rendering surface comes with a companion key protocol, nstext viewport rendering surface key."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "A rendering surface key is any class that can uniquely identify a rendering surface across viewport layout process cycles, like nstext layout fragment."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "This means you can use nstext layout fragment as a key to cache rendering surfaces in map tables or dictionaries."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "The viewport layout process extensively uses the rendering surface key to rendering surface mapping internally."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "You can assign a rendering surface to a key during the viewport layout process by using the rendering surface for delegate method."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "These are cleared at the beginning of the viewport layout process."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "You can query the rendering surface for a particular key within the did layout process using the viewport controllers rendering surface for method."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "These new APIs empower you to use and customize your own rendering surfaces when building custom text views using TextKit."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "Now that we've seen how TextKit works in our 2027 releases, let's look at how the text views that power Apple's default text experiences work."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "UIKit's UIKit's UI TextView and AppKit's nstext view power thousands of long form text experiences on Apple's platforms, including Messages, TextEdit, Notes and Journal."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "If you have a SwiftUI app, the most convenient way to implement a long form text experience is using TextEditor."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "But you could also include a UI TextView or NSTextView in your app by using a view representable. Let me show you."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "To start, I'll create a view called MyTextView."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "I will populate my TextView's body with a view representable that I'll call TextView representable."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "TextView representable will conditionally be an NSView representable on macOS and a UI view representable otherwise."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "Inside the NSView representable, you simply call the initializer for your nstextView or your nstextView subclass in the make nsview method."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "And do the same for UI TextView inside the UI view representable."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "You can see specific examples of this in the accompanying sample app."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "In order to show you how you can extend UI TextView using its TextKit hooks, I'll be creating a few different example apps."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "In my first example, I want to build a code editor for my iPad so that I can write some quick code while I'm away from my Mac."
+  },
+  {
+    "timestamp": "13:05",
+    "content": "I'll start with a UI TextView subclass, initialize it and set its font to the monospaced system font."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "Okay, that's a start."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "But this really isn't a great code editor experience if I can't see line numbers."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "So let's start building that."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "First, let's create a view that can hold a TextView and a line number view."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "We'll call this container view."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "The container view will hold on to our UI TextView subclass and a UI view to display the line numbers."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "I have a basic setup."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "So what I want now is to recompute and show the ns text paragraph index for the layer fragments in the viewport whenever there's a change in the viewport."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "And in order to do that, I need the TextView to be notified whenever its viewport controller has gone through a viewport layout process."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "And that's possible now."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "Starting with our 2027 releases, UI TextView and ns TextView now conform to ns TextViewport layout controller delegate."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "This means you can subclass UI TextView or ns TextView and override the delegate methods to add your own behavior."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "I'll do that next."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "In my TextView subclass, I'll override the delegate methods."
+  },
+  {
+    "timestamp": "14:28",
+    "content": "First, I'll override the willLayout method to do some setup work."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "I'll show the details in a bit."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "I'll override the configureRenderingSurface method to capture the bounds of the paragraphs to be rendered."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "Finally, I'll override the didLayout method to share the accumulated info back to the container view so it can render the line numbers."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "Before showing these methods, I'll add some state to my subclass."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "I'll start with an array to accumulate the bounds of each paragraph the TextView lays out,"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "an integer to track the starting line number,"
+  },
+  {
+    "timestamp": "15:05",
+    "content": "and a closure that I'll use to send the accumulated info up to my container view so it can render the line numbers."
+  },
+  {
+    "timestamp": "15:13",
+    "content": "The viewport controller delegate methods help the TextView know when scrolling or editing has happened so that we can redraw the line numbers."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "I'll implement the methods next, starting with willLayout."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "I'll start by calling super."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Remember to do that in all of these delegate methods."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "I'll clear out the lines variable so that we can get ready to store the bounds of the layout fragments."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "We also need the starting line number."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "That's basically a count of all the paragraphs before the viewport starts."
+  },
+  {
+    "timestamp": "15:45",
+    "content": "Let me do that in its own function and call it from within the willLayout method."
+  },
+  {
+    "timestamp": "15:53",
+    "content": "I'll start with some simple nil checks and variable naming."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "I'll use the enumerateTextElementsFromTextLocation method to enumerate the elements and increment my count until we reach the viewport range."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "And that's it."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "The sample code improves this with caching so you don't pay this cost on every layout pass."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "Let's go back to our delegate methods and see how we can get the bounds for each paragraph."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "We'll do that using the next delegate method, configureRenderingSurface for textLayoutFragment."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "I'll start again by calling super so that I get the default textViewBehavior."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "And then, append the lines array with the layoutFragment's layoutFragmentFrame variable."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "That's it for the configureRenderingSurface for textLayoutFragment method."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "This method will be triggered for every paragraph in the viewport."
+  },
+  {
+    "timestamp": "16:49",
+    "content": "Let's look at the didLayout method."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "At this point, I have the bounds information of every paragraph in the viewport, and I want to pass it to the containerView."
+  },
+  {
+    "timestamp": "16:59",
+    "content": "Before firing the closure, I need to convert the fragment frames from textContainerCoordinates to viewport coordinates."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "I do that by subtracting the viewport origin."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "Then, I pass the starting line number and the adjusted frames to the containerView."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "Back in the containerView, I set the closure."
+  },
+  {
+    "timestamp": "17:18",
+    "content": "For each frame, I calculate the actual line number by adding the index to the starting line number,"
+  },
+  {
+    "timestamp": "17:25",
+    "content": "and draw it at the right position in the line number view."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "And that's it."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "We set up the variables, collect the bounds for each paragraph in the textView,"
+  },
+  {
+    "timestamp": "17:34",
+    "content": "and pass it to the containerView to display it."
+  },
+  {
+    "timestamp": "17:38",
+    "content": "Let's run the app and see how we did."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "Perfect."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "We added line numbers to a UI textView with just a few lines of code."
+  },
+  {
+    "timestamp": "17:46",
+    "content": "I have more work to do, but this is a great first step to building a code editor."
+  },
+  {
+    "timestamp": "17:51",
+    "content": "Using the framework textView's viewport layout process is a powerful way to access and display individual paragraph information."
+  },
+  {
+    "timestamp": "18:00",
+    "content": "Let me show you one more example."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "This time involving modifying layout for multiple paragraphs."
+  },
+  {
+    "timestamp": "18:07",
+    "content": "Here, I've set up a UI textView to show some of my favorite recipes, but I really want to see them one recipe at a time."
+  },
+  {
+    "timestamp": "18:16",
+    "content": "That is, I want to collapse each multi-paragraph recipe into just its heading."
+  },
+  {
+    "timestamp": "18:21",
+    "content": "To do this, I'll start with the same three viewport delegate methods from the last example."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "But on top of this, if a paragraph is collapsed, I want to avoid doing layout on it."
+  },
+  {
+    "timestamp": "18:34",
+    "content": "To do that, I'll conform the textView to nstextContentStorageDelegate."
+  },
+  {
+    "timestamp": "18:40",
+    "content": "Through this conformance, I'll get access to textContentManager should enumerate,"
+  },
+  {
+    "timestamp": "18:46",
+    "content": "which will help me mark textElements as collapsed or not."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "Remember, nstextContentManager is just the abstract version of nstextContentStorage,"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "and nstextElement is the abstract version of nstextParagraph."
+  },
+  {
+    "timestamp": "19:03",
+    "content": "We want some state to hold on to which sections are collapsed."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "We'll use a set of ints to keep track of the paragraph offset to uniquely identify each paragraph."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "Additionally, we add a method to handle when the user taps on a toggle button."
+  },
+  {
+    "timestamp": "19:20",
+    "content": "These are all the pieces you need."
+  },
+  {
+    "timestamp": "19:24",
+    "content": "Skip layout using the textContentStorageDelegate method."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "Process every paragraph that does layout in the viewport using the viewportController delegate methods."
+  },
+  {
+    "timestamp": "19:34",
+    "content": "And handle the user interaction for when the user taps on a section's disclosure button."
+  },
+  {
+    "timestamp": "19:40",
+    "content": "You can take a look at the sample code for the details."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "Let's look at what that accomplished."
+  },
+  {
+    "timestamp": "19:46",
+    "content": "I can collapse any recipe into just the heading by tapping on the triangle next to it."
+  },
+  {
+    "timestamp": "19:52",
+    "content": "And I did it right in UI textView."
+  },
+  {
+    "timestamp": "19:54",
+    "content": "Okay, let's take a step back."
+  },
+  {
+    "timestamp": "19:57",
+    "content": "So far, our examples have been about text, paragraphs, line numbers, and section headings."
+  },
+  {
+    "timestamp": "20:04",
+    "content": "But TextViews display much more than just text."
+  },
+  {
+    "timestamp": "20:07",
+    "content": "Think about messages with inline photos and stickers."
+  },
+  {
+    "timestamp": "20:12",
+    "content": "Or notes with drawings and document scans."
+  },
+  {
+    "timestamp": "20:16",
+    "content": "All of that non-text content lives inside the TextView managed by TextKit."
+  },
+  {
+    "timestamp": "20:22",
+    "content": "These are called text attachments."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "Text attachments follow the same architecture as regular text."
+  },
+  {
+    "timestamp": "20:29",
+    "content": "Let me focus on one paragraph and represent an attachment using the paperclip symbol to make things simple."
+  },
+  {
+    "timestamp": "20:36",
+    "content": "A text attachment is stored in the text storage just like any other character."
+  },
+  {
+    "timestamp": "20:41",
+    "content": "And it's done using a nstextAttachment object."
+  },
+  {
+    "timestamp": "20:45",
+    "content": "When the layout manager encounters a text attachment, it asks for an nstextAttachmentViewProvider."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "That's the corresponding object in the layout layer."
+  },
+  {
+    "timestamp": "20:56",
+    "content": "The view provider provides the necessary information to render the attachment onto the textView."
+  },
+  {
+    "timestamp": "21:02",
+    "content": "This brings us to a challenge."
+  },
+  {
+    "timestamp": "21:04",
+    "content": "Since these objects are immutable, if we were to edit the text in the paragraph,"
+  },
+  {
+    "timestamp": "21:09",
+    "content": "all instances would have to be discarded and recreated."
+  },
+  {
+    "timestamp": "21:13",
+    "content": "Let me show you a concrete example."
+  },
+  {
+    "timestamp": "21:16",
+    "content": "Say I'm building a messaging app with inline animations."
+  },
+  {
+    "timestamp": "21:20",
+    "content": "Watch carefully as I edit."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "The animation restarts on every edit for the corresponding paragraph."
+  },
+  {
+    "timestamp": "21:27",
+    "content": "My view provider is recreated on every edit and that restarts the animation."
+  },
+  {
+    "timestamp": "21:33",
+    "content": "To solve this, we've added a new API on UI TextView."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "Once I initialize my textView, I use the register for textAttachmentViewProvider type method to register a view provider reuse policy for a particular subclass of nstextAttachmentViewProvider."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "For the first argument, I add the on editing inline paragraphs reuse policy."
+  },
+  {
+    "timestamp": "21:59",
+    "content": "This preserves the view provider across paragraph edits, so keystrokes don't tear down my view provider."
+  },
+  {
+    "timestamp": "22:05",
+    "content": "For the second argument, I provide the view provider subclass type and the textView will take care of all objects of that particular class."
+  },
+  {
+    "timestamp": "22:14",
+    "content": "In the sample code, you can see a second type of reuse policy, on scrolling out of viewport."
+  },
+  {
+    "timestamp": "22:20",
+    "content": "This caches the attachment's rendering surface when it scrolls off screen and restores it when it comes back."
+  },
+  {
+    "timestamp": "22:27",
+    "content": "You can combine both reuse policies depending on your scenario."
+  },
+  {
+    "timestamp": "22:31",
+    "content": "Now, on editing, UI TextView reuses the view provider, maintaining state and avoiding any animation glitches."
+  },
+  {
+    "timestamp": "22:41",
+    "content": "So there you go. Three examples of using TextKit in UI TextView."
+  },
+  {
+    "timestamp": "22:48",
+    "content": "Line numbers for a text editor, collapsible sections in a recipe app, and inline text attachment reuse in a simple TextView."
+  },
+  {
+    "timestamp": "22:56",
+    "content": "You can download the sample app to look at the details."
+  },
+  {
+    "timestamp": "23:00",
+    "content": "To recap, to create a convenient but powerful rich text editor experience, kickstart your app with UI TextView on UIKit and nstextView on AppKit."
+  },
+  {
+    "timestamp": "23:11",
+    "content": "If you have a Swift UI app, use a view representable to include these text views in your app."
+  },
+  {
+    "timestamp": "23:18",
+    "content": "For those of you who want much more control over your text rendering, create custom text views using TextKit and TextKit."
+  },
+  {
+    "timestamp": "23:25",
+    "content": "And use the new rendering surface APIs."
+  },
+  {
+    "timestamp": "23:29",
+    "content": "Check out the sample code to see collapsible sections, line numbers, and inline attachment reuse in action."
+  },
+  {
+    "timestamp": "23:35",
+    "content": "Thanks for watching."
+  }
+]

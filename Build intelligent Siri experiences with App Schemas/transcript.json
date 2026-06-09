@@ -1,0 +1,1734 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Dan Niemeyer,"
+  },
+  {
+    "timestamp": "0:09",
+    "content": "a software engineer on the Swift Intelligence Frameworks team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Today, I'll show you how to bring your app to Siri"
+  },
+  {
+    "timestamp": "0:15",
+    "content": "using new capabilities powered by Apple Intelligence."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "In the 27 releases,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "Siri is more capable, more contextual,"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "and more personal, and App Intents"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "are the foundation that make that possible."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "Here's what I'll cover today,"
+  },
+  {
+    "timestamp": "0:30",
+    "content": "starting with what's new with Siri and App Intents,"
+  },
+  {
+    "timestamp": "0:33",
+    "content": "how Siri understands your app's content,"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "and when Siri understands your content,"
+  },
+  {
+    "timestamp": "0:39",
+    "content": "enabling it to take action."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "At the end of the talk,"
+  },
+  {
+    "timestamp": "0:43",
+    "content": "I'll cover use cases for working across apps,"
+  },
+  {
+    "timestamp": "0:46",
+    "content": "such as asking Siri to text my wife her plane ticket,"
+  },
+  {
+    "timestamp": "0:50",
+    "content": "or apply a cinematic filter to this photo,"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "and share some best practices for how to bring your app to Siri"
+  },
+  {
+    "timestamp": "0:57",
+    "content": "by extending the system's understanding of what your app can do."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "All right, there's a lot here, so let's get started."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "In the 27 releases,"
+  },
+  {
+    "timestamp": "1:09",
+    "content": "Siri takes a big step forward, powered by Apple Intelligence,"
+  },
+  {
+    "timestamp": "1:13",
+    "content": "our personal intelligence platform that helps people be more creative"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "and productive in the work they do."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "As a developer, the way you participate in Apple Intelligence"
+  },
+  {
+    "timestamp": "1:23",
+    "content": "is through the App Intents framework."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "App Intents is the foundation for integrating your app with Siri"
+  },
+  {
+    "timestamp": "1:30",
+    "content": "and Apple Intelligence,"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "and provides a structured way to describe what your app can do"
+  },
+  {
+    "timestamp": "1:35",
+    "content": "and the content it manages."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "Everything I talk about today builds on top of App Intents."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "If App Intents is new to you,"
+  },
+  {
+    "timestamp": "1:44",
+    "content": "I highly recommend starting with these videos,"
+  },
+  {
+    "timestamp": "1:47",
+    "content": "which cover the fundamentals in more depth."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "This year, Siri becomes more powerful in three key ways."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "Siri can now access your app's entities,"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "the real meaningful content inside your app."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "This means people can ask questions like,"
+  },
+  {
+    "timestamp": "2:05",
+    "content": "when and where's my next meeting?"
+  },
+  {
+    "timestamp": "2:07",
+    "content": "And Siri can answer directly by understanding"
+  },
+  {
+    "timestamp": "2:10",
+    "content": "what a meeting is in your app,"
+  },
+  {
+    "timestamp": "2:12",
+    "content": "which meeting is relevant,"
+  },
+  {
+    "timestamp": "2:14",
+    "content": "and which properties to return, like time and location."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "Siri can take action using your app's intents."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "For example, someone could say,"
+  },
+  {
+    "timestamp": "2:25",
+    "content": "send my latest report to Mary,"
+  },
+  {
+    "timestamp": "2:27",
+    "content": "so people can send emails just by asking."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "Intents describe the actions your app supports,"
+  },
+  {
+    "timestamp": "2:33",
+    "content": "the parameters they require,"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "and when they're safe to run."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "Siri handles the language understanding."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "Your app focuses on the action."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "Siri can also understand on-screen context."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "For example, people can say things like,"
+  },
+  {
+    "timestamp": "2:50",
+    "content": "explain this text, or get me reviews for this product."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "When you annotate views with entities"
+  },
+  {
+    "timestamp": "2:57",
+    "content": "that describe what's on screen,"
+  },
+  {
+    "timestamp": "2:59",
+    "content": "Siri can then understand what content is meaningful,"
+  },
+  {
+    "timestamp": "3:03",
+    "content": "which entities it represents, and what actions apply."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "This gives people a more contextual, conversational experience"
+  },
+  {
+    "timestamp": "3:11",
+    "content": "that feels natural and incredibly powerful."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "So that's a preview of what's new with Siri,"
+  },
+  {
+    "timestamp": "3:19",
+    "content": "how we can find content, take actions,"
+  },
+  {
+    "timestamp": "3:22",
+    "content": "and understand what's on screen."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "Now it's time to ground all of that in a real app."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "For the rest of this video,"
+  },
+  {
+    "timestamp": "3:31",
+    "content": "I'll work in a sample app called Unicorn Chat."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "Unicorn Chat is a messaging app"
+  },
+  {
+    "timestamp": "3:37",
+    "content": "where people can chat with fictional unicorn characters"
+  },
+  {
+    "timestamp": "3:41",
+    "content": "like Bubbles, Flare, and Glow."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "It has just enough functionality"
+  },
+  {
+    "timestamp": "3:46",
+    "content": "to demonstrate the concepts I'm covering today."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "And while it's a messaging app,"
+  },
+  {
+    "timestamp": "3:51",
+    "content": "the same ideas apply to apps across many other domains."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "You can download the sample from the Apple Developer website"
+  },
+  {
+    "timestamp": "4:00",
+    "content": "and follow along."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "Having explored what's new and the app we'll use to demonstrate it,"
+  },
+  {
+    "timestamp": "4:06",
+    "content": "let's talk about how you can bring these capabilities to your app."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "At the center of all of these App Intense powered experiences"
+  },
+  {
+    "timestamp": "4:14",
+    "content": "is a single concept, app entities."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "An app entity is a structured representation"
+  },
+  {
+    "timestamp": "4:20",
+    "content": "of the content inside your app."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "To make this concrete, think about the data your app already works with every day."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "If you have a calendar app, each event is an entity."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "If you have a mail app, each message is an entity."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "And if you have a photos app, each photo and each album is an entity."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "App entities describe three important things."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "What the thing is, how it's identified, and which properties matter,"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "like a title, a date, or some text."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "They're not a new data model."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "They're a way of describing your existing content"
+  },
+  {
+    "timestamp": "5:01",
+    "content": "so the system can understand it."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "Now, modeling an entity is the first step."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "But on its own, that's not enough for Siri to be able to find it or talk about it."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "For Siri to understand what an entity is, what category of thing it represents,"
+  },
+  {
+    "timestamp": "5:20",
+    "content": "your entity needs to conform to an app schema."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "App schemas give Siri a predefined understanding of common concepts,"
+  },
+  {
+    "timestamp": "5:29",
+    "content": "like messages, context, or documents."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "When your entities conform to a schema,"
+  },
+  {
+    "timestamp": "5:36",
+    "content": "Siri already knows how to reason about them."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "Instead of treating your app like a black box,"
+  },
+  {
+    "timestamp": "5:43",
+    "content": "Siri can reason about what the user is talking about."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "In Unicorn Chat, the nouns in the app are contact, conversation, and message."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "All three are modeled as app entities that conform to app schemas."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "That's what allows Siri to understand questions like,"
+  },
+  {
+    "timestamp": "6:01",
+    "content": "show my last message from Flare, one of our contacts,"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "or open Unicorn Chat with Glow, another unicorn friend."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "So once you've modeled your content as app entities,"
+  },
+  {
+    "timestamp": "6:13",
+    "content": "the next question is, how does Siri find the right one?"
+  },
+  {
+    "timestamp": "6:17",
+    "content": "Entity resolution is how Siri resolves what the user says"
+  },
+  {
+    "timestamp": "6:21",
+    "content": "into real app entities inside your app."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "For example, when a user says, open Unicorn Chat with Glow,"
+  },
+  {
+    "timestamp": "6:29",
+    "content": "Siri resolves that Glow refers to a specific unicorn,"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "finds the matching contact, and fills in the entity"
+  },
+  {
+    "timestamp": "6:37",
+    "content": "along with the values of its properties,"
+  },
+  {
+    "timestamp": "6:39",
+    "content": "like its name and identifier, so it can be used by the system."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "But people don't always ask for things using exact names."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "They speak in concepts and descriptions."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "When someone says something like, the best windsurfing in Carmel,"
+  },
+  {
+    "timestamp": "6:57",
+    "content": "they're not looking for an exact text match."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "They're expressing meaning."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "To support that experience, Siri needs more than string matching."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "It needs semantic search."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "And that's exactly what indexed entity enables."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "The primary way to power entity resolution is by adopting indexed entity."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "When you do this, your app's entities are indexed into the system's semantic index."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "This allows Siri to match based on meaning, not just text,"
+  },
+  {
+    "timestamp": "7:30",
+    "content": "understand relationships between entities, and even answer questions over your content."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "For example, show the messages with Flare about movies."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "That's not a string match."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Siri can find messages that reference movie titles"
+  },
+  {
+    "timestamp": "7:46",
+    "content": "because it's performing a semantic query over Unicorn Chat's indexed messages."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "And the way you get that behavior is by conforming your schematized entity"
+  },
+  {
+    "timestamp": "7:57",
+    "content": "is by the indexed entity protocol."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "The indexing key tells Spotlight which properties, like the message body, should be searchable."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "Once indexed, Siri can search your content, reason over it, and use it to answer questions,"
+  },
+  {
+    "timestamp": "8:14",
+    "content": "not just retrieve items."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "indexed entity enables the best Siri experience with semantic matching, fewer follow-up questions,"
+  },
+  {
+    "timestamp": "8:25",
+    "content": "and more natural language understanding."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "But not everything can be indexed."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "Your data set might be large, lives on a server, or changes too frequently to index ahead of time."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "In those cases, you can use Entity String Query."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "With a string query, Siri hands you the person's input."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "Your app is responsible for finding matching entities and returning them."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "You don't get semantic understanding,"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "but you do get full control over how you search for and match your app's entities."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "So to bring this all together,"
+  },
+  {
+    "timestamp": "9:04",
+    "content": "start by modeling your app's content as app entities."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "Conform each entity to an app schema so Siri can understand what kind of thing it is."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "When your data can be indexed,"
+  },
+  {
+    "timestamp": "9:16",
+    "content": "adopt indexed entity or use entity string query when indexing isn't feasible."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "This unlocks powerful experiences like answering questions and finding content instantly."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "But entities on their own are just information."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "Where things really get interesting is when you combine entities with actions."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "App intents are how your app exposes actions to the system."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "But it's important to understand that not all actions are treated the same way."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "So we're going to break this into two parts."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "When you define an app intent, that action can show up across the system in places like shortcuts, spotlight, widgets, and more."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "This means people can discover and trigger your app's actions in many places, even without Siri."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "You describe what the action does."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "You define its parameters."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "And you implement the behavior."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "The system takes care of surfacing it, suggesting it, and wiring it into system experiences."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "This is incredibly powerful and provides great benefits for your app and the people who use it."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "But you can provide even more value by taking a few extra steps to bring your actions to Siri."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "Just like entities use app schemas to be understood, actions use schemas to become executable by Siri."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "Think of schemas as a specialization of app intents."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "They're still app intents, but shaped in a way that Siri knows how to process."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "Schemas define the kinds of actions Siri understands, the structure it expects, and how those actions map to natural language."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "This is what allows Siri to confidently handle commands like send a message to Mary or play my focus playlist."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "Individual schemas define individual actions, but apps usually need a complete set."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "That's why schemas are grouped into app schema domains."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "Each domain represents a category of tasks, such as mail, photos, messages, and more."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "When you integrate with a domain, you implement a set of predefined app schemas."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "You map them to your app's functionality, and Siri immediately knows how to talk about your app in that domain."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "Think of domains as categories of contracts between your app and Siri."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "They tell Siri what your app can do, what actions are available, and how the system should respond."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "For more details on how app schemas work, check out my video from www.24."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "Now that we understand the difference between general app intents and Siri-specific app schemas,"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "let's bring this to life by adopting one of these domains in Unicorn Chat and wiring it up end-to-end."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "Just like before, everything starts with entities."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "In Unicorn Chat, we already modeled the two things we need to send a message."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "Contacts, which represents the recipient and exposes properties like a name, an identifier,"
+  },
+  {
+    "timestamp": "12:40",
+    "content": "and a message, which captures things like the message body and author."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "These are app entities, which tell Siri who the message is going to and what is being sent."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "Now, let me show you how we connect those entities to an action by adopting an app schema."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "In Xcode, we start by typing the schema name."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "Xcode already knows about all the available app schemas, grouped by domain,"
+  },
+  {
+    "timestamp": "13:10",
+    "content": "and autocomplete lets us pick exactly the one we want."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "Since we're building messaging functionality, we select the send message schema from the messages domain."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "Instead of inventing a custom intent structure, we're adopting a schema Siri already understands"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "and mapping it to Unicorn Chat's existing logic."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "This tells Siri what the action does, which parameters it expects,"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "like the recipient and the message content, and how to guide the customer if something is missing."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "Our job is to map those schema parameters onto Unicorn Chat's existing messaging flow."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "First, we process the parameters."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "Then, we pass them into Unicorn Chat's interface so the message is actually sent."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "Finally, we return the newly sent message back to the system as an app entity."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "And that's it."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Because this action is implemented as an app intent, it's available throughout the system."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "And because it conforms to an app schema from the messages domain,"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "Siri can execute it directly without you having to handle natural language yourself."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "Let's see it in action."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Here I say send a message to Glow in Unicorn Chat saying what movies do you recommend?"
+  },
+  {
+    "timestamp": "14:50",
+    "content": "Siri resolves Glow using our app entity query,"
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Invoques our intent,"
+  },
+  {
+    "timestamp": "14:55",
+    "content": "And sends it."
+  },
+  {
+    "timestamp": "14:57",
+    "content": "All without opening the app."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "This is the power of app schemas."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "Once your entities are in place, you connect them to well-defined actions and Siri handles the rest."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "So to recap,"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "App Intents expose actions to the system."
+  },
+  {
+    "timestamp": "15:13",
+    "content": "App schemas make those actions understandable by Siri."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "App schema domains, like messages, package schemas into powerful end-to-end experiences."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "Once you adopt a domain, Siri can speak your app's language fluently."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "So far, we focus on how Siri can understand your content and take actions inside your app."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "But many real-world requests span multiple apps."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "They start in one app, continue in another, and finish somewhere else."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "15:49",
+    "content": "Hey Siri, email my wife this reply from Bubbles."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "These experiences combine two capabilities."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "Understanding what people are looking at and moving that content to another app."
+  },
+  {
+    "timestamp": "16:02",
+    "content": "Let's break that down into two parts."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "First, Siri needs to understand that this reply from Bubbles refers to."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "That's on-screen awareness."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "Then, Siri needs to pass that content into another app so an action can be performed."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "That's content transfer."
+  },
+  {
+    "timestamp": "16:22",
+    "content": "We'll look at these one at a time."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "To enable on-screen awareness,"
+  },
+  {
+    "timestamp": "16:27",
+    "content": "your app connects what's visible on-screen to structured information the system understands."
+  },
+  {
+    "timestamp": "16:34",
+    "content": "At the core of this is app entities."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "When views are associated with entities,"
+  },
+  {
+    "timestamp": "16:40",
+    "content": "Siri can resolve references like this message or that conversation without people naming them explicitly."
+  },
+  {
+    "timestamp": "16:48",
+    "content": "There are two APIs for annotating on-screen content, and they serve different purposes."
+  },
+  {
+    "timestamp": "16:55",
+    "content": "Use user activity when there's one primary thing on-screen,"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "like viewing a document or composing a message."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "Use view annotations when multiple meaningful items are visible at once,"
+  },
+  {
+    "timestamp": "17:08",
+    "content": "like messages in a conversation or items in a list."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "Here's how you can achieve this."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "Each row in this list represents real data in your app."
+  },
+  {
+    "timestamp": "17:19",
+    "content": "In Unicorn Chat, that's a message."
+  },
+  {
+    "timestamp": "17:22",
+    "content": "Each message row is annotated with its corresponding message entity."
+  },
+  {
+    "timestamp": "17:27",
+    "content": "This explicitly connects what's on-screen to the same entities we already use for intents."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "It allows customers to say things like,"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "edit this message or forward the last one."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "Siri resolves entities directly from the view, enabling powerful in-app experiences."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "But the real power comes when you combine annotations with content transfer."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "Content transfer is what allows other apps to act on your entities."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "You enable this by exporting your entities using Transferable."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "This tells the system how to represent your content in a form other apps can understand."
+  },
+  {
+    "timestamp": "18:09",
+    "content": "For example, text my wife this conversation or summarize this message."
+  },
+  {
+    "timestamp": "18:17",
+    "content": "You do this by adopting Transferable and providing an intent value representation."
+  },
+  {
+    "timestamp": "18:23",
+    "content": "In Unicorn Chat, we export a contact entity as an intent person."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "Once exported, the system can pass that content into actions from other apps."
+  },
+  {
+    "timestamp": "18:34",
+    "content": "It enables use cases such as call this contact."
+  },
+  {
+    "timestamp": "18:38",
+    "content": "Your app doesn't need to know what happens next."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "It just needs to describe its content accurately."
+  },
+  {
+    "timestamp": "18:46",
+    "content": "When content comes into your app, there are usually two possibilities."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "Either that content refers to something that already exists,"
+  },
+  {
+    "timestamp": "18:55",
+    "content": "or it represents something entirely new."
+  },
+  {
+    "timestamp": "18:59",
+    "content": "You get to decide which path your app takes."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "If you're matching existing content, use intent value query."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "If you're creating something new, use importing on the transfer representation."
+  },
+  {
+    "timestamp": "19:13",
+    "content": "Use intent value query when incoming content should resolve to an existing app entity in your app."
+  },
+  {
+    "timestamp": "19:19",
+    "content": "Conceptually, this is very similar to entity query,"
+  },
+  {
+    "timestamp": "19:23",
+    "content": "but scoped to intent parameters instead of standalone entity resolution."
+  },
+  {
+    "timestamp": "19:29",
+    "content": "In this example, Unicorn Chat receives an intent person from another app"
+  },
+  {
+    "timestamp": "19:35",
+    "content": "and tries to match it into an existing contact entity."
+  },
+  {
+    "timestamp": "19:39",
+    "content": "This is ideal when the content already exists in your app,"
+  },
+  {
+    "timestamp": "19:43",
+    "content": "or you want to select from existing data."
+  },
+  {
+    "timestamp": "19:46",
+    "content": "You're essentially saying, giving this incoming value,"
+  },
+  {
+    "timestamp": "19:50",
+    "content": "which of my entities does it refer to?"
+  },
+  {
+    "timestamp": "19:54",
+    "content": "Use intent value representation importing"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "when incoming content should create something new in your app."
+  },
+  {
+    "timestamp": "20:01",
+    "content": "Instead of resolving to an existing entity,"
+  },
+  {
+    "timestamp": "20:04",
+    "content": "you convert the incoming value into a brand new app entity."
+  },
+  {
+    "timestamp": "20:08",
+    "content": "In Unicorn Chat, this allows us to create a new unicorn from an intent person when needed."
+  },
+  {
+    "timestamp": "20:14",
+    "content": "From the user's perspective, the content just works,"
+  },
+  {
+    "timestamp": "20:19",
+    "content": "but your app stays in control of how that content is stored and managed."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "So when importing content,"
+  },
+  {
+    "timestamp": "20:28",
+    "content": "if the content already exists in your app, resolve it."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "If it doesn't, import it."
+  },
+  {
+    "timestamp": "20:35",
+    "content": "Many apps use both depending on the intent and workflow."
+  },
+  {
+    "timestamp": "20:40",
+    "content": "So to recap,"
+  },
+  {
+    "timestamp": "20:43",
+    "content": "On-screen awareness lets Siri understand what the user sees."
+  },
+  {
+    "timestamp": "20:47",
+    "content": "Content transfer lets that content move across apps."
+  },
+  {
+    "timestamp": "20:50",
+    "content": "Together, they unlock powerful multi-step experiences,"
+  },
+  {
+    "timestamp": "20:54",
+    "content": "all built on app entities, app intents, and schemas."
+  },
+  {
+    "timestamp": "20:59",
+    "content": "Now that we've covered entities, actions, and working across apps,"
+  },
+  {
+    "timestamp": "21:04",
+    "content": "let's talk about best practices."
+  },
+  {
+    "timestamp": "21:07",
+    "content": "Beyond getting things working,"
+  },
+  {
+    "timestamp": "21:09",
+    "content": "there are a few practices that make Siri work better with your app"
+  },
+  {
+    "timestamp": "21:12",
+    "content": "and more resilient over time."
+  },
+  {
+    "timestamp": "21:15",
+    "content": "Because while you can adopt individual schemas and APIs independently,"
+  },
+  {
+    "timestamp": "21:19",
+    "content": "great Siri experiences often depend on how these pieces work together."
+  },
+  {
+    "timestamp": "21:24",
+    "content": "And the good news is, you don't have to figure this out alone."
+  },
+  {
+    "timestamp": "21:27",
+    "content": "The tools are designed to help you along the way."
+  },
+  {
+    "timestamp": "21:31",
+    "content": "Let me show you what I mean with a demo."
+  },
+  {
+    "timestamp": "21:34",
+    "content": "Let's jump back into Xcode and pick up where we left off."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "In our last demo, we adopted the send message schema in Unicorn Chat."
+  },
+  {
+    "timestamp": "21:42",
+    "content": "That works great."
+  },
+  {
+    "timestamp": "21:44",
+    "content": "People can send messages with Siri."
+  },
+  {
+    "timestamp": "21:47",
+    "content": "But now let's try to build."
+  },
+  {
+    "timestamp": "21:52",
+    "content": "And we get a build error."
+  },
+  {
+    "timestamp": "21:55",
+    "content": "Xcode is telling us that while we adopted send message,"
+  },
+  {
+    "timestamp": "21:58",
+    "content": "we haven't adopted the related draft message schema."
+  },
+  {
+    "timestamp": "22:01",
+    "content": "This is important because some Siri scenarios require more than one schema"
+  },
+  {
+    "timestamp": "22:06",
+    "content": "to deliver a complete experience."
+  },
+  {
+    "timestamp": "22:09",
+    "content": "This isn't just a compiler error."
+  },
+  {
+    "timestamp": "22:11",
+    "content": "It's a design hint."
+  },
+  {
+    "timestamp": "22:13",
+    "content": "Xcode knows that if your app can send messages with Siri,"
+  },
+  {
+    "timestamp": "22:17",
+    "content": "it also needs a way to draft messages,"
+  },
+  {
+    "timestamp": "22:19",
+    "content": "especially when confirmation is required."
+  },
+  {
+    "timestamp": "22:22",
+    "content": "So instead of failing silently at runtime,"
+  },
+  {
+    "timestamp": "22:25",
+    "content": "the build system surfaces this early."
+  },
+  {
+    "timestamp": "22:29",
+    "content": "If we click into the error,"
+  },
+  {
+    "timestamp": "22:31",
+    "content": "Xcode offers a fix it."
+  },
+  {
+    "timestamp": "22:34",
+    "content": "Xcode generates a sample adoption of the draft message schema."
+  },
+  {
+    "timestamp": "22:43",
+    "content": "This gives us an intent definition,"
+  },
+  {
+    "timestamp": "22:48",
+    "content": "the required parameters,"
+  },
+  {
+    "timestamp": "22:50",
+    "content": "and the stub implementation,"
+  },
+  {
+    "timestamp": "22:52",
+    "content": "all wired correctly."
+  },
+  {
+    "timestamp": "22:55",
+    "content": "From here,"
+  },
+  {
+    "timestamp": "22:56",
+    "content": "we just need to fill in the app-specific pieces."
+  },
+  {
+    "timestamp": "22:59",
+    "content": "First,"
+  },
+  {
+    "timestamp": "23:00",
+    "content": "we connect the intent to our entities."
+  },
+  {
+    "timestamp": "23:04",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "23:09",
+    "content": "we inject our dependencies."
+  },
+  {
+    "timestamp": "23:11",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "23:16",
+    "content": "we process the input."
+  },
+  {
+    "timestamp": "23:19",
+    "content": "And finally,"
+  },
+  {
+    "timestamp": "23:24",
+    "content": "we open the message creation view."
+  },
+  {
+    "timestamp": "23:26",
+    "content": "Since this action mutates UI state,"
+  },
+  {
+    "timestamp": "23:33",
+    "content": "it needs to run on the main actor."
+  },
+  {
+    "timestamp": "23:35",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "23:40",
+    "content": "when we build again,"
+  },
+  {
+    "timestamp": "23:42",
+    "content": "the build succeeds."
+  },
+  {
+    "timestamp": "23:43",
+    "content": "We've completed the schema adoption,"
+  },
+  {
+    "timestamp": "23:47",
+    "content": "and Siri now has everything it needs"
+  },
+  {
+    "timestamp": "23:49",
+    "content": "to guide people through the full messaging flow."
+  },
+  {
+    "timestamp": "23:52",
+    "content": "The important thing to remember is,"
+  },
+  {
+    "timestamp": "23:56",
+    "content": "if a Siri experience depends on multiple schemas,"
+  },
+  {
+    "timestamp": "23:59",
+    "content": "Xcode will tell you,"
+  },
+  {
+    "timestamp": "24:01",
+    "content": "show you what's missing,"
+  },
+  {
+    "timestamp": "24:03",
+    "content": "and help you generate the right thing."
+  },
+  {
+    "timestamp": "24:04",
+    "content": "to generate the right remaining steps."
+  },
+  {
+    "timestamp": "24:07",
+    "content": "This makes it much easier to build"
+  },
+  {
+    "timestamp": "24:09",
+    "content": "complete,"
+  },
+  {
+    "timestamp": "24:10",
+    "content": "high-quality integrations."
+  },
+  {
+    "timestamp": "24:12",
+    "content": "Once you've adopted your schemas,"
+  },
+  {
+    "timestamp": "24:15",
+    "content": "testing becomes critical."
+  },
+  {
+    "timestamp": "24:17",
+    "content": "And the best place to start"
+  },
+  {
+    "timestamp": "24:19",
+    "content": "is App Intents testing."
+  },
+  {
+    "timestamp": "24:21",
+    "content": "This is a new testing framework"
+  },
+  {
+    "timestamp": "24:23",
+    "content": "that lets you exercise your intents"
+  },
+  {
+    "timestamp": "24:25",
+    "content": "entirely in isolation."
+  },
+  {
+    "timestamp": "24:28",
+    "content": "No Siri involved."
+  },
+  {
+    "timestamp": "24:30",
+    "content": "You can invoke your intent,"
+  },
+  {
+    "timestamp": "24:32",
+    "content": "pass in parameters,"
+  },
+  {
+    "timestamp": "24:34",
+    "content": "and validate the results,"
+  },
+  {
+    "timestamp": "24:36",
+    "content": "just like any other integration test."
+  },
+  {
+    "timestamp": "24:38",
+    "content": "This is the fastest and most reliable way"
+  },
+  {
+    "timestamp": "24:42",
+    "content": "to validate your business logic"
+  },
+  {
+    "timestamp": "24:44",
+    "content": "early in development."
+  },
+  {
+    "timestamp": "24:45",
+    "content": "Check out the video,"
+  },
+  {
+    "timestamp": "24:48",
+    "content": "validate your App Intents adoption"
+  },
+  {
+    "timestamp": "24:50",
+    "content": "with App Intents testing to learn more."
+  },
+  {
+    "timestamp": "24:52",
+    "content": "Once your logic is solid,"
+  },
+  {
+    "timestamp": "24:54",
+    "content": "the next step is the Shortcuts app."
+  },
+  {
+    "timestamp": "24:56",
+    "content": "Shortcuts gives you a structured UI"
+  },
+  {
+    "timestamp": "25:00",
+    "content": "for your intents,"
+  },
+  {
+    "timestamp": "25:01",
+    "content": "letting you inspect parameters,"
+  },
+  {
+    "timestamp": "25:03",
+    "content": "tweak inputs,"
+  },
+  {
+    "timestamp": "25:04",
+    "content": "and understand how your action"
+  },
+  {
+    "timestamp": "25:06",
+    "content": "is presented to people."
+  },
+  {
+    "timestamp": "25:08",
+    "content": "This is where you validate"
+  },
+  {
+    "timestamp": "25:10",
+    "content": "the shape of your intent,"
+  },
+  {
+    "timestamp": "25:11",
+    "content": "not just what it does,"
+  },
+  {
+    "timestamp": "25:12",
+    "content": "but how it's configured and exposed."
+  },
+  {
+    "timestamp": "25:16",
+    "content": "Next, move to Spotlight."
+  },
+  {
+    "timestamp": "25:19",
+    "content": "Spotlight is where you validate"
+  },
+  {
+    "timestamp": "25:21",
+    "content": "your content integration,"
+  },
+  {
+    "timestamp": "25:23",
+    "content": "ensuring your entities"
+  },
+  {
+    "timestamp": "25:25",
+    "content": "are indexed correctly,"
+  },
+  {
+    "timestamp": "25:27",
+    "content": "discoverable,"
+  },
+  {
+    "timestamp": "25:28",
+    "content": "and linkable."
+  },
+  {
+    "timestamp": "25:29",
+    "content": "This helps you confirm"
+  },
+  {
+    "timestamp": "25:31",
+    "content": "that Siri can find the right data"
+  },
+  {
+    "timestamp": "25:33",
+    "content": "before it ever tries to act on it."
+  },
+  {
+    "timestamp": "25:36",
+    "content": "Finally, test the complete experience"
+  },
+  {
+    "timestamp": "25:40",
+    "content": "with Siri."
+  },
+  {
+    "timestamp": "25:41",
+    "content": "This is where everything comes together."
+  },
+  {
+    "timestamp": "25:43",
+    "content": "Natural language,"
+  },
+  {
+    "timestamp": "25:44",
+    "content": "entity resolution,"
+  },
+  {
+    "timestamp": "25:46",
+    "content": "on-screen context,"
+  },
+  {
+    "timestamp": "25:47",
+    "content": "and cross-app workflows."
+  },
+  {
+    "timestamp": "25:49",
+    "content": "Testing end-to-end ensures"
+  },
+  {
+    "timestamp": "25:52",
+    "content": "that everything works together"
+  },
+  {
+    "timestamp": "25:53",
+    "content": "the way your customers expect."
+  },
+  {
+    "timestamp": "25:55",
+    "content": "At this point,"
+  },
+  {
+    "timestamp": "25:58",
+    "content": "you've seen how to"
+  },
+  {
+    "timestamp": "25:59",
+    "content": "model your content with app entities,"
+  },
+  {
+    "timestamp": "26:02",
+    "content": "expose actions using"
+  },
+  {
+    "timestamp": "26:04",
+    "content": "app intents and app schemas,"
+  },
+  {
+    "timestamp": "26:06",
+    "content": "enable cross-app workflows,"
+  },
+  {
+    "timestamp": "26:09",
+    "content": "and use tooling"
+  },
+  {
+    "timestamp": "26:10",
+    "content": "to build and test confidently."
+  },
+  {
+    "timestamp": "26:13",
+    "content": "So let's wrap up"
+  },
+  {
+    "timestamp": "26:14",
+    "content": "with a few concrete next steps."
+  },
+  {
+    "timestamp": "26:16",
+    "content": "Here's how to get started."
+  },
+  {
+    "timestamp": "26:19",
+    "content": "Model and index your entities to Spotlight"
+  },
+  {
+    "timestamp": "26:22",
+    "content": "so Siri can find your content."
+  },
+  {
+    "timestamp": "26:24",
+    "content": "Adopt app schema domains"
+  },
+  {
+    "timestamp": "26:26",
+    "content": "that match your app's core experiences."
+  },
+  {
+    "timestamp": "26:29",
+    "content": "Adopt transferable"
+  },
+  {
+    "timestamp": "26:31",
+    "content": "to enable content import and export."
+  },
+  {
+    "timestamp": "26:34",
+    "content": "and test early and often"
+  },
+  {
+    "timestamp": "26:36",
+    "content": "using app intents testing,"
+  },
+  {
+    "timestamp": "26:38",
+    "content": "then shortcuts, Spotlight, and Siri."
+  },
+  {
+    "timestamp": "26:42",
+    "content": "All of these APIs are available today"
+  },
+  {
+    "timestamp": "26:44",
+    "content": "and they're designed to scale with your app"
+  },
+  {
+    "timestamp": "26:47",
+    "content": "as Siri continues to evolve."
+  },
+  {
+    "timestamp": "26:51",
+    "content": "Siri is becoming more powerful,"
+  },
+  {
+    "timestamp": "26:53",
+    "content": "more contextual, and more capable."
+  },
+  {
+    "timestamp": "26:56",
+    "content": "And app intents are the foundation"
+  },
+  {
+    "timestamp": "26:58",
+    "content": "that make that possible."
+  },
+  {
+    "timestamp": "27:00",
+    "content": "By bringing your app to Siri,"
+  },
+  {
+    "timestamp": "27:02",
+    "content": "you're not just adding voice support."
+  },
+  {
+    "timestamp": "27:04",
+    "content": "You're making your app faster,"
+  },
+  {
+    "timestamp": "27:06",
+    "content": "more accessible,"
+  },
+  {
+    "timestamp": "27:07",
+    "content": "and easier to use across the system."
+  },
+  {
+    "timestamp": "27:10",
+    "content": "Thanks for watching,"
+  },
+  {
+    "timestamp": "27:11",
+    "content": "and we can't wait to see what you build."
+  }
+]

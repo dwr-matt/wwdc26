@@ -1,0 +1,4022 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, welcome."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "My name is Garrett Austin."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "I'm an engineer on Apple's game performance team."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "Today, I'll be joined by a special guest,"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "Pavel Sosko, Associate Game Director at CD Projekt Red."
+  },
+  {
+    "timestamp": "0:20",
+    "content": "Pavel is here to talk about Cyberpunk 2077 Ultimate Edition,"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "an incredible achievement on Mac."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "It takes advantage of unique platform features"
+  },
+  {
+    "timestamp": "0:27",
+    "content": "and delivers great performance across a wide range of Mac devices."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "Now, I'll leave it to Pavel to tell us all about"
+  },
+  {
+    "timestamp": "0:33",
+    "content": "how it was brought to life on Mac and how they made it stand out."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "Pavel?"
+  },
+  {
+    "timestamp": "0:37",
+    "content": "Thanks, my chum."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "I'm going to share more with you about the experience"
+  },
+  {
+    "timestamp": "0:41",
+    "content": "of bringing Cyberpunk 2077 to Mac."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "I'll start with an overview of Cyberpunk 2077 itself,"
+  },
+  {
+    "timestamp": "0:49",
+    "content": "explore how we approach the Mac development process,"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "and finally, share the finishing touches and flourishes"
+  },
+  {
+    "timestamp": "0:55",
+    "content": "that made Cyberpunk 2077 stand out on Mac."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "So, what is Cyberpunk 2077?"
+  },
+  {
+    "timestamp": "1:03",
+    "content": "It's an open-world RPG where you play as V,"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "a cyberpunk mercenary operating in Night City."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "Players explore the city and its surroundings,"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "meet characters, build relationships,"
+  },
+  {
+    "timestamp": "1:14",
+    "content": "and make a lot of decisions,"
+  },
+  {
+    "timestamp": "1:16",
+    "content": "some of which lead to unforeseen consequences."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "This is a beast of a game,"
+  },
+  {
+    "timestamp": "1:21",
+    "content": "a massive world, no loading screens,"
+  },
+  {
+    "timestamp": "1:24",
+    "content": "and a lot of data to constantly process."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "But from the get-go,"
+  },
+  {
+    "timestamp": "1:28",
+    "content": "the game was designed to be scalable,"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "to run on a variety of hardware,"
+  },
+  {
+    "timestamp": "1:33",
+    "content": "and this really helped us out"
+  },
+  {
+    "timestamp": "1:35",
+    "content": "when we brought it up on Mac."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "To this day, Cyberpunk 2077 remains a benchmark"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "that is used in the industry"
+  },
+  {
+    "timestamp": "1:43",
+    "content": "whenever new hardware comes out,"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "and there are a few reasons for that."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "Night City is packed with moving parts."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Crowds, traffic, AI, physics, animation, quests,"
+  },
+  {
+    "timestamp": "1:55",
+    "content": "and systemic interactions,"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "all running in parallel."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "A lot of this pressure lands on the CPU."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "Cyberpunk 2077 has mixed lighting everywhere."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "Neon signs, puddles, reflecting surfaces,"
+  },
+  {
+    "timestamp": "2:11",
+    "content": "headlights, emissive lights, volumetrics,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "often all in the same scene."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "It also supports advanced graphic modes"
+  },
+  {
+    "timestamp": "2:20",
+    "content": "like ray tracing and path tracing,"
+  },
+  {
+    "timestamp": "2:22",
+    "content": "which make the game much more demanding"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "and scale strongly with GPU capability."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "You probably know that we've been regularly updating"
+  },
+  {
+    "timestamp": "2:30",
+    "content": "Cyberpunk 2077 since its release."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "We shipped the Ultimate Edition,"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "introduced the Metro system,"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "extended romances, vehicle customization,"
+  },
+  {
+    "timestamp": "2:40",
+    "content": "and far more content to the game."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "So when we work on our game,"
+  },
+  {
+    "timestamp": "2:45",
+    "content": "we always try to make it relevant and fresh."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "Naturally, we were looking for other platforms"
+  },
+  {
+    "timestamp": "2:51",
+    "content": "where we can ship the game."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "So that brings us to the next question."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "How did we decide to bring Cyberpunk 2077 to Mac,"
+  },
+  {
+    "timestamp": "3:01",
+    "content": "and why did it make sense to do it at this point?"
+  },
+  {
+    "timestamp": "3:05",
+    "content": "At CD Projekt Red,"
+  },
+  {
+    "timestamp": "3:06",
+    "content": "we have a pretty long history shipping on Apple platforms."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "We wanted to continue that."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "As Apple Silicon developed,"
+  },
+  {
+    "timestamp": "3:14",
+    "content": "the hardware capabilities evolved far enough for us"
+  },
+  {
+    "timestamp": "3:17",
+    "content": "to bring a game on Cyberpunk scale to the Mac,"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "not only running it,"
+  },
+  {
+    "timestamp": "3:22",
+    "content": "but aiming at a serious quality level."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "With Apple Silicon,"
+  },
+  {
+    "timestamp": "3:26",
+    "content": "we were confident that we could deliver something"
+  },
+  {
+    "timestamp": "3:28",
+    "content": "we'd be comfortable putting our name on."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "And of course,"
+  },
+  {
+    "timestamp": "3:33",
+    "content": "bringing the game to the Mac"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "is a chance to reach more players,"
+  },
+  {
+    "timestamp": "3:37",
+    "content": "which we are always happy to do."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "Once we aligned on,"
+  },
+  {
+    "timestamp": "3:41",
+    "content": "yes, this is worth doing,"
+  },
+  {
+    "timestamp": "3:43",
+    "content": "the next question was,"
+  },
+  {
+    "timestamp": "3:45",
+    "content": "what does doing it properly mean"
+  },
+  {
+    "timestamp": "3:47",
+    "content": "for Cyberpunk 2077 on Mac?"
+  },
+  {
+    "timestamp": "3:50",
+    "content": "We set the quality bar for ourselves,"
+  },
+  {
+    "timestamp": "3:53",
+    "content": "and there were three main components to it."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "Maintaining the visual fidelity and identity"
+  },
+  {
+    "timestamp": "3:58",
+    "content": "of the game was the key."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "The look, the lighting, the materials,"
+  },
+  {
+    "timestamp": "4:03",
+    "content": "all of that is really tied"
+  },
+  {
+    "timestamp": "4:05",
+    "content": "to the very core of what Cyberpunk is."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "Another component is stable performance."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "It's really important to look at scenarios"
+  },
+  {
+    "timestamp": "4:13",
+    "content": "when we have heavy CPU and GPU usage,"
+  },
+  {
+    "timestamp": "4:16",
+    "content": "large crowds, screen space reflections,"
+  },
+  {
+    "timestamp": "4:20",
+    "content": "driving through dense areas, combat,"
+  },
+  {
+    "timestamp": "4:22",
+    "content": "and evaluate performance across heavy scenes"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "and locations to make sure it all runs smoothly."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "And then last but not least,"
+  },
+  {
+    "timestamp": "4:31",
+    "content": "it's the finishing touches"
+  },
+  {
+    "timestamp": "4:32",
+    "content": "that make the experience feel native."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "We always try to use the platform capabilities"
+  },
+  {
+    "timestamp": "4:37",
+    "content": "to their maximum."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "We wanted an experience that stands apart on macOS"
+  },
+  {
+    "timestamp": "4:41",
+    "content": "with native features and behaviors that players love."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "Before we started building the native path"
+  },
+  {
+    "timestamp": "4:48",
+    "content": "for Cyberpunk 2077 on Mac,"
+  },
+  {
+    "timestamp": "4:50",
+    "content": "we used Apple's Game Porting Toolkit"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "to evaluate the Windows build"
+  },
+  {
+    "timestamp": "4:55",
+    "content": "in a translated environment on macOS."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "This led us to gain valuable insight"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "before writing any code."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "Insights like,"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "is bringing Cyberpunk 2077 to Mac feasible"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "at the quality bar we set for ourselves?"
+  },
+  {
+    "timestamp": "5:12",
+    "content": "Where is the pressure likely to be?"
+  },
+  {
+    "timestamp": "5:15",
+    "content": "CPU, GPU, or any specific systems?"
+  },
+  {
+    "timestamp": "5:19",
+    "content": "And what are the first real focus areas"
+  },
+  {
+    "timestamp": "5:22",
+    "content": "we should plan around?"
+  },
+  {
+    "timestamp": "5:25",
+    "content": "The goal wasn't final performance numbers."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "It was information,"
+  },
+  {
+    "timestamp": "5:30",
+    "content": "where frame time goes,"
+  },
+  {
+    "timestamp": "5:31",
+    "content": "what are the performance challenges"
+  },
+  {
+    "timestamp": "5:33",
+    "content": "in real gameplay,"
+  },
+  {
+    "timestamp": "5:35",
+    "content": "and what we should build first"
+  },
+  {
+    "timestamp": "5:36",
+    "content": "once we move to native."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "To make the evaluation data useful,"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "we run a predefined set of hotspot sequences"
+  },
+  {
+    "timestamp": "5:45",
+    "content": "in the evaluation environment."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "For each test run,"
+  },
+  {
+    "timestamp": "5:48",
+    "content": "we looked at the data from three angles."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "Statistical frame time data"
+  },
+  {
+    "timestamp": "5:54",
+    "content": "from our in-engine profiler"
+  },
+  {
+    "timestamp": "5:56",
+    "content": "so we could compare runs consistently."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "MetalHUD"
+  },
+  {
+    "timestamp": "6:01",
+    "content": "to correlate what we are doing in the scene"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "with what we see in the trace,"
+  },
+  {
+    "timestamp": "6:06",
+    "content": "loading, shader translation,"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "or some known events,"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "such as saving the game."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "And engine internal profiling"
+  },
+  {
+    "timestamp": "6:14",
+    "content": "broken down into threads"
+  },
+  {
+    "timestamp": "6:16",
+    "content": "so we could see which CPU systems"
+  },
+  {
+    "timestamp": "6:18",
+    "content": "were active and when"
+  },
+  {
+    "timestamp": "6:20",
+    "content": "to make sense of hotspots and spikes."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "Later, once we had a native build running,"
+  },
+  {
+    "timestamp": "6:26",
+    "content": "we moved to using MetalHUD"
+  },
+  {
+    "timestamp": "6:28",
+    "content": "as the primary frame time capture tool on Mac."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "This let us collect comparable measurements"
+  },
+  {
+    "timestamp": "6:35",
+    "content": "across many devices"
+  },
+  {
+    "timestamp": "6:36",
+    "content": "and most importantly,"
+  },
+  {
+    "timestamp": "6:38",
+    "content": "do it on builds without debug"
+  },
+  {
+    "timestamp": "6:40",
+    "content": "or profiling settings enabled,"
+  },
+  {
+    "timestamp": "6:43",
+    "content": "allowing us to capture"
+  },
+  {
+    "timestamp": "6:44",
+    "content": "the most reliable data possible."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "Once we had that approach in place,"
+  },
+  {
+    "timestamp": "6:49",
+    "content": "the signals became pretty clear."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "On high spec hardware,"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "GPU time looked healthy"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "even this early,"
+  },
+  {
+    "timestamp": "6:56",
+    "content": "which actually pleasantly surprised us."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "It was stable enough"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "to serve as a baseline"
+  },
+  {
+    "timestamp": "7:02",
+    "content": "and it suggested"
+  },
+  {
+    "timestamp": "7:04",
+    "content": "that we had a realistic path"
+  },
+  {
+    "timestamp": "7:06",
+    "content": "for our performance targets"
+  },
+  {
+    "timestamp": "7:08",
+    "content": "once the Metal rendering pipeline"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "was native."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "In heavy gameplay,"
+  },
+  {
+    "timestamp": "7:13",
+    "content": "the experience was influenced"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "by CPU pressure."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "7:17",
+    "content": "in a city driving scenario,"
+  },
+  {
+    "timestamp": "7:18",
+    "content": "we could see a best case"
+  },
+  {
+    "timestamp": "7:20",
+    "content": "where the GPU was the limiter,"
+  },
+  {
+    "timestamp": "7:23",
+    "content": "but a hotspot case"
+  },
+  {
+    "timestamp": "7:24",
+    "content": "where the CPU time"
+  },
+  {
+    "timestamp": "7:25",
+    "content": "rose sharply"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "when the scene became dense"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "with traffic, crowds, and action."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "At this stage,"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "we saw a couple of patterns"
+  },
+  {
+    "timestamp": "7:34",
+    "content": "that were evaluation"
+  },
+  {
+    "timestamp": "7:36",
+    "content": "environmental artifacts."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "One was oscillation in frame time"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "caused by live shader translation."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "The other was our audio middleware,"
+  },
+  {
+    "timestamp": "7:45",
+    "content": "which looked heavy in some scenarios."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Both of these were resolved"
+  },
+  {
+    "timestamp": "7:50",
+    "content": "once we moved to native binaries"
+  },
+  {
+    "timestamp": "7:52",
+    "content": "and Gameporting Toolkit"
+  },
+  {
+    "timestamp": "7:53",
+    "content": "identified them for us,"
+  },
+  {
+    "timestamp": "7:55",
+    "content": "so we knew to investigate it early"
+  },
+  {
+    "timestamp": "7:57",
+    "content": "during our native implementation."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "Once we had that signals,"
+  },
+  {
+    "timestamp": "8:02",
+    "content": "we could turn the evaluation"
+  },
+  {
+    "timestamp": "8:03",
+    "content": "into a production roadmap."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "First was making Mac"
+  },
+  {
+    "timestamp": "8:08",
+    "content": "a real target."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "Native builds and libraries"
+  },
+  {
+    "timestamp": "8:11",
+    "content": "and adjusted data pipeline."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "Then we aimed for a playable build"
+  },
+  {
+    "timestamp": "8:17",
+    "content": "by bringing up the rendering"
+  },
+  {
+    "timestamp": "8:18",
+    "content": "and shader paths"
+  },
+  {
+    "timestamp": "8:20",
+    "content": "with the Metal API"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "and Metal Shader Converter."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "Once that was in place,"
+  },
+  {
+    "timestamp": "8:27",
+    "content": "the rest was the fun part,"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "making it shippable,"
+  },
+  {
+    "timestamp": "8:30",
+    "content": "adding platform native features,"
+  },
+  {
+    "timestamp": "8:32",
+    "content": "then optimizing for performance"
+  },
+  {
+    "timestamp": "8:34",
+    "content": "and adding more polish."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "There were three core parts"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "to making Mac"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "a real target in our pipeline."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "First, native builds on macOS."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "We needed Apple Silicon builds"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "produced with the macOS toolchain,"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "not only the game executable,"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "but also the development tools"
+  },
+  {
+    "timestamp": "8:53",
+    "content": "that we rely on in the process."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "Then there's the data pipeline."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "Internally, Cyberpunk 2077"
+  },
+  {
+    "timestamp": "9:00",
+    "content": "had a full-built pipeline"
+  },
+  {
+    "timestamp": "9:02",
+    "content": "set up for all the platforms we support,"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "and we have added macOS"
+  },
+  {
+    "timestamp": "9:07",
+    "content": "as yet another parallel platform"
+  },
+  {
+    "timestamp": "9:10",
+    "content": "following the same process."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "The platform-specific outputs,"
+  },
+  {
+    "timestamp": "9:14",
+    "content": "such as archives and shader cache,"
+  },
+  {
+    "timestamp": "9:16",
+    "content": "had to be generated"
+  },
+  {
+    "timestamp": "9:17",
+    "content": "following this already existing pipeline."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "Finally, the architecture bridge."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "The game and engine"
+  },
+  {
+    "timestamp": "9:25",
+    "content": "had years of assumptions"
+  },
+  {
+    "timestamp": "9:26",
+    "content": "from other CPU architectures,"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "so at the beginning of the process,"
+  },
+  {
+    "timestamp": "9:30",
+    "content": "we validated what works"
+  },
+  {
+    "timestamp": "9:32",
+    "content": "with unit testing"
+  },
+  {
+    "timestamp": "9:33",
+    "content": "and identified what changes"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "were required"
+  },
+  {
+    "timestamp": "9:36",
+    "content": "to have it run well"
+  },
+  {
+    "timestamp": "9:37",
+    "content": "on Apple Silicon."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "After this step,"
+  },
+  {
+    "timestamp": "9:40",
+    "content": "we could move on"
+  },
+  {
+    "timestamp": "9:41",
+    "content": "to the shader pipeline."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "As soon as we had"
+  },
+  {
+    "timestamp": "9:45",
+    "content": "a basic metal path"
+  },
+  {
+    "timestamp": "9:46",
+    "content": "that could display frames,"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Metal Shader Converter"
+  },
+  {
+    "timestamp": "9:49",
+    "content": "helped us get broad shader coverage"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "quickly"
+  },
+  {
+    "timestamp": "9:52",
+    "content": "so we could render meaningful scenes."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "In practice,"
+  },
+  {
+    "timestamp": "9:56",
+    "content": "we treated this process"
+  },
+  {
+    "timestamp": "9:57",
+    "content": "as a loop."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "Integrate Metal Shader Converter"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "into our shader build,"
+  },
+  {
+    "timestamp": "10:03",
+    "content": "so Metal Shader output"
+  },
+  {
+    "timestamp": "10:05",
+    "content": "was generated as a part"
+  },
+  {
+    "timestamp": "10:07",
+    "content": "of normal builds."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "Validate repeatable scenes"
+  },
+  {
+    "timestamp": "10:11",
+    "content": "and look for differences"
+  },
+  {
+    "timestamp": "10:13",
+    "content": "in lighting response,"
+  },
+  {
+    "timestamp": "10:15",
+    "content": "materials,"
+  },
+  {
+    "timestamp": "10:16",
+    "content": "and post effects."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "Refine the smaller set"
+  },
+  {
+    "timestamp": "10:21",
+    "content": "of advanced shaders"
+  },
+  {
+    "timestamp": "10:23",
+    "content": "or edge cases"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "where the converted result"
+  },
+  {
+    "timestamp": "10:27",
+    "content": "didn't quite match"
+  },
+  {
+    "timestamp": "10:28",
+    "content": "what we expected."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "Then repeat this process"
+  },
+  {
+    "timestamp": "10:31",
+    "content": "as a part of the build"
+  },
+  {
+    "timestamp": "10:33",
+    "content": "and test pipeline."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "In parallel to bringing shaders"
+  },
+  {
+    "timestamp": "10:37",
+    "content": "online with Metal Shader Converter,"
+  },
+  {
+    "timestamp": "10:39",
+    "content": "we were building out"
+  },
+  {
+    "timestamp": "10:40",
+    "content": "the native metal"
+  },
+  {
+    "timestamp": "10:41",
+    "content": "rendering foundation."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "We started with unit tests,"
+  },
+  {
+    "timestamp": "10:45",
+    "content": "bringing the metal"
+  },
+  {
+    "timestamp": "10:46",
+    "content": "back and up"
+  },
+  {
+    "timestamp": "10:47",
+    "content": "piece by piece"
+  },
+  {
+    "timestamp": "10:48",
+    "content": "and checking the base output"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "carefully"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "before adding more complexity."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Once that base layer"
+  },
+  {
+    "timestamp": "10:54",
+    "content": "was solid,"
+  },
+  {
+    "timestamp": "10:55",
+    "content": "we moved on"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "to stationary in-game scenes."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "That's where you can validate"
+  },
+  {
+    "timestamp": "11:00",
+    "content": "the parts unit tests"
+  },
+  {
+    "timestamp": "11:01",
+    "content": "don't cover very well."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "Lighting stacks,"
+  },
+  {
+    "timestamp": "11:05",
+    "content": "post effects,"
+  },
+  {
+    "timestamp": "11:06",
+    "content": "and scene level behavior."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "After that,"
+  },
+  {
+    "timestamp": "11:08",
+    "content": "we moved into dynamic scenes"
+  },
+  {
+    "timestamp": "11:10",
+    "content": "where camera movement,"
+  },
+  {
+    "timestamp": "11:12",
+    "content": "streaming,"
+  },
+  {
+    "timestamp": "11:12",
+    "content": "and gameplay"
+  },
+  {
+    "timestamp": "11:13",
+    "content": "start to expose"
+  },
+  {
+    "timestamp": "11:14",
+    "content": "the real edge cases."
+  },
+  {
+    "timestamp": "11:17",
+    "content": "When we implemented"
+  },
+  {
+    "timestamp": "11:18",
+    "content": "ray tracing"
+  },
+  {
+    "timestamp": "11:19",
+    "content": "and path tracing,"
+  },
+  {
+    "timestamp": "11:21",
+    "content": "we optimized the performance"
+  },
+  {
+    "timestamp": "11:22",
+    "content": "while validating"
+  },
+  {
+    "timestamp": "11:23",
+    "content": "that the visual output"
+  },
+  {
+    "timestamp": "11:25",
+    "content": "remain the same"
+  },
+  {
+    "timestamp": "11:26",
+    "content": "as other platforms"
+  },
+  {
+    "timestamp": "11:27",
+    "content": "to preserve the identity"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "and look of the game."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "Once the native metal foundation"
+  },
+  {
+    "timestamp": "11:33",
+    "content": "was stable,"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "our next challenge"
+  },
+  {
+    "timestamp": "11:35",
+    "content": "was scaling performance"
+  },
+  {
+    "timestamp": "11:37",
+    "content": "across different Macs,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "and this is where"
+  },
+  {
+    "timestamp": "11:40",
+    "content": "Metal FX upscaling"
+  },
+  {
+    "timestamp": "11:41",
+    "content": "comes in as a solution."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "At a high level,"
+  },
+  {
+    "timestamp": "11:45",
+    "content": "Metal FX lets you render"
+  },
+  {
+    "timestamp": "11:46",
+    "content": "at a lower internal resolution"
+  },
+  {
+    "timestamp": "11:48",
+    "content": "and reconstruct"
+  },
+  {
+    "timestamp": "11:49",
+    "content": "a higher resolution output"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "in less time."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "The practical benefit"
+  },
+  {
+    "timestamp": "11:54",
+    "content": "was quite straightforward."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "It gave us"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "more performance headroom"
+  },
+  {
+    "timestamp": "11:58",
+    "content": "in the heavy scenes"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "without lowering"
+  },
+  {
+    "timestamp": "12:01",
+    "content": "the quality"
+  },
+  {
+    "timestamp": "12:02",
+    "content": "across the board."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "We also used"
+  },
+  {
+    "timestamp": "12:04",
+    "content": "dynamic resolution scaling"
+  },
+  {
+    "timestamp": "12:06",
+    "content": "to help maintain"
+  },
+  {
+    "timestamp": "12:07",
+    "content": "stable performance"
+  },
+  {
+    "timestamp": "12:09",
+    "content": "under load"
+  },
+  {
+    "timestamp": "12:10",
+    "content": "across a variety"
+  },
+  {
+    "timestamp": "12:11",
+    "content": "of Mac hardware."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "As a temporal upscaler,"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "it helped the image"
+  },
+  {
+    "timestamp": "12:16",
+    "content": "hold together in motion,"
+  },
+  {
+    "timestamp": "12:17",
+    "content": "especially during"
+  },
+  {
+    "timestamp": "12:19",
+    "content": "fast traversal"
+  },
+  {
+    "timestamp": "12:20",
+    "content": "and VFX heavy scenes."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "At that point,"
+  },
+  {
+    "timestamp": "12:23",
+    "content": "we had the full game"
+  },
+  {
+    "timestamp": "12:24",
+    "content": "on Mac,"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "we had it running"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "with a working build,"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "it was rendering"
+  },
+  {
+    "timestamp": "12:30",
+    "content": "in a predictable way,"
+  },
+  {
+    "timestamp": "12:31",
+    "content": "and it was playable."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "From that point on,"
+  },
+  {
+    "timestamp": "12:34",
+    "content": "you really need"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "to ask yourself,"
+  },
+  {
+    "timestamp": "12:37",
+    "content": "okay,"
+  },
+  {
+    "timestamp": "12:37",
+    "content": "now what actually"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "makes it ready to ship?"
+  },
+  {
+    "timestamp": "12:41",
+    "content": "For us,"
+  },
+  {
+    "timestamp": "12:43",
+    "content": "it's few other components."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "There's the default settings,"
+  },
+  {
+    "timestamp": "12:47",
+    "content": "how it looks"
+  },
+  {
+    "timestamp": "12:48",
+    "content": "when you launch the game"
+  },
+  {
+    "timestamp": "12:49",
+    "content": "for the first time,"
+  },
+  {
+    "timestamp": "12:50",
+    "content": "then how we differentiate"
+  },
+  {
+    "timestamp": "12:52",
+    "content": "this version of the game"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "with platform native features,"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "and finally,"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "polishing the game"
+  },
+  {
+    "timestamp": "12:59",
+    "content": "for a great"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "overall experience."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "It was time to take"
+  },
+  {
+    "timestamp": "13:04",
+    "content": "what we have built"
+  },
+  {
+    "timestamp": "13:05",
+    "content": "and turn it into"
+  },
+  {
+    "timestamp": "13:06",
+    "content": "a first launch experience"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "on Mac"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "that really stood out."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "We wanted to provide"
+  },
+  {
+    "timestamp": "13:12",
+    "content": "great performance"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "on the first launch"
+  },
+  {
+    "timestamp": "13:14",
+    "content": "for every Mac."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "That's where the"
+  },
+  {
+    "timestamp": "13:16",
+    "content": "For This Mac preset"
+  },
+  {
+    "timestamp": "13:18",
+    "content": "comes in."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "For This Mac"
+  },
+  {
+    "timestamp": "13:21",
+    "content": "is a device-based"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "graphic preset system."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "It detects the hardware"
+  },
+  {
+    "timestamp": "13:25",
+    "content": "in your Mac"
+  },
+  {
+    "timestamp": "13:26",
+    "content": "and automatically configures"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "the best settings"
+  },
+  {
+    "timestamp": "13:29",
+    "content": "for your device."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "Regardless of which"
+  },
+  {
+    "timestamp": "13:32",
+    "content": "supported Mac you have,"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "you can launch the game"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "and get a stable,"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "enjoyable starting point"
+  },
+  {
+    "timestamp": "13:37",
+    "content": "right away."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "Our process started"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "with picking settings"
+  },
+  {
+    "timestamp": "13:42",
+    "content": "that maintain"
+  },
+  {
+    "timestamp": "13:43",
+    "content": "image fidelity"
+  },
+  {
+    "timestamp": "13:44",
+    "content": "for each supported"
+  },
+  {
+    "timestamp": "13:46",
+    "content": "Mac device."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "We set our target FPS"
+  },
+  {
+    "timestamp": "13:49",
+    "content": "to either 30 or 60,"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "Metal FX was used"
+  },
+  {
+    "timestamp": "13:53",
+    "content": "with dynamic resolution scaling,"
+  },
+  {
+    "timestamp": "13:56",
+    "content": "and we adjusted"
+  },
+  {
+    "timestamp": "13:56",
+    "content": "minimum and maximum"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "resolution boundaries"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "to hit the target FPS."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "Unique to The For This Mac"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "preset,"
+  },
+  {
+    "timestamp": "14:05",
+    "content": "we also adjusted"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "video settings."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "This was where we set"
+  },
+  {
+    "timestamp": "14:09",
+    "content": "the final output resolution,"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "which dynamic resolution scaling"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "operates within."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "We set V-Sync"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "for proper frame pacing"
+  },
+  {
+    "timestamp": "14:17",
+    "content": "with our FPS target."
+  },
+  {
+    "timestamp": "14:20",
+    "content": "We also enabled HDR"
+  },
+  {
+    "timestamp": "14:21",
+    "content": "based on the display's capabilities."
+  },
+  {
+    "timestamp": "14:24",
+    "content": "We then further tuned"
+  },
+  {
+    "timestamp": "14:26",
+    "content": "every setting in our game"
+  },
+  {
+    "timestamp": "14:28",
+    "content": "one by one"
+  },
+  {
+    "timestamp": "14:29",
+    "content": "for each Mac"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "to make sure"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "they're not only performant,"
+  },
+  {
+    "timestamp": "14:33",
+    "content": "but also beautiful."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "when a player downloads the game"
+  },
+  {
+    "timestamp": "14:36",
+    "content": "and launches it"
+  },
+  {
+    "timestamp": "14:37",
+    "content": "for the first time,"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "they can trust"
+  },
+  {
+    "timestamp": "14:39",
+    "content": "that it's optimized"
+  },
+  {
+    "timestamp": "14:40",
+    "content": "for their specific Mac."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "During our tuning process,"
+  },
+  {
+    "timestamp": "14:44",
+    "content": "what really helped us"
+  },
+  {
+    "timestamp": "14:45",
+    "content": "was using several"
+  },
+  {
+    "timestamp": "14:46",
+    "content": "consistent scenes"
+  },
+  {
+    "timestamp": "14:47",
+    "content": "that stress the CPU,"
+  },
+  {
+    "timestamp": "14:49",
+    "content": "GPU,"
+  },
+  {
+    "timestamp": "14:50",
+    "content": "and streaming systems"
+  },
+  {
+    "timestamp": "14:51",
+    "content": "in different ways."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Then we collected"
+  },
+  {
+    "timestamp": "14:54",
+    "content": "performance data,"
+  },
+  {
+    "timestamp": "14:55",
+    "content": "refined our settings,"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "and revalidated"
+  },
+  {
+    "timestamp": "14:57",
+    "content": "in a loop"
+  },
+  {
+    "timestamp": "14:58",
+    "content": "across the lineup"
+  },
+  {
+    "timestamp": "15:00",
+    "content": "until we found"
+  },
+  {
+    "timestamp": "15:01",
+    "content": "the ideal settings"
+  },
+  {
+    "timestamp": "15:02",
+    "content": "for each Mac."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "What's cool for us"
+  },
+  {
+    "timestamp": "15:05",
+    "content": "is since the release"
+  },
+  {
+    "timestamp": "15:06",
+    "content": "of Cyberpunk 2077"
+  },
+  {
+    "timestamp": "15:07",
+    "content": "on Mac,"
+  },
+  {
+    "timestamp": "15:09",
+    "content": "we've seen that"
+  },
+  {
+    "timestamp": "15:09",
+    "content": "other developers"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "are starting to adapt"
+  },
+  {
+    "timestamp": "15:12",
+    "content": "for this Mac settings"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "in their games as well."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "We think that it's"
+  },
+  {
+    "timestamp": "15:16",
+    "content": "pretty healthy"
+  },
+  {
+    "timestamp": "15:17",
+    "content": "for the ecosystem"
+  },
+  {
+    "timestamp": "15:18",
+    "content": "and it makes us"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "really happy to see it."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "Now, let's take a look"
+  },
+  {
+    "timestamp": "15:22",
+    "content": "at for this Mac"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "in the game."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "Here is the"
+  },
+  {
+    "timestamp": "15:27",
+    "content": "for this Mac preset."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "For this MacBook Pro"
+  },
+  {
+    "timestamp": "15:30",
+    "content": "with M5 Max chip,"
+  },
+  {
+    "timestamp": "15:32",
+    "content": "I'm using the Ultra preset"
+  },
+  {
+    "timestamp": "15:33",
+    "content": "as a base."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "From here,"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "I can see the rest"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "of the settings."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "Starting with Metal FX"
+  },
+  {
+    "timestamp": "15:40",
+    "content": "upscaling"
+  },
+  {
+    "timestamp": "15:41",
+    "content": "using dynamic resolution scaling,"
+  },
+  {
+    "timestamp": "15:44",
+    "content": "targeting 60 frames per second"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "and rendering anywhere"
+  },
+  {
+    "timestamp": "15:47",
+    "content": "from 50 to 80%"
+  },
+  {
+    "timestamp": "15:49",
+    "content": "of the target output resolution."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "Then I can go deeper"
+  },
+  {
+    "timestamp": "15:53",
+    "content": "into the settings,"
+  },
+  {
+    "timestamp": "15:55",
+    "content": "which were tweaked"
+  },
+  {
+    "timestamp": "15:56",
+    "content": "even more."
+  },
+  {
+    "timestamp": "15:57",
+    "content": "We didn't require"
+  },
+  {
+    "timestamp": "15:58",
+    "content": "a lot of tweaks"
+  },
+  {
+    "timestamp": "15:59",
+    "content": "for M5 Max."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "It's quite a capable chip."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "We also adjust video settings"
+  },
+  {
+    "timestamp": "16:07",
+    "content": "as part of the"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "4DS Mac preset."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "Here,"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "it's targeting"
+  },
+  {
+    "timestamp": "16:11",
+    "content": "a 60fps lock"
+  },
+  {
+    "timestamp": "16:12",
+    "content": "with Vsync."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "Resolution upper bounds"
+  },
+  {
+    "timestamp": "16:15",
+    "content": "are set"
+  },
+  {
+    "timestamp": "16:15",
+    "content": "and 2336-1460"
+  },
+  {
+    "timestamp": "16:18",
+    "content": "is chosen"
+  },
+  {
+    "timestamp": "16:19",
+    "content": "for the internal display."
+  },
+  {
+    "timestamp": "16:21",
+    "content": "Since the MacBook Pro's"
+  },
+  {
+    "timestamp": "16:23",
+    "content": "display is HDR capable,"
+  },
+  {
+    "timestamp": "16:25",
+    "content": "HDR defaults to on."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "HDR is automatically calibrated"
+  },
+  {
+    "timestamp": "16:29",
+    "content": "using Apple's"
+  },
+  {
+    "timestamp": "16:30",
+    "content": "EDR APIs."
+  },
+  {
+    "timestamp": "16:32",
+    "content": "Players do not have to visit"
+  },
+  {
+    "timestamp": "16:34",
+    "content": "a calibration screen."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "It's a really great feature,"
+  },
+  {
+    "timestamp": "16:37",
+    "content": "which I'll talk about later."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "16:39",
+    "content": "I will load into"
+  },
+  {
+    "timestamp": "16:40",
+    "content": "one of the most taxing areas"
+  },
+  {
+    "timestamp": "16:41",
+    "content": "of the game."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "Yes,"
+  },
+  {
+    "timestamp": "16:43",
+    "content": "so this area"
+  },
+  {
+    "timestamp": "16:43",
+    "content": "is a part of Dogtown."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "This is the company"
+  },
+  {
+    "timestamp": "16:46",
+    "content": "of UL Dogtown."
+  },
+  {
+    "timestamp": "16:50",
+    "content": "If you played"
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Phantom Liberty,"
+  },
+  {
+    "timestamp": "16:52",
+    "content": "you know,"
+  },
+  {
+    "timestamp": "16:53",
+    "content": "I'm not going to"
+  },
+  {
+    "timestamp": "16:53",
+    "content": "spoiler the story here,"
+  },
+  {
+    "timestamp": "16:55",
+    "content": "but I'm going to load"
+  },
+  {
+    "timestamp": "16:56",
+    "content": "into the black market."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "This is the first moment"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "when the player"
+  },
+  {
+    "timestamp": "16:59",
+    "content": "is actually entering"
+  },
+  {
+    "timestamp": "17:01",
+    "content": "this space."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "It's really dense"
+  },
+  {
+    "timestamp": "17:04",
+    "content": "in geometry,"
+  },
+  {
+    "timestamp": "17:05",
+    "content": "lights,"
+  },
+  {
+    "timestamp": "17:05",
+    "content": "reflections,"
+  },
+  {
+    "timestamp": "17:06",
+    "content": "and characters."
+  },
+  {
+    "timestamp": "17:08",
+    "content": "It's one of the heaviest areas"
+  },
+  {
+    "timestamp": "17:09",
+    "content": "in the whole game."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "Again,"
+  },
+  {
+    "timestamp": "17:11",
+    "content": "this is demonstrating"
+  },
+  {
+    "timestamp": "17:12",
+    "content": "some of the quality bar"
+  },
+  {
+    "timestamp": "17:13",
+    "content": "that I spoke about earlier,"
+  },
+  {
+    "timestamp": "17:15",
+    "content": "where we really wanted"
+  },
+  {
+    "timestamp": "17:17",
+    "content": "to stress frame time stability"
+  },
+  {
+    "timestamp": "17:18",
+    "content": "in the hardest scenes"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "in the game."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "of course,"
+  },
+  {
+    "timestamp": "17:22",
+    "content": "in Cyberpunk,"
+  },
+  {
+    "timestamp": "17:23",
+    "content": "you have no loading screen."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "You can traverse the scenes"
+  },
+  {
+    "timestamp": "17:26",
+    "content": "in any way you want."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "Everything is loading in"
+  },
+  {
+    "timestamp": "17:29",
+    "content": "and out smoothly."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "And as I go around here,"
+  },
+  {
+    "timestamp": "17:33",
+    "content": "there is a variety"
+  },
+  {
+    "timestamp": "17:34",
+    "content": "of neon"
+  },
+  {
+    "timestamp": "17:34",
+    "content": "and light sources."
+  },
+  {
+    "timestamp": "17:36",
+    "content": "It's really,"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "really dense,"
+  },
+  {
+    "timestamp": "17:38",
+    "content": "and it's all running smoothly,"
+  },
+  {
+    "timestamp": "17:39",
+    "content": "at 60 frames per second"
+  },
+  {
+    "timestamp": "17:41",
+    "content": "with out-of-the-box settings."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "Oh,"
+  },
+  {
+    "timestamp": "17:44",
+    "content": "these two gentlemen"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "are actually our founders,"
+  },
+  {
+    "timestamp": "17:47",
+    "content": "Marcin Iwiński"
+  },
+  {
+    "timestamp": "17:48",
+    "content": "and Miał Kiczyński."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "Our company started a van"
+  },
+  {
+    "timestamp": "17:51",
+    "content": "back when they were"
+  },
+  {
+    "timestamp": "17:52",
+    "content": "selling video games"
+  },
+  {
+    "timestamp": "17:53",
+    "content": "at the end of the 90s"
+  },
+  {
+    "timestamp": "17:54",
+    "content": "in Poland."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "So we scanned them"
+  },
+  {
+    "timestamp": "17:56",
+    "content": "and put them into the game."
+  },
+  {
+    "timestamp": "18:02",
+    "content": "They are all speaking Polish"
+  },
+  {
+    "timestamp": "18:04",
+    "content": "in all localizations"
+  },
+  {
+    "timestamp": "18:05",
+    "content": "of the game."
+  },
+  {
+    "timestamp": "18:06",
+    "content": "They are actually doing"
+  },
+  {
+    "timestamp": "18:07",
+    "content": "the voice acting as well."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "This is just one"
+  },
+  {
+    "timestamp": "18:10",
+    "content": "of the Easter eggs"
+  },
+  {
+    "timestamp": "18:11",
+    "content": "that we have hidden here."
+  },
+  {
+    "timestamp": "18:12",
+    "content": "All right,"
+  },
+  {
+    "timestamp": "18:12",
+    "content": "so we didn't stop"
+  },
+  {
+    "timestamp": "18:13",
+    "content": "at just settings optimization."
+  },
+  {
+    "timestamp": "18:16",
+    "content": "We also adopted"
+  },
+  {
+    "timestamp": "18:16",
+    "content": "a number of platform-specific"
+  },
+  {
+    "timestamp": "18:18",
+    "content": "features around windowing"
+  },
+  {
+    "timestamp": "18:20",
+    "content": "and app switching,"
+  },
+  {
+    "timestamp": "18:21",
+    "content": "game controllers"
+  },
+  {
+    "timestamp": "18:22",
+    "content": "and input devices,"
+  },
+  {
+    "timestamp": "18:24",
+    "content": "display and audio,"
+  },
+  {
+    "timestamp": "18:25",
+    "content": "and cloud-safe technologies"
+  },
+  {
+    "timestamp": "18:27",
+    "content": "that let you play anywhere."
+  },
+  {
+    "timestamp": "18:29",
+    "content": "Modern gaming intersects"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "with multitasking."
+  },
+  {
+    "timestamp": "18:32",
+    "content": "Players play in different scenarios"
+  },
+  {
+    "timestamp": "18:34",
+    "content": "and switch context,"
+  },
+  {
+    "timestamp": "18:35",
+    "content": "and macOS can let you know"
+  },
+  {
+    "timestamp": "18:37",
+    "content": "when these things happen."
+  },
+  {
+    "timestamp": "18:39",
+    "content": "We wanted to create"
+  },
+  {
+    "timestamp": "18:40",
+    "content": "a smooth system experience"
+  },
+  {
+    "timestamp": "18:41",
+    "content": "for players."
+  },
+  {
+    "timestamp": "18:43",
+    "content": "macOS broadcasts events"
+  },
+  {
+    "timestamp": "18:44",
+    "content": "as NS notifications"
+  },
+  {
+    "timestamp": "18:46",
+    "content": "that we can leverage."
+  },
+  {
+    "timestamp": "18:48",
+    "content": "Responding to NS notifications"
+  },
+  {
+    "timestamp": "18:50",
+    "content": "events in the game"
+  },
+  {
+    "timestamp": "18:51",
+    "content": "helped us ensure"
+  },
+  {
+    "timestamp": "18:52",
+    "content": "the game feels native"
+  },
+  {
+    "timestamp": "18:54",
+    "content": "to the system,"
+  },
+  {
+    "timestamp": "18:55",
+    "content": "accounts for app switching,"
+  },
+  {
+    "timestamp": "18:56",
+    "content": "and reacts to display"
+  },
+  {
+    "timestamp": "18:57",
+    "content": "configuration changes."
+  },
+  {
+    "timestamp": "18:59",
+    "content": "We also reduce our game's"
+  },
+  {
+    "timestamp": "19:01",
+    "content": "CPU and GPU activity"
+  },
+  {
+    "timestamp": "19:02",
+    "content": "while not in focus."
+  },
+  {
+    "timestamp": "19:04",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "19:05",
+    "content": "I'll walk you through"
+  },
+  {
+    "timestamp": "19:06",
+    "content": "some of these behaviors."
+  },
+  {
+    "timestamp": "19:08",
+    "content": "First,"
+  },
+  {
+    "timestamp": "19:09",
+    "content": "we reduced activity"
+  },
+  {
+    "timestamp": "19:10",
+    "content": "while the game"
+  },
+  {
+    "timestamp": "19:11",
+    "content": "is in the background."
+  },
+  {
+    "timestamp": "19:12",
+    "content": "When the game is not visible,"
+  },
+  {
+    "timestamp": "19:14",
+    "content": "we don't need to render"
+  },
+  {
+    "timestamp": "19:15",
+    "content": "and can save CPU and GPU"
+  },
+  {
+    "timestamp": "19:17",
+    "content": "resources for the player."
+  },
+  {
+    "timestamp": "19:20",
+    "content": "For this,"
+  },
+  {
+    "timestamp": "19:21",
+    "content": "we listen to the"
+  },
+  {
+    "timestamp": "19:22",
+    "content": "window-did-change-occlusion-state"
+  },
+  {
+    "timestamp": "19:24",
+    "content": "notification"
+  },
+  {
+    "timestamp": "19:25",
+    "content": "to know when we need"
+  },
+  {
+    "timestamp": "19:27",
+    "content": "to check for changes,"
+  },
+  {
+    "timestamp": "19:28",
+    "content": "and then check for"
+  },
+  {
+    "timestamp": "19:30",
+    "content": "NS window-occlusion-state"
+  },
+  {
+    "timestamp": "19:31",
+    "content": "to determine"
+  },
+  {
+    "timestamp": "19:32",
+    "content": "if we should pause rendering"
+  },
+  {
+    "timestamp": "19:34",
+    "content": "or if we should start"
+  },
+  {
+    "timestamp": "19:36",
+    "content": "rendering again."
+  },
+  {
+    "timestamp": "19:38",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "19:39",
+    "content": "display settings."
+  },
+  {
+    "timestamp": "19:41",
+    "content": "Players might change"
+  },
+  {
+    "timestamp": "19:42",
+    "content": "the settings"
+  },
+  {
+    "timestamp": "19:43",
+    "content": "of their attached display"
+  },
+  {
+    "timestamp": "19:44",
+    "content": "while multitasking."
+  },
+  {
+    "timestamp": "19:46",
+    "content": "We wanted to make sure"
+  },
+  {
+    "timestamp": "19:47",
+    "content": "our game window"
+  },
+  {
+    "timestamp": "19:48",
+    "content": "is aware of these changes"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "so it can correctly"
+  },
+  {
+    "timestamp": "19:51",
+    "content": "fill the screen."
+  },
+  {
+    "timestamp": "19:53",
+    "content": "When we receive"
+  },
+  {
+    "timestamp": "19:54",
+    "content": "an application-did-change-screen-parameters"
+  },
+  {
+    "timestamp": "19:57",
+    "content": "notification,"
+  },
+  {
+    "timestamp": "19:58",
+    "content": "we get the new screen resolution"
+  },
+  {
+    "timestamp": "20:00",
+    "content": "and update our game window"
+  },
+  {
+    "timestamp": "20:02",
+    "content": "accordingly."
+  },
+  {
+    "timestamp": "20:03",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "20:04",
+    "content": "not only can the display settings"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "change the player"
+  },
+  {
+    "timestamp": "20:07",
+    "content": "may move the game"
+  },
+  {
+    "timestamp": "20:08",
+    "content": "to a completely new display too."
+  },
+  {
+    "timestamp": "20:12",
+    "content": "After receiving a window-did-change-screen"
+  },
+  {
+    "timestamp": "20:14",
+    "content": "notification,"
+  },
+  {
+    "timestamp": "20:15",
+    "content": "we collect details"
+  },
+  {
+    "timestamp": "20:16",
+    "content": "about the new display."
+  },
+  {
+    "timestamp": "20:18",
+    "content": "This includes, for example,"
+  },
+  {
+    "timestamp": "20:20",
+    "content": "the display ID,"
+  },
+  {
+    "timestamp": "20:21",
+    "content": "resolution,"
+  },
+  {
+    "timestamp": "20:23",
+    "content": "mirror mode,"
+  },
+  {
+    "timestamp": "20:23",
+    "content": "and screen name."
+  },
+  {
+    "timestamp": "20:25",
+    "content": "Based on this,"
+  },
+  {
+    "timestamp": "20:26",
+    "content": "we know if"
+  },
+  {
+    "timestamp": "20:27",
+    "content": "and how to update"
+  },
+  {
+    "timestamp": "20:29",
+    "content": "our game window."
+  },
+  {
+    "timestamp": "20:30",
+    "content": "We are using our own cursor"
+  },
+  {
+    "timestamp": "20:32",
+    "content": "to match our game style."
+  },
+  {
+    "timestamp": "20:34",
+    "content": "To create a seamless"
+  },
+  {
+    "timestamp": "20:36",
+    "content": "system experience,"
+  },
+  {
+    "timestamp": "20:37",
+    "content": "we listen to two notifications"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "to manage the cursor"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "when the game window"
+  },
+  {
+    "timestamp": "20:42",
+    "content": "loses focus."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "20:44",
+    "content": "when I open the game overlay,"
+  },
+  {
+    "timestamp": "20:46",
+    "content": "our game cursor disappears,"
+  },
+  {
+    "timestamp": "20:48",
+    "content": "and the system cursor appears"
+  },
+  {
+    "timestamp": "20:50",
+    "content": "to allow for a seamless"
+  },
+  {
+    "timestamp": "20:52",
+    "content": "system experience."
+  },
+  {
+    "timestamp": "20:53",
+    "content": "When I close the game overlay,"
+  },
+  {
+    "timestamp": "20:55",
+    "content": "the system cursor disappears,"
+  },
+  {
+    "timestamp": "20:57",
+    "content": "and our game cursor appears,"
+  },
+  {
+    "timestamp": "20:59",
+    "content": "bringing us right back"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "into the game."
+  },
+  {
+    "timestamp": "21:02",
+    "content": "The window-did-resign key notification"
+  },
+  {
+    "timestamp": "21:05",
+    "content": "is the signal for us"
+  },
+  {
+    "timestamp": "21:07",
+    "content": "to show the system cursor"
+  },
+  {
+    "timestamp": "21:09",
+    "content": "and hide our game cursor."
+  },
+  {
+    "timestamp": "21:12",
+    "content": "Conversely,"
+  },
+  {
+    "timestamp": "21:13",
+    "content": "the window-did-become key notification"
+  },
+  {
+    "timestamp": "21:15",
+    "content": "is the signal for us"
+  },
+  {
+    "timestamp": "21:16",
+    "content": "to hide the system cursor"
+  },
+  {
+    "timestamp": "21:18",
+    "content": "and show our game cursor."
+  },
+  {
+    "timestamp": "21:20",
+    "content": "Aside from notifications,"
+  },
+  {
+    "timestamp": "21:22",
+    "content": "another thing to look for"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "is the game mode."
+  },
+  {
+    "timestamp": "21:25",
+    "content": "Game mode is a system feature"
+  },
+  {
+    "timestamp": "21:26",
+    "content": "on Apple"
+  },
+  {
+    "timestamp": "21:27",
+    "content": "that gives games"
+  },
+  {
+    "timestamp": "21:29",
+    "content": "higher priority access"
+  },
+  {
+    "timestamp": "21:30",
+    "content": "to the CPU and GPU"
+  },
+  {
+    "timestamp": "21:32",
+    "content": "and lowers the impact"
+  },
+  {
+    "timestamp": "21:34",
+    "content": "of background tasks,"
+  },
+  {
+    "timestamp": "21:36",
+    "content": "resulting in a smoother experience."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "It also improves responsiveness"
+  },
+  {
+    "timestamp": "21:41",
+    "content": "for wireless accessories"
+  },
+  {
+    "timestamp": "21:43",
+    "content": "by doubling the Bluetooth"
+  },
+  {
+    "timestamp": "21:45",
+    "content": "sampling rate,"
+  },
+  {
+    "timestamp": "21:47",
+    "content": "and that reduces latency"
+  },
+  {
+    "timestamp": "21:48",
+    "content": "for wireless game controllers,"
+  },
+  {
+    "timestamp": "21:50",
+    "content": "as well as AirPods'"
+  },
+  {
+    "timestamp": "21:52",
+    "content": "audio latency."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "And good news,"
+  },
+  {
+    "timestamp": "21:55",
+    "content": "game mode is automatically"
+  },
+  {
+    "timestamp": "21:56",
+    "content": "enabled for apps"
+  },
+  {
+    "timestamp": "21:57",
+    "content": "that are categorized as games,"
+  },
+  {
+    "timestamp": "22:00",
+    "content": "and our validation"
+  },
+  {
+    "timestamp": "22:01",
+    "content": "show the benefits"
+  },
+  {
+    "timestamp": "22:02",
+    "content": "players get from it."
+  },
+  {
+    "timestamp": "22:04",
+    "content": "Next, let's talk about input."
+  },
+  {
+    "timestamp": "22:07",
+    "content": "On Apple platforms,"
+  },
+  {
+    "timestamp": "22:09",
+    "content": "the game controller framework"
+  },
+  {
+    "timestamp": "22:10",
+    "content": "made it easy for us"
+  },
+  {
+    "timestamp": "22:11",
+    "content": "to implement native support"
+  },
+  {
+    "timestamp": "22:13",
+    "content": "for a range"
+  },
+  {
+    "timestamp": "22:14",
+    "content": "of third-party controllers."
+  },
+  {
+    "timestamp": "22:16",
+    "content": "It also supports"
+  },
+  {
+    "timestamp": "22:17",
+    "content": "advanced controller features"
+  },
+  {
+    "timestamp": "22:18",
+    "content": "like touchpad"
+  },
+  {
+    "timestamp": "22:20",
+    "content": "and adaptive triggers,"
+  },
+  {
+    "timestamp": "22:21",
+    "content": "which allowed us"
+  },
+  {
+    "timestamp": "22:22",
+    "content": "to easily bridge"
+  },
+  {
+    "timestamp": "22:23",
+    "content": "our existing implementations"
+  },
+  {
+    "timestamp": "22:25",
+    "content": "of these features"
+  },
+  {
+    "timestamp": "22:26",
+    "content": "in our game."
+  },
+  {
+    "timestamp": "22:27",
+    "content": "We also support"
+  },
+  {
+    "timestamp": "22:28",
+    "content": "Apple's native input devices,"
+  },
+  {
+    "timestamp": "22:31",
+    "content": "the Magic Mouse"
+  },
+  {
+    "timestamp": "22:32",
+    "content": "and trackpad."
+  },
+  {
+    "timestamp": "22:33",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "22:34",
+    "content": "every Mac laptop"
+  },
+  {
+    "timestamp": "22:35",
+    "content": "has a trackpad,"
+  },
+  {
+    "timestamp": "22:36",
+    "content": "so make sure you design"
+  },
+  {
+    "timestamp": "22:37",
+    "content": "your control options"
+  },
+  {
+    "timestamp": "22:38",
+    "content": "to adapt to the current input."
+  },
+  {
+    "timestamp": "22:42",
+    "content": "In our case,"
+  },
+  {
+    "timestamp": "22:42",
+    "content": "we automatically detect"
+  },
+  {
+    "timestamp": "22:43",
+    "content": "and enable toggle aiming"
+  },
+  {
+    "timestamp": "22:45",
+    "content": "and an alternative"
+  },
+  {
+    "timestamp": "22:46",
+    "content": "to the middle mouse button"
+  },
+  {
+    "timestamp": "22:48",
+    "content": "by using a modifier key"
+  },
+  {
+    "timestamp": "22:50",
+    "content": "and a mouse click."
+  },
+  {
+    "timestamp": "22:53",
+    "content": "Now, displays deserve"
+  },
+  {
+    "timestamp": "22:55",
+    "content": "their own moment."
+  },
+  {
+    "timestamp": "22:57",
+    "content": "Apple's high-end displays"
+  },
+  {
+    "timestamp": "22:58",
+    "content": "are some of the best"
+  },
+  {
+    "timestamp": "22:59",
+    "content": "we've seen Cyberpunk run on."
+  },
+  {
+    "timestamp": "23:02",
+    "content": "Night City is built"
+  },
+  {
+    "timestamp": "23:03",
+    "content": "on contrast,"
+  },
+  {
+    "timestamp": "23:04",
+    "content": "neon highlights,"
+  },
+  {
+    "timestamp": "23:05",
+    "content": "dark alleys,"
+  },
+  {
+    "timestamp": "23:06",
+    "content": "bright signage,"
+  },
+  {
+    "timestamp": "23:07",
+    "content": "and they look incredible"
+  },
+  {
+    "timestamp": "23:08",
+    "content": "in HDR."
+  },
+  {
+    "timestamp": "23:10",
+    "content": "We implemented HDR"
+  },
+  {
+    "timestamp": "23:11",
+    "content": "through Apple's"
+  },
+  {
+    "timestamp": "23:12",
+    "content": "extended dynamic range pipeline,"
+  },
+  {
+    "timestamp": "23:15",
+    "content": "which uniquely allows us"
+  },
+  {
+    "timestamp": "23:16",
+    "content": "to access information"
+  },
+  {
+    "timestamp": "23:17",
+    "content": "about the display"
+  },
+  {
+    "timestamp": "23:18",
+    "content": "so we can calibrate"
+  },
+  {
+    "timestamp": "23:20",
+    "content": "our HDR presentation"
+  },
+  {
+    "timestamp": "23:21",
+    "content": "automatically."
+  },
+  {
+    "timestamp": "23:22",
+    "content": "This is such a great benefit"
+  },
+  {
+    "timestamp": "23:24",
+    "content": "for the players."
+  },
+  {
+    "timestamp": "23:25",
+    "content": "They get the best"
+  },
+  {
+    "timestamp": "23:26",
+    "content": "HDR presentation"
+  },
+  {
+    "timestamp": "23:28",
+    "content": "and never have to manually"
+  },
+  {
+    "timestamp": "23:30",
+    "content": "adjust their HDR settings"
+  },
+  {
+    "timestamp": "23:32",
+    "content": "on a calibration screen"
+  },
+  {
+    "timestamp": "23:34",
+    "content": "with Apple displays."
+  },
+  {
+    "timestamp": "23:35",
+    "content": "To dynamically calibrate"
+  },
+  {
+    "timestamp": "23:37",
+    "content": "our HDR output,"
+  },
+  {
+    "timestamp": "23:39",
+    "content": "we simply pull"
+  },
+  {
+    "timestamp": "23:40",
+    "content": "maximum extended dynamic range"
+  },
+  {
+    "timestamp": "23:43",
+    "content": "color component value"
+  },
+  {
+    "timestamp": "23:44",
+    "content": "to get the current"
+  },
+  {
+    "timestamp": "23:45",
+    "content": "maximum EDR value"
+  },
+  {
+    "timestamp": "23:47",
+    "content": "for our display"
+  },
+  {
+    "timestamp": "23:48",
+    "content": "and then send that"
+  },
+  {
+    "timestamp": "23:50",
+    "content": "to our tone mapper."
+  },
+  {
+    "timestamp": "23:52",
+    "content": "This value can change"
+  },
+  {
+    "timestamp": "23:53",
+    "content": "dynamically depending"
+  },
+  {
+    "timestamp": "23:54",
+    "content": "on the capabilities"
+  },
+  {
+    "timestamp": "23:55",
+    "content": "of the display hardware"
+  },
+  {
+    "timestamp": "23:57",
+    "content": "and other conditions."
+  },
+  {
+    "timestamp": "23:58",
+    "content": "So using this"
+  },
+  {
+    "timestamp": "23:59",
+    "content": "to drive your tone mapper's"
+  },
+  {
+    "timestamp": "24:01",
+    "content": "maximum HDR output"
+  },
+  {
+    "timestamp": "24:03",
+    "content": "will always result"
+  },
+  {
+    "timestamp": "24:05",
+    "content": "at the best possible"
+  },
+  {
+    "timestamp": "24:06",
+    "content": "HDR rendering"
+  },
+  {
+    "timestamp": "24:07",
+    "content": "on Apple displays."
+  },
+  {
+    "timestamp": "24:09",
+    "content": "We automatically enable"
+  },
+  {
+    "timestamp": "24:11",
+    "content": "HDR for displays"
+  },
+  {
+    "timestamp": "24:12",
+    "content": "with sufficient"
+  },
+  {
+    "timestamp": "24:13",
+    "content": "EDR headroom,"
+  },
+  {
+    "timestamp": "24:15",
+    "content": "such as Apple's"
+  },
+  {
+    "timestamp": "24:15",
+    "content": "XDR displays."
+  },
+  {
+    "timestamp": "24:17",
+    "content": "For this,"
+  },
+  {
+    "timestamp": "24:18",
+    "content": "we check the maximum potential"
+  },
+  {
+    "timestamp": "24:20",
+    "content": "extended dynamic range"
+  },
+  {
+    "timestamp": "24:21",
+    "content": "color component value"
+  },
+  {
+    "timestamp": "24:22",
+    "content": "and see if the display's"
+  },
+  {
+    "timestamp": "24:25",
+    "content": "maximum potential"
+  },
+  {
+    "timestamp": "24:26",
+    "content": "EDR value"
+  },
+  {
+    "timestamp": "24:27",
+    "content": "is greater"
+  },
+  {
+    "timestamp": "24:28",
+    "content": "than 2.0."
+  },
+  {
+    "timestamp": "24:30",
+    "content": "If so,"
+  },
+  {
+    "timestamp": "24:31",
+    "content": "we enable HDR"
+  },
+  {
+    "timestamp": "24:32",
+    "content": "by default"
+  },
+  {
+    "timestamp": "24:32",
+    "content": "for a seamless experience."
+  },
+  {
+    "timestamp": "24:35",
+    "content": "Audio"
+  },
+  {
+    "timestamp": "24:36",
+    "content": "is yet another area"
+  },
+  {
+    "timestamp": "24:37",
+    "content": "where Apple platforms"
+  },
+  {
+    "timestamp": "24:39",
+    "content": "offer something special."
+  },
+  {
+    "timestamp": "24:41",
+    "content": "Cyberpunk's"
+  },
+  {
+    "timestamp": "24:41",
+    "content": "2077 soundscape"
+  },
+  {
+    "timestamp": "24:43",
+    "content": "is designed"
+  },
+  {
+    "timestamp": "24:43",
+    "content": "for spatial audio."
+  },
+  {
+    "timestamp": "24:44",
+    "content": "We were able"
+  },
+  {
+    "timestamp": "24:46",
+    "content": "to take advantage"
+  },
+  {
+    "timestamp": "24:47",
+    "content": "of Apple's"
+  },
+  {
+    "timestamp": "24:48",
+    "content": "spatial audio APIs"
+  },
+  {
+    "timestamp": "24:49",
+    "content": "to enable"
+  },
+  {
+    "timestamp": "24:50",
+    "content": "head-tracked"
+  },
+  {
+    "timestamp": "24:51",
+    "content": "spatial audio"
+  },
+  {
+    "timestamp": "24:52",
+    "content": "for players"
+  },
+  {
+    "timestamp": "24:53",
+    "content": "with AirPods."
+  },
+  {
+    "timestamp": "24:54",
+    "content": "This is a genuinely"
+  },
+  {
+    "timestamp": "24:55",
+    "content": "unique way"
+  },
+  {
+    "timestamp": "24:56",
+    "content": "to further immerse"
+  },
+  {
+    "timestamp": "24:57",
+    "content": "yourself within the game"
+  },
+  {
+    "timestamp": "24:58",
+    "content": "and it's enabled"
+  },
+  {
+    "timestamp": "24:59",
+    "content": "by default"
+  },
+  {
+    "timestamp": "25:00",
+    "content": "with no additional setup."
+  },
+  {
+    "timestamp": "25:03",
+    "content": "Our game"
+  },
+  {
+    "timestamp": "25:03",
+    "content": "has existing support"
+  },
+  {
+    "timestamp": "25:05",
+    "content": "for spatial audio"
+  },
+  {
+    "timestamp": "25:06",
+    "content": "with our audio middleware"
+  },
+  {
+    "timestamp": "25:07",
+    "content": "and our audio middleware"
+  },
+  {
+    "timestamp": "25:10",
+    "content": "implements"
+  },
+  {
+    "timestamp": "25:11",
+    "content": "Apple's spatial audio"
+  },
+  {
+    "timestamp": "25:12",
+    "content": "APIs"
+  },
+  {
+    "timestamp": "25:13",
+    "content": "via AV Audio Engine."
+  },
+  {
+    "timestamp": "25:15",
+    "content": "We enabled"
+  },
+  {
+    "timestamp": "25:16",
+    "content": "head-tracking"
+  },
+  {
+    "timestamp": "25:17",
+    "content": "for EarPods"
+  },
+  {
+    "timestamp": "25:18",
+    "content": "by setting"
+  },
+  {
+    "timestamp": "25:19",
+    "content": "the audio"
+  },
+  {
+    "timestamp": "25:20",
+    "content": "environment's notes"
+  },
+  {
+    "timestamp": "25:21",
+    "content": "a listener"
+  },
+  {
+    "timestamp": "25:22",
+    "content": "head-tracking"
+  },
+  {
+    "timestamp": "25:23",
+    "content": "enabled property"
+  },
+  {
+    "timestamp": "25:24",
+    "content": "to true."
+  },
+  {
+    "timestamp": "25:25",
+    "content": "Finally,"
+  },
+  {
+    "timestamp": "25:26",
+    "content": "we wanted to reduce"
+  },
+  {
+    "timestamp": "25:27",
+    "content": "friction for our players"
+  },
+  {
+    "timestamp": "25:29",
+    "content": "when introducing"
+  },
+  {
+    "timestamp": "25:30",
+    "content": "our game"
+  },
+  {
+    "timestamp": "25:31",
+    "content": "to a new platform."
+  },
+  {
+    "timestamp": "25:32",
+    "content": "On Mac,"
+  },
+  {
+    "timestamp": "25:33",
+    "content": "we support"
+  },
+  {
+    "timestamp": "25:34",
+    "content": "iCloud Drive integration"
+  },
+  {
+    "timestamp": "25:35",
+    "content": "allowing you"
+  },
+  {
+    "timestamp": "25:36",
+    "content": "to transfer"
+  },
+  {
+    "timestamp": "25:37",
+    "content": "save files"
+  },
+  {
+    "timestamp": "25:38",
+    "content": "between your"
+  },
+  {
+    "timestamp": "25:39",
+    "content": "Apple devices."
+  },
+  {
+    "timestamp": "25:40",
+    "content": "And because we have"
+  },
+  {
+    "timestamp": "25:41",
+    "content": "our own"
+  },
+  {
+    "timestamp": "25:42",
+    "content": "in-house"
+  },
+  {
+    "timestamp": "25:43",
+    "content": "cross-progression solution,"
+  },
+  {
+    "timestamp": "25:44",
+    "content": "players can continue"
+  },
+  {
+    "timestamp": "25:45",
+    "content": "their save"
+  },
+  {
+    "timestamp": "25:46",
+    "content": "across platforms."
+  },
+  {
+    "timestamp": "25:47",
+    "content": "they can start"
+  },
+  {
+    "timestamp": "25:49",
+    "content": "anywhere,"
+  },
+  {
+    "timestamp": "25:49",
+    "content": "continue playing"
+  },
+  {
+    "timestamp": "25:50",
+    "content": "on Mac,"
+  },
+  {
+    "timestamp": "25:51",
+    "content": "and vice versa."
+  },
+  {
+    "timestamp": "25:52",
+    "content": "So what's the outcome?"
+  },
+  {
+    "timestamp": "25:54",
+    "content": "A native"
+  },
+  {
+    "timestamp": "25:55",
+    "content": "Cyberpunk experience"
+  },
+  {
+    "timestamp": "25:56",
+    "content": "across Apple"
+  },
+  {
+    "timestamp": "25:57",
+    "content": "Silicon Macs"
+  },
+  {
+    "timestamp": "25:58",
+    "content": "with platform features"
+  },
+  {
+    "timestamp": "25:59",
+    "content": "integrated in a way"
+  },
+  {
+    "timestamp": "26:01",
+    "content": "that supports"
+  },
+  {
+    "timestamp": "26:02",
+    "content": "our quality bar."
+  },
+  {
+    "timestamp": "26:04",
+    "content": "We have sold"
+  },
+  {
+    "timestamp": "26:05",
+    "content": "35 million copies"
+  },
+  {
+    "timestamp": "26:06",
+    "content": "across all platforms"
+  },
+  {
+    "timestamp": "26:07",
+    "content": "and an additional"
+  },
+  {
+    "timestamp": "26:09",
+    "content": "10 million copies"
+  },
+  {
+    "timestamp": "26:11",
+    "content": "of Phantom Liberty."
+  },
+  {
+    "timestamp": "26:12",
+    "content": "It has been reviewed"
+  },
+  {
+    "timestamp": "26:14",
+    "content": "very favorably"
+  },
+  {
+    "timestamp": "26:16",
+    "content": "by our players"
+  },
+  {
+    "timestamp": "26:17",
+    "content": "on the App Store,"
+  },
+  {
+    "timestamp": "26:18",
+    "content": "which we are"
+  },
+  {
+    "timestamp": "26:19",
+    "content": "very thankful for."
+  },
+  {
+    "timestamp": "26:21",
+    "content": "And Cyberpunk"
+  },
+  {
+    "timestamp": "26:22",
+    "content": "2077"
+  },
+  {
+    "timestamp": "26:23",
+    "content": "Ultimate Edition"
+  },
+  {
+    "timestamp": "26:24",
+    "content": "was recognized"
+  },
+  {
+    "timestamp": "26:25",
+    "content": "as Mac"
+  },
+  {
+    "timestamp": "26:26",
+    "content": "Game of the Year"
+  },
+  {
+    "timestamp": "26:27",
+    "content": "in Apple's"
+  },
+  {
+    "timestamp": "26:28",
+    "content": "2025"
+  },
+  {
+    "timestamp": "26:29",
+    "content": "App Store Awards."
+  },
+  {
+    "timestamp": "26:31",
+    "content": "We are"
+  },
+  {
+    "timestamp": "26:31",
+    "content": "really,"
+  },
+  {
+    "timestamp": "26:32",
+    "content": "really thankful"
+  },
+  {
+    "timestamp": "26:33",
+    "content": "for this recognition."
+  },
+  {
+    "timestamp": "26:35",
+    "content": "It was a lot of work,"
+  },
+  {
+    "timestamp": "26:36",
+    "content": "but we truly believe"
+  },
+  {
+    "timestamp": "26:38",
+    "content": "it was worth it."
+  },
+  {
+    "timestamp": "26:39",
+    "content": "At the end of the day,"
+  },
+  {
+    "timestamp": "26:40",
+    "content": "what matters"
+  },
+  {
+    "timestamp": "26:41",
+    "content": "is not how much work"
+  },
+  {
+    "timestamp": "26:43",
+    "content": "you put into something,"
+  },
+  {
+    "timestamp": "26:44",
+    "content": "but what is the result"
+  },
+  {
+    "timestamp": "26:46",
+    "content": "for our players."
+  },
+  {
+    "timestamp": "26:48",
+    "content": "All right,"
+  },
+  {
+    "timestamp": "26:48",
+    "content": "that is it from us"
+  },
+  {
+    "timestamp": "26:49",
+    "content": "right now, Chum."
+  },
+  {
+    "timestamp": "26:50",
+    "content": "Thank you so much."
+  },
+  {
+    "timestamp": "26:51",
+    "content": "It was a pleasure"
+  },
+  {
+    "timestamp": "26:52",
+    "content": "sharing this with you."
+  },
+  {
+    "timestamp": "26:54",
+    "content": "Thanks, Pavel."
+  },
+  {
+    "timestamp": "26:55",
+    "content": "We hope you've enjoyed"
+  },
+  {
+    "timestamp": "26:56",
+    "content": "this special presentation."
+  },
+  {
+    "timestamp": "26:58",
+    "content": "If you're feeling inspired,"
+  },
+  {
+    "timestamp": "27:00",
+    "content": "try out Gameporting Toolkit's"
+  },
+  {
+    "timestamp": "27:01",
+    "content": "evaluation environment"
+  },
+  {
+    "timestamp": "27:02",
+    "content": "to see how your next game"
+  },
+  {
+    "timestamp": "27:04",
+    "content": "runs on macOS."
+  },
+  {
+    "timestamp": "27:05",
+    "content": "There's no code required"
+  },
+  {
+    "timestamp": "27:07",
+    "content": "and setup is fast."
+  },
+  {
+    "timestamp": "27:09",
+    "content": "Use MetalHUD"
+  },
+  {
+    "timestamp": "27:10",
+    "content": "to evaluate your game's"
+  },
+  {
+    "timestamp": "27:11",
+    "content": "performance"
+  },
+  {
+    "timestamp": "27:12",
+    "content": "within Gameporting Toolkit."
+  },
+  {
+    "timestamp": "27:14",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "27:15",
+    "content": "make your game stand out"
+  },
+  {
+    "timestamp": "27:16",
+    "content": "with a great"
+  },
+  {
+    "timestamp": "27:17",
+    "content": "first launch experience."
+  },
+  {
+    "timestamp": "27:19",
+    "content": "Provide optimized settings"
+  },
+  {
+    "timestamp": "27:20",
+    "content": "for your players"
+  },
+  {
+    "timestamp": "27:21",
+    "content": "and enable"
+  },
+  {
+    "timestamp": "27:22",
+    "content": "platform-native features"
+  },
+  {
+    "timestamp": "27:23",
+    "content": "like EDR"
+  },
+  {
+    "timestamp": "27:24",
+    "content": "and HeadTrack Spatial Audio"
+  },
+  {
+    "timestamp": "27:25",
+    "content": "with AirPods."
+  },
+  {
+    "timestamp": "27:27",
+    "content": "Check out"
+  },
+  {
+    "timestamp": "27:28",
+    "content": "Speedrun Your Gameport"
+  },
+  {
+    "timestamp": "27:29",
+    "content": "with Agentic Coding"
+  },
+  {
+    "timestamp": "27:30",
+    "content": "to learn about"
+  },
+  {
+    "timestamp": "27:31",
+    "content": "new agentic skills"
+  },
+  {
+    "timestamp": "27:32",
+    "content": "in Gameporting Toolkit 4."
+  },
+  {
+    "timestamp": "27:35",
+    "content": "Finally,"
+  },
+  {
+    "timestamp": "27:35",
+    "content": "you can discover"
+  },
+  {
+    "timestamp": "27:36",
+    "content": "powerful analysis tools"
+  },
+  {
+    "timestamp": "27:38",
+    "content": "in find-and-fix performance issues"
+  },
+  {
+    "timestamp": "27:39",
+    "content": "in your Metal games."
+  },
+  {
+    "timestamp": "27:41",
+    "content": "Alright,"
+  },
+  {
+    "timestamp": "27:42",
+    "content": "thanks for watching."
+  },
+  {
+    "timestamp": "27:43",
+    "content": "We look forward to playing"
+  },
+  {
+    "timestamp": "27:44",
+    "content": "your games"
+  },
+  {
+    "timestamp": "27:45",
+    "content": "on Apple platforms."
+  },
+  {
+    "timestamp": "27:46",
+    "content": "and"
+  }
+]

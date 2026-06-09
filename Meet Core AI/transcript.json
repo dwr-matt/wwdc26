@@ -1,0 +1,934 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi everyone, my name is Ben and I'm an engineer on the Core AI team."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "Today I'll be giving an introduction to Core AI and showing how you can use it to add intelligent features into your apps."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "AI is advancing faster than ever."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "New models and capabilities that previously seemed out of reach are emerging constantly."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "Core AI is built to help you harness that momentum and build on top of it."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "Core AI marks the next evolution of on-device AI execution across Apple platforms."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "It's built from the ground up for modern workloads and delivers the high performance inference you need to build advanced AI features."
+  },
+  {
+    "timestamp": "0:46",
+    "content": "Core AI is the inference framework powering on-device Apple intelligence."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "And now, it's available for you to use bringing that same power to your app's own intelligence."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "Core AI is more than just a framework."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "It's a complete set of technologies covering the model deployment lifecycle from model optimization and conversion to debugging and integration into your app."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "All designed to support the fast, iterative cycle that building great AI features requires."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "Core AI allows you to leverage all of Apple Silicon."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "It provides blazing fast inference across the CPU, GPU, and neural engine."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "The framework comes with a modern Swift API."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "It's an expressive API that delivers the performance your app demands without compromising on memory safety."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "The broader set of technologies fit naturally into common ML engineering workflows, reusing familiar Python and PyTorch foundations for model authoring, optimization, and conversion."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "Core AI also supports extensive customization from fine-grain inference management and model specialization to custom GPU kernels."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "And all of this is tightly integrated into a new developer toolchain with ahead-of-time compilation, dedicated Core AI instruments, and a powerful visual debugger to trace tensor values directly back to your original Python source code."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "Core AI is designed to scale to your needs and available compute."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "Whether you want your app to identify who's talking in a live meeting with a small speaker diarization model, your users to point their camera at anything, ask a question, and instantly get an answer with a larger vision language model, or let them hand off complex, multi-step tasks to a powerful agentic assistant powered by a 70 billion parameter LLM."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Core AI has you covered."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "With all of it running locally on Apple devices with no server and no cost per token."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "In this talk, I'll start by showing how to get your model into the Core AI format."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "Then I'll go over how to integrate the converted model into your app."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "I'll then dive a little deeper into optimizing the performance of your model and app."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "And lastly, I'll highlight some additional features of Core AI and its associated tools that you may find useful."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "Let's get started."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "Every great app experience starts with an idea."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "Maybe you want to build something that feels a little magical, something that responds intelligently, or makes a decision that would otherwise require a human or hard-coded rules."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "Machine learning and AI are what make those kinds of experiences possible."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "Once you have that idea, the next step is finding or building a model that can power it."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "Just like your idea itself will evolve over time, finding the right model is an iterative process."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "You'll try things, evaluate them against your requirements, and refine."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "Core AI is designed to support that iteration and make it as fast and frictionless as possible."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "So to make this concrete, I'll implement a fun game idea I had."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "It's an app that lets you play a two-player snake game where one snake is powered by an AI model run through Core AI."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "The app will follow traditional snake rules where snakes can grow by eating food and must avoid hitting walls, themselves, and the other snake."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "The last snake standing wins."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "At each time step, the AI model will see a set of features describing the current board state, and those features will be accumulated into the full game history that gets fed to the model."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "It will then predict the best direction to move."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "While snake is a simple game, the tools and APIs used to create this experience are the same foundation that scale all the way up to the larger, more complex use cases."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "I was curious to see what I could put together with PyTorch for this project."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "With a little help from an AI coding assistant, I was able to sketch out a simple snake action prediction model pretty quickly."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "To train it, I used a naive simulation to generate training data."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "Just running the game and recording states and actions."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "The idea was to start simple and get the model working in my app."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "So the next step is taking this PyTorch model and converting it to Core AI."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "I'll use the new Core AI Torch Python package to easily perform the conversion."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "First, I'll load the train checkpoint of the snake transformer module and prepare a sample input."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "Then, I'll export the Torch program using torch.export and also make sure to use the dynamic shapes argument to specify that the sequence length of the features is dynamic."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "That way, it doesn't get traced with the static sample length of 5."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Also, I'll run decompositions on the converted program using Core AI's decomposition table."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "Next, I'll run Core AI's torch converter, specify the names of the inputs and outputs, and finally save the converted Core AI model to disk."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Before leaving the Python environment, one more thing I'll do is run a test to verify that the converted Core AI model matches the numerics of my original PyTorch model."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "This can be done easily with the Core AI framework Python bindings."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "First, I'll load the PyTorch and Core AI models, then prepare a sample snake game input, then run that same input through both the PyTorch module and the Core AI inference function,"
+  },
+  {
+    "timestamp": "6:09",
+    "content": "and finally assert a sufficiently small delta for my use case between the PyTorch and Core AI outputs."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "Now that I have the converted AI model, the next step is to hop into Xcode and integrate the model into my app."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "First, I'll open the AI model file with Xcode, which shows information about the model."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "It includes the model size, the distribution of operations, and other helpful metadata."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Also in the Functions tab, it shows you the exact function signature of each unique function in the model."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "In this case, the model just has one function, which takes the features of the game board as an input and produces logits as an output,"
+  },
+  {
+    "timestamp": "6:50",
+    "content": "which indicate which direction the model thinks would be best to move."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "Also note that the question mark in the ND array values denotes that the dimension has a dynamic shape,"
+  },
+  {
+    "timestamp": "7:00",
+    "content": "which matches how I converted the model with a dynamic sequence length."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "Now that I've included the AI model file in my Xcode project and have examined its structure,"
+  },
+  {
+    "timestamp": "7:10",
+    "content": "the next step is to use the Core AI framework to run the model."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "The Core AI framework is a new Swift API surface for loading and running Core AI models."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "It offers a progressively disclosing set of APIs, which makes it simple to get things up and running,"
+  },
+  {
+    "timestamp": "7:25",
+    "content": "while also having deeper layers of flexibility for supporting performance-critical applications."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "Also, it uses modern Swift language features like nonescapable types to offer memory-safe APIs while not sacrificing performance."
+  },
+  {
+    "timestamp": "7:40",
+    "content": "Let's begin by discussing the Core types within the framework."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "An AI model is initialized from a URL to a .AI model file and is used primarily to inspect and load one or more inference functions."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "An inference function is the runnable object, which represents a single loaded compute graph."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "In the common case, your AI model will only have a single main inference function,"
+  },
+  {
+    "timestamp": "8:04",
+    "content": "though you can convert a single model with multiple functions."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "The AI model and inference function are typically objects you'll construct when preparing your app's AI feature."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "For example, this could be on app initialization."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "ND array is the type which holds your multi-dimensional input and output data,"
+  },
+  {
+    "timestamp": "8:23",
+    "content": "and you use the run method on an inference function to run inference with that data."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "Finally, you can read and process the outputs of the inference."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "So for implementing the snake game, I'll start by making the model player type."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "At app initialization time, it'll be initialized with the URL to the AI model file that it should use."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "Then, it will initialize the AI model and load the main inference function from it."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Next is the logic for the model player to make decisions."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "It'll conform to the snake player protocol that I've defined in my app."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "The main protocol requirement is the choose action function,"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "which has passed in the game's history and returns the next action that the snake should take."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "The first thing to do is create an ND array to populate with the input features."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "For this inference function, the expected structure of the ND array is two-dimensional with float32 data,"
+  },
+  {
+    "timestamp": "9:16",
+    "content": "where the first dimension of the shape is the current sequence length,"
+  },
+  {
+    "timestamp": "9:20",
+    "content": "and the second is the fixed hidden dimension size."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "Then, it'll write the features into that ND array using this WriteFeatures helper function,"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "which takes the game and immutable view of the ND array."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "The ND array dot mutable view type is a non-escapable type,"
+  },
+  {
+    "timestamp": "9:36",
+    "content": "which provides safe and efficient access to the backing storage of the ND array."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "After preparing the inputs, it'll run inference with them and extract the expected output logits ND array."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "The last step is to sample the output logits to pick the next direction that the snake will move,"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "by passing an ND array view into the helper function,"
+  },
+  {
+    "timestamp": "9:57",
+    "content": "which will read the values and choose the direction with the largest corresponding logit."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "The WriteFeatures function is what's populating the input features."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "Let's briefly go over what these features include."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "They have the normalized distance of the AI snake's head to all the walls,"
+  },
+  {
+    "timestamp": "10:14",
+    "content": "the normalized relative x and y distance to the nearest food,"
+  },
+  {
+    "timestamp": "10:18",
+    "content": "four elements encoding its current direction,"
+  },
+  {
+    "timestamp": "10:22",
+    "content": "the normalized distance to the other snake,"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "and finally the opponent's direction."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "Now with this put together, I'm going to try a test run with both snakes powered by the AI model to see how it does."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "Running it shows that the model is working,"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "however, I see that the game is getting slower as it goes on."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Alongside the CoreAI framework, there's a new instrument in Xcode to help you profile the CoreAI models running in your app."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "In this case, I've ran the app with instruments,"
+  },
+  {
+    "timestamp": "10:56",
+    "content": "and I can see the inference intervals getting notably larger over time,"
+  },
+  {
+    "timestamp": "11:00",
+    "content": "which means the inference calls are increasing in latency."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "This makes sense because transformer models have quadratic time complexity with respect to the sequence length,"
+  },
+  {
+    "timestamp": "11:10",
+    "content": "and in our game, the sequence length is increasing with every move the model makes."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "The next step in this case is to optimize the performance of the model usage."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "Each time the input sequence is increased,"
+  },
+  {
+    "timestamp": "11:22",
+    "content": "the transformer model recomputes a set of internal key and value embeddings for every element in the sequence."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "A common strategy used to improve the performance of decoding loops like this when using transformers"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "is to cache keys and values that are computed for each element in the sequence,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "as opposed to recomputing them all from scratch with each inference."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "This can be achieved through CoreAI by using states."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "States are inputs to the model which are both read and updated in place during inference."
+  },
+  {
+    "timestamp": "11:52",
+    "content": "By introducing the key and value caches as states on the model,"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "we both avoid recomputing them on each inference,"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "and also remove the need to provide the full history of the game as an input,"
+  },
+  {
+    "timestamp": "12:03",
+    "content": "since the data needed from older steps are stored in the states."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "So after the first input, each subsequent step uses the cache for history"
+  },
+  {
+    "timestamp": "12:13",
+    "content": "and only takes the new features of the latest board state."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "To implement the key value caching, I'll go back to the original authoring code"
+  },
+  {
+    "timestamp": "12:21",
+    "content": "and make a few changes to add in the key and value caches."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "First, I'll update the torch module by adding key and value cache tensors as buffers within the transformer module,"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "by using the torch register buffer API."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "This will later result in these tensors being mutable buffers in the exported torch program,"
+  },
+  {
+    "timestamp": "12:40",
+    "content": "which CoreAI will convert to states."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "Then in the forward function of the module, I'll add the logic to actually use the caches."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "This involves reading previous features keys and values out of the cache,"
+  },
+  {
+    "timestamp": "12:53",
+    "content": "then writing the computed keys and values for the new features back into the cache."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Lastly, I'll rerun the same code from before to reconvert the model,"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "but now adding in the state names argument to the convert call to specify the names of the new state arguments."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "Now that I've reconverted the model with the new function signature,"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "I'll update the app code to handle it."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "To start, I'll update the model player to store the key and value cache ND arrays,"
+  },
+  {
+    "timestamp": "13:21",
+    "content": "which will be the state arguments passed to each inference."
+  },
+  {
+    "timestamp": "13:24",
+    "content": "I'll initialize them with the expected shape for the transformer."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "In this case, I converted the model such that it expects the key and value caches"
+  },
+  {
+    "timestamp": "13:33",
+    "content": "to always be a fixed size for a maximum possible context length."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "Then when it's time to run inference, I'll construct a collection of mutable views"
+  },
+  {
+    "timestamp": "13:42",
+    "content": "containing both views of the key and value caches."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "Then provide those as the state argument of the inference function dot run method."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Now the caches will be both read and updated in place during each inference."
+  },
+  {
+    "timestamp": "13:56",
+    "content": "Now with the updated model, I'll rerun the app."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "This time I can see it maintains a steady speed, no longer slowing down over time."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "When tracing the updated app and instruments, I can confirm that the inference latency"
+  },
+  {
+    "timestamp": "14:10",
+    "content": "is growing at a much slower rate."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "Before wrapping up, I'll show some features that I didn't use while making the snake game,"
+  },
+  {
+    "timestamp": "14:16",
+    "content": "but that you may find useful when developing your own apps."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "When converting the snake game models, I use the coreai torch package"
+  },
+  {
+    "timestamp": "14:24",
+    "content": "to directly convert the PyTorch module."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "This flow is simple and works great for many use cases,"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "but sometimes you may need more control over how your model is authored"
+  },
+  {
+    "timestamp": "14:34",
+    "content": "and potentially even how the operations within the model are run."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "We've only touched the surface of what the coreai python package has to offer."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "It also has support for directly authoring your model with coreai APIs,"
+  },
+  {
+    "timestamp": "14:46",
+    "content": "optimizing the model for Apple Silicon,"
+  },
+  {
+    "timestamp": "14:49",
+    "content": "and defining custom kernel implementations with Metal 4."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "To learn more about these advanced model authoring flows,"
+  },
+  {
+    "timestamp": "14:56",
+    "content": "see the talk Dive into Coreai Model Authoring and Optimization."
+  },
+  {
+    "timestamp": "15:01",
+    "content": "In addition to debugging performance,"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "it's also crucial to be able to debug the numerics of your converted model."
+  },
+  {
+    "timestamp": "15:07",
+    "content": "For this, you can use the coreai debugger,"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "which allows you to visualize your converted model,"
+  },
+  {
+    "timestamp": "15:13",
+    "content": "easily inspect intermediate tensor values,"
+  },
+  {
+    "timestamp": "15:16",
+    "content": "and trace back operations in the converted model"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "to the Python source code which introduced them."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "There's also a convenient coreai debug gauge,"
+  },
+  {
+    "timestamp": "15:25",
+    "content": "which shows you streaming coreai activity while your app is running in Xcode."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "This is a great place to spot performance issues before jumping into instruments."
+  },
+  {
+    "timestamp": "15:34",
+    "content": "One thing that was glossed over in the Snake game implementation"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "is the process of model specialization."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "When you ship an AI model with your app,"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "that's a source representation of the model,"
+  },
+  {
+    "timestamp": "15:44",
+    "content": "which can be run on any Apple device."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "However, to actually load and run the model within your app,"
+  },
+  {
+    "timestamp": "15:51",
+    "content": "it must be specialized for the device that the app is running on."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "When your model is loaded,"
+  },
+  {
+    "timestamp": "15:56",
+    "content": "it's checked to see if it has already been specialized and cached."
+  },
+  {
+    "timestamp": "16:00",
+    "content": "The specialization process can take a significant amount of time for very large models."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "While future loads are from the cache and fast,"
+  },
+  {
+    "timestamp": "16:09",
+    "content": "that first time is something you may need to plan for."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "It's recommended you avoid having model specialization occur within user interactive flows."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "CoreAI can help you with that."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "First, CoreAI gives you programmatic access to the default model cache for your app."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "You can request to load models directly from it."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "If nil is returned, it is not present and requires specialization."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "You can use this to gate features or inform the users that they may need to wait a bit while your app prepares the model."
+  },
+  {
+    "timestamp": "16:41",
+    "content": "Second, you can request model specialization explicitly in your app, independent of it being loaded."
+  },
+  {
+    "timestamp": "16:47",
+    "content": "You can do this after downloading assets or when the user opts into a feature so the model is ready to go ahead of time."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "And there's a lot more control available."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "Specialization options help you configure how you want your model to be optimized for inference."
+  },
+  {
+    "timestamp": "17:02",
+    "content": "With the AI model cache, you can also delete entries you no longer need and control the policy on how long entries persist."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "You can even share a cache between multiple apps in the same app group."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "Check out the Managing Model Specialization and Caching article on developer.apple.com to learn more."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "Independent of when specialization occurs, it still takes time."
+  },
+  {
+    "timestamp": "17:27",
+    "content": "Let's take a quick peek inside."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "During specialization, the model goes through two main transformations."
+  },
+  {
+    "timestamp": "17:35",
+    "content": "First, it goes through a core set of compilation steps which segment, plan, and optimize compute."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "Second, executable artifacts are generated for the compute units used."
+  },
+  {
+    "timestamp": "17:46",
+    "content": "These artifacts are tied to the device and OS version they were generated on."
+  },
+  {
+    "timestamp": "17:51",
+    "content": "Of these two steps, compilation is the one which incurs most of the latency."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "The CoreAI toolchain can help you reduce that time by allowing some compilation to occur ahead of time on your development machine, producing a compiled version of the model."
+  },
+  {
+    "timestamp": "18:06",
+    "content": "While that compiled model still needs to be specialized for the specific user's device, there's now much less work to do and finishes significantly faster."
+  },
+  {
+    "timestamp": "18:16",
+    "content": "To learn more about this option, check out the Compiling Core AI Models Ahead of Time article on developer.apple.com."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "Controlling when, where, and how specialization happens is one way to help you optimize your user's experience."
+  },
+  {
+    "timestamp": "18:32",
+    "content": "Another area you may want to optimize is removing any overheads in tight inference loops using your model."
+  },
+  {
+    "timestamp": "18:38",
+    "content": "The CoreAI framework has several APIs to help you here."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "You can dynamically check the optimal memory layout of NDArray arguments and allocate them with that structure to avoid layout conversions at inference time."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "You can also pre-allocate output values for the framework to write into to avoid allocating new output values during inference."
+  },
+  {
+    "timestamp": "19:00",
+    "content": "And you can also use asynchronous values to efficiently pipeline execution of multiple inference functions together."
+  },
+  {
+    "timestamp": "19:07",
+    "content": "For most use cases, the higher level inference APIs will get you exactly where you need to be."
+  },
+  {
+    "timestamp": "19:13",
+    "content": "But when you're optimizing a tight inference loop or integrating a model into a complex compute pipeline, these lower level APIs are there when you need them."
+  },
+  {
+    "timestamp": "19:22",
+    "content": "Whether you're just getting started or diving deep, the CoreAI Models repository is a great place to find what you need."
+  },
+  {
+    "timestamp": "19:29",
+    "content": "It has a collection of popular models, each just a single command away from being converted and optimized for your app."
+  },
+  {
+    "timestamp": "19:36",
+    "content": "AI skills that are experts in CoreAI model authoring, optimization, and conversion."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "And a Swift package with libraries for specific families of models that give you higher level APIs that already have many of those low level inference optimizations built in."
+  },
+  {
+    "timestamp": "19:55",
+    "content": "It also provides an API for creating a CoreAI language model, which plugs right into the Foundation Models framework, letting you bring your own custom models and token sampling strategies."
+  },
+  {
+    "timestamp": "20:07",
+    "content": "To wrap things up, CoreAI is available on all Apple Silicon to help you build cutting-edge AI experiences on all Apple platforms."
+  },
+  {
+    "timestamp": "20:15",
+    "content": "It has tight integration with the existing Python tools that you're already familiar with, a modern Swift framework for running your models efficiently within your app, and state-of-the-art debugging tools to help you understand how your models are running on Apple devices."
+  },
+  {
+    "timestamp": "20:31",
+    "content": "We can't wait to see what sorts of experiences you build."
+  },
+  {
+    "timestamp": "20:34",
+    "content": "We have"
+  },
+  {
+    "timestamp": "20:38",
+    "content": "We'll be right back."
+  }
+]

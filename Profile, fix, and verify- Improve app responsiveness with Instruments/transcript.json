@@ -1,0 +1,1342 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Art and I work on Xcode."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "And I'm Harjus from the Instruments team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Delivering a fluid user interface is a baseline for a great app."
+  },
+  {
+    "timestamp": "0:15",
+    "content": "But there is a lot happening behind the scenes."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "Navigating the layers of the software stack can be confusing."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "Instruments 27 makes it easier than ever to understand how to make"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "your apps feel fast and responsive."
+  },
+  {
+    "timestamp": "0:30",
+    "content": "It starts with app foundation."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "The swift code you write is fast and expressive."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "But this code does not execute in isolation."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "Even simple code is hiding a lot of complexity."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "The compiler in runtime injects dynamic dispatch,"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "safety checks, and reference counting behind the scenes."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "Then it relies on operating system for memory allocation,"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "process scheduling, and I.O. routing."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "After that, OS delegates to the underlying platform."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "This finally routes execution directly to the physical hardware."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "It is also worth noticing while I've highlighted few common components here,"
+  },
+  {
+    "timestamp": "1:08",
+    "content": "there are many more compiler and system features at play."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "To help you trash performance issues, we'll share a mental model to understand"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "and optimize your app responsiveness."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "First, we'll look at CPU saturation and show you how to investigate periods of high system utilization."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "Next, we'll discuss sampling data visualization, exploring how to interpret it, your profiling data."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "Then, we'll look at execution contention and examine what happens when tasks are start for resources."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "And finally, we'll analyze system blocking, uncovering the root cause behind why your application stopped processing."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "But before we dive in, let's establish a diagnostic flow."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "When an application drops frames or hangs, the first step is a time profiler."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "It provides high-level overview needed to orient yourself."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "From there, the question is, what is CPU doing during the hang?"
+  },
+  {
+    "timestamp": "2:05",
+    "content": "If CPU usage is high, then the threat is busy and the work is taking too long."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "This points to a code performance bottleneck."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "When you hit a performance issue in the main threat, there are two ways to fix it."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "The first is code optimization, refactoring algorithms to execute faster."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "But if the heavy workload is unavoidable, we resolve it by floating the work to a background task,"
+  },
+  {
+    "timestamp": "2:29",
+    "content": "so the user interface remains responsive."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "If the application hangs but the processor is idle, optimizing algorithms won't be helpful."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "This usually suggests that the main threat is stuck, waiting for a resource to free up."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "This block can fall into many categories, but some common ones are waiting for the file I.O.,"
+  },
+  {
+    "timestamp": "2:49",
+    "content": "waiting on synchronization lock, or waiting for inter-process communication."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "Because Time Profiler only monitors active CPU cycles, it provides no visibility into these events."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "We will demonstrate this workflow using a note taken application that we have been prototyping."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "This app allows me to draw, add images, and use Elaset tool to move elements around."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "But we've noticed three issues while testing them."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Let's capture a profile to pin those issues down."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "We start right here in Xcode."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "To begin profiling, I will open product menu and select profile."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "This will create a release build of my application."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "A debug build traded off a runtime performance for debugability."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "So profiling data from debug builds can't be misleading."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "Profiling a release build is crucial to get the most actionable data."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "Because my code base utilizes Swift concurrency, I will choose the Swift concurrency template from the picker."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Within this template, we still have access to Time Profiler instrument."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "I'll start the recording and switch over to iPad to record the workflow that we're exhibiting performance issue during my testing."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "When I hit save on a note, the pencil is not instantly responsive."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "When I scroll through my notes, the UI is not smooth."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "And when I use Losset tool, I notice that it hangs."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Now, let's stop the recording in the top left corner."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "And now we'll have a trace containing all of the information about these three hangs."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "Hey, Harjus, the trace is ready."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "I'll airdrop with your file so we can start the investigation."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "Thanks, Art."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "You can go ahead and wait."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "by changing the selection with the pop-up button in the middle bar."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "On the right-hand side is a brand-new inspector panel."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "It surfaces additional details and actions"
+  },
+  {
+    "timestamp": "5:27",
+    "content": "based on selection in the timeline or the detail view."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "First, let's investigate why the lasso tool"
+  },
+  {
+    "timestamp": "5:34",
+    "content": "wasn't able to keep up with the pencil."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "To make this easier, I'm going to use a tool called OS Signpost."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "OS Log and OS Signpost offer a set of APIs"
+  },
+  {
+    "timestamp": "5:44",
+    "content": "to enable logging and tracing."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "For our use case, I added an OS Signpost interval"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "around lasso selection."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "I achieved this by using the OS Signposter type,"
+  },
+  {
+    "timestamp": "5:54",
+    "content": "which has APIs to start and stop tracing an interval."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "When creating the signposter, I set the subsystem to DemoApp"
+  },
+  {
+    "timestamp": "6:02",
+    "content": "so that I know it's related to my app,"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "and I set the category to Points of Interest"
+  },
+  {
+    "timestamp": "6:07",
+    "content": "so that instruments will automatically surface this data"
+  },
+  {
+    "timestamp": "6:10",
+    "content": "in the Points of Interest track."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "Now, we can find the lasso selection interval"
+  },
+  {
+    "timestamp": "6:15",
+    "content": "in the timeline."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "And use the context menu on the interval"
+  },
+  {
+    "timestamp": "6:23",
+    "content": "to filter the trace to this time period."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "The hangs instrument shows that there were several hangs"
+  },
+  {
+    "timestamp": "6:32",
+    "content": "during lasso selection,"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "which lines up with what Art was experiencing."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "As Art said earlier,"
+  },
+  {
+    "timestamp": "6:38",
+    "content": "we should check the CPU usage on the main thread"
+  },
+  {
+    "timestamp": "6:41",
+    "content": "during this hang."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "We can find that by expanding the process track,"
+  },
+  {
+    "timestamp": "6:45",
+    "content": "which reveals all the threads for this process."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "The main thread shows that CPU usage is high,"
+  },
+  {
+    "timestamp": "6:52",
+    "content": "staying around 100% during this period,"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "which suggests our code is executing,"
+  },
+  {
+    "timestamp": "6:58",
+    "content": "but it takes too long."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "So, we should investigate using Time Profiler."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "Hey, Art, can you walk through the ways"
+  },
+  {
+    "timestamp": "7:06",
+    "content": "we can visualize sampling data in instruments?"
+  },
+  {
+    "timestamp": "7:08",
+    "content": "Absolutely."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "When your application is running,"
+  },
+  {
+    "timestamp": "7:11",
+    "content": "the CPU is generating a thousandth of sample"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "every single second."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "Instruments is built to handle that scale,"
+  },
+  {
+    "timestamp": "7:18",
+    "content": "providing visualization for different categories"
+  },
+  {
+    "timestamp": "7:20",
+    "content": "of performance analysis."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "Let's break down how the Time Profiler"
+  },
+  {
+    "timestamp": "7:25",
+    "content": "translates raw execution into a call tree."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "It uses a hardware timer to sample the state"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "of the app's execution at irregular intervals."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "The default sampling rate is 1 millisecond."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "When the timer fires,"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "it records the current call stack on every core."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "This first sample, main calls safe node,"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "in a call tree, each of these functions"
+  },
+  {
+    "timestamp": "7:50",
+    "content": "received a weight of 1."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "Because safe node is the function actively executing"
+  },
+  {
+    "timestamp": "7:54",
+    "content": "at the bottom of the stack,"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "it receives a self-weight of 1."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "A millisecond later, the second sample fires."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "This time, we sample main calling render canvas,"
+  },
+  {
+    "timestamp": "8:07",
+    "content": "which calls drawstroke function."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "Their weights are also added to the tree."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "On the third sample, drawstroke has finished."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "So we sample main and render canvas."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "Main increments to a total weight of 3,"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "and render canvas increments to a total weight of 2."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "Notice the fast, swift retain call."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Because it started and finished entirely between the samples,"
+  },
+  {
+    "timestamp": "8:32",
+    "content": "it is now recorded."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "But it's important to note that the more frequent it called,"
+  },
+  {
+    "timestamp": "8:37",
+    "content": "the more likely it will be sampled."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "This call tree is a raw data driving your investigation."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "But reading it can be difficult to parse at a glance."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "To make this data even more intuitive,"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "instruments can render it visually as a flame graph."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "The flame graph maps the call tree structure into spatial blocks."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "Main, with a weight of 3, forms the top level."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "The functions at code, render canvas, and safe node cascade downwards proportionally to the weights,"
+  },
+  {
+    "timestamp": "9:10",
+    "content": "with drawstroke node sitting at the very bottom."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "In this visualization, the vertical axis represents the call stack,"
+  },
+  {
+    "timestamp": "9:19",
+    "content": "with the callers on top and call leaves growing downward."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "The horizontal axis represents total CPU time."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "But instead of chronological timeline, it is an aggregated view."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "To widen the bar, the most samples that function appeared in,"
+  },
+  {
+    "timestamp": "9:34",
+    "content": "allowing you to instantly spot expensive code paths."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "However, for code that is called from a lot of places,"
+  },
+  {
+    "timestamp": "9:42",
+    "content": "like Swift runtime functions and various helper utilities,"
+  },
+  {
+    "timestamp": "9:46",
+    "content": "the structural view of flame graph distributes the total cost."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "The execution time is fractured into small pieces across every distinct branch that calls them."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "This distribution makes it difficult to answer which specific function"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "bearing the most overall cycles."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "To answer that question, instruments introduce new analysis mode, top functions."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "This new mode discards the call hierarchy."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Instead, it extracts every single scattered node and"
+  },
+  {
+    "timestamp": "10:17",
+    "content": "merge them together to form one block."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "This is evaluated using self metric,"
+  },
+  {
+    "timestamp": "10:23",
+    "content": "which calculates the amount of time spent executing instruction"
+  },
+  {
+    "timestamp": "10:26",
+    "content": "directly inside that specific function."
+  },
+  {
+    "timestamp": "10:29",
+    "content": "Harjus, I think we're ready to look at the data. Take it away."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "Thanks, Art."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "When viewing a profile in instruments, the default view is an outline call tree display."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "This is great when looking at sample counts."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "But as Art mentioned, a flame graph can be easier to scan through and visually spot issues."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Using the segment control in the bar above the call tree,"
+  },
+  {
+    "timestamp": "10:49",
+    "content": "we can switch the detail view to display the flame graph."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "Doing a quick scan through it reveals that time is split across different code paths"
+  },
+  {
+    "timestamp": "10:57",
+    "content": "in the rendering code for our canvas."
+  },
+  {
+    "timestamp": "10:59",
+    "content": "There's no single obvious issue to address."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "Rather, these different code paths sum together to be costly enough to cause hangs."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "I'm going to try the new top functions mode in instruments,"
+  },
+  {
+    "timestamp": "11:13",
+    "content": "as it might surface something that would be harder to find in the call tree or the flame graph."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "This can be found in the same control we used before."
+  },
+  {
+    "timestamp": "11:21",
+    "content": "On the left-hand side is a list of all the top functions sorted by self-weight."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "The right-hand side displays a flame graph of all the code paths that called into the selected function."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "The top function during lasso's selection is swift project box opaque existential."
+  },
+  {
+    "timestamp": "11:42",
+    "content": "This runtime function is responsible for unwrapping existential so our code can operate over it."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "I'll ask the coding assistant in Xcode to rewrite our drawing code to use concrete types and generics instead of existentials."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "While this is running, I want to explain what is an existential and why I asked the coding assistant to make this change."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "In Swift, we often want to have a variable that can hold any type conforming to our protocol"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "without having to know the specific type at compile time."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "One way of achieving this is by using the any keyword before the protocol name."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "This is called an existential."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "Because the possible types can vary in size,"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "existentials may require additional work to access and operate over the underlying value."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "This is proving to be too expensive for our use case."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "There are several alternatives to existentials when performance is paramount."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "Including concrete types, generics, and in some cases enums."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "These approaches give the compiler more information, allowing for better optimizations."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "To learn more about generics in Swift, watch Embrace Swift Generics from WWDC 2022."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "Let's check back in with the assistant."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "It appears that the coding assistant has finished making those changes."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "I'll send an updated trace over to you, Art."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "Thank you, Harjus."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "To verify the fix we made, I could open them side by side in a different windows"
+  },
+  {
+    "timestamp": "13:17",
+    "content": "and compare the top functions data."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "However, Instruments Now allows us to directly compare profiling data across runs in a single document"
+  },
+  {
+    "timestamp": "13:25",
+    "content": "to help speed up the work of confirming new changes."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "New in Instruments, we're excited to introduce run comparisons."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "It computes the exact performance delta by cross-referencing all of the samples from the baseline trace and optimize trace."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "It evaluates every node in a stack."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "To do this, Instruments matches the old version of functions from your baseline run"
+  },
+  {
+    "timestamp": "13:48",
+    "content": "directly to the new versions in your optimized one."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Once matched, it calculates the delta and sorts them based on their performance difference."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "A red block indicates a performance regression."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "A green block indicates a performance improvement or runtime optimization."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "So let's try it out."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "To ensure an accurate comparison without noise, we first filter both runs to the exact same OSI"
+  },
+  {
+    "timestamp": "14:12",
+    "content": "interval for the last selection."
+  },
+  {
+    "timestamp": "14:25",
+    "content": "Then, to compare sampling data on the main thread, I will select the main thread track."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "And by clicking compare button in the middle bar, I can select my baseline run from the drop-down menu."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "This will add the comparison tab in the sidebar."
+  },
+  {
+    "timestamp": "14:46",
+    "content": "You can create multiple comparisons and they're all saved in the document to make collaboration easier."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "A comparison tree can be visualized as a textual call tree."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "Here, we can see that overall execution time for loss selection has decreased."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "Switching to a flange graph, we can see code path that improved in green and the ones that regressed in red."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "When coding assistant adopted generics, it introduced new functions, which run comparisons will mark as regressions."
+  },
+  {
+    "timestamp": "15:17",
+    "content": "And in top functions view, we can now see what improved the most and what regressed the most."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "By default, regressions in run comparison are sorted to the top."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "These regressions are new functions added by the coding assistant as it worked to eliminate the usage of existentials."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "We can flip the sort order to see the improvements."
+  },
+  {
+    "timestamp": "15:37",
+    "content": "Here, the Swift project box to pack existential call has been removed completely,"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "and overall, the improvements outweigh the regressions."
+  },
+  {
+    "timestamp": "15:45",
+    "content": "This confirms that adopting concrete tabs and generics successfully eliminated this specific runtime overhead."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "To learn more about optimizing CPU work, watch Optimize CPU Performance with Instruments session from WWDC 2025."
+  },
+  {
+    "timestamp": "16:00",
+    "content": "Harjus, one hang down, two to go."
+  },
+  {
+    "timestamp": "16:03",
+    "content": "That's right."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "Now that we've optimized the drawing code, we can return to our baseline run and keep optimizing other aspects of the app."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "There are still several hangs that need to be investigated."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "Unfortunately, these don't have any logs in the points of interest track to help contextualize what was happening at the time."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "Another way to contextualize this would be to see what tasks are on the main actor during these hangs."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "Instruments 27 has a new Swift executors instrument."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "This instrument visualizes the main actor, the global concurrent executor, and any custom executors in your process."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "For each of these hangs, the main actor track shows a corresponding Swift task called render thumbnail."
+  },
+  {
+    "timestamp": "16:52",
+    "content": "We can select this track and make it a summary of all the tasks running on the main actor."
+  },
+  {
+    "timestamp": "16:59",
+    "content": "It appears that we have several render thumbnail tasks on the main actor taking a few hundred milliseconds to run."
+  },
+  {
+    "timestamp": "17:06",
+    "content": "This could help explain why scrolling the listed notes wasn't smooth."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "Let's follow our diagnostic flow and check the CPU usage."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "I'll filter the trace to one of these hangs."
+  },
+  {
+    "timestamp": "17:17",
+    "content": "And use the inspector to pin the main thread."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "In this period, TimeProfiler reports that CPU usage of the main thread is around 100%."
+  },
+  {
+    "timestamp": "17:36",
+    "content": "So we aren't waiting on other system resources."
+  },
+  {
+    "timestamp": "17:39",
+    "content": "These tasks are just taking too long to run on the main actor."
+  },
+  {
+    "timestamp": "17:43",
+    "content": "So why is this the problem?"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "Well, first, let's review what the main actor is and then discuss how we can resolve this hang."
+  },
+  {
+    "timestamp": "17:50",
+    "content": "The main actor is responsible for handling all user interface updates and interactions."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "The application renders all the thumbnails asynchronously."
+  },
+  {
+    "timestamp": "18:00",
+    "content": "But because this code was called from SwiftUI, it inherited the main actor context."
+  },
+  {
+    "timestamp": "18:05",
+    "content": "These tasks will compete with critical UI updates for the main actor, preventing the app from delivering a smooth experience."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "To resolve this, we must route the thumbnail rendering to the thread pool."
+  },
+  {
+    "timestamp": "18:17",
+    "content": "This frees up the main actor, allowing the pending UI events to execute smoothly."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "This is the code responsible for generating our thumbnails."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "We can refactor it by adding the atConcurrent attribute to the task initializer."
+  },
+  {
+    "timestamp": "18:33",
+    "content": "This will move the thumbnail rendering tasks off the main actor and onto the global executor."
+  },
+  {
+    "timestamp": "18:39",
+    "content": "The Swift compiler will check that this code change doesn't introduce any race conditions."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "In the updated trace, the Swift executor's instrument shows that the thumbnail rendering tasks have moved from the main actor track to the global concurrent executor track."
+  },
+  {
+    "timestamp": "18:56",
+    "content": "Not only did moving this to the global concurrent executor prevent hangs in the UI, but it also allowed us to render these thumbnails in parallel."
+  },
+  {
+    "timestamp": "19:06",
+    "content": "To learn more about using Swift concurrency, watch Embracing Swift concurrency from WWDC 2025."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "All right, Art, one more hang left."
+  },
+  {
+    "timestamp": "19:16",
+    "content": "Let's bring it home."
+  },
+  {
+    "timestamp": "19:17",
+    "content": "Now that the concurrency contention is resolved, let's return to our baseline run for the final hang."
+  },
+  {
+    "timestamp": "19:24",
+    "content": "When we hit save, the user interface hangs for a short time."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "I'm going to use write to file interval in the points of instance track to find this hang."
+  },
+  {
+    "timestamp": "19:33",
+    "content": "And I'm going to set the inspector range and zoom in by clicking the appropriate option in the contextual menu."
+  },
+  {
+    "timestamp": "19:45",
+    "content": "There is a reported microhink during this step."
+  },
+  {
+    "timestamp": "19:55",
+    "content": "Again, let's check the CPU usage."
+  },
+  {
+    "timestamp": "20:06",
+    "content": "This case is actually quite low, hovering around 20%."
+  },
+  {
+    "timestamp": "20:11",
+    "content": "The diagnostic points us to low CPU usage."
+  },
+  {
+    "timestamp": "20:15",
+    "content": "When the interface freezes under these conditions, it tells us that the main thread is blocked, waiting on a system resource."
+  },
+  {
+    "timestamp": "20:22",
+    "content": "To understand exactly why that happens, let's look at how threads transition between states."
+  },
+  {
+    "timestamp": "20:28",
+    "content": "A low CPU utilization can be deceiving because it does not mean your code is executing slowly."
+  },
+  {
+    "timestamp": "20:34",
+    "content": "It means the thread has stopped running."
+  },
+  {
+    "timestamp": "20:37",
+    "content": "System trace template is built to visualize exactly when and why the operating system pauses your application."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "Here, the main thread is actively running on the CPU core."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "The operating system provides the whole host of system calls to do work on your behalf and control the hardware."
+  },
+  {
+    "timestamp": "20:55",
+    "content": "But when a resource isn't immediately available, a thread enters the block state."
+  },
+  {
+    "timestamp": "21:00",
+    "content": "When this occurs, the kernel evicts the thread from the processor."
+  },
+  {
+    "timestamp": "21:05",
+    "content": "Only when the resource is finally ready, the thread becomes runnable and returns to the core."
+  },
+  {
+    "timestamp": "21:10",
+    "content": "To be more specific, when the hardware eventually finishes the job, the thread does not immediately start executing."
+  },
+  {
+    "timestamp": "21:17",
+    "content": "It first enters the runnable state, which means the resource is ready, but the thread has to wait in line for the OS scheduler to assign it a free CPU core."
+  },
+  {
+    "timestamp": "21:27",
+    "content": "Now, zooming back, notice this block state highlighted here."
+  },
+  {
+    "timestamp": "21:32",
+    "content": "It spends the vast majority of its time blocked, waiting for that external dependencies to resolve."
+  },
+  {
+    "timestamp": "21:37",
+    "content": "When it's resolved, the thread wakes up briefly to coordinate the next stage of the request."
+  },
+  {
+    "timestamp": "21:43",
+    "content": "These brief moments of execution are exactly what caused the 20% of CPU utilization."
+  },
+  {
+    "timestamp": "21:49",
+    "content": "During this phase, the thread is completely idle."
+  },
+  {
+    "timestamp": "21:54",
+    "content": "A single system call like this often relies on multiple underlying dependencies, forcing the main thread to wait until the OS resolve every single one of them."
+  },
+  {
+    "timestamp": "22:04",
+    "content": "It finally returns to the core to finish the work."
+  },
+  {
+    "timestamp": "22:08",
+    "content": "Optimizing algorithms yields no improvements here, because there is no code running to optimize."
+  },
+  {
+    "timestamp": "22:14",
+    "content": "Let's find out together what is happening with the write to file interval."
+  },
+  {
+    "timestamp": "22:19",
+    "content": "Here's your profile of this hang using system trace template."
+  },
+  {
+    "timestamp": "22:23",
+    "content": "With system trace, we can see exactly what the thread was doing, including key OS concepts like system calls."
+  },
+  {
+    "timestamp": "22:29",
+    "content": "We can pin the main thread using the inspector and zoom in."
+  },
+  {
+    "timestamp": "22:41",
+    "content": "It reveals that while saving the file, the activity line shows a large amount of blank space."
+  },
+  {
+    "timestamp": "22:47",
+    "content": "This indicates that the thread was blocked, preventing the UI from updating."
+  },
+  {
+    "timestamp": "22:51",
+    "content": "The purple intervals you see indicate the system calls running."
+  },
+  {
+    "timestamp": "22:55",
+    "content": "However, just because the syscall is active, does not mean the thread is actually executing the application code."
+  },
+  {
+    "timestamp": "23:01",
+    "content": "I'm going to select one of these intervals."
+  },
+  {
+    "timestamp": "23:06",
+    "content": "Notice when I do so, more than just the segment I clicked is highlighted."
+  },
+  {
+    "timestamp": "23:10",
+    "content": "This visualizes one continuous write system call that spends both on and off core time."
+  },
+  {
+    "timestamp": "23:16",
+    "content": "The opaque segments represent the time spent actively running on core, while the translucent segments are the period it was blocked off core."
+  },
+  {
+    "timestamp": "23:25",
+    "content": "To understand why it was blocked for so long, we can look at the inspector."
+  },
+  {
+    "timestamp": "23:30",
+    "content": "The inspector gives us the exact argument passed to the system call."
+  },
+  {
+    "timestamp": "23:34",
+    "content": "We can see the target file descriptor, the memory address of the buffer, and the most importantly, the size."
+  },
+  {
+    "timestamp": "23:44",
+    "content": "It is trying to write over 1.7 GB of data on the main thread."
+  },
+  {
+    "timestamp": "23:49",
+    "content": "We can also see the performance cost."
+  },
+  {
+    "timestamp": "23:51",
+    "content": "This single operation took over 500 milliseconds, and almost 300 of those milliseconds was spent off core, waiting for the disk."
+  },
+  {
+    "timestamp": "23:59",
+    "content": "Because the file write was initiated synchronously on the main thread, the application freezes, waiting for the storage to respond."
+  },
+  {
+    "timestamp": "24:06",
+    "content": "To fix this, I will refactor code to move the file I.O. into the background."
+  },
+  {
+    "timestamp": "24:11",
+    "content": "This is the snippet responsible for that workflow."
+  },
+  {
+    "timestamp": "24:14",
+    "content": "We are using the properly listencoder class to serialize our data, and the bottleneck is this line right here."
+  },
+  {
+    "timestamp": "24:21",
+    "content": "We are calling dataWrite method synchronously."
+  },
+  {
+    "timestamp": "24:24",
+    "content": "Because this atomic write is executing directly on the main thread, it's exactly what caused that block."
+  },
+  {
+    "timestamp": "24:30",
+    "content": "We again can wrap this code inside the Swift task."
+  },
+  {
+    "timestamp": "24:34",
+    "content": "By doing this, we can push the encoding and file writing onto concurrent thread pool, and not block the main actor."
+  },
+  {
+    "timestamp": "24:40",
+    "content": "Here's another profile to verify that we no longer block the main thread during the file saving."
+  },
+  {
+    "timestamp": "24:45",
+    "content": "I have already navigated myself using writeToFileSignPostInterval."
+  },
+  {
+    "timestamp": "24:49",
+    "content": "The main thread no longer shows the writeSystemCall."
+  },
+  {
+    "timestamp": "24:56",
+    "content": "We can find the sameSysCall on a background thread."
+  },
+  {
+    "timestamp": "25:04",
+    "content": "Which means using Apple Pencil should now feel fluid."
+  },
+  {
+    "timestamp": "25:07",
+    "content": "Let's open the app and confirm the wins."
+  },
+  {
+    "timestamp": "25:09",
+    "content": "With the file I.O. properly routed, saving the document is now happening in a background, allowing interacting with an application."
+  },
+  {
+    "timestamp": "25:18",
+    "content": "And because we also optimize the CPU saturation and resource contention, using the LACET tool and scrolling my nodes both remain responsive."
+  },
+  {
+    "timestamp": "25:28",
+    "content": "By following the data, we have successfully eliminated all three types of hangs from our baseline run."
+  },
+  {
+    "timestamp": "25:34",
+    "content": "Consistently engineering responsive applications requires matching your profiling tool to the specific performance symptom."
+  },
+  {
+    "timestamp": "25:41",
+    "content": "When CPU is overloaded, utilize stop functions to isolate scatter software overhead and use run comparison to verify your improvements."
+  },
+  {
+    "timestamp": "25:50",
+    "content": "When it asks FIDE for resources, use the Swift concurrency instrument to identify actor congestion."
+  },
+  {
+    "timestamp": "25:57",
+    "content": "And when thread is idle, leverage system trace and the inspector panel to uncover synchronous blocking behavior like file I.O."
+  },
+  {
+    "timestamp": "26:06",
+    "content": "As you apply these workflows to your own code bases, ensure your profiling is accurate."
+  },
+  {
+    "timestamp": "26:12",
+    "content": "Always profile release build."
+  },
+  {
+    "timestamp": "26:14",
+    "content": "And leverage OS signposts to make sure your intervals for run comparisons are reliable."
+  },
+  {
+    "timestamp": "26:19",
+    "content": "To go even deeper into these topics, we highly recommend checking out Analyze Hangs with this streaming session from WWC 2023."
+  },
+  {
+    "timestamp": "26:27",
+    "content": "With instruments, you never have to guess where to look."
+  },
+  {
+    "timestamp": "26:30",
+    "content": "Profile often and let the data tell the story."
+  },
+  {
+    "timestamp": "26:33",
+    "content": "Thanks for watching."
+  },
+  {
+    "timestamp": "26:34",
+    "content": "You"
+  }
+]

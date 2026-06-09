@@ -1,0 +1,1174 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Steven and I work on UI Frameworks."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "My name is Julia and I'm also a UI Frameworks engineer."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "We are excited to talk to you about what's new in SwiftUI."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "SwiftUI has gained some major upgrades."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "From a refined look and feel to performance improvements,"
+  },
+  {
+    "timestamp": "0:24",
+    "content": "new ways to interact with your apps,"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "and a powerful new document API,"
+  },
+  {
+    "timestamp": "0:28",
+    "content": "we have a lot of great new things to share."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "But first, I love stickers."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "I have my laptop covered with them."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "I love stickers too,"
+  },
+  {
+    "timestamp": "0:41",
+    "content": "but there are only so many places in the real world where we're allowed to stick them."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "So we came up with a way to unlock unlimited sticker potential, an app."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Meet our sticker app."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "I'll start by picking a photo."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "I really like this photo of Steven and me at Apple Park."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "Now, I wish we could bring our pets to work."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "They would absolutely love it here."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "I'll add my dog, Kishka."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "I'll add my cat, Kishka."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "She's got an even bigger personality."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "Now, this is what I call an ideal work day."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "I wish we could do this all day, but there's a lot to cover, so it's important we stick to the script."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "Our app takes advantage of lots of new enhancements to SwiftUI that have helped us build a first-class user experience that looks great and also has great performance."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "I'll start by taking you through the beautiful new look apps gained on the 2027 releases, along with ways to optimize toolbar content for resizability."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "Julia will tell you about new APIs that unlock powerful document features in your apps, along with improvements to presentation and interaction."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "And finally, I'll talk about how to keep your apps running smoothly with enhancements to performance and data flow."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "Let's get started with the refreshed look and feel for apps on the 2027 releases."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "When I build and run our app, the Liquid Glass design automatically takes on its updated appearance."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "Apps gain this look without having to change a single line of code."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "Liquid Glass has a refined look and automatically responds to the new Liquid Glass slider to adjust its tint."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "On macOS, like on iOS, you can mark Liquid Glass custom elements as interactive, so they respond more fluidly to users' clicks."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "And this is optimized to work great with the mouse pointer, so it feels right at home on the Mac."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "And just like Mac, our iPad app automatically takes on a distinct appearance when inactive, with the icons and text dimming to reinforce which window is active, like here, when I tap to switch between our app and the Files app."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "I love how these improvements look in our app, and even more so since the app's look was refreshed without having to make any code changes."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "But there are also ways to fine-tune our app's appearance to get things just right."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "Our custom account button in the sidebar dims along with the rest of the tab labels, using the Appears Active environment value to conditionally reduce the button's opacity when the window isn't active."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "iPad and Mac menu bars now have a minimal set of icons by default, reserving them for key actions."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "However, I can apply the Label Style, Title, and Icon modifier to our Store menu item to show its icon, so that one will stand out."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "As I accumulate more stickers, I really appreciate the resizability of our app on Mac and iPad."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "And on iOS 27, our iPhone app becomes resizable, too."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "In Xcode 27, Live Previews now have resize handles that allow you to test how your app responds to being interactively resized."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "This allows you to instantly preview how an app will behave when using iPhone mirroring or when running it as an iPhone app on iPad."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "This is already working great, especially since we made sure our app resizes well on iPad and Mac."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "Apps built with SwiftUI gain a lot of this functionality automatically."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "But if your app uses both UIKit and SwiftUI, there may be some additional things to consider."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Things like how to correctly determine screen geometry, using size classes instead of idiom for sizing your views,"
+  },
+  {
+    "timestamp": "4:42",
+    "content": "and responding to interface orientation changes."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "To learn more about getting ready for resizability for apps that use both UIKit and SwiftUI, check out Modernize Your UIKit app."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "Our app also has a full store experience that allows people to download new sticker packs."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "My personal favorite is the WWDC 26 sticker pack."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "The store view has a few tabs, including one for the shopping cart."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "The shopping cart tab is displayed on the bottom trailing edge of the screen, distinguishing it from the other tabs, which contain store content."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "To enable this special tab placement, I'm using the new prominent tab role to make it stand out."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "With all of the features our app has, the toolbar is a great way to provide quick access to the most important actions."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "As I add more features to the app, the list of toolbar items will probably grow even bigger."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "And this becomes especially important when resizing the app."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "When I resize the app window, the toolbar items are automatically adjusted by the system."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "And some of the items that don't fit end up becoming hidden."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "On iPhone, where there's even less horizontal space to work with, there isn't enough room for all my toolbar buttons."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "And I'll show you how to use the toolbar."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Important actions like undo, redo, and share are hidden in the overflow menu."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "And that's where the new toolbar APIs come in."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "They allow me to specify which buttons stay visible when toolbar space is limited."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "The most important toolbar item group contains buttons for editing, undo, and redo."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "But they're currently hidden."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "I want the system to know that it's important to keep them visible."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "I can do this by adding the new visibility priority modifier and setting the priority to high."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Now the undo and redo buttons become visible."
+  },
+  {
+    "timestamp": "6:36",
+    "content": "Some of the actions I prefer to keep in the overflow menu, since they aren't used as often."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "Like the buttons for swapping out the photo, exporting the page as an image, and clearing the stickers."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "I choose to always place these buttons in the overflow menu,"
+  },
+  {
+    "timestamp": "6:52",
+    "content": "by grouping them in the new toolbar overflow menu container."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "And there they are in the menu, if I need them."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "Lastly, for my share button, I want to make sure it's never hidden,"
+  },
+  {
+    "timestamp": "7:03",
+    "content": "so I don't forget to send these sticker pages to everyone I know."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "I can use the new top bar pin trailing placement, to make the share button always visible in the trailing position."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "And now the toolbar is set up perfectly, to access all the app's important features, no matter the window or screen size."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "There's one more toolbar enhancement I want to show you."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "I have lots of stickers in my collection, and when I'm scrolling through them, I want to have as much space as possible for all of them."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "So I add the new toolbar minimize behavior modifier, and set it to on scroll down, for the navigation bar placement."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "Now the system automatically moves the navigation bar out of the way when I scroll."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "I think the app looks and feels great, but there's a lot more going on under the surface."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "Our app can open and save sticker pages, and even has support for exporting the pages as images."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "This is all thanks to some powerful new features Julia will tell you about."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Julia Zemmoury- The app has all these capabilities, and even more, thanks to the new SwiftUI Document API."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "I'll start by giving an overview of the new Document APIs, and how they serve as a base for building an app."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "For quite some time now, SwiftUI has had support for document-based apps via the file document, and reference file document protocols."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "Julia Zemmoury- In the 2027 releases, I'm happy to share expanded APIs that build on that foundation."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "You might be familiar with document-based apps, like Pixelmator Pro, or Pages, or the one we spend our days in, Xcode."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "They get a lot of functionality out of the box, including things like keyboard shortcuts,"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Command-N for new documents, and Command-O for opening documents."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "The edited indicator that tells you when a document has changes."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "A smart autosaving mechanism, and much more."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "And the Document API unlocks a number of improvements an app can make both under the hood and in the UI."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "I'll cover three of these, including the Document Creation context,"
+  },
+  {
+    "timestamp": "9:21",
+    "content": "Disc Reading and Writing performance improvements,"
+  },
+  {
+    "timestamp": "9:24",
+    "content": "and First Class support for Direct Document URL access."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "Here's how people create documents in our app."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "By default, the app lets you start with a blank sticker page."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "But I want to help people get going more quickly."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "I want to help people get a blank sticker page."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "I use the new Document Creation source API to declare two sources, blank and photo,"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "and add a new Document button for each one to the launch scene."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "When choosing one of these buttons, SwiftUI passes the source to my Document Creation closure"
+  },
+  {
+    "timestamp": "10:04",
+    "content": "via the context parameter."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "I check the context in my initializer."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "And if the source is photo, the document opens with the photo picker already presented."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Now I'm only one tap away from putting stickers on my photo."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Document-based apps read and write a lot of data."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "They can also have complex UI that needs to update frequently."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "The new API provides great ways to optimize these operations and keep your app running smoothly."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "I'll opt our app into the document architecture by declaring a Document Group as the first scene in the app's body."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "My sticker document class describes the document type."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "It provides data to the views and describes how to read data from disk and write it back."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "The document API works in conjunction with the modern observation framework, so I'm using the observable macro."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "This alone gives me a performance boost."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "The views will update only when a property they depend on changes."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "My goal is to make reading and writing as fast and efficient as possible."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "I'll take you through the optimization points in the new API."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "For writing, I conform the document to the WritableDocument protocol."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "It has three requirements."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "First, a list of formats the app can write."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Our application supports custom package format with a photo and stickers inside."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "The snapshot method that returns the current document content for writing."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "To represent the content, I use a custom page snapshot struct."
+  },
+  {
+    "timestamp": "11:56",
+    "content": "It contains everything I need for writing."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "The background image, coordinates for the stickers, and the stickers themselves."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "It acts as a snapshot of the document at a single point in time."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "To satisfy the third requirement, I provide a writer."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "The writer conforms to the DocumentWriter protocol and knows how to write a document to disk in a specified format."
+  },
+  {
+    "timestamp": "12:25",
+    "content": "I give it the requested content type, which for my app is StickerDocument."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "The DocumentWriter protocol has a notion of snapshot."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "And the page snapshot type fits perfectly here."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "DocumentWriter's only requirement is a method for writing."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "It offers multiple opportunities to optimize performance."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "First, the write method is non-isolated and asynchronous."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "This lets me perform expensive disk writing operations in the background,"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "so the app stays responsive."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "I write only the parts of the package that actually need updating by comparing the current"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "and the previous snapshots."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "Even with all the optimizations, disk operations can take noticeable time."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "So SwiftUI provides a progress parameter that lets me report writing progress"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "using the FoundationSubProgress API."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "I can form the StickerDocument class to the ReadableDocument protocol."
+  },
+  {
+    "timestamp": "13:35",
+    "content": "ReadableDocument is a twin to WriteableDocument."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "Here's how they compare."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "Each protocol requires a list of supported content types."
+  },
+  {
+    "timestamp": "13:45",
+    "content": "WriteableDocument provides a snapshot."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "And ReadableDocuments knows how to apply it."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "WriteableDocument has a friend protocol, DocumentWriter."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "And ReadableDocument's friend is DocumentReader, which does all the disk-related heavy lifting."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Now the Sticker app is ready to read and write files, like this page."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "I think I make a pretty good pirate."
+  },
+  {
+    "timestamp": "14:15",
+    "content": "There's one more feature to add, saving pages as images, so I can share them with people who don't have the app."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "The Document API makes it possible to extend my writer to save pages in another format, like PNG,"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "using CoreGraphics."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "I return to the WritableContentTypes definition and add PNG to the list."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "Now, to support an additional format, I revisit the Write method I implemented earlier."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "I use CoreGraphics to flatten the stickers and background photo into a single image and write it to the URL."
+  },
+  {
+    "timestamp": "15:03",
+    "content": "And I use the same as the file."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "To add even more types, I could write the document in any format, using any framework, just by adding another content type."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "That's how our app is set up to save document."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "Now, it's time to get to my sticker collection, where there are some great enhancements to presentation and interaction."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "Sometimes our massive collection of stickers can feel a little chaotic."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "And that's where the ReorderableContainer APIs come in."
+  },
+  {
+    "timestamp": "15:36",
+    "content": "There are two different ways to browse the sticker collection in the Apps Inspector."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "The first is a list that displays each sticker along with its name."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "I'd like to keep these stickers organized by dragging them to rearrange their order."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "So I use the Reorderable API."
+  },
+  {
+    "timestamp": "15:57",
+    "content": "I add the Reorderable modifier to foreach and add a ReorderContainer modifier to the list."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "Then, in the closure, I call this helper function I wrote, difference.apply, to update my array of stickers."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "Under the hood, my apply function uses the open-source SwiftCollections package"
+  },
+  {
+    "timestamp": "16:22",
+    "content": "to commit the ordering changes."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "Visit swift.org for more details."
+  },
+  {
+    "timestamp": "16:29",
+    "content": "SwiftUI automatically handles the drag interaction and animation for me."
+  },
+  {
+    "timestamp": "16:36",
+    "content": "I can also organize my stickers in a grid, which makes it easier to browse more at a time."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "And the Reorderable API works with any container, not just list."
+  },
+  {
+    "timestamp": "16:48",
+    "content": "This means I can take the code from my list and repurpose it to use a lazy vgrid."
+  },
+  {
+    "timestamp": "16:55",
+    "content": "The code for reordering stays exactly the same."
+  },
+  {
+    "timestamp": "16:59",
+    "content": "I get the same interactive reordering behavior on a completely different container using the same code."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "And now these APIs also bring reordering capabilities to watch us for the first time."
+  },
+  {
+    "timestamp": "17:15",
+    "content": "When it comes to reordering, that's just the beginning."
+  },
+  {
+    "timestamp": "17:20",
+    "content": "For a deep dive into all of the features of Reorderable Containers, check out the Code Along session,"
+  },
+  {
+    "timestamp": "17:26",
+    "content": "Build Powerful Drag and Drop in SwiftUI."
+  },
+  {
+    "timestamp": "17:31",
+    "content": "When I'm on the go, I love to customize my sticker pages on my iPhone."
+  },
+  {
+    "timestamp": "17:36",
+    "content": "The sheet at the bottom of the UI keeps all my stickers right where I need them."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "I even set up swipe actions for removing stickers from the list by adding this swipe actions modifier to my list item,"
+  },
+  {
+    "timestamp": "17:52",
+    "content": "along with this delete button."
+  },
+  {
+    "timestamp": "17:56",
+    "content": "But I want some more flexibility to customize my list, so I've decided to switch to using a lazy vStack."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "And now SwiftUI supports swipe actions on any view, not just list."
+  },
+  {
+    "timestamp": "18:10",
+    "content": "I move my for each out of the list into a lazy vStack with my updated item style,"
+  },
+  {
+    "timestamp": "18:18",
+    "content": "and add the swipe actions container modifier, which coordinates the swipe actions across the items in this scroll view."
+  },
+  {
+    "timestamp": "18:27",
+    "content": "I'll admit it."
+  },
+  {
+    "timestamp": "18:41",
+    "content": "I can get a little carried away."
+  },
+  {
+    "timestamp": "18:44",
+    "content": "And sometimes that means I need to make space by deleting some stickers, even if I love them all."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "I've added a context menu to each sticker placed on the photo, giving me quick access to delete it with this delete button."
+  },
+  {
+    "timestamp": "19:05",
+    "content": "Tapping the button sets the sticker to delete state variable to the current sticker."
+  },
+  {
+    "timestamp": "19:10",
+    "content": "I've also added a confirmation dialog modifier."
+  },
+  {
+    "timestamp": "19:15",
+    "content": "Now, confirmation dialogs support the same item binding pattern that sheets use."
+  },
+  {
+    "timestamp": "19:21",
+    "content": "I pass a sticker to delete binding to the modifier."
+  },
+  {
+    "timestamp": "19:25",
+    "content": "When I set sticker to delete to a value, by tapping the delete button, the confirmation dialog appears."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "And this also works with alert."
+  },
+  {
+    "timestamp": "19:37",
+    "content": "I've taken you through some great improvements to presentation and interaction, but that's not all."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "There are even more improvements in SwiftUI in the 2027 releases."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "Many of these improvements make the APIs you're already using better without any changes to your apps."
+  },
+  {
+    "timestamp": "19:57",
+    "content": "Great performance is important for making an app feel responsive and polished."
+  },
+  {
+    "timestamp": "20:04",
+    "content": "Being thoughtful about the way data flows through your app is one of the best ways to keep your app's performance in top shape."
+  },
+  {
+    "timestamp": "20:12",
+    "content": "Steven is going to tell you about some big improvements to data flow and performance."
+  },
+  {
+    "timestamp": "20:17",
+    "content": "Thanks, Julia."
+  },
+  {
+    "timestamp": "20:18",
+    "content": "The sticker store you added to the app is really cool."
+  },
+  {
+    "timestamp": "20:21",
+    "content": "I love how the sticker packs are downloadable because that allows me to take advantage of improvements to Async Image."
+  },
+  {
+    "timestamp": "20:28",
+    "content": "Async Image is a great way to load image assets from the internet as they appear on screen."
+  },
+  {
+    "timestamp": "20:34",
+    "content": "This works great when scrolling to reveal more of these adorable stickers of Kishka and Pretzel."
+  },
+  {
+    "timestamp": "20:41",
+    "content": "But up until now, Async Image hasn't kept images in memory."
+  },
+  {
+    "timestamp": "20:45",
+    "content": "When scrolling back up, they would reload when reappearing on screen."
+  },
+  {
+    "timestamp": "20:49",
+    "content": "I'd prefer that these images show immediately when scrolling back to the top."
+  },
+  {
+    "timestamp": "20:54",
+    "content": "And in the 2027 releases, they do."
+  },
+  {
+    "timestamp": "20:57",
+    "content": "Async Image now supports standard HTTP caching."
+  },
+  {
+    "timestamp": "21:01",
+    "content": "So images are cached by default, respecting the server's cache headers without any changes to your code."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "This is enabled automatically for every app."
+  },
+  {
+    "timestamp": "21:10",
+    "content": "And apps built with Xcode 27 can take advantage of new APIs to customize how downloads happen."
+  },
+  {
+    "timestamp": "21:17",
+    "content": "For more control over how an image is downloaded, I can construct my own URL request"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "and pass it to async Image."
+  },
+  {
+    "timestamp": "21:25",
+    "content": "This allows a wide variety of per request customizations like specifying a cache policy for instance."
+  },
+  {
+    "timestamp": "21:32",
+    "content": "And if I need a longer-lived configuration, like a bigger cache, let's say, I can instantiate my own custom URL session and configure a URL cache with whatever capacity I need, and then use my session by passing it to the async image URL session modifier."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "Now, when I scroll back to the top, the images are automatically loaded from the cache."
+  },
+  {
+    "timestamp": "21:58",
+    "content": "SwiftUI provides a variety of ways for apps to model and store their data and to pass that data to views."
+  },
+  {
+    "timestamp": "22:06",
+    "content": "One great way to store an app's data is using observable classes, like I do here with the StickerStore class."
+  },
+  {
+    "timestamp": "22:14",
+    "content": "When StickerStoreView is initialized, a new instance of my StickerStore class is created and assigned to the state variable."
+  },
+  {
+    "timestamp": "22:22",
+    "content": "This instance stays around for the lifetime of the view."
+  },
+  {
+    "timestamp": "22:25",
+    "content": "But what happens when the parent view updates, causing StickerStoreView to be initialized again?"
+  },
+  {
+    "timestamp": "22:32",
+    "content": "In prior releases, a new instance of StickerStore would be created on every initialization."
+  },
+  {
+    "timestamp": "22:38",
+    "content": "But the original instance is still the one being stored in the state variable."
+  },
+  {
+    "timestamp": "22:43",
+    "content": "And so the new one was just discarded."
+  },
+  {
+    "timestamp": "22:45",
+    "content": "This would happen again for every reinitialization of the view, even though the main stored instance of the class remained stable."
+  },
+  {
+    "timestamp": "22:56",
+    "content": "In the 2027 releases, for the first time, classes initialized and stored using state properties are now lazy, which means they will only be initialized once."
+  },
+  {
+    "timestamp": "23:08",
+    "content": "This is thanks to the conversion of state from a dynamic property to a macro."
+  },
+  {
+    "timestamp": "23:15",
+    "content": "Now, when StickerStoreView is initialized for the first time, a new instance of my StickerStore class is created like before."
+  },
+  {
+    "timestamp": "23:25",
+    "content": "But on future initializations, no new class instances are created."
+  },
+  {
+    "timestamp": "23:30",
+    "content": "And this behavior has been backported to the releases where observable was first introduced."
+  },
+  {
+    "timestamp": "23:35",
+    "content": "Starting with iOS 17, macOS 14, and aligned releases."
+  },
+  {
+    "timestamp": "23:42",
+    "content": "In some cases, the introduction of the state macro can be a source-breaking change."
+  },
+  {
+    "timestamp": "23:47",
+    "content": "For example, if you specify a default value for your state variable, and then you assign a value to the same state variable inside your init,"
+  },
+  {
+    "timestamp": "23:56",
+    "content": "Xcode will show an error about use before initialization."
+  },
+  {
+    "timestamp": "23:59",
+    "content": "To resolve this error, remove the unnecessary default value assignment."
+  },
+  {
+    "timestamp": "24:06",
+    "content": "For additional details about how the state macro may impact your code, check out the documentation."
+  },
+  {
+    "timestamp": "24:12",
+    "content": "Maintaining good runtime performance is critical for keeping your app working smoothly."
+  },
+  {
+    "timestamp": "24:18",
+    "content": "But there's another type of performance that can have a significant impact on your app development experience."
+  },
+  {
+    "timestamp": "24:23",
+    "content": "If your app has complex, deeply nested views, you may have encountered this error."
+  },
+  {
+    "timestamp": "24:30",
+    "content": "The compiler is unable to type check this expression in reasonable time."
+  },
+  {
+    "timestamp": "24:35",
+    "content": "But why does this happen?"
+  },
+  {
+    "timestamp": "24:37",
+    "content": "This view has a section, a group, and a for each wrapping its content."
+  },
+  {
+    "timestamp": "24:43",
+    "content": "To type check this expression, first the compiler has to select which overload of section to use."
+  },
+  {
+    "timestamp": "24:48",
+    "content": "Section can be initialized with a builder that produces either a view or table row content."
+  },
+  {
+    "timestamp": "24:56",
+    "content": "To know which one to use, the compiler has to try both options."
+  },
+  {
+    "timestamp": "25:01",
+    "content": "In my code, the section builder returns a group."
+  },
+  {
+    "timestamp": "25:04",
+    "content": "The compiler can't know what type of content section produces until it figures out the type of the nested group's content."
+  },
+  {
+    "timestamp": "25:11",
+    "content": "This time, there are even more options."
+  },
+  {
+    "timestamp": "25:15",
+    "content": "And for the nested for each, the compiler will have to try each one."
+  },
+  {
+    "timestamp": "25:20",
+    "content": "And then, for each's builder has its own set of options that will also need to be checked."
+  },
+  {
+    "timestamp": "25:26",
+    "content": "And we haven't even gotten to the content yet."
+  },
+  {
+    "timestamp": "25:29",
+    "content": "Trying each of these paths makes type checking increasingly expensive."
+  },
+  {
+    "timestamp": "25:32",
+    "content": "But I already know that section, group, and for each in my code are building views."
+  },
+  {
+    "timestamp": "25:39",
+    "content": "So there's really only one valid path through this decision tree."
+  },
+  {
+    "timestamp": "25:44",
+    "content": "Instead of this complex set of choices, what if these builders weren't constrained by the types they produce,"
+  },
+  {
+    "timestamp": "25:50",
+    "content": "and instead just assembled their content?"
+  },
+  {
+    "timestamp": "25:53",
+    "content": "In the 2027 releases, that's exactly what SwiftUI starts doing."
+  },
+  {
+    "timestamp": "25:57",
+    "content": "The most common set of builders now share a single initializer, leaving just one straightforward path."
+  },
+  {
+    "timestamp": "26:06",
+    "content": "This is possible because multiple different builder types have been unified under a single builder, content builder."
+  },
+  {
+    "timestamp": "26:14",
+    "content": "This is a step towards enabling unified builders across all of SwiftUI's APIs."
+  },
+  {
+    "timestamp": "26:19",
+    "content": "And content builder can be used with any minimum deployment target,"
+  },
+  {
+    "timestamp": "26:22",
+    "content": "because under the hood, it's an evolution of the existing view builder."
+  },
+  {
+    "timestamp": "26:27",
+    "content": "Content builder provides a substantial improvement in type checking performance in SwiftUI"
+  },
+  {
+    "timestamp": "26:32",
+    "content": "when building using Xcode 27, whether you're targeting the 2027 releases or previous releases as well."
+  },
+  {
+    "timestamp": "26:40",
+    "content": "We're also excited to introduce new agent skills included with Xcode 27 to help you adopt the new features from the 2027 releases in your apps,"
+  },
+  {
+    "timestamp": "26:49",
+    "content": "and improve your app's performance and code correctness."
+  },
+  {
+    "timestamp": "26:52",
+    "content": "The SwiftUI Specialist skill can help you follow SwiftUI best practices in your apps."
+  },
+  {
+    "timestamp": "27:00",
+    "content": "The What's New in SwiftUI skill can guide you through adopting new APIs from the 2027 releases."
+  },
+  {
+    "timestamp": "27:07",
+    "content": "Both of these skills can be accessed in the coding assistant in Xcode 27."
+  },
+  {
+    "timestamp": "27:11",
+    "content": "And to use these skills with other tools, you can export them with the XCRun AgentSkillsExport command."
+  },
+  {
+    "timestamp": "27:20",
+    "content": "This will create markdown files you can import in your workflows."
+  },
+  {
+    "timestamp": "27:24",
+    "content": "We've covered some exciting new enhancements to SwiftUI."
+  },
+  {
+    "timestamp": "27:28",
+    "content": "Now it's your turn."
+  },
+  {
+    "timestamp": "27:30",
+    "content": "Start by building your project in Xcode 27 for the 2027 releases."
+  },
+  {
+    "timestamp": "27:36",
+    "content": "And then check out your app's updated look and feel."
+  },
+  {
+    "timestamp": "27:38",
+    "content": "If you have a document-based app, investigate how the new document APIs can make it even better."
+  },
+  {
+    "timestamp": "27:45",
+    "content": "And try out the SwiftUI agent skills in Xcode 27 to adopt new APIs and best practices."
+  },
+  {
+    "timestamp": "27:51",
+    "content": "Well, as sad as we are to peel ourselves away, we have to adhere to the schedule."
+  },
+  {
+    "timestamp": "27:59",
+    "content": "We hope you have as much fun adopting these improvements in your apps as we had with ours."
+  },
+  {
+    "timestamp": "28:05",
+    "content": "Thanks for sticking with us."
+  },
+  {
+    "timestamp": "28:06",
+    "content": "jumps jumps jumps jumps jumps jumps jumps jumps jumps jumps jumps jumps jumps jumps"
+  },
+  {
+    "timestamp": "28:10",
+    "content": "Thank you."
+  }
+]

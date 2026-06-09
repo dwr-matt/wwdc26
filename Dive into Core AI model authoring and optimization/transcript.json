@@ -1,0 +1,2446 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Sachin, an engineer on the CoreAI team, and later I'll be joined by my colleague Nicole."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "Today, we look forward to showing you how CoreAI makes it easy to get your model running"
+  },
+  {
+    "timestamp": "0:19",
+    "content": "efficiently on Apple Silicon, from the basics to more advanced approaches."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "As you saw in the Meet CoreAI talk, CoreAI is a complete suite of technologies covering the model deployment lifecycle,"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "from model optimization and conversion to debugging and integration into your app."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "In this talk, we will be zooming in on CoreAI's Python ecosystem."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "You will meet the different libraries and tools that CoreAI provides to get your models deployed on Apple Silicon."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "You will also meet CoreAI Debugger, which can be an integral part of your workflow, for understanding and debugging key issues."
+  },
+  {
+    "timestamp": "0:59",
+    "content": "Let's dive in."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "Here's our agenda."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "I will first introduce you to the CoreAI Models Repository and CoreAI Skills, powerful tools that will jumpstart your journey."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "Then, I will show you the basic conversion and verification process."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "CoreAI is built around the Python and PyTorch workflows you already know."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "And if you've used CoreML before, a lot of this will feel pretty familiar."
+  },
+  {
+    "timestamp": "1:26",
+    "content": "I will follow that with model optimization and show how you can make the right choices for your use case and target platform."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "To help you get a deeper insight into your model, Nicole will introduce you to CoreAI Debugger."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "And finally, I will touch upon key ways that CoreAI allows deep customization during model authoring and conversion."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "Okay, let's start with models and skills."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Let's start with models."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Let's start with models."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "At the forefront of CoreAI's ecosystem is the CoreAI Models Repository."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "It includes a Swift package for running LLMs in your app."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "But at its core, it's an open source repository of models that are ready to go."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "Including generative architectures like cutting-edge large language models."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "We have examples engineered for various use cases and constraints."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "along with components that you can use to bring your own models to CoreAI."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "And last but not the least, CoreAI Models ships with a set of agent skills."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "You can install these skills into your favorite coding assistant to get started with CoreAI."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "Just like an expert from day one."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "CoreAI skills work with you and translate your high-level ideas into a clear deployment plan for downstream tasks."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "They may get clarifications from you around the model you're interested in,"
+  },
+  {
+    "timestamp": "2:49",
+    "content": "the hardware families you're targeting, and the constraints your application has."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "These requirements inform the CoreAI features you need,"
+  },
+  {
+    "timestamp": "2:56",
+    "content": "all the way from any changes in the PyTorch model code,"
+  },
+  {
+    "timestamp": "2:59",
+    "content": "to conversion, optimization, and running the models."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "AI skills give your coding agent access to the best practices and domain knowledge from our engineers."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "This empowers you to leverage CoreAI like a pro,"
+  },
+  {
+    "timestamp": "3:14",
+    "content": "and even understand it better with your coding assistant."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "In fact, most of the code you will see throughout this talk was co-developed with an agent actively leveraging the skills."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Now, let's dig into converting and running models in CoreAI with Python."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "The CoreAI Python libraries, primarily CoreAI PyTorch extensions,"
+  },
+  {
+    "timestamp": "3:37",
+    "content": "are your entry point into the ecosystem."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "Installation is simple with pip install CoreAI Torch."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "This installs both the CoreAI package and the CoreAI Torch library building on top of it."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "You hand CoreAI Torch a PyTorch exported program and it converts directly to a CoreAI model."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "It supports advanced features that let you tailor the CoreAI program to your exact use case."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "For example, you can assemble multiple models into a single artifact,"
+  },
+  {
+    "timestamp": "4:07",
+    "content": "register custom lowerings for specific operations,"
+  },
+  {
+    "timestamp": "4:12",
+    "content": "and inline Metal 4 kernels right into your converted model."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "And finally, you can specialize models into optimized assets"
+  },
+  {
+    "timestamp": "4:20",
+    "content": "and run them natively on Apple Silicon entirely from Python."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "Here's the pipeline I just described."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "Now, let's see this in practice."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "I will walk you through a quick example."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "Here, I have a neural network."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "Two linear layers with a radio activation."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Standard PyTorch."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "Then, I run Torch export."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "I pass the model and an example input, which gives me an exported program."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "This exported program is the starting point for CoreAI conversion."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "It captures the full computational graph, weights, operations, and shapes,"
+  },
+  {
+    "timestamp": "4:58",
+    "content": "in a format that CoreAI Torch can work with."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "And now, the CoreAI side."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "CoreAI's Torch converter takes my exported program,"
+  },
+  {
+    "timestamp": "5:08",
+    "content": "along with the input and output names, and converts it to a CoreAI program."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "If you've used CoreML tools before, this will feel familiar."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "The converted model is then optimized and saved as an AI model asset."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "An on-device format ready to run on Apple Silicon."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "Once I have the specialized asset, I can load a function from the program"
+  },
+  {
+    "timestamp": "5:31",
+    "content": "and perform inference right from Python."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "You can also pass specialization options at this point to customize the process."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "To actually run inference, all you need to do is provide a dictionary"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "mapping input names to corresponding NumPy tensors."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "That's it. The whole workflow."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "Conversion, optimization, and execution. All from Python."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "Now, let's talk about making a model smaller using CoreAI's optimization library."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "To showcase CoreAI's optimization features, I'll be taking segment anything model."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "SAM3 as the driving use case."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "SAM3 is an 850 million parameter model that performs prompt-based image segmentation."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "Before I can optimize the model, it's key to understand its internals at a high level."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "SAM3 has three main pieces."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "An image encoder that processes the image."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "A text encoder that handles the user's prompt."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "These two components combined make up 96% of the model's parameters."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "So, getting these right is key."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "And to complete the picture, a detector module wrapping a detection transformer"
+  },
+  {
+    "timestamp": "6:41",
+    "content": "and a mask decoder, produces the final output."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "The segmentation mask."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "As you can see, SAM3 performs a complex end-to-end task."
+  },
+  {
+    "timestamp": "6:51",
+    "content": "And this is exactly the kind of use case developers increasingly want to execute on device."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "So, I'll be able to optimize this."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "To optimize this, I'll leverage CoreAI's optimization library called CoreAI Opt."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "CoreAI Opt enables config-driven model compression."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "You describe what to compress and what to leave alone."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "It supports various optimization schemes from which you can choose one."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "To optimize differently for macOS versus iOS as an example."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "It also supports int4, int8, fp4, and fp8 weight compression with flexible granularity."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "And finally, CoreAI Opt includes quantization APIs that you can either use with a small amount"
+  },
+  {
+    "timestamp": "7:36",
+    "content": "of calibration data or perform quantization-aware training on larger datasets."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "This is a simple pipeline I had previously."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "Now, I'm adding a step."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Before conversion, I run the model through CoreAI Opt with a compression config."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "Or I can use one of the convenient presets."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "This gives me a smaller model that still goes through the same export pipeline."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "Let's try this on SAM3 and see what happens."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "I start by wrapping SAM3 for export."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "This wrapper defines the interface for Torch export to capture"
+  },
+  {
+    "timestamp": "8:11",
+    "content": "the full computational graph of the model."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "And here's the conversion pipeline from the slides wrapped into a reusable helper."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "A couple of interesting points though."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "First, it runs decompositions in the PyTorch exported program with CoreAI's custom table."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "This ensures that high-level semantics that CoreAI supports, like attention, are preserved in the graph."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "Second, it also supports casting the program to 16-bit floating point using CoreAI Opt's helper if needed."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "The full conversion takes a few minutes, so I have pre-computed the baseline asset."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "What I do here is load the baseline 32-bit converted model and run it."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "As you can see, it's over 3GB in size."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "When I run, the default specialization kicks in to specialize and run the model."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "This is my baseline."
+  },
+  {
+    "timestamp": "9:14",
+    "content": "In this image, I ask for a segmentation mask over all the flowers."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "I have a lot of the parameters."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "All are successfully detected based on the default threshold running on-device."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "This is what I need to preserve after compression."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "Now, let's look at compression."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "CoreAI Opt ships with preset configurations."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "Presets.w4 gives me 4-bit per-channel symmetric quantization in one line."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "I set the execution mode to Eager which works great for weight compression."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "For activation, I would use the graph mode."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "Then, I initialize CoreAI Opt's quantizer with the config, pass the example inputs and finalize."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "The model is then compressed."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "As before, I load the model and run it on-device."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "The model is now around 430MB."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "The model is now around 530MB."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Look at the result."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "One of the occluded flowers is no longer detected."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "I apply the same aggressive compression to every single layer and it's likely that not every layer"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "handles this equally well."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "The question is, which layers are causing this?"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "This is the kind of problem that's hard to diagnose from the output alone."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "I need to see inside the model."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "Let me hand it over to Nicole to show you how."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "Thanks Sachin."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "I'm excited to talk to you about CoreAI Debugger."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Now we've seen how to create and optimize your CoreAI model."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "But if you need a deeper understanding of your model and its behavior, you can use CoreAI Debugger."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "CoreAI Debugger is a new standalone application that can help you inspect your models on Apple platforms."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "With the Debugger, you can visualize your model structure in an easy to understand graph format,"
+  },
+  {
+    "timestamp": "11:13",
+    "content": "execute your model on specific hardware for true runtime results, and validate inference correctness"
+  },
+  {
+    "timestamp": "11:19",
+    "content": "against a reference run, all in one place."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "I'm excited to show you CoreAI Debugger in action and figure out what happened when the SAM-3 model was quantized."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "I'll start by opening the original model"
+  },
+  {
+    "timestamp": "11:33",
+    "content": "and click Inspect to get started."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Now that the model is open, I can see the Debugger workspace."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "On the left is the Navigator, which contains a structured list of operations in the model."
+  },
+  {
+    "timestamp": "11:53",
+    "content": "These operations are grouped by their PyTorch module, which is especially powerful for larger models like SAM-3,"
+  },
+  {
+    "timestamp": "12:00",
+    "content": "and allows you to navigate your model in a way that feels familiar."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "Selecting a PyTorch module in the Navigator, like the detector decoder,"
+  },
+  {
+    "timestamp": "12:10",
+    "content": "will highlight all of the corresponding nodes in the structure viewer at the top of the workspace."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "This view shows you a graphical representation of your model and provides a clear picture of operation"
+  },
+  {
+    "timestamp": "12:22",
+    "content": "connectivity, execution order, and data dependencies."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "And with the source viewer at the bottom, I'm always grounded in my model's original Python code,"
+  },
+  {
+    "timestamp": "12:34",
+    "content": "down to the specific line."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "Finally, I can learn even more about an operation by selecting it,"
+  },
+  {
+    "timestamp": "12:47",
+    "content": "and opening the inspector on the right."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "Here, I can find a description, and additional details on the operation's inputs,"
+  },
+  {
+    "timestamp": "12:56",
+    "content": "and outputs."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "Together, these views allow you to move fluidly between graph structure, source code, and execution"
+  },
+  {
+    "timestamp": "13:05",
+    "content": "details, which dramatically reduces the cognitive overhead of debugging complex models like SAM-3."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "Beyond static analysis, the debugger enables runtime analysis of how your model actually executes on"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "device. This will be especially helpful for tracking down where quantization has caused a problem."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "To run the model, I'll click Device at the top of the workspace."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "In the Scheme settings, I'll pick my Mac from the list of targets,"
+  },
+  {
+    "timestamp": "13:36",
+    "content": "then specify the inputs I want to provide to the model."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "I'll select the pixel values, then the input IDs, and the attention mask."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "Finally, I'll click Run."
+  },
+  {
+    "timestamp": "14:00",
+    "content": "SAM-3 is now being specialized to run on my device."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "Now that it's ready, the structure viewer has updated to show me the model exactly as it would run on my"
+  },
+  {
+    "timestamp": "14:11",
+    "content": "the output tensor."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "And I can now click on any operation to see its output tensor directly in the inspector,"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "without needing to modify anything."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Back to the problem at hand, I first want to verify the final detection masks."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "So, I'll scroll to the end of the model,"
+  },
+  {
+    "timestamp": "14:33",
+    "content": "and select the final operation."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "In the inspector, I'll click on the tensor preview to get a closer look at the mask."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "I can see the flowers, but, just like in the notebook, one is missing."
+  },
+  {
+    "timestamp": "14:47",
+    "content": "Now I want to understand how these results compare with the original PyTorch run."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "I'll return to my notebook and use the new Save Intermediates API."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "This API executes a PyTorch model and captures intermediate tensor values at each operation."
+  },
+  {
+    "timestamp": "15:07",
+    "content": "I want to compare my quantized results with the baseline Sachin showed earlier."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "I'll pass in the Int4 model alongside the original SAM3."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "I'll let it run."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "And now that the intermediates are saved, I'll return to the debugger to compare the results."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "I'll start by clicking the comparison icon at the top of the workspace to initialize a new comparison"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "session. On the left is the existing configuration I specified earlier."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "On the right, I can choose another configuration to compare against, like a different target or compute unit."
+  },
+  {
+    "timestamp": "15:49",
+    "content": "In this case, I'll click target and load a reference run from an intermediates file."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "I'll use the file I just exported and start the comparison."
+  },
+  {
+    "timestamp": "16:02",
+    "content": "cidacida"
+  },
+  {
+    "timestamp": "16:06",
+    "content": "The aggregator is now populated with operation pairs,"
+  },
+  {
+    "timestamp": "16:09",
+    "content": "which combine an operation from the specialized model"
+  },
+  {
+    "timestamp": "16:12",
+    "content": "and PyTorch model."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "These pairs are called sync points,"
+  },
+  {
+    "timestamp": "16:21",
+    "content": "places where the specialized model's output"
+  },
+  {
+    "timestamp": "16:24",
+    "content": "is expected to match the original PyTorch result."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "The debugger automatically identifies these points"
+  },
+  {
+    "timestamp": "16:30",
+    "content": "throughout the model to make the comparison process easy."
+  },
+  {
+    "timestamp": "16:33",
+    "content": "Each sync point is paired with a metric"
+  },
+  {
+    "timestamp": "16:37",
+    "content": "indicating how similar the two outputs are,"
+  },
+  {
+    "timestamp": "16:40",
+    "content": "which makes it trivial to find where they diverge."
+  },
+  {
+    "timestamp": "16:43",
+    "content": "The default metric is a peak signal to noise ratio, or PSNR,"
+  },
+  {
+    "timestamp": "16:48",
+    "content": "but this can be changed to whichever similarity indicator"
+  },
+  {
+    "timestamp": "16:50",
+    "content": "suits your model best."
+  },
+  {
+    "timestamp": "16:53",
+    "content": "For SAM3, I'll stick to PSNR."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "The value of the similarity metric can also be quickly gleaned"
+  },
+  {
+    "timestamp": "17:00",
+    "content": "from the status indicator on the right,"
+  },
+  {
+    "timestamp": "17:03",
+    "content": "or from the graph itself."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "Green nodes indicate similar tensors,"
+  },
+  {
+    "timestamp": "17:08",
+    "content": "red nodes would indicate significant differences."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "As I scroll through the operations,"
+  },
+  {
+    "timestamp": "17:15",
+    "content": "I'm seeing several yellow sync points,"
+  },
+  {
+    "timestamp": "17:17",
+    "content": "which indicates that parts of my model"
+  },
+  {
+    "timestamp": "17:19",
+    "content": "have moderately diverged from the expected result."
+  },
+  {
+    "timestamp": "17:23",
+    "content": "I'll sort by similarity"
+  },
+  {
+    "timestamp": "17:24",
+    "content": "and investigate the most dissimilar sync points."
+  },
+  {
+    "timestamp": "17:29",
+    "content": "When I click on a sync point in the navigator,"
+  },
+  {
+    "timestamp": "17:31",
+    "content": "the source viewer updates to show me the operations"
+  },
+  {
+    "timestamp": "17:34",
+    "content": "PyTorch module hierarchy."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "For example, this operation came from the detector decoder."
+  },
+  {
+    "timestamp": "17:42",
+    "content": "I'll use the up arrow key to navigate through the low PSNR sync"
+  },
+  {
+    "timestamp": "17:45",
+    "content": "points one by one to see if a pattern emerges."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "I'm noticing that the vast majority of low PSNR sync points"
+  },
+  {
+    "timestamp": "18:00",
+    "content": "are actually coming from the detector decoder."
+  },
+  {
+    "timestamp": "18:04",
+    "content": "This tells me that the quantization scheme applied"
+  },
+  {
+    "timestamp": "18:06",
+    "content": "earlier has mildly corrupted the detector results."
+  },
+  {
+    "timestamp": "18:10",
+    "content": "Since we previously identified that the detector block"
+  },
+  {
+    "timestamp": "18:13",
+    "content": "only accounts for 4% of model parameters,"
+  },
+  {
+    "timestamp": "18:16",
+    "content": "were not getting much benefit from compressing it anyway."
+  },
+  {
+    "timestamp": "18:20",
+    "content": "So, I'll return to the Jupyter notebook"
+  },
+  {
+    "timestamp": "18:23",
+    "content": "and try changing the quantization scheme"
+  },
+  {
+    "timestamp": "18:25",
+    "content": "to ignore the detector."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "Now that the new scheme has been applied,"
+  },
+  {
+    "timestamp": "18:33",
+    "content": "I'll re-export the model"
+  },
+  {
+    "timestamp": "18:35",
+    "content": "and verify if the change worked."
+  },
+  {
+    "timestamp": "18:46",
+    "content": "Great."
+  },
+  {
+    "timestamp": "18:47",
+    "content": "I can see that we have once again reached baseline quality"
+  },
+  {
+    "timestamp": "18:50",
+    "content": "where all flowers are detected."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "And the model is only a fraction of the size."
+  },
+  {
+    "timestamp": "18:57",
+    "content": "Core i Debugger turned hours of manual tensor comparison"
+  },
+  {
+    "timestamp": "19:00",
+    "content": "into a visual diagnosis."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "I started with missing detections"
+  },
+  {
+    "timestamp": "19:04",
+    "content": "and reached a revised quantization scheme in minutes."
+  },
+  {
+    "timestamp": "19:10",
+    "content": "Beyond what I showcase today,"
+  },
+  {
+    "timestamp": "19:11",
+    "content": "Core i Debugger is capable of solving increasingly complex issues."
+  },
+  {
+    "timestamp": "19:16",
+    "content": "It gives you deep visibility into how your models behave,"
+  },
+  {
+    "timestamp": "19:19",
+    "content": "enabling greater confidence"
+  },
+  {
+    "timestamp": "19:21",
+    "content": "when bringing your model to Apple platforms."
+  },
+  {
+    "timestamp": "19:24",
+    "content": "Now, back to Sachin."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "Thanks, Nicole."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "Now, let's take things a step further."
+  },
+  {
+    "timestamp": "19:31",
+    "content": "So far, I have been converting the model"
+  },
+  {
+    "timestamp": "19:33",
+    "content": "as a single end-to-end unit."
+  },
+  {
+    "timestamp": "19:35",
+    "content": "And for a lot of models, it works just fine."
+  },
+  {
+    "timestamp": "19:38",
+    "content": "But it may not always be enough,"
+  },
+  {
+    "timestamp": "19:40",
+    "content": "depending on your use case"
+  },
+  {
+    "timestamp": "19:41",
+    "content": "and especially your constraints."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "And this is where Core i"
+  },
+  {
+    "timestamp": "19:45",
+    "content": "really empowers you to dig deeper."
+  },
+  {
+    "timestamp": "19:48",
+    "content": "Concretely, I will now be zooming in"
+  },
+  {
+    "timestamp": "19:50",
+    "content": "on the PyTorch source itself,"
+  },
+  {
+    "timestamp": "19:52",
+    "content": "which defines a graph of computations"
+  },
+  {
+    "timestamp": "19:54",
+    "content": "from inputs to outputs."
+  },
+  {
+    "timestamp": "19:57",
+    "content": "What advanced model authoring implies"
+  },
+  {
+    "timestamp": "19:59",
+    "content": "is that you look inside this computational graph"
+  },
+  {
+    "timestamp": "20:01",
+    "content": "and really tune how it runs on the hardware."
+  },
+  {
+    "timestamp": "20:05",
+    "content": "As a simple example,"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "let's consider this series of operations."
+  },
+  {
+    "timestamp": "20:09",
+    "content": "You can take a group of these ops"
+  },
+  {
+    "timestamp": "20:11",
+    "content": "and fuse them into a single operation."
+  },
+  {
+    "timestamp": "20:13",
+    "content": "This replaces several steps"
+  },
+  {
+    "timestamp": "20:15",
+    "content": "with a single kernel dispatch within the graph."
+  },
+  {
+    "timestamp": "20:18",
+    "content": "Core i already ships"
+  },
+  {
+    "timestamp": "20:20",
+    "content": "with prepackaged fast kernels"
+  },
+  {
+    "timestamp": "20:22",
+    "content": "and primitives for heavy operations"
+  },
+  {
+    "timestamp": "20:24",
+    "content": "like scale.product attention,"
+  },
+  {
+    "timestamp": "20:26",
+    "content": "commonly found in transformers."
+  },
+  {
+    "timestamp": "20:29",
+    "content": "You can find examples"
+  },
+  {
+    "timestamp": "20:29",
+    "content": "of how to leverage these operations"
+  },
+  {
+    "timestamp": "20:31",
+    "content": "in the Core i models repository."
+  },
+  {
+    "timestamp": "20:34",
+    "content": "But if you live on the cutting edge"
+  },
+  {
+    "timestamp": "20:36",
+    "content": "and want even more customization,"
+  },
+  {
+    "timestamp": "20:38",
+    "content": "we also have support"
+  },
+  {
+    "timestamp": "20:39",
+    "content": "for custom metal fork kernels."
+  },
+  {
+    "timestamp": "20:42",
+    "content": "Coming back to my pipeline."
+  },
+  {
+    "timestamp": "20:44",
+    "content": "Here's what changes"
+  },
+  {
+    "timestamp": "20:46",
+    "content": "with custom metal kernels."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "I am adding a second input"
+  },
+  {
+    "timestamp": "20:50",
+    "content": "to Core i Torch."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "My kernels source code"
+  },
+  {
+    "timestamp": "20:53",
+    "content": "written in the metal shading language"
+  },
+  {
+    "timestamp": "20:55",
+    "content": "or MSL."
+  },
+  {
+    "timestamp": "20:57",
+    "content": "The converter takes both my PyTorch model"
+  },
+  {
+    "timestamp": "20:59",
+    "content": "and my custom kernel"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "and bundles them together"
+  },
+  {
+    "timestamp": "21:02",
+    "content": "into a single asset."
+  },
+  {
+    "timestamp": "21:04",
+    "content": "The MSL is embedded right inside."
+  },
+  {
+    "timestamp": "21:07",
+    "content": "It ships with the model."
+  },
+  {
+    "timestamp": "21:09",
+    "content": "Let me show you"
+  },
+  {
+    "timestamp": "21:10",
+    "content": "what that looks like in code."
+  },
+  {
+    "timestamp": "21:11",
+    "content": "First, I define a PyTorch reference"
+  },
+  {
+    "timestamp": "21:14",
+    "content": "for our example."
+  },
+  {
+    "timestamp": "21:15",
+    "content": "A standard sigmoid linear unit"
+  },
+  {
+    "timestamp": "21:17",
+    "content": "or CLEW."
+  },
+  {
+    "timestamp": "21:18",
+    "content": "It's a common activation function"
+  },
+  {
+    "timestamp": "21:20",
+    "content": "used in generative transformer models."
+  },
+  {
+    "timestamp": "21:22",
+    "content": "This is what Torch export"
+  },
+  {
+    "timestamp": "21:23",
+    "content": "sees during tracing."
+  },
+  {
+    "timestamp": "21:24",
+    "content": "This is what Torch export"
+  },
+  {
+    "timestamp": "21:25",
+    "content": "sees during tracing."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "Below that,"
+  },
+  {
+    "timestamp": "21:27",
+    "content": "metal kernel in MSL."
+  },
+  {
+    "timestamp": "21:28",
+    "content": "This is a simple"
+  },
+  {
+    "timestamp": "21:30",
+    "content": "element-wise kernel"
+  },
+  {
+    "timestamp": "21:31",
+    "content": "that computes the fused"
+  },
+  {
+    "timestamp": "21:31",
+    "content": "activation directly"
+  },
+  {
+    "timestamp": "21:32",
+    "content": "on the GPU."
+  },
+  {
+    "timestamp": "21:33",
+    "content": "With just these two"
+  },
+  {
+    "timestamp": "21:34",
+    "content": "components,"
+  },
+  {
+    "timestamp": "21:35",
+    "content": "we can use the fused"
+  },
+  {
+    "timestamp": "21:36",
+    "content": "activation"
+  },
+  {
+    "timestamp": "21:37",
+    "content": "directly on the GPU."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "With just these two pieces,"
+  },
+  {
+    "timestamp": "21:41",
+    "content": "I can now register"
+  },
+  {
+    "timestamp": "21:42",
+    "content": "a CoreAI Torch Metal kernel."
+  },
+  {
+    "timestamp": "21:44",
+    "content": "Give it the metal source,"
+  },
+  {
+    "timestamp": "21:46",
+    "content": "the PyTorch reference"
+  },
+  {
+    "timestamp": "21:47",
+    "content": "and the input and output names."
+  },
+  {
+    "timestamp": "21:49",
+    "content": "In this case,"
+  },
+  {
+    "timestamp": "21:51",
+    "content": "the input and output names"
+  },
+  {
+    "timestamp": "21:52",
+    "content": "are X and Y respectively."
+  },
+  {
+    "timestamp": "21:54",
+    "content": "And you can see those names"
+  },
+  {
+    "timestamp": "21:55",
+    "content": "being used in the MSL kernel above."
+  },
+  {
+    "timestamp": "21:57",
+    "content": "So you write the metal,"
+  },
+  {
+    "timestamp": "21:59",
+    "content": "you write the PyTorch reference"
+  },
+  {
+    "timestamp": "22:01",
+    "content": "and CoreAI binds them together."
+  },
+  {
+    "timestamp": "22:03",
+    "content": "Using it in the model,"
+  },
+  {
+    "timestamp": "22:05",
+    "content": "I will just call it"
+  },
+  {
+    "timestamp": "22:07",
+    "content": "like any other Python function."
+  },
+  {
+    "timestamp": "22:09",
+    "content": "Pass the input,"
+  },
+  {
+    "timestamp": "22:10",
+    "content": "specify the thread grid"
+  },
+  {
+    "timestamp": "22:12",
+    "content": "and I'm done."
+  },
+  {
+    "timestamp": "22:13",
+    "content": "One thing to note"
+  },
+  {
+    "timestamp": "22:15",
+    "content": "is that I pass in the result shapes"
+  },
+  {
+    "timestamp": "22:17",
+    "content": "to every instantiation"
+  },
+  {
+    "timestamp": "22:18",
+    "content": "of the custom kernel"
+  },
+  {
+    "timestamp": "22:19",
+    "content": "in the PyTorch source."
+  },
+  {
+    "timestamp": "22:21",
+    "content": "This allows CoreAI to bake in"
+  },
+  {
+    "timestamp": "22:23",
+    "content": "the computation of the output shapes"
+  },
+  {
+    "timestamp": "22:25",
+    "content": "of the kernel"
+  },
+  {
+    "timestamp": "22:26",
+    "content": "from the input shapes"
+  },
+  {
+    "timestamp": "22:27",
+    "content": "if your model has"
+  },
+  {
+    "timestamp": "22:28",
+    "content": "dynamic shape inputs."
+  },
+  {
+    "timestamp": "22:30",
+    "content": "When I convert with Torch converter,"
+  },
+  {
+    "timestamp": "22:33",
+    "content": "I register my custom kernels"
+  },
+  {
+    "timestamp": "22:35",
+    "content": "with the converter,"
+  },
+  {
+    "timestamp": "22:36",
+    "content": "then add the exported program"
+  },
+  {
+    "timestamp": "22:38",
+    "content": "as before."
+  },
+  {
+    "timestamp": "22:39",
+    "content": "The metal source gets embedded"
+  },
+  {
+    "timestamp": "22:41",
+    "content": "directly in the asset,"
+  },
+  {
+    "timestamp": "22:43",
+    "content": "a single artifact."
+  },
+  {
+    "timestamp": "22:44",
+    "content": "The kernel travels with the model."
+  },
+  {
+    "timestamp": "22:48",
+    "content": "For more details on how you can write"
+  },
+  {
+    "timestamp": "22:49",
+    "content": "efficient metal kernels for CoreAI"
+  },
+  {
+    "timestamp": "22:52",
+    "content": "and to see an optimized kernel"
+  },
+  {
+    "timestamp": "22:53",
+    "content": "live in action with the SAM3 model,"
+  },
+  {
+    "timestamp": "22:56",
+    "content": "please see the"
+  },
+  {
+    "timestamp": "22:56",
+    "content": "Optimize Custom Machine Learning"
+  },
+  {
+    "timestamp": "22:58",
+    "content": "Operations with Metal Tensors talk."
+  },
+  {
+    "timestamp": "23:01",
+    "content": "So far,"
+  },
+  {
+    "timestamp": "23:02",
+    "content": "I showed how you can take"
+  },
+  {
+    "timestamp": "23:03",
+    "content": "multiple operations in the graph"
+  },
+  {
+    "timestamp": "23:05",
+    "content": "and fuse them into one."
+  },
+  {
+    "timestamp": "23:07",
+    "content": "But for more advanced optimizations,"
+  },
+  {
+    "timestamp": "23:09",
+    "content": "especially for iOS,"
+  },
+  {
+    "timestamp": "23:10",
+    "content": "you need to go further"
+  },
+  {
+    "timestamp": "23:11",
+    "content": "and rewrite the entire model"
+  },
+  {
+    "timestamp": "23:13",
+    "content": "with a specific target in mind."
+  },
+  {
+    "timestamp": "23:16",
+    "content": "We refer to this process"
+  },
+  {
+    "timestamp": "23:17",
+    "content": "as model reauthoring."
+  },
+  {
+    "timestamp": "23:19",
+    "content": "Back to our series of operations."
+  },
+  {
+    "timestamp": "23:21",
+    "content": "Reauthoring typically involves"
+  },
+  {
+    "timestamp": "23:23",
+    "content": "replacing many aspects"
+  },
+  {
+    "timestamp": "23:24",
+    "content": "of this computational graph."
+  },
+  {
+    "timestamp": "23:26",
+    "content": "This may imply using"
+  },
+  {
+    "timestamp": "23:27",
+    "content": "different operations,"
+  },
+  {
+    "timestamp": "23:29",
+    "content": "novel tensor layouts,"
+  },
+  {
+    "timestamp": "23:30",
+    "content": "and even modifying the interfaces"
+  },
+  {
+    "timestamp": "23:32",
+    "content": "of the model."
+  },
+  {
+    "timestamp": "23:33",
+    "content": "Essentially,"
+  },
+  {
+    "timestamp": "23:34",
+    "content": "this is a completely different"
+  },
+  {
+    "timestamp": "23:35",
+    "content": "implementation of the source code."
+  },
+  {
+    "timestamp": "23:39",
+    "content": "Digging deeper,"
+  },
+  {
+    "timestamp": "23:40",
+    "content": "what does this kind of"
+  },
+  {
+    "timestamp": "23:41",
+    "content": "authoring involve?"
+  },
+  {
+    "timestamp": "23:42",
+    "content": "One example is using"
+  },
+  {
+    "timestamp": "23:44",
+    "content": "predefined patterns in the"
+  },
+  {
+    "timestamp": "23:45",
+    "content": "PyTorch code that tell CoreAI"
+  },
+  {
+    "timestamp": "23:47",
+    "content": "about a specific concept."
+  },
+  {
+    "timestamp": "23:49",
+    "content": "This allows the framework"
+  },
+  {
+    "timestamp": "23:50",
+    "content": "to map these semantics"
+  },
+  {
+    "timestamp": "23:52",
+    "content": "to an optimized implementation"
+  },
+  {
+    "timestamp": "23:53",
+    "content": "at runtime."
+  },
+  {
+    "timestamp": "23:55",
+    "content": "An example of this is in-place"
+  },
+  {
+    "timestamp": "23:56",
+    "content": "updates of the key value cache"
+  },
+  {
+    "timestamp": "23:58",
+    "content": "commonly used in large language models."
+  },
+  {
+    "timestamp": "24:01",
+    "content": "Another mechanism used,"
+  },
+  {
+    "timestamp": "24:02",
+    "content": "especially when targeting iOS,"
+  },
+  {
+    "timestamp": "24:04",
+    "content": "is the usage of static tensor shapes,"
+  },
+  {
+    "timestamp": "24:06",
+    "content": "channels first tensor layouts,"
+  },
+  {
+    "timestamp": "24:08",
+    "content": "and convolutional op patterns."
+  },
+  {
+    "timestamp": "24:10",
+    "content": "These enable CoreAI"
+  },
+  {
+    "timestamp": "24:11",
+    "content": "to leverage powerful"
+  },
+  {
+    "timestamp": "24:12",
+    "content": "underlying primitives"
+  },
+  {
+    "timestamp": "24:14",
+    "content": "and meet your on-device constraints."
+  },
+  {
+    "timestamp": "24:17",
+    "content": "When you engineer"
+  },
+  {
+    "timestamp": "24:17",
+    "content": "a novel PyTorch implementation"
+  },
+  {
+    "timestamp": "24:19",
+    "content": "in this way,"
+  },
+  {
+    "timestamp": "24:20",
+    "content": "it's crucial that you employ"
+  },
+  {
+    "timestamp": "24:21",
+    "content": "rigorous testing,"
+  },
+  {
+    "timestamp": "24:22",
+    "content": "both at the module level"
+  },
+  {
+    "timestamp": "24:24",
+    "content": "and at the model level."
+  },
+  {
+    "timestamp": "24:26",
+    "content": "This ensures that"
+  },
+  {
+    "timestamp": "24:27",
+    "content": "individual building blocks"
+  },
+  {
+    "timestamp": "24:28",
+    "content": "as well as the entire model"
+  },
+  {
+    "timestamp": "24:30",
+    "content": "work as intended."
+  },
+  {
+    "timestamp": "24:32",
+    "content": "This testing can take the shape"
+  },
+  {
+    "timestamp": "24:33",
+    "content": "of unit tests"
+  },
+  {
+    "timestamp": "24:34",
+    "content": "or integration tests."
+  },
+  {
+    "timestamp": "24:36",
+    "content": "To get you started,"
+  },
+  {
+    "timestamp": "24:37",
+    "content": "the CoreAI models repository"
+  },
+  {
+    "timestamp": "24:39",
+    "content": "includes multiple examples"
+  },
+  {
+    "timestamp": "24:40",
+    "content": "of such reusable components"
+  },
+  {
+    "timestamp": "24:42",
+    "content": "and best practices"
+  },
+  {
+    "timestamp": "24:43",
+    "content": "across different models."
+  },
+  {
+    "timestamp": "24:46",
+    "content": "CoreAI skills also enable"
+  },
+  {
+    "timestamp": "24:47",
+    "content": "your coding assistant"
+  },
+  {
+    "timestamp": "24:49",
+    "content": "to write PyTorch code optimized"
+  },
+  {
+    "timestamp": "24:51",
+    "content": "for Apple Silicon"
+  },
+  {
+    "timestamp": "24:52",
+    "content": "from D1."
+  },
+  {
+    "timestamp": "24:54",
+    "content": "Let's continue with SAM3."
+  },
+  {
+    "timestamp": "24:56",
+    "content": "Instead of converting"
+  },
+  {
+    "timestamp": "24:56",
+    "content": "the model as is,"
+  },
+  {
+    "timestamp": "24:58",
+    "content": "I can author a new PyTorch"
+  },
+  {
+    "timestamp": "24:59",
+    "content": "implementation"
+  },
+  {
+    "timestamp": "25:00",
+    "content": "that's handcrafted"
+  },
+  {
+    "timestamp": "25:01",
+    "content": "for my goals."
+  },
+  {
+    "timestamp": "25:02",
+    "content": "The biggest change I make"
+  },
+  {
+    "timestamp": "25:04",
+    "content": "is to have three separate functions"
+  },
+  {
+    "timestamp": "25:06",
+    "content": "in the CoreAI model"
+  },
+  {
+    "timestamp": "25:07",
+    "content": "instead of one."
+  },
+  {
+    "timestamp": "25:08",
+    "content": "CoreAI Torch has APIs"
+  },
+  {
+    "timestamp": "25:10",
+    "content": "that let you do this."
+  },
+  {
+    "timestamp": "25:12",
+    "content": "ImageEncode handles the image,"
+  },
+  {
+    "timestamp": "25:14",
+    "content": "TextEncode processes the prompt,"
+  },
+  {
+    "timestamp": "25:16",
+    "content": "and Detect wraps the final"
+  },
+  {
+    "timestamp": "25:17",
+    "content": "post-processing"
+  },
+  {
+    "timestamp": "25:18",
+    "content": "to generate the output."
+  },
+  {
+    "timestamp": "25:21",
+    "content": "Spreading the work this way"
+  },
+  {
+    "timestamp": "25:22",
+    "content": "allows me to run each bit"
+  },
+  {
+    "timestamp": "25:23",
+    "content": "at a different cadence."
+  },
+  {
+    "timestamp": "25:25",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "25:26",
+    "content": "I may want to process"
+  },
+  {
+    "timestamp": "25:27",
+    "content": "a single prompt once"
+  },
+  {
+    "timestamp": "25:29",
+    "content": "and use it across a variety"
+  },
+  {
+    "timestamp": "25:30",
+    "content": "of images in my application."
+  },
+  {
+    "timestamp": "25:32",
+    "content": "It also gives each function"
+  },
+  {
+    "timestamp": "25:34",
+    "content": "a clean interface"
+  },
+  {
+    "timestamp": "25:35",
+    "content": "and lets me compress"
+  },
+  {
+    "timestamp": "25:36",
+    "content": "and author each one independently."
+  },
+  {
+    "timestamp": "25:39",
+    "content": "Let's see this in practice."
+  },
+  {
+    "timestamp": "25:41",
+    "content": "Here's the attention block"
+  },
+  {
+    "timestamp": "25:42",
+    "content": "from the ImageEncoder Transformer"
+  },
+  {
+    "timestamp": "25:44",
+    "content": "rewritten for power-efficient"
+  },
+  {
+    "timestamp": "25:45",
+    "content": "execution on iOS."
+  },
+  {
+    "timestamp": "25:50",
+    "content": "Instead of standard linear layers,"
+  },
+  {
+    "timestamp": "25:52",
+    "content": "I use convolutional projections."
+  },
+  {
+    "timestamp": "25:54",
+    "content": "This is one of the patterns"
+  },
+  {
+    "timestamp": "25:55",
+    "content": "that lets CoreAI leverage"
+  },
+  {
+    "timestamp": "25:57",
+    "content": "native hardware primitives"
+  },
+  {
+    "timestamp": "25:58",
+    "content": "on the right compute unit."
+  },
+  {
+    "timestamp": "26:00",
+    "content": "The TextEncoder"
+  },
+  {
+    "timestamp": "26:02",
+    "content": "gets a similar treatment."
+  },
+  {
+    "timestamp": "26:03",
+    "content": "The smaller decoder"
+  },
+  {
+    "timestamp": "26:04",
+    "content": "stays mostly unchanged."
+  },
+  {
+    "timestamp": "26:06",
+    "content": "It's a small fraction"
+  },
+  {
+    "timestamp": "26:06",
+    "content": "of the compute,"
+  },
+  {
+    "timestamp": "26:08",
+    "content": "so the payoff"
+  },
+  {
+    "timestamp": "26:08",
+    "content": "from reauthoring it"
+  },
+  {
+    "timestamp": "26:09",
+    "content": "is minimal."
+  },
+  {
+    "timestamp": "26:15",
+    "content": "I structured the reauthored model"
+  },
+  {
+    "timestamp": "26:17",
+    "content": "as three independent modules."
+  },
+  {
+    "timestamp": "26:19",
+    "content": "ImageEncoder,"
+  },
+  {
+    "timestamp": "26:22",
+    "content": "TextEncoder,"
+  },
+  {
+    "timestamp": "26:24",
+    "content": "and the Detector."
+  },
+  {
+    "timestamp": "26:25",
+    "content": "As mentioned earlier,"
+  },
+  {
+    "timestamp": "26:26",
+    "content": "this separation lets me use"
+  },
+  {
+    "timestamp": "26:28",
+    "content": "different aspects"
+  },
+  {
+    "timestamp": "26:29",
+    "content": "of the model uniquely."
+  },
+  {
+    "timestamp": "26:30",
+    "content": "the model uniquely."
+  },
+  {
+    "timestamp": "26:31",
+    "content": "For compression,"
+  },
+  {
+    "timestamp": "26:32",
+    "content": "I apply 4-bit palletization"
+  },
+  {
+    "timestamp": "26:37",
+    "content": "with per-channel scales"
+  },
+  {
+    "timestamp": "26:38",
+    "content": "to the two encoders."
+  },
+  {
+    "timestamp": "26:39",
+    "content": "There is a preset"
+  },
+  {
+    "timestamp": "26:40",
+    "content": "available for this,"
+  },
+  {
+    "timestamp": "26:41",
+    "content": "but I use the lower-level"
+  },
+  {
+    "timestamp": "26:42",
+    "content": "representation here"
+  },
+  {
+    "timestamp": "26:43",
+    "content": "to showcase the APIs."
+  },
+  {
+    "timestamp": "26:44",
+    "content": "This lookup table-based"
+  },
+  {
+    "timestamp": "26:45",
+    "content": "compression is well-suited"
+  },
+  {
+    "timestamp": "26:46",
+    "content": "for power efficiency"
+  },
+  {
+    "timestamp": "26:47",
+    "content": "on iOS."
+  },
+  {
+    "timestamp": "26:48",
+    "content": "As before,"
+  },
+  {
+    "timestamp": "26:49",
+    "content": "I construct"
+  },
+  {
+    "timestamp": "26:50",
+    "content": "the power efficiency"
+  },
+  {
+    "timestamp": "26:51",
+    "content": "on iOS."
+  },
+  {
+    "timestamp": "26:52",
+    "content": "As before,"
+  },
+  {
+    "timestamp": "26:53",
+    "content": "I construct"
+  },
+  {
+    "timestamp": "26:54",
+    "content": "the power efficiency"
+  },
+  {
+    "timestamp": "26:55",
+    "content": "on iOS."
+  },
+  {
+    "timestamp": "26:56",
+    "content": "As before,"
+  },
+  {
+    "timestamp": "26:57",
+    "content": "I construct"
+  },
+  {
+    "timestamp": "26:58",
+    "content": "the power efficiency"
+  },
+  {
+    "timestamp": "26:59",
+    "content": "a key-means palletizer"
+  },
+  {
+    "timestamp": "27:01",
+    "content": "similar to the quantizer"
+  },
+  {
+    "timestamp": "27:02",
+    "content": "and pass it"
+  },
+  {
+    "timestamp": "27:03",
+    "content": "the model"
+  },
+  {
+    "timestamp": "27:04",
+    "content": "and config."
+  },
+  {
+    "timestamp": "27:05",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "27:06",
+    "content": "I prepare"
+  },
+  {
+    "timestamp": "27:07",
+    "content": "and finalize."
+  },
+  {
+    "timestamp": "27:08",
+    "content": "Also note"
+  },
+  {
+    "timestamp": "27:09",
+    "content": "that I change"
+  },
+  {
+    "timestamp": "27:10",
+    "content": "the input image size"
+  },
+  {
+    "timestamp": "27:11",
+    "content": "from 1008 pixels"
+  },
+  {
+    "timestamp": "27:12",
+    "content": "to 336"
+  },
+  {
+    "timestamp": "27:13",
+    "content": "to run on an iPhone."
+  },
+  {
+    "timestamp": "27:19",
+    "content": "The detector"
+  },
+  {
+    "timestamp": "27:20",
+    "content": "stays uncompressed."
+  },
+  {
+    "timestamp": "27:21",
+    "content": "I know"
+  },
+  {
+    "timestamp": "27:22",
+    "content": "that it is sensitive"
+  },
+  {
+    "timestamp": "27:23",
+    "content": "to compression"
+  },
+  {
+    "timestamp": "27:24",
+    "content": "from our previous exercise."
+  },
+  {
+    "timestamp": "27:25",
+    "content": "I then run"
+  },
+  {
+    "timestamp": "27:27",
+    "content": "each model"
+  },
+  {
+    "timestamp": "27:28",
+    "content": "through Torch export."
+  },
+  {
+    "timestamp": "27:30",
+    "content": "All of them"
+  },
+  {
+    "timestamp": "27:31",
+    "content": "get cast"
+  },
+  {
+    "timestamp": "27:32",
+    "content": "to half-precision."
+  },
+  {
+    "timestamp": "27:33",
+    "content": "And here's"
+  },
+  {
+    "timestamp": "27:34",
+    "content": "where it comes together."
+  },
+  {
+    "timestamp": "27:35",
+    "content": "A single Torch converter,"
+  },
+  {
+    "timestamp": "27:36",
+    "content": "three exported programs,"
+  },
+  {
+    "timestamp": "27:37",
+    "content": "each with its own"
+  },
+  {
+    "timestamp": "27:38",
+    "content": "entry point name."
+  },
+  {
+    "timestamp": "27:39",
+    "content": "First,"
+  },
+  {
+    "timestamp": "27:40",
+    "content": "image encode."
+  },
+  {
+    "timestamp": "27:41",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "27:42",
+    "content": "text encode."
+  },
+  {
+    "timestamp": "27:43",
+    "content": "and finally detect."
+  },
+  {
+    "timestamp": "27:44",
+    "content": "When saved,"
+  },
+  {
+    "timestamp": "27:45",
+    "content": "I get one"
+  },
+  {
+    "timestamp": "27:46",
+    "content": "model asset"
+  },
+  {
+    "timestamp": "27:47",
+    "content": "with three callable functions inside."
+  },
+  {
+    "timestamp": "27:49",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "27:50",
+    "content": "let's load and run"
+  },
+  {
+    "timestamp": "27:51",
+    "content": "the pre-computed asset."
+  },
+  {
+    "timestamp": "27:52",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "27:53",
+    "content": "let's load and run"
+  },
+  {
+    "timestamp": "27:54",
+    "content": "the pre-computed asset."
+  },
+  {
+    "timestamp": "27:55",
+    "content": "Now,"
+  },
+  {
+    "timestamp": "27:56",
+    "content": "let's load and run"
+  },
+  {
+    "timestamp": "27:57",
+    "content": "the pre-computed asset."
+  },
+  {
+    "timestamp": "27:58",
+    "content": "First,"
+  },
+  {
+    "timestamp": "27:59",
+    "content": "I see all the flowers segmented as expected."
+  },
+  {
+    "timestamp": "28:03",
+    "content": "And here's the payoff of the three function split."
+  },
+  {
+    "timestamp": "28:06",
+    "content": "I see all the flowers segmented as expected."
+  },
+  {
+    "timestamp": "28:09",
+    "content": "And here's the payoff of the three function split."
+  },
+  {
+    "timestamp": "28:12",
+    "content": "I swapped the prompt to butterfly."
+  },
+  {
+    "timestamp": "28:13",
+    "content": "And only reran the text encoder and the detector."
+  },
+  {
+    "timestamp": "28:17",
+    "content": "As a result,"
+  },
+  {
+    "timestamp": "28:18",
+    "content": "the second inference is 76% faster."
+  },
+  {
+    "timestamp": "28:21",
+    "content": "Even after warm-up."
+  },
+  {
+    "timestamp": "28:22",
+    "content": "And now,"
+  },
+  {
+    "timestamp": "28:23",
+    "content": "I see all the flowers segmented as expected."
+  },
+  {
+    "timestamp": "28:24",
+    "content": "And here's the payoff of the three function split."
+  },
+  {
+    "timestamp": "28:26",
+    "content": "I swapped the prompt to butterfly."
+  },
+  {
+    "timestamp": "28:29",
+    "content": "And only reran the text encoder and the detector."
+  },
+  {
+    "timestamp": "28:33",
+    "content": "As a result,"
+  },
+  {
+    "timestamp": "28:37",
+    "content": "the second inference is 76% faster."
+  },
+  {
+    "timestamp": "28:40",
+    "content": "Even after warm-up."
+  },
+  {
+    "timestamp": "28:41",
+    "content": "This shows the benefit of re-authoring."
+  },
+  {
+    "timestamp": "28:44",
+    "content": "So,"
+  },
+  {
+    "timestamp": "28:45",
+    "content": "here's what you can do today."
+  },
+  {
+    "timestamp": "28:47",
+    "content": "Convert your PyTorch models using CoreAI's Python libraries."
+  },
+  {
+    "timestamp": "28:51",
+    "content": "Optimize them with CoreAI Opt."
+  },
+  {
+    "timestamp": "28:54",
+    "content": "And use the debugger when you need to understand what's happening inside."
+  },
+  {
+    "timestamp": "28:57",
+    "content": "Build on top of examples in CoreAI models."
+  },
+  {
+    "timestamp": "29:01",
+    "content": "And plug in CoreAI skills into your favorite AI agent"
+  },
+  {
+    "timestamp": "29:05",
+    "content": "to leverage the new framework like an expert."
+  },
+  {
+    "timestamp": "29:07",
+    "content": "I look forward to seeing what models you bring to the platform."
+  },
+  {
+    "timestamp": "29:10",
+    "content": "Thank you!"
+  },
+  {
+    "timestamp": "29:11",
+    "content": "Thank you."
+  }
+]

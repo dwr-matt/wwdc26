@@ -1,0 +1,546 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm James and I'm an engineer on the AV Foundation team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "I love to travel."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "So today I'll take you on a trip to explore a couple of features related to subtitles."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "People use subtitles for many reasons."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "Subtitles are vital for people who are deaf or hard of hearing or who have other accessibility needs."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "They need subtitles to understand the content."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "Some people read subtitles to assist in understanding the spoken dialogue."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "I use subtitles when I physically can't hear the audio, like when I'm in a busy airport."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "Apple AI-generated subtitles can be created live, locally on the device, as the media plays."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "In this video, first, I'll show you how the Apple AI-generated subtitles appear in your app."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "Afterwards, I'll show the subtitle style preview feature that lets people customize subtitles while playing video."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "Next, I'll show how media assets are authored."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "The media creation journey usually begins with filming and editing the video and audio content."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "Then, subtitles, text that represents spoken words in the audio, are created manually."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "Later in this video, I'll refer to such subtitles as authored subtitles."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "The content author can create multiple subtitles, each for one particular language."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "Also, they can create multiple audio languages."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "The final media contains the video, audio, and authored subtitles altogether."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "Even content with multiple audio and subtitle languages might not have a language the viewer understands."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "People can have their device create generated subtitles to help fill the gap"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "when the original content doesn't have the subtitle language they need."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "This enables more people to access and experience the content."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "Next, this is how generated subtitles are created."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "There are two use cases for generated subtitles."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "In the first use case, subtitles are generated from audio."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "The source audio goes into the on-device speech-to-text model."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "And subtitles are created."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "This is called speech transcription."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "Second, for language translation, subtitles are generated from other subtitles."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "The source subtitles, English in this case, go into the on-device translation model."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "New subtitles in a different language are created."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "Italian, for example."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "This is called language translation."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "Generated subtitles provide additional languages."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "The authored subtitles are preferred and remain unchanged."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "The good news is that you don't need to implement anything to turn on generated subtitles."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "They're available automatically during video playback."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "Generated subtitles are provided for many playback scenarios."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "Subtitles can be generated for HTTP live streaming content, including live streams, like TV channels."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "It also includes video on demand movies and shows, including travel videos, and live events like sports."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "File-based content is also supported, like app-bundled videos or downloaded media."
+  },
+  {
+    "timestamp": "3:41",
+    "content": "Several content types are supported."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "Several content types are supported."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "Professional content, like movies and series is supported."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "So is customer-created content, like camera capture from the iPhone and social media videos."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Now, I'll show you the supported devices and languages."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "Generated subtitles are available on multiple devices."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "This table shows the supported devices and languages."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "Starting in iOS and macOS 27, English subtitles can be generated from English audio."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "This is also supported on tvOS and visionOS 27."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "Also, multiple subtitle languages can be generated from English subtitles on iOS and macOS."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Now that you know about generated subtitles, I'll talk about how to present them in your app."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "It's important to provide subtitle selection UI during video playback."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "Here are the options for your app."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "This is the AVPlayerViewController UI on iOS."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "It fully implements subtitle selection and player controls."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "You don't need to do anything extra."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "AVPlayerView on macOS provides similar functionality."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "This is AVLegibleMaker."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "This is AVLegibleMediaOptions menu controller."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "It presents subtitle selection controls and implements the behavior."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "It's a good choice when you want to add subtitle selection UI to your existing player UI,"
+  },
+  {
+    "timestamp": "5:15",
+    "content": "since it does not provide player controls."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "Or you can implement custom controls for media selection to match the style of other controls in your app,"
+  },
+  {
+    "timestamp": "5:26",
+    "content": "like the ones I created here in my app."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Generated subtitles make the content in your app more accessible."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "More people can understand and enjoy the content."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "Now, I'll show you another subtitle feature that makes your app even more accessible."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "Subtitles help make content accessible, but the presentation of the subtitles is also important."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "The Settings app has let people select and change subtitle and caption styling for many years."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "There are a few built-in styles, and people can create custom styles to fit their needs."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "I've created a custom style called Bold Yellow."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "It has yellow text with a little extra border to make it easier for me to read."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "I can select the style in the Settings app, but it would be easier and more accessible to change the style while watching a video."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "That's exactly what the Subtitle Style preview does."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "I'm watching a video, and I have the Style menu open."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "I have the same styles available that were in the Settings app."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "The Subtitle Style can now be changed right from the menu where you select subtitles during video playback."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Not only that, but a preview of the style is shown to make selection easier."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "This is what my Bold Yellow style looks like in a video."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "There are several ways to implement the Subtitle Style preview feature in your app."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "First, this is AV Player View Controller on iOS."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "It fully implements the Subtitle Style preview and player controls."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "AV Player View on macOS provides similar functionality."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "This is AV Legible Media Options menu controller."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "It presents Subtitle Style preview controls and implements the behavior."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "It's a good choice when you want to add the Subtitle preview to your existing player UI."
+  },
+  {
+    "timestamp": "7:23",
+    "content": "Next, AV Player Layer has an API to show the style preview."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "I'll show you how to implement it in a moment."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "Also, AV Caption Renderer can provide the style preview, but you are responsible for rendering it."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "Now, here's the AV Player Layer implementation."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "Each Subtitle Style in the system is assigned a profile ID."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "First, fetch all of the styles by their profile IDs."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Populate your UI with the names for the styles."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "When a style is selected, show the stylized preview."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "New Subtitles are shown, using the specified style."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Any existing subtitles are automatically hidden, so they don't interfere with the preview."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "Pass nil for the text parameter."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "In that case, localized system text is shown."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "Use the position parameter to avoid any UI controls."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "This is an offset from the default location of the preview text."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "Call this function again to show a different style."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "You can call it as many times as needed."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "Stop the preview when selection is done."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "This removes the preview text and restores any existing subtitles that are active."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "Set the chosen style."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "It will be used for all subtitles on the system."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "You can build this feature in your app to let people quickly choose subtitles that are easier to read while watching a video."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Now, I'll show you both of these subtitle features together."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "I'm planning a camping trip to Italy."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "I'm going to watch this camping video for some inspiration."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "It has English subtitles, but I want Italian subtitles, so I can brush up on my Italian."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "To change the language, I'll open the subtitles menu, then click Language."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "Several subtitles are available."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Some are authored, and some are generated."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "The generated options are marked with a sparkle symbol and the word translated."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "I'll pick the Italian generated subtitles."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "Now, I have Italian subtitles in my video."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "I'll change the style to make them easier to read."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "First, I'll open the subtitles menu, then select Style."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "I'll try Large Text."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "The existing subtitles have been replaced with a placeholder message in Italian using the Large Text styling."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "The text is larger, but let me try my custom style."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "Aw, I like that."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "I'll dismiss the menu."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "The subtitles are now using my custom style."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "This trip is going to be amazing."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "Before I go, here are your next steps."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "Now that you know about the Generated Subtitles feature, I encourage you to go explore it."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "For example, watch some travel videos and turn on Generated Subtitles."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "Also, make sure your app has UI to select subtitles."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "Implement the Subtitle Style Preview, too."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "People appreciate this accessibility feature when they need to change the style of their subtitles."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "Thank you for watching."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "I have to go catch a plane to Italy."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "Ciao, ciao!"
+  }
+]

@@ -1,0 +1,650 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hello, my name is Michael Breiman, and I'm a human interface designer at Apple,"
+  },
+  {
+    "timestamp": "0:11",
+    "content": "working on system environments for Vision OS. In Vision OS, system environments are more than"
+  },
+  {
+    "timestamp": "0:17",
+    "content": "simple backdrops. They are photorealistic, natural landscapes designed for spatial computing that"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "transport you to a different time and place. Here in Haleakala, you get a stunning panoramic view"
+  },
+  {
+    "timestamp": "0:28",
+    "content": "above the clouds. But unlike flat media or a panoramic image, which does not respond to changes"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "in perspective, this environment offers true depth and parallax, giving someone the same experience"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "they would see in the real world. When you combine this with motion and audio, the scene feels alive"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "and it immerses the viewer in the space. In this talk, I'll take you through each part of the design"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "process for making your own immersive environments, pre-production, production, and post-production."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "I'll share the principles and concepts at each stage that you'll need to create a compelling"
+  },
+  {
+    "timestamp": "1:02",
+    "content": "immersive experience, with examples from six of the Vision OS system environments. Mount Hood,"
+  },
+  {
+    "timestamp": "1:09",
+    "content": "the Moon, Jupiter, Yosemite, Thorsmork, and Bora Bora. It's time to get started with pre-production."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "When our team kicks off a new environment, we first spend time identifying some questions about our intent."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "Why are we building this particular environment? What are the qualities we want to bring to life?"
+  },
+  {
+    "timestamp": "1:29",
+    "content": "And how is the viewer going to use this space? These are all important questions to ask yourself"
+  },
+  {
+    "timestamp": "1:34",
+    "content": "about your project. For example, when our team started thinking about use cases for system environments,"
+  },
+  {
+    "timestamp": "1:40",
+    "content": "watching media in large format was especially exciting to us. We wanted the media experience to"
+  },
+  {
+    "timestamp": "1:46",
+    "content": "feel cinematic, so we sculpted the terrains to fit a large screen and researched the optimal"
+  },
+  {
+    "timestamp": "1:50",
+    "content": "centerline for viewing. The keynote environment was built for a different purpose, to give people a"
+  },
+  {
+    "timestamp": "1:56",
+    "content": "space to practice public speaking, as though they are live on stage in the real world. Here, sound is"
+  },
+  {
+    "timestamp": "2:01",
+    "content": "intentionally absent to keep them focused, and the lighting is concentrated on the stage, just as it"
+  },
+  {
+    "timestamp": "2:07",
+    "content": "would be if they were presenting in front of an audience. You might want your environment to be a"
+  },
+  {
+    "timestamp": "2:12",
+    "content": "backdrop for your app's content, or to showcase an experience from the web. Whatever you're designing,"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "the ideation phase is such a key part of building environments, and answering these questions early"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "on helps you save time and avoid costly mistakes later in production. If you're designing an"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "environment that exists in the real world, like Mount Hood, it's incredibly helpful to scout your"
+  },
+  {
+    "timestamp": "2:32",
+    "content": "location in advance. Consider where you want to place the viewer in the scene for their primary"
+  },
+  {
+    "timestamp": "2:37",
+    "content": "viewpoint, as well as what will be visible to them if they decide to turn around. In Vision OS, viewers will"
+  },
+  {
+    "timestamp": "2:44",
+    "content": "see approximately 81 degrees of the scene in their field of view when fully immersed. Scouting is also"
+  },
+  {
+    "timestamp": "2:50",
+    "content": "helpful for knowing what features you won't want to showcase in your environment. The panorama in the"
+  },
+  {
+    "timestamp": "2:54",
+    "content": "top view shows our Mount Hood location. Notice the road and the dense vegetation as the camera pans around"
+  },
+  {
+    "timestamp": "3:00",
+    "content": "to the backside. Our team flagged these for replacement when we got into production. The panorama in the bottom"
+  },
+  {
+    "timestamp": "3:06",
+    "content": "view shows the result after our team made these changes. Of course, sometimes the environment you want to"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "create won't be easily accessible in the real world. When we worked on the moon environment, for example, we"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "relied on photography from the Apollo missions to help us visualize our scene. Reference materials like"
+  },
+  {
+    "timestamp": "3:24",
+    "content": "photography and videography are essential if you're building an environment like this. You can confirm any"
+  },
+  {
+    "timestamp": "3:30",
+    "content": "assumptions you already had and reconcile any discrepancies. You can also use reference material to help you"
+  },
+  {
+    "timestamp": "3:36",
+    "content": "better understand a location here on Earth. For example, our team created a lighting study using digital"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "elevation models of the Yosemite Valley and the Earth's orbit to determine the exact days and times we"
+  },
+  {
+    "timestamp": "3:48",
+    "content": "wanted to capture. Whether you're building your environment from scratch or a real location, here are a"
+  },
+  {
+    "timestamp": "3:54",
+    "content": "few things to keep in mind when planning for the next stages of production. Try to visualize your environment in terms of"
+  },
+  {
+    "timestamp": "4:00",
+    "content": "layers building from the background to the foreground. Identify which scene elements will need to have motion and"
+  },
+  {
+    "timestamp": "4:06",
+    "content": "start thinking about what spatial audio you can attach to them. This will help you get ahead of any complications"
+  },
+  {
+    "timestamp": "4:12",
+    "content": "that might disrupt your asset creation. One last thing. Often during pre-production, you will discover things that"
+  },
+  {
+    "timestamp": "4:18",
+    "content": "will change your plan for the better. For the Jupiter environment, for example, we built a scale model of the solar system so that we could"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "understand how the Sun would light Jupiter's moons. During this process, we realized that we wanted a system that allows for the"
+  },
+  {
+    "timestamp": "4:32",
+    "content": "passage of time, and this became a key design requirement for the final environment."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "To recap, when you begin pre-production for your environment, make sure you're clear on your intent."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "Scout your scene by visiting real-world locations and collecting reference material. Consider the composition and layering of your environment,"
+  },
+  {
+    "timestamp": "4:52",
+    "content": "and what you might want to remove or change. And use all the resources you get from pre-production to refine your ideas through"
+  },
+  {
+    "timestamp": "5:00",
+    "content": "iteration. Because having a solid plan for how you will approach the build of your environment prepares you for the next phase of"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "development, production. It takes time to build complex 3D scenes, but you can make it easier on yourself and anyone you're"
+  },
+  {
+    "timestamp": "5:14",
+    "content": "working with by capturing high-quality photography at the source. The Yosemite environment is a great example. During our team's advanced"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "scouting, we identified the exact viewpoint we wanted. Here, the viewer is in Yosemite Valley, with a clear shot into the mid-distance."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "This sort of framing is ideal for environments. You can always add detail into the foreground with CG elements, but it's much harder to remove things that obstruct the view."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "When we were ready to enter production, we returned to this spot in the valley with our equipment and a very detailed shoot schedule. Seasons, weather, and even the time of day can dramatically change, and"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "dramatically change what you're able to capture. And that was certainly true for the Yosemite environment. Lighting can change quickly, especially around sunrise and sunset."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "Plan to spend more time in your location and shoot more photography than you think you'll need. Every image you take can be used to create your environment's 3D assets later on, so it's important to capture source imagery that is directly usable."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "Here are a few tips. Use a tripod with your camera leveled 1 meter off the ground, and ensure a deep depth of field. If possible, set up another camera 2 meters off the ground to trigger at the same time."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "This alternate view is especially helpful during post-production, to fill in any parts of the scene that are not visible from the primary view. And remember, you are creating a 360-degree environment, so you will need to use a rig and lens that covers all views and ultimately produces a stitched panorama."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "The dynamic range of an environment can be quite large, from the sun to the shadows, so shoot bracketed exposures to ensure you capture all the details."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "Know your target output display, and capture more resolution than you think you will need."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "For VisionOS, an environment will be sharp at 40 pixels per degree, so a 360-degree panorama of 14,400 by 7,200 pixels is an ideal target."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "In addition to your primary photography, it's also a good idea to capture secondary photography on location for reference and measurements."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "The point clouds produced by photogrammetry and LIDAR can be meshed and used as starting points for 3D assets, but the data is also useful for distance measurements."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "You might discover, for example, that your seemingly flat terrain actually has a slope, and with that knowledge, you might make different choices about how you construct your 3D assets."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Lighting reference is especially helpful when making CG assets integrate seamlessly into your environment."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "Macbeth charts, as well as chrome and gray spheres, should be shot at the same time as your primary photography."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "Video of scene elements in motion will also provide invaluable reference when creating believable shader effects."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "Take note of what sounds, if any, are associated with motion so that you can source the appropriate audio."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "And if it's not possible to capture a panorama through photography, you'll need to create a rendered panorama using your favorite digital content creation tool."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "The advantage of creating a rendered panorama is that you have ultimate control over the entire scene at any given time."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "Production helps set you and your environment up for success."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "Careful preparation will help you capture the best photography for the next stage of the process."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "High-quality imagery gives you or your technical artist valuable data to work with."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "Secondary photography and reference material can provide you with extra information about the scene to make your 3D work easier."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Lastly, this is not a one-size-fits-all process."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "If you're a small team with limited resources, you can adapt your production with these best practices in mind."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "After the production phase, you should have enough material to create a high-resolution source panorama."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "With this and your reference content, you're now ready to begin designing your 3D asset."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "The first step, however? Cleanup."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "Let's take a look at the principal photography from the Thorsmork environment and how our team approached cleaning up this panorama."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "There are a couple of obvious things here that you wouldn't want in the final environment."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Like the camera rig."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "As well as footprints and people, which would detract from the landscape."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "But the cleanup process is also where those notes taken in pre-production come in handy."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "Let's take a look at a few scene elements that are interfering with our ideal composition."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "Like here, the vegetation in the mid-ground is too busy."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "And these bushes are too dominant in frame."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "Once we identified the key elements we wanted removed, our team went to work and refined the imagery through iterations of digital map painting and rendering CG assets."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "It's very important to pay attention to color balance and lighting consistency throughout this process."
+  },
+  {
+    "timestamp": "9:41",
+    "content": "Post-production involves making many creative decisions about the look of your environment."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "But there's another critical aspect of this stage."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "Maintaining visual fidelity as you prepare the final asset."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "Because a 3D mesh is needed to achieve a sense of parallax and depth, you'll move your refined panorama to textures and UV space."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "The parts of the scene that are not visible in the panorama need to be filled in."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "This is where secondary photography and CG renders supplement the primary view."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "During this process, it's helpful to always do an A-B comparison between your 3D asset and your panorama to make sure your texture transfer is retaining the highest quality."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "Make sure that all scene elements have consistent sharpness, especially when compared to those nearby, so that they convey the proper scale."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "Try flopping your scene to look at it in a new way."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "At this point in post-production, your eyes may be too accustomed to seeing the same thing, so you can use this trick to make sure your composition is still working."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "You can also subject your environment to extreme gamma and gain values."
+  },
+  {
+    "timestamp": "10:38",
+    "content": "This technique can reveal any color and value inconsistencies, along with any data loss during texture transfer, which may become more obvious when viewed on different displays."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "Many aspects of post-production involve creative choices, but there's also a lot of technical artistry that supports this phase."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "To learn more about what is required to render your environments in real time, check out Optimize Your Custom Environments for Vision OS."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "Now that you have a textured mesh, the visual base of your environment is complete, but you'll need a couple more elements to complete the sense of immersion."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "Sound and motion."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "Sound can be incredibly impactful for creating immersion, and you can place spatial audio sources to help amplify that effect."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "For example, in this environment, an emitter with a rippling water sound attached is located in a part of the river where the water flows around large rocks."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "The design and implementation of spatial audio are big topics in themselves, so check out these two excellent talks to learn more about how sounds can enhance the sense of immersion in your environments."
+  },
+  {
+    "timestamp": "11:38",
+    "content": "And speaking of the river, it also needs to move."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "For any aspect of your environment that needs motion, custom shaders can help you create the best visuals while still being power efficient."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Now, Thor's Mork is a sub-arctic landscape, and there aren't a lot of motion features to design here."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "So let's travel south to Bora Bora in French Polynesia, an environment rich with movement."
+  },
+  {
+    "timestamp": "11:59",
+    "content": "Landscapes like Bora Bora have lots of complex motion and light interactions."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "I'll speed up the passage of time so you can see them more clearly."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "The clouds, which at first seems static, are actually evolving, casting shadows throughout the environment."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "The palm trees sway in the wind, and the waves break a little differently each time they hit the shore."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "All of these details add realism to the environment, but motion and light can be some of the most expensive things to render."
+  },
+  {
+    "timestamp": "12:25",
+    "content": "For a scene like Bora Bora, our team had to think creatively about how we could achieve the visual intent without breaking our real-time rendering budget."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "I'm going to share a few of the techniques we used and explain how you can take advantage of them in your environment."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "Let's start with the sky, a huge part of the scene."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "We wanted it to feel like the clouds are continuously evolving with a sense of direction."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "UV flow maps made this possible at little cost."
+  },
+  {
+    "timestamp": "12:50",
+    "content": "And by weighting the flow speed in different parts of the sky, it feels massive with depth and scale."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "Cloud shadows can be achieved not through rendering lights, as you might expect, but rather a scrolling mask that darkens the terrain textures."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "The direction and speed of the clouds above are matched so that they feel connected, even though they're not."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "Let's go back to real-time speed and examine another part of the environment."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "Here under the palm trees, the more dense, clearly defined shadows are pre-rendered into flipbook textures"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "that darken the terrain textures."
+  },
+  {
+    "timestamp": "13:21",
+    "content": "In this way, you can trade the expense of rendering soft shadows for a believable approximation."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "Counterintuitively, it's often the case that less is more."
+  },
+  {
+    "timestamp": "13:31",
+    "content": "Offloading complex shading work to pre-computed data textures allows you to produce motion that would otherwise be too expensive to render real-time."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "These palm fronds, for example, have their mesh complexity greatly reduced, and the wind motion comes from a UV flow map to produce the final effect."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Notice also how the trunks and fronds sway more gently than the leaflets."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "This is achieved through hierarchical vertex animation and layered sine waves."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "By stacking low-frequency and high-frequency motion, you can create variety that is never repetitive."
+  },
+  {
+    "timestamp": "14:00",
+    "content": "In fact, lots of expensive rendering can be reduced through artful layering of textures and compositing operations."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "Water, for example, can have its hue, saturation, and brightness modulated over time to simulate subsurface scattering of sunlight."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "The waves can move through layers of normal maps and scrolling textures."
+  },
+  {
+    "timestamp": "14:17",
+    "content": "The sum of these effects is greater than its parts."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Making all of these effects work together and feel like they exist in the same world requires artistry and creative direction."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "To make sure you're developing the right features and controls for your shaders,"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "remember your visual reference can be a great resource to articulate what you need to build."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "So let's recap."
+  },
+  {
+    "timestamp": "14:38",
+    "content": "In post-production, you take all your planning, reference, and photography and bring your environment to life."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "You'll clean up your panorama, refine your scene in 3D and make sure your elements feel right,"
+  },
+  {
+    "timestamp": "14:49",
+    "content": "and add supporting details like sound and motion to complete the sense of immersion."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "Designing for immersive environments is really about producing convincing results and presenting an illusion that feels authentic."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "You're in control of this, so at each stage of production, you will want to check your creative decisions for their merits."
+  },
+  {
+    "timestamp": "15:06",
+    "content": "To close, keep these things in mind as you start designing your environment."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "Be intentional with everything you do."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "You should be able to explain the reasoning behind everything you add or remove."
+  },
+  {
+    "timestamp": "15:16",
+    "content": "Create a composition that works."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "Every scene element should feel like it belongs, wherever it lives."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "And all aspects of the scene should be tied together with sound and motion."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "Good design makes your craft and execution stronger and applies whether you're an individual, a small team, or a large studio."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "I'll leave you with one final thought."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "Often the best way to know your designs are working is to try to break them."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "Don't get too attached to any one idea."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "Do something unexpected and be receptive to the outcome."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "Some of your best work will be the result of the surprises that you embrace along the way."
+  }
+]

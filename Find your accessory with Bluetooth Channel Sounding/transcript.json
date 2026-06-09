@@ -1,0 +1,306 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Gretchen and I work on Core Bluetooth."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Today, I'm excited to introduce a way to find nearby Bluetooth accessories using Channel Sounding."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "First, I will give you some ideas for how you could use Channel Sounding and how it works."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Then I will explain how to implement it in your app using Core Bluetooth to get distance,"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "or with nearby interaction to get distance and direction to your accessory."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "Next, I will give you some tips for building hardware that supports Channel Sounding."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "And I will end with some next steps."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "Let's start with an overview."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Imagine I'm hosting a party."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "I'm cooking inside using my oven, and I have a smoker going in the backyard."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "I have Bluetooth thermometers in both places to help me cook everything perfectly."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "I get a notification that one of my thermometers has reached the temperature I set."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "When I open the app, it says the probe is 8 meters to my right."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "That must be the smoker."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "With Channel Sounding, I won't mix up my temperature probes."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "I can measure distance to each one."
+  },
+  {
+    "timestamp": "1:28",
+    "content": "There are a couple ways to measure distance and direction to third-party accessories on iOS."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "For the best accuracy, you can add an ultra-wideband chipset to your accessory, and use the nearby interaction framework in your app."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "For more information on this, watch the video, Explore Nearby Interaction with Third-Party Accessories."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "But if your accessory only has a Bluetooth chipset, then Bluetooth Channel Sounding is your best option."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "You might have used RSSI in the past to estimate distance, but with Channel Sounding, you can actually measure distance."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "We encourage you to try Channel Sounding where your app could benefit from better accuracy."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "So, how exactly does Channel Sounding work?"
+  },
+  {
+    "timestamp": "2:21",
+    "content": "Let's say we have an iPhone that is paired and connected to a Bluetooth accessory."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "In this scenario, the iPhone is called an initiator, and the accessory is called a reflector."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "The iPhone sends a signal, or tone, to the accessory, and the accessory reflects that tone back."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "The iPhone measures how the signal changes in transit from one side to the other and back."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "By repeating this process across the channels of the 2.4 GHz band, the iPhone observes the rate of change in these reflected tones from one channel to the next,"
+  },
+  {
+    "timestamp": "3:05",
+    "content": "and uses that to estimate the distance between the initiator and reflector."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "This process of measuring distance is called a procedure."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "So, how do you perform Channel Sounding in your app?"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "If you just need distance, you can use Core Bluetooth."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "Before you begin, you'll want to ensure your accessory is paired and set up using Accessory Setup Kit, and connected through Core Bluetooth."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "You can refer to the documentation for more on how this is done."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "Now, let's look at the code to measure distances."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "First, check that Channel Sounding is supported on the local iOS device using CB Central Manager's Supports Features method."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "Once you have a connected CB Peripheral, call Start Channel Sounding Session on the CB Peripheral object."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "iOS will repeatedly perform channel sounding procedures."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "When each procedure is completed, the delegate method, Peripheral Did Receive Results, will be called with the measured distance in meters."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "When you are ready to complete your channel sounding session, call Cancel Channel Sounding Session."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "When the session ends, the delegate method, Peripheral Did Complete Channel Sounding Session, will be called."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "Next, I'll tell you how to use Nearby Interaction to measure distance and direction."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "Again, ensure your accessory has been paired and set up through Accessory Setup Kit, and connected by a Core Bluetooth."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "Before creating a channel sounding session, check whether the local iOS device supports it with the Supports Bluetooth Channel Sounding method."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "Then create a configuration object, passing in the peripheral identifier from Core Bluetooth as the Bluetooth channel sounding identifier."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "In order to get direction, camera assistance is required. Be sure to enable this if you need it."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "Finally, create your NI Session, set the delegate, and run it with the new accessory configuration you just created."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "If your app knows whether the accessory is moving or stationary, you can tell Nearby Interaction, and it will use that information to produce better direction estimates."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "Call Update Motion State on your session with your Accessory Objects Discovery Token."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "For example, if your accessory is a mounted tag on a wall, pass Stationary."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "If it's attached to a moving object, pass Moving."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "The delegate callback is identical to what you'd get with UWB."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "You will receive NI Nearby Object updates with distance and direction."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Both the distance and direction results benefit from the fusion of raw Bluetooth channel sounding measurements and camera inputs."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "Remember that both distance and direction are optional. Distance may be nil if the channel sounding measurement failed."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "Also,"
+  },
+  {
+    "timestamp": "6:32",
+    "content": "filters, outliers, and smooths your results for a better user experience."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "In iOS 27, use channel sounding when your app is in the foreground."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "When your app moves to the background, your channel sounding session will be paused."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "Also be aware that iOS may reduce the frequency of channel sounding measurements if other"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "Bluetooth or Wi-Fi activity increases."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "Channel sounding is available on iPhones with the N1 chip."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "Now I will explain how to make your accessories work well with channel sounding on iOS."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "Your accessory must support Bluetooth 6.3, and the inline PCT feature is required."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "iOS uses phase-based ranging, so your chipset must also support mode 0 and mode 2 as defined"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "by the Bluetooth spec."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "TFCS is the interspace timing between tones."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "Make sure your accessory supports TFCS of at least 100 microseconds."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "All right."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "You've heard all about channel sounding, but what's next?"
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Try out the APIs with a compatible accessory."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Imagine how measuring distance would improve how people interact with your app."
+  },
+  {
+    "timestamp": "7:57",
+    "content": "Ask your questions on the developer forums and send us feedback using Feedback Assistant."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Thank you."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Thank you,"
+  },
+  {
+    "timestamp": "8:07",
+    "content": "We'll be right back."
+  }
+]

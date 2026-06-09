@@ -1,0 +1,990 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "I'm Matt, and I'm an engineer on the Devices team."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "Later, we'll be joined by my colleague, Hasan."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "We know how important it is to you that your app looks great everywhere,"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "on every device, at every appearance, at every text size, and more."
+  },
+  {
+    "timestamp": "0:24",
+    "content": "And we also know that that can be a lot to account for."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "So in this session, we'll introduce you to Device Hub,"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "an app that makes this easy."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "And we'll walk through everything it can do."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "Here's our plan."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "First, an introduction to Device Hub, an app that is your home for"
+  },
+  {
+    "timestamp": "0:44",
+    "content": "working with both devices and simulators."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "Then, a feature walkthrough."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "We'll learn how to use it to organize, control, and"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "configure your devices."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "Finally, you'll see it in action."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "We'll show you an example."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "Hasan and I will use Device Hub in a real workflow."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "Let's get started."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "This is Device Hub."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "It's an app that ships alongside Xcode 27."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "But you don't need to launch Xcode to use it, because it's built for"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "anyone who works with devices."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Whether you're developing an app, testing across device configurations, or"
+  },
+  {
+    "timestamp": "1:19",
+    "content": "managing an inventory of devices."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "It offers the same set of tools, whether you're working with a device or a simulator."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "You can configure either of them however you need."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "If you're developing an app, you'll encounter Device Hub right away."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "When you build and run to a simulator in Xcode, it's automatically launched."
+  },
+  {
+    "timestamp": "1:40",
+    "content": "It presents a window with a live interactive view of the screen."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "This is Device Hub in compact mode."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "It's a focused and lightweight window."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Just the screen and a few essentials."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "At the bottom are device controls."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "Things like home button, screenshots, and rotation."
+  },
+  {
+    "timestamp": "2:02",
+    "content": "And they're contextual, so they change depending on the device you're viewing."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "For example, on an Apple TV, you'll find controls for both play, pause, and navigation."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "On an Apple Vision Pro, you'll see controls for environment and camera movement."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "Or on an Apple Watch, you'll find both the side button and the digital crown."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "But Device Hub is much more than this."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "When these essentials aren't enough, click the expand button at the top to transition to"
+  },
+  {
+    "timestamp": "2:35",
+    "content": "the full window."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Here, you'll have access to a much broader set of tools."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "There's a lot going on here in the full window."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "So let's walk through all of its features."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "They fall into three areas."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "The ability to control, organize, and configure your devices."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "To tell you more about how to control your devices, I'll hand it over to Hasen."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "Hasen Mishrahan"
+  },
+  {
+    "timestamp": "3:00",
+    "content": "Thanks, Matt."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "When developing, my devices can be all over the place."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "And driving the device from my screen can help me stay focused on my work."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "Device Hub makes this easier for me by giving me advanced features to control my devices."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "They can be found in the canvas, at the center of the window."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "There is a live display of the screen."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "You can interact with it directly."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "Click, drag, scroll, or use natural trackpad gestures."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "And this works the same, whether it's a device or a simulator."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "Take a look here."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Here, I have my Apple Watch connected."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "See how I can control it using Device Hub?"
+  },
+  {
+    "timestamp": "3:39",
+    "content": "At the bottom, there are the same controls as the compact window."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "And just like them, they are contextual and will change depending on the device."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "Above the canvas, there are controls that are not in the compact window."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "These allow you to zoom in and out or snap to one-to-one physical size to see your app at its real-world dimensions."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Resize mode allows you to transform your app's dimensions freely."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "And that will be discussed in the modernized ReUiKit app session."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "Capture Keyboard routes your max keystrokes straight to the device,"
+  },
+  {
+    "timestamp": "4:19",
+    "content": "making it easy to test key commands and hardware support."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "And the button allowing you to switch back to compact mode."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "So that is the canvas."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "It's a powerful way to interact with your devices, right from Device Hub."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Back to Matt to talk to you about how to organize and configure your devices."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Thanks, Hasan."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "I work with dozens of devices and simulators, and it can become hard to keep track of all of them."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "Fortunately, Device Hub has tools both to organize them and offer quick access."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "They can be found in the sidebar."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "In it, you can see your full inventory."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "That's each of your devices and simulators all in one place."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "Use the filter menu at the top to change which are visible."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "Or use it to sort and group your inventory from several different options."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "Context click any device for quick actions, things like restarting or pairing an iPhone and Apple Watch simulator together."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "For quick access, you can also view any number of devices at once, using either tabs or standalone compact windows."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "For example, say you're building an iOS app, and you want to make sure it looks correct on a few different phone sizes."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "Select them all, double click them in the sidebar, and you will get a compact window for each, making it easy to compare your app across screen sizes."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "So, I can organize my devices using the tools in the sidebar."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "But, testing different text sizes, simulating different locations, or installing different profiles, that can still take a lot of time."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "So, Device Hub offers deep control over device configuration."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "It has five different panels to do this."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "And, they can be found in the inspector area on the right."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "The first tab contains device settings."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "Here, you can change how your device looks and behaves."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "The first section contains appearance options, things like dark mode, text size, and more."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "And, these changes take effect instantly."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "So, there's no need to dig through your device's settings."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "The second lets you test how your app responds to different conditions, like a change in location."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "And, the third has audio options for sound levels and I.O."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "The middle tab contains diagnostic reports."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "It's where you'll start investigating if your app hangs or crashes."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "It contains everything your device has logged, such as crashes, spins, and other diagnostics."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "The third tab has three panels."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "Device Info, Apps, and Profiles."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "Let's go through each."
+  },
+  {
+    "timestamp": "7:16",
+    "content": "The Info panel contains things such as storage, model, and serial number."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "Stuff that you need at a glance."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "The Apps panel lets you install, uninstall, and manage apps."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "Including downloading and replacing their data containers."
+  },
+  {
+    "timestamp": "7:35",
+    "content": "And, in the Profiles panel, you can manage both configuration and provisioning profiles."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "So, that completes our feature walkthrough of Device Hub."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "It's a feature rich app."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "And, we've covered a lot of ground."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "From organizing your devices in the sidebar."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "To controlling them from the canvas."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "To configuring them with five panels in the inspector."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "Now, I'll hand it over to Hasan."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "To show you how Device Hub fits into our development workflows."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "We're going to walk through a scenario."
+  },
+  {
+    "timestamp": "8:08",
+    "content": "Finding a bug on a real device."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "And, reproducing it on a simulator."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "Thanks, Matt."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "Now, let's see it all come together."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "Matt and I have been building a feature in our KWAT app."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "We will show users recovery advice based on the altitude of their current location."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "But, this feature has a bug."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "For example, in landscape mode, some of the text gets cut off."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "So, let's go through my workflow."
+  },
+  {
+    "timestamp": "8:36",
+    "content": "What features of Device Hub that I use the most?"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "What do I do when I see an issue like this one?"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "There are three things I focus on."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "Pairing devices."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "Ensuring that I have enough logs."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "And, capturing diagnostics."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "Our workout app runs using the Apple Watch and the iPhone."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "Using Device Hub, I can wirelessly pair both of them to my Mac."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "My iPhone is already paired."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "Let's look at how I would pair an Apple Watch."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "I'll click the Add button in the sidebar and choose Pair nearby device."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "Then, I'll follow the instructions on the screen."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "My Mac shows up right away on my Apple Watch."
+  },
+  {
+    "timestamp": "9:18",
+    "content": "I'll select it."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "Tap Pair."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "And, finally, enter the bin number that appears in Device Hub."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "And, that's it."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "My watch is paired."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "It shows up right here in the sidebar."
+  },
+  {
+    "timestamp": "9:40",
+    "content": "Just like my iPhone."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "And, from now on, whenever it's nearby, it will be available on Device Hub."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "Next, since we are working on a location-based feature,"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "I would like to have the Core Location Logging Profile installed."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "Let's take a look at how to add a configuration profile."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "I'll go to the RoboFiles panel, drag and drop the configuration profile,"
+  },
+  {
+    "timestamp": "10:04",
+    "content": "and confirm the installation on my iPhone."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "Then, I'll make sure to reboot my iPhone for privacy reasons."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "Finally, Matt is our UI engineer."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "So, he'll be the best person to investigate this issue."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "I just don't know what he will need to debug it."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "So, I'm going to collect as many diagnostics as possible."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "Let's take a look at how to do that."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "After building and running the app from Xcode,"
+  },
+  {
+    "timestamp": "10:40",
+    "content": "I can see and interact with the app right here on my Mac."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "I need to reduce this bug."
+  },
+  {
+    "timestamp": "10:48",
+    "content": "So, I will rotate the device."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Here is the bug."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "The recovery recommendation is getting cut off."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "So, first, let me take a screenshot of the bug,"
+  },
+  {
+    "timestamp": "11:01",
+    "content": "so Matt can see that our UI is broken."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Next, in case Matt needs to take the debur,"
+  },
+  {
+    "timestamp": "11:09",
+    "content": "I'll kick off a SysDiagnose to capture system-level diagnostics."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "That will take some time."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "While it's running, I'll send the text that's getting clipped to Matt."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "I'll select it right here on the device,"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "copy it,"
+  },
+  {
+    "timestamp": "11:31",
+    "content": "and paste it into a file on my Mac."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Matt needs my app's data to be able to reduce this bug,"
+  },
+  {
+    "timestamp": "11:41",
+    "content": "and working with app data containers is a common part of my workflow."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "Device Hub gives you everything you need to work with app data containers."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "As of now, you can inspect a saved state in Finder,"
+  },
+  {
+    "timestamp": "11:55",
+    "content": "restore to a known baseline,"
+  },
+  {
+    "timestamp": "11:57",
+    "content": "or capturing a snapshot for later."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "Here is all of the data my app has stored."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "I'll download that,"
+  },
+  {
+    "timestamp": "12:10",
+    "content": "so Matt can load it into his simulator."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "That should be enough."
+  },
+  {
+    "timestamp": "12:14",
+    "content": "Listen this all over to Matt, so he can take a look."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "Matt, this UI issue is all you."
+  },
+  {
+    "timestamp": "12:22",
+    "content": "Thanks, Hasan."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "So, when I see UI issues like this, that don't affect performance,"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "I like to reproduce them using simulators."
+  },
+  {
+    "timestamp": "12:31",
+    "content": "There's a few steps that I like to take to do this."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "First, I'll need to choose the correct simulator."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "Then, match the app's data."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "And finally, mirror the device's configuration."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "Let's start by selecting a simulator."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Hasan was using an iPhone 17e,"
+  },
+  {
+    "timestamp": "12:50",
+    "content": "and I don't have one, but I do have a corresponding simulator."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "I have it here in the sidebar."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "I'll select it, and verify it says iPhone 17e in the Info panel."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "Next, I want to ensure that I'm using the same data as the app that reported the bug,"
+  },
+  {
+    "timestamp": "13:11",
+    "content": "just in case any of it is problematic."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "So, I need my app to match his app's data."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "My version of the app is empty, but Hasan sent me his data container, so I'll go to the apps inspector and replace mine with his."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "Now, when I've relaunched the app, I can see all of his workouts."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "Finally, I want to mirror his config."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "I want my simulator settings to match his devices as much as possible."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "So, let's go ahead and do that, and match any appearance or accessibility settings that could affect the UI."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "To start, looking at the screenshot he sent over, I can see his phone was in landscape mode."
+  },
+  {
+    "timestamp": "14:00",
+    "content": "So, I'll mirror that."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "I can rotate my simulator using the device controls."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "Next, I see his location is sent to Johannesburg."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "It seems like at that high elevation, we have a long string for a recovery suggestion."
+  },
+  {
+    "timestamp": "14:17",
+    "content": "So, I'll simulate his location by navigating to the settings inspector and selecting Johannesburg."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Now, it doesn't seem like we're seeing the same text get truncated like he was."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "So, something else must be different."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "Taking another look at the screenshot, I can see his text size is pretty large."
+  },
+  {
+    "timestamp": "14:42",
+    "content": "So, that might be it."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "Let's match that as well."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "I'll bump it up, and, yep."
+  },
+  {
+    "timestamp": "14:47",
+    "content": "Now, we can see that truncation happening."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "And, I bet if I rotate it back, it doesn't happen."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "So, this bug seems to have been a rather striking confluence of things."
+  },
+  {
+    "timestamp": "15:01",
+    "content": "The device had to be in landscape, it needed to be at a specific location, and his text size needed to be all the way up."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "Only with all of these were we able to reproduce the issue."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "Device Hub let me do all of it."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "Now, with it reproduced, it's easier to go verify a fix."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "So, that was an example of a workflow."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "Hasan found a bug, and I reproduced it."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "All using Device Hub."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "Thanks for those great diagnostics, Hasan."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "Of course, Matt."
+  },
+  {
+    "timestamp": "15:31",
+    "content": "Whether you're working with a simulator or a device,"
+  },
+  {
+    "timestamp": "15:34",
+    "content": "Device Hub gives you a consistent experience across both."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "From live screens and hardware controls, to app management, appearance settings, and more."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "And when something goes wrong, Device Hub gives you everything you need to collect diagnostics and investigate issues."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "For scripts and automation, use Device Cuttle."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "It's a command line tool based on the same underlying technology as Device Hub."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "It's great for managing devices in a test environment, managing apps, capturing diagnostics, and more."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "For example, you can use Device Cuttle to list your devices."
+  },
+  {
+    "timestamp": "16:09",
+    "content": "Install an app into your device."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "Change settings such as switching between dark and light modes."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "Or getting more information about one of your devices."
+  },
+  {
+    "timestamp": "16:19",
+    "content": "And if you want a structured output, you can use the JSON output option to easily integrate into scripts or CI workflows."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "There is a lot more to explore."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "Download Xcode 27 and try Device Hub for yourself."
+  },
+  {
+    "timestamp": "16:34",
+    "content": "If you want to integrate into scripts or CI workflows, check out Device Cuttle."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "See how Device Hub can help you improve your app for resizability in the modernize your UIKit app session."
+  },
+  {
+    "timestamp": "16:46",
+    "content": "Check out Getting the Most Out of Simulator from WWDC 2019."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "And for everything else, we've linked the Device Hub documentation in the video description."
+  },
+  {
+    "timestamp": "16:55",
+    "content": "Thank you for watching. We can't wait to see what you will next."
+  }
+]

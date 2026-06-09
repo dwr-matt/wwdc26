@@ -1,0 +1,430 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Chris, an engineer on the Education Technologies team, and I'm excited to take you"
+  },
+  {
+    "timestamp": "0:12",
+    "content": "through the enhancements available in the Automatic Assessment Configuration Framework in macOS 27."
+  },
+  {
+    "timestamp": "0:18",
+    "content": "This framework helps to create a secure lockdown environment for testing organizations delivering"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "education assessments or certifications on Apple devices. To use this framework, your app needs the"
+  },
+  {
+    "timestamp": "0:32",
+    "content": "restricted Automatic Assessment Configuration entitlement. If you haven't already requested it,"
+  },
+  {
+    "timestamp": "0:38",
+    "content": "you can do so through the Apple Developer Portal. In this session, I'll cover five areas. First,"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "system preconditions, checks your app can require before allowing an assessment to continue."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "Then, accessibility restrictions that ensure these features are only available for the students"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "who are approved to use them. After that, system experience customization for tailoring how users"
+  },
+  {
+    "timestamp": "1:05",
+    "content": "interact with the Mac during an assessment. From there, application launch restrictions your app can"
+  },
+  {
+    "timestamp": "1:13",
+    "content": "set to ensure that only the processes you deem trustworthy are running during an assessment."
+  },
+  {
+    "timestamp": "1:18",
+    "content": "And lastly, best practices that will help you make the most of what assessment mode has to offer."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "I'll be using this sample assessment app to demonstrate the behavior of the API capabilities"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "covered in this video. First up, I'll review the precondition checks that can be done before an"
+  },
+  {
+    "timestamp": "1:38",
+    "content": "assessment starts. Performing system precondition checks before allowing a student to begin an exam"
+  },
+  {
+    "timestamp": "1:45",
+    "content": "is critical for ensuring the Mac is in a hardened state and helps ensure the security requirements of"
+  },
+  {
+    "timestamp": "1:51",
+    "content": "the assessment from the very start. Your app can require that system integrity protection is enabled,"
+  },
+  {
+    "timestamp": "1:58",
+    "content": "that the Mac is MDM enrolled, that only a single account is signed in, and that the account is a"
+  },
+  {
+    "timestamp": "2:05",
+    "content": "specific type, such as a standard account. Four checks that together help ensure the device is in a"
+  },
+  {
+    "timestamp": "2:12",
+    "content": "hardened, tamper-resistant state. Additionally, your app can require that lockdown mode and iCloud"
+  },
+  {
+    "timestamp": "2:19",
+    "content": "private relay are disabled. Two checks that help ensure that Apple privacy and security features"
+  },
+  {
+    "timestamp": "2:26",
+    "content": "don't interfere with your assessment infrastructure requirements. I'll now add the precondition checks to"
+  },
+  {
+    "timestamp": "2:32",
+    "content": "my sample app by setting properties on my AE assessment configuration object, which is the object that"
+  },
+  {
+    "timestamp": "2:39",
+    "content": "defines an assessment session's parameters. This code snippet requires the signed-in user account to be a"
+  },
+  {
+    "timestamp": "2:46",
+    "content": "standard account. With these precondition checks configured, if a student's device does not meet one or"
+  },
+  {
+    "timestamp": "2:52",
+    "content": "more of these requirements, then an alert is displayed informing the student of the issues that must be"
+  },
+  {
+    "timestamp": "2:57",
+    "content": "addressed before they may continue. Next up, managing the availability of accessibility features."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "macOS includes a comprehensive suite of built-in accessibility features. These features are essential"
+  },
+  {
+    "timestamp": "3:11",
+    "content": "for providing equitable access to exams, enabling individuals with visual, auditory, motor, or cognitive"
+  },
+  {
+    "timestamp": "3:20",
+    "content": "needs to fully participate without requiring third-party assistive software. By default, the menu bar and the dock are hidden,"
+  },
+  {
+    "timestamp": "3:30",
+    "content": "but any currently enabled accessibility features will continue to work during the assessment session."
+  },
+  {
+    "timestamp": "3:37",
+    "content": "As demonstrated here, Switch Control continues to run after the assessment session begins."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "However, it's important to note that certain accessibility features can be customized with user-generated"
+  },
+  {
+    "timestamp": "3:49",
+    "content": "content. Therefore, disabling access to those features for students who do not require them as part of an"
+  },
+  {
+    "timestamp": "3:57",
+    "content": "approved accommodation is an important security measure. In this configuration, every accessibility feature is"
+  },
+  {
+    "timestamp": "4:04",
+    "content": "allowed except one. I'm restricting the use of Switch Control. Note that setting the value to true for a"
+  },
+  {
+    "timestamp": "4:11",
+    "content": "configuration property does not enable the corresponding accessibility feature. It simply allows it to be used"
+  },
+  {
+    "timestamp": "4:18",
+    "content": "during an assessment when enabled by the user. When the assessment session starts, Switch Control is"
+  },
+  {
+    "timestamp": "4:28",
+    "content": "automatically quit and cannot be relaunched during the assessment session. One of the most powerful areas"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "of the framework is system experience customization, tailoring how students interact with macOS during an"
+  },
+  {
+    "timestamp": "4:41",
+    "content": "assessment. The macOS system experience is designed to provide a seamless, intuitive environment through"
+  },
+  {
+    "timestamp": "4:49",
+    "content": "familiar elements like the menu bar, menu bar items such as Wi-Fi and volume, the dock, various input"
+  },
+  {
+    "timestamp": "4:58",
+    "content": "technologies like dictation and autofill, and file system interaction using the finder and the open and save file"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "dialogs. Your app can make the menu bar available to allow students to access essential application functions during an assessment."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "Additionally, your app can customize which menu bar items are available, like volume or Wi-Fi, while removing items that could serve as a vector for information or content leakage."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "I've already demonstrated how the assessment session looks without a menu bar. In this example, I'm setting additional properties on my AE Assessment Configuration object to enable the menu bar and to define a set of allow-listed menu extras."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Note that these menu extras are not forced on but rather continue to be available during an assessment session if they were already present in the menu bar."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "I've also customized the Apple menu by setting a property on my configuration object to show only the sleep menu item. Optionally, I could set an empty array to hide all items except for about this Mac."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "As the assessment session begins, the app's menu items are displayed and the set of menu bar items is filtered down to the allow-listed set I just specified."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "Additionally, selecting the Apple menu reveals that its contents have been filtered."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "Now, I'll review some input methods you may wish to disable that can inadvertently provide students with hints or correct answers."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Dictation can produce correct spelling automatically."
+  },
+  {
+    "timestamp": "6:38",
+    "content": "The Emoji Picker exposes a searchable symbol library."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "And Structural Input reveals character composition clues, any of which could bypass assessments designed to test unaided recall."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "Autofill can provide preloaded answers, notes, or reference material into response fields from sources such as contacts."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "To restrict these input methods, I set each of these properties to false in my AE Assessment Configuration object."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "This hides them in menus and prevents their use within UI controls that normally support them."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "With the input restrictions in place, the Autofill, Dictation, and Emoji and Symbols menu items are no longer available in the Edit menu."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "The Dock is another valuable system experience you may wish to enable during an assessment session, because it provides students with a clear, focused workspace where they can easily find and switch between applications."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "In this code snippet, I'm enabling a filtered Dock experience by setting Allows Dock to true."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "During the assessment, the Dock displays only the allowed apps, giving students a focused workspace to find and switch between them."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "Upon entering the assessment session, note that in addition to the always present anchor elements of the Finder and the Trash, only the allowed apps for the session are present."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "However, even though the Finder is present, it is not accessible unless it is explicitly added as a participant."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "If your assessment app requires interaction with designated files, then you may wish to allow access to the Finder and make use of standard open and save dialogs."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "They provide a consistent, intuitive way to browse, organize, and access files across macOS."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "Next, I'm adding the Finder as a participant in the assessment session."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "With the Allow Directories and Files property on the AE Assessment Configuration object, I can Allow List the Documents directory into which a student can save their scratch paperwork in the Sample Assessment app."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "This same setting also filters the directories and files available in the standard open and save panels."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "When the student chooses to save their scratch paperwork, they are presented with the standard save panel, but only the Allow Listed directory is available for them to save their work into."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "Bringing up the Finder window shows the same filtered access and the Allow Listed directory contains a scratch paper file the student just saved."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "There is one more layer of control to cover, restricting which processes are allowed to run during an assessment."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "Processes that are not essential to the execution of your assessment app can pose a threat to the integrity of the assessment session."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "They can be used to capture screen content, log keystrokes, transmit data to external parties, or otherwise interact with the system in ways that undermine the secure testing environment."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "Consequently, you may wish to restrict the allowed processes to just your assessment app and participant apps you Allow List."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Additionally, shortcuts and automator actions can also be shut down and their execution blocked."
+  },
+  {
+    "timestamp": "9:59",
+    "content": "Setting Allow Only Participants to Run to true tells the system to shut down non-essential processes when the assessment begins."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "With this enabled, only the main assessment app, its explicitly Allow Listed participants, and essential system processes are permitted to run."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "I'm also setting Allow User Script Execution to false to prevent shortcut and automator scripts from executing."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "Before starting the assessment, both Safari and Notes are running as well as a long-running shortcut."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "However, after starting the assessment, only the sample assessment app and its Allow Listed participant, Finder, are still running."
+  },
+  {
+    "timestamp": "10:41",
+    "content": "Any user-initiated background processes, including the shortcut, have also been stopped and cannot be accessed during a secure exam."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "Whether adopting assessment mode for the first time or hardening an existing integration, the following best practices are ones that every developer should consider."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "These practices will help with how you adopt the framework, how you shape the test taker's experience, and how you keep your app functioning well across macOS releases."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "With its deep system integration, let the assessment framework do the work to secure the system environment for you."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "Resist the urge to roll your own equivalents by adopting the framework's APIs directly and deleting the redundant code you've been maintaining."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "Only restrict the minimum that your assessment actually requires."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "Restrictions you add can detract from the test taker's experience."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "So start permissive and tighten deliberately."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "Accessibility should be treated as a requirement in an assessment context."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "Every student deserves a fair testing experience."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "So design your app from day one to accommodate assistive technologies, rather than treating them as exceptions to be carved out later."
+  },
+  {
+    "timestamp": "11:57",
+    "content": "If you're new to AAC, take note that session transitions don't occur the moment you call the begin and end session API."
+  },
+  {
+    "timestamp": "12:05",
+    "content": "Register for the framework's transition callbacks and drive your app's stake off those events so you always know when a session truly started, ended, or was terminated unexpectedly."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "It's critical to revalidate your app on every macOS beta the day it drops."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "Run your full assessment test matrix against it and file feedback reports immediately."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "Waiting until the release to discover a regression means your customers discover it too."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Now that you've seen what's possible, consider these next steps to take your assessment app to the next level."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "Use system pre-checks to validate device integrity before starting an assessment."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Enable accessibility features to provide an equitable assessment experience for all users."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "Provide a familiar and intuitive experience by customizing access to menu bar items, the dock, and the file system."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Secure your assessment's runtime environment by blocking non-essential processes."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "And lastly, test your assessment solution with real exam workflows on macOS."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "Whether you're building a classroom quiz app or a nationwide standardized testing platform, the automatic assessment configuration framework on macOS gives you the tools to verify system security prerequisites,"
+  },
+  {
+    "timestamp": "13:28",
+    "content": "tailor accessibility accommodations, customize the user experience, and lock down the runtime environment."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "All through a single unified API, tailorable to your needs."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "I can't wait to see how you use these new capabilities to deliver safer, more inclusive, and more polished assessment experiences for students everywhere."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "Thank you for joining me."
+  }
+]

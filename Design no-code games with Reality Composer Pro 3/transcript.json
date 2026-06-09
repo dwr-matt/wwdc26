@@ -1,0 +1,822 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Saschke Anselt and I'm a Creative Director at Apple."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Whenever I work on an idea, it is really important to me that I can quickly mock it up and iterate"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "on it again and again and again. Reality Composer Pro 3 lets me do just that,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "without writing a single line of code. In this session, I'll share how I build a"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "RealityKit game from scratch in Reality Composer Pro 3's Script Graph. If you want to get the basics"
+  },
+  {
+    "timestamp": "0:38",
+    "content": "first, there's a Reality Composer Pro 3 session just for you. But if you're creative and find"
+  },
+  {
+    "timestamp": "0:45",
+    "content": "yourself with an idea you want to quickly mock up, this is the session for you. I'll explain what a"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "Script Graph is. I'll show how I build my game and as I flush it out, I'll dive deeper into some more"
+  },
+  {
+    "timestamp": "0:59",
+    "content": "advanced techniques. Okay, Script Graph. What is it? It is Reality Composer Pro's node-based visual scripting."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "The Script Graph lets me build games through event-driven logic. What does that mean? It means you can create games like this."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "Here, I listen to pinch events to animate these leaves to open and close. I listen to drag gesture events to let the player drag this nut around."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "And I create custom events that tell the game to scroll the level when the character reaches certain waypoints."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "But my favorite part of Script Graph is that I can directly test them and iterate on them in Reality Composer Pro and on my Vision Pro."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "When I create something new, it always starts with a wish that something might exist. And then I work on it until it does."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "The wish for this game started with something small. It started with a little squirrel."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "It is blissfully asleep because it found a nut. But the squirrel forgot that night was about to fall. So I wished that the player could help."
+  },
+  {
+    "timestamp": "2:14",
+    "content": "Steal its nut, but just to guide it back home. And what better platform is there to steal a nut from a squirrel than Vision Pro?"
+  },
+  {
+    "timestamp": "2:23",
+    "content": "The player will literally be able to reach out with their hand, steal the nut from the squirrel, and freely drag it around to help guide my little friend back home."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Let's start to build the game. I want to allow the player to be able to pick up the squirrel's nut and move it around."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "I already created a scene with my squirrel and nut entity. I decided on a cutout look. So the squirrel and the nut are just simple planes with textures on them."
+  },
+  {
+    "timestamp": "2:54",
+    "content": "To make my nut draggable, I add a few components to it. To make it a gaze target, add an input target component. To define the size of the gaze target, I add a collision component."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "And since I also wanted to highlight when the player gazes at it, I add a hover effect component."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "Now I'm ready to create my first script graph. I right click in my project browser, select New, and then Script Graph."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "This script graph is where I will create all my logic. Let's call it drag nut."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "I want the logic of my script graph to run on my nut entity. So I add a scripting component to it. And in the inspector, assign my dragnut script graph. Wonderful."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Let's open my script graph and start to build some logic. Any logic that a script graph runs starts with an event that triggers the logic."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "There are many nodes that can listen to a whole range of events. In my case, I want to listen to the event of the player trying to pinch and drag the nut."
+  },
+  {
+    "timestamp": "4:08",
+    "content": "For this, I utilize the on drag event node. Now all I need to do is use the info I get from the on drag node and apply it to the transform of my nut entity."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "For this, I use a set node. Set nodes are nodes that allow me to write data into components and loads of other things."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "In my case, I want to adjust the position of the nut's transform component. So I use a set transform node."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "Now I just need to connect these two. First, I connect the on drag event to trigger the set transform node."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "This means the set transform gets triggered every time the on drag event is triggered."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "Next, I connect the scene location that I get from the on drag node to the set transform's translation input."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "This way, the position of my nut will be set based on the drag transform I get from the drag gesture."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "And that's it. To me, fast testing and iteration is key to all creative workflows."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "And I can do this right in Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "I press the play button at the top of my workspace. And it allows me to test my logic right here in the viewport."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "I can click and drag the nut around just as I defined in my script graph."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "But let's go one step further with live preview, a feature that will be available later this year."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "To truly know how an interaction feels, I want to try it on my Vision Pro."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "I switch the simulation mode to preview on device, select my Vision Pro and press play."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "And ta-da! My scroll and its nut appear right next to me."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "I can move the app around to place it nicely. And I can press play."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "And now I can look at the nut and tap to drag it."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Hmm. I feel like I have to move my hand too much to drag the nut around."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "To do adjustments like this, I love to bring up my Mac virtual display so I can directly see my adjustments."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "There's tons of nodes that allow me to apply math and logic to my script graphs."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "To fix the jumping at the start and to get the nut to be more responsive to my drag,"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "I'll use the OnDragScene translation with a multiply by number node."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "I know I will want to noodle around with a multiplication factor."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "To do this, I'll create an input variable."
+  },
+  {
+    "timestamp": "6:47",
+    "content": "I'll add one in the inspector of my script graph."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "Let's call it drag speed, make it of type number, set it to public and give it a default 1.3."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "Then I add an input node and plug the drag speed variable into the multiply node."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "Since I set drag speed to be a public variable, it shows up in my nut scripting component,"
+  },
+  {
+    "timestamp": "7:14",
+    "content": "which means that I can, while testing it all on my Vision Pro, adjust my drag speed to find just the right value."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "So, 1.5?"
+  },
+  {
+    "timestamp": "7:27",
+    "content": "Too much."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Maybe 1.1?"
+  },
+  {
+    "timestamp": "7:33",
+    "content": "Nearly there."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "1.15."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "Yeah, I think that's it."
+  },
+  {
+    "timestamp": "7:45",
+    "content": "One more thing."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "When I change the drag speed value, its name shifted to be shown in bold."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "This means my drag speed value is not applied to the script itself, but as an override."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "Overrides are unique variations of a variable that are unique to each scripting component."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "This means I can have multiple nuts in my scene and, while they share the same script graph logic,"
+  },
+  {
+    "timestamp": "8:11",
+    "content": "can use different drag speed settings."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "I love to iterate like this on how my interactions feel."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "But to be honest, that movement still felt a bit bland."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "I want the nut to feel more dynamic."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "And most of all, I want to be able to toss it around."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "To achieve this, let's add some physics."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "First, I need to make the nut be part of the physics simulation."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "So, I add a physics body component to it."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "Now, I need to change my script graph so that my drag gesture drives the nut's physics."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "I can do this with the addForce node."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "This node adds a force to the nut's physics simulation, which makes the nut move in the direction of the force."
+  },
+  {
+    "timestamp": "8:58",
+    "content": "But this is an additive force."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "So, I need to know how much my drag changes over time."
+  },
+  {
+    "timestamp": "9:05",
+    "content": "This is not data I get by default from the drag gesture."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "So, let's add it."
+  },
+  {
+    "timestamp": "9:10",
+    "content": "Instead of directly applying the drag's translation, I'm going to store it."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "To do this, I created a variable called targetPosition."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "And then use a set variable node to store the drag's translation into it."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "Next, I want to calculate how much the drag has changed."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "All I need to do is subtract the position I got previously from the position I got currently."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "I wired up this logic to calculate this change and store it in a variable I call dragDelta."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "Now, all I need to do is trigger the addForce node, wireDragDelta via a little multiplication to give it more weight, into the addForce node."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "Let's try it out to see how it behaves."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "Well, I love that it feels more physical and that I can toss the nut around and it falls down."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "But it's kind of hard to lift it up."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "That's cause gravity is a constant drag in life."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "It pulls you down."
+  },
+  {
+    "timestamp": "10:11",
+    "content": "So, let's turn it off while I hold the nut."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "To do this, I will use another set node."
+  },
+  {
+    "timestamp": "10:17",
+    "content": "The setPhysicsBodyComponent node."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "This node allows me to change the settings of my physics body component dynamically."
+  },
+  {
+    "timestamp": "10:26",
+    "content": "In my case, I want to not have the nut be affected by gravity while it is dragged."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "And I want it to be less finicky when dragging it."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "To do that, I'll raise its linear damping value."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "This will add more friction and will make it slow down faster."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "I added some logic to my script graph that triggers this change in the physics body component."
+  },
+  {
+    "timestamp": "10:51",
+    "content": "When the nut gets picked up and when it gets dropped."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "Let's test it out."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "Oh, perfect. This feels so much nicer."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "And that's the basics of Script Graph."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "They listen to event nodes, do some logic with the data they get from them,"
+  },
+  {
+    "timestamp": "11:08",
+    "content": "and then utilize set nodes to modify components."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "But with that basic idea, I can do so much."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "Let's dive into some more advanced techniques."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "Like a lot of things in life, over time, things have a tendency to get complicated."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "And there's one thing I love nearly as much as creative work."
+  },
+  {
+    "timestamp": "11:28",
+    "content": "It's getting things organized."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "That's where prototype subgraphs come in."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "They can not only help me clean up my logic, but also create reusable logic."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "Let's look at this piece of Script Graph I built earlier."
+  },
+  {
+    "timestamp": "11:44",
+    "content": "All this does is that it checks if the isEnd bool of my drag event has just changed."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "And if it does, trigger some logic."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "But when I look at it, I'm like, what does this do again?"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "So let's clean it up with a subgraph."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "I select all the nodes that make up this part of my logic, right click, and select Compose Subgraph."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "I call this one Check for Change."
+  },
+  {
+    "timestamp": "12:13",
+    "content": "Ah, this looks so much less complicated already."
+  },
+  {
+    "timestamp": "12:17",
+    "content": "Wait a second."
+  },
+  {
+    "timestamp": "12:19",
+    "content": "Triggering things when a bool variable changes is something I need all the time."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "That's where prototype subgraphs come in."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "They allow me to reuse my subgraphs in all my scripts."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "And making one is easy as pie."
+  },
+  {
+    "timestamp": "12:36",
+    "content": "I just right click and select Convert to prototype subgraph."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "It will show up in my asset browser."
+  },
+  {
+    "timestamp": "12:43",
+    "content": "And from now on, I see my subgraph alongside all the other nodes in the Add node menu."
+  },
+  {
+    "timestamp": "12:49",
+    "content": "Building reusable pieces of logic like this allows me to speed up my workflow and keep my logic streamlined."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "Okay, back to my scroll."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "Right now, if I steal the scroll's nut, the scroll doesn't react at all."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "That doesn't feel right."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "Let's fix it."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "I want the scroll to look at the nut when I drag it around."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "To do this, I'll give the scroll its own script graph."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "But how will it know that the nut is being dragged around?"
+  },
+  {
+    "timestamp": "13:23",
+    "content": "I can create my own custom event for it."
+  },
+  {
+    "timestamp": "13:26",
+    "content": "And for that, I need a custom node library."
+  },
+  {
+    "timestamp": "13:30",
+    "content": "I can create one right here in my project browser."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "And in it, add a custom event."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "Let's call it NutIsDragged."
+  },
+  {
+    "timestamp": "13:41",
+    "content": "In order for the scroll to know where the nut is, I want to send the nut's position with the event."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "For that, add a property to my custom event."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "Let's call it NutPosition."
+  },
+  {
+    "timestamp": "13:55",
+    "content": "The only thing I have to do now is click Sync Nodes so my custom node is being made available."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "What I want now is to have the script graph on my nut send this event to a script graph on my scroll."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "Since I added it to my node library, the sendNutIsDragged node is available alongside all the other nodes."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "I wire it up to be triggered when the nut is dragged and pass along the nut's world position."
+  },
+  {
+    "timestamp": "14:27",
+    "content": "And in the scroll script graph, I create an OnNutIsDragged event so I can listen to it."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "Then I use the nut position of the event to drive the scroll's rotation."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "Let me check how this feels in my Vision Pro."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "Wonderful. The logic I added gives the scroll a nice snappy flip when looking at the nut."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "This underscores the game's cutout design and just makes it more fun."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "Oh, and yeah, I snuck in another small thing."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "When I steal the nut, the scroll now looks appropriately upset."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "It was an easy addition, where I drive a change in the scroll's material from my script graph."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "In the shader graph of my scroll's material, I use a public input variable I called isNutDragged."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "And I use it to decide which one of my two scroll textures to use in the material."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "In my scroll script graph, I added a setMaterialParameter node."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "Set the parameter to type bool and called it isNutDragged."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "I then told it where to find the entity that has the scroll's model component."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "Made sure it gets triggered."
+  },
+  {
+    "timestamp": "15:46",
+    "content": "And told if the nut is dragged or not dragged."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "And that was it."
+  },
+  {
+    "timestamp": "15:52",
+    "content": "To really have my scroll express its disagreement though, I wanted to give it a voice so it can properly complain."
+  },
+  {
+    "timestamp": "15:59",
+    "content": "Sticking with my cutout style, I want that voice to be a speech bubble."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "I love using SwiftUI for interfaces like this."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "It makes it effortless and they look beautiful."
+  },
+  {
+    "timestamp": "16:11",
+    "content": "But to use SwiftUI, I need to run my game via Xcode."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "Easy. I just switch preview mode to run with Xcode."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "But wait, I don't have an Xcode project. No problem."
+  },
+  {
+    "timestamp": "16:23",
+    "content": "Reality Composer Pro 3 could just create one for me."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "Over in Xcode, I made this little SwiftUI speech bubble."
+  },
+  {
+    "timestamp": "16:32",
+    "content": "But how do I get it to pop up when I steal the scroll's nut?"
+  },
+  {
+    "timestamp": "16:36",
+    "content": "Again, script graph events are there for me."
+  },
+  {
+    "timestamp": "16:40",
+    "content": "Because they can also be listened to and sent from Swift."
+  },
+  {
+    "timestamp": "16:45",
+    "content": "All I need to do in my script graph is use a sendSceneEvent node."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Let's call it scroll talk."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "And since I want to send over what the scroll should say, add a variable to it."
+  },
+  {
+    "timestamp": "17:00",
+    "content": "Call it say this."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "Set it to type string."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "And set it to what I want squirrel to say."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "For example, hey, that's my nut."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "Then in Xcode, I needed to write some code."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "As a designer, I love that I can now simply prompt coding intelligence to write this code for me."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "To listen to my scene event, all I needed to do was tell my coding assistant to subscribe to my scene event called squirrel talk."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "And to store it say this variable."
+  },
+  {
+    "timestamp": "17:33",
+    "content": "And then when squirrel talk is called, show my SwiftUI speech bubble as an attachment over my squirrel entity."
+  },
+  {
+    "timestamp": "17:43",
+    "content": "And of course use the say this variable as its text."
+  },
+  {
+    "timestamp": "17:49",
+    "content": "Now my squirrel can really let me know what it thinks of me when I steal its nut."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "There's so many more things script graph allow me to add to my game."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "Like letting the squirrel walk and jump to get its nut back."
+  },
+  {
+    "timestamp": "18:03",
+    "content": "And creating draggable leaves that allow my squirrel to traverse through a whole level."
+  },
+  {
+    "timestamp": "18:08",
+    "content": "Or even a vision or his ornament that, if I get stuck, I can use to jump to any place in the level."
+  },
+  {
+    "timestamp": "18:16",
+    "content": "So don't worry, my little squirrel."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "I'll get you back home."
+  },
+  {
+    "timestamp": "18:20",
+    "content": "I love using script graphs like this."
+  },
+  {
+    "timestamp": "18:23",
+    "content": "They help me sketch out my ideas, noodle around on how to best steal nuts,"
+  },
+  {
+    "timestamp": "18:28",
+    "content": "and most of all, allow me to bring my wish to life."
+  },
+  {
+    "timestamp": "18:32",
+    "content": "If you want to keep going, download Reality Composer Pro 3."
+  },
+  {
+    "timestamp": "18:37",
+    "content": "Take a deep dive into advanced workflows or check out the full squirrel sample project from the Apple Developer website."
+  }
+]

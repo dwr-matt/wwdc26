@@ -1,0 +1,1054 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Ada."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "And I'm Kyle."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "And we're engineers on the Evaluations team."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "Today, we are so excited to walk you through some of the advanced features in the Evaluations framework."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "The Evaluations framework introduces a way to assess intelligence-powered features in Swift apps,"
+  },
+  {
+    "timestamp": "0:24",
+    "content": "track improvements over time, and ensure quality in production."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "This framework is new in Xcode 27 and supports macOS, iOS, watchOS, and visionOS."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "If you haven't already, check out the Meet the Evaluations Framework video to learn about the building blocks of the Evaluations Framework."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "In our other video, Improve Your Prompts by Hill Climbing with Evaluations to explore different strategies to improve your intelligence features."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "In this video, we'll discuss how to address complexity and scalability with your evaluations."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "We'll begin by exploring how to grow your evaluation dataset by generating and validating synthetic data."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "And then we'll cover how to build robust evaluations for agentic workflows that incorporates a special kind of model behavior known as tool calling."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "In the Meet the Evaluations Framework video, we introduce the Hill Climbing process."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "This illustrates the process of how we build, test, and ship intelligence features."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "In this video, we will primarily focus on the Develop and Evaluate step."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "In the Develop step, we often start with a handful of samples for our evaluations."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "But your feature is almost always more complex than your dataset can cover."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "It takes time to build, it's harder to scale, and it rarely captures the variety you need to truly understand how your feature behaves in the real world."
+  },
+  {
+    "timestamp": "1:47",
+    "content": "The quality of your evaluation results is only as good as the data behind them."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "And writing good evaluation data is hard."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "That's where synthetic data comes in."
+  },
+  {
+    "timestamp": "1:57",
+    "content": "The Evaluations Framework exposes APIs that let you define sample generation entirely in code so you can build your own generation pipeline, run it from the command line, or plug it directly into your existing workflows."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "It supports text-based data and leverages the generable macro to generate structured synthetic data."
+  },
+  {
+    "timestamp": "2:15",
+    "content": "My colleagues and I have been working on BookTracker, which is a personal library app that uses intelligence-backed features to auto-tag books based on written reviews."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "Let's examine how we define each book."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "We have a class named Book that includes the title, author, review, tags, and rating."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "We define other variables used to support the cover design."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "We also define sample books, which is an array of 13 book samples."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "And we define the data, like this one here, about Pride and Prejudice."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "These 13 samples might feel like a reasonable starting point, but this small data set only gives us a narrow window into how our feature performs."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Our evaluation results could look great and still be completely misleading."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "Think about the variety of possible data used to evaluate our tag generation feature."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "There are countless books, hundreds of genres, and a wide variety of ways,"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "a user might review what they just read."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "We're also talking about the real world, where summaries can be vague or incomplete."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "13 samples can't capture all of that."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "We need more coverage, and we need it without spending days writing examples by hand."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "So let's discuss how to expand our data set to capture more of that variety."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "We'll start simple."
+  },
+  {
+    "timestamp": "3:32",
+    "content": "The Make Samples API requires three components."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "A prompt, a data set, and a target count, which is the number of samples you'd like to synthetically generate, including the data set you provide."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "Here, I've defined a prompt that asks the model to suggest more diverse book review samples."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "To write a well-defined prompt, consider what information the model may need in order to best understand the task and handle the range of inputs your users might provide."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "For our data set, I'm passing in our sample books, which includes our 13 initial samples."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Here, we leverage the new model samples API, which includes the book's review as a prompt, and the book's tags as the expected output."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "And for the target count, I've set it to 100 samples to start."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Remember, the target count is the size of the full resulting data set, including the samples we started with."
+  },
+  {
+    "timestamp": "4:23",
+    "content": "So the model will actually generate 87 new ones."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Now, you might be wondering, how much data is enough?"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "And the answer is, it depends."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "For our Book Tracker app, a target count of 100 is just the starting point."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "Synthetic data generation is often an iterative process of defining an initial data set, generating synthetic data, validating the samples,"
+  },
+  {
+    "timestamp": "4:46",
+    "content": "then analyzing whether or not the data is representative enough, and continuing the cycle until you are confident."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "So the right target count for your evaluation data set depends entirely on your feature, what it does, who uses it, and how many different ways people interact with it."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "What matters far more than quantity is coverage."
+  },
+  {
+    "timestamp": "5:08",
+    "content": "So instead of asking, how many samples do I need?"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "Ask yourself, have I covered the meaningful variety of ways this feature will actually be used?"
+  },
+  {
+    "timestamp": "5:16",
+    "content": "Now that I've defined the required variables, I can use the make samples method, which returns an async stream of newly generated samples."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "As I iterate over it, each new sample gets appended to a variable called expanded data set that I've initialized with the starting data set."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "By default, the framework uses the on-device model for generation."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "The on-device model is a great option in most cases, but you might want to bring your own model or customize the instructions the model operates under."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "The framework provides the flexibility to define your own configuration for sample generation."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "Let's go over how to do that."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "For more complex configurations beyond the prompt, data set, and target count, the framework provides the sample generator,"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "which gives you full control over the generation process."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "Let's go over some of these configurations."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "The session provider is a closure that returns a language model session."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "This is where you control which model drives generation and what system level instructions frame the task."
+  },
+  {
+    "timestamp": "6:18",
+    "content": "For our synthetic data generation, I'll use the private cloud compute language model since the context size is larger."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "And then I'll add custom instructions to focus generation on specific books, genres, and moods."
+  },
+  {
+    "timestamp": "6:33",
+    "content": "I also specify a list of rules for expectations on the samples generated."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "I'll go over these later."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "Just a note about how the session is used."
+  },
+  {
+    "timestamp": "6:42",
+    "content": "The framework handles batch size automatically, which is the number of samples processed during generation."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "The generator calls your session provider once at the start of a run and then reuses that session across batches,"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "which helps the model maintain context as generation progresses."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "But a session has a limit for how large it can grow."
+  },
+  {
+    "timestamp": "7:03",
+    "content": "The one exception is if you're making a lot of requests, giving it a large prompt, or getting large outputs,"
+  },
+  {
+    "timestamp": "7:09",
+    "content": "you can exhaust the session's context window mid-run, which will throw an error."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "In that case, the generator calls session provider again to get a fresh one to continue generation."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "But this won't contain context from the previous session."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "So make sure your instructions in your session provider is self-contained and it doesn't assume it will only be called once."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "To learn more ways to mitigate against context size limits, watch the video Build a Gentic App Experiences with Foundation Models."
+  },
+  {
+    "timestamp": "7:39",
+    "content": "Now with the custom session provider, you can also use the sample generator to customize sampling strategy,"
+  },
+  {
+    "timestamp": "7:45",
+    "content": "which controls how the generator selects examples from your initial dataset to show the model as in-context examples."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "There are two types of sampling strategies you can specify."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "The first one is random sampling."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "This strategy selects a random subset of your initial samples as examples to show the model, making sure there are no duplicates."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "This keeps the output varied without requiring us to think carefully about the order of our initial samples."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "The second type of sampling strategy you can use is sliding window."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "This strategy steps through your initial samples sequentially, skipping duplicates as it goes."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "If your dataset has meaningful order, consider using the sliding window strategy."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "For our generator, we'll use the random strategy because our initial samples are not meaningfully ordered."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "And since it's a default strategy, we don't need to explicitly define it here."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "So now that we've configured the generator with our custom session provider, we can call the run function, which returns a stream of newly synthesized samples."
+  },
+  {
+    "timestamp": "8:47",
+    "content": "As we iterate through each one, it gets added to our expanded dataset defined earlier."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "Now that we've set up our configuration, let's explore how we can ensure our synthetic data is the way we expect it."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "That's where the validator closure comes in hand."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "The validator lets you define your own logic to accept or reject every generated sample."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "We've already defined a set of rules in the instructions in the session provided earlier, but that doesn't guarantee the output will actually follow those rules."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "Let's review them."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "The first rule we defined is that the review must be at least 100 characters long."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "Each review should also cover a wide range of genres, moods, and tones."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "And the review needs to vary in length."
+  },
+  {
+    "timestamp": "9:31",
+    "content": "The model should also generate between three and eight book tags."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "And tags must be lowercase."
+  },
+  {
+    "timestamp": "9:37",
+    "content": "In order to understand what to validate your samples on, we need to consider what we can systematically check based on these rules."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "Also, the validation closure validates per sample generation in isolation and doesn't have context to the other samples."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "Reviewing these rules, I can tell that the diversity of reviews will require more judgment beyond a simple validation check."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "And the length of reviews requires assessing across all samples."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "For the other rules, we can assess them systematically using the validation closure."
+  },
+  {
+    "timestamp": "10:08",
+    "content": "For the first rule, we can define a review length validation."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Let's take a classic book we all know, Frankenstein by Mary Shelley, for example."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "We can check if the generated sample defines a review with at least a length of 100 characters."
+  },
+  {
+    "timestamp": "10:24",
+    "content": "The model also generates tags for each review."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "This means we can validate when there are between three and eight tags."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "And lastly, we can check if the tags are all lowercase."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "Here, I've already defined these three validation metrics in the sample generator to check that the samples meet our expected structure."
+  },
+  {
+    "timestamp": "10:43",
+    "content": "So, where do the results end up?"
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Well, as generation progresses, valid samples are collected in the samples property on the synthetic generator."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "Any samples that fails these validators get set aside automatically as invalid samples."
+  },
+  {
+    "timestamp": "10:57",
+    "content": "Both are updated in real time throughout the run, so you can access them at any point, either during iteration to check progress or after the loop completes."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "You can then use these results directly in your app or save the dataset locally."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "Now, let's review our evaluation with the 13 initial samples."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "In Xcode 27, we introduced a new evaluations report to visualize your results."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "This is the book tagging evaluation with the 13 initial samples."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "As you can see, we got pretty high scores for tag quality, evaluating both relevance and usefulness."
+  },
+  {
+    "timestamp": "11:31",
+    "content": "I've went ahead and ran the evaluation with our new dataset of 100 samples."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Now, we can compare the two evaluations using the compare button."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "And we're expecting the scores to drop."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "And we were correct."
+  },
+  {
+    "timestamp": "11:47",
+    "content": "The quality scores have dropped."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "Our tag generation feature looked like it was performing well earlier because we weren't testing it with a comprehensive dataset."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "By running our evaluation on a larger dataset, a drop in scores could signal many different things."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "Consider what this signal could suggest."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "Score changes could be due to problems with our prompt or instructions."
+  },
+  {
+    "timestamp": "12:08",
+    "content": "You could refine one or both to better capture your needs."
+  },
+  {
+    "timestamp": "12:12",
+    "content": "You could also consider gaps in your intelligence feature."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "Or you may want to adjust your evaluation to understand what you are actually evaluating on."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "And lastly, your dataset may still not be representative enough and need to capture more variation."
+  },
+  {
+    "timestamp": "12:27",
+    "content": "You can continue to increase the dataset or include more edge cases using the synthetic data APIs."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "These are the core ways to further improve your results."
+  },
+  {
+    "timestamp": "12:37",
+    "content": "Now that we have a solid approach for building a robust evaluation dataset using synthetic data, I want to take it one step further."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "So far, we've been evaluating our book tagging feature."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "But what happens when our app becomes more complex and needs to take multiple actions to complete a task like search?"
+  },
+  {
+    "timestamp": "12:54",
+    "content": "That's where tool calling comes in."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "I'll hand it over to Kyle to show how that works."
+  },
+  {
+    "timestamp": "12:59",
+    "content": "Kyle Kierkegaard, Thanks Ada."
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Now let's keep our evaluation-driven development going and cover tool evaluations."
+  },
+  {
+    "timestamp": "13:04",
+    "content": "So far, we've been evaluating what the model generates."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "For our feature, that's tags for books."
+  },
+  {
+    "timestamp": "13:10",
+    "content": "But intelligence features often take many behind-the-scenes steps to create their output."
+  },
+  {
+    "timestamp": "13:15",
+    "content": "They perform multiple actions in your app that each contribute to the results."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Tools add structure to model workflows when they're completing a task for people using your app."
+  },
+  {
+    "timestamp": "13:25",
+    "content": "You use them to operate on real data that people use daily."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "They can operate using any custom business logic you define."
+  },
+  {
+    "timestamp": "13:33",
+    "content": "They can call functionality a user can invoke directly or entirely new logic for your intelligence feature."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "Or a combo of both."
+  },
+  {
+    "timestamp": "13:42",
+    "content": "Here's the thing."
+  },
+  {
+    "timestamp": "13:43",
+    "content": "A model might give you a reasonable-sounding answer without ever calling the right tool."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "The final output can look correct while the path to get there isn't right."
+  },
+  {
+    "timestamp": "13:52",
+    "content": "So let's talk about those challenges and how tool evaluations can help you handle them."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "First, instruction following."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "You need to tell a model how to use each tool, and the attention you pay to the details matters."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Try following the instructions word-by-word yourself to see if you miss a step."
+  },
+  {
+    "timestamp": "14:09",
+    "content": "Then there's tool complexity."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "They can accept simple instructions or require fine-tuning parameter ranges."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Then there are edge cases."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "A tool might seem to work well on common inputs, but behave surprisingly on the rare ones."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "That's why we need tool evaluations."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "They let you verify the how, not just the what."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "The model should call the correct tools with the correct arguments in the order you expect."
+  },
+  {
+    "timestamp": "14:35",
+    "content": "And along the way, you'll double-check that there weren't any unexpected tool calls in the middle."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "Let's take a look at this in practice and build our first tool evaluation."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "In the Book Tracker app, we've added a library assistant."
+  },
+  {
+    "timestamp": "14:47",
+    "content": "A user can search for a book, and instead of just filtering books based on the title and other strings,"
+  },
+  {
+    "timestamp": "14:52",
+    "content": "the model uses our app's custom tools to find relevant books."
+  },
+  {
+    "timestamp": "14:56",
+    "content": "There's the Search Books tool to find books that might have similar tags."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "Then there's a Get Book Details tool to extract book metadata, like publication date, from the searches."
+  },
+  {
+    "timestamp": "15:07",
+    "content": "Then there's the Find Similar Books tool that performs a semantic search for similar books."
+  },
+  {
+    "timestamp": "15:12",
+    "content": "So we're chaining together multiple steps, each one a tool call."
+  },
+  {
+    "timestamp": "15:16",
+    "content": "Here's Search Books tool."
+  },
+  {
+    "timestamp": "15:18",
+    "content": "It conforms to the tool protocol."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "It has a name the model sees."
+  },
+  {
+    "timestamp": "15:23",
+    "content": "And a description that tells it when this tool is useful."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "The arguments are a generable struct."
+  },
+  {
+    "timestamp": "15:30",
+    "content": "Notice these are all optional."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "The model decides which filters to use based on what the user asks for."
+  },
+  {
+    "timestamp": "15:36",
+    "content": "If you prompt a model with Bind Gothic Books,"
+  },
+  {
+    "timestamp": "15:39",
+    "content": "we'd expect it to populate the tag argument."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "If you prompt a model with Show Me Something Cheerful,"
+  },
+  {
+    "timestamp": "15:45",
+    "content": "we'd expect to generate a mood search."
+  },
+  {
+    "timestamp": "15:48",
+    "content": "These are exactly the kind of decisions we want to evaluate."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "Okay, so that's a refresher on the tools."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "Now let's write our first tool evaluation and see how they perform."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "The main component of a tool evaluation is a trajectory expectation."
+  },
+  {
+    "timestamp": "16:02",
+    "content": "A session transcript has tool calls among the prompts and responses."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "A trajectory expectation checks the order and kind of each tool call in the language model session."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "You can think of a trajectory expectation check like going over the list of decisions you made when planning a row."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "Cars, bikes, and buses are all tools that have their time and place in getting somewhere."
+  },
+  {
+    "timestamp": "16:22",
+    "content": "But you can evaluate their utility for each segment in a specific trip."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "The expectation looks for all the tool calls."
+  },
+  {
+    "timestamp": "16:30",
+    "content": "Then for each one, runs it against the expectations you write into your evaluations."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "Here's a simple case in code form."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "Our prompt is find books tagged Gothic."
+  },
+  {
+    "timestamp": "16:41",
+    "content": "We expect one tool call, search books."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "This is a trajectory expectation."
+  },
+  {
+    "timestamp": "16:47",
+    "content": "It describes the tool calls we expect to see in the model's transcript."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "The unordered here means we don't care when this tool call happens, just that it happens."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "We can further refine this by adding arguments to the expectation."
+  },
+  {
+    "timestamp": "17:01",
+    "content": "Here I'm adding an argument to expect the tag Gothic."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "An exact match isn't always what you want."
+  },
+  {
+    "timestamp": "17:08",
+    "content": "If the prompt is find something cheerful, the model might pass uplifting, happy, cheerful."
+  },
+  {
+    "timestamp": "17:14",
+    "content": "Any of these are fine."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "The natural language matcher checks whether the value matches the intent, not the exact string."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "And there's a whole set of matchers for different situations."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "Contains, one of, pattern, range, and more."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "Check out the developer documentation for more information."
+  },
+  {
+    "timestamp": "17:33",
+    "content": "For multi-step tasks, order matters."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "Here, the model must first call search books."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "Then call get book details."
+  },
+  {
+    "timestamp": "17:42",
+    "content": "If an agent tries to get details first, it doesn't have a book ID yet."
+  },
+  {
+    "timestamp": "17:46",
+    "content": "That's a bug."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "Trajectory expectations catch it, because we're checking the journey, not just the destination."
+  },
+  {
+    "timestamp": "17:54",
+    "content": "Sometimes, what an agent shouldn't do is just as important."
+  },
+  {
+    "timestamp": "17:58",
+    "content": "If a prompt includes ideas like, don't look for similar books, the model should follow instructions."
+  },
+  {
+    "timestamp": "18:04",
+    "content": "The disallowed parameter specifies tools that must not appear in the transcript."
+  },
+  {
+    "timestamp": "18:09",
+    "content": "If an agent calls find similar books anyway, that's a failure."
+  },
+  {
+    "timestamp": "18:13",
+    "content": "Here's where all the trajectory expectations come together in the full evaluation."
+  },
+  {
+    "timestamp": "18:17",
+    "content": "We define a data set of samples, each with a prompt and a trajectory expectation, and use toolcall evaluator to score them."
+  },
+  {
+    "timestamp": "18:26",
+    "content": "The toolcall evaluator combines a language model session with the tools, gets a response, and captures the structured transcript."
+  },
+  {
+    "timestamp": "18:36",
+    "content": "Toolcall evaluation results show up in the Xcode Assistant, alongside the rest of your results, and you can get the whole picture of how your intelligence-based feature behaves."
+  },
+  {
+    "timestamp": "18:45",
+    "content": "But wait, we can also use our evaluations APIs to generate synthetic data for your tool evaluations."
+  },
+  {
+    "timestamp": "18:52",
+    "content": "Oh yes, let's do that. Trajectory expectations are generable too."
+  },
+  {
+    "timestamp": "18:57",
+    "content": "Expanding a data set for your tool evaluations can be quite complex, and with the evaluations framework, we've made it a lot easier to do just that."
+  },
+  {
+    "timestamp": "19:06",
+    "content": "Since our toolcall evaluation leverages model sample and trajectory expectation that are generable, we can synthetically generate more samples using SampleGenerator like before."
+  },
+  {
+    "timestamp": "19:17",
+    "content": "I've went ahead and defined a prompt and custom instructions for the session provider."
+  },
+  {
+    "timestamp": "19:23",
+    "content": "Keep in mind, when creating synthetic data for tool evaluations, the model doesn't know what tools you've defined or what order the tools need to be called in."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "So here I've specified the available tools explaining their purpose, any order expectations, and other contexts the model might need."
+  },
+  {
+    "timestamp": "19:41",
+    "content": "Then we can define the sample generator and use our existing data set as our initial samples, and a target count of 100."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "We can also specify validation metrics here as well."
+  },
+  {
+    "timestamp": "19:54",
+    "content": "Here I've made sure there is always an expectation, and I've also made sure the synthetic samples include at least one tool."
+  },
+  {
+    "timestamp": "20:01",
+    "content": "And lastly, any tools called are actual tools we've already defined."
+  },
+  {
+    "timestamp": "20:06",
+    "content": "And that's how you can generate and validate synthetic samples for your tool evaluations."
+  },
+  {
+    "timestamp": "20:11",
+    "content": "The synthetic data APIs are a powerful way to expand your existing data set beyond your capabilities."
+  },
+  {
+    "timestamp": "20:18",
+    "content": "And the more representative your data, the more your scores reflect reality."
+  },
+  {
+    "timestamp": "20:22",
+    "content": "All right, Kyle, back to you."
+  },
+  {
+    "timestamp": "20:24",
+    "content": "This is where it all comes together."
+  },
+  {
+    "timestamp": "20:26",
+    "content": "Earlier, we built book tagging evaluation."
+  },
+  {
+    "timestamp": "20:29",
+    "content": "It checks what the model produces."
+  },
+  {
+    "timestamp": "20:31",
+    "content": "Tag count, genre coverage, quality scores."
+  },
+  {
+    "timestamp": "20:34",
+    "content": "Now we have tool evaluations."
+  },
+  {
+    "timestamp": "20:37",
+    "content": "They check how the model gets there."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "The right tools, right arguments, and right order."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "Run both in the same evaluation suite, and you'll have built end-to-end confidence in your feature."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "Now that we've covered some ways to make your evaluations even more robust, you can start applying these ideas to your apps and evaluation data sets."
+  },
+  {
+    "timestamp": "20:56",
+    "content": "To get started, try making your own synthetic data."
+  },
+  {
+    "timestamp": "21:00",
+    "content": "Evaluate the custom tools in your app, and check out the sample app and other articles in the developer documentation."
+  },
+  {
+    "timestamp": "21:08",
+    "content": "Wow, Ada, we've covered a lot today."
+  },
+  {
+    "timestamp": "21:10",
+    "content": "Yeah, we definitely did."
+  },
+  {
+    "timestamp": "21:12",
+    "content": "But the real plot twist is what you build with it."
+  },
+  {
+    "timestamp": "21:15",
+    "content": "No spoilers, though."
+  },
+  {
+    "timestamp": "21:16",
+    "content": "And we hope you enjoyed learning about the evaluations framework."
+  }
+]

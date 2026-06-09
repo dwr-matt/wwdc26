@@ -1,0 +1,614 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Brandon, an engineer on the Safari team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Today, I'm excited to share CSS Grid Lanes, a new layout mode for the web."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "If you've ever wanted to design where items of any size flow naturally into the space available,"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "I'm going to show you how to build it in just a few lines of CSS."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "You may already know this pattern by another name, masonry layout."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "Think of a waterfall."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "Content flows naturally down the page in columns, each item settling into place beneath the last."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "Flip the direction, and it becomes a brick wall where items flow across the page in rows."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "And the best part? You don't have to wait for it."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "Grid Lanes is available today in Safari 26.4 and behind a flag in other browsers."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "If you've ever tried to build this layout, you know it's not straightforward."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "You've probably reached for a JavaScript library or improvised with floats or flexbox."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "That almost works until it doesn't."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "CSS Grid Lanes is built for exactly this."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "To understand Grid Lanes, it helps to zoom out and think about what a layout mode actually does."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Every layout mode answers the same two questions."
+  },
+  {
+    "timestamp": "1:22",
+    "content": "Where do items go?"
+  },
+  {
+    "timestamp": "1:24",
+    "content": "And how much space do they get?"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "Flexbox and Grid each answer those questions differently."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "Grid Lanes is a new mode that fits somewhere in between."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "Here's what I mean by that."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "Flexbox, for example, gives you one axis and a single lane of items flowing along it."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "When items wrap, they continue flowing in the same direction."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "You choose that direction, row or column, and items are placed one after another."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "Switch to column, and the same rule applies."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "Items flow top to bottom, wrapping into the next column over."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "Grid takes a different approach."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "Where if Flexbox gives you one axis, Grid gives you two, columns and rows."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "Grid places items into cells at the intersection of those tracks."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "But when items have different aspect ratios, you end up with large, empty areas where shorter items don't fill their cells."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "Now, if these boxes were images, we've really only got three options, and none are gray."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "We could stretch each image to fill its cell, but that distorts them."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "Or, you could zoom in and fill the space, but now the image is overflowing the bounds of its container."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "You may also crop the image, but you risk losing important information."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "That's where Grid Lanes comes in."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "It sits between Grid and Flex."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "Instead of structuring across two dimensions like Grid, it structures just one and leaves the other free."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "But unlike Flex, where content flows in a single lane and wraps down the page, Grid Lanes distributes content across multiple lanes."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "The result is a tightly packed, staggered layout that preserves each item's natural proportions."
+  },
+  {
+    "timestamp": "3:15",
+    "content": "Items are placed one by one, and each one lands in whichever column leaves it closest to the top."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "That's why earlier items sit higher up, and later items fill in below."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "So far, everything's been images, but Grid Lanes isn't picky."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "It works with any kind of content."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "Try adding some text."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "Each block wraps to fit its column, and the browser sizes the heights for you."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "And if something needs to stand out, like a headline, you can span it across columns."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "And it doesn't matter what you change."
+  },
+  {
+    "timestamp": "3:48",
+    "content": "Different shapes, different sizes, or a totally different design."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "Grid Lanes handles it."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "So you've seen what Grid Lanes can do."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Now let's build one."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "We start with a new display type, Grid Lanes."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "Then we define the columns."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Grid Template Columns sets the number of tracks and how wide each track becomes."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "You'll notice the FR unit here."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "FR stands for Fractional Unit."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "It tells the browser to take the available space in the container and divide it up into fractions."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "So this piece of code says to divide the space into three equal fractions,"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "creating three columns, all equally sized."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "And add a gap of 10 pixels, just like you do with Grid."
+  },
+  {
+    "timestamp": "4:31",
+    "content": "Want to flip this into a brick wall instead?"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Just swap the columns for rows."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Replace the Grid Template Columns property with Grid Template Rows,"
+  },
+  {
+    "timestamp": "4:41",
+    "content": "and watch the layout turn into a brick wall."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "The only catch?"
+  },
+  {
+    "timestamp": "4:46",
+    "content": "You pick one direction, not both."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "That's Grid Lanes and three lines of CSS."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "But those three lines give you more control than you might expect."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "Let me show you what I mean."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "I start here with three equal columns."
+  },
+  {
+    "timestamp": "5:02",
+    "content": "But my columns don't have to be equal."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "Here, the center column takes up twice the space of the left and right columns."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "Now, instead of picking the number of columns yourself, let the browser decide."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "Autofill creates as many columns as will fit."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "MinMax says each one should be at least 200 pixels, but can grow to fill the space."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "Take that same idea, but now with a repeating pattern of narrow and wide columns."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Honestly, what I love most is how much you can do with just a few lines of CSS."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "Once you start exploring, I think you'll be amazed too."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "So that's the layout."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "But Grid Lanes also lets you shape individual items."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Let's start again with a simple Grid Lanes container with three equally sized columns."
+  },
+  {
+    "timestamp": "5:50",
+    "content": "I'd love to give the orange colored item more space."
+  },
+  {
+    "timestamp": "5:53",
+    "content": "With Grid Lanes, I can do that using properties that already exist in Grid."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "With Grid Columns fan 2, the item stretches across two columns."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "And the rest of the layout adjusts around it."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "Or, place it exactly where you want it."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Here, I set the item to start in column 2, fanning columns 2 and 3."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "Notice, you can control column placement, but not row."
+  },
+  {
+    "timestamp": "6:19",
+    "content": "Grid Lanes decides the row for you."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "I've turned one of our items into a recipe card that spans two columns."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "Inside the card is an image and some text."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Neither of which participate in the Grid Lanes layout."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "Add display Grid Lanes and Grid Template Column subgrid to the card."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "And its contents join the parent layout as their own items."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "The image takes one column."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "The text takes the other, each size to its content."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "And you can nest them however you like."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "A regular grid inside a Grid Lanes container."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "Or the other way around."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "The same tools and syntax you already know carry over."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "So Grid Lanes just fits right in."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "Grid Lanes places each item in whichever column is the shortest."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "Most of the time, that looks great."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "But sometimes, it doesn't feel quite right."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "That's where Flow Tolerance comes in."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "The browser normally picks the shortest column for the next item."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "Flow Tolerance is the dial that loosens or tightens that rule."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "I'll break that down."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "Looking at this layout, the two items in a row here are almost the same height."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "But not quite."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "That second item is a few pixels shorter than item one."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "That means the area under item two is closer to the top of my container."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "So, the second column is where the browser will replace my next item."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "And item four will fill in the first column."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "This makes our item go from left to right on the first row."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "And right to left on our last row."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "The difference between tab order and how the content appears visually"
+  },
+  {
+    "timestamp": "7:59",
+    "content": "will impact accessibility for people."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "And can create a confusing experience."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "Now, turn Flow Tolerance on."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "We're back to two items in two columns."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "But Flow Tolerance changes the rules."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "For each new item, the browser asks the same question."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "Is the taller column less than the shorter column plus Flow Tolerance?"
+  },
+  {
+    "timestamp": "8:20",
+    "content": "For item three, yes."
+  },
+  {
+    "timestamp": "8:22",
+    "content": "The gap is within tolerance."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "So, it fills column one."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "But now column one is even taller."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "For item four, the gap is too big to ignore."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "So, it drops into the shorter column, column two."
+  },
+  {
+    "timestamp": "8:35",
+    "content": "By default, Grid Lanes uses a Flow Tolerance of one M."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "Try different Flow Tolerance values to find what works for your content."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "Flow Tolerance is great when it works for your content."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "But the flip side of giving the browser flexibility is that sometimes the result may surprise you."
+  },
+  {
+    "timestamp": "8:55",
+    "content": "And when that happens, pop open Web Inspector to figure out what's going on."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "The good news is Web Inspector has full support for Grid Lanes."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "You get lines showing your columns and rows."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "You get order numbers projected right over each item so you can see exactly how items are placed."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "And it even draws in the gaps between items."
+  },
+  {
+    "timestamp": "9:16",
+    "content": "All of that just by turning on the overlay."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "CSS Grid Lanes gives you a layout that used to require JavaScript in just a few lines of CSS."
+  },
+  {
+    "timestamp": "9:26",
+    "content": "CSS."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "It builds on what you already know from Grid, and it adapts to your content, not the other way around."
+  },
+  {
+    "timestamp": "9:34",
+    "content": "It's a great addition to the web platform, and I can't wait to see what you build with it."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "Check out the Grid Lanes field guide the WebKit team created for you for detailed walkthroughs and interactive demos,"
+  },
+  {
+    "timestamp": "9:46",
+    "content": "where you can experiment with every property we covered today."
+  },
+  {
+    "timestamp": "9:49",
+    "content": "Try Grid Lanes in your own projects."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "It's been available since Safari 26.4, and we think it can genuinely change how you approach image-heavy layouts."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "And share your feedback."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "We'd love to hear how Grid Lanes is working for you, and what you'd like to see next."
+  },
+  {
+    "timestamp": "10:07",
+    "content": "To learn about all the other features coming to Safari, be sure to check out what's new in WebKit for Safari 27."
+  },
+  {
+    "timestamp": "10:13",
+    "content": "Thanks for watching, and have a great WWDC."
+  },
+  {
+    "timestamp": "10:19",
+    "content": "We'll see you next time."
+  }
+]

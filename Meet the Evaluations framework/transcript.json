@@ -1,0 +1,1266 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "."
+  },
+  {
+    "timestamp": "0:07",
+    "content": "Sawadika. I'm Yara."
+  },
+  {
+    "timestamp": "0:09",
+    "content": "And I'm Rob."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "We're excited to introduce the Evaluations Framework."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "A new framework that measures the quality of your intelligent features."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "So you can deliver your apps with confidence."
+  },
+  {
+    "timestamp": "0:19",
+    "content": "Last year, we introduced the Foundation Models Framework,"
+  },
+  {
+    "timestamp": "0:22",
+    "content": "which helped you add intelligent features to your apps using our on-device models."
+  },
+  {
+    "timestamp": "0:27",
+    "content": "The same models which power Apple Intelligence."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "Building app features with generative AI poses new testing challenges"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "because the same input can produce different outputs."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "These models break a contract that is fundamental to software testing."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "Consider traditional software, where a particular input always produces a particular output."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "You can easily verify this behavior with a unit test."
+  },
+  {
+    "timestamp": "0:54",
+    "content": "You're guaranteed the same input will produce the same output, on any device, including your customers."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "With intelligent software, you cannot rely on functional consistency to verify behavior,"
+  },
+  {
+    "timestamp": "1:09",
+    "content": "which means that unit tests are insufficient."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "Unverified behavior can erode customer confidence."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Your customers expect intelligent features in your app, like any feature, to be safe, trustworthy, and reliable."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "Shipping a feature with unpredictable behavior can have adverse consequences on your app's reputation."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "It's important we measure our intelligent features and understand how they respond to different inputs."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "And since functional tests can't verify probabilistic behavior, we need a new form of test that is more robust."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "We need to know, how often does my app produce unexpected results?"
+  },
+  {
+    "timestamp": "1:48",
+    "content": "How often does the agent take an unexpected path to generate answers?"
+  },
+  {
+    "timestamp": "1:54",
+    "content": "And under what circumstances does the feature produce unsafe results?"
+  },
+  {
+    "timestamp": "1:59",
+    "content": "The challenges of testing intelligence features powered by generative AI is exactly why we built the Evaluations Framework."
+  },
+  {
+    "timestamp": "2:07",
+    "content": "The Evaluations Framework is a flexible system of provided types and protocols."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "This video will focus on evaluating intelligent features powered by language models."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "But you can evaluate any stochastic system, such as classifiers and linear regression models."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "Yotta and I will introduce you to several types in the framework."
+  },
+  {
+    "timestamp": "2:30",
+    "content": "We'll cover data loading and building a diverse dataset."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Building quantitative metrics with evaluator and metric."
+  },
+  {
+    "timestamp": "2:38",
+    "content": "And refining your measurements using model judges and score dimensions to create qualitative metrics."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "In this video, you'll get started with evaluations."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "After building your first evaluation, we'll show you how to scale that evaluation with more data and more measurements."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Then we'll teach you how to build powerful model judges using our simple API."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "Let's get started with evaluations."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "Yotta and I are building an app called Book Tracker."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "We both love books and wanted an app to manage our libraries."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "Yotta just added a new feature called Book Tagging Service."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "It automatically tags books based on a review we've written in Book Tracker."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "I can't wait to open Xcode and try it out."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "Let's add a playground macro to BookTaggingService.swift."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "Here's the review of Pride and Prejudice Yotta added to Book Tracker."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "I have to say, I'm a fan myself."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "Let's see what tags we get back."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "This is a good start, but as I'm reading some of the tags, I can see our service will need a little work."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Nine tags is more than I was expecting."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "And I don't want the book's name as a tag either."
+  },
+  {
+    "timestamp": "3:53",
+    "content": "Multi-word tags are going to be a problem in the UI, so we should avoid those as well."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Let's see if we have better luck with another review, Dracula."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "Seven tags is within our expected amount."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "Let's take a closer look at them."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "There are some behaviors that I'd like to see more of."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "It identified literary genres."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "And some categories that would help me browse a larger library."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Okay, we've just completed our first evaluation of the service."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "We created a list of expectations and used our human judgment to measure how the service performed."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "Every evaluation measures how well an intelligent feature performs against our expectations."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "Unfortunately, human judgment doesn't scale."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "But we've created a way to automate and scale evaluations."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "All you have to do is add import evaluations and implement the evaluation protocol."
+  },
+  {
+    "timestamp": "4:53",
+    "content": "Let's build an evaluation in code."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "And we'll start with our first expectation, measuring that our service generates the correct number of tags."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "There are five steps to building and running an evaluation."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "You define what code you're measuring."
+  },
+  {
+    "timestamp": "5:09",
+    "content": "Then, define what data you're sending the code."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "Next, define what measurements you're making and how."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "Then, summarize your measurements."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "And then, finally, create a test to run your evaluation."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "First, we add the call to the book tagging service."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "And return its output inside of the subject from method."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "These generated tags are the subject of our evaluation."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "Next, define the input samples we'll feed the code we're measuring."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "Then, we'll use model sample to wrap the same reviews we tested in the playground earlier."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Pride and Prejudice."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "And Dracula."
+  },
+  {
+    "timestamp": "5:48",
+    "content": "Notice we define expected tags as well."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "These are the ideal tags we'd like to see from the service."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "Now, it's time to define our measurements using the metric type."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "We add a metric called tag count, which will track the number of generated tags returned by the service."
+  },
+  {
+    "timestamp": "6:06",
+    "content": "We need something to measure the generated tags."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "Evaluator takes a closure that gets past the output from the service for a given sample."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "We could check the number of generated tags by using the count of the tags property."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "If the length of the tags array is between 3 and 8, we return a passing metric from our evaluator."
+  },
+  {
+    "timestamp": "6:28",
+    "content": "If not, we return a failing metric."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "Evaluators run over a single sample at a time."
+  },
+  {
+    "timestamp": "6:35",
+    "content": "But we can measure trends and look for patterns measured over all our samples in the aggregate metrics using method."
+  },
+  {
+    "timestamp": "6:44",
+    "content": "Let's calculate the average number of times the service generates the correct number of tags."
+  },
+  {
+    "timestamp": "6:50",
+    "content": "Then we'll have a ratio for how often the service behaves correctly."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "Okay, we've written our first evaluation."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "Next, let's write some code to run it."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "Evaluations integrates with Swift testing, so you can run your evaluations in your app's test targets."
+  },
+  {
+    "timestamp": "7:09",
+    "content": "Here we instantiate our book tagging evaluation inside of a test suite."
+  },
+  {
+    "timestamp": "7:14",
+    "content": "We add some notes to our evaluation run, so we can keep track of the configuration we're evaluating."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "This will be helpful later when we compare across different evaluation runs."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "Next, we add a test function using the test macro."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "And a new test trait, evaluates."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "This trait takes our evaluation in a notes dictionary, like the one we created earlier in the suite."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Inside our test, we can access an evaluation results bundle."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "This contains all of the metrics and aggregate metrics from our evaluation run."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "Let's grab all of our tag count metrics from the results and assert against its average value."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "We'll use the aggregate value method on the results bundle."
+  },
+  {
+    "timestamp": "7:56",
+    "content": "Then, assert against the expect macro."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Here, I expect the service to produce the correct number of tags 80% of the time."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Why 80%?"
+  },
+  {
+    "timestamp": "8:07",
+    "content": "If the service performance dips below 80%, I want to know, and a failing test is a great signal."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "But what if I want even more insight into what happened during the evaluation?"
+  },
+  {
+    "timestamp": "8:18",
+    "content": "We have a new test report for evaluations."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "It's a great way to dive into the details of your evaluation and analyze further."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "Let's run our test, and I'll walk you through the report."
+  },
+  {
+    "timestamp": "8:30",
+    "content": "Based on what the service returned earlier in my playground, specifically how many tags it generated for Pride and Prejudice,"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "I don't expect the test to pass."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "Okay, the test didn't pass."
+  },
+  {
+    "timestamp": "8:43",
+    "content": "Let's go to the report and review what happened."
+  },
+  {
+    "timestamp": "8:46",
+    "content": "Click on the report navigator, and then select Evaluations and the Test report."
+  },
+  {
+    "timestamp": "8:51",
+    "content": "Here's the evaluation report for the test suite."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "Let's double-click the row to find out more."
+  },
+  {
+    "timestamp": "8:57",
+    "content": "And I see my tag count metric only passed 50% of the time."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "And a quick look at the full results table shows me that my Pride and Prejudice sample produced a failure,"
+  },
+  {
+    "timestamp": "9:07",
+    "content": "but my Dracula sample produced the correct number of tags."
+  },
+  {
+    "timestamp": "9:12",
+    "content": "I can select each row in the table to see more details, using the Assistant Editor and Xcode."
+  },
+  {
+    "timestamp": "9:19",
+    "content": "The detail panel shows the prompt and each measurement for the model sample."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "At the bottom, you see the entire response from the model."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Let's recap a little."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "We built an evaluation for Book Tagging Service."
+  },
+  {
+    "timestamp": "9:33",
+    "content": "Ran that evaluation, and it failed to meet our optimization target."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "Remember back in our test definition?"
+  },
+  {
+    "timestamp": "9:40",
+    "content": "This is where we defined our optimization target."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "We're saying the feature behaves as expected if the correct number of tags were generated 80% of the time."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "Beyond the automated check of our optimization target, we need to analyze deeper into our results and gather insights."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "Specifically, think about the changes that could be made to improve the feature's performance."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "I have a hunch, so I look back at the generable type, Book Tags, that the service is generating."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "We already have a guide macro giving the model additional instructions for the Tags property."
+  },
+  {
+    "timestamp": "10:15",
+    "content": "I can specify a count property in that guide, which can take a range."
+  },
+  {
+    "timestamp": "10:20",
+    "content": "That should instruct the model to only generate between 3 and 8 tags."
+  },
+  {
+    "timestamp": "10:24",
+    "content": "This is an interesting theory. Let's make that change."
+  },
+  {
+    "timestamp": "10:30",
+    "content": "Then rerun the evaluation to see if I'm right."
+  },
+  {
+    "timestamp": "10:33",
+    "content": "We call this process Hill Climbing."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "Alright, I made the change and I reran the evaluation."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "My tests pass, and my tag count passes 100% of the time."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "But I notice a potentially strange behavior."
+  },
+  {
+    "timestamp": "10:47",
+    "content": "After my change, the service always generates 8 tags."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "Hmm."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Now that we have the evaluation set up, let's collect more measurements across more samples,"
+  },
+  {
+    "timestamp": "10:59",
+    "content": "and let's see if that strange behavior persists."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "We started our evaluation with only two data samples."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "As we saw, that only gave us two measurements to extract trends."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "Good evaluations have thousands of samples to extract trends,"
+  },
+  {
+    "timestamp": "11:15",
+    "content": "but also to exercise your feature in many different ways."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "We should consider variety in our dataset."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "For example, we want the service to recognize different genres."
+  },
+  {
+    "timestamp": "11:26",
+    "content": "We can't assume every user will give it a verbose review, so our reviews should be different lengths."
+  },
+  {
+    "timestamp": "11:32",
+    "content": "You browse for fiction and non-fiction using different categories."
+  },
+  {
+    "timestamp": "11:37",
+    "content": "Your sample should represent that variety."
+  },
+  {
+    "timestamp": "11:39",
+    "content": "Finally, you should consider different forms."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "Novels, short stories, and essays."
+  },
+  {
+    "timestamp": "11:46",
+    "content": "Let's make it hard on the bottle too."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "Sprinkle in personal opinions so we can measure how well the service ignores those in the reviews."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "If you want to teach the feature how to write tags like you, start by including more of your personal style in the expected values of the samples."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "Let's look at a few examples and code."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "This review of The Secret Garden reads very different than the reviews we started with, because we wrote it as though we were an avid gardener."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "Here we challenged the model, including a personal review from a mother reading Treasure Island to her son."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "Lots of personal opinions in this review."
+  },
+  {
+    "timestamp": "12:24",
+    "content": "This board game enthusiast needed multiple paragraphs for their review of the Chinese classic, Romance of the Three Kingdoms."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "While this casual reader described a famous British detective sidekick in a single sentence."
+  },
+  {
+    "timestamp": "12:39",
+    "content": "The game is afoot when the model tries to decipher this one."
+  },
+  {
+    "timestamp": "12:44",
+    "content": "And while it's fun to come up with these examples, human data creation doesn't scale either."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "Consider these sentence completion pairs, where the output of the feature is compared directly to the expected answer."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "You need thousands of examples for this evaluation to be effective."
+  },
+  {
+    "timestamp": "13:03",
+    "content": "Fortunately, we include a sample generator as part of the evaluations framework."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "You could call it directly on an array of model samples, and it will synthetically generate more samples using a model of your choice."
+  },
+  {
+    "timestamp": "13:16",
+    "content": "To hear more about how you can synthesize larger datasets, and learn more about advanced uses of model sample, please check out our video, Create Robust Evaluations for Argentic Apps."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "Back to book tagging. I'm going to update my dataset property to include all of the book reviews from our library, including the four we showed earlier."
+  },
+  {
+    "timestamp": "13:38",
+    "content": "When I rerun my evaluation with the expanded dataset, my test passes, my tag count average is still 100%, and the service generated eight tags for all of them."
+  },
+  {
+    "timestamp": "13:49",
+    "content": "Now we know there's a weird behavior in the service."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "Looking back at my expectations, I built an evaluator to track if the number of tags are in range."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "I think I still need to refine that a little."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "Here's my current metric and evaluator setup."
+  },
+  {
+    "timestamp": "14:05",
+    "content": "First, I define a new metric, tag total, that will record the number of generated tags."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "Then, I build a simple evaluator, which records the length of the generated tags array."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Then, we record a measurement using a scoring value, instead of a pass-fail value."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "Using the tag total and tag count metrics, we evaluate range compliance, and the distribution of generated tags."
+  },
+  {
+    "timestamp": "14:31",
+    "content": "We can follow a similar pattern for checking the number of words and tags."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "Here, we check each tag for a space, then return a failing metric if it does."
+  },
+  {
+    "timestamp": "14:41",
+    "content": "Identifying a literary genre is equally straightforward, assuming you're looking for a known set of genres."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "We check the book tagging service for known genres, then compare each of the generated tags for a match."
+  },
+  {
+    "timestamp": "14:55",
+    "content": "Our evaluation is really filling out. We can already measure three of our original five expectations."
+  },
+  {
+    "timestamp": "15:02",
+    "content": "And our evaluation report provides a rich picture of how our tagging service is performing."
+  },
+  {
+    "timestamp": "15:07",
+    "content": "We track our three expectations using five aggregate metrics."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "Here, we can see the distribution of tags, along with range compliance and containing genre tags."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Using our hill climbing methodology, we've iterated on our instructions for the service."
+  },
+  {
+    "timestamp": "15:24",
+    "content": "Here's where we started at the beginning."
+  },
+  {
+    "timestamp": "15:27",
+    "content": "After several updates to our evaluation, and multiple runs through our loop."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "And we can track each change to our instructions by an expectation we added to our evaluation to verify that change."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "When you take our hill climbing feedback loop and center your development process around it, we call it evaluation-driven development."
+  },
+  {
+    "timestamp": "15:50",
+    "content": "But we're not done getting our service up to spec."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "We still expect our tags to be informative, relevant to the book, and helpful for browsing your library."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "Here's Yada to tell you about model judges and how they'll take your evaluation to the next level."
+  },
+  {
+    "timestamp": "16:07",
+    "content": "Thanks, Rob."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "Model judges are how we measure qualitative metrics at scale."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "Let me show you how to build and refine one."
+  },
+  {
+    "timestamp": "16:15",
+    "content": "Let's take a look at a concrete example."
+  },
+  {
+    "timestamp": "16:18",
+    "content": "Here's a review of Alice in Wonderland that Rob wrote in BookTracker."
+  },
+  {
+    "timestamp": "16:24",
+    "content": "And here are the tags that our service generated."
+  },
+  {
+    "timestamp": "16:28",
+    "content": "Six tags, single word or hyphenated, with tags identifying genre."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "Every quantitative metric we built with Rob passed."
+  },
+  {
+    "timestamp": "16:38",
+    "content": "But look closer."
+  },
+  {
+    "timestamp": "16:41",
+    "content": "Overrated and pretentious doesn't describe the book."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "They describe how the reader felt about it."
+  },
+  {
+    "timestamp": "16:47",
+    "content": "And whodunit isn't even the right genre."
+  },
+  {
+    "timestamp": "16:50",
+    "content": "The model picked it up from riddles he never answers."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "It latched onto the language of the review without understanding the book."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "Our metrics are passing, but they're not giving us the right signals back."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "But I think we can ask the model to help us here."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "If a person can read these tags and tell us which ones work, maybe a model can too."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "Oh nice!"
+  },
+  {
+    "timestamp": "17:14",
+    "content": "The model actually captured that certain tags are not helpful."
+  },
+  {
+    "timestamp": "17:19",
+    "content": "I think I can ask the model to evaluate all of the tags that my feature generated."
+  },
+  {
+    "timestamp": "17:26",
+    "content": "And that's exactly what a model judge is."
+  },
+  {
+    "timestamp": "17:30",
+    "content": "A model judge is a language model used to score your feature's output."
+  },
+  {
+    "timestamp": "17:35",
+    "content": "It gives you a subjective rating, the kind of judgment call a person would make, but applied consistently across your entire dataset."
+  },
+  {
+    "timestamp": "17:45",
+    "content": "So let's talk about how this works."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "Here's the model powering your intelligence feature."
+  },
+  {
+    "timestamp": "17:51",
+    "content": "Our book tagging service runs on-device because it needs to be fast and local for every user interaction."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "You can use a second model as a judge to evaluate your feature."
+  },
+  {
+    "timestamp": "18:04",
+    "content": "Your judge should be at least as capable as the model you're evaluating."
+  },
+  {
+    "timestamp": "18:09",
+    "content": "In our case, we can use a more capable model from private cloud compute."
+  },
+  {
+    "timestamp": "18:14",
+    "content": "The model judge has a few key components."
+  },
+  {
+    "timestamp": "18:18",
+    "content": "The instruction tells the model it will be given book reviews and how it should evaluate it."
+  },
+  {
+    "timestamp": "18:24",
+    "content": "The feature input is a prompt given to the feature being judged."
+  },
+  {
+    "timestamp": "18:28",
+    "content": "In our case, it's the book review."
+  },
+  {
+    "timestamp": "18:31",
+    "content": "The feature output is the tags are service generated."
+  },
+  {
+    "timestamp": "18:35",
+    "content": "And finally, the scoring guide tells the model how to evaluate and score the feature."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "The evaluations framework handles most of this for you, so you can focus on the scoring guide."
+  },
+  {
+    "timestamp": "18:49",
+    "content": "Putting it all together, here's a simple model judge."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "We've defined a tag quality metric on a one to four scale, with each level describing what that score means."
+  },
+  {
+    "timestamp": "19:02",
+    "content": "An even number of options prevents the judge from defaulting to a neutral middle score."
+  },
+  {
+    "timestamp": "19:09",
+    "content": "Four levels provides just enough distinction without diluting the meaning of each rating."
+  },
+  {
+    "timestamp": "19:16",
+    "content": "And finally, we've specified private cloud compute as our judge model, giving us a more capable evaluator than the on-device model we're evaluating."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "In the evaluations framework, a model judge is just another evaluator."
+  },
+  {
+    "timestamp": "19:33",
+    "content": "It conforms to the same protocol as the quantitative evaluators and produces the same metric type."
+  },
+  {
+    "timestamp": "19:40",
+    "content": "So you can mix them freely within a single evaluation."
+  },
+  {
+    "timestamp": "19:43",
+    "content": "All right, let's run it."
+  },
+  {
+    "timestamp": "19:45",
+    "content": "Every sample received a three or four quality score."
+  },
+  {
+    "timestamp": "19:50",
+    "content": "Let's go back to our Alice in Wonderland sample."
+  },
+  {
+    "timestamp": "19:55",
+    "content": "The model judge gave this a quality score of three."
+  },
+  {
+    "timestamp": "19:59",
+    "content": "If we look at the rationale, we can identify that the model flagged whodunit and detective fiction as not relevant to the book."
+  },
+  {
+    "timestamp": "20:08",
+    "content": "But we also expected it to flag all of these other tags that either reflect the reader's opinion or are not helpful for browsing."
+  },
+  {
+    "timestamp": "20:19",
+    "content": "With model judges, rationales are essential."
+  },
+  {
+    "timestamp": "20:23",
+    "content": "They give you a window into why the judge scored what it scored."
+  },
+  {
+    "timestamp": "20:27",
+    "content": "And here's the thing."
+  },
+  {
+    "timestamp": "20:29",
+    "content": "By the scale we wrote, the judge is actually right."
+  },
+  {
+    "timestamp": "20:32",
+    "content": "Every tag connects to something that the user wrote."
+  },
+  {
+    "timestamp": "20:36",
+    "content": "The judge is faithfully following the scoring guide we provided."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "We meant something specific by relevant and useful for browsing."
+  },
+  {
+    "timestamp": "20:44",
+    "content": "And the judge interpreted those words differently than we did."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "By asking the model to provide judgment for my feature in my place, I expected it to provide a similar score to how I would have scored these tags."
+  },
+  {
+    "timestamp": "21:01",
+    "content": "When there's a mismatch between the model judge and us, we can refine the model judge until it can stand in for our own judgment."
+  },
+  {
+    "timestamp": "21:11",
+    "content": "Looking back, the problem with our first model judge was that it was too broad."
+  },
+  {
+    "timestamp": "21:17",
+    "content": "It was asking two different questions."
+  },
+  {
+    "timestamp": "21:20",
+    "content": "When you find yourself disagreeing with a score, you should try and see if you can split the questions."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "In our case, relevance and usefulness are actually two different metrics."
+  },
+  {
+    "timestamp": "21:32",
+    "content": "Let's take a look at defining relevance as a score dimension."
+  },
+  {
+    "timestamp": "21:37",
+    "content": "When we say the tags are relevant, we mean that each tag describes the quality, theme, or tone of the book itself."
+  },
+  {
+    "timestamp": "21:45",
+    "content": "Rather than small details or a reader's personal reaction."
+  },
+  {
+    "timestamp": "21:50",
+    "content": "And we can write that as a description for a score dimension."
+  },
+  {
+    "timestamp": "21:55",
+    "content": "To score these tags, you would walk through each one, identify which tags are bad, and which are good based on whether or not they meaningfully describe the book."
+  },
+  {
+    "timestamp": "22:05",
+    "content": "You would repeat this for every tag."
+  },
+  {
+    "timestamp": "22:08",
+    "content": "In this case, all of the tags are good, which earns a score of four on our one to four scale."
+  },
+  {
+    "timestamp": "22:15",
+    "content": "You would repeat the same process to define each scale in the scoring guide."
+  },
+  {
+    "timestamp": "22:20",
+    "content": "And that's our relevance metric with the metric name, description, and scale that the model judge can use."
+  },
+  {
+    "timestamp": "22:28",
+    "content": "I can use the same process to define usefulness."
+  },
+  {
+    "timestamp": "22:32",
+    "content": "Now I can add both dimensions to the model judge evaluator."
+  },
+  {
+    "timestamp": "22:37",
+    "content": "But dimensions alone aren't enough."
+  },
+  {
+    "timestamp": "22:40",
+    "content": "They tell the judge what to measure, but not how to think about your app."
+  },
+  {
+    "timestamp": "22:45",
+    "content": "Without that context, a judge evaluating tags for BookTracker might treat a reader's criticism as a valid book descriptor."
+  },
+  {
+    "timestamp": "22:54",
+    "content": "It has no way to know that BookTracker is a personal library and not a review platform."
+  },
+  {
+    "timestamp": "23:01",
+    "content": "And that's where the model judge prompt comes in."
+  },
+  {
+    "timestamp": "23:04",
+    "content": "This is an example of a model judge prompt."
+  },
+  {
+    "timestamp": "23:07",
+    "content": "We can tell the judge it's evaluating tags for a personal library app in the instructions."
+  },
+  {
+    "timestamp": "23:14",
+    "content": "Format the response in the evaluation target."
+  },
+  {
+    "timestamp": "23:17",
+    "content": "And pass the expected tags as reference for the model to compare against."
+  },
+  {
+    "timestamp": "23:22",
+    "content": "For more details on model judge prompt, please see our documentation."
+  },
+  {
+    "timestamp": "23:27",
+    "content": "Now that our model judge has the context it needs, let's rerun our evaluation."
+  },
+  {
+    "timestamp": "23:33",
+    "content": "In place of quality, we now have a relevance and usefulness score."
+  },
+  {
+    "timestamp": "23:38",
+    "content": "And here's the evaluation result of our Alice in Wonderland book sample."
+  },
+  {
+    "timestamp": "23:43",
+    "content": "Notice how their two rationales separate the diagnosis."
+  },
+  {
+    "timestamp": "23:48",
+    "content": "Relevance tells us what kind of tag is wrong."
+  },
+  {
+    "timestamp": "23:51",
+    "content": "And usefulness tells us how the wrong tags fail at browsing."
+  },
+  {
+    "timestamp": "23:55",
+    "content": "With these results, I now have a clear path forward."
+  },
+  {
+    "timestamp": "23:59",
+    "content": "I can update my book tagging service instructions, run the evaluation again, and watch the scores change."
+  },
+  {
+    "timestamp": "24:06",
+    "content": "And that's the feedback loop Rob walked us through, now powered by qualitative metrics."
+  },
+  {
+    "timestamp": "24:11",
+    "content": "When are you uploading the test flight?"
+  },
+  {
+    "timestamp": "24:14",
+    "content": "Well Rob, I've been a little busy."
+  },
+  {
+    "timestamp": "24:17",
+    "content": "Let's wrap up with a few best practices for evaluating your apps."
+  },
+  {
+    "timestamp": "24:22",
+    "content": "Start small. A focused data set of 20 to 30 samples is a great place to get started."
+  },
+  {
+    "timestamp": "24:28",
+    "content": "Spec out your app by thinking about how you want the model to behave."
+  },
+  {
+    "timestamp": "24:32",
+    "content": "Use heuristics to measure quantifiable traits."
+  },
+  {
+    "timestamp": "24:36",
+    "content": "These rule of thumb metrics are a great way to start understanding your feature."
+  },
+  {
+    "timestamp": "24:41",
+    "content": "The rule of thumb is, if you can measure it in code, then it's quantitative."
+  },
+  {
+    "timestamp": "24:45",
+    "content": "And if you can only describe it in words, then you need a qualitative metric using a model judge evaluator."
+  },
+  {
+    "timestamp": "24:53",
+    "content": "Start simple with your model judge. Define your scoring dimension, run it, and read the rationales."
+  },
+  {
+    "timestamp": "25:00",
+    "content": "You'll learn more from a single run than from hours of careful planning."
+  },
+  {
+    "timestamp": "25:05",
+    "content": "Use rationales to drive your next change."
+  },
+  {
+    "timestamp": "25:08",
+    "content": "If the scores are all the same, your question's too broad."
+  },
+  {
+    "timestamp": "25:12",
+    "content": "If you can't isolate the problem, split the dimensions."
+  },
+  {
+    "timestamp": "25:16",
+    "content": "And if the judge doesn't understand your app, add context."
+  },
+  {
+    "timestamp": "25:20",
+    "content": "Well, I guess we should get back to work."
+  },
+  {
+    "timestamp": "25:23",
+    "content": "Be sure to check out our documentation."
+  },
+  {
+    "timestamp": "25:25",
+    "content": "And our sample code."
+  },
+  {
+    "timestamp": "25:26",
+    "content": "And check out our other videos featuring the evaluations framework."
+  },
+  {
+    "timestamp": "25:29",
+    "content": "Improve your prompts by hill climbing with evaluations and create robust evaluations for Agentec apps."
+  },
+  {
+    "timestamp": "25:35",
+    "content": "Later."
+  },
+  {
+    "timestamp": "25:36",
+    "content": "Bye."
+  },
+  {
+    "timestamp": "25:37",
+    "content": "Bye"
+  }
+]

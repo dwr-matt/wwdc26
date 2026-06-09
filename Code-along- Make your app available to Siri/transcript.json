@@ -1,0 +1,1782 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Justin,"
+  },
+  {
+    "timestamp": "0:08",
+    "content": "an engineer on the Swift Intelligence Frameworks team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Welcome to this CodeAlong."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "In this video, I'll take a nap and make it available to Siri, step-by-step."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "Imagine I start a conversation with Siri on my iPhone and ask,"
+  },
+  {
+    "timestamp": "0:21",
+    "content": "who's coming to my picnic?"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "Siri searches for the event,"
+  },
+  {
+    "timestamp": "0:25",
+    "content": "its attendees, and shows me the guest list."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "I realize it includes that one friend that's always late."
+  },
+  {
+    "timestamp": "0:32",
+    "content": "So I say, move it to noon."
+  },
+  {
+    "timestamp": "0:34",
+    "content": "Actually, 11.30 AM."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "Siri asks to confirm the details and I say, sounds good, thanks."
+  },
+  {
+    "timestamp": "0:47",
+    "content": "Siri makes the changes and renders a custom view."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "Now I need to update my friends."
+  },
+  {
+    "timestamp": "0:53",
+    "content": "Text everyone going to the picnic and"
+  },
+  {
+    "timestamp": "0:55",
+    "content": "let them know about the change using emojis."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "I'm going to update my friends."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "After double checking the message, I say, send it."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "And just like that, Siri sends the message."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Then I remembered the events note had a reminder to bring something important to the picnic."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "So I ask, what did I need to bring to the picnic again?"
+  },
+  {
+    "timestamp": "1:16",
+    "content": "Siri searches the event and finds a note to myself to bring a chocolate cake."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "I'm curious how much time I have to get ready."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "So I say, how long will it take to drive there?"
+  },
+  {
+    "timestamp": "1:30",
+    "content": "Siri finds the event's location and gives me an estimate."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "This is how Siri can make everyday things effortless, simply with a conversation."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "That's the mission for today."
+  },
+  {
+    "timestamp": "1:41",
+    "content": "I'll take an existing app and make it available to Siri."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "Siri is powered by Apple Intelligence, Apple's personal intelligence system."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "Developers integrate their apps with Apple Intelligence through the App Intents framework."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "So their apps' content and actions become available within Siri and other system experiences."
+  },
+  {
+    "timestamp": "1:59",
+    "content": "The companion video, Build Intelligent Siri Experiences with App Schemas,"
+  },
+  {
+    "timestamp": "2:03",
+    "content": "covers the concepts behind the framework and how Apple Intelligence and"
+  },
+  {
+    "timestamp": "2:06",
+    "content": "Siri work with your apps' content and actions."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "If App Intents is new to you, the video Get to Know App Intents covers the core fundamentals,"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "like intents, entities, and queries, and how they connect to system features like Siri and shortcuts."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "I've been working on a sample project called ComicCal."
+  },
+  {
+    "timestamp": "2:24",
+    "content": "It's a SwiftUI calendar app with a fun cosmic twist."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "And the source code is available for download on the Apple Developer website for you to follow along."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "It does all the basics of a calendar app."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "Showing today's events, viewing and editing them,"
+  },
+  {
+    "timestamp": "2:39",
+    "content": "creating more,"
+  },
+  {
+    "timestamp": "2:41",
+    "content": "and even managing different calendars."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "Right now, the only way to interact with it though is through the screen."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "But that's about to change."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "In this video, I'm going to update ComicCal so that Siri can understand the app's content"
+  },
+  {
+    "timestamp": "2:55",
+    "content": "and answer my questions."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "And take actions like updating an event, making Siri more helpful than ever."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "The first step is giving Siri an understanding of my app's content."
+  },
+  {
+    "timestamp": "3:06",
+    "content": "Right now, Siri has no idea what a calendar or an event means inside ComicCal."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "That's where app schemas come in."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "App schemas describe my app's content and actions in terms Siri can already understand."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "They define the structures of my entities, the parameters of my actions, and the outputs."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "No training phrases, no natural language processing on my end."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "App schemas are organized into app schema domains."
+  },
+  {
+    "timestamp": "3:30",
+    "content": "The calendar domain covers everything related to scheduling."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "Events, calendars, attendees, and the actions that operate on them."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "Now that the groundwork is set, time to suit up, jump into Xcode, and start the countdown."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "ComicCal already has a calendar model in its data layer."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "That's the Swift data model for calendars, like the difference between a personal calendar and a work calendar."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "The goal is to create an app entity that represents it using app schemas,"
+  },
+  {
+    "timestamp": "3:59",
+    "content": "so Siri can understand what a calendar is in this app."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "I'll create a new Swift file called calendarEntity and import app intents."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Next, I'll type calendar underscore in the editor."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "Xcode offers every schema in the calendar domain, right in autocomplete."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Since the goal is a calendar entity, I'll select calendar underscore calendar."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "The snippet fills in the structure, the app entity macro, properties, display representation,"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "and query steps."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "This is now a schematized entity, a type Siri can reason over."
+  },
+  {
+    "timestamp": "4:36",
+    "content": "A few things to fill in."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "First, I'll set the ID type to UUID to match the data model."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "To enable matching by meaning and not just text, I'll conform to the indexed entity protocol."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "Conforming to indexed entity allows my app to donate entities using the spotlight index"
+  },
+  {
+    "timestamp": "4:54",
+    "content": "to get the benefits of semantic understanding."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "When an entity is donated, Siri can resolve it by name, by property, or by context,"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "without requiring a custom property query."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "To keep things moving, I added ways to convert between the data model and the entity."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "The calendar entity's initializer maps from calendar model to pull out what the entity needs."
+  },
+  {
+    "timestamp": "5:16",
+    "content": "And the convenience entity property on the calendar model produces a calendar entity"
+  },
+  {
+    "timestamp": "5:21",
+    "content": "using the initializer."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "I'll use this soon in places like the query to convert between the two."
+  },
+  {
+    "timestamp": "5:26",
+    "content": "Next, I'll add a dependency property for the calendar manager in the query."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "That's Comic-Cal's data layer that handles all the Swift data operations."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "The dependency property wrapper is how App Intents injects shared resources into intents and queries."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "So instead of creating new instances, it provides the same object I register once as I've done on the right."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "The calendar manager is main actor isolated, so I'll also annotate the query as main actor."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "I'll implement the method required by the entity query protocol."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "This fetches calendars by ID using the calendar manager dependency."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "Now, entity query covers cases where the system already knows an entity's ID."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "But later, when creating events, the system will need to know which calendars are available"
+  },
+  {
+    "timestamp": "6:13",
+    "content": "so Siri can offer them as options."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "For that, I'll conform to a numerable entity query"
+  },
+  {
+    "timestamp": "6:19",
+    "content": "and add an allEntities method that returns all calendars."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "For the display representation, I'll set the title to the calendar title"
+  },
+  {
+    "timestamp": "6:28",
+    "content": "and the image to a system image of a calendar."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "Siri and Spotlight use this when displaying the entities."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "That's one entity ready for orbit."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Almost."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "There's one more piece that's easy to miss."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Indexed entity defines the shape of my indexed content, but entities still need to be donated."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "To do that, I'll open the calendar manager file."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "Anytime calendars, or any indexed entity for that matter, are changed,"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "the index needs to be updated."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "For that, I have a CSSearchableIndex instance initialized on the calendar manager's initializer"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "that uses a unique name for Comic-Cal."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "In the create calendar method, just before returning the new calendar,"
+  },
+  {
+    "timestamp": "7:07",
+    "content": "I'll donate the entity by calling indexAppEntities using the searchableIndex instance from before."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "Similarly, in the update calendar method, I'll index the updated calendar entity."
+  },
+  {
+    "timestamp": "7:18",
+    "content": "And in the delete calendar method, I'll remove the entity from the index by calling deleteAppEntities,"
+  },
+  {
+    "timestamp": "7:26",
+    "content": "passing in the entity's ID and type."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "I'll fire up the engines and give it a go."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "I'll open Comic-Cal and create a new calendar called LunarOrbitLog."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Then, I'll swipe down to search for LunarOrbitLog."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "And there it is, with the calendar icon and the title."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "With calendar entity working, the next two entities follow the same pattern,"
+  },
+  {
+    "timestamp": "7:56",
+    "content": "but each introduces something new and shiny."
+  },
+  {
+    "timestamp": "7:59",
+    "content": "Here's a new file called AttendeeEntity with AppIntense already imported."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "Same pattern as before."
+  },
+  {
+    "timestamp": "8:04",
+    "content": "Type calendar underscore attendee and select the snippet."
+  },
+  {
+    "timestamp": "8:09",
+    "content": "The familiar parts are the same."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "All of that is wired up off-camera so I can keep moving at light speed."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Feel free to pause here and check the completed source code."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "Unlike calendar entity, AttendeeEntity conforms to the transientAppEntity protocol,"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "instead of indexEntity."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "That's intentional."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "A transientAppEntity is one that represents a temporary entity that doesn't require a unique identifier"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "and isn't meant to be queried."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "That's the right fit here."
+  },
+  {
+    "timestamp": "8:34",
+    "content": "In Comic-Cal, an attendee represents a person's participation in a specific event,"
+  },
+  {
+    "timestamp": "8:39",
+    "content": "not the person themselves."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "The same person can attend multiple events,"
+  },
+  {
+    "timestamp": "8:43",
+    "content": "and indexing each attendant separately would create duplicative results in Spotlight."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Since attendees are always accessed to the event that holds them,"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "there's no need for an independent lookup path."
+  },
+  {
+    "timestamp": "8:54",
+    "content": "TransientAppEntity makes that explicit."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "No query to write, no index to maintain."
+  },
+  {
+    "timestamp": "9:00",
+    "content": "Attendees have properties that are required by the schema,"
+  },
+  {
+    "timestamp": "9:02",
+    "content": "like the Boolean property to tell whether this attendance is optional."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "One new item is the IntentPersonType,"
+  },
+  {
+    "timestamp": "9:09",
+    "content": "the system's standard way to represent a person with the name and contact information."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "This is useful when sharing this data between apps,"
+  },
+  {
+    "timestamp": "9:18",
+    "content": "like sending an attendee's email address to draft a message in the Mail app."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "The schema also includes two app enum types."
+  },
+  {
+    "timestamp": "9:25",
+    "content": "The schema defines the set of possible cases, and my app adopts the ones that apply."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "These are also schematized, so I'll create them quickly using code snippets."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "I'll use the calendar underscore attendee status snippet for status."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "The snippet comes with all the cases the schema supports."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "CommaCal's model already maps directly, so no changes are needed."
+  },
+  {
+    "timestamp": "9:46",
+    "content": "But if an app uses different terminology,"
+  },
+  {
+    "timestamp": "9:48",
+    "content": "simply map the existing model to the schema's cases so Siri can recognize the shape."
+  },
+  {
+    "timestamp": "9:52",
+    "content": "The schema requires at least one case to describe what kind of attendee this is."
+  },
+  {
+    "timestamp": "10:03",
+    "content": "And since CommaCal's attendees are all people, I'll add a person case."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "I'll fill in the types for status and type respectively."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "And that takes care of the attendee entity."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "That's two entities in orbit, one more to launch."
+  },
+  {
+    "timestamp": "10:25",
+    "content": "The calendar and attendee entities find their orbit with the next one,"
+  },
+  {
+    "timestamp": "10:28",
+    "content": "the gravitational center that pulls them all together, the event entity."
+  },
+  {
+    "timestamp": "10:32",
+    "content": "The system's search index really shines for the event entity."
+  },
+  {
+    "timestamp": "10:36",
+    "content": "When someone asks, when is my crew lunch?"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "Siri can search the title."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "When they ask, what events mention oxygen?"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "It can search the no content."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "People can ask questions about their data, and Siri answers directly."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "Here's event entity with the calendar underscore event snippet already applied."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Just like calendar entity, the event entity conforms to the index entity protocol,"
+  },
+  {
+    "timestamp": "10:57",
+    "content": "and includes the indexing in calendar manager to take advantage of the semantic index."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "There's a lot here."
+  },
+  {
+    "timestamp": "11:04",
+    "content": "The schema covers a wide range of properties."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "But don't panic."
+  },
+  {
+    "timestamp": "11:07",
+    "content": "The same patterns from the previous entities apply."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "The main difference is the number and variety of parameters."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "To keep this mission on schedule, the familiar pieces are wired up off camera."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "Feel free to pause and check the source code."
+  },
+  {
+    "timestamp": "11:21",
+    "content": "The schema defines which properties are required and which are optional."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "The essentials like title or start date are straightforward to wire up."
+  },
+  {
+    "timestamp": "11:29",
+    "content": "Optional properties that my app doesn't use, like travel time or virtual location,"
+  },
+  {
+    "timestamp": "11:34",
+    "content": "can simply stay unset."
+  },
+  {
+    "timestamp": "11:36",
+    "content": "Properties that aren't part of the schema but exist on the data model, like isFavorite,"
+  },
+  {
+    "timestamp": "11:41",
+    "content": "can also be added to the entity."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "What makes this entity interesting is how it composes with other entities built earlier."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "The calendar this event belongs to is a calendar entity."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "The attendees is an array of attendee entity."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "Siri understands these relationships with app schemas."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "The recurrence property is also one worth quickly pointing out."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "It can be used to represent events that repeat, like a weekly workout or an important yearly anniversary."
+  },
+  {
+    "timestamp": "12:17",
+    "content": "It uses Foundation's calendar recurrence rule type and converts to and from Comic-Cal's simple frequency enum for cases like daily, weekly, monthly, or yearly."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "As part of the schema, there are also union values for an event's location and alarms."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "The location can either be a place descriptor from the GeoToolbox framework or a string."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Again, we can simply implement these via code snippets."
+  },
+  {
+    "timestamp": "12:53",
+    "content": "Like so."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "For alarms, it can either be a duration or a date."
+  },
+  {
+    "timestamp": "12:57",
+    "content": "Assign the properties to these types accordingly."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "Like the attendee, there are also schematized enums here like the event entity status."
+  },
+  {
+    "timestamp": "13:11",
+    "content": "Both enums related to events come complete from the snippets."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "So I'll add those and wire them up."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Lastly, assign the status property to the new status type."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "And with that, the content layer is fully fueled and ready for launch."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "Time to find out if this thing has liftoff."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "On the left is the detail view of the Meteor Shower watch party."
+  },
+  {
+    "timestamp": "13:36",
+    "content": "The time, location, and note are all there on screen."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "But imagine I'm mid-conversation with Siri talking about meteors,"
+  },
+  {
+    "timestamp": "13:43",
+    "content": "and I suddenly remember about the party."
+  },
+  {
+    "timestamp": "13:46",
+    "content": "Instead of leaving the conversation to open Comic Cal and find the details,"
+  },
+  {
+    "timestamp": "13:50",
+    "content": "I can just ask, is the meteor shower party happening anytime soon?"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "What's the weather like out there?"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "I can also switch to typing."
+  },
+  {
+    "timestamp": "14:07",
+    "content": "When is the peak viewing time?"
+  },
+  {
+    "timestamp": "14:13",
+    "content": "I can also tap on the result to take me to Comic Cal."
+  },
+  {
+    "timestamp": "14:16",
+    "content": "Siri answers every question using the app's content."
+  },
+  {
+    "timestamp": "14:22",
+    "content": "No need for custom natural language, just entities and schemas."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "Now, you may have noticed that tapping the event from my conversation with Siri opens"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "Comic Cal, but it just lands on the main screen."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "It doesn't navigate to the event like I would expect."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "Siri doesn't know how to open a specific event in the app yet."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "I'm going to take a short detour to make this experience even better."
+  },
+  {
+    "timestamp": "14:44",
+    "content": "To get this working, here's an open event intent."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "It's a small intent that conforms to the system open schema."
+  },
+  {
+    "timestamp": "14:51",
+    "content": "It takes an event entity as its target and tells the navigation manager to navigate to that event."
+  },
+  {
+    "timestamp": "14:57",
+    "content": "The system calls this whenever someone taps an event result in Spotlight or Siri,"
+  },
+  {
+    "timestamp": "15:01",
+    "content": "or asks Siri to open one."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "And that's it."
+  },
+  {
+    "timestamp": "15:09",
+    "content": "Now if I tap on an event, this time,"
+  },
+  {
+    "timestamp": "15:12",
+    "content": "Comic Cal opens straight to the detail view of my Meteor Shower watch party."
+  },
+  {
+    "timestamp": "15:16",
+    "content": "That's the open intent bridging the gap."
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Siri can now understand the app's content better than ever,"
+  },
+  {
+    "timestamp": "15:22",
+    "content": "so people can ask Siri about any of it."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "Not bad for three structs and filling out a few code snippets, right?"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "There's one more thing I can do to make my conversation with Siri feel even more natural."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "When someone has a specific event on screen,"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "they might want to say something like,"
+  },
+  {
+    "timestamp": "15:38",
+    "content": "email the people in this event without having to say the event's title."
+  },
+  {
+    "timestamp": "15:42",
+    "content": "That's on-screen awareness, and it takes just two view modifiers."
+  },
+  {
+    "timestamp": "15:46",
+    "content": "In Comic Cal's Calendar List view, where it lists all of my events,"
+  },
+  {
+    "timestamp": "15:50",
+    "content": "I'll add an App Entity Identifier modifier to the list,"
+  },
+  {
+    "timestamp": "15:53",
+    "content": "passing in an Entity Identifier for each of the event entities."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "This connects the list to its entities,"
+  },
+  {
+    "timestamp": "16:00",
+    "content": "so when someone is browsing the list,"
+  },
+  {
+    "timestamp": "16:01",
+    "content": "the system knows which events are on-screen."
+  },
+  {
+    "timestamp": "16:04",
+    "content": "In the Event Detail view, when a single event's details are on-screen,"
+  },
+  {
+    "timestamp": "16:08",
+    "content": "I'll append a User Activity modifier with an Entity Identifier."
+  },
+  {
+    "timestamp": "16:12",
+    "content": "This tells the system that one specific event is front and center,"
+  },
+  {
+    "timestamp": "16:16",
+    "content": "so Siri can resolve this event to exactly the one being viewed."
+  },
+  {
+    "timestamp": "16:20",
+    "content": "And that's it."
+  },
+  {
+    "timestamp": "16:22",
+    "content": "Here's what it enables."
+  },
+  {
+    "timestamp": "16:23",
+    "content": "Now that Siri can understand what's currently on-screen and open event entities,"
+  },
+  {
+    "timestamp": "16:28",
+    "content": "I'll ask Siri to open the event in a natural way."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "Hey Siri, open that third event."
+  },
+  {
+    "timestamp": "16:37",
+    "content": "Now that I'm currently on the MeteorShower Watch Party Detail view,"
+  },
+  {
+    "timestamp": "16:40",
+    "content": "I'll try referring to this event rather than saying the entire title."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "Hey Siri, email the people in this event"
+  },
+  {
+    "timestamp": "16:47",
+    "content": "and ask someone to bring chocolate and marshmallows."
+  },
+  {
+    "timestamp": "16:51",
+    "content": "Siri can use its understanding of the on-screen event"
+  },
+  {
+    "timestamp": "16:54",
+    "content": "to find the attendees and hand them off to mail."
+  },
+  {
+    "timestamp": "16:58",
+    "content": "Seriously, two modifiers."
+  },
+  {
+    "timestamp": "17:00",
+    "content": "That's all it takes to connect what's on-screen to the app's content."
+  },
+  {
+    "timestamp": "17:05",
+    "content": "Siri can now talk about the content."
+  },
+  {
+    "timestamp": "17:07",
+    "content": "But to truly take off,"
+  },
+  {
+    "timestamp": "17:08",
+    "content": "I'll give Siri the ability to act."
+  },
+  {
+    "timestamp": "17:10",
+    "content": "Once again, app schemas lead the way."
+  },
+  {
+    "timestamp": "17:12",
+    "content": "And this is where things get really interesting."
+  },
+  {
+    "timestamp": "17:16",
+    "content": "I'll start with creating events."
+  },
+  {
+    "timestamp": "17:18",
+    "content": "Just like entities, intents use code snippets too."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "I'll find the calendar underscore create event snippet and select it."
+  },
+  {
+    "timestamp": "17:25",
+    "content": "It scaffolds the intent with the app intent macro,"
+  },
+  {
+    "timestamp": "17:29",
+    "content": "the schema,"
+  },
+  {
+    "timestamp": "17:30",
+    "content": "all the parameters the schema requires,"
+  },
+  {
+    "timestamp": "17:32",
+    "content": "and a perform step."
+  },
+  {
+    "timestamp": "17:33",
+    "content": "The parameters from title to note come from the schema,"
+  },
+  {
+    "timestamp": "17:37",
+    "content": "and I can use them in the intents perform logic."
+  },
+  {
+    "timestamp": "17:39",
+    "content": "I'll start by filling in the types."
+  },
+  {
+    "timestamp": "17:43",
+    "content": "Then, I'll add a dependency"
+  },
+  {
+    "timestamp": "17:44",
+    "content": "for the counter manager to use in the perform method."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "In the perform method,"
+  },
+  {
+    "timestamp": "17:49",
+    "content": "I'll market main actor"
+  },
+  {
+    "timestamp": "17:50",
+    "content": "and set event entity as the return value type."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "The general pattern is straightforward."
+  },
+  {
+    "timestamp": "17:57",
+    "content": "Resolve the intents parameters"
+  },
+  {
+    "timestamp": "17:58",
+    "content": "into something the data layer understands,"
+  },
+  {
+    "timestamp": "18:01",
+    "content": "perform the action,"
+  },
+  {
+    "timestamp": "18:02",
+    "content": "and return the result as an entity."
+  },
+  {
+    "timestamp": "18:05",
+    "content": "For creating a calendar event,"
+  },
+  {
+    "timestamp": "18:06",
+    "content": "that means resolving the parameters,"
+  },
+  {
+    "timestamp": "18:08",
+    "content": "like extracting the location from the union value,"
+  },
+  {
+    "timestamp": "18:12",
+    "content": "and converting recurrence if provided."
+  },
+  {
+    "timestamp": "18:15",
+    "content": "I'll pass everything to the counter manager's create event method,"
+  },
+  {
+    "timestamp": "18:18",
+    "content": "and return the result as an event entity."
+  },
+  {
+    "timestamp": "18:26",
+    "content": "Here's what's remarkable."
+  },
+  {
+    "timestamp": "18:27",
+    "content": "Because this conforms to an app schema,"
+  },
+  {
+    "timestamp": "18:30",
+    "content": "Siri can handle all the heavy lifting,"
+  },
+  {
+    "timestamp": "18:32",
+    "content": "interpreting language,"
+  },
+  {
+    "timestamp": "18:34",
+    "content": "asking for clarification,"
+  },
+  {
+    "timestamp": "18:34",
+    "content": "and confirming details,"
+  },
+  {
+    "timestamp": "18:37",
+    "content": "so people can just have a natural conversation with Siri."
+  },
+  {
+    "timestamp": "18:40",
+    "content": "Time to take it for a launch."
+  },
+  {
+    "timestamp": "18:42",
+    "content": "Imagine I want to create a new event,"
+  },
+  {
+    "timestamp": "18:44",
+    "content": "but I'm mid-spacewalk,"
+  },
+  {
+    "timestamp": "18:45",
+    "content": "and my iPhone is floating just out of reach."
+  },
+  {
+    "timestamp": "18:48",
+    "content": "Instead of grabbing it,"
+  },
+  {
+    "timestamp": "18:49",
+    "content": "I'll just ask Siri."
+  },
+  {
+    "timestamp": "18:51",
+    "content": "Hey Siri,"
+  },
+  {
+    "timestamp": "18:52",
+    "content": "create a new event in the lunar orbit log."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "Call it Zero Gravity Yoga for June 15th, 8 a.m."
+  },
+  {
+    "timestamp": "19:04",
+    "content": "Siri can resolve the title,"
+  },
+  {
+    "timestamp": "19:06",
+    "content": "the date,"
+  },
+  {
+    "timestamp": "19:07",
+    "content": "and the time of the new event."
+  },
+  {
+    "timestamp": "19:09",
+    "content": "When it's done,"
+  },
+  {
+    "timestamp": "19:10",
+    "content": "the event is added to the calendar."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "Just like that,"
+  },
+  {
+    "timestamp": "19:15",
+    "content": "a few lines of code,"
+  },
+  {
+    "timestamp": "19:16",
+    "content": "and the app works with Siri."
+  },
+  {
+    "timestamp": "19:18",
+    "content": "That's the power of app schemas."
+  },
+  {
+    "timestamp": "19:20",
+    "content": "Now that events can be created with Siri,"
+  },
+  {
+    "timestamp": "19:22",
+    "content": "I'll keep the momentum going with updating events."
+  },
+  {
+    "timestamp": "19:26",
+    "content": "Here's update event intent."
+  },
+  {
+    "timestamp": "19:28",
+    "content": "Already filled out using the calendar underscore update event snippet."
+  },
+  {
+    "timestamp": "19:32",
+    "content": "The structure is similar to the create intent,"
+  },
+  {
+    "timestamp": "19:34",
+    "content": "but the key difference is that most parameters are optional,"
+  },
+  {
+    "timestamp": "19:37",
+    "content": "since someone might only change one or two things."
+  },
+  {
+    "timestamp": "19:40",
+    "content": "The event parameter is what Siri resolves."
+  },
+  {
+    "timestamp": "19:42",
+    "content": "Everything else is optional."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "The perform logic follows the same pattern."
+  },
+  {
+    "timestamp": "19:47",
+    "content": "Resolve each parameter if provided,"
+  },
+  {
+    "timestamp": "19:49",
+    "content": "then pass everything to the calendar manager's update event method,"
+  },
+  {
+    "timestamp": "19:52",
+    "content": "and return the updated event."
+  },
+  {
+    "timestamp": "19:54",
+    "content": "It might be more code than the create intent,"
+  },
+  {
+    "timestamp": "19:56",
+    "content": "but there's nothing completely new happening here."
+  },
+  {
+    "timestamp": "20:00",
+    "content": "However,"
+  },
+  {
+    "timestamp": "20:01",
+    "content": "there's one important subtlety with optional parameters"
+  },
+  {
+    "timestamp": "20:03",
+    "content": "in update intents worth calling out."
+  },
+  {
+    "timestamp": "20:05",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "20:06",
+    "content": "when recurrence is nil,"
+  },
+  {
+    "timestamp": "20:07",
+    "content": "does that mean don't change it or remove it?"
+  },
+  {
+    "timestamp": "20:11",
+    "content": "A simple nil check doesn't tell me which case I'm dealing with."
+  },
+  {
+    "timestamp": "20:14",
+    "content": "Zooming into the recurrence logic in the perform method,"
+  },
+  {
+    "timestamp": "20:17",
+    "content": "the app intent macro wraps each property in an intent parameter,"
+  },
+  {
+    "timestamp": "20:21",
+    "content": "which exposes a value state."
+  },
+  {
+    "timestamp": "20:23",
+    "content": "This is how I tell the difference."
+  },
+  {
+    "timestamp": "20:26",
+    "content": "Set with an actual value means a new value is provided."
+  },
+  {
+    "timestamp": "20:30",
+    "content": "Set with a nil value means it's explicitly cleared."
+  },
+  {
+    "timestamp": "20:33",
+    "content": "Unset means the parameter isn't part of the request."
+  },
+  {
+    "timestamp": "20:38",
+    "content": "This pattern applies to any optional parameter"
+  },
+  {
+    "timestamp": "20:40",
+    "content": "where clearing the value is a meaningful action."
+  },
+  {
+    "timestamp": "20:43",
+    "content": "Now that the update intent is wired up,"
+  },
+  {
+    "timestamp": "20:46",
+    "content": "I'll send a few commands into orbit."
+  },
+  {
+    "timestamp": "20:48",
+    "content": "Hey Siri,"
+  },
+  {
+    "timestamp": "20:49",
+    "content": "move this to 10 in the evening."
+  },
+  {
+    "timestamp": "20:55",
+    "content": "Yep,"
+  },
+  {
+    "timestamp": "20:56",
+    "content": "that's fine."
+  },
+  {
+    "timestamp": "20:56",
+    "content": "Also,"
+  },
+  {
+    "timestamp": "21:01",
+    "content": "change this to repeat weekly"
+  },
+  {
+    "timestamp": "21:02",
+    "content": "and move it to my deep space calendar."
+  },
+  {
+    "timestamp": "21:07",
+    "content": "Sounds good."
+  },
+  {
+    "timestamp": "21:11",
+    "content": "Actually,"
+  },
+  {
+    "timestamp": "21:11",
+    "content": "don't repeat this event."
+  },
+  {
+    "timestamp": "21:15",
+    "content": "The detail view reflects every change,"
+  },
+  {
+    "timestamp": "21:17",
+    "content": "all from a few lines of code"
+  },
+  {
+    "timestamp": "21:18",
+    "content": "and an app schema."
+  },
+  {
+    "timestamp": "21:21",
+    "content": "That update works,"
+  },
+  {
+    "timestamp": "21:22",
+    "content": "but Siri displays a default result card."
+  },
+  {
+    "timestamp": "21:25",
+    "content": "This is ComicCal."
+  },
+  {
+    "timestamp": "21:26",
+    "content": "It deserves something with more"
+  },
+  {
+    "timestamp": "21:28",
+    "content": "atmosphere."
+  },
+  {
+    "timestamp": "21:29",
+    "content": "By default,"
+  },
+  {
+    "timestamp": "21:30",
+    "content": "Siri builds the result card"
+  },
+  {
+    "timestamp": "21:32",
+    "content": "from the display representation."
+  },
+  {
+    "timestamp": "21:34",
+    "content": "Snippet views let me replace that"
+  },
+  {
+    "timestamp": "21:35",
+    "content": "with a custom SwiftUI view."
+  },
+  {
+    "timestamp": "21:38",
+    "content": "I've prepared a SwiftUI view"
+  },
+  {
+    "timestamp": "21:39",
+    "content": "that takes an event entity"
+  },
+  {
+    "timestamp": "21:41",
+    "content": "and lays out the details"
+  },
+  {
+    "timestamp": "21:42",
+    "content": "in a stellar way."
+  },
+  {
+    "timestamp": "21:43",
+    "content": "You can get really creative here,"
+  },
+  {
+    "timestamp": "21:45",
+    "content": "but also remember"
+  },
+  {
+    "timestamp": "21:46",
+    "content": "to keep it simple and lightweight."
+  },
+  {
+    "timestamp": "21:49",
+    "content": "To wire this all up,"
+  },
+  {
+    "timestamp": "21:50",
+    "content": "I'll open Update Event Intent."
+  },
+  {
+    "timestamp": "21:53",
+    "content": "I'll add Show Snippet View"
+  },
+  {
+    "timestamp": "21:55",
+    "content": "to the Perform Methods return type."
+  },
+  {
+    "timestamp": "21:57",
+    "content": "Then,"
+  },
+  {
+    "timestamp": "21:58",
+    "content": "in the Return Statement,"
+  },
+  {
+    "timestamp": "21:59",
+    "content": "I'll pass the Event Snippet View."
+  },
+  {
+    "timestamp": "22:02",
+    "content": "The same approach works for any other intent"
+  },
+  {
+    "timestamp": "22:04",
+    "content": "that returns a result,"
+  },
+  {
+    "timestamp": "22:05",
+    "content": "like the Create Intent."
+  },
+  {
+    "timestamp": "22:06",
+    "content": "Hey Siri, push the crew launch out by an hour."
+  },
+  {
+    "timestamp": "22:17",
+    "content": "Now I get the new Snippet."
+  },
+  {
+    "timestamp": "22:19",
+    "content": "The Cosmic Radiant Accent,"
+  },
+  {
+    "timestamp": "22:21",
+    "content": "dark blue background,"
+  },
+  {
+    "timestamp": "22:22",
+    "content": "the updated event details,"
+  },
+  {
+    "timestamp": "22:23",
+    "content": "and a star icon."
+  },
+  {
+    "timestamp": "22:25",
+    "content": "That's the app's personality"
+  },
+  {
+    "timestamp": "22:26",
+    "content": "shining through within Siri."
+  },
+  {
+    "timestamp": "22:28",
+    "content": "That covers the Update Intent."
+  },
+  {
+    "timestamp": "22:30",
+    "content": "The last action to wire up is Delete,"
+  },
+  {
+    "timestamp": "22:32",
+    "content": "and it's the simplest of the three."
+  },
+  {
+    "timestamp": "22:34",
+    "content": "Here's the Delete Event Intent."
+  },
+  {
+    "timestamp": "22:37",
+    "content": "This is pretty simple."
+  },
+  {
+    "timestamp": "22:38",
+    "content": "Just the event"
+  },
+  {
+    "timestamp": "22:39",
+    "content": "and an optional span"
+  },
+  {
+    "timestamp": "22:40",
+    "content": "for recurring events."
+  },
+  {
+    "timestamp": "22:42",
+    "content": "The Perform logic finds the event"
+  },
+  {
+    "timestamp": "22:43",
+    "content": "and deletes it."
+  },
+  {
+    "timestamp": "22:45",
+    "content": "Siri automatically handles"
+  },
+  {
+    "timestamp": "22:47",
+    "content": "the confirmation dialog"
+  },
+  {
+    "timestamp": "22:48",
+    "content": "before anything is removed."
+  },
+  {
+    "timestamp": "22:49",
+    "content": "Time to test the ejection sequence."
+  },
+  {
+    "timestamp": "22:56",
+    "content": "Siri, delete that party."
+  },
+  {
+    "timestamp": "23:03",
+    "content": "Yes, delete it."
+  },
+  {
+    "timestamp": "23:08",
+    "content": "Also, delete the event"
+  },
+  {
+    "timestamp": "23:10",
+    "content": "happening June 9th."
+  },
+  {
+    "timestamp": "23:14",
+    "content": "Oh, actually, never mind."
+  },
+  {
+    "timestamp": "23:16",
+    "content": "Siri asks for confirmation"
+  },
+  {
+    "timestamp": "23:21",
+    "content": "before deleting any event,"
+  },
+  {
+    "timestamp": "23:22",
+    "content": "and also makes sure to disambiguate"
+  },
+  {
+    "timestamp": "23:24",
+    "content": "when more than one event matches."
+  },
+  {
+    "timestamp": "23:27",
+    "content": "Three intents."
+  },
+  {
+    "timestamp": "23:28",
+    "content": "Full event management with Siri."
+  },
+  {
+    "timestamp": "23:29",
+    "content": "Mission accomplished!"
+  },
+  {
+    "timestamp": "23:31",
+    "content": "Comic Cal has gone from screenbound"
+  },
+  {
+    "timestamp": "23:33",
+    "content": "to fully voice piloted."
+  },
+  {
+    "timestamp": "23:35",
+    "content": "A lot got built during this video."
+  },
+  {
+    "timestamp": "23:37",
+    "content": "Here are some next steps"
+  },
+  {
+    "timestamp": "23:38",
+    "content": "for making your own apps work with Siri."
+  },
+  {
+    "timestamp": "23:40",
+    "content": "Download the Comic Cal sample project"
+  },
+  {
+    "timestamp": "23:42",
+    "content": "and explore the full implementation."
+  },
+  {
+    "timestamp": "23:44",
+    "content": "Browse the App Intents documentation"
+  },
+  {
+    "timestamp": "23:47",
+    "content": "to explore all the available app schemas"
+  },
+  {
+    "timestamp": "23:49",
+    "content": "and domains."
+  },
+  {
+    "timestamp": "23:50",
+    "content": "For automated testing,"
+  },
+  {
+    "timestamp": "23:52",
+    "content": "check out this video"
+  },
+  {
+    "timestamp": "23:53",
+    "content": "to learn how to write tests for Comic Cal"
+  },
+  {
+    "timestamp": "23:55",
+    "content": "using the new App Intents testing framework."
+  },
+  {
+    "timestamp": "23:58",
+    "content": "And watch explore advanced App Intents features"
+  },
+  {
+    "timestamp": "24:00",
+    "content": "for Siri and Apple Intelligence"
+  },
+  {
+    "timestamp": "24:02",
+    "content": "to go deeper into ways"
+  },
+  {
+    "timestamp": "24:03",
+    "content": "to refine how your app works with Siri"
+  },
+  {
+    "timestamp": "24:05",
+    "content": "that weren't covered in this video."
+  },
+  {
+    "timestamp": "24:07",
+    "content": "You're now mission ready"
+  },
+  {
+    "timestamp": "24:08",
+    "content": "to take your app to the final frontier."
+  },
+  {
+    "timestamp": "24:10",
+    "content": "Thank you so much for following along."
+  },
+  {
+    "timestamp": "24:14",
+    "content": "All right!"
+  },
+  {
+    "timestamp": "24:16",
+    "content": "All right!"
+  },
+  {
+    "timestamp": "24:16",
+    "content": "All right!"
+  },
+  {
+    "timestamp": "24:18",
+    "content": "All right!"
+  },
+  {
+    "timestamp": "24:18",
+    "content": "Thank you."
+  }
+]

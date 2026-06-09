@@ -1,0 +1,746 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Sam and I'm a prototyper on the Apple design team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Many of the interactions and delightful moments people love across the ecosystem are the result of relentless iteration, trial and error, and careful tuning."
+  },
+  {
+    "timestamp": "0:20",
+    "content": "Because it's never been easier to produce an app, designing with intention is critical to standing out."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "That's where prototyping comes in."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "Prototyping is a process that lets you quickly try out lots of different design ideas and it's more important than ever."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "Today, I'll explain how you can use some awesome new tools in Xcode to deal with design challenges you might run into early in the development of your app."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "So that you can go from an unrefined, first-pass generated interface like this, to a design that's purposeful, tailored, and distinct, like this."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "I'll show you how to use agents in Xcode to find creative starting points in your development process."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "Then, how to bring in real content and make your app feel lived in."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "And lastly, I'll go through some techniques for tuning key moments and interactions in your app."
+  },
+  {
+    "timestamp": "1:14",
+    "content": "Before I begin, it's important you're familiarized with two powerful features within Xcode."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Let's go over them."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "The first is coding agents."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "Coding agents enable you to bring ideas to life just by describing what you'd like to build."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "First, click the New Conversation button, then simply express what kind of code change or what feature you would like to implement."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "And the agents take care of the rest."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "The second is Xcode Previews."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "Xcode Previews lets you visualize and interact with your UI without having to rebuild and run it every time you make a change."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "To access Previews, you'll first need to make sure your Swift file has a preview view specified."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "If you don't know what that is, don't worry."
+  },
+  {
+    "timestamp": "2:05",
+    "content": "Get to Swift Previews by clicking the Show Canvas button."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "You should get your preview instantly."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "Combined, coding agents and Xcode Previews let you supercharge the prototyping of key screens and moments that make your app feel thoughtful and delightful."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "Even better, because agents produce real, native code, you will be in a position to carry that code forward as you go on to develop your app."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "Do not delegate critical thinking to these tools."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Ultimately, your task is to use your judgment to craft what you believe is the best possible experience for people who use your app."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "Think of coding agents as collaborators in your prototyping process to help you discover what the best experience is."
+  },
+  {
+    "timestamp": "2:52",
+    "content": "Remember, you always have final say."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "Now, let's start with exploring UI possibilities."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "Suppose I'm interested in building an app to manage a book club."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "If you're like me, you just want to get started."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "With agents writing Xcode, you might be tempted to ask, create a UI for managing a book club that meets regularly."
+  },
+  {
+    "timestamp": "3:13",
+    "content": "This could generate an interesting result and quickly, but the prompt is vague and it brings a few problems."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "The agent generated an arbitrary layout."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "While it might still work, it's one of many ways of organizing an app like this."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "And it also took a guess at the app features because it wasn't clearly defined in the prompt."
+  },
+  {
+    "timestamp": "3:35",
+    "content": "Suppose we aren't interested in polling or a photo gallery."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "Making it easy to get stuck or anchored on a flawed starting point."
+  },
+  {
+    "timestamp": "3:44",
+    "content": "For example, we're now stuck with this arbitrary navigation element that might have made more sense with a different feature set."
+  },
+  {
+    "timestamp": "3:50",
+    "content": "By the time we've gotten the interface to display the features we do want, it could present feature creep looking clunky and inelegant."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "To avoid this, your prompts need to be much more specific."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Take some time to think through the features and high-level points you want the app to have from the get-go."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "When it comes to your app and what problems you want it to solve, you likely have a better idea where to start than the agent does."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Give stylistic cues."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "If you have an intuition about the mood or feeling you want your app to evoke, express those in the prompt."
+  },
+  {
+    "timestamp": "4:25",
+    "content": "For example, for a book club, do you want to capture the warm atmosphere of a coffee shop and its color palette?"
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Or do you want to highlight the feeling of paper and beautiful typography?"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Lastly, and most importantly, ask for multiple options."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "Early on is your best opportunity to evaluate and explore multiple and divergent directions."
+  },
+  {
+    "timestamp": "4:45",
+    "content": "Here's an example of a better prompt."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "Feel free to pause here if you'd like to read it in detail."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "I first ask for multiple variations."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "I'm specific about the features I want."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "And I make sure that each variation gets its very own named Swift preview."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "And voila!"
+  },
+  {
+    "timestamp": "5:08",
+    "content": "The coding agent in Xcode generated 10 different solutions following the prompt."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "I can click between them like so."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "And so on."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "The coding agent generated this version with a tab structure named Clubhub."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "This variation named Cozy uses the System New York typeface and has a nice clear section for the current book title and meeting location."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "It also created an interesting version with a racetrack metaphor to track progress."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "This one named Editorial has really pleasing typography too and a very clean layout."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Blueprint Atelier navigates from a grid down to a detail page."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "And this one, well, it was worth a shot."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "You're likely to find that you like different elements of the generated proposals."
+  },
+  {
+    "timestamp": "6:01",
+    "content": "In those cases, follow up with a prompt that states which variations you find promising and which specific elements you would like to remix with others."
+  },
+  {
+    "timestamp": "6:09",
+    "content": "It'll help you arrive at something that feels right for you."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "For the Book Club app, I'm going to start the prompt by listing my favorite features from all the generated variations."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "And again, I'm asking for each iteration to get its own Swift preview and its own unique name."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "The agent creates some new hybrids using only the elements I expressed interest in, including the idea of a standings board and an image of the current book."
+  },
+  {
+    "timestamp": "6:34",
+    "content": "Have fun with this process."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "In a nutshell, go wide, remix, repeat."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "So, make lots of variations and see which components or ideas inspire you."
+  },
+  {
+    "timestamp": "6:52",
+    "content": "One of the greatest powers of coding agents in Xcode is their tireless ability to produce new and interesting concepts."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "For my Book Club app, I went down a path of refinement, going from this design inspired by the cozy club variation,"
+  },
+  {
+    "timestamp": "7:08",
+    "content": "to this one that integrated the racetrack visual,"
+  },
+  {
+    "timestamp": "7:12",
+    "content": "to this one that took a neutral appearance,"
+  },
+  {
+    "timestamp": "7:16",
+    "content": "to this one that simplified and reduced redundancy."
+  },
+  {
+    "timestamp": "7:20",
+    "content": "I think this is a good direction for iteration."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "Now that I have a better sense of how I want the app to be structured, I can move into its interactivity and further refinements."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "To start this, I'll go on to making your app feel lived in by bringing real content."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "Early on in the development of your app, it's a great idea to let different people try it and give you feedback to guide your process of refinement."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "For some kinds of apps and interfaces, though, you still might be a ways off from having it in a state where people can try it with their own content."
+  },
+  {
+    "timestamp": "7:53",
+    "content": "Fortunately, the agent can help play the role of somebody using your app so you can get an impression of what your app feels like when it's lived in."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "Combined with images that you can bring in, an agent can get you from this kind of blank template, only loosely filled with content,"
+  },
+  {
+    "timestamp": "8:08",
+    "content": "to something rich, lived in, and closer to real use."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Here are some prompting tips when working through how to make your app feel lived in."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "First, and this is a recurring theme, ask for not just one preview, but many previews."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "Second, stop and think through edge cases yourself."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "For example, in my app, how does the detail area look if no meeting has been scheduled yet?"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "Try to be specific about what parts of the interface state should be iterated, minimizing the risk that the agent overlooks something."
+  },
+  {
+    "timestamp": "8:44",
+    "content": "Make sure that there is enough context that the sample content is plausible for your app's audience."
+  },
+  {
+    "timestamp": "8:50",
+    "content": "In this case, that means I need to make sure that the sample app content, such as the discussions, center around books."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "Pay attention to interface elements that can grow unbounded. The number of members in the club, the length of the message conversations, the number of previous books, and so on."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "It might also include things like long input. Is it appropriate for the text to truncate or to take multiple lines?"
+  },
+  {
+    "timestamp": "9:15",
+    "content": "If applicable, ask the coding agent to make sure that the example content it is authoring is reusable and readable in its own file so that you can go in and make changes if you need to."
+  },
+  {
+    "timestamp": "9:28",
+    "content": "Here's an example prompt I might use."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "I ensure that I specify concretely the edge cases I can imagine."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "Make sure that these sample models are easy to go in and modify as well as can be reused in future prototypes."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "And lastly, that each variation gets its own Swift preview and has a descriptive name that I can refer to when I revise."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "Here's what Xcode presents. Each variation gets its own tab so I can quickly switch between them."
+  },
+  {
+    "timestamp": "10:01",
+    "content": "In this example, I notice I don't have any real blank slate UI. No way of specifying a new book or even to manage my account."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "I address that by adding account management and call to action controls."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "In this variation, I notice that really long next meeting descriptions might overrun the book cover."
+  },
+  {
+    "timestamp": "10:21",
+    "content": "I address that by allowing truncation. In fact, I realize the title of the book is redundant with its cover, so I simplify it."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "Here I notice that the leaderboard, when there are too many participants, gets way too long and it takes a long time to scroll to see the discussion."
+  },
+  {
+    "timestamp": "10:39",
+    "content": "Instead, I can simply ensure that somebody can always see what their relative rank is and with an expand control, see the full list."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "After seeing the UI respond to all of these wonderful book covers, I'm inspired to try having the view adapt to their colors in the detail page."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "These are just some examples of how bringing in real content to your interface can help you better understand how people might experience your app."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "Remember, nothing beats real world use in getting feedback from people who actually use and try your app."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "But this is an excellent way to get a head start on the feedback stage of your prototyping process."
+  },
+  {
+    "timestamp": "11:18",
+    "content": "Now I'll focus on tuning those key moments of animation and interaction."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "So far, I've explained how agents in Xcode can help you iterate over the static elements of an interface, like navigation, controls, type, and color."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "However, SwiftUI gives you the power to go beyond the static and into the world of interaction, animation, and transitions."
+  },
+  {
+    "timestamp": "11:41",
+    "content": "These can be a little harder to get right, so I'll show you a couple of common animation styles and techniques that can help you tune those key moments in your app perfectly."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "The first animation style is ease."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "In this animation style, an object either gently accelerates, decelerates, or does both."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "You get to choose how long the animation takes."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "Spring, as the name suggests, mimics the characteristic motion of an object attracted by a spring force."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "These have three parameters you can tune."
+  },
+  {
+    "timestamp": "12:12",
+    "content": "Stiffness, damping, and mass."
+  },
+  {
+    "timestamp": "12:16",
+    "content": "Outside of animation, there are other dynamic elements you might run into with your UI."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "How much perceived weight should a given element have if someone is dragging it around and interacting with it?"
+  },
+  {
+    "timestamp": "12:27",
+    "content": "That's friction and inertia."
+  },
+  {
+    "timestamp": "12:29",
+    "content": "Let's take a look."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "In this example from music, I perceive a weight when I close this sheet."
+  },
+  {
+    "timestamp": "12:36",
+    "content": "Device motion."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "How does your app respond to device motion from sensors like the accelerometer and gyroscope?"
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Such as in Wallet, where my Apple Cash card exhibits this iridescent parallax effect."
+  },
+  {
+    "timestamp": "12:54",
+    "content": "Or haptics."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "How does your app employ haptics to communicate key moments or special modes?"
+  },
+  {
+    "timestamp": "13:00",
+    "content": "Such as the use of haptics in Find My to indicate that I'm getting closer to the object I'm trying to locate."
+  },
+  {
+    "timestamp": "13:07",
+    "content": "In the app, the key moments have to do with animation, so I'm focusing on these."
+  },
+  {
+    "timestamp": "13:14",
+    "content": "When I tune an animation, each value brings a slightly different feel."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "How can I quickly decide the values that are right for this interface?"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "One way is to use Xcode previews to modify the relevant constants in code."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "This can work really well, but sometimes the constants I'm interested in live in different parts of the code, and the context switching can feel clunky."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "You might find it easier to create a custom UI whose job it is to help you tune those specific parameters that are relevant to your interface."
+  },
+  {
+    "timestamp": "13:43",
+    "content": "Here's a simple interface to demonstrate this principle."
+  },
+  {
+    "timestamp": "13:47",
+    "content": "Here, I'm just tossing an interface element at a goal to understand the different spring properties at play for this kind of interaction."
+  },
+  {
+    "timestamp": "13:54",
+    "content": "A menu button brings up a tuning panel that allows me to try different parameters."
+  },
+  {
+    "timestamp": "14:01",
+    "content": "Here, Xcode can help you immensely."
+  },
+  {
+    "timestamp": "14:04",
+    "content": "Instead of building the UI directly, enlist the agent to build a UI to display tunable parameters."
+  },
+  {
+    "timestamp": "14:11",
+    "content": "When you ask the agent in Xcode for help with building a tuning panel for your UI, here are some best practices."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "Be as detailed as possible about what you want to iterate on."
+  },
+  {
+    "timestamp": "14:21",
+    "content": "Are you exploring different animation styles or the specifics of spring curves?"
+  },
+  {
+    "timestamp": "14:27",
+    "content": "Does your animation feature multiple elements?"
+  },
+  {
+    "timestamp": "14:29",
+    "content": "Or does it feature a transition in which elements enter and leave your view hierarchy?"
+  },
+  {
+    "timestamp": "14:34",
+    "content": "To keep your tuning panel easy to understand, ask for the animation to be broken into phases."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "This also gives you and the agent a shared vocabulary about the specific parts of the animation."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "For example, this animation comes in two phases."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "In phase one, the view transitions to the detail page."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "In phase two, every subsequent row of content animates in with staggered timings."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "Recognize that tuning panels can be useful for a number of purposes, not just tuning animation parameters, but for swapping between app states, colors, font styles, or visual offsets."
+  },
+  {
+    "timestamp": "15:11",
+    "content": "Lastly, try specifying a tuning panel layout that lays out your UI side-by-side on a wider window size."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "This will allow you to toggle your UI settings and try its effects without context switching."
+  },
+  {
+    "timestamp": "15:25",
+    "content": "For example, this layout, which creates a tuning panel that obstructs the content, looks like this when displayed in a larger window."
+  },
+  {
+    "timestamp": "15:35",
+    "content": "Now, I sense there's something wrong with this transition."
+  },
+  {
+    "timestamp": "15:40",
+    "content": "I suspect it has something to do with the delays and staggered entrance timings."
+  },
+  {
+    "timestamp": "15:45",
+    "content": "Let's tune it perfectly."
+  },
+  {
+    "timestamp": "15:47",
+    "content": "Here's an example prompt to use."
+  },
+  {
+    "timestamp": "15:48",
+    "content": "In the overview, I specify I want a tuning panel to manage an animation."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "I specify the animation's phases."
+  },
+  {
+    "timestamp": "15:57",
+    "content": "I specify what parameters and options I'm interested in."
+  },
+  {
+    "timestamp": "16:01",
+    "content": "And I make sure the preview can be displayed side-by-side against the UI instead of in a clunky modal."
+  },
+  {
+    "timestamp": "16:06",
+    "content": "The agent gives me a view that I can toggle, as in the spring example, but that's clunky and my view is obstructed."
+  },
+  {
+    "timestamp": "16:16",
+    "content": "However, by clicking this resize control, I can tune my transition on a larger canvas."
+  },
+  {
+    "timestamp": "16:25",
+    "content": "Now I can comfortably dial in the animation without having to jump back and forth between a tuning panel and the UI."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "I have created individual controls that allow me to inspect a given phase of the animation in isolation."
+  },
+  {
+    "timestamp": "16:39",
+    "content": "I can quickly get an understanding of how these different parameters affect my animation."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "I think I need to decrease the values related to the delay and staggered entrances."
+  },
+  {
+    "timestamp": "16:54",
+    "content": "Let's also try using the bouncy preset animation style."
+  },
+  {
+    "timestamp": "16:57",
+    "content": "Okay, this is feeling really great."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "The sequence of animations that trigger after the book cover transitions feels smooth and delightful."
+  },
+  {
+    "timestamp": "17:09",
+    "content": "Let's look at it again."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "This is one of the most powerful flows in prototyping with coding agents in Xcode."
+  },
+  {
+    "timestamp": "17:17",
+    "content": "Anytime you're trying to manage multiple configurations of a view,"
+  },
+  {
+    "timestamp": "17:20",
+    "content": "or deciding between different animation or interaction parameters, make a tuning panel."
+  },
+  {
+    "timestamp": "17:27",
+    "content": "Shorten the feedback loop and get to what feels optimal for your app."
+  },
+  {
+    "timestamp": "17:32",
+    "content": "I've covered a lot today."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "The big theme is not to think about agents as designers, but as collaborators to help you arrive at the best possible experience for your app."
+  },
+  {
+    "timestamp": "17:41",
+    "content": "I'm sure you'll think of even more creative ways to bring coding agents to your process."
+  },
+  {
+    "timestamp": "17:48",
+    "content": "To learn more, watch the video Xcode, Agents, and you."
+  },
+  {
+    "timestamp": "17:52",
+    "content": "Remember, these tools are ultimately here to help you find the best experiences for people who use your app."
+  },
+  {
+    "timestamp": "17:59",
+    "content": "The key piece of the puzzle is your judgment."
+  },
+  {
+    "timestamp": "18:02",
+    "content": "Thank you."
+  }
+]

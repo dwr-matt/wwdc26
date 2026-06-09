@@ -1,0 +1,1062 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Jerry and I'm an engineer on the Swift testing team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Today, I'll share how it's easier than ever to migrate from XETests to Swift testing."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "We introduced Swift testing in Xcode 16."
+  },
+  {
+    "timestamp": "0:20",
+    "content": "It's a modern testing library with an expressive and concise interface for writing tests."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "It also fits right in with the Swift ecosystem."
+  },
+  {
+    "timestamp": "0:29",
+    "content": "For example, it was built with Swift concurrency in mind, so it runs test cases in parallel and delivers results super quickly."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "I'll begin with a review of some Swift testing building blocks and compare those to similar concepts from XETests."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Next, I'll add Swift testing to an XETest project."
+  },
+  {
+    "timestamp": "0:50",
+    "content": "Along the way, I'll demonstrate how to reuse existing code with the Test Framework Interoperability feature."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "And even if you don't use XETests, please stick around."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "I'll share how to use Swift testing features to boldly go where no XETest has gone before."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "Let's get started with the basics of Swift testing."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "I begin a test file by importing the Swift testing framework along with a testable import to access internal types."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "Then, I create a new function and annotate it with the atTest macro to declare it as a test."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "Swift supports raw identifiers, which are indicated by these backticks."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "They'll let me mix in spaces and punctuation to help me read longer test names."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "In the body of the test, I use the EXPECT macro to create this expectation that fruits have a tropical climate."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "That's all it takes to create a new test."
+  },
+  {
+    "timestamp": "1:47",
+    "content": "The atTest and poundExpect macros are the core building blocks for most tests."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "If you're totally new to Swift testing or just want to jog your memory, Meet Swift testing is a fantastic resource."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "It covers additional building blocks and testing workflows."
+  },
+  {
+    "timestamp": "2:04",
+    "content": "The EXPECT macro is super flexible and replaces many XETest assertions."
+  },
+  {
+    "timestamp": "2:09",
+    "content": "To replace XET fail, which is an unconditional failure, use issue.record instead."
+  },
+  {
+    "timestamp": "2:17",
+    "content": "With Swift testing, you'll enjoy using less code to write more powerful and expressive tests."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "However, keep using EXETest for a few scenarios."
+  },
+  {
+    "timestamp": "2:26",
+    "content": "UI automation and performance testing APIs are only available in EXETest."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "And when testing code that throws Objective-C exceptions,"
+  },
+  {
+    "timestamp": "2:36",
+    "content": "you have to use EXETests also written in Objective-C."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "That's because Swift code, including EXETests in Swift, can't safely handle these exceptions."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "Alright, I know you're eager to write some tests now."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "So I'll demonstrate how to migrate fearlessly to Swift testing."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "I'll explain my strategy for migrating test code in small chunks."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "Next, I'll introduce Test Framework Interoperability,"
+  },
+  {
+    "timestamp": "3:03",
+    "content": "a powerful tool that will allow me to reuse existing test code."
+  },
+  {
+    "timestamp": "3:08",
+    "content": "And to help your own migration go smoothly,"
+  },
+  {
+    "timestamp": "3:11",
+    "content": "I'll share a few common patterns to follow."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "Okay, let's talk migration strategy."
+  },
+  {
+    "timestamp": "3:18",
+    "content": "When I modify old tests, I introduce risk, even for small changes."
+  },
+  {
+    "timestamp": "3:23",
+    "content": "So I'm going to leave most EXETests in their place."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "When I'm ready, I'll modify tests a few at a time"
+  },
+  {
+    "timestamp": "3:30",
+    "content": "and focus on the ones that I update most often."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "My existing test targets can include tests from both frameworks."
+  },
+  {
+    "timestamp": "3:38",
+    "content": "So I can already use Swift testing for my new tests,"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "although they can't go inside EXETest classes."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "Okay, now that I have a migration strategy, I'm ready to put it to the test."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "I made an app to train birds in my neighborhood to do fruit delivery."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "Just like how birds migrate with the changing of the season,"
+  },
+  {
+    "timestamp": "3:58",
+    "content": "I think it's a season for me to also migrate to Swift testing."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "Here's my EXETest suite for my fruit data structure."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "I recently added climate information to the fruit, but haven't tested it yet."
+  },
+  {
+    "timestamp": "4:11",
+    "content": "I think I want to add some new tests using Swift testing."
+  },
+  {
+    "timestamp": "4:15",
+    "content": "And I can do that without even leaving this file."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "First, I'll import the Swift testing framework."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Then I'll add my tests at the end of this file."
+  },
+  {
+    "timestamp": "4:27",
+    "content": "By the way, I love that Swift testing lets me put this outside of a test suite."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "I can always create a parent suite later, once I add more tests."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "In the test navigator, I'm noticing that new tests is already included."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "Now, I'll go to the product menu and select Test."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "Great, my new tests ran successfully."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "Some of my tests require more setup."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "This test checks and an array of fruit has all unique names."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "I originally wrote this test with multiple lines of code to set up the assertion."
+  },
+  {
+    "timestamp": "5:06",
+    "content": "When I ran the test later, I found it difficult to understand why it failed."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "This test was trying to tell a story, but got lost in all this code."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "So I extracted this multi-step assertion into a helper function."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "Now it's clear what I'm testing and how I'm testing it."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "As a finishing touch, I provided file and line number parameters and passed them to XAT fail."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "Xcode now attributes the failure to the line where I called the helper."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "I want to create new tests with Swift testing, which also call this helper and ultimately XAT fail."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "However, XAT fail isn't part of Swift testing."
+  },
+  {
+    "timestamp": "5:47",
+    "content": "This is where test framework interoperability can help."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "It's a feature that lets you safely call API from one test framework while on the body of a test from the other."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "When considering interoperability, there's two directions to think about."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "You can call XAT test API, which reports an issue in a Swift testing test."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "This is what happens when I reuse my assert unique helper, which wraps XAT fail."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "In the other direction, you can call Swift testing API, which reports an issue in an XAT test."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "I'll explain this one later."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "In either case, you end up creating a cross framework issue where the issue reporting API and the test it's called in belong to different frameworks."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "Xcode enables interoperability by default to handle these issues."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Let me show you how."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "I call the assert unique helper and test unique fruit names."
+  },
+  {
+    "timestamp": "6:45",
+    "content": "The helper reports failures using XAT fail."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "I've created another Swift testing test with the same body."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "This helper should report the same failure, but in this test, it's a cross framework issue."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "Let's compare the result after running this test."
+  },
+  {
+    "timestamp": "7:04",
+    "content": "Huh."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "I'm noticing the test passes, but I actually thought it would fail like the XAT test above."
+  },
+  {
+    "timestamp": "7:12",
+    "content": "A test failure can be a good thing because it means my helper is working to catch bugs."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "There's some messages here though."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "I'll click to view them."
+  },
+  {
+    "timestamp": "7:21",
+    "content": "Interoperability created two warnings indicated by the purple triangles."
+  },
+  {
+    "timestamp": "7:29",
+    "content": "Because these aren't errors, the test still passes."
+  },
+  {
+    "timestamp": "7:32",
+    "content": "The first warning tells me that Lightshe is a duplicate name."
+  },
+  {
+    "timestamp": "7:36",
+    "content": "And the second warning instructs me to replace XAT fail with issue.record from Swift testing."
+  },
+  {
+    "timestamp": "7:42",
+    "content": "Interoperability comes with different modes for handling cross framework issues."
+  },
+  {
+    "timestamp": "7:48",
+    "content": "I've just explained the limited mode."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "In this mode, cross framework issues from XATest are warnings."
+  },
+  {
+    "timestamp": "7:55",
+    "content": "Test plans created before Xcode 27 inherit limited mode."
+  },
+  {
+    "timestamp": "8:00",
+    "content": "For new projects, Xcode uses the complete mode."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "In this mode, those same issues stay as errors."
+  },
+  {
+    "timestamp": "8:07",
+    "content": "Change the mode at any time using your test plan settings."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "You can find it under the test execution section."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Let's find out how the complete mode changes my test results."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "I'll go edit my test plan."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "Here, I'll filter on interoperability."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "And I'll change that mode to complete."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "Now, I'll go back to my unique fruit names test and run it again."
+  },
+  {
+    "timestamp": "8:37",
+    "content": "Now, my test fails."
+  },
+  {
+    "timestamp": "8:39",
+    "content": "Let's check the messages."
+  },
+  {
+    "timestamp": "8:40",
+    "content": "The complete mode preserves the error created by XAT fail."
+  },
+  {
+    "timestamp": "8:45",
+    "content": "It also keeps the warning that instructs me to migrate."
+  },
+  {
+    "timestamp": "8:49",
+    "content": "Think of complete mode as a step above limited mode."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "It elevates cross framework issues from warnings to errors, so you're less likely to miss them."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "One more step above complete mode is strict mode."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "For cross framework issues from XATest, strict mode stops the test in its tracks with a fatal error."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "This helps you find places to replace XATest API with Swift testing API."
+  },
+  {
+    "timestamp": "9:20",
+    "content": "I've already updated the mode to strict."
+  },
+  {
+    "timestamp": "9:24",
+    "content": "Now, I'll run my test again."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "Whoa!"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "The test stopped exactly where I call XAT fail in my helper function."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "Let's check out this message."
+  },
+  {
+    "timestamp": "9:38",
+    "content": "Once again, I have instructions to replace XAT fail."
+  },
+  {
+    "timestamp": "9:45",
+    "content": "But I have to keep in mind, I still have XAT tests that call this helper."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "That's why interoperability also supports cross framework issues from Swift testing."
+  },
+  {
+    "timestamp": "9:56",
+    "content": "In all modes, those issues remain errors."
+  },
+  {
+    "timestamp": "10:00",
+    "content": "So you're empowered to call Swift testing API within tests from both frameworks."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "Replacing XAT fail just takes a few steps."
+  },
+  {
+    "timestamp": "10:09",
+    "content": "I'll start by replacing the XAT test import with a Swift testing import."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "Then replace XAT fail with issue.record."
+  },
+  {
+    "timestamp": "10:18",
+    "content": "And source location replaces the original file and line parameters."
+  },
+  {
+    "timestamp": "10:23",
+    "content": "After updating my helper, I'll run all my test cases again."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "I'll use command U, which is the shortcut for product test."
+  },
+  {
+    "timestamp": "10:31",
+    "content": "With the updated helper, my new test and my original XAT test both fail as expected."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "Thanks to test framework interoperability, I replaced XAT test API with Swift testing API"
+  },
+  {
+    "timestamp": "10:51",
+    "content": "without changing the meaning of my tests."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "There's one more mode I haven't introduced yet."
+  },
+  {
+    "timestamp": "10:56",
+    "content": "You can set the mode to none to opt out of interoperability."
+  },
+  {
+    "timestamp": "11:01",
+    "content": "After opting out, Xcode won't report cross framework issues in either direction."
+  },
+  {
+    "timestamp": "11:06",
+    "content": "But those issues can highlight bugs in your app."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "You won't catch those bugs if you disable interoperability."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "So if you have to use this mode, only use it temporarily."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "Instead, prefer complete or strict mode."
+  },
+  {
+    "timestamp": "11:20",
+    "content": "Complete mode maintains cross framework issues as errors."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "And it's a worthy step up from the limited mode."
+  },
+  {
+    "timestamp": "11:27",
+    "content": "The strict mode is, well, strict."
+  },
+  {
+    "timestamp": "11:30",
+    "content": "It's a great fit if you want to completely prevent cross framework issues from XAT test."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "You can also use interoperability and its different modes in Swift package projects."
+  },
+  {
+    "timestamp": "11:40",
+    "content": "Here's an example of a project created with Swift Tools version 6.3."
+  },
+  {
+    "timestamp": "11:45",
+    "content": "And it has a test that produces a cross framework issue from XAT test."
+  },
+  {
+    "timestamp": "11:50",
+    "content": "By default, the Swift 6.4 tool chain enables limited mode."
+  },
+  {
+    "timestamp": "11:55",
+    "content": "When I run this project with the Swift test command,"
+  },
+  {
+    "timestamp": "11:59",
+    "content": "I notice that it reports the cross framework issue as a warning."
+  },
+  {
+    "timestamp": "12:03",
+    "content": "To use complete mode, update your package to Swift Tools version 6.4 or newer."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "After bumping the tools version, the earlier issue is now an error."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "Override the default mode at any time using an environment variable."
+  },
+  {
+    "timestamp": "12:20",
+    "content": "Swift testing XAT test interop mode."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "For the value, provide the name of the mode in lowercase."
+  },
+  {
+    "timestamp": "12:28",
+    "content": "Finally, interoperability supports a limited set of APIs from both testing frameworks."
+  },
+  {
+    "timestamp": "12:34",
+    "content": "I just demonstrated the XCT fail and issue.record API."
+  },
+  {
+    "timestamp": "12:40",
+    "content": "In XCTest, it also supports all other test assertions."
+  },
+  {
+    "timestamp": "12:45",
+    "content": "And in Swift testing, supports both expectation macros, pound expect and pound require."
+  },
+  {
+    "timestamp": "12:51",
+    "content": "The known issue API in Swift testing can mark XCTest assertion failures as known."
+  },
+  {
+    "timestamp": "12:56",
+    "content": "And test.cancel can skip test cases in XCTest."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "On your own migration journey, you might encounter some common patterns."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "I'll share some tips for how to address those."
+  },
+  {
+    "timestamp": "13:09",
+    "content": "The first pattern is skipping tests."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "In XCTest, you skip tests using the XCT skip API."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "To replace it with Swift testing API, use test.cancel."
+  },
+  {
+    "timestamp": "13:23",
+    "content": "If you're writing new tests in Swift testing, test.cancel will work there as well."
+  },
+  {
+    "timestamp": "13:28",
+    "content": "But Swift testing has traits, which are annotations you can attach to test functions and suites."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "Move test enablement logic out of the test body with the enabled or disabled trait."
+  },
+  {
+    "timestamp": "13:40",
+    "content": "Another common pattern is halting on failure."
+  },
+  {
+    "timestamp": "13:45",
+    "content": "In XCTest, you assign the continue after failure property to false."
+  },
+  {
+    "timestamp": "13:50",
+    "content": "This halts tests on their first failed assertion."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "To replace with Swift testing API, use the require macro."
+  },
+  {
+    "timestamp": "13:59",
+    "content": "It throws an error upon failure, halting the test."
+  },
+  {
+    "timestamp": "14:02",
+    "content": "And you don't need to set continue after failure anymore."
+  },
+  {
+    "timestamp": "14:06",
+    "content": "With Swift testing, you also get to choose which expectations hold the test and which don't."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "For more information, check out Migrating a Test from XCTest in the developer documentation."
+  },
+  {
+    "timestamp": "14:19",
+    "content": "It covers many more scenarios and will be a great reference in your migration journey."
+  },
+  {
+    "timestamp": "14:25",
+    "content": "Xcode's coding assistant is also aware of this documentation."
+  },
+  {
+    "timestamp": "14:29",
+    "content": "It can help formulate a migration strategy or review your work."
+  },
+  {
+    "timestamp": "14:33",
+    "content": "It even has a skill to automate parts of your migration."
+  },
+  {
+    "timestamp": "14:37",
+    "content": "Wow, we covered a lot."
+  },
+  {
+    "timestamp": "14:40",
+    "content": "So in summary, here's how you can migrate fearlessly to Swift testing."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "Don't feel pressured to modify your XCTests until you're ready."
+  },
+  {
+    "timestamp": "14:50",
+    "content": "Focus on writing new tests using Swift testing."
+  },
+  {
+    "timestamp": "14:53",
+    "content": "By relying on interoperability, you can even reuse your helper code which wraps XCTest API."
+  },
+  {
+    "timestamp": "14:59",
+    "content": "In the process, you'll turn up cross-framework issues from XCTest."
+  },
+  {
+    "timestamp": "15:04",
+    "content": "Interoperability allows you to replace XCTest API with Swift testing API to address these."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "And Xcode 27 enables interoperability by default."
+  },
+  {
+    "timestamp": "15:15",
+    "content": "Make sure you handle all future cross-framework issues by upgrading to the complete or strict mode."
+  },
+  {
+    "timestamp": "15:21",
+    "content": "Now, it's time to turn the spotlight on Swift testing."
+  },
+  {
+    "timestamp": "15:28",
+    "content": "After you migrate to Swift testing, you get access to new tools to supercharge your tests."
+  },
+  {
+    "timestamp": "15:33",
+    "content": "Let's start with parameterized tests."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "These are tests that repeat with different arguments."
+  },
+  {
+    "timestamp": "15:41",
+    "content": "Each argument becomes a separate test case."
+  },
+  {
+    "timestamp": "15:44",
+    "content": "All Swift testing tests, including parameterized test cases, run in parallel by default."
+  },
+  {
+    "timestamp": "15:51",
+    "content": "This can be faster than running serially."
+  },
+  {
+    "timestamp": "15:54",
+    "content": "Check out this example."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "I've migrated my project's bird test to Swift testing."
+  },
+  {
+    "timestamp": "16:00",
+    "content": "This checks that every bird can flap its wings from 40 to 100 times."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "Can't write a separate test for each of these combinations, though."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "There's just too many of them."
+  },
+  {
+    "timestamp": "16:10",
+    "content": "In the body of my original XCTest, I used a nested loop to generate all the combinations."
+  },
+  {
+    "timestamp": "16:17",
+    "content": "I'll go ahead and run the test."
+  },
+  {
+    "timestamp": "16:26",
+    "content": "A few things stuck out to me."
+  },
+  {
+    "timestamp": "16:27",
+    "content": "The test took a while to finish, probably because there's lots of combinations."
+  },
+  {
+    "timestamp": "16:31",
+    "content": "Also, the test fails, but I don't even know which bird failed."
+  },
+  {
+    "timestamp": "16:35",
+    "content": "If I were still using XCTest, I'd have to catch these errors or run the test with a debugger attached."
+  },
+  {
+    "timestamp": "16:42",
+    "content": "I have a better idea."
+  },
+  {
+    "timestamp": "16:44",
+    "content": "Let's make this a parameterized test."
+  },
+  {
+    "timestamp": "16:47",
+    "content": "I'll begin by removing these loops from the test body."
+  },
+  {
+    "timestamp": "16:50",
+    "content": "And instead, I'll define bird and count as test function parameters."
+  },
+  {
+    "timestamp": "16:56",
+    "content": "I'll provide the input for birds and counts as arguments in the test macro."
+  },
+  {
+    "timestamp": "17:03",
+    "content": "Swift testing will pair each bird from the first argument and each count from the second."
+  },
+  {
+    "timestamp": "17:11",
+    "content": "I'll run the test again."
+  },
+  {
+    "timestamp": "17:13",
+    "content": "Hey!"
+  },
+  {
+    "timestamp": "17:14",
+    "content": "This time the test finished almost instantly, because Swift testing ran all my combinations in parallel."
+  },
+  {
+    "timestamp": "17:21",
+    "content": "In the test navigator, my parameterized test now has a disclosure arrow to its left."
+  },
+  {
+    "timestamp": "17:28",
+    "content": "I'll click it to show all the combinations I'm testing."
+  },
+  {
+    "timestamp": "17:34",
+    "content": "Wow, that's a lot of test cases."
+  },
+  {
+    "timestamp": "17:37",
+    "content": "Okay, I still have to find the failing combinations."
+  },
+  {
+    "timestamp": "17:40",
+    "content": "In the test navigator, I'll filter the failing test results."
+  },
+  {
+    "timestamp": "17:44",
+    "content": "Ah, there it is."
+  },
+  {
+    "timestamp": "17:46",
+    "content": "The swallow can't flap its wings less than 43 times."
+  },
+  {
+    "timestamp": "17:51",
+    "content": "Using a parameterized test supercharged my test execution."
+  },
+  {
+    "timestamp": "17:55",
+    "content": "Not only did I get results faster, I could clearly tell which test inputs failed."
+  },
+  {
+    "timestamp": "18:02",
+    "content": "Next, I want to show how to supercharge test coverage with exit tests."
+  },
+  {
+    "timestamp": "18:07",
+    "content": "Note that exit tests are only supported on macOS, Linux, FreeBSD, and Windows."
+  },
+  {
+    "timestamp": "18:14",
+    "content": "I'm looking for code that needs test coverage, and I've found something in my bird initializer."
+  },
+  {
+    "timestamp": "18:19",
+    "content": "If I get an empty name for new birds, I halt the program with a precondition failure."
+  },
+  {
+    "timestamp": "18:27",
+    "content": "I can verify that I've already tested this by going to the Editor menu and showing code coverage."
+  },
+  {
+    "timestamp": "18:33",
+    "content": "The coverage annotation shows the precondition in red, which means that none of my tests run this code."
+  },
+  {
+    "timestamp": "18:40",
+    "content": "An exit test is the perfect tool to add this coverage."
+  },
+  {
+    "timestamp": "18:44",
+    "content": "You define an exit test with the expect macro."
+  },
+  {
+    "timestamp": "18:49",
+    "content": "Provide an expected process exit condition along with the body of the exit test."
+  },
+  {
+    "timestamp": "18:54",
+    "content": "When you start the test, Swift testing runs the exit test body in a child process."
+  },
+  {
+    "timestamp": "19:01",
+    "content": "Because that code is isolated, it can crash without disrupting other tests."
+  },
+  {
+    "timestamp": "19:06",
+    "content": "The exit test waits for the child process to finish, and checks the exit status to determine test success or failure."
+  },
+  {
+    "timestamp": "19:14",
+    "content": "I can add a new test in this extension of my test suite."
+  },
+  {
+    "timestamp": "19:19",
+    "content": "I'll use the expect macro to create an exit test and specify the process should exit with failure."
+  },
+  {
+    "timestamp": "19:27",
+    "content": "Inside the body of the exit test, I'll create a bird with an empty name."
+  },
+  {
+    "timestamp": "19:31",
+    "content": "That should crash, but it will be isolated because Swift testing will run this code in a separate process."
+  },
+  {
+    "timestamp": "19:37",
+    "content": "Now, I'll run all my tests."
+  },
+  {
+    "timestamp": "19:44",
+    "content": "Great! My exit test passes."
+  },
+  {
+    "timestamp": "19:46",
+    "content": "Let's check the coverage one more time."
+  },
+  {
+    "timestamp": "19:49",
+    "content": "I'll right-click and select Jump to Definition on the Bird Initializer."
+  },
+  {
+    "timestamp": "19:53",
+    "content": "Now that we're back, let's examine the coverage again."
+  },
+  {
+    "timestamp": "19:57",
+    "content": "The coverage annotation now highlights the precondition in green, which means it's now tested."
+  },
+  {
+    "timestamp": "20:03",
+    "content": "That was a quick preview of two ways to supercharge your tests."
+  },
+  {
+    "timestamp": "20:08",
+    "content": "And if you have ideas for how Swift testing can improve, I encourage you to contribute."
+  },
+  {
+    "timestamp": "20:13",
+    "content": "That's because Swift testing is open source."
+  },
+  {
+    "timestamp": "20:17",
+    "content": "It's part of the SwiftLang organization on GitHub."
+  },
+  {
+    "timestamp": "20:20",
+    "content": "It's available on more platforms than ever before, with full support starting this year for free BSD."
+  },
+  {
+    "timestamp": "20:27",
+    "content": "The testing workgroup governs the project and runs regular meetings that any Swift community member can attend."
+  },
+  {
+    "timestamp": "20:36",
+    "content": "New features are guided by Swift Evolution."
+  },
+  {
+    "timestamp": "20:39",
+    "content": "In fact, interoperability was one of those."
+  },
+  {
+    "timestamp": "20:42",
+    "content": "Share your opinions and ideas by joining us on the Swift forums."
+  },
+  {
+    "timestamp": "20:47",
+    "content": "Now, it's your turn to make like a bird and migrate to Swift testing."
+  },
+  {
+    "timestamp": "20:52",
+    "content": "Interoperability in Xcode 27 makes this transition easier than ever."
+  },
+  {
+    "timestamp": "20:58",
+    "content": "Try it out on your project and explore its different modes."
+  },
+  {
+    "timestamp": "21:01",
+    "content": "Along the way, you can adopt powerful tools such as parameterized tests and exit tests."
+  },
+  {
+    "timestamp": "21:07",
+    "content": "To go further, check out Go Further with Swift Testing from WWDC 2024."
+  },
+  {
+    "timestamp": "21:13",
+    "content": "Have fun renovating your tests!"
+  }
+]

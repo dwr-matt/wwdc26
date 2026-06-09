@@ -1,0 +1,1150 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi there, and welcome to Build Live Production Tools for Apple Immersive Video."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "I'm Jared King, and I lead the Apple Immersive Video Live Engineering team."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "Apple Immersive Video is an incredibly exciting medium,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "and live streaming unlocks entirely new ways for customers to experience sports,"
+  },
+  {
+    "timestamp": "0:24",
+    "content": "music, and entertainment events."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "Earlier this year, Apple did something remarkable."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "For the first time, fans were transported courtside to select LA Lakers games"
+  },
+  {
+    "timestamp": "0:36",
+    "content": "live in Apple Vision Pro through the Spectrum Sportsnet and NBA apps."
+  },
+  {
+    "timestamp": "0:41",
+    "content": "Real games and arenas experienced like you were there."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Live immersive cameras gave fans access to unreachable seats."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "Data-driven graphics augmented the action."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "And spatial audio embedded customers inside the roaring crowd."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "Behind the scenes, a live broadcast platform built by Apple powered the events"
+  },
+  {
+    "timestamp": "1:01",
+    "content": "and transported this unique experience to customers around the world."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "My goal is to inspire you to build the next generation of immersive tools,"
+  },
+  {
+    "timestamp": "1:11",
+    "content": "workflows, and live experiences."
+  },
+  {
+    "timestamp": "1:13",
+    "content": "For many, live broadcast technology might be new."
+  },
+  {
+    "timestamp": "1:17",
+    "content": "The systems are complex, but the opportunity to build for this space is enormous."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "So to set the right foundation, first, I'll provide a high-level overview of the systems"
+  },
+  {
+    "timestamp": "1:28",
+    "content": "that make up a modern live production pipeline, along with some of the creative tools used"
+  },
+  {
+    "timestamp": "1:32",
+    "content": "across studios, production trucks, and broadcast facilities worldwide to create content."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "Understanding this foundation will be invaluable as you begin building immersive production tools"
+  },
+  {
+    "timestamp": "1:44",
+    "content": "of your own."
+  },
+  {
+    "timestamp": "1:45",
+    "content": "Second, I'll cover what makes live immersive broadcasts different from traditional 2D production."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "Transporting customers from their homes directly into an event introduces an entirely new set of technical challenges."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "The media formats, production tools, and the way content moves between tools within a production workflow have been rebuilt."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "I'll start today with the top-level review of a live production pipeline."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "Whether you're building for immersive or traditional 2D broadcast,"
+  },
+  {
+    "timestamp": "2:16",
+    "content": "understanding the fundamental components of the end-to-end system is crucial."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "A live production pipeline is a system where video, audio, and data is captured and creatively produced at one end,"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "what I'll call the production domain,"
+  },
+  {
+    "timestamp": "2:30",
+    "content": "then encoded and streamed live to an audience through what I'll call the delivery domain."
+  },
+  {
+    "timestamp": "2:34",
+    "content": "Broadcasts can be large-scale productions, such as TV studios and broadcast trucks,"
+  },
+  {
+    "timestamp": "2:40",
+    "content": "that manage many live cameras, audio sources, and graphics for sporting or entertainment events."
+  },
+  {
+    "timestamp": "2:47",
+    "content": "Or they can be smaller systems, such as podcast studios, theaters, or local music venues,"
+  },
+  {
+    "timestamp": "2:52",
+    "content": "where only a few of these elements might be used within a production."
+  },
+  {
+    "timestamp": "2:56",
+    "content": "Either way, the end goal is the same."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "Live content is captured and produced in the production domain,"
+  },
+  {
+    "timestamp": "3:02",
+    "content": "then encoded and transmitted to the viewer in the delivery domain,"
+  },
+  {
+    "timestamp": "3:06",
+    "content": "broadcasting the event to an audience in real time."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "But to keep focused, I'll concentrate primarily on what makes the production domain unique"
+  },
+  {
+    "timestamp": "3:14",
+    "content": "when building for immersive live."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "Regardless of scale, most live pipelines rely on many of the same creative tools within the workflow,"
+  },
+  {
+    "timestamp": "3:22",
+    "content": "simply scaled in quantity and sophistication depending on the level of production."
+  },
+  {
+    "timestamp": "3:26",
+    "content": "Live cameras are used to capture video of the scene or event."
+  },
+  {
+    "timestamp": "3:33",
+    "content": "Oftentimes, multiple cameras are used on a production to capture different angles or points of view."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "For example, in this production, here's camera one."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "And this is camera two."
+  },
+  {
+    "timestamp": "3:45",
+    "content": "And that's camera three."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Graphics may be generated and keyed onto the video"
+  },
+  {
+    "timestamp": "3:50",
+    "content": "to provide additional context and creative flair to the production."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "These can be elements like a name, which just appeared as a lower third,"
+  },
+  {
+    "timestamp": "3:58",
+    "content": "a scoreboard displayed in the top right,"
+  },
+  {
+    "timestamp": "4:01",
+    "content": "or a complex video animation, like the one down below."
+  },
+  {
+    "timestamp": "4:05",
+    "content": "Replay systems are used to record media and replay the footage back out when called for"
+  },
+  {
+    "timestamp": "4:10",
+    "content": "as part of the live production."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "Or they can archive it for later use in post-production and editorial."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "To assemble all these elements, video switchers let operators cut between cameras,"
+  },
+  {
+    "timestamp": "4:23",
+    "content": "overlay graphics, and produce the final creative stream the viewer sees."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "On the audio front, microphones are used to pick up announcers, interviews, musical elements,"
+  },
+  {
+    "timestamp": "4:34",
+    "content": "and other sound sources on the production."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "Audio consoles ingest all these sources"
+  },
+  {
+    "timestamp": "4:39",
+    "content": "and artfully combine them together into the final product or mix the audience hears."
+  },
+  {
+    "timestamp": "4:44",
+    "content": "Finally, all of these tools need to exchange media with one another."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "For example, camera feeds connected into the video switcher inputs."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "Or microphone sources fed into an audio console."
+  },
+  {
+    "timestamp": "4:58",
+    "content": "To do that, every tool connects through a centralized media router"
+  },
+  {
+    "timestamp": "5:02",
+    "content": "that handles content exchange between them."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "Think of it as a unified network layer"
+  },
+  {
+    "timestamp": "5:07",
+    "content": "that lets every device send and receive signals to one another."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "Now that you've got a handle on the basics of live production,"
+  },
+  {
+    "timestamp": "5:14",
+    "content": "here's where things start to diverge from immersive and where the real story begins."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "In this format, fidelity, presence, and preserving these through every step of the workflow"
+  },
+  {
+    "timestamp": "5:24",
+    "content": "is everything when you're transporting customers inside of the content."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "And that translates into truly big numbers."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "Video resolution is 32 times larger than what is typically used in a 2D broadcast production"
+  },
+  {
+    "timestamp": "5:38",
+    "content": "in order to match human visual acuity."
+  },
+  {
+    "timestamp": "5:41",
+    "content": "And it's produced at two times the frame rate."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Audio mixes supporting Apple Immersive Live are far more resolute than traditional stereo audio"
+  },
+  {
+    "timestamp": "5:50",
+    "content": "or even 5.1 surround sound."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "Apple Spatial Audio Format, or ASAP mixes, can contain 64 or more channels"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "in order to immerse the audience in a rich spatial audio experience."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "These massive formats and quality requirements ripple through every part of the production pipeline."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Unfortunately, not all the traditional tools, transport methods, and formats support media at this scale."
+  },
+  {
+    "timestamp": "6:16",
+    "content": "So immersive live requires building an entirely different workflow."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "I'll break down three key concepts that will enable you to begin building tools"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "and exciting new workflows in the ecosystem."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "First, a media format standard designed to deliver the required quality"
+  },
+  {
+    "timestamp": "6:35",
+    "content": "while remaining efficient and practically useful when building live production tools."
+  },
+  {
+    "timestamp": "6:40",
+    "content": "Second, a method for transporting immersive content in real time between production devices"
+  },
+  {
+    "timestamp": "6:45",
+    "content": "over an important standard called SMPTE 2110."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "Finally, saving a live stream to file and playing it out again"
+  },
+  {
+    "timestamp": "6:53",
+    "content": "is a fundamental function within any broadcast."
+  },
+  {
+    "timestamp": "6:56",
+    "content": "I'll go over how live streams from devices can be saved to file within an application"
+  },
+  {
+    "timestamp": "7:01",
+    "content": "and played back out again without any compromise to quality."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "I'll start at the top."
+  },
+  {
+    "timestamp": "7:07",
+    "content": "Within any production, there are three classes of devices."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "Devices that output media, for example, a camera, a microphone, or a graphics generator."
+  },
+  {
+    "timestamp": "7:17",
+    "content": "Devices that ingest media, such as a video encoder or a color grading monitor."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "And devices that do both."
+  },
+  {
+    "timestamp": "7:24",
+    "content": "For example, a video switcher receiving camera sources on its inputs"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "and switching the different angles to air on its outputs."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "In any workflow, all devices have to agree on a unified set of media formats"
+  },
+  {
+    "timestamp": "7:37",
+    "content": "so they can exchange content between them through the media router seamlessly in real time,"
+  },
+  {
+    "timestamp": "7:42",
+    "content": "like a common language."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "To do that, three existing standards have been combined into one format"
+  },
+  {
+    "timestamp": "7:49",
+    "content": "to support live immersive production."
+  },
+  {
+    "timestamp": "7:51",
+    "content": "Apple Immersive Live Video is composed entirely of streamed ProRes frames,"
+  },
+  {
+    "timestamp": "7:58",
+    "content": "as opposed to uncompressed video frames typical of regular broadcast cameras."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "ProRes is a powerful video codec that strikes an exceptional balance"
+  },
+  {
+    "timestamp": "8:06",
+    "content": "between image quality and bandwidth,"
+  },
+  {
+    "timestamp": "8:10",
+    "content": "reducing video signals to a practical size"
+  },
+  {
+    "timestamp": "8:12",
+    "content": "that can be processed by tools"
+  },
+  {
+    "timestamp": "8:14",
+    "content": "but maintains the high fidelity required of the image."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "And because Apple Silicon is optimized for ProRes processing,"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "it's the perfect platform for building production tools and pipelines."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "To learn more, refer to Apple ProRes developer documentation."
+  },
+  {
+    "timestamp": "8:31",
+    "content": "ASAF audio mixes are composed of standard uncompressed PCM audio tracks"
+  },
+  {
+    "timestamp": "8:35",
+    "content": "carrying high-order ambisonic beds and spatial audio objects."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "Metadata is delivered as per-frame JSON objects"
+  },
+  {
+    "timestamp": "8:44",
+    "content": "that contain elements describing attributes of related video and audio feeds,"
+  },
+  {
+    "timestamp": "8:49",
+    "content": "such as lens calibrations, creative events, spatial audio behavior, and much more."
+  },
+  {
+    "timestamp": "8:56",
+    "content": "Together, these three standards define the live immersive production format."
+  },
+  {
+    "timestamp": "9:01",
+    "content": "All tools and processes must be compliant with each media type"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "to ensure interoperability with the rest of the ecosystem."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "Next, devices need a standardized transport layer"
+  },
+  {
+    "timestamp": "9:12",
+    "content": "to exchange live video, audio, and metadata feeds between them."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "To achieve this, live feeds from devices are exchanged"
+  },
+  {
+    "timestamp": "9:20",
+    "content": "as individual SMPTE 2110 media streams,"
+  },
+  {
+    "timestamp": "9:23",
+    "content": "the industry standard for professional media transport over IP."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "2110, as it's commonly known,"
+  },
+  {
+    "timestamp": "9:29",
+    "content": "is widely deployed across broadcast facilities worldwide"
+  },
+  {
+    "timestamp": "9:32",
+    "content": "and is interoperable with a broad ecosystem of professional tools."
+  },
+  {
+    "timestamp": "9:36",
+    "content": "2110 uses multicast RTP, or real-time transport protocol,"
+  },
+  {
+    "timestamp": "9:41",
+    "content": "to move media across the network."
+  },
+  {
+    "timestamp": "9:43",
+    "content": "RTP streams carry timing information, user flags,"
+  },
+  {
+    "timestamp": "9:47",
+    "content": "and other metadata alongside a main media payload."
+  },
+  {
+    "timestamp": "9:50",
+    "content": "A 2110 stream will transmit either a video,"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "an audio, or a metadata payload,"
+  },
+  {
+    "timestamp": "9:56",
+    "content": "and the transport of each media type"
+  },
+  {
+    "timestamp": "9:58",
+    "content": "is defined by a substandard within the broader 2110 specification."
+  },
+  {
+    "timestamp": "10:02",
+    "content": "I'll break down how each fits into that model."
+  },
+  {
+    "timestamp": "10:05",
+    "content": "Immersive ProRes video is transported as 2110-22 streams on the network,"
+  },
+  {
+    "timestamp": "10:11",
+    "content": "the defined standard for compressed media over IP."
+  },
+  {
+    "timestamp": "10:14",
+    "content": "This 2110-22 flow contains both the left and right eye"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "of the immersive content, transmitted as two separate data essences,"
+  },
+  {
+    "timestamp": "10:24",
+    "content": "but contained within the single stream."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "This means there is no need to frame pack each eye side-by-side"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "into a single image roster, or produce separate IP streams per eye."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "This is hugely advantageous,"
+  },
+  {
+    "timestamp": "10:38",
+    "content": "as this eliminates the complex management of independent left"
+  },
+  {
+    "timestamp": "10:41",
+    "content": "and right eye video feeds within the production architecture."
+  },
+  {
+    "timestamp": "10:44",
+    "content": "Asaf audio is transported as standard 2110-30 streams on the network."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "These contain the high-order ambisonics and audio object channels"
+  },
+  {
+    "timestamp": "10:55",
+    "content": "that compose Asaf spatial audio mixes."
+  },
+  {
+    "timestamp": "11:00",
+    "content": "JSON objects are transmitted per frame over 2110-41,"
+  },
+  {
+    "timestamp": "11:06",
+    "content": "the standard for the transport of user-defined metadata over IP."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "JSON objects are transmitted per frame over IP."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "This carries the important metadata information,"
+  },
+  {
+    "timestamp": "11:14",
+    "content": "like lens calibrations, creative events, and motion data,"
+  },
+  {
+    "timestamp": "11:18",
+    "content": "in real time alongside the dash-22 video"
+  },
+  {
+    "timestamp": "11:21",
+    "content": "and dash-30 audio feeds within the production."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "Lastly, the ability to record feeds, edit them,"
+  },
+  {
+    "timestamp": "11:28",
+    "content": "and play them back out again, for example instant replay,"
+  },
+  {
+    "timestamp": "11:31",
+    "content": "is a crucial part of any live workflow."
+  },
+  {
+    "timestamp": "11:33",
+    "content": "In traditional 2D workflows, recording live video to file"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "often introduces visual quality loss,"
+  },
+  {
+    "timestamp": "11:41",
+    "content": "as content is encoded, decoded,"
+  },
+  {
+    "timestamp": "11:45",
+    "content": "and re-encoded many times throughout a typical workflow."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "In Apple immersive video,"
+  },
+  {
+    "timestamp": "11:51",
+    "content": "even these small reductions in quality"
+  },
+  {
+    "timestamp": "11:53",
+    "content": "can significantly impact the customer experience,"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "especially as generational loss"
+  },
+  {
+    "timestamp": "11:58",
+    "content": "due to multiple cycles of compression"
+  },
+  {
+    "timestamp": "12:00",
+    "content": "and decompression compound over time."
+  },
+  {
+    "timestamp": "12:04",
+    "content": "Fortunately, this is solved by the immersive format."
+  },
+  {
+    "timestamp": "12:07",
+    "content": "Everything is already ProRes."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "Because live media is natively generated"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "in a file-friendly ProRes payload,"
+  },
+  {
+    "timestamp": "12:15",
+    "content": "recording to disk requires no additional encode"
+  },
+  {
+    "timestamp": "12:17",
+    "content": "or decode steps as the content moves through the workflow."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "The same ProRes frames are simply copied directly into MOV files"
+  },
+  {
+    "timestamp": "12:25",
+    "content": "and read back out again into live 2110 streams during playout, untouched."
+  },
+  {
+    "timestamp": "12:30",
+    "content": "Practically, this means that live content can be produced by a camera,"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "transported between devices,"
+  },
+  {
+    "timestamp": "12:37",
+    "content": "recorded to disk,"
+  },
+  {
+    "timestamp": "12:38",
+    "content": "edited,"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "and played back out live on repeat"
+  },
+  {
+    "timestamp": "12:41",
+    "content": "with no impact of quality throughout the entire process."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Save video feeds to QuickTime MOV video tracks"
+  },
+  {
+    "timestamp": "12:50",
+    "content": "using AV Foundation's AV Asset Writer."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "The resulting MOV file now contains the same untouched resolution,"
+  },
+  {
+    "timestamp": "12:57",
+    "content": "frame rate,"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "and stereo image data as the live stream,"
+  },
+  {
+    "timestamp": "13:01",
+    "content": "saved to a file that can be used in editorial,"
+  },
+  {
+    "timestamp": "13:03",
+    "content": "replay,"
+  },
+  {
+    "timestamp": "13:04",
+    "content": "or post-production."
+  },
+  {
+    "timestamp": "13:06",
+    "content": "When writing the MOV video track,"
+  },
+  {
+    "timestamp": "13:09",
+    "content": "it's important to set the constant"
+  },
+  {
+    "timestamp": "13:10",
+    "content": "KVT Projection Kind Apple Immersive Video"
+  },
+  {
+    "timestamp": "13:13",
+    "content": "in the AV Video Compression Properties key."
+  },
+  {
+    "timestamp": "13:17",
+    "content": "This is a new Video Toolbox property"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "and will add the correct Video Extended Usage, or VEXU,"
+  },
+  {
+    "timestamp": "13:22",
+    "content": "static metadata"
+  },
+  {
+    "timestamp": "13:23",
+    "content": "for Apple Immersive Video to the file,"
+  },
+  {
+    "timestamp": "13:26",
+    "content": "signaling it as immersive to other applications."
+  },
+  {
+    "timestamp": "13:29",
+    "content": "Save audio feeds in the usual way."
+  },
+  {
+    "timestamp": "13:32",
+    "content": "Uncompressed PCM, carried in the 2110 stream,"
+  },
+  {
+    "timestamp": "13:35",
+    "content": "is written directly into the MOV's audio tracks"
+  },
+  {
+    "timestamp": "13:38",
+    "content": "using AV Asset Writer."
+  },
+  {
+    "timestamp": "13:39",
+    "content": "Finally, the stream JSON data"
+  },
+  {
+    "timestamp": "13:43",
+    "content": "is written into the Metadata Box Exchange Format,"
+  },
+  {
+    "timestamp": "13:46",
+    "content": "or MEB Extracts,"
+  },
+  {
+    "timestamp": "13:47",
+    "content": "within the MOV container using AV Asset Writer."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "Prior to storage,"
+  },
+  {
+    "timestamp": "13:52",
+    "content": "the stream JSON data"
+  },
+  {
+    "timestamp": "13:53",
+    "content": "must be deserialized,"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "parsed,"
+  },
+  {
+    "timestamp": "13:56",
+    "content": "and then Immersive Media Support Framework,"
+  },
+  {
+    "timestamp": "13:58",
+    "content": "or IMS,"
+  },
+  {
+    "timestamp": "13:59",
+    "content": "is used to create lens calibration objects,"
+  },
+  {
+    "timestamp": "14:02",
+    "content": "camera IDs,"
+  },
+  {
+    "timestamp": "14:03",
+    "content": "and other metadata objects"
+  },
+  {
+    "timestamp": "14:04",
+    "content": "that are written into the MOV,"
+  },
+  {
+    "timestamp": "14:06",
+    "content": "synchronized with the video and audio."
+  },
+  {
+    "timestamp": "14:08",
+    "content": "IMS was first introduced in Vision OS 26."
+  },
+  {
+    "timestamp": "14:13",
+    "content": "It enables reading and writing"
+  },
+  {
+    "timestamp": "14:15",
+    "content": "the essential metadata for Apple Immersive Video,"
+  },
+  {
+    "timestamp": "14:18",
+    "content": "and provides capabilities for previewing content"
+  },
+  {
+    "timestamp": "14:21",
+    "content": "in creative workflows."
+  },
+  {
+    "timestamp": "14:23",
+    "content": "While immersive video and audio"
+  },
+  {
+    "timestamp": "14:25",
+    "content": "is already powered by well-known technologies"
+  },
+  {
+    "timestamp": "14:27",
+    "content": "like AV Foundation,"
+  },
+  {
+    "timestamp": "14:29",
+    "content": "Video Toolbox,"
+  },
+  {
+    "timestamp": "14:30",
+    "content": "and Core Audio,"
+  },
+  {
+    "timestamp": "14:31",
+    "content": "IMS is a powerful framework"
+  },
+  {
+    "timestamp": "14:33",
+    "content": "purpose-built for Apple Immersive Video."
+  },
+  {
+    "timestamp": "14:36",
+    "content": "As you're building the next generation"
+  },
+  {
+    "timestamp": "14:38",
+    "content": "of production tools,"
+  },
+  {
+    "timestamp": "14:39",
+    "content": "IMS will be one of the most important frameworks"
+  },
+  {
+    "timestamp": "14:42",
+    "content": "to understand."
+  },
+  {
+    "timestamp": "14:43",
+    "content": "Check out the Immersive Media Support Developer documentation"
+  },
+  {
+    "timestamp": "14:46",
+    "content": "to learn more."
+  },
+  {
+    "timestamp": "14:49",
+    "content": "Then, during a file playback scenario,"
+  },
+  {
+    "timestamp": "14:51",
+    "content": "all processes are reversed."
+  },
+  {
+    "timestamp": "14:54",
+    "content": "Video, audio,"
+  },
+  {
+    "timestamp": "14:55",
+    "content": "and metadata media types"
+  },
+  {
+    "timestamp": "14:57",
+    "content": "are read directly from their tracks"
+  },
+  {
+    "timestamp": "14:58",
+    "content": "within the MOV"
+  },
+  {
+    "timestamp": "14:59",
+    "content": "and retransmitted back into 2110 output streams"
+  },
+  {
+    "timestamp": "15:03",
+    "content": "for use within the wider production,"
+  },
+  {
+    "timestamp": "15:05",
+    "content": "using all the same frameworks and libraries."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "Now that you understand the foundations"
+  },
+  {
+    "timestamp": "15:10",
+    "content": "of live immersive production,"
+  },
+  {
+    "timestamp": "15:11",
+    "content": "it's the perfect time to get started."
+  },
+  {
+    "timestamp": "15:14",
+    "content": "Build your own immersive tools"
+  },
+  {
+    "timestamp": "15:15",
+    "content": "using frameworks like AV Foundation,"
+  },
+  {
+    "timestamp": "15:18",
+    "content": "Video Toolbox,"
+  },
+  {
+    "timestamp": "15:19",
+    "content": "Audio Toolbox,"
+  },
+  {
+    "timestamp": "15:20",
+    "content": "and Immersive Media Support."
+  },
+  {
+    "timestamp": "15:22",
+    "content": "Every layer of the stack"
+  },
+  {
+    "timestamp": "15:23",
+    "content": "is open for innovation."
+  },
+  {
+    "timestamp": "15:26",
+    "content": "Dive deeper into the world of 2110"
+  },
+  {
+    "timestamp": "15:28",
+    "content": "and connect your tools together"
+  },
+  {
+    "timestamp": "15:30",
+    "content": "in a true live workflow."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "Level up by visiting the SMPTE website"
+  },
+  {
+    "timestamp": "15:34",
+    "content": "to learn more about the various standards"
+  },
+  {
+    "timestamp": "15:36",
+    "content": "and best practices"
+  },
+  {
+    "timestamp": "15:37",
+    "content": "during network implementation."
+  },
+  {
+    "timestamp": "15:39",
+    "content": "Finally, be sure to watch,"
+  },
+  {
+    "timestamp": "15:42",
+    "content": "learn about Apple Immersive Video Technologies"
+  },
+  {
+    "timestamp": "15:44",
+    "content": "and support Immersive Video Playback"
+  },
+  {
+    "timestamp": "15:46",
+    "content": "and Vision OS apps."
+  },
+  {
+    "timestamp": "15:48",
+    "content": "Together, they provide valuable context"
+  },
+  {
+    "timestamp": "15:51",
+    "content": "around the creative and technical principles"
+  },
+  {
+    "timestamp": "15:52",
+    "content": "behind the format."
+  },
+  {
+    "timestamp": "15:55",
+    "content": "The future of Immersive Live has just started."
+  },
+  {
+    "timestamp": "15:58",
+    "content": "While it builds on the foundations"
+  },
+  {
+    "timestamp": "15:59",
+    "content": "of traditional broadcast,"
+  },
+  {
+    "timestamp": "16:01",
+    "content": "it introduces entirely new creative"
+  },
+  {
+    "timestamp": "16:03",
+    "content": "and technical possibilities."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "And many of the best ideas"
+  },
+  {
+    "timestamp": "16:07",
+    "content": "haven't been invented yet."
+  },
+  {
+    "timestamp": "16:08",
+    "content": "This is your chance"
+  },
+  {
+    "timestamp": "16:10",
+    "content": "to be a part of getting this new format"
+  },
+  {
+    "timestamp": "16:11",
+    "content": "off the ground and on air."
+  },
+  {
+    "timestamp": "16:13",
+    "content": "I'll see you next time."
+  }
+]

@@ -1,0 +1,746 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, my name is Durade, and I'm a member of the Shortcuts team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "With Shortcuts, you can combine actions that you perform in your apps every day"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "and quickly run them from different places across the system,"
+  },
+  {
+    "timestamp": "0:20",
+    "content": "like Siri, Control Center, Action Button, and more."
+  },
+  {
+    "timestamp": "0:26",
+    "content": "In this session, I'm going to share some exciting improvements coming to Shortcuts"
+  },
+  {
+    "timestamp": "0:31",
+    "content": "and how you can make your app's actions and content fit right in."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "I'll start by going over updates to the way automations are set up"
+  },
+  {
+    "timestamp": "0:40",
+    "content": "and a set of new automation types that are available."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "Next, I'll go over the use model action and a new way to debug its behavior."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "And finally, I'll cover storage,"
+  },
+  {
+    "timestamp": "0:52",
+    "content": "a feature that lets you persist data between runs of a shortcut."
+  },
+  {
+    "timestamp": "0:55",
+    "content": "Let's dive in."
+  },
+  {
+    "timestamp": "0:57",
+    "content": "With automations, you can make your shortcuts run automatically in response to events."
+  },
+  {
+    "timestamp": "1:03",
+    "content": "For example, here's a shortcut that runs every time I leave work."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "It calculates my route home and sends a message to my partner Helen"
+  },
+  {
+    "timestamp": "1:11",
+    "content": "with my estimated time of arrival."
+  },
+  {
+    "timestamp": "1:15",
+    "content": "Automations now live directly in the Shortcuts editor"
+  },
+  {
+    "timestamp": "1:17",
+    "content": "alongside the actions that run in a shortcut,"
+  },
+  {
+    "timestamp": "1:20",
+    "content": "and they're easier to set up than ever."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "To browse them and add one to a shortcut,"
+  },
+  {
+    "timestamp": "1:25",
+    "content": "you can visit the Automation section in the editor."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "In addition to the current set of automations,"
+  },
+  {
+    "timestamp": "1:31",
+    "content": "there are also three new types available."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "The Screenshot automation, which runs when a screenshot is saved."
+  },
+  {
+    "timestamp": "1:37",
+    "content": "The keyboard automation, which triggers when an external keyboard is connected or disconnected."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "And the notification automation, which runs when a notification is received from a specific app."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "I'll dive into an example of how I can use the notification automation with an app I'm working on."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "This is Soup Chef, an app that allows me to browse soups and order them for delivery."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "When a soup delivery is close, my app sends a notification with the driver's name and how soon to expect them."
+  },
+  {
+    "timestamp": "2:10",
+    "content": "I like to turn my porch lights on when I get that notification,"
+  },
+  {
+    "timestamp": "2:14",
+    "content": "so the driver can find the door when it's late at night."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "I'd love for that to happen automatically."
+  },
+  {
+    "timestamp": "2:19",
+    "content": "To do this, I've created a shortcut that turns on my porch lights"
+  },
+  {
+    "timestamp": "2:24",
+    "content": "and has my living room home pod announce that my soup is about to arrive."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "The notification automation is triggered when I receive a notification from the Soup Chef app."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "I don't want it running for every notification from the app,"
+  },
+  {
+    "timestamp": "2:38",
+    "content": "so I've added a filter for the word arriving."
+  },
+  {
+    "timestamp": "2:41",
+    "content": "That way, it only runs when the app is notifying me that my soup is arriving."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "Now, my delivery person will always have a safe, well-lit walk up to my front door."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "This works well because my app provides a concise, informative notification."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "The driver's name makes it distinct, the verb arriving makes it specific,"
+  },
+  {
+    "timestamp": "3:04",
+    "content": "and the time until arrival makes it actionable."
+  },
+  {
+    "timestamp": "3:07",
+    "content": "These details make the notification easy to parse and interpret within a shortcut."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "If you follow the best practices for designing notifications in the Human Interface Guidelines,"
+  },
+  {
+    "timestamp": "3:19",
+    "content": "your users will be able to harness your notifications to build powerful automations like this one."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "Next, I'll talk about the Use Model action."
+  },
+  {
+    "timestamp": "3:28",
+    "content": "The Use Model action lets you tap into the power of large language models directly within your shortcuts."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Now, it's more powerful than ever, with access to new, more capable Apple Intelligence models"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "that have the ability to go out to the web for up-to-date information."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "All of these models can work with content from your apps, like this example,"
+  },
+  {
+    "timestamp": "3:51",
+    "content": "where the action is able to find the events related to my upcoming trip to Montreal"
+  },
+  {
+    "timestamp": "3:55",
+    "content": "when a large list of upcoming events is passed in."
+  },
+  {
+    "timestamp": "3:58",
+    "content": "Let's go back to the Soup Chef app."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "I'd like to build a shortcut that picks a soup I like and lets me quickly order it."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "I'll call it Soup of the Day."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "To build this, my shortcut will need access to my app's soup data."
+  },
+  {
+    "timestamp": "4:14",
+    "content": "Using an entity property query in App Intents,"
+  },
+  {
+    "timestamp": "4:17",
+    "content": "I've already exposed a Find Soups action that fetches all soups from my app"
+  },
+  {
+    "timestamp": "4:21",
+    "content": "with the ability to filter to the ones available today."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "I've also built an action called Order Soup,"
+  },
+  {
+    "timestamp": "4:29",
+    "content": "which takes a soup as a parameter,"
+  },
+  {
+    "timestamp": "4:31",
+    "content": "asks me to confirm,"
+  },
+  {
+    "timestamp": "4:33",
+    "content": "and places the order."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "I'll start building my shortcut by stringing these together with the Use Model action."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "This shortcut finds today's available soups,"
+  },
+  {
+    "timestamp": "4:43",
+    "content": "then uses a model to pick one that matches my spice level preference."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "Let's run it."
+  },
+  {
+    "timestamp": "4:51",
+    "content": "It picked a chicken tortilla soup,"
+  },
+  {
+    "timestamp": "4:56",
+    "content": "but in Soup Chef, that's one of the milder options on the menu."
+  },
+  {
+    "timestamp": "5:00",
+    "content": "I'm looking for something spicier."
+  },
+  {
+    "timestamp": "5:03",
+    "content": "When a model produces a result you didn't expect,"
+  },
+  {
+    "timestamp": "5:06",
+    "content": "you might want to know exactly what the model saw,"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "so you can understand what went wrong."
+  },
+  {
+    "timestamp": "5:11",
+    "content": "There's a way to do exactly that."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "You can now inspect the model transcript"
+  },
+  {
+    "timestamp": "5:15",
+    "content": "and see everything that was passed to the model in its raw format."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "I'll add a Show Content action right after the Use Model action."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "Next, I'll select the transcript property on its output in the Show Content action."
+  },
+  {
+    "timestamp": "5:30",
+    "content": "And now, when I run my shortcut, I can see the transcript."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "Here, I can see the exact soup entities that were passed to the model,"
+  },
+  {
+    "timestamp": "5:41",
+    "content": "and I can expand each one to understand exactly what the model saw."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Here's the structured representation of a soup entity that was passed to the model."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "And these are the properties exposed on that entity."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "With just the name and availability,"
+  },
+  {
+    "timestamp": "5:58",
+    "content": "the model doesn't have enough to accurately judge spice level."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "Adding an Ingredients property,"
+  },
+  {
+    "timestamp": "6:04",
+    "content": "which lists each ingredient and its quantity,"
+  },
+  {
+    "timestamp": "6:07",
+    "content": "should give the model what it needs."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Let's add that."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "Here's my soup entity."
+  },
+  {
+    "timestamp": "6:14",
+    "content": "It exposes properties for the name and availability of a given soup."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "Let's add ingredients here as well,"
+  },
+  {
+    "timestamp": "6:22",
+    "content": "as a simple array of strings."
+  },
+  {
+    "timestamp": "6:25",
+    "content": "Each string will contain an ingredient"
+  },
+  {
+    "timestamp": "6:27",
+    "content": "and its quantity per serving."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "I've removed the Show Content action that was used to debug,"
+  },
+  {
+    "timestamp": "6:34",
+    "content": "and I'll try running the shortcut again with the change."
+  },
+  {
+    "timestamp": "6:37",
+    "content": "Now that the model has access to each soup's ingredients,"
+  },
+  {
+    "timestamp": "6:42",
+    "content": "it picked a Tom Yum soup that has some real heat."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "I think I'll order that one."
+  },
+  {
+    "timestamp": "6:48",
+    "content": "For more on building App Intents for the Use Model action,"
+  },
+  {
+    "timestamp": "6:52",
+    "content": "check out Develop for Shortcuts in Spotlight with App Intents"
+  },
+  {
+    "timestamp": "6:55",
+    "content": "from WWDC25."
+  },
+  {
+    "timestamp": "6:58",
+    "content": "Finally, I'll talk about storage."
+  },
+  {
+    "timestamp": "7:01",
+    "content": "With storage, you can now save content within a shortcut"
+  },
+  {
+    "timestamp": "7:04",
+    "content": "to persist it between runs."
+  },
+  {
+    "timestamp": "7:06",
+    "content": "In the Shortcuts Editor,"
+  },
+  {
+    "timestamp": "7:09",
+    "content": "there's now a view that allows you to create,"
+  },
+  {
+    "timestamp": "7:12",
+    "content": "view, and edit the values that are stored in a shortcut."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "You can also create a global value,"
+  },
+  {
+    "timestamp": "7:17",
+    "content": "which is shared across multiple shortcuts."
+  },
+  {
+    "timestamp": "7:19",
+    "content": "This is useful for data you need to access"
+  },
+  {
+    "timestamp": "7:22",
+    "content": "in more than one shortcut, like an API key."
+  },
+  {
+    "timestamp": "7:26",
+    "content": "These three actions enable you to retrieve"
+  },
+  {
+    "timestamp": "7:29",
+    "content": "and update this data from within your shortcut,"
+  },
+  {
+    "timestamp": "7:32",
+    "content": "unlocking so many possibilities,"
+  },
+  {
+    "timestamp": "7:34",
+    "content": "from simple shortcuts that count or log items like daily coffees"
+  },
+  {
+    "timestamp": "7:38",
+    "content": "to advanced ones that track richer context across runs."
+  },
+  {
+    "timestamp": "7:43",
+    "content": "Let's take a look at how I can use storage"
+  },
+  {
+    "timestamp": "7:45",
+    "content": "to improve a shortcut I use every day."
+  },
+  {
+    "timestamp": "7:47",
+    "content": "I closely follow motor racing,"
+  },
+  {
+    "timestamp": "7:50",
+    "content": "and I have a shortcut that shows me a technical fact every morning."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "The use model action is designed to be deterministic,"
+  },
+  {
+    "timestamp": "7:59",
+    "content": "which is great when you want predictable model output."
+  },
+  {
+    "timestamp": "8:01",
+    "content": "But for this shortcut, I want fresh facts every morning."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "I can use the storage actions to achieve this."
+  },
+  {
+    "timestamp": "8:10",
+    "content": "I'll start by retrieving a stored value that I'll name previous facts."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "That'll be my list that contains every past fact."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "Next, I'll pass it to the model"
+  },
+  {
+    "timestamp": "8:22",
+    "content": "and ask the model to stay away from these previous facts."
+  },
+  {
+    "timestamp": "8:25",
+    "content": "Once the model responds with a fact,"
+  },
+  {
+    "timestamp": "8:28",
+    "content": "I'll use the add to list action,"
+  },
+  {
+    "timestamp": "8:30",
+    "content": "which outputs a list with the new fact appended."
+  },
+  {
+    "timestamp": "8:33",
+    "content": "I can use the setter action to store the new list."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "Now, my shortcut will come up with something new every day."
+  },
+  {
+    "timestamp": "8:42",
+    "content": "The great thing is that storage works with any type of data and shortcuts,"
+  },
+  {
+    "timestamp": "8:45",
+    "content": "including app entities."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Using storage, I'd like to make a final improvement"
+  },
+  {
+    "timestamp": "8:51",
+    "content": "to my soup of the day shortcut."
+  },
+  {
+    "timestamp": "8:53",
+    "content": "I've noticed that when I run it,"
+  },
+  {
+    "timestamp": "8:55",
+    "content": "the model often picks the same soup several days in a row."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "I want to give the model a memory of recent selections"
+  },
+  {
+    "timestamp": "9:01",
+    "content": "so it can pick a different one every day."
+  },
+  {
+    "timestamp": "9:04",
+    "content": "Just like my motor racing example,"
+  },
+  {
+    "timestamp": "9:06",
+    "content": "I'll use the storage actions here."
+  },
+  {
+    "timestamp": "9:09",
+    "content": "With that, the use model action knows not to repeat past picks."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "And now, once I've run the shortcut a few times,"
+  },
+  {
+    "timestamp": "9:18",
+    "content": "when I open the storage view,"
+  },
+  {
+    "timestamp": "9:20",
+    "content": "there's a list of previous soups."
+  },
+  {
+    "timestamp": "9:22",
+    "content": "I've been building and running this shortcut on my iPhone,"
+  },
+  {
+    "timestamp": "9:25",
+    "content": "but the great thing is its stored values sync across my devices."
+  },
+  {
+    "timestamp": "9:29",
+    "content": "So if I'm using my iPad,"
+  },
+  {
+    "timestamp": "9:31",
+    "content": "I can run the shortcut there,"
+  },
+  {
+    "timestamp": "9:33",
+    "content": "and it'll remember my past soups."
+  },
+  {
+    "timestamp": "9:35",
+    "content": "Because these values sync across devices,"
+  },
+  {
+    "timestamp": "9:38",
+    "content": "entities need a consistent identity across every device."
+  },
+  {
+    "timestamp": "9:42",
+    "content": "An entity saved on an iPhone"
+  },
+  {
+    "timestamp": "9:44",
+    "content": "should be identified by your iPad or Mac app as the same entity."
+  },
+  {
+    "timestamp": "9:48",
+    "content": "For example,"
+  },
+  {
+    "timestamp": "9:50",
+    "content": "here's a simple shortcut that retrieves a stored soup"
+  },
+  {
+    "timestamp": "9:53",
+    "content": "and passes it into my order soup intent."
+  },
+  {
+    "timestamp": "9:55",
+    "content": "Since the stored value may have originated on a different device,"
+  },
+  {
+    "timestamp": "10:00",
+    "content": "the order intent needs to recognize the soup,"
+  },
+  {
+    "timestamp": "10:03",
+    "content": "no matter which device originally stored it."
+  },
+  {
+    "timestamp": "10:06",
+    "content": "To make this work,"
+  },
+  {
+    "timestamp": "10:08",
+    "content": "I ensured my identifier comes from a source"
+  },
+  {
+    "timestamp": "10:10",
+    "content": "that produces the same value on every device,"
+  },
+  {
+    "timestamp": "10:13",
+    "content": "not one that varies per device."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "My soup app is backed by an online database of soups,"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "so I use each soup's database row ID"
+  },
+  {
+    "timestamp": "10:21",
+    "content": "as its stable entity identifier."
+  },
+  {
+    "timestamp": "10:24",
+    "content": "So those are some of the new capabilities coming to shortcuts."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "Next,"
+  },
+  {
+    "timestamp": "10:29",
+    "content": "try building shortcuts that integrate with your app"
+  },
+  {
+    "timestamp": "10:31",
+    "content": "to get a sense of what your users might want to automate."
+  },
+  {
+    "timestamp": "10:35",
+    "content": "Refine your notifications"
+  },
+  {
+    "timestamp": "10:36",
+    "content": "so your users can build powerful automations."
+  },
+  {
+    "timestamp": "10:40",
+    "content": "And finally,"
+  },
+  {
+    "timestamp": "10:41",
+    "content": "test your app entities"
+  },
+  {
+    "timestamp": "10:42",
+    "content": "to make sure they play well"
+  },
+  {
+    "timestamp": "10:44",
+    "content": "with the use model action"
+  },
+  {
+    "timestamp": "10:45",
+    "content": "and storage in shortcuts."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "Your soup is almost here."
+  },
+  {
+    "timestamp": "10:50",
+    "content": "Well,"
+  },
+  {
+    "timestamp": "10:51",
+    "content": "time to go pick up my soup."
+  },
+  {
+    "timestamp": "10:53",
+    "content": "Thanks for joining me."
+  }
+]

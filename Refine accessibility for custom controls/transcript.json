@@ -1,0 +1,962 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Kin,"
+  },
+  {
+    "timestamp": "0:08",
+    "content": "a software engineer on the accessibility team."
+  },
+  {
+    "timestamp": "0:10",
+    "content": "Custom UI controls empower people to do unique and creative things in your app."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "They let people use gestures and"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "interactions that go beyond standard controls."
+  },
+  {
+    "timestamp": "0:22",
+    "content": "At Apple, we believe that technology works best when it works for everyone."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "That means bringing a great experience to people using assistive technologies,"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "like voiceover, switch control, and more."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "Making control accessible ensures that everyone gets access to"
+  },
+  {
+    "timestamp": "0:42",
+    "content": "the very thing your app was built to do."
+  },
+  {
+    "timestamp": "0:46",
+    "content": "In this session, I'll explore how you can make any control in your app accessible."
+  },
+  {
+    "timestamp": "0:51",
+    "content": "First, I'll start by explaining some guiding principles you can use."
+  },
+  {
+    "timestamp": "0:56",
+    "content": "Then I'll show you how those can apply to a few complex controls."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "Now let's talk about the guiding principles."
+  },
+  {
+    "timestamp": "1:05",
+    "content": "Consider this slider."
+  },
+  {
+    "timestamp": "1:07",
+    "content": "It's a standard slider from SwiftUI."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "Even if this is your first time encountering it,"
+  },
+  {
+    "timestamp": "1:12",
+    "content": "you may already know a lot about it from its appearance."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "It contains a track and on top of it, a handle."
+  },
+  {
+    "timestamp": "1:21",
+    "content": "The handle appears about halfway along its track."
+  },
+  {
+    "timestamp": "1:24",
+    "content": "The handle also seems like someone can grab it."
+  },
+  {
+    "timestamp": "1:27",
+    "content": "So it can be moved by dragging."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "Using this visual information, you gather a lot of implicit cues about this control."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "You can tell that this control represents a continuous value."
+  },
+  {
+    "timestamp": "1:39",
+    "content": "You also know what the current value is."
+  },
+  {
+    "timestamp": "1:42",
+    "content": "In this case, about half of the maximum."
+  },
+  {
+    "timestamp": "1:46",
+    "content": "You can also identify the gesture for actions, like changing its value."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "The handle appears to be draggable."
+  },
+  {
+    "timestamp": "1:53",
+    "content": "And when you do, the feedback is immediate."
+  },
+  {
+    "timestamp": "1:56",
+    "content": "The track fails and the handle moves, giving clear feedback that something happened."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "Nobody had to explain any of that."
+  },
+  {
+    "timestamp": "2:03",
+    "content": "It was understood at a glance."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "You bring process, the shape, the position, the expected behavior, all in a fraction of a second."
+  },
+  {
+    "timestamp": "2:13",
+    "content": "That's how powerful visual information is."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "Now, what if someone can't see the screen?"
+  },
+  {
+    "timestamp": "2:19",
+    "content": "The track, the handle, the position, none of it is known."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "Not everyone will have access to visual information."
+  },
+  {
+    "timestamp": "2:28",
+    "content": "So it's important to consider how people using assistive technologies will interact with controls like these."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "Here's how VoiceOver describes this slider."
+  },
+  {
+    "timestamp": "2:39",
+    "content": "VoiceOver is a built-in screen reader on Apple platforms."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "It lets people who are blind or low vision use gestures to interact with their device."
+  },
+  {
+    "timestamp": "2:50",
+    "content": "Brightness, 50%, adjustable."
+  },
+  {
+    "timestamp": "2:53",
+    "content": "Swipe up or down with one finger to adjust the value."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "Using VoiceOver, someone is able to understand what the slider controls."
+  },
+  {
+    "timestamp": "3:03",
+    "content": "It sets a label, brightness."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "It also indicates that this control has a value and it's currently set to 50%."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "It's also clear what actions someone can take."
+  },
+  {
+    "timestamp": "3:14",
+    "content": "It reads adjustable and provides a hint on how to adjust the value."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "As the value changes, announces the new value in real time."
+  },
+  {
+    "timestamp": "3:24",
+    "content": "That's the feedback someone gets."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "Someone using VoiceOver can get a great experience, even without access to the controls visuals."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Consider the information people get from the visual form of a control."
+  },
+  {
+    "timestamp": "3:39",
+    "content": "Use each of these as your guiding principle for your own accessibility experience."
+  },
+  {
+    "timestamp": "3:43",
+    "content": "Ensure that the purpose of the control is understood."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "If it expresses a value, make that value available to assistive technologies."
+  },
+  {
+    "timestamp": "3:51",
+    "content": "Make it clear what actions someone can take and how they get feedback as they use the control."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "Make it clear what actions are."
+  },
+  {
+    "timestamp": "3:59",
+    "content": "Here's another example."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "A custom control for my coffee maker's app."
+  },
+  {
+    "timestamp": "4:04",
+    "content": "Some mornings are full cup mornings."
+  },
+  {
+    "timestamp": "4:07",
+    "content": "Some mornings are half."
+  },
+  {
+    "timestamp": "4:09",
+    "content": "Depends if I wake up to my alarm or to screaming cats."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "So, I fill the nap that lets me control the amount of coffee brewed in with one simple gesture."
+  },
+  {
+    "timestamp": "4:19",
+    "content": "I drag up for more coffee and drag down for less."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "The fill level represents how many ounces to be brewed."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "Currently, this control doesn't provide any additional information for accessibility."
+  },
+  {
+    "timestamp": "4:32",
+    "content": "As I swipe right to select the control, VoiceOver doesn't describe what it does or how someone changes its value."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "Settings, button, 6 ounces, drag up or down on the cup."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "It's not clear how to interact with this control yet."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "But don't worry."
+  },
+  {
+    "timestamp": "4:52",
+    "content": "This can be proved in a few simple steps."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "To do this, I'll revisit the guiding principles I explored earlier."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "Here's the implementation for the coffee dispenser view."
+  },
+  {
+    "timestamp": "5:04",
+    "content": "Currently, it just declares a coffee level as a state and passes it to the slider."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "First, I'll mark the slider as an accessibility element."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "To give it a clear purpose, I use the accessibility label modifier to call it coffee dispenser."
+  },
+  {
+    "timestamp": "5:21",
+    "content": "And then, I'll use the accessibility value modifier to announce the current fill level."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "I also want to give VoiceOver the ability to adjust the coffee slider the same way a built-in slider does."
+  },
+  {
+    "timestamp": "5:34",
+    "content": "I'll add the same interaction to this control."
+  },
+  {
+    "timestamp": "5:37",
+    "content": "I start by adding a trait called adjustable."
+  },
+  {
+    "timestamp": "5:40",
+    "content": "This tells VoiceOver that this control can be adjusted with the swipe."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Then, I define what each swipe does with the accessibility adjustable action modifier."
+  },
+  {
+    "timestamp": "5:51",
+    "content": "The closure provides a direction parameter, either increment or decrement."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "The closure should handle each case."
+  },
+  {
+    "timestamp": "6:00",
+    "content": "With those changes, here's the new VoiceOver experience."
+  },
+  {
+    "timestamp": "6:04",
+    "content": "I'll swipe right to select the control and then swipe up and down to adjust the amount of coffee I want."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "Coffee dispenser."
+  },
+  {
+    "timestamp": "6:12",
+    "content": "Six ounces."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "Adjustable."
+  },
+  {
+    "timestamp": "6:15",
+    "content": "Swipe up or down with one finger to adjust the value."
+  },
+  {
+    "timestamp": "6:20",
+    "content": "Seven ounces."
+  },
+  {
+    "timestamp": "6:22",
+    "content": "Eight ounces."
+  },
+  {
+    "timestamp": "6:23",
+    "content": "Seven ounces."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "Six ounces."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "People can now adjust the coffee level using VoiceOver one ounce at a time."
+  },
+  {
+    "timestamp": "6:32",
+    "content": "But what if someone is feeling particular?"
+  },
+  {
+    "timestamp": "6:34",
+    "content": "And what's to adjust by half an ounce?"
+  },
+  {
+    "timestamp": "6:36",
+    "content": "For precise control, VoiceOver has a built-in capability called the pass-through gesture."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "To perform a pass-through gesture, someone using VoiceOver can double tap and hold to activate."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "The gesture starts at your control accessibility activation point."
+  },
+  {
+    "timestamp": "6:54",
+    "content": "As the person's fingers moves around, VoiceOver sends touch events directly to the control."
+  },
+  {
+    "timestamp": "7:00",
+    "content": "This gives someone more precise, fine-grained control over the value."
+  },
+  {
+    "timestamp": "7:05",
+    "content": "For the coffee slider, the accessibility activation point is at the center by default."
+  },
+  {
+    "timestamp": "7:10",
+    "content": "I'll set it to match the current fill level."
+  },
+  {
+    "timestamp": "7:13",
+    "content": "This way, the gesture always starts right at the coffee level, giving room to adjust whichever"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "direction makes sense."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "It's also important to give people feedback during the pass-through gesture."
+  },
+  {
+    "timestamp": "7:27",
+    "content": "To do this, I post the accessibility announcement when the value changes."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "But not every change though."
+  },
+  {
+    "timestamp": "7:33",
+    "content": "That will get noisy."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "Instead, I track what was last spoken and when."
+  },
+  {
+    "timestamp": "7:38",
+    "content": "If the value has actually changed, and at least 0.3 seconds have passed, then I announce."
+  },
+  {
+    "timestamp": "7:44",
+    "content": "Otherwise, I skip it."
+  },
+  {
+    "timestamp": "7:46",
+    "content": "This way, people using VoiceOver can hear meaningful updates."
+  },
+  {
+    "timestamp": "7:52",
+    "content": "Now, I'll double tap and hold."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "Then move my finger up to try a pass-through gesture."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "To fill my coffee level up to 9.5 ounces."
+  },
+  {
+    "timestamp": "8:02",
+    "content": "Coffee dispenser."
+  },
+  {
+    "timestamp": "8:03",
+    "content": "6 ounces."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "Adjustable."
+  },
+  {
+    "timestamp": "8:06",
+    "content": "Swipe up or down with one finger to adjust the value."
+  },
+  {
+    "timestamp": "8:11",
+    "content": "6.1."
+  },
+  {
+    "timestamp": "8:12",
+    "content": "6.4 ounces."
+  },
+  {
+    "timestamp": "8:13",
+    "content": "6.6."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "7.7."
+  },
+  {
+    "timestamp": "8:15",
+    "content": "7.7."
+  },
+  {
+    "timestamp": "8:16",
+    "content": "8.1."
+  },
+  {
+    "timestamp": "8:17",
+    "content": "8.3."
+  },
+  {
+    "timestamp": "8:18",
+    "content": "8.4 ounces."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "8.5 ounce."
+  },
+  {
+    "timestamp": "8:20",
+    "content": "8.6 ounces."
+  },
+  {
+    "timestamp": "8:21",
+    "content": "8.7 ounces."
+  },
+  {
+    "timestamp": "8:23",
+    "content": "8.8 ounce."
+  },
+  {
+    "timestamp": "8:24",
+    "content": "9.9.5 ounces."
+  },
+  {
+    "timestamp": "8:27",
+    "content": "That's great."
+  },
+  {
+    "timestamp": "8:28",
+    "content": "The control is now draggable and gives meaningful updates."
+  },
+  {
+    "timestamp": "8:32",
+    "content": "The experience now delivers on the guiding principles I shared earlier with the label,"
+  },
+  {
+    "timestamp": "8:38",
+    "content": "value, actions, and announcements."
+  },
+  {
+    "timestamp": "8:41",
+    "content": "Now that I've explored basic custom control, let's take a look at a few more complex examples."
+  },
+  {
+    "timestamp": "8:48",
+    "content": "Here is one of my favorite feature on iOS, background sounds."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "It lets me play ambient audio, like rain or ocean waves, to help me focus and relax."
+  },
+  {
+    "timestamp": "8:59",
+    "content": "You can find it right in the accessibility settings."
+  },
+  {
+    "timestamp": "9:03",
+    "content": "Inside settings, there's an equalizer control."
+  },
+  {
+    "timestamp": "9:06",
+    "content": "It's a two-dimensional pad."
+  },
+  {
+    "timestamp": "9:08",
+    "content": "You can move the handle at the center anywhere on the surface."
+  },
+  {
+    "timestamp": "9:13",
+    "content": "This pad is two-dimension."
+  },
+  {
+    "timestamp": "9:15",
+    "content": "You can move around to adjust the sound's tone."
+  },
+  {
+    "timestamp": "9:17",
+    "content": "Visually, there are frequency and amplitude symbols for each axis."
+  },
+  {
+    "timestamp": "9:23",
+    "content": "When you grab the handle, you can actually explore the space of these two values at the"
+  },
+  {
+    "timestamp": "9:28",
+    "content": "same time."
+  },
+  {
+    "timestamp": "9:30",
+    "content": "With the slider, the adjustable traits provide two actions, increment and decrement, on a"
+  },
+  {
+    "timestamp": "9:37",
+    "content": "single axis."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "But with this control, there are two axes, horizontal and vertical."
+  },
+  {
+    "timestamp": "9:44",
+    "content": "Adding the adjustable trait would only cover one direction, so it's not the ideal solution."
+  },
+  {
+    "timestamp": "9:51",
+    "content": "This is where custom actions come in."
+  },
+  {
+    "timestamp": "9:53",
+    "content": "Custom actions let you expose common actions of a control."
+  },
+  {
+    "timestamp": "9:57",
+    "content": "Each action has a label that voiceover reads out loud and a closure that runs when activated."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "And like the adjustable action, custom actions support any operation that you define, not"
+  },
+  {
+    "timestamp": "10:09",
+    "content": "limited to a single axis."
+  },
+  {
+    "timestamp": "10:12",
+    "content": "For this equalizer pad, here's how custom actions are added."
+  },
+  {
+    "timestamp": "10:16",
+    "content": "On the equalizer pad view, the accessibility action modifier is added four times."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "Each action has a descriptive name, move up, move right, move down, move left."
+  },
+  {
+    "timestamp": "10:28",
+    "content": "Each one moves a single axis by a fixed step planned within its range."
+  },
+  {
+    "timestamp": "10:34",
+    "content": "These actions make it possible to explore the space really just by performing actions that"
+  },
+  {
+    "timestamp": "10:39",
+    "content": "are already familiar to people who rely on assistive technologies."
+  },
+  {
+    "timestamp": "10:45",
+    "content": "Here's the experience of using equalizer pad with custom actions."
+  },
+  {
+    "timestamp": "10:49",
+    "content": "I'll swipe up and down to select an action and double tap to perform it."
+  },
+  {
+    "timestamp": "10:54",
+    "content": "Filter chart."
+  },
+  {
+    "timestamp": "10:55",
+    "content": "Frequency zero amplitude 10."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Double tap and hold."
+  },
+  {
+    "timestamp": "10:59",
+    "content": "Then drag to adjust filters."
+  },
+  {
+    "timestamp": "11:02",
+    "content": "The bounds of the chart axis are set to minus 100 to 100."
+  },
+  {
+    "timestamp": "11:05",
+    "content": "Swipe up or down to select a custom action."
+  },
+  {
+    "timestamp": "11:08",
+    "content": "Then double tap to activate."
+  },
+  {
+    "timestamp": "11:10",
+    "content": "Move down."
+  },
+  {
+    "timestamp": "11:11",
+    "content": "Move up."
+  },
+  {
+    "timestamp": "11:12",
+    "content": "Move right."
+  },
+  {
+    "timestamp": "11:13",
+    "content": "Move left."
+  },
+  {
+    "timestamp": "11:14",
+    "content": "Move right."
+  },
+  {
+    "timestamp": "11:15",
+    "content": "Move up."
+  },
+  {
+    "timestamp": "11:16",
+    "content": "Frequency zero amplitude 20."
+  },
+  {
+    "timestamp": "11:19",
+    "content": "Frequency zero amplitude 30."
+  },
+  {
+    "timestamp": "11:22",
+    "content": "Frequency zero amplitude 40."
+  },
+  {
+    "timestamp": "11:25",
+    "content": "Someone can navigate to 2D space through actions and the sound itself provides clear feedback."
+  },
+  {
+    "timestamp": "11:34",
+    "content": "The equalizer pad is a great example of how the platforms applies each of the guiding principles"
+  },
+  {
+    "timestamp": "11:41",
+    "content": "to its own experiences."
+  },
+  {
+    "timestamp": "11:43",
+    "content": "Now, I want to show you an app that I've been working on with its own custom control."
+  },
+  {
+    "timestamp": "11:49",
+    "content": "If you're anything like me, you love your pads and when you're away at work, you really miss them."
+  },
+  {
+    "timestamp": "11:54",
+    "content": "To keep me company during the day, I built an app that lets me play with my cat right from my screen."
+  },
+  {
+    "timestamp": "12:01",
+    "content": "Pet it and it purrs, tap it and get a meow, pinch it."
+  },
+  {
+    "timestamp": "12:06",
+    "content": "Well, it's a cat, so it hisses right back at you."
+  },
+  {
+    "timestamp": "12:09",
+    "content": "Just like the real thing."
+  },
+  {
+    "timestamp": "12:11",
+    "content": "I haven't added any accessibility support for this control yet."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "I'll check out the default experience with voiceover."
+  },
+  {
+    "timestamp": "12:18",
+    "content": "Cat fill, space, image."
+  },
+  {
+    "timestamp": "12:20",
+    "content": "Touch the cat to interact."
+  },
+  {
+    "timestamp": "12:23",
+    "content": "It just says an image on the screen."
+  },
+  {
+    "timestamp": "12:26",
+    "content": "Patting, tapping and pinching are all the gestures that this control supports,"
+  },
+  {
+    "timestamp": "12:32",
+    "content": "but voiceover doesn't know they exist."
+  },
+  {
+    "timestamp": "12:35",
+    "content": "All of that charm, the purring, the kneading, the angry meow, it's all there."
+  },
+  {
+    "timestamp": "12:42",
+    "content": "Waiting to be shared with people who rely on assistive technologies."
+  },
+  {
+    "timestamp": "12:47",
+    "content": "Virtual Cat is a Swift UI view containing the interactive cat surface."
+  },
+  {
+    "timestamp": "12:52",
+    "content": "To express the control purpose, I add an accessibility label that reads Virtual Cat."
+  },
+  {
+    "timestamp": "12:58",
+    "content": "Then I set the accessibility value to the cat's current reaction."
+  },
+  {
+    "timestamp": "13:02",
+    "content": "Now, I need a way to explore the gestures for interacting with the cat to voiceover."
+  },
+  {
+    "timestamp": "13:08",
+    "content": "People could use the pass-through gesture, but it might not be the best fit here."
+  },
+  {
+    "timestamp": "13:12",
+    "content": "For example, people might want to do this action over and over again or use multiple gestures."
+  },
+  {
+    "timestamp": "13:19",
+    "content": "So for this control, I'll use direct touch."
+  },
+  {
+    "timestamp": "13:22",
+    "content": "The direct touch API marks the region of the screen as a direct touch area."
+  },
+  {
+    "timestamp": "13:27",
+    "content": "When you add the allows direct interaction traits, touch events pass straight to the control,"
+  },
+  {
+    "timestamp": "13:34",
+    "content": "rather than being processed by voiceover."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "This way, people can interact with the control directly,"
+  },
+  {
+    "timestamp": "13:41",
+    "content": "allowing them to use all the gestures it supports."
+  },
+  {
+    "timestamp": "13:44",
+    "content": "You can customize this behavior with direct touch options."
+  },
+  {
+    "timestamp": "13:48",
+    "content": "First option is require activation."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "When set, the control won't respond to direct touch until someone double taps."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "This allows someone to drag their finger across the screen without accidentally activating it."
+  },
+  {
+    "timestamp": "14:03",
+    "content": "And unlike the pass-through gesture, direct touch stays active until focus moves to another element."
+  },
+  {
+    "timestamp": "14:10",
+    "content": "Another option is silent on touch."
+  },
+  {
+    "timestamp": "14:12",
+    "content": "When set, voiceover stays completely silent when someone touches the area."
+  },
+  {
+    "timestamp": "14:18",
+    "content": "This is for controls that provide their audio feedback,"
+  },
+  {
+    "timestamp": "14:21",
+    "content": "where voiceover speech would talk over the audio from the control itself."
+  },
+  {
+    "timestamp": "14:26",
+    "content": "To make this control interactive, I'll add the accessibility direct touch modifier with require activation option."
+  },
+  {
+    "timestamp": "14:34",
+    "content": "Keep in mind, not everyone is going to be able to perform direct touch gestures."
+  },
+  {
+    "timestamp": "14:39",
+    "content": "So whenever possible, try to expose other ways to interact with the control."
+  },
+  {
+    "timestamp": "14:45",
+    "content": "For example, using custom actions."
+  },
+  {
+    "timestamp": "14:48",
+    "content": "Here's the updated experience with voiceover."
+  },
+  {
+    "timestamp": "14:52",
+    "content": "I can double tap to activate the direct touch, and then I'll try patting, tapping, and pinching the cat."
+  },
+  {
+    "timestamp": "15:00",
+    "content": "Virtual cat. Sleeping. Activate to start direct touch interaction. Actions available."
+  },
+  {
+    "timestamp": "15:08",
+    "content": "Virtual cat. Sleeping."
+  },
+  {
+    "timestamp": "15:10",
+    "content": "With these changes, someone using voiceover knows the description of the control and gestures to perform direct touch."
+  },
+  {
+    "timestamp": "15:29",
+    "content": "They also get feedback from the interactions."
+  },
+  {
+    "timestamp": "15:32",
+    "content": "This brings everything that's delightful about this app to people using assistive technologies."
+  },
+  {
+    "timestamp": "15:38",
+    "content": "Make your own custom interactive controls accessible to everyone."
+  },
+  {
+    "timestamp": "15:43",
+    "content": "Turn on voiceover. Open your app to find opportunities for improvement."
+  },
+  {
+    "timestamp": "15:48",
+    "content": "When building custom controls, consider whether people can understand the control purpose, value, actions, and feedback."
+  },
+  {
+    "timestamp": "15:56",
+    "content": "Think about direct touch when your controls relies on gesture which pass-through isn't best supported for."
+  },
+  {
+    "timestamp": "16:02",
+    "content": "And provide custom actions whenever possible."
+  },
+  {
+    "timestamp": "16:05",
+    "content": "This way, people using switch control, voice control, and other assistive technologies can access the same interactions."
+  },
+  {
+    "timestamp": "16:14",
+    "content": "Thanks for watching."
+  }
+]
