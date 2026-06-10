@@ -15,7 +15,12 @@ When the user asks about a topic from a specific session:
 
 1. **Read `README.md`** in that session's folder to get the structured overview
 2. **Read `transcript.json`** to get the full detail and exact wording from the speakers
-3. **Fetch every URL** listed in the README's Resources section using WebFetch — attempt all of them, even if some fail. Apple developer.apple.com pages are often blocked (return only the title); apple.github.io and other third-party doc sites usually succeed. Use whatever code and API details are actually retrieved; do not infer or fill in gaps from blocked pages
+3. **Fetch every URL** listed in the README's Resources section using WebFetch — attempt all of them. For `developer.apple.com/documentation/` URLs, convert to the JSON API format which bypasses the JS rendering block:
+   - Original: `https://developer.apple.com/documentation/FoundationModels/some-page`
+   - JSON API: `https://developer.apple.com/tutorials/data/documentation/foundationmodels/some-page.json`
+   - Rule: replace `/documentation/` with `/tutorials/data/documentation/`, lowercase the entire path, append `.json`
+   - `apple.github.io` and other third-party doc sites can be fetched directly without conversion
+   - Use whatever code and API details are actually retrieved; do not infer or fill in gaps from pages that still fail
 4. **Explain in Traditional Chinese (繁體中文)** with clear structure: what it is, why it exists, how to use it, code examples, and key caveats
 5. **After explaining**, save an English summary to that session's `CLAUDE.md` for future reference
 
