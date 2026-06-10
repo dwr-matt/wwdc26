@@ -1,176 +1,260 @@
 # What's New in the Foundation Models Framework — Session Notes
 
-This is the WWDC26 overview session for Foundation Models. Three major themes: new models, new system tools, new agentic APIs.
+Code sourced from official documentation via JSON API:
+- https://developer.apple.com/tutorials/data/documentation/foundationmodels/analyzing-images-with-multimodal-prompting.json
+- https://developer.apple.com/tutorials/data/documentation/foundationmodels/expanding-generation-with-tool-calling.json
+- https://developer.apple.com/tutorials/data/documentation/foundationmodels/adding-server-side-intelligence-with-private-cloud-compute.json (content via user paste)
 
 ---
 
-## 1. Model Updates
+## Overview: Three Major Themes
 
-### New On-Device Model
-- Rebuilt from scratch: better logic, better tool calling
-- New **Vision capability** — pass images directly into prompts, no preprocessing needed
+1. **New models** — upgraded on-device model + PCC server model + third-party model protocol
+2. **New system tools** — Vision tools (Barcode, OCR) + Spotlight RAG
+3. **New APIs** — Dynamic Profiles, Evaluations Framework, FM CLI, Python SDK
+
+---
+
+## 1. On-Device Model: Vision (Multimodal)
+
+Pass images directly into prompts using `Attachment`. No preprocessing or cropping required.
 
 ```swift
-let response = try await session.respond(to: {
-    ImageAttachment(image: myUIImage)
-    "What technique was used in this origami?"
-})
+func compareImages(imageOne: CGImage, imageTwo: CGImage) async throws -> String {
+    let session = LanguageModelSession()
+    let response = try await session.respond {
+        "Compare these two images by using three bullet points:"
+        Attachment(imageOne)
+        // When the image doesn't have rotation applied (e.g. from AVFoundation),
+        // use orientation to perform a transform before sending to the model.
+        Attachment(imageTwo, orientation: .right)
+    }
+    return response.content
+}
 ```
 
-Supported image types: `UIImage`, `NSImage`, `CGImage`, `CIImage`, `CVPixelBuffer`, File URL. Any size/aspect ratio accepted.
+Image classification with structured output:
+
+```swift
+@Generable
+enum ImageLabel {
+    case cat
+    case dog
+    case frog
+    case bird
+}
+
+func classifyImage(_ image: CGImage) async throws -> ImageLabel {
+    let session = LanguageModelSession()
+    let response = try await session.respond(
+        generating: ImageLabel.self,
+        options: GenerationOptions(samplingMode: .greedy)
+    ) {
+        "Choose the label that best represents the following image:"
+        Attachment(image)
+    }
+    return response.content
+}
+```
+
+Supported image types: `CGImage`, `CIImage`, `CVPixelBuffer`, image URLs.
 
 ---
 
-### Private Cloud Compute (PCC) Language Model
-Server-side model powering many Apple Intelligence features.
+## 2. Private Cloud Compute (PCC) Language Model
 
-| Property | Value |
-|---|---|
-| Context window | 32,000 tokens |
-| Reasoning | `reasoningLevel` parameter (none / low / deep) |
-| Privacy | Prompts never stored, independently verifiable |
-| Auth | No API key, no account setup needed |
-| Cost | Free for < 2M first-time downloads; iCloud+ users get higher limits |
+See full notes in the PCC session CLAUDE.md. Quick reference:
 
 ```swift
+// Change one line to switch to PCC
 let session = LanguageModelSession(model: PrivateCloudComputeLanguageModel())
-let response = try await session.respond(
-    to: "Plan this project",
-    options: ContextOptions(reasoningLevel: .deep)
-)
 ```
 
-PCC also enables Foundation Models on **watchOS 27** for the first time.
+| Property | SystemLanguageModel | PrivateCloudComputeLanguageModel |
+|---|---|---|
+| Works offline | ✅ | ❌ |
+| Usage limits | Unlimited | Daily quota |
+| Reasoning | ❌ | ✅ (light / moderate / deep) |
+| Context size | 4K | 32K |
 
 ---
 
-### Language Model Protocol (Model Abstraction Layer)
-New `LanguageModel` protocol — any model can back a `LanguageModelSession`.
+## 3. Language Model Protocol (Third-Party Models)
+
+`PrivateCloudComputeLanguageModel` and `SystemLanguageModel` both conform to `LanguageModel`. Third-party providers (Anthropic, Google) publish Swift packages that also conform. Usage is identical:
 
 ```swift
 import AnthropicFoundationModels
 let session = LanguageModelSession(model: ClaudeModel())
-
-import GoogleFoundationModels
-let session = LanguageModelSession(model: GeminiModel())
 ```
-
-Available implementations:
-- `SystemLanguageModel` — on-device
-- `PrivateCloudComputeLanguageModel` — Apple server
-- `CoreAILanguageModel` — open source, runs local models on Apple Neural Engine
-- `MLXLanguageModel` — open source, runs local models on Mac GPU
-- Anthropic & Google Swift packages (third-party)
 
 > ⚠️ Third-party models: never hardcode API keys. Use OAuth + Keychain.
 
 ---
 
-### Token Usage Tracking
+## 4. System Tools
+
+### Barcode Reader + OCR (Vision-backed)
+
 ```swift
-let response = try await session.respond(to: prompt)
-response.usage.inputTokens        // total input tokens
-response.usage.cachedInputTokens  // tokens served from cache
-response.usage.reasoningTokens    // tokens spent on reasoning
+func analyzeBarcodeImage(_ image: CGImage) async {
+    do {
+        let session = LanguageModelSession(tools: [BarcodeReaderTool()])
+        let response = try await session.respond {
+            """
+            Scan this image for any barcodes. For each barcode found, describe \
+            its symbology type and explain what the encoded content means or \
+            represents.
+            """
+            Attachment(image)
+                .label("barcode-image")
+        }.content
+        print("The model response: \(response)")
+    } catch {
+        // Handle the error.
+    }
+}
 ```
 
----
+Built-in tools:
+- `BarcodeReaderTool` — scans machine-readable codes from images
+- `OCRTool` — extracts structured text from images
 
-## 2. System Tools
-
-Built-in tools, no implementation needed — just attach to a session.
-
-| Tool | Purpose |
-|---|---|
-| `BarcodeReaderTool` | Model reads barcodes/QR codes from images |
-| `OCRTool` | Extracts structured text from images |
-| `SpotlightSearchTool` | Local RAG — searches user's files via Spotlight index |
-
-Spotlight RAG was the most-requested feature. No custom vector database needed.
+### Spotlight Search (Local RAG)
 
 ```swift
 let session = LanguageModelSession(tools: [SpotlightSearchTool()])
 ```
 
+Gives the model access to the user's local files via Spotlight index. No custom vector database needed.
+
 ---
 
-## 3. New APIs
+## 5. Tool Calling
 
-### Dynamic Profiles
-Overview only — see *Build agentic app experiences with the Foundation Models framework* for the deep dive and detailed notes.
-
-One `LanguageModelSession` dynamically switches between modes. Each mode has its own instructions, tools, and model config. Change a variable → next prompt uses the new config.
+### Define a Tool
 
 ```swift
-@DynamicProfile
-var profile: some DynamicProfile {
-    switch mode {
-    case .analysis:
-        "Analyze the craft in the image"
-        AnalysisTools()
-        Model(.system)
-    case .brainstorming:
-        "Suggest creative project ideas"
-        BrainstormTools()
-        Model(.privateCloudCompute)
-        ReasoningLevel(.deep)
+struct BreadDatabaseTool: Tool {
+    let name = "searchBreadDatabase"
+    let description = "Searches a local database for bread recipes."
+
+    @Generable
+    struct Arguments {
+        @Guide(description: "The type of bread to search for")
+        var searchTerm: String
+        @Guide(description: "The number of recipes to get", .range(1...6))
+        var limit: Int
+    }
+
+    func call(arguments: Arguments) async throws -> [String] {
+        var recipes: [Recipe] = []
+        // retrieve recipes from your database
+        return recipes.map { "Recipe for '\($0.name)': \($0.description) Link: \($0.link)" }
+    }
+}
+```
+
+### Use the Tool
+
+```swift
+let session = LanguageModelSession(tools: [BreadDatabaseTool()])
+let response = try await session.respond(to: "Find three sourdough bread recipes")
+```
+
+### Tool Calling Modes
+
+```swift
+// Force the model to call a tool
+let response = try await session.respond(
+    to: "What's a good sourdough recipe?",
+    options: GenerationOptions(toolCallingMode: .required)
+)
+
+// Prevent tool calls
+let response = try await session.respond(
+    to: "Summarize the recipes you found",
+    options: GenerationOptions(toolCallingMode: .disallowed)
+)
+```
+
+### Error Handling
+
+```swift
+do {
+    let answer = try await session.respond(to: "Find a recipe for tomato soup.")
+} catch let error as LanguageModelSession.ToolCallError {
+    print(error.tool.name)
+    if case .databaseIsEmpty = error.underlyingError as? SearchBreadDatabaseToolError {
+        // Display an error in the UI.
+    }
+} catch {
+    print("Some other error: \(error)")
+}
+```
+
+### Transcript Inspection
+
+```swift
+struct MyHistoryView: View {
+    @State var session = LanguageModelSession(tools: [BreadDatabaseTool()])
+
+    var body: some View {
+        List(session.transcript) { entry in
+            switch entry {
+            case .instructions(let instructions): ...
+            case .prompt(let prompt): ...
+            case .toolCalls(let calls): ...
+            case .toolOutput(let output): ...
+            case .response(let response): ...
+            case .reasoning(let reasoning): ...
+            }
+        }
     }
 }
 ```
 
 ---
 
-### Evaluations Framework
-New Swift framework for measuring AI feature quality. Quantifies the statistical impact of prompt changes — enables data-driven confidence in non-deterministic features. See *Meet the Evaluations Framework* for details.
+## 6. Dynamic Profiles (overview)
+
+See full notes in *Build agentic app experiences* CLAUDE.md for deep dive.
 
 ---
 
-## 4. Mac Tooling
+## 7. Token Usage Tracking
 
-### FM CLI
-Terminal access to on-device and PCC models.
-
-```bash
-fm chat
-fm "what does valley fold mean in origami?"
-fm --image photo.jpg "generate a descriptive filename based on image content"
-```
-
-### Python SDK
-Same on-device model, accessible from Python for data scientists and researchers.
-
-```python
-from foundation_models import LanguageModel
-response = LanguageModel().generate("Explain the valley fold technique")
-```
+Verbal description from transcript only — no verified code available.
+Sessions and responses have a `usage` property: `inputTokens`, `cachedInputTokens`, `reasoningTokens`.
 
 ---
 
-## 5. Open Source
+## 8. FM CLI & Python SDK
 
-| Package | Status |
-|---|---|
-| Foundation Models Framework core | Open source |
-| Foundation Models Framework Utilities | Open source, updated between OS releases |
-| CoreAI Language Model | Open source |
-| MLX Language Model | Open source |
+Verbal description from transcript — no verified code available.
+- `fm chat` — interactive terminal access to on-device and PCC models
+- Python SDK: `from foundation_models import LanguageModel`
 
-Framework now runs anywhere Swift runs, including **Linux servers**.
+---
+
+## Open Source
+
+Foundation Models core framework, Utilities package, CoreAI Language Model, MLX Language Model — all open source. Runs anywhere Swift runs including Linux.
 
 ---
 
 ## Related Sessions
-- [Build agentic app experiences with the Foundation Models framework](../Build%20agentic%20app%20experiences%20with%20the%20Foundation%20Models%20framework/) — Dynamic Profiles deep dive
-- Build with the new Apple Foundation Model on Private Cloud Compute — PCC entitlement details
+- [Build agentic app experiences with the Foundation Models framework](../Build%20agentic%20app%20experiences%20with%20the%20Foundation%20Models%20framework/)
+- [Build with the new Apple Foundation Model on Private Cloud Compute](../Build%20with%20the%20new%20Apple%20Foundation%20Model%20on%20Private%20Cloud%20Compute/)
 - Meet the Evaluations Framework
 - Bring an LLM Provider to the Foundation Models Framework
-- Build AI-Powered Scripts with the FM CLI and Python SDK
 - LLM search using Core Spotlight
 
 ---
 
 ## Resources
-- [Expanding generation with tool calling](https://developer.apple.com/documentation/FoundationModels/expanding-generation-with-tool-calling)
 - [Analyzing images with multimodal prompting](https://developer.apple.com/documentation/FoundationModels/analyzing-images-with-multimodal-prompting)
+- [Expanding generation with tool calling](https://developer.apple.com/documentation/FoundationModels/expanding-generation-with-tool-calling)
+- [Composing dynamic sessions with instructions and profiles](https://developer.apple.com/documentation/FoundationModels/composing-dynamic-sessions-with-instructions-and-profiles)
 - [Adding server-side intelligence with Private Cloud Compute](https://developer.apple.com/documentation/FoundationModels/adding-server-side-intelligence-with-private-cloud-compute)
 - Session page: https://developer.apple.com/videos/play/wwdc2026/241/
