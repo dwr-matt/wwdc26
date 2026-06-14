@@ -126,6 +126,32 @@ struct AskAIProfile: LanguageModelSession.DynamicProfile {
 
 ---
 
+## On-Device-Only Feature Backlog (Noted) — Gated on iOS 27 Local Model Quality
+
+These are LLM-powered note features we've deliberately **not** built on the cloud LLM API path, for two reasons:
+- **Privacy**: running these over every note/notebook means sending substantial user content to a cloud API continuously — not acceptable as a default/always-on behavior
+- **Cost**: these are "ambient"/automatic features (run on every note, not user-initiated chat) — token cost on a cloud API scales with usage in a way that doesn't work for a flat-rate or free tier
+
+iOS 27's upgraded on-device `SystemLanguageModel` (Foundation Models framework) makes these newly viable as **always-on, free, private, local** features — no per-token cost, no data leaves the device. Revisit once we've evaluated on-device model quality (via the Evaluations framework) for each task.
+
+Candidate features:
+1. **Auto-tagging** — suggest tags for a note based on its content
+2. **Suggested titles** — generate a title from note content
+3. **Notebook organization** — re-cluster/organize notes within a single notebook that's grown too large
+4. **Auto-summary / TL;DR** — per-note summary generated automatically
+5. **Action item extraction** — pull out to-dos/owners/deadlines from meeting notes
+9. **Cross-note Q&A** — ask questions across notes in a notebook (local RAG, on-device)
+11. **Related notes suggestions** — surface notes related to the one being viewed (backlink-style)
+12. **Follow-up message drafts** — generate a follow-up email/message from meeting notes
+14. **Weekly digest** — periodic summary of notes created + open action items
+
+### Notes
+- All of these should run via `SystemLanguageModel` (4K context, on-device, unlimited usage, offline) — not PCC or Gemini, to preserve the "free + private + ambient" property.
+- 4K context may be limiting for #3/#9/#14 (whole-notebook or cross-note operations) — may need chunking/iterative summarization strategies.
+- Use the Evaluations framework to benchmark on-device model quality per task before enabling by default.
+
+---
+
 ## Related Session Notes
 - `/Meet the Music Understanding framework/CLAUDE.md` — full framework notes
 - `/Dive into Core AI model authoring and optimization/CLAUDE.md` — coreai-torch conversion pipeline, coreai-opt, CoreAI Debugger
