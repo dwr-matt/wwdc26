@@ -45,5 +45,42 @@ Current app: silent haptic metronome for Apple Watch, BPM via Shazam integration
 
 ---
 
+## Apps: Noted & Capy (AI transcription/meeting apps)
+
+Current diarization stack: **FluidAudio** (pyannote segmentation + WeSpeaker/ECAPA-TDNN embeddings, already converted to CoreML, runs on ANE). Already fully on-device/offline. Benchmarks: 17.7% DER on AMI, 141.2x RTFx on M1, ~100MB models. Also supports cross-recording speaker identification already — no gap there.
+
+### CoreAI vs. FluidAudio (CoreML) for diarization — analysis
+
+**Keep FluidAudio for now.** It's mature, validated, already on-device. No current pain point that CoreAI would solve.
+
+**Pros of FluidAudio (status quo)**:
+- Proven, benchmarked, maintained by a third party — zero conversion/optimization work for us
+- Swift API, no ML pipeline to maintain
+- Multiple model options available (modular pyannote+wespeaker, LS-EEND, Sortformer)
+
+**Cons of FluidAudio**:
+- Third-party dependency — no control over update cadence or model choice
+- Can't fine-tune on our own meeting data and redeploy (we get pre-converted models only)
+- CoreML/ANE path doesn't benefit from M5 Neuron Accelerator (separate hardware path via Tensor Ops/GPU)
+
+**When CoreAI becomes worth it**: only if/when we need to **fine-tune** pyannote/WeSpeaker (or a successor model) on our own data — e.g. to fix accuracy issues with specific accents or multilingual meetings. CoreAI's `torch.export → TorchConverter → optimize` pipeline + `coreai-opt` + CoreAI Debugger would let us deploy and validate a custom-trained checkpoint, which FluidAudio's pre-converted models can't do.
+
+**Cons of switching to CoreAI now**:
+- Re-doing conversion/optimization work FluidAudio already validated, with no current quality benchmark of our own
+- CoreAI requires OS 27.0+ (beta) — bigger adoption-floor jump than current FluidAudio/CoreML requirements
+- Shifts full maintenance burden (model updates, quantization, debugging) onto us
+
+**Decision**: revisit only when a concrete fine-tuning need emerges for diarization accuracy (e.g. specific accent/language complaints from Noted/Capy users).
+
+### Other audio DL model directions for Noted/Capy (not yet covered by current stack)
+- Language identification — auto-detect spoken language per segment, big win for Capy's translation UX
+- DL-based speech enhancement/denoising — upgrade from current noise reduction
+- DL-based VAD — improve "skip silence" accuracy in Noted's smart playback
+- Sentence/topic segmentation — punctuation restoration + topic boundaries to improve AI summary grouping
+- Audio event detection — flag laughter/applause/etc. as meeting highlights
+
+---
+
 ## Related Session Notes
 - `/Meet the Music Understanding framework/CLAUDE.md` — full framework notes
+- `/Dive into Core AI model authoring and optimization/CLAUDE.md` — coreai-torch conversion pipeline, coreai-opt, CoreAI Debugger
