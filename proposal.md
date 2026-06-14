@@ -117,6 +117,20 @@ struct AskAIProfile: LanguageModelSession.DynamicProfile {
 - **Guidance Profiles**: scope search capabilities to attributes Noted/Capy actually donate (date, speaker, notebook) — important for on-device model's smaller context window.
 - **Evaluations**: use `ModelSample` + result-coverage metric to verify the model actually retrieves the right notes for representative queries before shipping.
 
+#### 3b. Migration from current approach (note content stuffed into instructions)
+Current AskAI implementation puts the open note's full content directly into `instructions`, then answers questions about it in a single `respond()` call.
+
+**Don't replace this wholesale — hybrid approach**:
+- **Single-note AskAI (current use case)**: keep stuffing content into instructions. It's more direct (no need for the model to guess search terms for "the note I'm currently looking at"), faster (no extra tool-call round trip), and single notes rarely exceed 4K context anyway. Note: scoping `SpotlightSearchTool` to "just this one item" isn't shown in fetched docs — would need a custom stage or prompt-level hint if pursued.
+- **New cross-note/cross-notebook features** (notebook reorganization, cross-note Q&A, weekly digest — see backlog below): these are impossible with the instruction-stuffing approach (content can't fit), so they're net-new capability via `SpotlightSearchTool`, not a replacement of #1.
+
+**Key tradeoff of switching to tool-based retrieval**:
+- Context budget shifts from "whole note always in context" to "only relevant retrieved snippets in context" — enables handling notes/transcripts far larger than 4K
+- Adds a tool-call round trip → higher latency to first token
+- Requires the donation/indexing pipeline + Index Delegate as a prerequisite (one-time investment, but needed for any cross-note feature regardless of whether SpotlightSearchTool specifically is used)
+
+**Implementation order**: (1) build the Spotlight donation pipeline + Index Delegate first — it's the prerequisite for all cross-note features; (2) leave single-note AskAI as-is; (3) build new cross-note features (cross-note Q&A, notebook reorg, weekly digest) on `SpotlightSearchTool`.
+
 ### 4. PrivateCloudComputeLanguageModel as Gemini alternative/complement
 - `PrivateCloudComputeLanguageModel`: 32K context (vs. 4K on-device), multi-level reasoning (.light/.moderate/.deep), Apple privacy story, one-line model swap.
 - **Constraints**: requires managed entitlement application; **eligibility limited to apps with <2M downloads** — verify Noted/Capy qualify. Daily quota requires persistent (non-dismissible) quota UI per Apple's guidance.
