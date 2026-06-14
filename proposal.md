@@ -81,6 +81,55 @@ Current diarization stack: **FluidAudio** (pyannote segmentation + WeSpeaker/ECA
 
 ---
 
+## AskAI Feature (Noted & Capy) — Foundation Models iOS 27 Upgrades
+
+Current state: AskAI uses on-device Foundation Models for free users, Gemini API for paid users (two separate integration paths).
+
+### 1. Wrap Gemini as a `LanguageModel` provider (foundational change)
+- iOS 27 opens Foundation Models to third-party providers via `LanguageModel` + `LanguageModelExecutor` protocols (session: "Bring an LLM Provider to the Foundation Models Framework").
+- Implement `GeminiLanguageModel: LanguageModel` (executor handles Gemini API calls, transcript mapping, streaming via `LanguageModelExecutorGenerationChannel`).
+- **Impact**: AskAI's prompt assembly, tool definitions, `@Generable` structured output, and error handling become shared code across on-device/PCC/Gemini — free vs. paid becomes "swap the model," not two parallel implementations. API keys via Keychain, not hardcoded.
+
+### 2. Dynamic Profiles for free/paid tier switching
+- `LanguageModelSession.DynamicProfile` body re-evaluates per prompt — subscription status changes apply on the next prompt without rebuilding the session.
+```swift
+struct AskAIProfile: LanguageModelSession.DynamicProfile {
+    var isPaidUser: Bool
+    var body: some LanguageModelSession.DynamicProfile {
+        if isPaidUser {
+            Profile { AskAIInstructions() }.model(GeminiLanguageModel()).temperature(0.7)
+        } else {
+            Profile { AskAIInstructions() }.model(SystemLanguageModel())
+        }
+    }
+}
+```
+
+### 3. Tool Calling + RAG over user's own transcripts (biggest product win for Noted/Capy)
+- Define a custom `Tool` (e.g. `SearchTranscriptsTool`) that queries the app's own transcript/notes database, or use the built-in `SpotlightSearchTool()` if transcripts are Spotlight-indexed.
+- **Impact**: AskAI becomes "ask questions about your own meetings/notes" (RAG-grounded) instead of generic LLM chat — direct product differentiation leveraging data Noted/Capy already have.
+
+### 4. PrivateCloudComputeLanguageModel as Gemini alternative/complement
+- `PrivateCloudComputeLanguageModel`: 32K context (vs. 4K on-device), multi-level reasoning (.light/.moderate/.deep), Apple privacy story, one-line model swap.
+- **Constraints**: requires managed entitlement application; **eligibility limited to apps with <2M downloads** — verify Noted/Capy qualify. Daily quota requires persistent (non-dismissible) quota UI per Apple's guidance.
+- **Impact**: potential cost reduction vs. Gemini for paid tier on large-context tasks (e.g. long meeting summarization), with an "Apple-native privacy" marketing angle.
+
+### 5. Multimodal input via `Attachment`
+- `Attachment(image)` passes `CGImage`/`CIImage`/`CVPixelBuffer`/URLs directly into prompts, no preprocessing.
+- **Impact**: if Capy/Noted notes include screenshots or handwritten photos, AskAI could answer questions about visual content directly.
+
+### Suggested Priority
+1. #1 (unify via `LanguageModel` protocol) — foundation for everything else
+2. #3 (Tool Calling + own-data RAG) — most direct product differentiation
+3. #2 (Dynamic Profiles) — natural consequence of #1
+4. #4 (PCC) and #5 (multimodal) — evaluate based on eligibility/need
+
+---
+
 ## Related Session Notes
 - `/Meet the Music Understanding framework/CLAUDE.md` — full framework notes
 - `/Dive into Core AI model authoring and optimization/CLAUDE.md` — coreai-torch conversion pipeline, coreai-opt, CoreAI Debugger
+- `/Bring an LLM provider to the Foundation Models framework/CLAUDE.md` — `LanguageModel`/`LanguageModelExecutor` protocols
+- `/Build agentic app experiences with the Foundation Models framework/CLAUDE.md` — Dynamic Profiles, Tool Calling
+- `/Build with the new Apple Foundation Model on Private Cloud Compute/CLAUDE.md` — PCC details, eligibility, quota UI
+- `/What's new in the Foundation Models framework/CLAUDE.md` — multimodal `Attachment`, overview
