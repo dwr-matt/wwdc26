@@ -109,6 +109,14 @@ struct AskAIProfile: LanguageModelSession.DynamicProfile {
 - Define a custom `Tool` (e.g. `SearchTranscriptsTool`) that queries the app's own transcript/notes database, or use the built-in `SpotlightSearchTool()` if transcripts are Spotlight-indexed.
 - **Impact**: AskAI becomes "ask questions about your own meetings/notes" (RAG-grounded) instead of generic LLM chat — direct product differentiation leveraging data Noted/Capy already have.
 
+#### 3a. SpotlightSearchTool — concrete implementation path (session: "LLM search using Core Spotlight")
+- One line to wire up: `SpotlightSearchTool()` added to `LanguageModelSession(tools:)` — the model generates Spotlight queries itself, no custom RAG/vector DB needed. **Prerequisite**: notes/transcripts must already be donated to Core Spotlight with rich metadata (date, notebook, speaker, etc.).
+- **`ContactResolver`**: wire up diarization speaker identities so "what did John say" resolves correctly against item metadata.
+- **Custom `CustomStage`**: implement aggregation stages (e.g. "all action items flagged this week across notebooks") — the model invokes them on demand for complex/aggregate queries instead of dumping everything into context.
+- **Index Delegate `searchableItems(for:identifiers:)`** (transcript-described, no verified code): full transcript text is likely stored in Spotlight's compact/search-only form — implement this delegate method so the model can read full transcript content, not just the indexed summary.
+- **Guidance Profiles**: scope search capabilities to attributes Noted/Capy actually donate (date, speaker, notebook) — important for on-device model's smaller context window.
+- **Evaluations**: use `ModelSample` + result-coverage metric to verify the model actually retrieves the right notes for representative queries before shipping.
+
 ### 4. PrivateCloudComputeLanguageModel as Gemini alternative/complement
 - `PrivateCloudComputeLanguageModel`: 32K context (vs. 4K on-device), multi-level reasoning (.light/.moderate/.deep), Apple privacy story, one-line model swap.
 - **Constraints**: requires managed entitlement application; **eligibility limited to apps with <2M downloads** — verify Noted/Capy qualify. Daily quota requires persistent (non-dismissible) quota UI per Apple's guidance.
@@ -159,3 +167,4 @@ Candidate features:
 - `/Build agentic app experiences with the Foundation Models framework/CLAUDE.md` — Dynamic Profiles, Tool Calling
 - `/Build with the new Apple Foundation Model on Private Cloud Compute/CLAUDE.md` — PCC details, eligibility, quota UI
 - `/What's new in the Foundation Models framework/CLAUDE.md` — multimodal `Attachment`, overview
+- `/LLM search using Core Spotlight/CLAUDE.md` — SpotlightSearchTool, custom pipeline stages, contact resolver, evaluations
