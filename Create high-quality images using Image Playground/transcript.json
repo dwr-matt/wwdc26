@@ -1,0 +1,1098 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Hi, I'm Antonio, an engineer on the Image Playground team."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "Today, I'll show you how to bring Image Playground into your app."
+  },
+  {
+    "timestamp": "0:17",
+    "content": "People have been creating images with Image Playground in Messages, Freeform, and in your apps."
+  },
+  {
+    "timestamp": "0:23",
+    "content": "They've been combining scenes, experimenting with different looks, and making things feel personal."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "We are reimagining the experience with powerful image models at the core."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "And now, it makes a real leap with the ability to make high-quality images in virtually any style."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Even photorealistic ones that now look genuinely true to life."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "The Image Playground framework brings that full experience, the same powerful models, the same styles, the same quality, directly into your app."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "The Image Playground app is available on iOS, iPadOS, macOS, and VisionOS."
+  },
+  {
+    "timestamp": "1:09",
+    "content": "It runs on devices with Apple Intelligence support, bringing the full power of generative models to your app."
+  },
+  {
+    "timestamp": "1:16",
+    "content": "Just like the Image Playground app, you can leverage imageplayground.framework APIs on the same platforms."
+  },
+  {
+    "timestamp": "1:25",
+    "content": "Let's walk through how you can add Image Playground to your app."
+  },
+  {
+    "timestamp": "1:29",
+    "content": "I'll start with capabilities, a look at what the image creation model can create."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "Then, I'll show you how to adopt Image Playground, how to present the sheet and seed it with context from your app."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "After that, options, configuring size, aspect ratio, and style."
+  },
+  {
+    "timestamp": "1:52",
+    "content": "And finally, availability, making sure your app handles both supported and unsupported devices gracefully."
+  },
+  {
+    "timestamp": "2:01",
+    "content": "Before writing any code, let's look at what Image Playground can enable in your app."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "Give the model a text description and it creates a matching image."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "You can be as specific or as open-ended as you like."
+  },
+  {
+    "timestamp": "2:16",
+    "content": "A birthday celebration with dogs, balloons, and confetti."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "Or just celebration."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "The model handles the rest."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "The model can create images with people, including multiple people in a single scene."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "With personalization enabled, users can bring in someone from their photos library or simply describe an appearance using text."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "The result is an image that feels personal."
+  },
+  {
+    "timestamp": "2:44",
+    "content": "You have a range of styles to work with."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "You can ask for an image without specifying a style."
+  },
+  {
+    "timestamp": "2:51",
+    "content": "You can specify your desired style in text, such as by asking for an oil painting style."
+  },
+  {
+    "timestamp": "2:58",
+    "content": "Or use one of our presets."
+  },
+  {
+    "timestamp": "3:01",
+    "content": "Animation adds playful character."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "Illustration gives a polished, editorial look."
+  },
+  {
+    "timestamp": "3:09",
+    "content": "Sketch creates a hand-drawn feel."
+  },
+  {
+    "timestamp": "3:11",
+    "content": "Genmoji is a style tuned for expressive, emoji-scale characters you can embed directly in text."
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Image Playground supports multiple sizes and aspect ratios."
+  },
+  {
+    "timestamp": "3:25",
+    "content": "You can request a landscape image for a banner,"
+  },
+  {
+    "timestamp": "3:29",
+    "content": "a portrait image for full screen on iPhone,"
+  },
+  {
+    "timestamp": "3:32",
+    "content": "or square for a thumbnail."
+  },
+  {
+    "timestamp": "3:36",
+    "content": "The model picks the closest supported resolution to the size you asked for."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "All of this runs on Private Cloud Compute,"
+  },
+  {
+    "timestamp": "3:44",
+    "content": "Apple's privacy-preserving cloud infrastructure."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Your data is never stored or shared, even with Apple."
+  },
+  {
+    "timestamp": "3:52",
+    "content": "For a deeper look at how it works,"
+  },
+  {
+    "timestamp": "3:54",
+    "content": "check out Build with the New Apple Foundation Model on Private Cloud Compute."
+  },
+  {
+    "timestamp": "4:01",
+    "content": "Image Playground has a usage limit because it relies on powerful server models."
+  },
+  {
+    "timestamp": "4:06",
+    "content": "Increased access is available with most iCloud Plus subscription plans."
+  },
+  {
+    "timestamp": "4:12",
+    "content": "And as the developer, none of this is your problem to solve."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "There is no server to provision, no infrastructure to maintain."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "The system manages usage limits on behalf of your users."
+  },
+  {
+    "timestamp": "4:26",
+    "content": "You never need to build any usage-related UI."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "You call the framework, Apple handles the rest."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Moving the models to Private Cloud Compute also meant rethinking the API."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "Image Creator, the non-UI API for generating images directly in your code, is deprecated."
+  },
+  {
+    "timestamp": "4:47",
+    "content": "Everything is now available through a new API with greater image quality,"
+  },
+  {
+    "timestamp": "4:52",
+    "content": "built-in privacy, and a full experience people already know how to use."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "If your app uses Image Creator today, keep watching."
+  },
+  {
+    "timestamp": "5:01",
+    "content": "So now, let us look at how to add Image Playground to your app."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "To show you how this comes together in code,"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "I've been building Postcards, a greeting card creator."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "With Postcards, you can design custom cards,"
+  },
+  {
+    "timestamp": "5:17",
+    "content": "write a personal message, and choose a layout."
+  },
+  {
+    "timestamp": "5:19",
+    "content": "The last piece is custom artwork for the front of each card."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "And that's where Image Playground comes in."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "Adopting Image Playground starts with one view modifier."
+  },
+  {
+    "timestamp": "5:32",
+    "content": "No SDK initialization, no API keys, no server endpoints, just a modifier."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "I add Image Playground sheet to my button with a binding to a state Boolean."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "When the binding flips to true, the sheet appears."
+  },
+  {
+    "timestamp": "5:49",
+    "content": "Image Playground handles everything."
+  },
+  {
+    "timestamp": "5:52",
+    "content": "The UI, the model interaction, the style picker."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "When someone accepts an image,"
+  },
+  {
+    "timestamp": "5:59",
+    "content": "the completion closure receives a URL to the generated file."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "That URL points to a temporary location inside your app container."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "Save it elsewhere before the session ends."
+  },
+  {
+    "timestamp": "6:11",
+    "content": "The sheet drops into your app"
+  },
+  {
+    "timestamp": "6:13",
+    "content": "as a fully formed, consistent experience."
+  },
+  {
+    "timestamp": "6:17",
+    "content": "The user can type a description,"
+  },
+  {
+    "timestamp": "6:19",
+    "content": "browse style options,"
+  },
+  {
+    "timestamp": "6:21",
+    "content": "include people from their library,"
+  },
+  {
+    "timestamp": "6:22",
+    "content": "and preview results before confirming."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "Your app gets the final URL, ready to display."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "The sheet can open with an empty prompt"
+  },
+  {
+    "timestamp": "6:33",
+    "content": "or can be seeded with context from your app"
+  },
+  {
+    "timestamp": "6:36",
+    "content": "for a richer initial experience."
+  },
+  {
+    "timestamp": "6:39",
+    "content": "Image Playground concept has two factory methods here."
+  },
+  {
+    "timestamp": "6:43",
+    "content": "Text wraps a direct description"
+  },
+  {
+    "timestamp": "6:45",
+    "content": "and passing the card's theme, like cherry blossoms."
+  },
+  {
+    "timestamp": "6:49",
+    "content": "Extracted takes longer text"
+  },
+  {
+    "timestamp": "6:52",
+    "content": "and lets the system pull out the most relevant ideas"
+  },
+  {
+    "timestamp": "6:56",
+    "content": "and passing the card's message"
+  },
+  {
+    "timestamp": "6:58",
+    "content": "so the model picks up on what the card is about."
+  },
+  {
+    "timestamp": "7:02",
+    "content": "With concepts in place,"
+  },
+  {
+    "timestamp": "7:04",
+    "content": "the sheet opens already primed for this specific card."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "The user doesn't have to start from scratch."
+  },
+  {
+    "timestamp": "7:11",
+    "content": "You can also see the sheet with an image."
+  },
+  {
+    "timestamp": "7:15",
+    "content": "Pass any SwiftUI image"
+  },
+  {
+    "timestamp": "7:17",
+    "content": "to the source image parameter,"
+  },
+  {
+    "timestamp": "7:19",
+    "content": "a photo the person picked from their library,"
+  },
+  {
+    "timestamp": "7:22",
+    "content": "or an image the card already has."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "Image Playground uses it as visual inspiration"
+  },
+  {
+    "timestamp": "7:28",
+    "content": "alongside the concepts."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "The user can replace or refine it inside the sheet."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "It's a starting point, not a constraint."
+  },
+  {
+    "timestamp": "7:37",
+    "content": "On iPad, postcards shows a small canvas"
+  },
+  {
+    "timestamp": "7:40",
+    "content": "below the card front."
+  },
+  {
+    "timestamp": "7:41",
+    "content": "Image Playground Concept.Drawing"
+  },
+  {
+    "timestamp": "7:44",
+    "content": "takes a PK drawing from Pencil Kit"
+  },
+  {
+    "timestamp": "7:46",
+    "content": "and adds it as a concept alongside the text."
+  },
+  {
+    "timestamp": "7:50",
+    "content": "The model treats the strokes as a visual suggestion."
+  },
+  {
+    "timestamp": "7:54",
+    "content": "They guide the composition without locking it in."
+  },
+  {
+    "timestamp": "7:58",
+    "content": "To know more about drawings in Pencil Kit,"
+  },
+  {
+    "timestamp": "8:00",
+    "content": "check out Read Between the Strokes with Pencil Kit."
+  },
+  {
+    "timestamp": "8:05",
+    "content": "If you're building a UI kit or AppKit app,"
+  },
+  {
+    "timestamp": "8:09",
+    "content": "Image Playground View Controller"
+  },
+  {
+    "timestamp": "8:10",
+    "content": "gives you the same experience as a view controller."
+  },
+  {
+    "timestamp": "8:14",
+    "content": "Set concepts and options"
+  },
+  {
+    "timestamp": "8:16",
+    "content": "as properties before presentation."
+  },
+  {
+    "timestamp": "8:19",
+    "content": "Then implement Image Playground View Controller"
+  },
+  {
+    "timestamp": "8:21",
+    "content": "did create image at on the delegate"
+  },
+  {
+    "timestamp": "8:24",
+    "content": "to receive the result."
+  },
+  {
+    "timestamp": "8:26",
+    "content": "The API mirrors SwiftUI."
+  },
+  {
+    "timestamp": "8:29",
+    "content": "Now, let's configure the sheet"
+  },
+  {
+    "timestamp": "8:31",
+    "content": "to feed postcards,"
+  },
+  {
+    "timestamp": "8:33",
+    "content": "configuring options like size,"
+  },
+  {
+    "timestamp": "8:36",
+    "content": "style, and personalization."
+  },
+  {
+    "timestamp": "8:38",
+    "content": "Image Playground Options"
+  },
+  {
+    "timestamp": "8:40",
+    "content": "and Image Playground Style"
+  },
+  {
+    "timestamp": "8:42",
+    "content": "allow you to manage the configuration"
+  },
+  {
+    "timestamp": "8:44",
+    "content": "of the playground,"
+  },
+  {
+    "timestamp": "8:46",
+    "content": "size and aspect ratio,"
+  },
+  {
+    "timestamp": "8:48",
+    "content": "available in pre-selected styles,"
+  },
+  {
+    "timestamp": "8:50",
+    "content": "and personalization."
+  },
+  {
+    "timestamp": "8:52",
+    "content": "Whether you're generating card artwork,"
+  },
+  {
+    "timestamp": "8:54",
+    "content": "a lock screen wallpaper,"
+  },
+  {
+    "timestamp": "8:56",
+    "content": "a banner,"
+  },
+  {
+    "timestamp": "8:58",
+    "content": "or a Genmoji icon,"
+  },
+  {
+    "timestamp": "8:59",
+    "content": "the same API adapts to fit."
+  },
+  {
+    "timestamp": "9:02",
+    "content": "Postcards supports three card formats,"
+  },
+  {
+    "timestamp": "9:05",
+    "content": "landscape, portrait, and square."
+  },
+  {
+    "timestamp": "9:07",
+    "content": "Each format stores a CG size."
+  },
+  {
+    "timestamp": "9:11",
+    "content": "I pass it directly to closest to,"
+  },
+  {
+    "timestamp": "9:15",
+    "content": "and the system maps it"
+  },
+  {
+    "timestamp": "9:17",
+    "content": "to the closest supported aspect ratio"
+  },
+  {
+    "timestamp": "9:19",
+    "content": "and resolution."
+  },
+  {
+    "timestamp": "9:21",
+    "content": "Because format is a property of the card,"
+  },
+  {
+    "timestamp": "9:23",
+    "content": "the size request adapts automatically."
+  },
+  {
+    "timestamp": "9:27",
+    "content": "A landscape card requests a wide image,"
+  },
+  {
+    "timestamp": "9:30",
+    "content": "a portrait card requests a tall one."
+  },
+  {
+    "timestamp": "9:32",
+    "content": "I pass the options to the sheet"
+  },
+  {
+    "timestamp": "9:35",
+    "content": "using .imagePlayground Options."
+  },
+  {
+    "timestamp": "9:39",
+    "content": "Image Playground Style has several values,"
+  },
+  {
+    "timestamp": "9:42",
+    "content": "like illustration, sketch, animation, and emoji."
+  },
+  {
+    "timestamp": "9:47",
+    "content": "Image Playground Generation Style"
+  },
+  {
+    "timestamp": "9:49",
+    "content": "takes two arguments,"
+  },
+  {
+    "timestamp": "9:51",
+    "content": "a default style that the picker opens on,"
+  },
+  {
+    "timestamp": "9:54",
+    "content": "and an allowed list that limits which styles appear."
+  },
+  {
+    "timestamp": "9:58",
+    "content": "If you pass a single style in the allowed list,"
+  },
+  {
+    "timestamp": "10:01",
+    "content": "the picker locks to that style."
+  },
+  {
+    "timestamp": "10:04",
+    "content": "In postcards,"
+  },
+  {
+    "timestamp": "10:06",
+    "content": "each card carries a style preset"
+  },
+  {
+    "timestamp": "10:08",
+    "content": "that maps directly to these values."
+  },
+  {
+    "timestamp": "10:10",
+    "content": "So a classic card defaults to illustration"
+  },
+  {
+    "timestamp": "10:13",
+    "content": "and allows only illustration and sketch,"
+  },
+  {
+    "timestamp": "10:16",
+    "content": "while an expressive card defaults to animation"
+  },
+  {
+    "timestamp": "10:19",
+    "content": "and also allows illustration and emoji."
+  },
+  {
+    "timestamp": "10:22",
+    "content": "The style picker automatically reflects"
+  },
+  {
+    "timestamp": "10:25",
+    "content": "whichever card is open."
+  },
+  {
+    "timestamp": "10:27",
+    "content": "External Provider is an opt-in style"
+  },
+  {
+    "timestamp": "10:30",
+    "content": "that surfaces whatever third-party provider"
+  },
+  {
+    "timestamp": "10:33",
+    "content": "the user has configured in settings,"
+  },
+  {
+    "timestamp": "10:35",
+    "content": "such as GPT, for example."
+  },
+  {
+    "timestamp": "10:37",
+    "content": "To offer it, append it to your allowed styles list."
+  },
+  {
+    "timestamp": "10:42",
+    "content": "If the user has a provider configured,"
+  },
+  {
+    "timestamp": "10:44",
+    "content": "the tab appears in the picker."
+  },
+  {
+    "timestamp": "10:46",
+    "content": "If they haven't,"
+  },
+  {
+    "timestamp": "10:47",
+    "content": "the system handles its setup,"
+  },
+  {
+    "timestamp": "10:50",
+    "content": "no check required on your side."
+  },
+  {
+    "timestamp": "10:52",
+    "content": "You can also pass it as the default style"
+  },
+  {
+    "timestamp": "10:54",
+    "content": "if your app has a context where that makes sense."
+  },
+  {
+    "timestamp": "10:58",
+    "content": "Either way,"
+  },
+  {
+    "timestamp": "10:59",
+    "content": "the picker adapts to what's actually available."
+  },
+  {
+    "timestamp": "11:03",
+    "content": "ImagePlayground Style.emoji"
+  },
+  {
+    "timestamp": "11:05",
+    "content": "is tuned for expressive emoji-scale characters."
+  },
+  {
+    "timestamp": "11:09",
+    "content": "When it's active,"
+  },
+  {
+    "timestamp": "11:11",
+    "content": "the sheet fires a separate completion"
+  },
+  {
+    "timestamp": "11:13",
+    "content": "on adaptive image glyph creation"
+  },
+  {
+    "timestamp": "11:15",
+    "content": "and hands you an NS-adaptive image glyph"
+  },
+  {
+    "timestamp": "11:19",
+    "content": "instead of a URL."
+  },
+  {
+    "timestamp": "11:21",
+    "content": "An adaptive image glyph is special."
+  },
+  {
+    "timestamp": "11:24",
+    "content": "It can be embedded directly in line with text,"
+  },
+  {
+    "timestamp": "11:27",
+    "content": "just like an emoji,"
+  },
+  {
+    "timestamp": "11:29",
+    "content": "which is exactly what you want"
+  },
+  {
+    "timestamp": "11:30",
+    "content": "for a card thumbnail"
+  },
+  {
+    "timestamp": "11:32",
+    "content": "that appears next to the recipient's name."
+  },
+  {
+    "timestamp": "11:35",
+    "content": "For everything you can do"
+  },
+  {
+    "timestamp": "11:37",
+    "content": "with adaptive image glyphs in text,"
+  },
+  {
+    "timestamp": "11:39",
+    "content": "rendering,"
+  },
+  {
+    "timestamp": "11:40",
+    "content": "storing,"
+  },
+  {
+    "timestamp": "11:42",
+    "content": "custom text engines,"
+  },
+  {
+    "timestamp": "11:44",
+    "content": "check out"
+  },
+  {
+    "timestamp": "11:44",
+    "content": "Bring Expression to Your App with Genmoji."
+  },
+  {
+    "timestamp": "11:48",
+    "content": "Personalization is enabled by default."
+  },
+  {
+    "timestamp": "11:51",
+    "content": "It lets people include someone"
+  },
+  {
+    "timestamp": "11:53",
+    "content": "from their photos library,"
+  },
+  {
+    "timestamp": "11:55",
+    "content": "a powerful way"
+  },
+  {
+    "timestamp": "11:56",
+    "content": "to make a greeting card"
+  },
+  {
+    "timestamp": "11:57",
+    "content": "feel genuinely personal."
+  },
+  {
+    "timestamp": "12:00",
+    "content": "If your app context doesn't call for it,"
+  },
+  {
+    "timestamp": "12:03",
+    "content": "say you're building a product image generator,"
+  },
+  {
+    "timestamp": "12:05",
+    "content": "you can set"
+  },
+  {
+    "timestamp": "12:06",
+    "content": "Options.Personalization to Disabled."
+  },
+  {
+    "timestamp": "12:10",
+    "content": "The people picker"
+  },
+  {
+    "timestamp": "12:11",
+    "content": "and name detection"
+  },
+  {
+    "timestamp": "12:12",
+    "content": "disappear from the sheet entirely."
+  },
+  {
+    "timestamp": "12:15",
+    "content": "Last up,"
+  },
+  {
+    "timestamp": "12:16",
+    "content": "making sure Postcards"
+  },
+  {
+    "timestamp": "12:17",
+    "content": "handles every device gracefully."
+  },
+  {
+    "timestamp": "12:21",
+    "content": "Image Playground"
+  },
+  {
+    "timestamp": "12:21",
+    "content": "is available on devices"
+  },
+  {
+    "timestamp": "12:23",
+    "content": "that support Apple intelligence"
+  },
+  {
+    "timestamp": "12:24",
+    "content": "across a growing set"
+  },
+  {
+    "timestamp": "12:26",
+    "content": "of languages and regions"
+  },
+  {
+    "timestamp": "12:28",
+    "content": "and when the user"
+  },
+  {
+    "timestamp": "12:29",
+    "content": "has image generation enabled in settings."
+  },
+  {
+    "timestamp": "12:33",
+    "content": "The Supports Image Generation"
+  },
+  {
+    "timestamp": "12:34",
+    "content": "Environment value"
+  },
+  {
+    "timestamp": "12:35",
+    "content": "is all you need."
+  },
+  {
+    "timestamp": "12:38",
+    "content": "It returns True"
+  },
+  {
+    "timestamp": "12:39",
+    "content": "when image generation"
+  },
+  {
+    "timestamp": "12:40",
+    "content": "is fully available."
+  },
+  {
+    "timestamp": "12:41",
+    "content": "The device has the capability,"
+  },
+  {
+    "timestamp": "12:43",
+    "content": "the current language"
+  },
+  {
+    "timestamp": "12:44",
+    "content": "and region are supported,"
+  },
+  {
+    "timestamp": "12:46",
+    "content": "and the user has it enabled."
+  },
+  {
+    "timestamp": "12:48",
+    "content": "When it's True,"
+  },
+  {
+    "timestamp": "12:49",
+    "content": "I navigate to Cart Editor View"
+  },
+  {
+    "timestamp": "12:51",
+    "content": "the full Image Playground experience."
+  },
+  {
+    "timestamp": "12:55",
+    "content": "When it's false,"
+  },
+  {
+    "timestamp": "12:56",
+    "content": "I navigate to Cart Picker View,"
+  },
+  {
+    "timestamp": "12:58",
+    "content": "a simple photo speaker fallback."
+  },
+  {
+    "timestamp": "13:01",
+    "content": "No entitlement,"
+  },
+  {
+    "timestamp": "13:02",
+    "content": "no extra capability check,"
+  },
+  {
+    "timestamp": "13:04",
+    "content": "no setup step,"
+  },
+  {
+    "timestamp": "13:06",
+    "content": "just the environment value"
+  },
+  {
+    "timestamp": "13:07",
+    "content": "and a conditional"
+  },
+  {
+    "timestamp": "13:08",
+    "content": "that's all it takes"
+  },
+  {
+    "timestamp": "13:10",
+    "content": "to support both paths cleanly."
+  },
+  {
+    "timestamp": "13:13",
+    "content": "With Image Playground,"
+  },
+  {
+    "timestamp": "13:15",
+    "content": "it's easy to provide"
+  },
+  {
+    "timestamp": "13:17",
+    "content": "a high-quality image creation experience"
+  },
+  {
+    "timestamp": "13:19",
+    "content": "in your app."
+  },
+  {
+    "timestamp": "13:20",
+    "content": "Consider where images live"
+  },
+  {
+    "timestamp": "13:23",
+    "content": "in your design,"
+  },
+  {
+    "timestamp": "13:24",
+    "content": "a card someone sends to a friend,"
+  },
+  {
+    "timestamp": "13:27",
+    "content": "a profile that represents them,"
+  },
+  {
+    "timestamp": "13:30",
+    "content": "a message they've been trying"
+  },
+  {
+    "timestamp": "13:31",
+    "content": "to put into words."
+  },
+  {
+    "timestamp": "13:34",
+    "content": "The right shape and feel"
+  },
+  {
+    "timestamp": "13:35",
+    "content": "changes everything."
+  },
+  {
+    "timestamp": "13:37",
+    "content": "And then think about"
+  },
+  {
+    "timestamp": "13:38",
+    "content": "what only your app knows,"
+  },
+  {
+    "timestamp": "13:40",
+    "content": "what relationships,"
+  },
+  {
+    "timestamp": "13:42",
+    "content": "what memories,"
+  },
+  {
+    "timestamp": "13:43",
+    "content": "what context can you bring"
+  },
+  {
+    "timestamp": "13:45",
+    "content": "into the picture"
+  },
+  {
+    "timestamp": "13:46",
+    "content": "to make the result feel"
+  },
+  {
+    "timestamp": "13:47",
+    "content": "like it was made"
+  },
+  {
+    "timestamp": "13:48",
+    "content": "for that specific person."
+  },
+  {
+    "timestamp": "13:51",
+    "content": "That's a real opportunity."
+  },
+  {
+    "timestamp": "13:53",
+    "content": "Image Playground brings the models,"
+  },
+  {
+    "timestamp": "13:55",
+    "content": "you bring the story."
+  },
+  {
+    "timestamp": "13:57",
+    "content": "Thanks for watching."
+  },
+  {
+    "timestamp": "13:58",
+    "content": "Now go build something"
+  },
+  {
+    "timestamp": "14:00",
+    "content": "that earns a spot"
+  },
+  {
+    "timestamp": "14:01",
+    "content": "on someone's refrigerator."
+  },
+  {
+    "timestamp": "14:02",
+    "content": ","
+  }
+]

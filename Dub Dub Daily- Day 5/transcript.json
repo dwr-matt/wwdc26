@@ -1,0 +1,286 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "This is it. Welcome to Dub Dub Daily, the final day of WWDC 26. What a week it has been. We've got two more group labs this morning and they're good ones. As a reminder, all group labs will be available on demand, so you can come back and watch them whenever you like."
+  },
+  {
+    "timestamp": "0:16",
+    "content": "Before we wrap, though, there's one more conversation you need to hear. Swift has been a through line all week, and Holly Borla is just the right person to close us out. My colleague Jeff sat down with her earlier this week. Here they are."
+  },
+  {
+    "timestamp": "0:28",
+    "content": "Holly Borla, an engineering manager on the Swift team. Lots going on for you this year. You say in so to this year with slides that I believe to be your actual Memoji."
+  },
+  {
+    "timestamp": "0:37",
+    "content": "That Swift this year is designed entirely to help developers get back to doing the most important thing, which is having fun. Tell me a little bit more about that."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "Yeah. To me, that means two things. The first is writing really clear and beautiful code. Oftentimes when I'm writing code in Swift, by the time I'm done, I'm really proud of the way that the code I've written reads."
+  },
+  {
+    "timestamp": "1:00",
+    "content": "And then the other part of it is the confidence that the code you wrote is correct. And the compiler being there to help catch your mistakes is a really key piece of that."
+  },
+  {
+    "timestamp": "1:10",
+    "content": "So in order to write clear and beautiful code, one of our goals is to eliminate friction points that come up when you're writing code on a day-to-day basis."
+  },
+  {
+    "timestamp": "1:20",
+    "content": "So a lot of the updates that you'll see in Swift 6.4 are removing things that are friction points so that those things are out of your way and you can really focus on expressing your ideas in a really clear and beautiful way."
+  },
+  {
+    "timestamp": "1:34",
+    "content": "What are some of the first things developers will notice this year?"
+  },
+  {
+    "timestamp": "1:36",
+    "content": "I actually think there are a lot of updates that developers might not notice until they're pointed out that they're no longer issues."
+  },
+  {
+    "timestamp": "1:44",
+    "content": "For example, there's a much more streamlined way to use some and any types in Swift together with optionals."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "Previously, you had to write a little bit more syntax with parentheses."
+  },
+  {
+    "timestamp": "1:54",
+    "content": "And now what people naturally try to write will just work."
+  },
+  {
+    "timestamp": "1:58",
+    "content": "So it's something that smooths over that developer experience of writing Swift code, but it might not be something that you notice."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "But all these little things add up to really improve your productivity when writing day-to-day Swift code."
+  },
+  {
+    "timestamp": "2:12",
+    "content": "Same thing with in concurrent code, calling an async method in a defer block."
+  },
+  {
+    "timestamp": "2:18",
+    "content": "Previously, there was a limitation where the compiler would prevent you from doing that."
+  },
+  {
+    "timestamp": "2:21",
+    "content": "And now that also just works in the way that you would expect."
+  },
+  {
+    "timestamp": "2:25",
+    "content": "You can call async code in the same way that you can in the rest of that function body."
+  },
+  {
+    "timestamp": "2:29",
+    "content": "And again, unless you knew that was a limitation before, it might not be something that you notice."
+  },
+  {
+    "timestamp": "2:33",
+    "content": "It's just something that you're not prevented from doing."
+  },
+  {
+    "timestamp": "2:35",
+    "content": "So the code you naturally write works, you move on, and it's not something that you have to deal with."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "So addition by subtraction."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "And the best thing when things just work and you didn't notice that they didn't work before."
+  },
+  {
+    "timestamp": "2:45",
+    "content": "That's fantastic."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "Lots going on this year for you that people can see."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "What's something maybe happening under the hood, something that's maybe not as readily apparent, but that you and your team are very proud of?"
+  },
+  {
+    "timestamp": "2:55",
+    "content": "One of the areas of compiler development that really excites me that's not like a flashy new language feature is diagnostic improvements."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "So improving the error messages that come from the compiler."
+  },
+  {
+    "timestamp": "3:05",
+    "content": "And I think this is a really important area because it's the main feedback that you get when you're writing Swift code."
+  },
+  {
+    "timestamp": "3:12",
+    "content": "It helps you internalize the language features that you're working with, understand what works and what doesn't."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "And it can also be really frustrating if you get an error message that isn't easily understandable or doesn't make it immediately clear what you need to do in order to fix your code."
+  },
+  {
+    "timestamp": "3:29",
+    "content": "So there's a lot of different kinds of diagnostic improvements this year in Swift 6.4."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "Some of them are more infrastructural to improve diagnostics both now and ongoing in the future."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "But there's also more ways to control diagnostics in your code."
+  },
+  {
+    "timestamp": "3:46",
+    "content": "One of my favorite new features is the at diagnose attribute, which lets you control behavior of warnings in your code."
+  },
+  {
+    "timestamp": "3:54",
+    "content": "This lets you do things like suppress deprecations."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "But it also lets you do things like opt into strict memory safety or strict concurrency diagnostics on a more granular basis, which helps with, for example, the migration to the Swift 6 language mode."
+  },
+  {
+    "timestamp": "4:10",
+    "content": "So there's a lot across the board that gives you more control and also just general diagnostic improvements."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "There's a fun little moment in Soto where you mentioned a specific issue that has been improved."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Can you tell me about what that issue is?"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "Yeah."
+  },
+  {
+    "timestamp": "4:24",
+    "content": "The error message is the compiler is unable to type check this expression in reasonable time."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "So if you've written some significant Swift code before, you've surely seen this error message."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "It's a fallback in the compiler's type checker."
+  },
+  {
+    "timestamp": "4:37",
+    "content": "So the thing that the subsystem that does things like type inference and overload resolution, it determines when you call a function, which function of the many overloads that might be available you actually meant to call."
+  },
+  {
+    "timestamp": "4:50",
+    "content": "And that has some performance thresholds, both with an approximation of time as well as memory that's used on your system."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "And if it goes over those thresholds, you'll get this fallback error message, which can be really frustrating because sometimes you're not even sure if the code was correct and the compiler timed out or if you had a mistake somewhere in your code and the compiler timed out trying to provide you with a more precise diagnostic."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "So this is something that we've been continuously working on the developer experience of to try to mitigate the instances where you will see this error message in practice."
+  },
+  {
+    "timestamp": "5:22",
+    "content": "This year, we focused a lot on mitigating that error in nested closures and Swift UI view bodies, which is a really common place to see it."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "There's still some more work to be done, and you can follow along with that through the open source Swift project if you're interested."
+  },
+  {
+    "timestamp": "5:38",
+    "content": "All of the work for that is done there, and we post roadmaps and updates when we make progress."
+  },
+  {
+    "timestamp": "5:44",
+    "content": "But we know that that's a really important part of the developer experience to improve on because that is something that when you get that, it can be really difficult to determine what you need to do in order to fix it."
+  },
+  {
+    "timestamp": "5:57",
+    "content": "Lots of things for people to try out this year."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "What are you excited for people to get their hands on?"
+  },
+  {
+    "timestamp": "6:00",
+    "content": "Yeah, I'm really excited for people to try out the new features for controlling the behavior of diagnostics in their code."
+  },
+  {
+    "timestamp": "6:08",
+    "content": "I think this has the potential to lead to some more improved workflows, especially for migrating to enabling certain kinds of diagnostics like strict concurrency checking, which will help with migration strategies to the Swift 6 language mode."
+  },
+  {
+    "timestamp": "6:24",
+    "content": "So I'm really excited to see how developers are making use of that in their migration."
+  },
+  {
+    "timestamp": "6:30",
+    "content": "One of my favorite things to do is to read articles, blog posts, or watch conference talks where people are sharing different strategies for migration or making most effective use of language features in the context of their code base."
+  },
+  {
+    "timestamp": "6:46",
+    "content": "That's really valuable for me to understand, and I also love that people are sharing those tips with the broader community."
+  },
+  {
+    "timestamp": "6:53",
+    "content": "Thank you so much, Holly and Jeff."
+  },
+  {
+    "timestamp": "6:55",
+    "content": "Really wonderful way to close out the week."
+  },
+  {
+    "timestamp": "6:57",
+    "content": "And the learning doesn't stop here."
+  },
+  {
+    "timestamp": "6:59",
+    "content": "Join us for WWDC recap activities all around the world to find out how all of these new announcements can benefit your apps and games."
+  },
+  {
+    "timestamp": "7:08",
+    "content": "Visit developer.apple.com slash events for the latest sessions, workshops, and labs, both online and in person, including at our developer centers in Bangaluru, Cupertino, Shanghai, Singapore, and soon in Berlin, opening later this year."
+  },
+  {
+    "timestamp": "7:22",
+    "content": "And follow Apple Developer for more details."
+  },
+  {
+    "timestamp": "7:25",
+    "content": "Time to go check in on what my agent built in Xcode."
+  },
+  {
+    "timestamp": "7:28",
+    "content": "Thank you for being a part of WWDC."
+  },
+  {
+    "timestamp": "7:30",
+    "content": "Thank you for being a part of WWDC."
+  },
+  {
+    "timestamp": "7:31",
+    "content": "We can't wait to see what you make next."
+  },
+  {
+    "timestamp": "7:34",
+    "content": "See you out there."
+  }
+]

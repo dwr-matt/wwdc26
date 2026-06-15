@@ -1,0 +1,686 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Welcome back to Dub Dub Daily."
+  },
+  {
+    "timestamp": "0:02",
+    "content": "This is day three of WWDC and we are not slowing down."
+  },
+  {
+    "timestamp": "0:06",
+    "content": "Today's Group Lab lineup is one of my favorites of the week,"
+  },
+  {
+    "timestamp": "0:10",
+    "content": "but more on those in just a moment."
+  },
+  {
+    "timestamp": "0:12",
+    "content": "But first, our guest."
+  },
+  {
+    "timestamp": "0:14",
+    "content": "If you've been following along with sessions this week,"
+  },
+  {
+    "timestamp": "0:16",
+    "content": "you already know that foundation models"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "and Apple Intelligence are having a moment."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "Lori Highland-Show is Senior Engineering Manager"
+  },
+  {
+    "timestamp": "0:23",
+    "content": "of Swift Intelligence Frameworks,"
+  },
+  {
+    "timestamp": "0:26",
+    "content": "which means she's the exact right person"
+  },
+  {
+    "timestamp": "0:28",
+    "content": "to walk us through what it means for you as a developer."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "My colleague Jeff sat down with her earlier this week,"
+  },
+  {
+    "timestamp": "0:33",
+    "content": "and I promise you'll want to hear what she has to say."
+  },
+  {
+    "timestamp": "0:36",
+    "content": "Jeff, take it away."
+  },
+  {
+    "timestamp": "0:39",
+    "content": "Lori Highland-Show, Senior Engineering Manager"
+  },
+  {
+    "timestamp": "0:41",
+    "content": "for Swift Intelligence Frameworks."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "Yeah."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "You have a big year."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "Yeah."
+  },
+  {
+    "timestamp": "0:45",
+    "content": "There's a lot going on."
+  },
+  {
+    "timestamp": "0:46",
+    "content": "There's foundation models, vision framework, app intense."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "Yes."
+  },
+  {
+    "timestamp": "0:49",
+    "content": "We'll ask about those individually in a moment,"
+  },
+  {
+    "timestamp": "0:51",
+    "content": "but can you tell me what's going on here as a whole?"
+  },
+  {
+    "timestamp": "0:53",
+    "content": "I think this is an amazing year for intelligence,"
+  },
+  {
+    "timestamp": "0:56",
+    "content": "both bringing intelligence into people's apps"
+  },
+  {
+    "timestamp": "0:58",
+    "content": "and bringing those apps into Apple Intelligence."
+  },
+  {
+    "timestamp": "1:02",
+    "content": "It's a partnership between our developers and our system."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "And it's-"
+  },
+  {
+    "timestamp": "1:06",
+    "content": "What do you mean by partnership?"
+  },
+  {
+    "timestamp": "1:07",
+    "content": "I think there's a line that Josh says in the So Too"
+  },
+  {
+    "timestamp": "1:11",
+    "content": "about your apps made more powerful by intelligence"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "and intelligence made more meaningful with your apps."
+  },
+  {
+    "timestamp": "1:19",
+    "content": "And I love that idea that we're helping each other out here."
+  },
+  {
+    "timestamp": "1:23",
+    "content": "There's a synergy that makes for better features"
+  },
+  {
+    "timestamp": "1:26",
+    "content": "and more powerful experiences for our customers."
+  },
+  {
+    "timestamp": "1:30",
+    "content": "That's a very elegant way to say that."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "Yeah."
+  },
+  {
+    "timestamp": "1:31",
+    "content": "I like that a lot."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "Kind of a big question."
+  },
+  {
+    "timestamp": "1:33",
+    "content": "Tell me about these foundation model updates."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "Okay."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "So we introduced the foundation model framework last year."
+  },
+  {
+    "timestamp": "1:38",
+    "content": "Obviously, it gave an opportunity for developers"
+  },
+  {
+    "timestamp": "1:41",
+    "content": "to bring intelligence features into their apps"
+  },
+  {
+    "timestamp": "1:43",
+    "content": "by giving access to our on-device model,"
+  },
+  {
+    "timestamp": "1:46",
+    "content": "which ships with the OS."
+  },
+  {
+    "timestamp": "1:47",
+    "content": "It's private."
+  },
+  {
+    "timestamp": "1:48",
+    "content": "It's available offline."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "Amazing."
+  },
+  {
+    "timestamp": "1:50",
+    "content": "This year, we're offering developers access"
+  },
+  {
+    "timestamp": "1:53",
+    "content": "to our private cloud compute as well."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "So you'll have access to a very powerful server model,"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "the one that actually powers our Apple Intelligence features,"
+  },
+  {
+    "timestamp": "2:00",
+    "content": "as well as access to third-party models"
+  },
+  {
+    "timestamp": "2:04",
+    "content": "like Gemini and Claude from Anthropic."
+  },
+  {
+    "timestamp": "2:06",
+    "content": "So we also have dynamic profiles,"
+  },
+  {
+    "timestamp": "2:08",
+    "content": "which is kind of a foundational technology"
+  },
+  {
+    "timestamp": "2:10",
+    "content": "for sort of higher order things like skills,"
+  },
+  {
+    "timestamp": "2:13",
+    "content": "which we're also releasing as a package"
+  },
+  {
+    "timestamp": "2:15",
+    "content": "so that people can use those"
+  },
+  {
+    "timestamp": "2:17",
+    "content": "or build their own abstractions like skills."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "Dynamic profiles let you take different paths in your app."
+  },
+  {
+    "timestamp": "2:23",
+    "content": "So say you have something that you want to keep"
+  },
+  {
+    "timestamp": "2:25",
+    "content": "only on-device, private, offline,"
+  },
+  {
+    "timestamp": "2:28",
+    "content": "maybe doesn't require a huge amount of compute"
+  },
+  {
+    "timestamp": "2:30",
+    "content": "to make possible."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "So you might want to send that path down"
+  },
+  {
+    "timestamp": "2:34",
+    "content": "to your on-device model."
+  },
+  {
+    "timestamp": "2:36",
+    "content": "And then you could have a different path in your app"
+  },
+  {
+    "timestamp": "2:39",
+    "content": "that really needs the power of a server model."
+  },
+  {
+    "timestamp": "2:42",
+    "content": "And you can send that one to private cloud compute"
+  },
+  {
+    "timestamp": "2:44",
+    "content": "or to another third-party online model, right?"
+  },
+  {
+    "timestamp": "2:47",
+    "content": "And both of those flows can be in the same app"
+  },
+  {
+    "timestamp": "2:51",
+    "content": "and you can have different prompts"
+  },
+  {
+    "timestamp": "2:53",
+    "content": "and the logic can go in different directions."
+  },
+  {
+    "timestamp": "2:55",
+    "content": "So that's dynamic profiles rather than saying,"
+  },
+  {
+    "timestamp": "2:58",
+    "content": "oh, we're going to have one set of instructions"
+  },
+  {
+    "timestamp": "3:00",
+    "content": "and that applies all the time."
+  },
+  {
+    "timestamp": "3:02",
+    "content": "And how does the vision framework come into play?"
+  },
+  {
+    "timestamp": "3:03",
+    "content": "So we actually have some vision tools"
+  },
+  {
+    "timestamp": "3:05",
+    "content": "that can be called from Foundation Models Framework as well,"
+  },
+  {
+    "timestamp": "3:09",
+    "content": "like the OCR and the barcode scanner"
+  },
+  {
+    "timestamp": "3:12",
+    "content": "are all now tools that are callable"
+  },
+  {
+    "timestamp": "3:14",
+    "content": "from Foundation Models Framework."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "This is a lot."
+  },
+  {
+    "timestamp": "3:17",
+    "content": "You have mentioned a lot of things"
+  },
+  {
+    "timestamp": "3:18",
+    "content": "in a very short amount of time."
+  },
+  {
+    "timestamp": "3:19",
+    "content": "Can you talk to me about App Intense?"
+  },
+  {
+    "timestamp": "3:21",
+    "content": "Yes."
+  },
+  {
+    "timestamp": "3:22",
+    "content": "So App Intense are the way for app developers"
+  },
+  {
+    "timestamp": "3:25",
+    "content": "to integrate their apps with Siri."
+  },
+  {
+    "timestamp": "3:27",
+    "content": "So people can use natural language"
+  },
+  {
+    "timestamp": "3:29",
+    "content": "to make requests of Siri,"
+  },
+  {
+    "timestamp": "3:31",
+    "content": "to find information that they know is hidden somewhere"
+  },
+  {
+    "timestamp": "3:34",
+    "content": "in one of their apps on the system,"
+  },
+  {
+    "timestamp": "3:36",
+    "content": "to take action on that information."
+  },
+  {
+    "timestamp": "3:40",
+    "content": "Like you probably saw on the So Too,"
+  },
+  {
+    "timestamp": "3:42",
+    "content": "when I said, who's coming to Origami Night?"
+  },
+  {
+    "timestamp": "3:44",
+    "content": "I knew that we'd had a conversation about it."
+  },
+  {
+    "timestamp": "3:47",
+    "content": "Who were the people who are actually saying"
+  },
+  {
+    "timestamp": "3:48",
+    "content": "that they're coming?"
+  },
+  {
+    "timestamp": "3:49",
+    "content": "What's Richard bringing, right?"
+  },
+  {
+    "timestamp": "3:51",
+    "content": "And being able to follow up on that"
+  },
+  {
+    "timestamp": "3:52",
+    "content": "and ask him to bring a veggie pizza."
+  },
+  {
+    "timestamp": "3:55",
+    "content": "You can set timers."
+  },
+  {
+    "timestamp": "3:57",
+    "content": "You can change your morning alarm."
+  },
+  {
+    "timestamp": "4:00",
+    "content": "You can update calendar events, things like that."
+  },
+  {
+    "timestamp": "4:03",
+    "content": "So there's lots of opportunities for app developers out there"
+  },
+  {
+    "timestamp": "4:07",
+    "content": "to adopt the App Intense schemas,"
+  },
+  {
+    "timestamp": "4:10",
+    "content": "to be able to make their content available through Siri,"
+  },
+  {
+    "timestamp": "4:15",
+    "content": "and to make it actionable as well."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "So I'm really excited about that."
+  },
+  {
+    "timestamp": "4:18",
+    "content": "So a lot, a lot of that's going to be going on this week."
+  },
+  {
+    "timestamp": "4:20",
+    "content": "Yes."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "It's going to be really fun to watch."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Yay."
+  },
+  {
+    "timestamp": "4:22",
+    "content": "Give me an example, if you could,"
+  },
+  {
+    "timestamp": "4:24",
+    "content": "of how you would use natural language in Siri"
+  },
+  {
+    "timestamp": "4:26",
+    "content": "in your own day-to-day, something you would use it for."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "Oh, yeah."
+  },
+  {
+    "timestamp": "4:28",
+    "content": "I asked on Sunday, you know,"
+  },
+  {
+    "timestamp": "4:30",
+    "content": "can I bring my own food to the ballpark"
+  },
+  {
+    "timestamp": "4:33",
+    "content": "when I go see the Giants play?"
+  },
+  {
+    "timestamp": "4:36",
+    "content": "Instantaneous, just, yep, here's the whole deal."
+  },
+  {
+    "timestamp": "4:38",
+    "content": "Yes, you can bring your own food."
+  },
+  {
+    "timestamp": "4:40",
+    "content": "Here are all the beverage restrictions."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "Here's the reference website"
+  },
+  {
+    "timestamp": "4:44",
+    "content": "to go find out more if I needed that."
+  },
+  {
+    "timestamp": "4:46",
+    "content": "But I had, like, all of the answer was there already."
+  },
+  {
+    "timestamp": "4:48",
+    "content": "So great."
+  },
+  {
+    "timestamp": "4:49",
+    "content": "One of my colleagues was saying"
+  },
+  {
+    "timestamp": "4:50",
+    "content": "that they were driving past a restaurant"
+  },
+  {
+    "timestamp": "4:53",
+    "content": "in San Francisco that they hadn't seen before."
+  },
+  {
+    "timestamp": "4:55",
+    "content": "And they were like, oh, that looks interesting."
+  },
+  {
+    "timestamp": "4:57",
+    "content": "What's that?"
+  },
+  {
+    "timestamp": "4:57",
+    "content": "And asked, they got the chef,"
+  },
+  {
+    "timestamp": "5:00",
+    "content": "the prices of the food, when it opened,"
+  },
+  {
+    "timestamp": "5:03",
+    "content": "do they take reservations?"
+  },
+  {
+    "timestamp": "5:04",
+    "content": "And he's like, that is exactly what I wanted to know."
+  },
+  {
+    "timestamp": "5:07",
+    "content": "And I just had to ask, what was that restaurant"
+  },
+  {
+    "timestamp": "5:09",
+    "content": "I just saw it was called, whatever it was?"
+  },
+  {
+    "timestamp": "5:11",
+    "content": "And, yeah."
+  },
+  {
+    "timestamp": "5:12",
+    "content": "Oh, this is going to be a lot of fun."
+  },
+  {
+    "timestamp": "5:13",
+    "content": "It's going to be so great."
+  },
+  {
+    "timestamp": "5:15",
+    "content": "It's a new world."
+  },
+  {
+    "timestamp": "5:17",
+    "content": "Thank you so much, Lori and Jeff."
+  },
+  {
+    "timestamp": "5:18",
+    "content": "Really cool stuff."
+  },
+  {
+    "timestamp": "5:20",
+    "content": "Now, today's schedule for group labs running all day."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "As always, we've spread these across the day"
+  },
+  {
+    "timestamp": "5:26",
+    "content": "so you can join live."
+  },
+  {
+    "timestamp": "5:27",
+    "content": "And if you miss one,"
+  },
+  {
+    "timestamp": "5:29",
+    "content": "every group lab is available on demand."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "Sign up for them all"
+  },
+  {
+    "timestamp": "5:32",
+    "content": "on the Apple Developer app and website."
+  },
+  {
+    "timestamp": "5:35",
+    "content": "Couple more things."
+  },
+  {
+    "timestamp": "5:36",
+    "content": "Everything announced this week,"
+  },
+  {
+    "timestamp": "5:38",
+    "content": "documentation, references, and sample code"
+  },
+  {
+    "timestamp": "5:40",
+    "content": "is already waiting for you"
+  },
+  {
+    "timestamp": "5:42",
+    "content": "at developer.apple.com slash documentation."
+  },
+  {
+    "timestamp": "5:45",
+    "content": "Dig in."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "Apple experts are on the Apple Developer forums"
+  },
+  {
+    "timestamp": "5:49",
+    "content": "answering questions on tools and technologies"
+  },
+  {
+    "timestamp": "5:51",
+    "content": "all week long and beyond."
+  },
+  {
+    "timestamp": "5:54",
+    "content": "And this is important."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "There is a new batch of stickers"
+  },
+  {
+    "timestamp": "5:56",
+    "content": "in the Apple Developer app."
+  },
+  {
+    "timestamp": "5:58",
+    "content": "That's day three."
+  },
+  {
+    "timestamp": "5:59",
+    "content": "I'll see you tomorrow for day four of WWDC."
+  },
+  {
+    "timestamp": "6:02",
+    "content": "I'll see you tomorrow,"
+  }
+]

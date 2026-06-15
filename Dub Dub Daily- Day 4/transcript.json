@@ -1,0 +1,466 @@
+[
+  {
+    "timestamp": "0:00",
+    "content": "Welcome back to Dub Dub Daily and Day 4 of WWDC."
+  },
+  {
+    "timestamp": "0:04",
+    "content": "Today's group labs cover some seriously useful ground."
+  },
+  {
+    "timestamp": "0:07",
+    "content": "We're talking Apple Intelligence, Xcode, and SwiftUI."
+  },
+  {
+    "timestamp": "0:11",
+    "content": "We'll show you the full lineup in just a minute."
+  },
+  {
+    "timestamp": "0:13",
+    "content": "But first, our guest."
+  },
+  {
+    "timestamp": "0:15",
+    "content": "Productivity is one of those topics that sounds straightforward"
+  },
+  {
+    "timestamp": "0:18",
+    "content": "until you realize just how deep it goes."
+  },
+  {
+    "timestamp": "0:21",
+    "content": "And there's no better person to discuss it with than Ken Orr from Xcode."
+  },
+  {
+    "timestamp": "0:25",
+    "content": "Ken sat down with my colleague Jeff to dig into what productivity looks like"
+  },
+  {
+    "timestamp": "0:28",
+    "content": "in this era of new developer tools."
+  },
+  {
+    "timestamp": "0:31",
+    "content": "And it's the kind of conversation that'll have you thinking differently"
+  },
+  {
+    "timestamp": "0:34",
+    "content": "about your own workflow."
+  },
+  {
+    "timestamp": "0:35",
+    "content": "Here's Jeff and Ken."
+  },
+  {
+    "timestamp": "0:38",
+    "content": "Ken Orr, director of Xcode."
+  },
+  {
+    "timestamp": "0:40",
+    "content": "Thank you for being here and for making time for us."
+  },
+  {
+    "timestamp": "0:42",
+    "content": "No stranger to SoTo."
+  },
+  {
+    "timestamp": "0:43",
+    "content": "You've been involved in a lot of these."
+  },
+  {
+    "timestamp": "0:44",
+    "content": "How many SoTo's have you been in?"
+  },
+  {
+    "timestamp": "0:46",
+    "content": "I have done a couple of these."
+  },
+  {
+    "timestamp": "0:48",
+    "content": "So for the past five years, I've done the recorded SoTo's, which is really fun."
+  },
+  {
+    "timestamp": "0:52",
+    "content": "And then took a couple years off, did three live ones before that,"
+  },
+  {
+    "timestamp": "0:56",
+    "content": "which was also really fun, electric."
+  },
+  {
+    "timestamp": "0:58",
+    "content": "And did a number of sessions as well over the years."
+  },
+  {
+    "timestamp": "1:01",
+    "content": "So probably 15 years worth of presentations."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "15 years."
+  },
+  {
+    "timestamp": "1:04",
+    "content": "And this is an especially big year for Xcode."
+  },
+  {
+    "timestamp": "1:06",
+    "content": "This is a big year, yeah."
+  },
+  {
+    "timestamp": "1:08",
+    "content": "Two big stories this year, intelligence and the daily experience."
+  },
+  {
+    "timestamp": "1:11",
+    "content": "Let's start with intelligence."
+  },
+  {
+    "timestamp": "1:12",
+    "content": "Can you very quickly talk about what's going on with intelligence and Xcode?"
+  },
+  {
+    "timestamp": "1:15",
+    "content": "The most important thing it enables is you to express your ideas more quickly, right?"
+  },
+  {
+    "timestamp": "1:21",
+    "content": "I remember so many times when I'm writing code, having trouble typing it out fast enough, right?"
+  },
+  {
+    "timestamp": "1:30",
+    "content": "That is a problem of the past now."
+  },
+  {
+    "timestamp": "1:32",
+    "content": "And so that is like the most liberating thing."
+  },
+  {
+    "timestamp": "1:35",
+    "content": "And I love it."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "Yeah."
+  },
+  {
+    "timestamp": "1:36",
+    "content": "What replaces that now?"
+  },
+  {
+    "timestamp": "1:38",
+    "content": "How does that work today?"
+  },
+  {
+    "timestamp": "1:39",
+    "content": "You can elevate yourself up one level when you're interacting with agents."
+  },
+  {
+    "timestamp": "1:43",
+    "content": "And so you don't have to be quite as specific as you do with code."
+  },
+  {
+    "timestamp": "1:47",
+    "content": "And so you get to express that natural idea."
+  },
+  {
+    "timestamp": "1:49",
+    "content": "It takes less typing to do that."
+  },
+  {
+    "timestamp": "1:51",
+    "content": "You know, so you get to the end result much more quickly, which is really, really satisfying."
+  },
+  {
+    "timestamp": "1:55",
+    "content": "Can you share an example of what the coding agents can do for developers?"
+  },
+  {
+    "timestamp": "1:57",
+    "content": "Actually, I'll tell you how I use them personally."
+  },
+  {
+    "timestamp": "2:00",
+    "content": "I've adopted this technique where I ask the agent to basically write out a spec of what it's going to do before it does it."
+  },
+  {
+    "timestamp": "2:08",
+    "content": "So it writes the spec out, and then it writes its code, and then I have it follow up and create a set of tests that validate what it wrote,"
+  },
+  {
+    "timestamp": "2:16",
+    "content": "but also make sure that it's testing everything in that spec."
+  },
+  {
+    "timestamp": "2:20",
+    "content": "That has a couple great side benefits."
+  },
+  {
+    "timestamp": "2:22",
+    "content": "One, I get documentation that I can actually validate that it matches my expectations."
+  },
+  {
+    "timestamp": "2:27",
+    "content": "But also you have this sort of living, breathing definition of what your app does."
+  },
+  {
+    "timestamp": "2:32",
+    "content": "And that changes over time as you change the behavior or things don't quite match your expectations."
+  },
+  {
+    "timestamp": "2:37",
+    "content": "So I've found that technique to be, you know, really great."
+  },
+  {
+    "timestamp": "2:40",
+    "content": "Let's roll into a few of the highlights here from the daily experience."
+  },
+  {
+    "timestamp": "2:43",
+    "content": "Xcode 27, 30% smaller."
+  },
+  {
+    "timestamp": "2:46",
+    "content": "Projects load faster."
+  },
+  {
+    "timestamp": "2:48",
+    "content": "Syncs via iCloud."
+  },
+  {
+    "timestamp": "2:49",
+    "content": "What are some of the things people are going to notice first?"
+  },
+  {
+    "timestamp": "2:51",
+    "content": "Well, I think the very first thing people will notice is the new themes in Xcode."
+  },
+  {
+    "timestamp": "2:57",
+    "content": "Now, I'm a UI guy."
+  },
+  {
+    "timestamp": "2:59",
+    "content": "I love UI."
+  },
+  {
+    "timestamp": "3:00",
+    "content": "It's something very near and dear to my heart to really finish this off."
+  },
+  {
+    "timestamp": "3:04",
+    "content": "And so over the years, we've enhanced Xcode for dark mode on a Mac OS and done lots of things."
+  },
+  {
+    "timestamp": "3:10",
+    "content": "This really kind of is the cherry on top that lets color go through the entire app, and it's beautiful."
+  },
+  {
+    "timestamp": "3:16",
+    "content": "And when you first launch it, you'll see glimmers of that color."
+  },
+  {
+    "timestamp": "3:20",
+    "content": "But if you switch to some of the more fun themes, and actually you can create your own, which is really fun and really vibrant and bright, you will really, I think, enjoy the experience of being in Xcode."
+  },
+  {
+    "timestamp": "3:31",
+    "content": "Lots to unpack this here."
+  },
+  {
+    "timestamp": "3:34",
+    "content": "What are you most excited for people to check out first?"
+  },
+  {
+    "timestamp": "3:36",
+    "content": "The things that I'm most proud of and excited for people to get their hands on is the new device hub in Xcode."
+  },
+  {
+    "timestamp": "3:42",
+    "content": "It's something that we have been working on for years and using ourselves for years."
+  },
+  {
+    "timestamp": "3:49",
+    "content": "And the level of polish on this app and device experience is really, really high."
+  },
+  {
+    "timestamp": "3:56",
+    "content": "And that's what we want people to be experiencing every day when they're interacting with devices, which is a lot."
+  },
+  {
+    "timestamp": "4:02",
+    "content": "And so, you know, you get your simulators, you get your real devices all in one place with a really high attention to detail and fantastic experience."
+  },
+  {
+    "timestamp": "4:13",
+    "content": "So I think I'd love people to try that out."
+  },
+  {
+    "timestamp": "4:16",
+    "content": "You seem to be the guy to ask this."
+  },
+  {
+    "timestamp": "4:17",
+    "content": "Can you give us some productivity tips?"
+  },
+  {
+    "timestamp": "4:19",
+    "content": "Give me some of your personal tips and tricks for Xcode."
+  },
+  {
+    "timestamp": "4:21",
+    "content": "I'll tell you some things that, you know, have been in the product for a while that I like that I think maybe people don't notice."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "Okay."
+  },
+  {
+    "timestamp": "4:29",
+    "content": "So really simple one."
+  },
+  {
+    "timestamp": "4:33",
+    "content": "Change your insertion point."
+  },
+  {
+    "timestamp": "4:34",
+    "content": "Use the block insertion point."
+  },
+  {
+    "timestamp": "4:35",
+    "content": "Why you want to use that?"
+  },
+  {
+    "timestamp": "4:37",
+    "content": "You'll never misplace your insertion point again."
+  },
+  {
+    "timestamp": "4:39",
+    "content": "You can always see it there blinking."
+  },
+  {
+    "timestamp": "4:41",
+    "content": "That's an easy one."
+  },
+  {
+    "timestamp": "4:42",
+    "content": "A lot of people don't know that we have that."
+  },
+  {
+    "timestamp": "4:43",
+    "content": "Another one that is really great to control sort of the layout of your Xcode, like where files are and how many splits you have, is a feature called the destination chooser."
+  },
+  {
+    "timestamp": "4:54",
+    "content": "They go into settings, go into navigation."
+  },
+  {
+    "timestamp": "4:56",
+    "content": "In there, there's a section for navigation."
+  },
+  {
+    "timestamp": "4:59",
+    "content": "When you press the option key, you can change this little option to say destination chooser."
+  },
+  {
+    "timestamp": "5:05",
+    "content": "When you hold down option and you click on a file, it will show this blue highlight that you can move around with your cursor."
+  },
+  {
+    "timestamp": "5:10",
+    "content": "You can say, I want to split here or I want the file to go here or I want a new window."
+  },
+  {
+    "timestamp": "5:14",
+    "content": "So really, really powerful for both the mouse kind of person, which is me, and also the keyboard kind of person that likes to control things with a keyboard."
+  },
+  {
+    "timestamp": "5:23",
+    "content": "So that's a good one."
+  },
+  {
+    "timestamp": "5:24",
+    "content": "That's a good one right there."
+  },
+  {
+    "timestamp": "5:25",
+    "content": "Can we do a whole show of this?"
+  },
+  {
+    "timestamp": "5:26",
+    "content": "This is very useful."
+  },
+  {
+    "timestamp": "5:28",
+    "content": "I feel like we can do this for a while."
+  },
+  {
+    "timestamp": "5:29",
+    "content": "Thanks so much, Ken and Jeff."
+  },
+  {
+    "timestamp": "5:31",
+    "content": "Great stuff as always."
+  },
+  {
+    "timestamp": "5:33",
+    "content": "To learn more, check out the What's New in Xcode 27 and Xcode Agents and You sessions."
+  },
+  {
+    "timestamp": "5:39",
+    "content": "Now to today's group labs running all day long."
+  },
+  {
+    "timestamp": "5:42",
+    "content": "Drop in, bring your questions, and if you miss one, it'll be available on demand."
+  },
+  {
+    "timestamp": "5:46",
+    "content": "I'm going to go to the Coding Intelligence Group lab for beginners, and I'm going to hang out and pick up some tips and tricks with Xcode at 1 p.m."
+  },
+  {
+    "timestamp": "5:55",
+    "content": "Two more things."
+  },
+  {
+    "timestamp": "5:56",
+    "content": "If you need inspiration for your next project, look no further than this year's Apple Design Award winners and finalists."
+  },
+  {
+    "timestamp": "6:03",
+    "content": "There's all kinds of great creative apps and fun games, so there's something for everyone."
+  },
+  {
+    "timestamp": "6:07",
+    "content": "Please go check them out."
+  },
+  {
+    "timestamp": "6:10",
+    "content": "WWDC is online, but the developer community is everywhere."
+  },
+  {
+    "timestamp": "6:13",
+    "content": "Head to developer.apple.com slash community to find local meetups, online groups, and activities happening all around the world."
+  },
+  {
+    "timestamp": "6:21",
+    "content": "After everything I've learned this week, I'm considering delegating day five to an agent."
+  },
+  {
+    "timestamp": "6:26",
+    "content": "Don't tell my producer."
+  },
+  {
+    "timestamp": "6:27",
+    "content": "All right, that's day four."
+  },
+  {
+    "timestamp": "6:29",
+    "content": "Join us tomorrow for the final Dub Dub Daily."
+  },
+  {
+    "timestamp": "6:31",
+    "content": "I'll see you then."
+  }
+]
